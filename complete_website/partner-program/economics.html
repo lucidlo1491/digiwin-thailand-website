@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner Economics - DigiWin Partner Program</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Hero Section */
+        .econ-hero {
+            background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+            padding: 140px 24px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .econ-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .econ-hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .econ-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 24px;
+        }
+        .econ-breadcrumb a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .econ-breadcrumb a:hover {
+            color: #3798E4;
+        }
+        .econ-hero h1 {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+        .econ-hero h1 span {
+            color: #4ade80;
+        }
+        .econ-hero-subtitle {
+            font-size: 20px;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
+            max-width: 700px;
+            margin-bottom: 48px;
+        }
+        .econ-hero-proof {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .proof-item {
+            text-align: center;
+        }
+        .proof-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #4ade80;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .proof-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Revenue Model Section */
+        .revenue-model-section {
+            padding: 100px 24px;
+            background: #fff;
+        }
+        .revenue-model-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .revenue-model-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            color: #3798E4;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .revenue-model-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .revenue-model-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .revenue-streams {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .revenue-stream {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .revenue-stream:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+        .stream-header {
+            background: linear-gradient(135deg, #253B50 0%, #1a2e40 100%);
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .stream-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .stream-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #4ade80;
+        }
+        .stream-header h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            flex: 1;
+        }
+        .stream-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 500;
+            color: #4ade80;
+            background: rgba(74, 222, 128, 0.15);
+            padding: 4px 10px;
+            border-radius: 50px;
+        }
+        .stream-body {
+            padding: 24px;
+        }
+        .stream-desc {
+            font-size: 15px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .margin-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .margin-item {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px;
+        }
+        .margin-level {
+            font-size: 12px;
+            color: #64748b;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .margin-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #253B50;
+        }
+        .margin-value.highlight {
+            color: #16a34a;
+        }
+        .stream-note {
+            font-size: 13px;
+            color: #94a3b8;
+            font-style: italic;
+            margin: 0;
+        }
+
+        /* Journey Section */
+        .journey-section {
+            padding: 100px 24px;
+            background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+        }
+        .journey-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .journey-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .journey-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .journey-header p {
+            font-size: 18px;
+            color: #64748b;
+        }
+        .journey-years {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+        .year-phase {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .year-phase:hover {
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+        .year-phase.featured {
+            border-color: #4ade80;
+            box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.2);
+        }
+        .phase-header {
+            padding: 24px;
+            position: relative;
+        }
+        .phase-header.year-1 { background: linear-gradient(135deg, #94a3b8, #64748b); }
+        .phase-header.year-2 { background: linear-gradient(135deg, #3798E4, #2d7bc4); }
+        .phase-header.year-3 { background: linear-gradient(135deg, #4ade80, #22c55e); }
+        .phase-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        .phase-header h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .phase-status {
+            font-size: 13px;
+            color: rgba(255,255,255,0.8);
+        }
+        .phase-body {
+            padding: 24px;
+        }
+        .phase-reality {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+        .phase-timeline {
+            margin-bottom: 20px;
+        }
+        .timeline-row {
+            display: flex;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .timeline-row:last-child { border-bottom: none; }
+        .timeline-q {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: #3798E4;
+            background: #eff6ff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .timeline-act {
+            font-size: 14px;
+            color: #475569;
+        }
+        .phase-activity {
+            margin-bottom: 20px;
+            padding: 12px 16px;
+            background: #eff6ff;
+            border-radius: 12px;
+        }
+        .activity-label {
+            font-size: 12px;
+            color: #64748b;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .activity-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #253B50;
+        }
+        .phase-math {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        .math-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 14px;
+            color: #64748b;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .math-row:last-child { border-bottom: none; }
+        .math-value {
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            color: #253B50;
+        }
+        .math-value.dim { color: #94a3b8; }
+        .math-value.highlight { color: #16a34a; }
+        .math-total {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 12px;
+            margin-top: 8px;
+            border-top: 2px solid #e2e8f0;
+        }
+        .math-total span:first-child {
+            font-weight: 600;
+            color: #253B50;
+        }
+        .math-total-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #16a34a;
+        }
+        .phase-outcome {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .phase-outcome .highlight { color: #16a34a; }
+
+        /* Journey Summary */
+        .journey-summary {
+            background: linear-gradient(135deg, #253B50 0%, #1a2e40 100%);
+            border-radius: 20px;
+            padding: 48px;
+            text-align: center;
+        }
+        .journey-summary h4 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 32px;
+        }
+        .summary-bars {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 32px;
+            height: 200px;
+        }
+        .summary-bar {
+            width: 100px;
+            background: linear-gradient(180deg, #3798E4, #2d7bc4);
+            border-radius: 8px 8px 0 0;
+            height: calc(var(--bar-height) * 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: 16px;
+            position: relative;
+        }
+        .summary-bar.featured {
+            background: linear-gradient(180deg, #4ade80, #22c55e);
+        }
+        .summary-bar .bar-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .summary-bar .bar-label {
+            position: absolute;
+            bottom: -32px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            white-space: nowrap;
+        }
+
+        /* Protection Section */
+        .protection-section {
+            padding: 100px 24px;
+            background: #fff;
+        }
+        .protection-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .protection-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .protection-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .protection-header p {
+            font-size: 18px;
+            color: #64748b;
+        }
+        .protection-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .protection-card {
+            background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+        .protection-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            border-color: #3798E4;
+        }
+        .protection-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .protection-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: #fff;
+        }
+        .protection-card h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 20px;
+        }
+        .protection-points {
+            margin-bottom: 20px;
+        }
+        .protection-point {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .protection-point:last-child { border-bottom: none; }
+        .protection-point strong {
+            color: #253B50;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .protection-proof {
+            font-size: 13px;
+            font-style: italic;
+            color: #16a34a;
+            background: #f0fdf4;
+            padding: 12px 16px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        /* CTA Section */
+        .econ-cta {
+            padding: 100px 24px;
+            background: linear-gradient(135deg, #3798E4 0%, #2d7bc4 50%, #1e5a8a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .econ-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.07'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .econ-cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .econ-cta h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .econ-cta p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
+        }
+        .econ-cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .econ-hero-proof {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .revenue-streams {
+                grid-template-columns: 1fr;
+            }
+            .journey-years {
+                grid-template-columns: 1fr;
+            }
+            .protection-grid {
+                grid-template-columns: 1fr;
+            }
+            .summary-bars {
+                gap: 16px;
+            }
+            .summary-bar {
+                width: 80px;
+            }
+        }
+        @media (max-width: 640px) {
+            .econ-hero {
+                padding: 120px 20px 80px;
+            }
+            .econ-hero h1 {
+                font-size: 28px;
+            }
+            .econ-hero-proof {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .proof-value {
+                font-size: 24px;
+            }
+            .margin-grid {
+                grid-template-columns: 1fr;
+            }
+            .journey-header h2,
+            .revenue-model-header h2,
+            .protection-header h2 {
+                font-size: 32px;
+            }
+            .summary-bars {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="dw-header">
+        <div class="dw-header-inner">
+            <a href="../index.html" class="dw-logo">
+                <div class="dw-logo-mark">
+                    <!-- DigiWin Logo Mark - Stylized D -->
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 8h20c8.837 0 16 7.163 16 16s-7.163 16-16 16H8V8z" fill="#3798E4"/>
+                        <path d="M14 14h12c6.627 0 12 5.373 12 12s-5.373 12-12 12H14V14z" fill="#ffffff"/>
+                        <path d="M14 18h8c5.523 0 10 4.477 10 10s-4.477 10-10 10h-8V18z" fill="#3798E4"/>
+                        <path d="M14 24h4c3.314 0 6 2.686 6 6s-2.686 6-6 6h-4V24z" fill="#ffffff"/>
+                    </svg>
+                </div>
+                <div class="dw-logo-wordmark">
+                    <span class="dw-logo-text-en">Digi<span>Win</span></span>
+                    <span class="dw-logo-text-zh">鼎新數智</span>
+                </div>
+            </a>
+
+            <nav class="dw-nav">
+                <div class="dw-nav-item">
+                    <a href="../index.html" class="dw-nav-link">Home</a>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Products
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Core Systems -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Core Systems</div>
+                                <a href="../products/erp.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3z"/><path d="M3 9h18M9 21V9"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">ERP: T100 & iGP</p>
+                                        <p class="dw-mega-desc">Finance, supply chain, and operations</p>
+                                    </div>
+                                </a>
+                                <a href="../products/mes.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M2 20h20M6 20V10l4-6h4l4 6v10"/><path d="M6 14h12"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">MES: sMES & SFT</p>
+                                        <p class="dw-mega-desc">Production tracking and quality</p>
+                                    </div>
+                                </a>
+                                <a href="../products/wms.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">WMS: sFLS</p>
+                                        <p class="dw-mega-desc">Warehouse and inventory</p>
+                                    </div>
+                                </a>
+                                <a href="../products/aiot.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">AIoT & Smart Factory</p>
+                                        <p class="dw-mega-desc">Machine connectivity and analytics</p>
+                                    </div>
+                                </a>
+                                <a href="../products.html" class="dw-mega-viewall">
+                                    View All Products
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Featured: Manufacturing Suite -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M20 90V50l20-20h40l20 20v40" stroke-linecap="round"/><path d="M35 90V65h20v25M65 90V55h20v35"/><circle cx="60" cy="25" r="8"/><path d="M60 33v12"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">Complete Stack</span>
+                                    <h3 class="dw-mega-featured-title">Manufacturing & Distribution</h3>
+                                    <p class="dw-mega-featured-desc">Tailor-made ERP for manufacturing and distribution companies in Thailand and ASEAN.</p>
+                                    <a href="../products.html" class="dw-mega-featured-cta">
+                                        Explore Solutions
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Industries
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Manufacturing Sectors -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Manufacturing Sectors</div>
+                                <a href="../industries/automotive.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-6l2-4h12l2 4v6h-2M5 17h10"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Automotive Parts</p>
+                                        <p class="dw-mega-desc">JIT delivery and OEM traceability</p>
+                                    </div>
+                                </a>
+                                <a href="../industries/electronics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Electronics Assembly</p>
+                                        <p class="dw-mega-desc">SMT integration and MSD tracking</p>
+                                    </div>
+                                </a>
+                                <a href="../industries/metal-plastics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Metal & Plastics</p>
+                                        <p class="dw-mega-desc">Yield optimization and scrap reduction</p>
+                                    </div>
+                                </a>
+                                <a href="../industries.html" class="dw-mega-viewall">
+                                    View All Industries
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Featured: Industry Expertise -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M20 100V60l15-25h50l15 25v40" stroke-linecap="round"/><rect x="35" y="70" width="20" height="30" rx="2"/><rect x="65" y="60" width="20" height="40" rx="2"/><path d="M45 40h30M60 25v15"/><circle cx="60" cy="20" r="5"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">50,000+ Factories</span>
+                                    <h3 class="dw-mega-featured-title">Industry-Specific Solutions</h3>
+                                    <p class="dw-mega-featured-desc">Pre-configured templates and best practices for your specific manufacturing sector.</p>
+                                    <a href="../industries.html" class="dw-mega-featured-cta">
+                                        Find Your Industry
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Partners
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Why Partner -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Why Partner</div>
+                                <a href="../partner-program/business-model.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">The Business Model Crisis</p>
+                                    </div>
+                                </a>
+                                <a href="../partner-program/economics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Partner Economics</p>
+                                    </div>
+                                </a>
+                                <a href="../partner-program/solutions.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Solution Stack</p>
+                                    </div>
+                                </a>
+                                <a href="../partner-program.html" class="dw-mega-viewall">
+                                    Partner Overview
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Column 2: Getting Started -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Getting Started</div>
+                                <a href="../partner-program.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Become a Partner</p>
+                                    </div>
+                                </a>
+                                <a href="../demo.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Schedule a Conversation</p>
+                                    </div>
+                                </a>
+                                <a href="../about.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">About DigiWin</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Featured: Partner Program -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(55,152,228,0.3)"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">For ERP Implementers</span>
+                                    <h3 class="dw-mega-featured-title">Escape the Man-Day Trap</h3>
+                                    <p class="dw-mega-featured-desc">40-50% license margins. 100% service fees. Recurring revenue that compounds.</p>
+                                    <a href="../partner-program.html" class="dw-mega-featured-cta">
+                                        Become a Partner
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item">
+                    <a href="../about.html" class="dw-nav-link">About</a>
+                </div>
+            </nav>
+
+            <a href="../demo.html" class="dw-header-cta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;margin-right:8px;vertical-align:middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span style="vertical-align:middle;">Let's Talk</span>
+            </a>
+
+            <button class="dw-menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="econ-hero">
+        <div class="econ-hero-inner">
+            <div class="econ-breadcrumb">
+                <a href="../partner-program.html">Partner Program</a>
+                <span>/</span>
+                <span>Partner Economics</span>
+            </div>
+            <h1>See the Actual Economics—<span>Not a Sales Pitch</span></h1>
+            <p class="econ-hero-subtitle">Realistic numbers in Thai Baht. Conservative scenarios. No hype. Here's exactly how the partner model works financially—from Year 1 survival to Year 3 asset building.</p>
+            <div class="econ-hero-proof">
+                <div class="proof-item">
+                    <span class="proof-value">40-70%</span>
+                    <span class="proof-label">License Margin</span>
+                </div>
+                <div class="proof-item">
+                    <span class="proof-value">100%</span>
+                    <span class="proof-label">Service Revenue</span>
+                </div>
+                <div class="proof-item">
+                    <span class="proof-value">75%</span>
+                    <span class="proof-label">MA Split (9% of SSP)</span>
+                </div>
+                <div class="proof-item">
+                    <span class="proof-value">6mo</span>
+                    <span class="proof-label">Lead Lock Protection</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Revenue Model Section -->
+    <section class="revenue-model-section">
+        <div class="revenue-model-inner">
+            <div class="revenue-model-header">
+                <span class="section-label">THE 4 REVENUE STREAMS</span>
+                <h2>How Partner Revenue Actually Works</h2>
+                <p>Unlike SaaS vendors that trickle revenue over years, our model provides substantial upfront margin plus recurring income.</p>
+            </div>
+            <div class="revenue-streams">
+                <!-- License Revenue -->
+                <div class="revenue-stream">
+                    <div class="stream-header">
+                        <div class="stream-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
+                        </div>
+                        <h3>License Revenue</h3>
+                        <span class="stream-tag">Front-Loaded Cash Flow</span>
+                    </div>
+                    <div class="stream-body">
+                        <p class="stream-desc">You purchase license keys at Distributor Price, sell at Suggested Selling Price (SSP). The difference is <strong>immediate gross profit</strong>—profitable from Day 1.</p>
+                        <div class="margin-grid">
+                            <div class="margin-item">
+                                <span class="margin-level">Silver Partner</span>
+                                <span class="margin-value">~50% margin</span>
+                            </div>
+                            <div class="margin-item">
+                                <span class="margin-level">Gold Partner</span>
+                                <span class="margin-value highlight">~62-70% margin</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Revenue -->
+                <div class="revenue-stream">
+                    <div class="stream-header">
+                        <div class="stream-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/></svg>
+                        </div>
+                        <h3>Service Revenue</h3>
+                        <span class="stream-tag">100% Retention</span>
+                    </div>
+                    <div class="stream-body">
+                        <p class="stream-desc">DigiWin is a product vendor, not a service competitor. <strong>You keep 100%</strong> of all Implementation, Customization, and Training fees.</p>
+                        <div class="margin-grid">
+                            <div class="margin-item">
+                                <span class="margin-level">Workflow iGP Project</span>
+                                <span class="margin-value">฿800K - ฿1.2M</span>
+                            </div>
+                            <div class="margin-item">
+                                <span class="margin-level">T100/eMES Project</span>
+                                <span class="margin-value highlight">Hourly billing</span>
+                            </div>
+                        </div>
+                        <p class="stream-note"><em>We "give up" this high-margin revenue to partners in exchange for market scale.</em></p>
+                    </div>
+                </div>
+
+                <!-- MA Revenue -->
+                <div class="revenue-stream">
+                    <div class="stream-header">
+                        <div class="stream-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                        </div>
+                        <h3>Recurring Support (MA)</h3>
+                        <span class="stream-tag">The Annuity Stream</span>
+                    </div>
+                    <div class="stream-body">
+                        <p class="stream-desc">Annual Maintenance (MA) is <strong>12% of SSP</strong>, charged yearly starting Year 2. You provide Tier 1 support; DigiWin handles Tier 2 (core bugs, R&D).</p>
+                        <div class="margin-grid">
+                            <div class="margin-item">
+                                <span class="margin-level">Partner Keeps (Tier 1)</span>
+                                <span class="margin-value highlight">75% (9% of SSP)</span>
+                            </div>
+                            <div class="margin-item">
+                                <span class="margin-level">DigiWin Takes (Tier 2)</span>
+                                <span class="margin-value">25% (3% of SSP)</span>
+                            </div>
+                        </div>
+                        <p class="stream-note"><em>As install base grows, MA covers your basic operating costs—rent, junior staff, admin.</em></p>
+                    </div>
+                </div>
+
+                <!-- Upsell Revenue -->
+                <div class="revenue-stream">
+                    <div class="stream-header">
+                        <div class="stream-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8m-4-4h8"/></svg>
+                        </div>
+                        <h3>Upsell & Cross-Sell</h3>
+                        <span class="stream-tag">Growth Multiplier</span>
+                    </div>
+                    <div class="stream-body">
+                        <p class="stream-desc">Revenue doesn't end at Go-Live. Build IP on the <strong>Digiwin.cloud PaaS platform</strong>. Custom modules become licensable assets.</p>
+                        <div class="margin-grid">
+                            <div class="margin-item">
+                                <span class="margin-level">Module Add-ons</span>
+                                <span class="margin-value">Same 40-70% margin</span>
+                            </div>
+                            <div class="margin-item">
+                                <span class="margin-level">Referral Fees</span>
+                                <span class="margin-value highlight">5-10% of license</span>
+                            </div>
+                        </div>
+                        <p class="stream-note"><em>A single client can generate 3-4 additional license sales over 5 years.</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3-Year Journey Section -->
+    <section class="journey-section">
+        <div class="journey-inner">
+            <div class="journey-header">
+                <span class="section-label">REALISTIC YEAR 1-2-3 SCENARIOS</span>
+                <h2>The 3-Year Partner Journey</h2>
+                <p>Conservative estimates. No hype. Here's what typical progression looks like for a partner starting with SME products.</p>
+            </div>
+
+            <div class="journey-years">
+                <!-- Year 1 -->
+                <div class="year-phase">
+                    <div class="phase-header year-1">
+                        <div class="phase-badge">Year 1</div>
+                        <h3>Investment & Ramp</h3>
+                        <span class="phase-status">Silver Partner (Co-Delivery)</span>
+                    </div>
+                    <div class="phase-body">
+                        <p class="phase-reality"><strong>Reality:</strong> Don't expect profit in Q1-Q2. Your focus is training your core team and closing first "Pilot" deals with DigiWin's heavy assistance.</p>
+                        <div class="phase-timeline">
+                            <div class="timeline-row">
+                                <span class="timeline-q">Q1-Q2</span>
+                                <span class="timeline-act">2 Senior Consultants undergo certification</span>
+                            </div>
+                            <div class="timeline-row">
+                                <span class="timeline-q">Q3-Q4</span>
+                                <span class="timeline-act">Close 2 Workflow iGP projects</span>
+                            </div>
+                        </div>
+                        <div class="phase-math">
+                            <div class="math-row">
+                                <span>License Revenue</span>
+                                <span class="math-value">~฿380,000</span>
+                            </div>
+                            <div class="math-row">
+                                <span>Service Revenue</span>
+                                <span class="math-value">~฿1,600,000</span>
+                            </div>
+                            <div class="math-row">
+                                <span>Recurring (MA)</span>
+                                <span class="math-value dim">฿0 (warranty)</span>
+                            </div>
+                            <div class="math-total">
+                                <span>Total Year 1</span>
+                                <span class="math-total-value">~฿2.0M</span>
+                            </div>
+                        </div>
+                        <p class="phase-outcome"><strong>Outcome:</strong> Break even or small loss, but 2 reference sites and certified team. You survived the "Valley of Death."</p>
+                    </div>
+                </div>
+
+                <!-- Year 2 -->
+                <div class="year-phase">
+                    <div class="phase-header year-2">
+                        <div class="phase-badge">Year 2</div>
+                        <h3>Cash Flow Phase</h3>
+                        <span class="phase-status">Transition to Gold Partner</span>
+                    </div>
+                    <div class="phase-body">
+                        <p class="phase-reality"><strong>Reality:</strong> Team can now deploy iGP without hand-holding. Stop bleeding hours on learning. Introduce "Reverse Cut" strategy with eMES.</p>
+                        <div class="phase-activity">
+                            <span class="activity-label">New Sales:</span>
+                            <span class="activity-value">3 iGP projects + 1 eMES standalone</span>
+                        </div>
+                        <div class="phase-math">
+                            <div class="math-row">
+                                <span>License Revenue</span>
+                                <span class="math-value">~฿1,100,000</span>
+                            </div>
+                            <div class="math-row">
+                                <span>Service Revenue</span>
+                                <span class="math-value">~฿3,500,000</span>
+                            </div>
+                            <div class="math-row">
+                                <span>Recurring (MA)</span>
+                                <span class="math-value">~฿100,000</span>
+                            </div>
+                            <div class="math-total">
+                                <span>Total Year 2</span>
+                                <span class="math-total-value">~฿4.7M</span>
+                            </div>
+                        </div>
+                        <p class="phase-outcome"><strong>Outcome:</strong> <strong class="highlight">Profitable practice.</strong> Service revenue funds operations; license revenue is pure profit. MA covers office rent.</p>
+                    </div>
+                </div>
+
+                <!-- Year 3 -->
+                <div class="year-phase featured">
+                    <div class="phase-header year-3">
+                        <div class="phase-badge">Year 3</div>
+                        <h3>Asset Building Phase</h3>
+                        <span class="phase-status">Gold Partner (Specialized)</span>
+                    </div>
+                    <div class="phase-body">
+                        <p class="phase-reality"><strong>Reality:</strong> No longer just "hunting." The farming engine kicks in. MA covers a junior consultant's salary. First T100 or AIoT upsell attempts.</p>
+                        <div class="phase-activity">
+                            <span class="activity-label">New Sales:</span>
+                            <span class="activity-value">4 iGP + 1 T100 Enterprise or 2 eMES add-ons</span>
+                        </div>
+                        <div class="phase-math">
+                            <div class="math-row">
+                                <span>License Revenue</span>
+                                <span class="math-value">~฿2,000,000+</span>
+                            </div>
+                            <div class="math-row">
+                                <span>Service Revenue</span>
+                                <span class="math-value">~฿5,000,000+</span>
+                            </div>
+                            <div class="math-row">
+                                <span>Recurring (MA)</span>
+                                <span class="math-value highlight">~฿350,000+</span>
+                            </div>
+                            <div class="math-total">
+                                <span>Total Year 3</span>
+                                <span class="math-total-value">~฿7.4M+</span>
+                            </div>
+                        </div>
+                        <p class="phase-outcome"><strong>Outcome:</strong> Business valuation shifts. <strong class="highlight">You have a recurring revenue stream and sticky client base.</strong> You built an asset, not just a job.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3-Year Summary -->
+            <div class="journey-summary">
+                <h4>3-Year Revenue Trajectory</h4>
+                <div class="summary-bars">
+                    <div class="summary-bar" style="--bar-height: 27%">
+                        <span class="bar-value">฿2M</span>
+                        <span class="bar-label">Y1: Surviving</span>
+                    </div>
+                    <div class="summary-bar" style="--bar-height: 63%">
+                        <span class="bar-value">฿4.7M</span>
+                        <span class="bar-label">Y2: Profitable</span>
+                    </div>
+                    <div class="summary-bar featured" style="--bar-height: 100%">
+                        <span class="bar-value">฿7.4M+</span>
+                        <span class="bar-label">Y3: Asset</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risk Mitigation Section -->
+    <section class="protection-section">
+        <div class="protection-inner">
+            <div class="protection-header">
+                <span class="section-label">RISK MITIGATION</span>
+                <h2>Your Protection Structure</h2>
+                <p>Partnership isn't just about revenue—it's about protecting your investment and reducing risk.</p>
+            </div>
+
+            <div class="protection-grid">
+                <!-- Territory Protection -->
+                <div class="protection-card">
+                    <div class="protection-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Territory & Conflict Protection</h3>
+                    <div class="protection-points">
+                        <div class="protection-point">
+                            <strong>6-Month Ironclad Lock:</strong> Once you register a qualified lead, it's legally locked to you for 6 months (renewable +3). No one can approach the client.
+                        </div>
+                        <div class="protection-point">
+                            <strong>Structural Segmentation:</strong> DigiWin's direct team is restricted to Chinese/Taiwanese inbound accounts. Thai Local Market is exclusively for partners.
+                        </div>
+                        <div class="protection-point">
+                            <strong>Non-Compete Clause:</strong> Master Agreement explicitly states DigiWin cannot operate leads booked by partners during valid period.
+                        </div>
+                    </div>
+                    <div class="protection-proof">"Your leads are locked. Contractual protection, not just promises."</div>
+                </div>
+
+                <!-- Co-Implementation -->
+                <div class="protection-card">
+                    <div class="protection-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/></svg>
+                    </div>
+                    <h3>Co-Implementation Support</h3>
+                    <div class="protection-points">
+                        <div class="protection-point">
+                            <strong>Tiered Support:</strong> You own Tier 1 (user questions, basic configs). DigiWin handles Tier 2 (core bugs, API failures, R&D).
+                        </div>
+                        <div class="protection-point">
+                            <strong>"Entrusted Service" Safety Net:</strong> If you sell but lack capacity, DigiWin delivers under your brand via formal agreement.
+                        </div>
+                        <div class="protection-point">
+                            <strong>On-Site Pilot Assistance:</strong> For first projects, we provide on-site guidance for critical phases like Go-Live Simulation.
+                        </div>
+                    </div>
+                    <div class="protection-proof">"You are never alone on Go-Live."</div>
+                </div>
+
+                <!-- Training -->
+                <div class="protection-card">
+                    <div class="protection-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5"/></svg>
+                    </div>
+                    <h3>Training & Certification</h3>
+                    <div class="protection-points">
+                        <div class="protection-point">
+                            <strong>Mandatory Certification:</strong> Your staff must complete Sales, Pre-sales, and Delivery certification tracks within 3-5 months.
+                        </div>
+                        <div class="protection-point">
+                            <strong>Role-Based Tracks:</strong> T100 Certified → Enterprise projects. eMES Certified → Factory floor. Gold Status → Higher margins (60%+).
+                        </div>
+                        <div class="protection-point">
+                            <strong>Sales "Weaponization":</strong> Industry whitepapers, ROI calculators, localized demo scripts—go in as manufacturing consultants.
+                        </div>
+                    </div>
+                    <div class="protection-proof">"Competency transfer, not just manuals."</div>
+                </div>
+
+                <!-- Demand Gen -->
+                <div class="protection-card">
+                    <div class="protection-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3>Demand Generation</h3>
+                    <div class="protection-points">
+                        <div class="protection-point">
+                            <strong>100% Lead Distribution:</strong> Leads from Brand Roadshows and digital marketing are distributed 100% to qualified partners who attend.
+                        </div>
+                        <div class="protection-point">
+                            <strong>Gold Priority Allocation:</strong> High-quality inbound leads are allocated based on performance to Gold Partners first.
+                        </div>
+                        <div class="protection-point">
+                            <strong>Division of Labor:</strong> We generate demand; you capture and service it. We're the marketing engine; you're the closing engine.
+                        </div>
+                    </div>
+                    <div class="protection-proof">"We feed the army."</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="econ-cta">
+        <div class="econ-cta-inner">
+            <h2>Ready to Run the Numbers for Your Firm?</h2>
+            <p>Let's discuss your territory, your targets, and build a 3-year projection specific to your business. No obligation—just spreadsheet reality.</p>
+            <div class="econ-cta-buttons">
+                <a href="../demo.html" class="dw-btn dw-btn-white">Schedule Discovery Call</a>
+                <a href="../partner-program.html" class="dw-btn dw-btn-outline-white">Back to Partner Overview</a>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="dw-footer">
+        <div class="dw-footer-inner">
+            <div class="dw-footer-grid">
+                <div class="dw-footer-brand">
+                    <div class="dw-footer-logo">Digi<span>Win</span></div>
+                    <p class="dw-footer-tagline"><span class="dw-years">44</span> years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
+                    <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Products</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../products.html">All Products</a></li>
+                        <li><a href="../products/erp.html">ERP: T100 & iGP</a></li>
+                        <li><a href="../products/mes.html">MES: sMES & SFT</a></li>
+                        <li><a href="../products/wms.html">WMS: sFLS</a></li>
+                        <li><a href="../products/aiot.html">AIoT & Smart Factory</a></li>
+                    </ul>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Industries</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../industries.html">All Industries</a></li>
+                        <li><a href="../industries/automotive.html">Automotive Parts</a></li>
+                        <li><a href="../industries/electronics.html">Electronics Assembly</a></li>
+                        <li><a href="../industries/metal-plastics.html">Metal & Plastics</a></li>
+                    </ul>
+                    <h4 style="margin-top: 24px;">Partners</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../partner-program.html">Partner Program</a></li>
+                        <li><a href="../partner-program/economics.html">Partner Economics</a></li>
+                    </ul>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Contact</h4>
+                    <div class="dw-footer-contact">
+                        <p>
+                            <strong>DigiWin Thailand</strong><br>
+                            Bangkok Office
+                        </p>
+                        <p>
+                            <a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a>
+                        </p>
+                    </div>
+                    <div class="dw-footer-social">
+                        <a href="#" title="LinkedIn">in</a>
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="LINE">L</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dw-footer-bottom">
+                <p class="dw-footer-copyright">© 2026 DigiWin Thailand. All rights reserved.</p>
+                <div class="dw-footer-legal">
+                    <a href="../privacy-policy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Service</a>
+                    <a href="../about.html">About Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+    (function() {
+        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
+        dropdowns.forEach(function(item) {
+            const menu = item.querySelector('.dw-mega-menu');
+            item.addEventListener('mouseenter', function() {
+                dropdowns.forEach(function(other) { if (other !== item) { other.classList.remove('active'); const m = other.querySelector('.dw-mega-menu'); if (m) m.classList.remove('active'); }});
+                item.classList.add('active'); if (menu) menu.classList.add('active');
+            });
+            item.addEventListener('mouseleave', function() { item.classList.remove('active'); if (menu) menu.classList.remove('active'); });
+        });
+    })();
+    </script>
+    <script src="../digiwin-dynamic.js"></script>
+</body>
+</html>

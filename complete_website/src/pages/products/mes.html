@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MES: sMES & SFT - Real-Time Production Visibility | DigiWin Thailand</title>
+    <meta name="description" content="Manufacturing Execution System for real-time shop floor visibility. Track work orders, monitor OEE, capture quality data, and maintain complete traceability.">
+    <link rel="stylesheet" href="{{basePath}}styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* MES Page Specific Styles */
+        .mes-hero {
+            background: linear-gradient(135deg, #1a2d3d 0%, #253B50 50%, #2d4a5e 100%);
+            padding: 140px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .mes-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+        .mes-hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .mes-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(55, 152, 228, 0.15);
+            border: 1px solid rgba(55, 152, 228, 0.3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: #7fc4fd;
+            font-size: 11px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .mes-hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .mes-hero-stat-number {
+            font-family: 'Lexend', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: #3798E4;
+        }
+        .mes-hero-stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 4px;
+        }
+        .mes-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            text-align: left;
+        }
+        .mes-hero-content {
+            max-width: 560px;
+        }
+        .mes-hero-visual {
+            position: relative;
+        }
+        .mes-dashboard-mockup {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+        }
+        .mockup-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .mockup-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .mockup-dot:nth-child(1) { background: #ff5f57; }
+        .mockup-dot:nth-child(2) { background: #ffbd2e; }
+        .mockup-dot:nth-child(3) { background: #28ca42; }
+        .mockup-content {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 16px;
+        }
+        .mockup-status-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .mockup-status-item {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+        .mockup-status-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #3798E4;
+        }
+        .mockup-status-value.green { color: #10b981; }
+        .mockup-status-value.yellow { color: #f59e0b; }
+        .mockup-status-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+        .mockup-timeline {
+            display: flex;
+            gap: 8px;
+            align-items: flex-end;
+            height: 60px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+        }
+        .mockup-bar {
+            flex: 1;
+            background: #3798E4;
+            border-radius: 3px 3px 0 0;
+            opacity: 0.7;
+        }
+        .mockup-bar.active { opacity: 1; background: #10b981; }
+        @media (max-width: 1024px) {
+            .mes-hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .mes-hero-content {
+                max-width: 100%;
+            }
+            .mes-hero-visual {
+                display: none;
+            }
+            .mes-hero-stats {
+                justify-content: center;
+            }
+        }
+        .mes-hero h1 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            line-height: 1.15;
+        }
+        .mes-hero-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 700px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+        .mes-hero-ctas {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Before/After Section */
+        .beforeafter-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+        .beforeafter-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .section-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .section-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 18px;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .beforeafter-grid {
+            display: grid;
+            grid-template-columns: 1fr 60px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+        .beforeafter-column {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+        }
+        .beforeafter-column.before {
+            border: 2px solid #fee2e2;
+        }
+        .beforeafter-column.after {
+            border: 2px solid #dcfce7;
+        }
+        .beforeafter-header {
+            padding: 20px 24px;
+            text-align: center;
+        }
+        .beforeafter-header.before {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        }
+        .beforeafter-header.after {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        }
+        .beforeafter-label {
+            font-family: 'Lexend', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .beforeafter-label.before {
+            color: #dc2626;
+        }
+        .beforeafter-label.after {
+            color: #16a34a;
+        }
+        .beforeafter-content {
+            padding: 24px;
+        }
+        .beforeafter-item {
+            padding: 16px 0;
+            border-bottom: 1px solid #f0f4f8;
+        }
+        .beforeafter-item:last-child {
+            border-bottom: none;
+        }
+        .beforeafter-item-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #253B50;
+            margin-bottom: 6px;
+        }
+        .beforeafter-item-desc {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            color: #64748b;
+            line-height: 1.5;
+        }
+        .beforeafter-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: #3798E4;
+            padding-top: 150px;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 80px 0;
+            background: #F5F7FA;
+        }
+        .products-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        .product-box {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 2px solid #e8eef3;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .product-box:hover {
+            border-color: #3798E4;
+            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+        }
+        .product-box-header {
+            padding: 32px 32px 24px;
+            background: linear-gradient(135deg, #253B50 0%, #1a2d3d 100%);
+            border-bottom: none;
+            position: relative;
+        }
+        .product-box-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3798E4, #7ec8f2);
+        }
+        .product-box-title {
+            color: #ffffff;
+        }
+        .product-box-tagline {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .product-box-badge {
+            display: inline-block;
+            background: #3798E4;
+            color: #ffffff;
+            font-family: 'Lexend', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .product-box-badge.full {
+            background: linear-gradient(135deg, #253B50, #3d5a73);
+        }
+        .product-box-badge.light {
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+        }
+        .product-box-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 8px;
+        }
+        .product-box-tagline {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            color: #64748b;
+        }
+        .product-box-content {
+            padding: 32px;
+        }
+        .product-box-desc {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            color: #253B50;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        .product-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 24px 0;
+        }
+        .product-features li {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            color: #253B50;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f4f8;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .product-features li:last-child {
+            border-bottom: none;
+        }
+        .product-features .check {
+            color: #22c55e;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .product-best-for {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-top: 24px;
+        }
+        .product-best-for-label {
+            font-family: 'Lexend', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #3798E4;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .product-best-for-text {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        /* Capabilities Section */
+        .capabilities-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .capability-card {
+            text-align: center;
+            padding: 32px 24px;
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e8eef3;
+            transition: all 0.3s ease;
+        }
+        .capability-card:hover {
+            border-color: #3798E4;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(55, 152, 228, 0.1);
+        }
+        .capability-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, rgba(55, 152, 228, 0.1), rgba(55, 152, 228, 0.05));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        .capability-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: #3798E4;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .capability-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #253B50;
+            margin-bottom: 8px;
+        }
+        .capability-desc {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        /* Integration Section */
+        .integration-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, #F5F7FA 0%, #ffffff 100%);
+        }
+        .integration-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+        .integration-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+            margin: 48px 0;
+        }
+        .integration-node {
+            background: #ffffff;
+            border: 2px solid #e8eef3;
+            border-radius: 16px;
+            padding: 20px 28px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .integration-node:hover {
+            border-color: #3798E4;
+            transform: scale(1.05);
+        }
+        .integration-node.active {
+            border-color: #3798E4;
+            background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+            box-shadow: 0 8px 24px rgba(55, 152, 228, 0.15);
+        }
+        .integration-node-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+        }
+        .integration-node-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #ffffff;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        /* Results Section */
+        .results-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #253B50 0%, #1a2d3d 100%);
+        }
+        .results-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .results-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .results-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #3798E4;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 16px;
+        }
+        .results-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .result-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+        }
+        .result-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            color: #3798E4;
+            line-height: 1;
+        }
+        .result-label {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 12px;
+            line-height: 1.4;
+        }
+        @media (max-width: 1024px) {
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .results-grid {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+        }
+        .integration-node-name {
+            font-family: 'Lexend', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #253B50;
+        }
+        .integration-arrow {
+            font-size: 20px;
+            color: #3798E4;
+            padding: 0 12px;
+        }
+        .integration-message {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 32px 40px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e8eef3;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .integration-message p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 18px;
+            color: #253B50;
+            line-height: 1.8;
+            margin: 0;
+        }
+        .integration-links {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+        .integration-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: #ffffff;
+            border: 1px solid #e8eef3;
+            border-radius: 8px;
+            color: #3798E4;
+            font-family: 'Lexend', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .integration-link:hover {
+            border-color: #3798E4;
+            background: #f0f7ff;
+        }
+
+        /* CTA Section */
+        .mes-cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #3798E4 0%, #2d7bc4 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .mes-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .mes-cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .mes-cta-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+        .mes-cta-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 36px;
+        }
+        .mes-cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-white {
+            background: #ffffff;
+            color: #3798E4;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        .btn-outline-white {
+            background: transparent;
+            color: #ffffff;
+            padding: 16px 32px;
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ffffff;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .beforeafter-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .beforeafter-arrow {
+                transform: rotate(90deg);
+                padding: 16px 0;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            .capabilities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .integration-visual {
+                flex-direction: column;
+            }
+            .integration-arrow {
+                transform: rotate(90deg);
+                padding: 8px 0;
+            }
+        }
+        @media (max-width: 640px) {
+            .mes-hero {
+                padding: 120px 0 60px;
+            }
+            .mes-hero h1 {
+                font-size: 32px;
+            }
+            .capabilities-grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .mes-cta-title {
+                font-size: 28px;
+            }
+            .mes-cta-buttons {
+                flex-direction: column;
+            }
+            .btn-white, .btn-outline-white {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+{{header}}
+
+    <!-- Hero Section -->
+    <section class="mes-hero">
+        <div class="mes-hero-inner">
+            <div class="mes-hero-grid">
+                <div class="mes-hero-content">
+                    <div class="mes-hero-badge">Manufacturing Execution System</div>
+                    <h1>Stop Guessing. Start Seeing.</h1>
+                    <p class="mes-hero-subtitle">Real-time visibility into every workstation, every work order, every minute. Know exactly what's happening on your shop floor—as it happens.</p>
+                    <div class="mes-hero-ctas">
+                        <a href="{{basePath}}demo.html" class="btn-white">Let's Talk</a>
+                        <a href="#compare" class="btn-outline-white">Compare sMES vs SFT</a>
+                    </div>
+                    <div class="mes-hero-stats">
+                        <div class="mes-hero-stat">
+                            <div class="mes-hero-stat-number dw-years">44</div>
+                            <div class="mes-hero-stat-label">Years in Mfg</div>
+                        </div>
+                        <div class="mes-hero-stat">
+                            <div class="mes-hero-stat-number">50K+</div>
+                            <div class="mes-hero-stat-label">Factories</div>
+                        </div>
+                        <div class="mes-hero-stat">
+                            <div class="mes-hero-stat-number">100+</div>
+                            <div class="mes-hero-stat-label">Thai Sites</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mes-hero-visual">
+                    <div class="mes-dashboard-mockup">
+                        <div class="mockup-header">
+                            <div class="mockup-dot"></div>
+                            <div class="mockup-dot"></div>
+                            <div class="mockup-dot"></div>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="mockup-status-bar">
+                                <div class="mockup-status-item">
+                                    <div class="mockup-status-value green">87%</div>
+                                    <div class="mockup-status-label">OEE</div>
+                                </div>
+                                <div class="mockup-status-item">
+                                    <div class="mockup-status-value">1,247</div>
+                                    <div class="mockup-status-label">Units Today</div>
+                                </div>
+                                <div class="mockup-status-item">
+                                    <div class="mockup-status-value yellow">3</div>
+                                    <div class="mockup-status-label">Alerts</div>
+                                </div>
+                            </div>
+                            <div class="mockup-timeline">
+                                <div class="mockup-bar" style="height: 40%;"></div>
+                                <div class="mockup-bar" style="height: 65%;"></div>
+                                <div class="mockup-bar" style="height: 55%;"></div>
+                                <div class="mockup-bar" style="height: 80%;"></div>
+                                <div class="mockup-bar" style="height: 70%;"></div>
+                                <div class="mockup-bar active" style="height: 90%;"></div>
+                                <div class="mockup-bar" style="height: 45%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After Section -->
+    <section class="beforeafter-section">
+        <div class="beforeafter-inner">
+            <div class="section-header">
+                <h2 class="section-title">The Transformation</h2>
+                <p class="section-subtitle">From shop floor chaos to real-time clarity</p>
+            </div>
+
+            <div class="beforeafter-grid">
+                <div class="beforeafter-column before">
+                    <div class="beforeafter-header before">
+                        <div class="beforeafter-label before">Before MES</div>
+                    </div>
+                    <div class="beforeafter-content">
+                        <div class="beforeafter-item">
+                            <div class="beforeafter-item-title">"Where's that order?"</div>
+                            <div class="beforeafter-item-desc">Walk the floor, ask around, hope someone knows. Hours to find answers.</div>
+                        </div>
+                        <div class="beforeafter-item">
+                            <div class="beforeafter-item-title">Yesterday's data</div>
+                            <div class="beforeafter-item-desc">Production reports arrive after problems already happened. Always reacting.</div>
+                        </div>
+                        <div class="beforeafter-item">
+                            <div class="beforeafter-item-title">Traceability panic</div>
+                            <div class="beforeafter-item-desc">Quality issue? Days of paper-digging to find which batch, which lot, which operator.</div>
+                        </div>
+                        <div class="beforeafter-item">
+                            <div class="beforeafter-item-title">OEE guesswork</div>
+                            <div class="beforeafter-item-desc">Downtime tracking on whiteboards. No one trusts the numbers.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="beforeafter-arrow">→</div>
+
+                <div class="beforeafter-column after">
+                    <div class="beforeafter-header after">
+                        <div class="beforeafter-label after">With DigiWin MES</div>
+                    </div>
+                    <div class="beforeafter-content">
+                        <div class="beforeafter-item">
+                            <div class="beforeafter-item-title">Order location in one click</div>
+                            <div class="beforeafter-item-desc">Which station, what operation, estimated completion—instant answers.</div>
+                        </div>
+                        <div class="beforeafter-item">
+                            <div class="beforeafter-item-title">Real-time dashboards</div>
+                            <div class="beforeafter-item-desc">Live production rates, quality alerts, downtime notifications. Prevent problems.</div>
+                        </div>
+                        <div class="beforeafter-item">
+                            <div class="beforeafter-item-title">Complete traceability</div>
+                            <div class="beforeafter-item-desc">Full genealogy from receiving to shipping. One click shows everything.</div>
+                        </div>
+                        <div class="beforeafter-item">
+                            <div class="beforeafter-item-title">Accurate OEE</div>
+                            <div class="beforeafter-item-desc">Automatic calculation from machine data. Real numbers you can trust.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Two Products Section -->
+    <section class="products-section" id="compare">
+        <div class="products-inner">
+            <div class="section-header">
+                <h2 class="section-title">Two Solutions, One Mission</h2>
+                <p class="section-subtitle">Choose the level of visibility that matches your needs</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- sMES -->
+                <div class="product-box">
+                    <div class="product-box-header">
+                        <span class="product-box-badge full">Full MES</span>
+                        <h3 class="product-box-title">sMES</h3>
+                        <p class="product-box-tagline">Complete manufacturing execution with routing enforcement</p>
+                    </div>
+                    <div class="product-box-content">
+                        <p class="product-box-desc">Full MES capability including work order management, routing enforcement, quality data collection, and real-time performance dashboards.</p>
+                        <ul class="product-features">
+                            <li><span class="check">✓</span> Work order dispatch and real-time tracking</li>
+                            <li><span class="check">✓</span> Routing enforcement with operation validation</li>
+                            <li><span class="check">✓</span> Quality data collection with SPC integration</li>
+                            <li><span class="check">✓</span> Real-time OEE calculation per machine/line</li>
+                            <li><span class="check">✓</span> Full lot and serial traceability</li>
+                            <li><span class="check">✓</span> Mobile workstation interface</li>
+                        </ul>
+                        <div class="product-best-for">
+                            <div class="product-best-for-label">Best For</div>
+                            <div class="product-best-for-text">Complex manufacturing with multiple operations, automotive/electronics with traceability requirements, process control needs</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SFT -->
+                <div class="product-box">
+                    <div class="product-box-header">
+                        <span class="product-box-badge light">Lightweight</span>
+                        <h3 class="product-box-title">SFT</h3>
+                        <p class="product-box-tagline">Shop floor tracking without MES complexity</p>
+                    </div>
+                    <div class="product-box-content">
+                        <p class="product-box-desc">Lightweight tracking for factories that want visibility without full MES complexity. Barcode-based, fast to implement, easy to use.</p>
+                        <ul class="product-features">
+                            <li><span class="check">✓</span> Production quantity reporting</li>
+                            <li><span class="check">✓</span> Labor time tracking by operation</li>
+                            <li><span class="check">✓</span> Downtime reason recording</li>
+                            <li><span class="check">✓</span> Basic lot traceability</li>
+                            <li><span class="check">✓</span> Simple barcode scanning interface</li>
+                            <li><span class="check">✓</span> Rapid deployment (days, not months)</li>
+                        </ul>
+                        <div class="product-best-for">
+                            <div class="product-best-for-label">Best For</div>
+                            <div class="product-best-for-text">Factories starting their digitization journey, simpler operations, rapid visibility improvement without disruption</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capabilities Section -->
+    <section class="capabilities-section">
+        <div class="products-inner">
+            <div class="section-header">
+                <h2 class="section-title">What You Can See—Right Now</h2>
+                <p class="section-subtitle">Real-time visibility into every aspect of production</p>
+            </div>
+
+            <div class="capabilities-grid">
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 11.5 7.3 11.8a1 1 0 0 0 1.4 0C13 21.5 20 15.4 20 10a8 8 0 0 0-8-8z"/></svg>
+                    </div>
+                    <h3 class="capability-title">Order Location</h3>
+                    <p class="capability-desc">Which workstation? What operation? How long until complete?</p>
+                </div>
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
+                    </div>
+                    <h3 class="capability-title">Production Rate</h3>
+                    <p class="capability-desc">Units per hour vs. target. By line, product, shift.</p>
+                </div>
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h3 class="capability-title">Quality Issues</h3>
+                    <p class="capability-desc">Defects as they happen. By type, station, operator.</p>
+                </div>
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3 class="capability-title">Downtime</h3>
+                    <p class="capability-desc">What's stopped? Why? For how long? Trends over time.</p>
+                </div>
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3 class="capability-title">Labor Efficiency</h3>
+                    <p class="capability-desc">Actual vs. standard time. By operator, by operation.</p>
+                </div>
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    </div>
+                    <h3 class="capability-title">Material Usage</h3>
+                    <p class="capability-desc">What's being consumed? Variance from standard?</p>
+                </div>
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                    </div>
+                    <h3 class="capability-title">OEE Metrics</h3>
+                    <p class="capability-desc">Availability, performance, quality—calculated automatically.</p>
+                </div>
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <h3 class="capability-title">Traceability</h3>
+                    <p class="capability-desc">Full genealogy. Lot, serial, components, operators.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Section -->
+    <section class="integration-section">
+        <div class="integration-inner">
+            <div class="section-header">
+                <h2 class="section-title">Connected to Everything</h2>
+                <p class="section-subtitle">MES is the bridge between planning and execution</p>
+            </div>
+
+            <div class="integration-visual">
+                <div class="integration-node">
+                    <div class="integration-node-icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                    </div>
+                    <div class="integration-node-name">ERP</div>
+                </div>
+                <div class="integration-arrow">↔</div>
+                <div class="integration-node active">
+                    <div class="integration-node-icon">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/><line x1="6" y1="12" x2="6" y2="12"/><line x1="10" y1="12" x2="10" y2="12"/><line x1="14" y1="12" x2="14" y2="12"/><line x1="18" y1="12" x2="18" y2="12"/></svg>
+                    </div>
+                    <div class="integration-node-name">MES</div>
+                </div>
+                <div class="integration-arrow">↔</div>
+                <div class="integration-node">
+                    <div class="integration-node-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    </div>
+                    <div class="integration-node-name">WMS</div>
+                </div>
+                <div class="integration-arrow">↔</div>
+                <div class="integration-node">
+                    <div class="integration-node-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+                    </div>
+                    <div class="integration-node-name">AIoT</div>
+                </div>
+            </div>
+
+            <div class="integration-message">
+                <p>Work orders flow from ERP to MES automatically. Material consumption updates inventory in real time. Machine data from AIoT feeds OEE calculations. <strong>One integrated system. Zero manual reconciliation.</strong></p>
+            </div>
+
+            <div class="integration-links">
+                <a href="erp.html" class="integration-link">Explore ERP →</a>
+                <a href="wms.html" class="integration-link">Explore WMS →</a>
+                <a href="aiot.html" class="integration-link">Explore AIoT →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section">
+        <div class="results-inner">
+            <div class="results-header">
+                <p class="results-label">Measured Impact</p>
+                <h2 class="results-title">What Our Customers Achieve</h2>
+            </div>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-value">+23%</div>
+                    <div class="result-label">Average OEE Improvement</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">-40%</div>
+                    <div class="result-label">Reduction in Unplanned Downtime</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">90%</div>
+                    <div class="result-label">Faster Traceability Queries</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">2-4</div>
+                    <div class="result-label">Week SFT Implementation</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="mes-cta">
+        <div class="mes-cta-inner">
+            <h2 class="mes-cta-title">Ready to See Your Shop Floor Clearly?</h2>
+            <p class="mes-cta-subtitle">Fill out the form and our team will reach out to discuss your specific production visibility challenges.</p>
+            <div class="mes-cta-buttons">
+                <a href="{{basePath}}demo.html" class="btn-white">Get in Touch</a>
+                <a href="{{basePath}}industries.html" class="btn-outline-white">View by Industry</a>
+            </div>
+        </div>
+    </section>
+{{footer}}
+
+
+    <script>
+    (function() {
+        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
+        dropdowns.forEach(function(item) {
+            const menu = item.querySelector('.dw-mega-menu');
+            item.addEventListener('mouseenter', function() {
+                dropdowns.forEach(function(other) { if (other !== item) { other.classList.remove('active'); const m = other.querySelector('.dw-mega-menu'); if (m) m.classList.remove('active'); }});
+                item.classList.add('active'); if (menu) menu.classList.add('active');
+            });
+            item.addEventListener('mouseleave', function() { item.classList.remove('active'); if (menu) menu.classList.remove('active'); });
+        });
+    })();
+    </script>
+    <script src="{{basePath}}digiwin-dynamic.js"></script>
+</body>
+</html>

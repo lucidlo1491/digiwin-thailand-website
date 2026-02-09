@@ -1,0 +1,328 @@
+/* =============================================
+   DIGIWIN THAILAND - GLOBAL HEADER WITH MEGA MENU
+   Add to: Divi > Theme Options > Custom CSS
+   ============================================= */
+
+/* Header Container */
+.dw-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: #ffffff;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.dw-header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 80px;
+}
+
+/* Logo */
+.dw-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.dw-logo img {
+    height: 44px;
+    width: auto;
+}
+
+.dw-logo-text {
+    font-family: 'Lexend', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #253B50;
+    margin-left: 10px;
+}
+
+.dw-logo-text span {
+    color: #3798E4;
+}
+
+/* Main Navigation */
+.dw-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dw-nav-item {
+    position: relative;
+}
+
+.dw-nav-link {
+    font-family: 'Lexend', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #253B50;
+    text-decoration: none;
+    padding: 28px 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease;
+}
+
+.dw-nav-link:hover {
+    color: #3798E4;
+}
+
+.dw-nav-link svg {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.2s ease;
+}
+
+.dw-nav-item:hover .dw-nav-link svg {
+    transform: rotate(180deg);
+}
+
+/* Mega Menu Dropdown */
+.dw-mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    padding: 32px;
+    min-width: 600px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease;
+    z-index: 1000;
+}
+
+.dw-nav-item:hover .dw-mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dw-mega-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #ffffff;
+}
+
+/* Mega Menu Grid */
+.dw-mega-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.dw-mega-grid--3col {
+    grid-template-columns: repeat(3, 1fr);
+    min-width: 750px;
+}
+
+/* Mega Menu Items */
+.dw-mega-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.dw-mega-item:hover {
+    background: #F5F7FA;
+}
+
+.dw-mega-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #3798E4 0%, #0ea5e9 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.dw-mega-content {
+    flex: 1;
+}
+
+.dw-mega-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #253B50;
+    margin: 0 0 4px 0;
+}
+
+.dw-mega-desc {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Mega Menu Hub Link */
+.dw-mega-hub {
+    grid-column: 1 / -1;
+    background: #F5F7FA;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.dw-mega-hub:hover {
+    background: #e8eef3;
+}
+
+.dw-mega-hub-text {
+    font-family: 'Lexend', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #3798E4;
+}
+
+.dw-mega-hub-arrow {
+    color: #3798E4;
+    font-size: 18px;
+}
+
+/* Header CTA Button */
+.dw-header-cta {
+    font-family: 'Lexend', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    background: #3798E4;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(55, 152, 228, 0.25);
+}
+
+.dw-header-cta:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(55, 152, 228, 0.35);
+    color: #ffffff;
+}
+
+/* Mobile Menu Toggle */
+.dw-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.dw-menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background: #253B50;
+    transition: all 0.3s ease;
+}
+
+/* Body Padding for Fixed Header */
+body.dw-has-header {
+    padding-top: 80px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .dw-header-inner {
+        padding: 0 24px;
+        height: 70px;
+    }
+
+    .dw-nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #ffffff;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 24px;
+        gap: 0;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+    }
+
+    .dw-nav.dw-nav--open {
+        transform: translateX(0);
+    }
+
+    .dw-nav-link {
+        padding: 16px 0;
+        border-bottom: 1px solid #e5e7eb;
+        justify-content: space-between;
+    }
+
+    .dw-mega-menu {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        padding: 16px 0;
+        min-width: auto;
+        opacity: 1;
+        visibility: visible;
+        display: none;
+        border-radius: 0;
+    }
+
+    .dw-nav-item.dw-nav-item--open .dw-mega-menu {
+        display: block;
+    }
+
+    .dw-mega-menu::before {
+        display: none;
+    }
+
+    .dw-mega-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dw-mega-grid--3col {
+        grid-template-columns: 1fr;
+        min-width: auto;
+    }
+
+    .dw-menu-toggle {
+        display: flex;
+    }
+
+    .dw-header-cta {
+        display: none;
+    }
+
+    body.dw-has-header {
+        padding-top: 70px;
+    }
+}

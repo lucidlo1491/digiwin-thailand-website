@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WMS: sFLS - Smart Warehouse Management | DigiWin Thailand</title>
+    <meta name="description" content="Warehouse Management System for manufacturing. Location intelligence, barcode/RFID tracking, FIFO automation, and wave picking optimization.">
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* WMS Page Specific Styles */
+        .wms-hero {
+            background: linear-gradient(135deg, #1a2d3d 0%, #253B50 50%, #2d4a5e 100%);
+            padding: 140px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .wms-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+        .wms-hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .wms-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(55, 152, 228, 0.15);
+            border: 1px solid rgba(55, 152, 228, 0.3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: #7fc4fd;
+            font-size: 11px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .wms-hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .wms-hero-stat-number {
+            font-family: 'Lexend', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: #3798E4;
+        }
+        .wms-hero-stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 4px;
+        }
+        .wms-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            text-align: left;
+        }
+        .wms-hero-content { max-width: 560px; }
+        .wms-mockup {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+        }
+        .wms-mockup-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+        .wms-mockup-cell {
+            aspect-ratio: 1;
+            background: rgba(55, 152, 228, 0.08);
+            border: 1px solid rgba(55, 152, 228, 0.15);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 8px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+        .wms-mockup-cell.occupied {
+            background: rgba(55, 152, 228, 0.25);
+            border-color: rgba(55, 152, 228, 0.4);
+            color: #3798E4;
+        }
+        .wms-mockup-cell.active {
+            background: rgba(16, 185, 129, 0.3);
+            border-color: #10b981;
+            color: #10b981;
+        }
+        .wms-mockup-stats {
+            display: flex;
+            gap: 10px;
+        }
+        .wms-mockup-stat {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+        .wms-mockup-stat-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #3798E4;
+        }
+        .wms-mockup-stat-value.green { color: #10b981; }
+        .wms-mockup-stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 8px;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+        @media (max-width: 1024px) {
+            .wms-hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .wms-hero-content { max-width: 100%; }
+            .wms-mockup { display: none; }
+            .wms-hero-stats { justify-content: center; }
+        }
+        .wms-hero h1 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            line-height: 1.15;
+        }
+        .wms-hero-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 700px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+        .wms-hero-ctas {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Problem Section */
+        .problems-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+        .problems-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .section-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .section-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 18px;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .problem-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 32px;
+            border: 2px solid #fee2e2;
+            text-align: center;
+        }
+        .problem-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        .problem-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: #dc2626;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .problem-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #253B50;
+            margin-bottom: 12px;
+        }
+        .problem-desc {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Capabilities Section */
+        .capabilities-section {
+            padding: 80px 0;
+            background: #F5F7FA;
+        }
+        .capabilities-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        .capability-box {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e8eef3;
+            transition: all 0.3s ease;
+        }
+        .capability-box:hover {
+            border-color: #3798E4;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+        }
+        .capability-box-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .capability-box-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #3798E4 0%, #2d7bc4 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .capability-box-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: #ffffff;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .capability-box-titles {
+            flex: 1;
+        }
+        .capability-box-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #253B50;
+            margin-bottom: 4px;
+        }
+        .capability-box-tagline {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            color: #64748b;
+        }
+        .capability-box-desc {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            color: #253B50;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .capability-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .capability-features li {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            color: #253B50;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f4f8;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .capability-features li:last-child {
+            border-bottom: none;
+        }
+        .capability-features .check {
+            color: #22c55e;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Metrics Section */
+        .metrics-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .metric-card {
+            text-align: center;
+            padding: 32px 24px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f0f7ff 100%);
+            border-radius: 16px;
+            border: 1px solid #e8eef3;
+        }
+        .metric-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #3798E4 0%, #2d7bc4 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        .metric-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: #ffffff;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .metric-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #253B50;
+            margin-bottom: 8px;
+        }
+        .metric-desc {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        /* Integration Section */
+        .integration-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, #F5F7FA 0%, #ffffff 100%);
+        }
+        .integration-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+        .integration-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+            margin: 48px 0;
+        }
+        .integration-node {
+            background: #ffffff;
+            border: 2px solid #e8eef3;
+            border-radius: 16px;
+            padding: 20px 28px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .integration-node:hover {
+            border-color: #3798E4;
+            transform: scale(1.05);
+        }
+        .integration-node.active {
+            border-color: #3798E4;
+            background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+            box-shadow: 0 8px 24px rgba(55, 152, 228, 0.15);
+        }
+        .integration-node-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+        }
+        .integration-node-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #ffffff;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .integration-node-name {
+            font-family: 'Lexend', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #253B50;
+        }
+        .integration-arrow {
+            font-size: 20px;
+            color: #3798E4;
+            padding: 0 12px;
+        }
+        .integration-message {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 32px 40px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e8eef3;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .integration-message p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 18px;
+            color: #253B50;
+            line-height: 1.8;
+            margin: 0;
+        }
+        .integration-links {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+        .integration-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: #ffffff;
+            border: 1px solid #e8eef3;
+            border-radius: 8px;
+            color: #3798E4;
+            font-family: 'Lexend', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .integration-link:hover {
+            border-color: #3798E4;
+            background: #f0f7ff;
+        }
+
+        /* CTA Section */
+        .wms-cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #3798E4 0%, #2d7bc4 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .wms-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .wms-cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .wms-cta-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+        .wms-cta-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 36px;
+        }
+        .wms-cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-white {
+            background: #ffffff;
+            color: #3798E4;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        .btn-outline-white {
+            background: transparent;
+            color: #ffffff;
+            padding: 16px 32px;
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ffffff;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .problems-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            .capabilities-grid {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .integration-visual {
+                flex-direction: column;
+            }
+            .integration-arrow {
+                transform: rotate(90deg);
+                padding: 8px 0;
+            }
+        }
+        @media (max-width: 640px) {
+            .wms-hero {
+                padding: 120px 0 60px;
+            }
+            .wms-hero h1 {
+                font-size: 32px;
+            }
+            .metrics-grid {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .wms-cta-title {
+                font-size: 28px;
+            }
+            .wms-cta-buttons {
+                flex-direction: column;
+            }
+            .btn-white, .btn-outline-white {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="dw-header">
+        <div class="dw-header-inner">
+            <a href="../index.html" class="dw-logo">
+                <div class="dw-logo-mark">
+                    <!-- DigiWin Logo Mark - Stylized D -->
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 8h20c8.837 0 16 7.163 16 16s-7.163 16-16 16H8V8z" fill="#3798E4"/>
+                        <path d="M14 14h12c6.627 0 12 5.373 12 12s-5.373 12-12 12H14V14z" fill="#ffffff"/>
+                        <path d="M14 18h8c5.523 0 10 4.477 10 10s-4.477 10-10 10h-8V18z" fill="#3798E4"/>
+                        <path d="M14 24h4c3.314 0 6 2.686 6 6s-2.686 6-6 6h-4V24z" fill="#ffffff"/>
+                    </svg>
+                </div>
+                <div class="dw-logo-wordmark">
+                    <span class="dw-logo-text-en">Digi<span>Win</span></span>
+                    <span class="dw-logo-text-zh">鼎新數智</span>
+                </div>
+            </a>
+
+            <nav class="dw-nav">
+                <div class="dw-nav-item">
+                    <a href="../index.html" class="dw-nav-link">Home</a>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Products
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Core Systems -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Core Systems</div>
+                                <a href="../products/erp.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3z"/><path d="M3 9h18M9 21V9"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">ERP: T100 & iGP</p>
+                                        <p class="dw-mega-desc">Finance, supply chain, and operations</p>
+                                    </div>
+                                </a>
+                                <a href="../products/mes.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M2 20h20M6 20V10l4-6h4l4 6v10"/><path d="M6 14h12"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">MES: sMES & SFT</p>
+                                        <p class="dw-mega-desc">Production tracking and quality</p>
+                                    </div>
+                                </a>
+                                <a href="../products/wms.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">WMS: sFLS</p>
+                                        <p class="dw-mega-desc">Warehouse and inventory</p>
+                                    </div>
+                                </a>
+                                <a href="../products/aiot.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">AIoT & Smart Factory</p>
+                                        <p class="dw-mega-desc">Machine connectivity and analytics</p>
+                                    </div>
+                                </a>
+                                <a href="../products.html" class="dw-mega-viewall">
+                                    View All Products
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Featured: Manufacturing Suite -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M20 90V50l20-20h40l20 20v40" stroke-linecap="round"/><path d="M35 90V65h20v25M65 90V55h20v35"/><circle cx="60" cy="25" r="8"/><path d="M60 33v12"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">Complete Stack</span>
+                                    <h3 class="dw-mega-featured-title">Manufacturing & Distribution</h3>
+                                    <p class="dw-mega-featured-desc">Tailor-made ERP for manufacturing and distribution companies in Thailand and ASEAN.</p>
+                                    <a href="../products.html" class="dw-mega-featured-cta">
+                                        Explore Solutions
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Industries
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Manufacturing Sectors -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Manufacturing Sectors</div>
+                                <a href="../industries/automotive.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-6l2-4h12l2 4v6h-2M5 17h10"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Automotive Parts</p>
+                                        <p class="dw-mega-desc">JIT delivery and OEM traceability</p>
+                                    </div>
+                                </a>
+                                <a href="../industries/electronics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Electronics Assembly</p>
+                                        <p class="dw-mega-desc">SMT integration and MSD tracking</p>
+                                    </div>
+                                </a>
+                                <a href="../industries/metal-plastics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Metal & Plastics</p>
+                                        <p class="dw-mega-desc">Yield optimization and scrap reduction</p>
+                                    </div>
+                                </a>
+                                <a href="../industries.html" class="dw-mega-viewall">
+                                    View All Industries
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Featured: Industry Expertise -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M20 100V60l15-25h50l15 25v40" stroke-linecap="round"/><rect x="35" y="70" width="20" height="30" rx="2"/><rect x="65" y="60" width="20" height="40" rx="2"/><path d="M45 40h30M60 25v15"/><circle cx="60" cy="20" r="5"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">50,000+ Factories</span>
+                                    <h3 class="dw-mega-featured-title">Industry-Specific Solutions</h3>
+                                    <p class="dw-mega-featured-desc">Pre-configured templates and best practices for your specific manufacturing sector.</p>
+                                    <a href="../industries.html" class="dw-mega-featured-cta">
+                                        Find Your Industry
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Partners
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Why Partner -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Why Partner</div>
+                                <a href="../partner-program/business-model.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">The Business Model Crisis</p>
+                                    </div>
+                                </a>
+                                <a href="../partner-program/economics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Partner Economics</p>
+                                    </div>
+                                </a>
+                                <a href="../partner-program/solutions.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Solution Stack</p>
+                                    </div>
+                                </a>
+                                <a href="../partner-program.html" class="dw-mega-viewall">
+                                    Partner Overview
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Column 2: Getting Started -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Getting Started</div>
+                                <a href="../partner-program.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Become a Partner</p>
+                                    </div>
+                                </a>
+                                <a href="../demo.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Schedule a Conversation</p>
+                                    </div>
+                                </a>
+                                <a href="../about.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">About DigiWin</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Featured: Partner Program -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(55,152,228,0.3)"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">For ERP Implementers</span>
+                                    <h3 class="dw-mega-featured-title">Escape the Man-Day Trap</h3>
+                                    <p class="dw-mega-featured-desc">40-50% license margins. 100% service fees. Recurring revenue that compounds.</p>
+                                    <a href="../partner-program.html" class="dw-mega-featured-cta">
+                                        Become a Partner
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item">
+                    <a href="../about.html" class="dw-nav-link">About</a>
+                </div>
+            </nav>
+
+            <a href="../demo.html" class="dw-header-cta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;margin-right:8px;vertical-align:middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span style="vertical-align:middle;">Let's Talk</span>
+            </a>
+
+            <button class="dw-menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="wms-hero">
+        <div class="wms-hero-inner">
+            <div class="wms-hero-grid">
+                <div class="wms-hero-content">
+                    <div class="wms-hero-badge">Warehouse Management System</div>
+                    <h1>Every Item. Every Location. Every Time.</h1>
+                    <p class="wms-hero-subtitle">Smart warehouse management that eliminates searching, reduces errors, and keeps inventory accurate—without endless manual counts.</p>
+                    <div class="wms-hero-ctas">
+                        <a href="../demo.html" class="btn-white">Let's Talk</a>
+                        <a href="#capabilities" class="btn-outline-white">Explore sFLS</a>
+                    </div>
+                    <div class="wms-hero-stats">
+                        <div class="wms-hero-stat">
+                            <div class="wms-hero-stat-number dw-years">44</div>
+                            <div class="wms-hero-stat-label">Years in Mfg</div>
+                        </div>
+                        <div class="wms-hero-stat">
+                            <div class="wms-hero-stat-number">50K+</div>
+                            <div class="wms-hero-stat-label">Factories</div>
+                        </div>
+                        <div class="wms-hero-stat">
+                            <div class="wms-hero-stat-number">100+</div>
+                            <div class="wms-hero-stat-label">Thai Sites</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wms-hero-visual">
+                    <div class="wms-mockup">
+                        <div class="wms-mockup-grid">
+                            <div class="wms-mockup-cell occupied">A1</div>
+                            <div class="wms-mockup-cell occupied">A2</div>
+                            <div class="wms-mockup-cell">A3</div>
+                            <div class="wms-mockup-cell occupied">A4</div>
+                            <div class="wms-mockup-cell active">A5</div>
+                            <div class="wms-mockup-cell occupied">B1</div>
+                            <div class="wms-mockup-cell">B2</div>
+                            <div class="wms-mockup-cell occupied">B3</div>
+                            <div class="wms-mockup-cell occupied">B4</div>
+                            <div class="wms-mockup-cell">B5</div>
+                            <div class="wms-mockup-cell">C1</div>
+                            <div class="wms-mockup-cell occupied">C2</div>
+                            <div class="wms-mockup-cell occupied">C3</div>
+                            <div class="wms-mockup-cell">C4</div>
+                            <div class="wms-mockup-cell occupied">C5</div>
+                        </div>
+                        <div class="wms-mockup-stats">
+                            <div class="wms-mockup-stat">
+                                <div class="wms-mockup-stat-value green">99.2%</div>
+                                <div class="wms-mockup-stat-label">Accuracy</div>
+                            </div>
+                            <div class="wms-mockup-stat">
+                                <div class="wms-mockup-stat-value">847</div>
+                                <div class="wms-mockup-stat-label">Locations</div>
+                            </div>
+                            <div class="wms-mockup-stat">
+                                <div class="wms-mockup-stat-value">73%</div>
+                                <div class="wms-mockup-stat-label">Utilized</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problems-section">
+        <div class="problems-inner">
+            <div class="section-header">
+                <h2 class="section-title">The Warehouse Chaos Problem</h2>
+                <p class="section-subtitle">Sound familiar?</p>
+            </div>
+
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M11 8v6"/></svg>
+                    </div>
+                    <h3 class="problem-title">"Where Is It?"</h3>
+                    <p class="problem-desc">Workers spending hours searching for materials. "It's in the warehouse somewhere" is not a location strategy.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                    </div>
+                    <h3 class="problem-title">Wrong Part Shipped</h3>
+                    <p class="problem-desc">Picking errors that cost you customer trust and expensive returns. Visual similarity is not a picking system.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 14l-5.1-5.2-2.8 2.7L7 7.7"/></svg>
+                    </div>
+                    <h3 class="problem-title">Inventory Never Matches</h3>
+                    <p class="problem-desc">Physical counts vs. system counts are always different. Year-end reconciliation becomes a nightmare.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capabilities Section -->
+    <section class="capabilities-section" id="capabilities">
+        <div class="capabilities-inner">
+            <div class="section-header">
+                <h2 class="section-title">sFLS: Smart Factory Logistics System</h2>
+                <p class="section-subtitle">Warehouse management designed for manufacturing</p>
+            </div>
+
+            <div class="capabilities-grid">
+                <div class="capability-box">
+                    <div class="capability-box-header">
+                        <div class="capability-box-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 11.5 7.3 11.8a1 1 0 0 0 1.4 0C13 21.5 20 15.4 20 10a8 8 0 0 0-8-8z"/></svg>
+                        </div>
+                        <div class="capability-box-titles">
+                            <h3 class="capability-box-title">Location Intelligence</h3>
+                            <p class="capability-box-tagline">Every item has an address</p>
+                        </div>
+                    </div>
+                    <p class="capability-box-desc">System knows exactly where to put it and where to find it. No more searching. No more guessing.</p>
+                    <ul class="capability-features">
+                        <li><span class="check">✓</span> Zone/aisle/shelf/bin structure</li>
+                        <li><span class="check">✓</span> Suggested putaway locations based on rules</li>
+                        <li><span class="check">✓</span> Directed picking paths for efficiency</li>
+                        <li><span class="check">✓</span> Visual warehouse maps</li>
+                    </ul>
+                </div>
+
+                <div class="capability-box">
+                    <div class="capability-box-header">
+                        <div class="capability-box-icon">
+                            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+                        </div>
+                        <div class="capability-box-titles">
+                            <h3 class="capability-box-title">Barcode/RFID Driven</h3>
+                            <p class="capability-box-tagline">Scan-based accuracy</p>
+                        </div>
+                    </div>
+                    <p class="capability-box-desc">Scan-based transactions eliminate data entry errors. Every move is recorded. Real-time accuracy.</p>
+                    <ul class="capability-features">
+                        <li><span class="check">✓</span> Mobile device support (Android/iOS)</li>
+                        <li><span class="check">✓</span> RFID capability for high-volume</li>
+                        <li><span class="check">✓</span> Real-time inventory updates</li>
+                        <li><span class="check">✓</span> Error prevention with scan validation</li>
+                    </ul>
+                </div>
+
+                <div class="capability-box">
+                    <div class="capability-box-header">
+                        <div class="capability-box-icon">
+                            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                        </div>
+                        <div class="capability-box-titles">
+                            <h3 class="capability-box-title">FIFO/FEFO Automation</h3>
+                            <p class="capability-box-tagline">Automatic stock rotation</p>
+                        </div>
+                    </div>
+                    <p class="capability-box-desc">System enforces first-in-first-out or first-expired-first-out. No more expired stock hiding in the back.</p>
+                    <ul class="capability-features">
+                        <li><span class="check">✓</span> Lot tracking with receiving dates</li>
+                        <li><span class="check">✓</span> Expiry date management</li>
+                        <li><span class="check">✓</span> Automatic pick sequencing</li>
+                        <li><span class="check">✓</span> Expiry alerts and reports</li>
+                    </ul>
+                </div>
+
+                <div class="capability-box">
+                    <div class="capability-box-header">
+                        <div class="capability-box-icon">
+                            <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </div>
+                        <div class="capability-box-titles">
+                            <h3 class="capability-box-title">Wave Picking</h3>
+                            <p class="capability-box-tagline">Optimized fulfillment</p>
+                        </div>
+                    </div>
+                    <p class="capability-box-desc">Batch similar orders together. Optimize picker routes. Get more shipments out with the same team.</p>
+                    <ul class="capability-features">
+                        <li><span class="check">✓</span> Order batching by criteria</li>
+                        <li><span class="check">✓</span> Route optimization algorithms</li>
+                        <li><span class="check">✓</span> Labor efficiency tracking</li>
+                        <li><span class="check">✓</span> Pick-to-cart and pick-to-pallet</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Section -->
+    <section class="metrics-section">
+        <div class="problems-inner">
+            <div class="section-header">
+                <h2 class="section-title">What WMS Delivers</h2>
+                <p class="section-subtitle">Measurable improvements across your warehouse operation</p>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                    </div>
+                    <h3 class="metric-title">99%+ Accuracy</h3>
+                    <p class="metric-desc">System matches physical. No more surprises at audit time.</p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3 class="metric-title">35% Faster Picks</h3>
+                    <p class="metric-desc">Directed paths eliminate searching. More picks per hour.</p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h3 class="metric-title">-80% Errors</h3>
+                    <p class="metric-desc">Scan validation catches mistakes before they ship.</p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    </div>
+                    <h3 class="metric-title">+20% Capacity</h3>
+                    <p class="metric-desc">Smart putaway maximizes your warehouse capacity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Section -->
+    <section class="integration-section">
+        <div class="integration-inner">
+            <div class="section-header">
+                <h2 class="section-title">Connected to Everything</h2>
+                <p class="section-subtitle">WMS is the inventory truth for your entire operation</p>
+            </div>
+
+            <div class="integration-visual">
+                <div class="integration-node">
+                    <div class="integration-node-icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                    </div>
+                    <div class="integration-node-name">ERP</div>
+                </div>
+                <div class="integration-arrow">↔</div>
+                <div class="integration-node">
+                    <div class="integration-node-icon">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>
+                    </div>
+                    <div class="integration-node-name">MES</div>
+                </div>
+                <div class="integration-arrow">↔</div>
+                <div class="integration-node active">
+                    <div class="integration-node-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    </div>
+                    <div class="integration-node-name">WMS</div>
+                </div>
+                <div class="integration-arrow">↔</div>
+                <div class="integration-node">
+                    <div class="integration-node-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+                    </div>
+                    <div class="integration-node-name">AIoT</div>
+                </div>
+            </div>
+
+            <div class="integration-message">
+                <p>Material requests from production trigger picks automatically. Receiving updates ERP inventory in real time. Location data feeds production planning. <strong>One source of inventory truth. Zero reconciliation.</strong></p>
+            </div>
+
+            <div class="integration-links">
+                <a href="erp.html" class="integration-link">Explore ERP →</a>
+                <a href="mes.html" class="integration-link">Explore MES →</a>
+                <a href="aiot.html" class="integration-link">Explore AIoT →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="wms-cta">
+        <div class="wms-cta-inner">
+            <h2 class="wms-cta-title">Ready to End the Warehouse Chaos?</h2>
+            <p class="wms-cta-subtitle">Fill out the form and our team will reach out to discuss your specific warehouse challenges.</p>
+            <div class="wms-cta-buttons">
+                <a href="../demo.html" class="btn-white">Get in Touch</a>
+                <a href="../products.html" class="btn-outline-white">View All Products</a>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="dw-footer">
+        <div class="dw-footer-inner">
+            <div class="dw-footer-grid">
+                <div class="dw-footer-brand">
+                    <div class="dw-footer-logo">Digi<span>Win</span></div>
+                    <p class="dw-footer-tagline"><span class="dw-years">44</span> years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
+                    <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Products</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../products.html">All Products</a></li>
+                        <li><a href="../products/erp.html">ERP: T100 & iGP</a></li>
+                        <li><a href="../products/mes.html">MES: sMES & SFT</a></li>
+                        <li><a href="../products/wms.html">WMS: sFLS</a></li>
+                        <li><a href="../products/aiot.html">AIoT & Smart Factory</a></li>
+                    </ul>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Industries</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../industries.html">All Industries</a></li>
+                        <li><a href="../industries/automotive.html">Automotive Parts</a></li>
+                        <li><a href="../industries/electronics.html">Electronics Assembly</a></li>
+                        <li><a href="../industries/metal-plastics.html">Metal & Plastics</a></li>
+                    </ul>
+                    <h4 style="margin-top: 24px;">Partners</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../partner-program.html">Partner Program</a></li>
+                        <li><a href="../partner-program/economics.html">Partner Economics</a></li>
+                    </ul>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Contact</h4>
+                    <div class="dw-footer-contact">
+                        <p>
+                            <strong>DigiWin Thailand</strong><br>
+                            Bangkok Office
+                        </p>
+                        <p>
+                            <a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a>
+                        </p>
+                    </div>
+                    <div class="dw-footer-social">
+                        <a href="#" title="LinkedIn">in</a>
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="LINE">L</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dw-footer-bottom">
+                <p class="dw-footer-copyright">© 2026 DigiWin Thailand. All rights reserved.</p>
+                <div class="dw-footer-legal">
+                    <a href="../privacy-policy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Service</a>
+                    <a href="../about.html">About Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+    (function() {
+        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
+        dropdowns.forEach(function(item) {
+            const menu = item.querySelector('.dw-mega-menu');
+            item.addEventListener('mouseenter', function() {
+                dropdowns.forEach(function(other) { if (other !== item) { other.classList.remove('active'); const m = other.querySelector('.dw-mega-menu'); if (m) m.classList.remove('active'); }});
+                item.classList.add('active'); if (menu) menu.classList.add('active');
+            });
+            item.addEventListener('mouseleave', function() { item.classList.remove('active'); if (menu) menu.classList.remove('active'); });
+        });
+    })();
+    </script>
+    <script src="../digiwin-dynamic.js"></script>
+</body>
+</html>

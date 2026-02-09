@@ -1,0 +1,209 @@
+/* =============================================
+   DIGIWIN THAILAND - GLOBAL FOOTER
+   Add to: Divi > Theme Options > Custom CSS
+   ============================================= */
+
+.dw-footer {
+    background: #253B50;
+    color: #ffffff;
+    padding: 80px 0 0 0;
+}
+
+.dw-footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.dw-footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Footer Brand Column */
+.dw-footer-brand {
+    padding-right: 40px;
+}
+
+.dw-footer-logo {
+    font-family: 'Lexend', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+
+.dw-footer-logo span {
+    color: #3798E4;
+}
+
+.dw-footer-tagline {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.dw-footer-stock {
+    font-family: 'Lexend', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.dw-footer-stock strong {
+    color: #3798E4;
+    font-weight: 600;
+}
+
+/* Footer Link Columns */
+.dw-footer-column h4 {
+    font-family: 'Lexend', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 20px 0;
+}
+
+.dw-footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dw-footer-links li {
+    margin-bottom: 12px;
+}
+
+.dw-footer-links a {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.dw-footer-links a:hover {
+    color: #3798E4;
+}
+
+/* Footer Contact */
+.dw-footer-contact p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    margin: 0 0 16px 0;
+}
+
+.dw-footer-contact a {
+    color: #3798E4;
+    text-decoration: none;
+}
+
+.dw-footer-contact a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Social */
+.dw-footer-social {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.dw-footer-social a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 18px;
+}
+
+.dw-footer-social a:hover {
+    background: #3798E4;
+}
+
+/* Footer Bottom Bar */
+.dw-footer-bottom {
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.dw-footer-copyright {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+}
+
+.dw-footer-legal {
+    display: flex;
+    gap: 24px;
+}
+
+.dw-footer-legal a {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.dw-footer-legal a:hover {
+    color: #3798E4;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .dw-footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    .dw-footer-brand {
+        grid-column: 1 / -1;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .dw-footer {
+        padding: 60px 0 0 0;
+    }
+
+    .dw-footer-inner {
+        padding: 0 24px;
+    }
+
+    .dw-footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .dw-footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .dw-footer-legal {
+        justify-content: center;
+    }
+}

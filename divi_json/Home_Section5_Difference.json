@@ -1,0 +1,132 @@
+{
+  "sections": [
+    {
+      "type": "et_pb_section",
+      "attrs": {
+        "background_color": "#F5F7FA",
+        "custom_padding": "80px||80px||true|false"
+      },
+      "children": [
+        {
+          "type": "et_pb_row",
+          "attrs": {
+            "column_structure": "4_4",
+            "custom_padding": "0px||40px||false|false"
+          },
+          "children": [
+            {
+              "type": "et_pb_column",
+              "attrs": { "type": "4_4" },
+              "children": [
+                {
+                  "type": "et_pb_text",
+                  "attrs": {
+                    "content": "<h2 style='text-align: center; color: #333333; font-size: 36px; font-weight: 700;'>The DigiWin Difference</h2>",
+                    "text_orientation": "center"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "et_pb_row",
+          "attrs": {
+            "column_structure": "1_3,1_3,1_3",
+            "use_custom_gutter": "on",
+            "gutter_width": "3"
+          },
+          "children": [
+            {
+              "type": "et_pb_column",
+              "attrs": {
+                "type": "1_3",
+                "background_color": "#FFFFFF",
+                "custom_padding": "40px|30px|40px|30px|true|true",
+                "border_radii": "on|8px|8px|8px|8px",
+                "box_shadow_style": "preset1",
+                "box_shadow_color": "rgba(0,0,0,0.08)"
+              },
+              "children": [
+                {
+                  "type": "et_pb_blurb",
+                  "attrs": {
+                    "title": "Manufacturing-Only",
+                    "content": "<p>44 years focused exclusively on manufacturing. Not generic business software adapted for factories—purpose-built from day one for the shop floor.</p>",
+                    "use_icon": "on",
+                    "font_icon": "&#xe0e3;",
+                    "icon_color": "#3798E4",
+                    "icon_placement": "top",
+                    "header_font": "|||on|||||",
+                    "header_text_color": "#333333",
+                    "header_font_size": "20px",
+                    "body_text_color": "#666666",
+                    "text_orientation": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "et_pb_column",
+              "attrs": {
+                "type": "1_3",
+                "background_color": "#FFFFFF",
+                "custom_padding": "40px|30px|40px|30px|true|true",
+                "border_radii": "on|8px|8px|8px|8px",
+                "box_shadow_style": "preset1",
+                "box_shadow_color": "rgba(0,0,0,0.08)"
+              },
+              "children": [
+                {
+                  "type": "et_pb_blurb",
+                  "attrs": {
+                    "title": "Grows With You",
+                    "content": "<p>Start with what you need today. Add capabilities as you grow—from basic workflow to full ERP to MES to AIoT. No rip-and-replace needed.</p>",
+                    "use_icon": "on",
+                    "font_icon": "&#xe0c9;",
+                    "icon_color": "#3798E4",
+                    "icon_placement": "top",
+                    "header_font": "|||on|||||",
+                    "header_text_color": "#333333",
+                    "header_font_size": "20px",
+                    "body_text_color": "#666666",
+                    "text_orientation": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "et_pb_column",
+              "attrs": {
+                "type": "1_3",
+                "background_color": "#FFFFFF",
+                "custom_padding": "40px|30px|40px|30px|true|true",
+                "border_radii": "on|8px|8px|8px|8px",
+                "box_shadow_style": "preset1",
+                "box_shadow_color": "rgba(0,0,0,0.08)"
+              },
+              "children": [
+                {
+                  "type": "et_pb_blurb",
+                  "attrs": {
+                    "title": "Local Team",
+                    "content": "<p>50+ Thai staff. 60%+ bilingual. 8 years in Thailand with 100+ implementations. We're not a foreign vendor—we're your neighbors.</p>",
+                    "use_icon": "on",
+                    "font_icon": "&#xe08e;",
+                    "icon_color": "#3798E4",
+                    "icon_placement": "top",
+                    "header_font": "|||on|||||",
+                    "header_text_color": "#333333",
+                    "header_font_size": "20px",
+                    "body_text_color": "#666666",
+                    "text_orientation": "center"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

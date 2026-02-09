@@ -1,0 +1,270 @@
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+
+.dw-footer {
+    background: #253B50;
+    color: #ffffff;
+    padding: 80px 0 0 0;
+}
+
+.dw-footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.dw-footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.dw-footer-brand {
+    padding-right: 40px;
+}
+
+.dw-footer-logo {
+    font-family: 'Lexend', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+
+.dw-footer-logo span {
+    color: #3798E4;
+}
+
+.dw-footer-tagline {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.dw-footer-stock {
+    font-family: 'Lexend', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.dw-footer-stock strong {
+    color: #3798E4;
+    font-weight: 600;
+}
+
+.dw-footer-column h4 {
+    font-family: 'Lexend', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 20px 0;
+}
+
+.dw-footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dw-footer-links li {
+    margin-bottom: 12px;
+}
+
+.dw-footer-links a {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.dw-footer-links a:hover {
+    color: #3798E4;
+}
+
+.dw-footer-contact p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    margin: 0 0 16px 0;
+}
+
+.dw-footer-contact a {
+    color: #3798E4;
+    text-decoration: none;
+}
+
+.dw-footer-contact a:hover {
+    text-decoration: underline;
+}
+
+.dw-footer-social {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.dw-footer-social a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-family: 'Lexend', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.dw-footer-social a:hover {
+    background: #3798E4;
+}
+
+.dw-footer-bottom {
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.dw-footer-copyright {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+}
+
+.dw-footer-legal {
+    display: flex;
+    gap: 24px;
+}
+
+.dw-footer-legal a {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.dw-footer-legal a:hover {
+    color: #3798E4;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .dw-footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    .dw-footer-brand {
+        grid-column: 1 / -1;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .dw-footer {
+        padding: 60px 0 0 0;
+    }
+
+    .dw-footer-inner {
+        padding: 0 24px;
+    }
+
+    .dw-footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .dw-footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .dw-footer-legal {
+        justify-content: center;
+    }
+}
+</style>
+
+<footer class="dw-footer">
+    <div class="dw-footer-inner">
+        <div class="dw-footer-grid">
+            <div class="dw-footer-brand">
+                <div class="dw-footer-logo">Digi<span>Win</span></div>
+                <p class="dw-footer-tagline">44 years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
+                <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
+            </div>
+
+            <div class="dw-footer-column">
+                <h4>Products</h4>
+                <ul class="dw-footer-links">
+                    <li><a href="/products">All Products</a></li>
+                    <li><a href="/products/erp">ERP: T100 & iGP</a></li>
+                    <li><a href="/products/mes">MES: sMES & SFT</a></li>
+                    <li><a href="/products/wms">WMS: sFLS</a></li>
+                    <li><a href="/products/aiot">AIoT & Smart Factory</a></li>
+                </ul>
+            </div>
+
+            <div class="dw-footer-column">
+                <h4>Industries</h4>
+                <ul class="dw-footer-links">
+                    <li><a href="/industries">All Industries</a></li>
+                    <li><a href="/industries/automotive">Automotive Parts</a></li>
+                    <li><a href="/industries/electronics">Electronics Assembly</a></li>
+                    <li><a href="/industries/metal-plastics">Metal & Plastics</a></li>
+                </ul>
+                <h4 style="margin-top: 24px;">Partners</h4>
+                <ul class="dw-footer-links">
+                    <li><a href="/partner-program">Partner Program</a></li>
+                    <li><a href="/partner-program/economics">Partner Economics</a></li>
+                </ul>
+            </div>
+
+            <div class="dw-footer-column">
+                <h4>Contact</h4>
+                <div class="dw-footer-contact">
+                    <p>
+                        <strong>DigiWin Thailand</strong><br>
+                        Bangkok Office
+                    </p>
+                    <p>
+                        <a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a>
+                    </p>
+                </div>
+                <div class="dw-footer-social">
+                    <a href="https://linkedin.com/company/digiwin" target="_blank" title="LinkedIn">in</a>
+                    <a href="https://facebook.com/digiwin" target="_blank" title="Facebook">f</a>
+                    <a href="https://line.me/digiwin" target="_blank" title="LINE">L</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="dw-footer-bottom">
+            <p class="dw-footer-copyright">© 2026 DigiWin Thailand. All rights reserved.</p>
+            <div class="dw-footer-legal">
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/about">About Us</a>
+            </div>
+        </div>
+    </div>
+</footer>

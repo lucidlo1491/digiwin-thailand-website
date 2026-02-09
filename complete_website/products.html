@@ -1,0 +1,2908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Manufacturing Software by Manufacturing Experts | DigiWin Thailand</title>
+    <meta name="description" content="Complete manufacturing software suite: ERP, MES, WMS, and AIoT. 44+ years of manufacturing focus. One integrated ecosystem for Thai factories.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Products Page - Industrial Technical Aesthetic */
+
+        :root {
+            --navy: #253B50;
+            --navy-deep: #0f1419;
+            --navy-mid: #1a2632;
+            --blue: #3798E4;
+            --blue-light: #0ea5e9;
+            --blue-glow: rgba(55, 152, 228, 0.4);
+            --gray-light: #F5F7FA;
+            --white: #ffffff;
+            --green: #10b981;
+            --amber: #f59e0b;
+            --violet: #8b5cf6;
+        }
+
+        /* Animations */
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-2%, -2%); }
+            20% { transform: translate(2%, 2%); }
+            30% { transform: translate(-1%, 1%); }
+            40% { transform: translate(1%, -1%); }
+            50% { transform: translate(-2%, 1%); }
+        }
+
+        @keyframes float-layer {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        @keyframes pulse-node {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        @keyframes data-flow {
+            0% { stroke-dashoffset: 20; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        @keyframes slide-up {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes draw-path {
+            from { stroke-dashoffset: 1000; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(30px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
+        }
+
+        @keyframes flow-pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes scan-line {
+            0% { transform: translateY(-100%); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100%); opacity: 0; }
+        }
+
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes blink-cursor {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes wave-flow {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Hero Section */
+        .products-hero {
+            background: linear-gradient(165deg, var(--navy-deep) 0%, var(--navy-mid) 40%, var(--navy) 100%);
+            padding: 160px 0 120px;
+            position: relative;
+            overflow: hidden;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Grain texture overlay */
+        .products-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            animation: grain 8s steps(10) infinite;
+        }
+
+        /* Gradient overlay */
+        .products-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 80% 20%, rgba(55, 152, 228, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        /* Manufacturing Ecosystem Illustration */
+        .hero-ecosystem-illustration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .hero-ecosystem-illustration svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .products-hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .products-hero-content {
+            animation: slide-up 0.8s ease-out;
+        }
+
+        .products-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(55, 152, 228, 0.1);
+            border: 1px solid rgba(55, 152, 228, 0.3);
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: var(--blue);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 28px;
+        }
+
+        .products-hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--blue);
+            border-radius: 50%;
+            animation: pulse-node 2s ease-in-out infinite;
+        }
+
+        .products-hero-pain {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            margin: 0 0 24px 0;
+            max-width: 500px;
+            font-style: italic;
+        }
+
+        .products-hero h1 {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(40px, 5vw, 56px);
+            font-weight: 700;
+            color: var(--white);
+            margin: 0 0 24px 0;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+
+        .products-hero h1 .highlight {
+            color: var(--blue);
+        }
+
+        .products-hero-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 19px;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 520px;
+            margin: 0 0 40px 0;
+            line-height: 1.7;
+        }
+
+        .products-hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--blue);
+            color: var(--white);
+            padding: 18px 36px;
+            border-radius: 14px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(55, 152, 228, 0.3);
+            margin-bottom: 40px;
+        }
+
+        .products-hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(55, 152, 228, 0.4);
+        }
+
+        .products-hero-cta svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .products-hero-cta:hover svg {
+            transform: translateX(4px);
+        }
+
+        .products-hero-stats {
+            display: flex;
+            gap: 48px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .products-hero-stat {
+            text-align: left;
+        }
+
+        .products-hero-stat-number {
+            font-family: 'Lexend', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--blue);
+            letter-spacing: -0.02em;
+        }
+
+        .products-hero-stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 6px;
+        }
+
+        /* Manufacturing Stack Visual - Enhanced */
+        .hero-stack-visual {
+            position: relative;
+            height: 500px;
+            perspective: 1200px;
+            animation: slide-up 1s ease-out 0.2s both;
+        }
+
+        .stack-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .stack-layer {
+            position: absolute;
+            right: 0;
+            width: 220px;
+            padding: 16px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+            cursor: default;
+            overflow: hidden;
+        }
+
+        .stack-layer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            animation: wave-flow 3s ease-in-out infinite;
+        }
+
+        .stack-layer:hover {
+            transform: translateX(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .stack-layer-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .stack-layer-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .stack-layer-aiot {
+            top: 40px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            animation: float-layer 4s ease-in-out infinite;
+            animation-delay: 0s;
+        }
+
+        .stack-layer-mes {
+            top: 120px;
+            right: 40px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            animation: float-layer 4s ease-in-out infinite;
+            animation-delay: 0.3s;
+        }
+
+        .stack-layer-wms {
+            top: 200px;
+            right: 20px;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            animation: float-layer 4s ease-in-out infinite;
+            animation-delay: 0.6s;
+        }
+
+        .stack-layer-erp {
+            top: 280px;
+            right: 60px;
+            background: linear-gradient(135deg, var(--blue) 0%, #0284c7 100%);
+            animation: float-layer 4s ease-in-out infinite;
+            animation-delay: 0.9s;
+        }
+
+        /* Data connection particles between layers */
+        .stack-data-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .data-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--blue);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--blue-glow);
+            animation: data-rise 2s ease-in-out infinite;
+        }
+
+        @keyframes data-rise {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateY(-200px) scale(0.5); opacity: 0; }
+        }
+
+        .data-particle:nth-child(1) { left: 35%; animation-delay: 0s; }
+        .data-particle:nth-child(2) { left: 50%; animation-delay: 0.5s; }
+        .data-particle:nth-child(3) { left: 65%; animation-delay: 1s; }
+        .data-particle:nth-child(4) { left: 42%; animation-delay: 1.5s; }
+        .data-particle:nth-child(5) { left: 58%; animation-delay: 2s; }
+
+        /* Social Proof Strip */
+        .products-proof-strip {
+            background: var(--navy);
+            padding: 36px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .products-proof-strip::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(55, 152, 228, 0.4), transparent);
+        }
+
+        .products-proof-strip::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(55, 152, 228, 0.4), transparent);
+        }
+
+        .products-proof-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 56px;
+            flex-wrap: wrap;
+        }
+
+        .products-proof-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .products-proof-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(55, 152, 228, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .products-proof-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--blue);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .products-proof-text {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+        }
+
+        .products-proof-text strong {
+            display: block;
+            font-family: 'Lexend', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.01em;
+        }
+
+        @media (max-width: 640px) {
+            .products-proof-inner {
+                flex-direction: column;
+                gap: 24px;
+                align-items: flex-start;
+                padding: 0 32px;
+            }
+        }
+
+        /* Product Cards Grid */
+        .products-grid-section {
+            padding: 120px 0;
+            background: linear-gradient(180deg, #f8fafc 0%, var(--white) 30%, var(--white) 70%, #f8fafc 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .products-grid-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--blue), transparent);
+        }
+
+        /* Ecosystem Background Illustration */
+        .ecosystem-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .ecosystem-bg svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            min-width: 1200px;
+        }
+
+        /* Animated connection lines */
+        @keyframes pulse-line {
+            0%, 100% { opacity: 0.15; }
+            50% { opacity: 0.4; }
+        }
+
+        @keyframes data-travel {
+            0% { stroke-dashoffset: 100; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        @keyframes node-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.3); opacity: 1; }
+        }
+
+        .ecosystem-line {
+            stroke-dasharray: 8 4;
+            animation: data-travel 3s linear infinite;
+        }
+
+        .ecosystem-line--slow {
+            animation-duration: 5s;
+        }
+
+        .ecosystem-line--reverse {
+            animation-direction: reverse;
+        }
+
+        .ecosystem-node {
+            animation: node-pulse 3s ease-in-out infinite;
+        }
+
+        .ecosystem-node--delay-1 { animation-delay: 0.5s; }
+        .ecosystem-node--delay-2 { animation-delay: 1s; }
+        .ecosystem-node--delay-3 { animation-delay: 1.5s; }
+
+        /* Central ecosystem ring */
+        .ecosystem-ring {
+            animation: rotate-slow 60s linear infinite;
+            transform-origin: center;
+        }
+
+        /* Data texture background */
+        .products-grid-section .grid-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle, rgba(55, 152, 228, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        .products-section-header {
+            max-width: 700px;
+            margin: 0 auto 80px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .products-section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .products-section-label::before,
+        .products-section-label::after {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--blue));
+        }
+
+        .products-section-label::after {
+            background: linear-gradient(90deg, var(--blue), transparent);
+        }
+
+        .products-section-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 0 0 16px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .products-section-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 18px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 36px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e8eef3;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card top accent bar */
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card--erp::before {
+            background: linear-gradient(90deg, var(--blue), var(--blue-light));
+        }
+
+        .product-card--mes::before {
+            background: linear-gradient(90deg, #10b981, #34d399);
+        }
+
+        .product-card--wms::before {
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+        }
+
+        .product-card--aiot::before {
+            background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+        }
+
+        /* Card corner decoration */
+        .product-card::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .product-card--erp::after {
+            background: radial-gradient(circle, rgba(55, 152, 228, 0.1) 0%, transparent 70%);
+        }
+
+        .product-card--mes::after {
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+        }
+
+        .product-card--wms::after {
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+        }
+
+        .product-card--aiot::after {
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+        }
+
+        .product-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 32px 80px rgba(55, 152, 228, 0.15);
+            border-color: transparent;
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-card:hover::after {
+            opacity: 1;
+        }
+
+        .product-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+
+        .product-card-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover .product-card-icon {
+            transform: scale(1.08) rotate(-5deg);
+        }
+
+        /* Icon glow effect */
+        .product-card-icon::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 24px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .product-card:hover .product-card-icon::after {
+            opacity: 1;
+        }
+
+        .product-card-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--white);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .product-card-icon--erp {
+            background: linear-gradient(135deg, var(--blue) 0%, #0284c7 100%);
+        }
+
+        .product-card-icon--erp::after {
+            background: linear-gradient(135deg, rgba(55, 152, 228, 0.3), transparent);
+        }
+
+        .product-card-icon--mes {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .product-card-icon--mes::after {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), transparent);
+        }
+
+        .product-card-icon--wms {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .product-card-icon--wms::after {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), transparent);
+        }
+
+        .product-card-icon--aiot {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+
+        .product-card-icon--aiot::after {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), transparent);
+        }
+
+        .product-card-titles {
+            flex: 1;
+        }
+
+        .product-card-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 6px;
+        }
+
+        .product-card--mes .product-card-eyebrow { color: #10b981; }
+        .product-card--wms .product-card-eyebrow { color: #f59e0b; }
+        .product-card--aiot .product-card-eyebrow { color: #8b5cf6; }
+
+        .product-card-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 0;
+            letter-spacing: -0.01em;
+        }
+
+        .product-card-tagline {
+            font-family: 'Lexend', sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--navy);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .product-card-tagline::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--blue);
+            flex-shrink: 0;
+        }
+
+        .product-card--mes .product-card-tagline::before { background: #10b981; }
+        .product-card--wms .product-card-tagline::before { background: #f59e0b; }
+        .product-card--aiot .product-card-tagline::before { background: #8b5cf6; }
+
+        .product-card-desc {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 28px;
+            flex: 1;
+        }
+
+        .product-card-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 32px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .product-card-features li {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 14px;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .product-card-features .check {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .product-card-features .check svg {
+            width: 12px;
+            height: 12px;
+            stroke: var(--white);
+            stroke-width: 3;
+            fill: none;
+        }
+
+        .product-card--erp .product-card-features .check { background: linear-gradient(135deg, var(--blue), #0284c7); }
+        .product-card--mes .product-card-features .check { background: linear-gradient(135deg, #10b981, #059669); }
+        .product-card--wms .product-card-features .check { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .product-card--aiot .product-card-features .check { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+
+        .product-card-cta {
+            font-family: 'Lexend', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: auto;
+            transition: gap 0.3s ease;
+        }
+
+        .product-card--mes .product-card-cta { color: #10b981; }
+        .product-card--wms .product-card-cta { color: #d97706; }
+        .product-card--aiot .product-card-cta { color: #8b5cf6; }
+
+        .product-card-cta svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-card-cta {
+            gap: 16px;
+        }
+
+        .product-card:hover .product-card-cta svg {
+            transform: translateX(4px);
+        }
+
+        /* Integration Section - Enhanced */
+        .integration-section {
+            padding: 140px 0;
+            background: linear-gradient(180deg, var(--gray-light) 0%, var(--white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Grid pattern background */
+        .integration-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(55, 152, 228, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(55, 152, 228, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        .integration-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .integration-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .integration-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 0 0 16px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .integration-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 18px;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Animated Integration Diagram - Enhanced */
+        .integration-diagram {
+            position: relative;
+            padding: 80px 0;
+            min-height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .integration-hub {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 20px 60px rgba(37, 59, 80, 0.35),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        /* Pulsing rings around hub */
+        .integration-hub::before,
+        .integration-hub::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(55, 152, 228, 0.3);
+            animation: pulse-ring 3s ease-out infinite;
+        }
+
+        .integration-hub::before {
+            inset: -15px;
+            animation-delay: 0s;
+        }
+
+        .integration-hub::after {
+            inset: -30px;
+            animation-delay: 1s;
+        }
+
+        @keyframes pulse-ring {
+            0% { opacity: 0.8; transform: scale(0.95); }
+            100% { opacity: 0; transform: scale(1.3); }
+        }
+
+        .integration-hub-icon {
+            width: 44px;
+            height: 44px;
+            stroke: var(--blue);
+            fill: none;
+            stroke-width: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .integration-hub-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Orbiting nodes - more compact */
+        .integration-orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 380px;
+            height: 380px;
+            border: 2px dashed rgba(55, 152, 228, 0.15);
+            border-radius: 50%;
+        }
+
+        /* Inner orbit ring */
+        .integration-orbit::before {
+            content: '';
+            position: absolute;
+            inset: 30px;
+            border: 1px dashed rgba(55, 152, 228, 0.1);
+            border-radius: 50%;
+        }
+
+        .integration-node {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: var(--white);
+            border: 2px solid #e8eef3;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            cursor: default;
+        }
+
+        .integration-node:hover {
+            transform: scale(1.08);
+            box-shadow: 0 16px 48px rgba(55, 152, 228, 0.2);
+        }
+
+        .integration-node-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .integration-node:hover .integration-node-icon {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .integration-node-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: var(--white);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .integration-node-name {
+            font-family: 'Lexend', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .integration-node--erp {
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .integration-node--erp:hover {
+            transform: translateX(-50%) scale(1.08);
+            border-color: var(--blue);
+        }
+
+        .integration-node--erp .integration-node-icon {
+            background: linear-gradient(135deg, var(--blue) 0%, #0284c7 100%);
+        }
+
+        .integration-node--mes {
+            top: 50%;
+            right: -30px;
+            transform: translateY(-50%);
+        }
+
+        .integration-node--mes:hover {
+            transform: translateY(-50%) scale(1.08);
+            border-color: #10b981;
+        }
+
+        .integration-node--mes .integration-node-icon {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .integration-node--wms {
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .integration-node--wms:hover {
+            transform: translateX(-50%) scale(1.08);
+            border-color: #f59e0b;
+        }
+
+        .integration-node--wms .integration-node-icon {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .integration-node--aiot {
+            top: 50%;
+            left: -30px;
+            transform: translateY(-50%);
+        }
+
+        .integration-node--aiot:hover {
+            transform: translateY(-50%) scale(1.08);
+            border-color: #8b5cf6;
+        }
+
+        .integration-node--aiot .integration-node-icon {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+
+        /* Animated data flow SVG */
+        .data-flow-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .data-flow-line {
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 10 6;
+            animation: data-flow 1.5s linear infinite;
+        }
+
+        .data-flow-line--erp { stroke: var(--blue); opacity: 0.6; }
+        .data-flow-line--mes { stroke: #10b981; opacity: 0.6; animation-delay: 0.3s; }
+        .data-flow-line--wms { stroke: #f59e0b; opacity: 0.6; animation-delay: 0.6s; }
+        .data-flow-line--aiot { stroke: #8b5cf6; opacity: 0.6; animation-delay: 0.9s; }
+
+        .data-flow-dot {
+            animation: pulse-node 1.5s ease-in-out infinite;
+        }
+
+        .data-flow-dot--erp { fill: var(--blue); }
+        .data-flow-dot--mes { fill: #10b981; animation-delay: 0.3s; }
+        .data-flow-dot--wms { fill: #f59e0b; animation-delay: 0.6s; }
+        .data-flow-dot--aiot { fill: #8b5cf6; animation-delay: 0.9s; }
+
+        /* Data flow labels - hidden as they clutter the diagram */
+        .data-flow-labels {
+            display: none;
+        }
+
+        /* Integration message */
+        .integration-message {
+            max-width: 800px;
+            margin: 80px auto 0;
+            background: var(--white);
+            border-radius: 24px;
+            padding: 48px 64px;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e8eef3;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .integration-message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--blue), #10b981, #f59e0b, #8b5cf6);
+        }
+
+        .integration-message-quote {
+            position: absolute;
+            top: 24px;
+            left: 36px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 100px;
+            color: var(--blue);
+            opacity: 0.08;
+            line-height: 1;
+        }
+
+        .integration-message p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 18px;
+            color: var(--navy);
+            line-height: 1.85;
+            margin: 0;
+            position: relative;
+        }
+
+        .integration-message strong {
+            color: var(--blue);
+            font-weight: 600;
+        }
+
+        /* Why DigiWin Products Section */
+        .why-section {
+            padding: 120px 0;
+            background: var(--white);
+            position: relative;
+        }
+
+        .why-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .why-header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+
+        .why-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 16px;
+        }
+
+        .why-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 0;
+            letter-spacing: -0.02em;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 36px;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 56px 36px;
+            background: var(--gray-light);
+            border-radius: 28px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--blue), var(--blue-light));
+            border-radius: 0 0 4px 4px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .why-card:hover {
+            background: var(--white);
+            box-shadow: 0 24px 64px rgba(55, 152, 228, 0.12);
+            transform: translateY(-8px);
+            border-color: rgba(55, 152, 228, 0.1);
+        }
+
+        .why-card:hover::before {
+            opacity: 1;
+        }
+
+        .why-card-icon {
+            width: 88px;
+            height: 88px;
+            background: var(--white);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .why-card:hover .why-card-icon {
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 16px 48px rgba(55, 152, 228, 0.15);
+        }
+
+        .why-card-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--blue);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .why-card-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 0 0 16px 0;
+        }
+
+        .why-card-desc {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            color: #64748b;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* CTA Section */
+        .products-cta {
+            padding: 140px 0;
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 50%, #0284c7 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .products-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        /* Grain texture */
+        .products-cta::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+            pointer-events: none;
+        }
+
+        /* Light leak effect */
+        .products-cta-glow {
+            position: absolute;
+            bottom: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .products-cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .products-cta-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(36px, 4.5vw, 52px);
+            font-weight: 700;
+            color: var(--white);
+            margin: 0 0 20px 0;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .products-cta-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0 0 48px 0;
+            line-height: 1.6;
+        }
+
+        .products-cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: #0284c7;
+            padding: 20px 40px;
+            border-radius: 14px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline-white {
+            background: transparent;
+            color: var(--white);
+            padding: 20px 40px;
+            border-radius: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--white);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .products-hero-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .products-hero-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .products-hero-stats {
+                justify-content: center;
+            }
+
+            /* Hide stack visual on tablet/mobile - doesn't serve its purpose at this size */
+            .hero-stack-visual {
+                display: none;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+            }
+
+            .integration-orbit {
+                width: 300px;
+                height: 300px;
+            }
+
+            .integration-hub {
+                width: 110px;
+                height: 110px;
+            }
+
+            .integration-node {
+                width: 80px;
+                height: 80px;
+            }
+
+            .integration-node-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .integration-node-name {
+                font-size: 11px;
+            }
+
+            .integration-node--erp,
+            .integration-node--wms {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .integration-node--erp { top: -25px; }
+            .integration-node--wms { bottom: -25px; }
+            .integration-node--mes { right: -25px; }
+            .integration-node--aiot { left: -25px; }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+                max-width: 480px;
+                margin: 0 auto;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            .products-hero {
+                padding: 120px 0 60px;
+                min-height: auto;
+            }
+
+            .products-hero h1 {
+                font-size: 28px;
+            }
+
+            .products-hero-stats {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .products-hero-stat {
+                text-align: center;
+            }
+
+            .products-section-title,
+            .integration-title,
+            .why-title {
+                font-size: 32px;
+            }
+
+            .product-card {
+                padding: 32px;
+            }
+
+            .product-card-header {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .product-card-features {
+                grid-template-columns: 1fr;
+            }
+
+            .integration-orbit {
+                width: 280px;
+                height: 280px;
+            }
+
+            .integration-hub {
+                width: 100px;
+                height: 100px;
+            }
+
+            .integration-hub-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            .integration-node {
+                width: 75px;
+                height: 75px;
+                border-radius: 16px;
+            }
+
+            .integration-node-icon {
+                width: 36px;
+                height: 36px;
+                margin-bottom: 6px;
+            }
+
+            .integration-node-name {
+                font-size: 11px;
+            }
+
+            .integration-node--erp { top: -25px; }
+            .integration-node--wms { bottom: -25px; }
+            .integration-node--mes { right: -25px; }
+            .integration-node--aiot { left: -25px; }
+
+            .integration-diagram {
+                min-height: 400px;
+                padding: 60px 0;
+            }
+
+            .integration-message {
+                padding: 32px 24px;
+            }
+
+            .products-cta-title {
+                font-size: 28px;
+            }
+
+            .products-cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn-white, .btn-outline-white {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="dw-header">
+        <div class="dw-header-inner">
+            <a href="index.html" class="dw-logo">
+                <div class="dw-logo-mark">
+                    <!-- DigiWin Logo Mark - Stylized D -->
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 8h20c8.837 0 16 7.163 16 16s-7.163 16-16 16H8V8z" fill="#3798E4"/>
+                        <path d="M14 14h12c6.627 0 12 5.373 12 12s-5.373 12-12 12H14V14z" fill="#ffffff"/>
+                        <path d="M14 18h8c5.523 0 10 4.477 10 10s-4.477 10-10 10h-8V18z" fill="#3798E4"/>
+                        <path d="M14 24h4c3.314 0 6 2.686 6 6s-2.686 6-6 6h-4V24z" fill="#ffffff"/>
+                    </svg>
+                </div>
+                <div class="dw-logo-wordmark">
+                    <span class="dw-logo-text-en">Digi<span>Win</span></span>
+                    <span class="dw-logo-text-zh">鼎新數智</span>
+                </div>
+            </a>
+
+            <nav class="dw-nav">
+                <div class="dw-nav-item">
+                    <a href="index.html" class="dw-nav-link">Home</a>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Products
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Core Systems -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Core Systems</div>
+                                <a href="products/erp.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3z"/><path d="M3 9h18M9 21V9"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">ERP: T100 & iGP</p>
+                                        <p class="dw-mega-desc">Finance, supply chain, and operations</p>
+                                    </div>
+                                </a>
+                                <a href="products/mes.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M2 20h20M6 20V10l4-6h4l4 6v10"/><path d="M6 14h12"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">MES: sMES & SFT</p>
+                                        <p class="dw-mega-desc">Production tracking and quality</p>
+                                    </div>
+                                </a>
+                                <a href="products/wms.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">WMS: sFLS</p>
+                                        <p class="dw-mega-desc">Warehouse and inventory</p>
+                                    </div>
+                                </a>
+                                <a href="products/aiot.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">AIoT & Smart Factory</p>
+                                        <p class="dw-mega-desc">Machine connectivity and analytics</p>
+                                    </div>
+                                </a>
+                                <a href="products.html" class="dw-mega-viewall">
+                                    View All Products
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Featured: Manufacturing Suite -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M20 90V50l20-20h40l20 20v40" stroke-linecap="round"/><path d="M35 90V65h20v25M65 90V55h20v35"/><circle cx="60" cy="25" r="8"/><path d="M60 33v12"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">Complete Stack</span>
+                                    <h3 class="dw-mega-featured-title">Manufacturing & Distribution</h3>
+                                    <p class="dw-mega-featured-desc">Tailor-made ERP for manufacturing and distribution companies in Thailand and ASEAN.</p>
+                                    <a href="products.html" class="dw-mega-featured-cta">
+                                        Explore Solutions
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Industries
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Manufacturing Sectors -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Manufacturing Sectors</div>
+                                <a href="industries/automotive.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-6l2-4h12l2 4v6h-2M5 17h10"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Automotive Parts</p>
+                                        <p class="dw-mega-desc">JIT delivery and OEM traceability</p>
+                                    </div>
+                                </a>
+                                <a href="industries/electronics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Electronics Assembly</p>
+                                        <p class="dw-mega-desc">SMT integration and MSD tracking</p>
+                                    </div>
+                                </a>
+                                <a href="industries/metal-plastics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Metal & Plastics</p>
+                                        <p class="dw-mega-desc">Yield optimization and scrap reduction</p>
+                                    </div>
+                                </a>
+                                <a href="industries.html" class="dw-mega-viewall">
+                                    View All Industries
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Featured: Industry Expertise -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M20 100V60l15-25h50l15 25v40" stroke-linecap="round"/><rect x="35" y="70" width="20" height="30" rx="2"/><rect x="65" y="60" width="20" height="40" rx="2"/><path d="M45 40h30M60 25v15"/><circle cx="60" cy="20" r="5"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">50,000+ Factories</span>
+                                    <h3 class="dw-mega-featured-title">Industry-Specific Solutions</h3>
+                                    <p class="dw-mega-featured-desc">Pre-configured templates and best practices for your specific manufacturing sector.</p>
+                                    <a href="industries.html" class="dw-mega-featured-cta">
+                                        Find Your Industry
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Partners
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Why Partner -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Why Partner</div>
+                                <a href="partner-program/business-model.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">The Business Model Crisis</p>
+                                    </div>
+                                </a>
+                                <a href="partner-program/economics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Partner Economics</p>
+                                    </div>
+                                </a>
+                                <a href="partner-program/solutions.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Solution Stack</p>
+                                    </div>
+                                </a>
+                                <a href="partner-program.html" class="dw-mega-viewall">
+                                    Partner Overview
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Column 2: Getting Started -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Getting Started</div>
+                                <a href="partner-program.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Become a Partner</p>
+                                    </div>
+                                </a>
+                                <a href="demo.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Schedule a Conversation</p>
+                                    </div>
+                                </a>
+                                <a href="about.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">About DigiWin</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Featured: Partner Program -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(55,152,228,0.3)"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">For ERP Implementers</span>
+                                    <h3 class="dw-mega-featured-title">Escape the Man-Day Trap</h3>
+                                    <p class="dw-mega-featured-desc">40-50% license margins. 100% service fees. Recurring revenue that compounds.</p>
+                                    <a href="partner-program.html" class="dw-mega-featured-cta">
+                                        Become a Partner
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item">
+                    <a href="about.html" class="dw-nav-link">About</a>
+                </div>
+            </nav>
+
+            <a href="demo.html" class="dw-header-cta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;margin-right:8px;vertical-align:middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span style="vertical-align:middle;">Let's Talk</span>
+            </a>
+
+            <button class="dw-menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="products-hero">
+        <!-- Manufacturing Ecosystem Background Illustration -->
+        <div class="hero-ecosystem-illustration">
+            <svg viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <!-- Grid pattern -->
+                    <pattern id="hero-grid" width="50" height="50" patternUnits="userSpaceOnUse">
+                        <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(55,152,228,0.06)" stroke-width="0.5"/>
+                    </pattern>
+                    <!-- Glow filter -->
+                    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+
+                <!-- Background grid -->
+                <rect width="100%" height="100%" fill="url(#hero-grid)"/>
+
+                <!-- Factory building silhouette -->
+                <g opacity="0.15">
+                    <path d="M100 600 L100 400 L180 400 L180 350 L260 350 L260 300 L340 300 L340 350 L420 350 L420 400 L500 400 L500 600" fill="none" stroke="#3798E4" stroke-width="1.5"/>
+                    <rect x="130" y="450" width="60" height="100" fill="none" stroke="#3798E4" stroke-width="1" rx="4"/>
+                    <rect x="230" y="420" width="80" height="130" fill="none" stroke="#3798E4" stroke-width="1" rx="4"/>
+                    <rect x="350" y="460" width="50" height="90" fill="none" stroke="#3798E4" stroke-width="1" rx="4"/>
+                </g>
+
+                <!-- Data stream lines -->
+                <g class="data-streams">
+                    <path d="M0 300 Q200 250 400 300 T800 280 T1200 310 T1400 290" fill="none" stroke="rgba(55,152,228,0.15)" stroke-width="1.5" stroke-dasharray="8 4">
+                        <animate attributeName="stroke-dashoffset" values="0;-24" dur="2s" repeatCount="indefinite"/>
+                    </path>
+                    <path d="M0 450 Q300 400 600 450 T1000 420 T1400 440" fill="none" stroke="rgba(55,152,228,0.1)" stroke-width="1" stroke-dasharray="6 3">
+                        <animate attributeName="stroke-dashoffset" values="0;-18" dur="3s" repeatCount="indefinite"/>
+                    </path>
+                    <path d="M0 550 Q400 500 800 550 T1400 530" fill="none" stroke="rgba(139,92,246,0.08)" stroke-width="1" stroke-dasharray="4 4">
+                        <animate attributeName="stroke-dashoffset" values="0;-16" dur="2.5s" repeatCount="indefinite"/>
+                    </path>
+                </g>
+
+                <!-- Floating data nodes -->
+                <g filter="url(#glow)">
+                    <circle cx="150" cy="200" r="4" fill="#3798E4" opacity="0.6">
+                        <animate attributeName="cy" values="200;180;200" dur="3s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="350" cy="350" r="5" fill="#10b981" opacity="0.5">
+                        <animate attributeName="cy" values="350;330;350" dur="4s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="0.3;0.7;0.3" dur="4s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="250" cy="500" r="3" fill="#f59e0b" opacity="0.4">
+                        <animate attributeName="cy" values="500;480;500" dur="3.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="1250" cy="180" r="4" fill="#3798E4" opacity="0.5">
+                        <animate attributeName="cy" values="180;160;180" dur="4.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="1150" cy="400" r="6" fill="#8b5cf6" opacity="0.4">
+                        <animate attributeName="cy" values="400;380;400" dur="5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="1300" cy="550" r="3" fill="#10b981" opacity="0.5">
+                        <animate attributeName="cy" values="550;530;550" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                </g>
+
+                <!-- Circuit board pattern (right side) -->
+                <g transform="translate(1050, 120)" opacity="0.12">
+                    <rect x="0" y="0" width="200" height="150" fill="none" stroke="#3798E4" stroke-width="1" rx="8"/>
+                    <line x1="20" y1="30" x2="180" y2="30" stroke="#3798E4" stroke-width="1"/>
+                    <line x1="20" y1="60" x2="140" y2="60" stroke="#3798E4" stroke-width="1"/>
+                    <line x1="20" y1="90" x2="180" y2="90" stroke="#3798E4" stroke-width="1"/>
+                    <line x1="20" y1="120" x2="160" y2="120" stroke="#3798E4" stroke-width="1"/>
+                    <circle cx="50" cy="30" r="5" fill="#3798E4">
+                        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="100" cy="60" r="5" fill="#3798E4">
+                        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+                    </circle>
+                    <circle cx="150" cy="90" r="5" fill="#3798E4">
+                        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="1s"/>
+                    </circle>
+                    <circle cx="80" cy="120" r="5" fill="#3798E4">
+                        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="1.5s"/>
+                    </circle>
+                </g>
+
+                <!-- Conveyor belt representation -->
+                <g transform="translate(50, 620)" opacity="0.1">
+                    <line x1="0" y1="0" x2="400" y2="0" stroke="#3798E4" stroke-width="2"/>
+                    <rect x="50" y="-30" width="40" height="25" fill="#3798E4" rx="3"/>
+                    <rect x="130" y="-35" width="45" height="30" fill="#3798E4" rx="3"/>
+                    <rect x="220" y="-28" width="35" height="23" fill="#3798E4" rx="3"/>
+                    <rect x="310" y="-32" width="50" height="27" fill="#3798E4" rx="3"/>
+                </g>
+            </svg>
+        </div>
+
+        <div class="products-hero-inner">
+            <div class="products-hero-content">
+                <div class="products-hero-badge">Complete Manufacturing Intelligence Stack</div>
+                <p class="products-hero-pain">Your production data lives in 5 different spreadsheets. Your inventory count never matches reality. And last month's report is already outdated.</p>
+                <h1>Manufacturing Software by <span class="highlight">Manufacturing Experts</span></h1>
+                <p class="products-hero-subtitle"><span class="dw-years">44</span> years. 50,000+ factories. One focus. An integrated ecosystem designed by manufacturers, for manufacturers—because your factory deserves software that speaks its language.</p>
+
+                <a href="demo.html" class="products-hero-cta">
+                    Request a Free Assessment
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+
+                <div class="products-hero-stats">
+                    <div class="products-hero-stat">
+                        <div class="products-hero-stat-number dw-years">44</div>
+                        <div class="products-hero-stat-label">Years Focus</div>
+                    </div>
+                    <div class="products-hero-stat">
+                        <div class="products-hero-stat-number">50K+</div>
+                        <div class="products-hero-stat-label">Factories</div>
+                    </div>
+                    <div class="products-hero-stat">
+                        <div class="products-hero-stat-number">4</div>
+                        <div class="products-hero-stat-label">Core Products</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Isometric Stack Visual -->
+            <div class="hero-stack-visual">
+                <div class="stack-container">
+                    <!-- Data particles rising between layers -->
+                    <div class="stack-data-particles">
+                        <div class="data-particle"></div>
+                        <div class="data-particle"></div>
+                        <div class="data-particle"></div>
+                        <div class="data-particle"></div>
+                        <div class="data-particle"></div>
+                    </div>
+
+                    <!-- AIoT Layer -->
+                    <div class="stack-layer stack-layer-aiot">
+                        <span class="stack-layer-icon">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                            </svg>
+                        </span>
+                        AIoT Platform
+                    </div>
+
+                    <!-- MES Layer -->
+                    <div class="stack-layer stack-layer-mes">
+                        <span class="stack-layer-icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                <path d="M6 8v8M10 8v8M14 8v8M18 8v8"/>
+                                <line x1="2" y1="12" x2="22" y2="12"/>
+                            </svg>
+                        </span>
+                        MES Shop Floor
+                    </div>
+
+                    <!-- WMS Layer -->
+                    <div class="stack-layer stack-layer-wms">
+                        <span class="stack-layer-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </span>
+                        WMS Warehouse
+                    </div>
+
+                    <!-- ERP Layer -->
+                    <div class="stack-layer stack-layer-erp">
+                        <span class="stack-layer-icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M3 9h18"/>
+                                <path d="M9 21V9"/>
+                                <rect x="11" y="12" width="8" height="3" rx="1"/>
+                                <rect x="11" y="17" width="5" height="2" rx="0.5"/>
+                            </svg>
+                        </span>
+                        ERP Foundation
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Strip -->
+    <section class="products-proof-strip">
+        <div class="products-proof-inner">
+            <div class="products-proof-item">
+                <div class="products-proof-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div class="products-proof-text">
+                    <strong>50,000+</strong>
+                    Manufacturing Clients Worldwide
+                </div>
+            </div>
+            <div class="products-proof-item">
+                <div class="products-proof-icon">
+                    <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
+                </div>
+                <div class="products-proof-text">
+                    <strong>300378</strong>
+                    Shenzhen Stock Exchange Listed
+                </div>
+            </div>
+            <div class="products-proof-item">
+                <div class="products-proof-icon">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div class="products-proof-text">
+                    <strong>100+</strong>
+                    Thai Implementations
+                </div>
+            </div>
+            <div class="products-proof-item">
+                <div class="products-proof-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+                <div class="products-proof-text">
+                    <strong><span class="dw-years">44</span> Years</strong>
+                    Manufacturing Only
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Cards Grid -->
+    <section class="products-grid-section">
+        <!-- Factory Ecosystem Story Illustration -->
+        <div class="ecosystem-bg">
+            <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <filter id="glow-sm" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="2" result="glow"/>
+                        <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                        <path d="M0,0 L8,4 L0,8 L2,4 Z" fill="#3798E4" opacity="0.5"/>
+                    </marker>
+                    <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                        <path d="M0,0 L8,4 L0,8 L2,4 Z" fill="#10b981" opacity="0.5"/>
+                    </marker>
+                    <marker id="arrow-amber" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                        <path d="M0,0 L8,4 L0,8 L2,4 Z" fill="#f59e0b" opacity="0.5"/>
+                    </marker>
+                </defs>
+
+                <!-- ========== LEFT SIDE: Factory Floor Story ========== -->
+                <g transform="translate(60, 200)" opacity="0.18">
+                    <!-- Factory Building Outline -->
+                    <path d="M0 500 L0 150 L60 100 L120 150 L120 80 L180 50 L240 80 L240 500"
+                          fill="none" stroke="#253B50" stroke-width="2"/>
+                    <!-- Roof detail -->
+                    <path d="M60 100 L60 150 M180 50 L180 80" stroke="#253B50" stroke-width="1.5"/>
+                    <!-- Smokestacks -->
+                    <rect x="150" y="20" width="15" height="30" fill="none" stroke="#253B50" stroke-width="1.5"/>
+                    <path d="M157 20 Q157 10 165 5 Q158 8 152 5 Q160 10 157 20" fill="none" stroke="#253B50" stroke-width="1" opacity="0.6"/>
+
+                    <!-- LEVEL 1: Machines (AIoT) - Bottom -->
+                    <g transform="translate(20, 380)">
+                        <!-- Machine 1 -->
+                        <rect x="0" y="0" width="50" height="60" rx="4" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+                        <circle cx="25" cy="25" r="12" fill="none" stroke="#8b5cf6" stroke-width="1"/>
+                        <circle cx="25" cy="25" r="4" fill="#8b5cf6" opacity="0.4"/>
+                        <!-- Sensor indicator -->
+                        <circle cx="40" cy="10" r="4" fill="#8b5cf6" opacity="0.6">
+                            <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+
+                        <!-- Machine 2 -->
+                        <rect x="70" y="10" width="45" height="50" rx="4" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+                        <rect x="80" y="25" width="25" height="20" fill="none" stroke="#8b5cf6" stroke-width="1"/>
+                        <circle cx="105" cy="20" r="4" fill="#8b5cf6" opacity="0.6">
+                            <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.5s" repeatCount="indefinite"/>
+                        </circle>
+
+                        <!-- Machine 3 -->
+                        <rect x="135" y="5" width="55" height="55" rx="4" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+                        <path d="M145 35 L155 25 L165 35 L175 20 L180 30" fill="none" stroke="#8b5cf6" stroke-width="1"/>
+                        <circle cx="178" cy="15" r="4" fill="#8b5cf6" opacity="0.6">
+                            <animate attributeName="opacity" values="0.3;0.8;0.3" dur="1.8s" repeatCount="indefinite"/>
+                        </circle>
+
+                        <!-- Label -->
+                        <text x="95" y="85" text-anchor="middle" fill="#8b5cf6" font-family="JetBrains Mono, monospace" font-size="9" font-weight="500">MACHINES + SENSORS</text>
+                    </g>
+
+                    <!-- LEVEL 2: Production Line (MES) - Middle -->
+                    <g transform="translate(20, 260)">
+                        <!-- Conveyor belt -->
+                        <line x1="0" y1="50" x2="200" y2="50" stroke="#10b981" stroke-width="2"/>
+                        <circle cx="10" cy="50" r="6" fill="none" stroke="#10b981" stroke-width="1.5"/>
+                        <circle cx="190" cy="50" r="6" fill="none" stroke="#10b981" stroke-width="1.5"/>
+
+                        <!-- Work stations -->
+                        <g>
+                            <rect x="30" y="30" width="30" height="20" rx="2" fill="none" stroke="#10b981" stroke-width="1.5"/>
+                            <text x="45" y="44" text-anchor="middle" fill="#10b981" font-size="8">WS1</text>
+                        </g>
+                        <g>
+                            <rect x="85" y="30" width="30" height="20" rx="2" fill="none" stroke="#10b981" stroke-width="1.5"/>
+                            <text x="100" y="44" text-anchor="middle" fill="#10b981" font-size="8">WS2</text>
+                        </g>
+                        <g>
+                            <rect x="140" y="30" width="30" height="20" rx="2" fill="none" stroke="#10b981" stroke-width="1.5"/>
+                            <text x="155" y="44" text-anchor="middle" fill="#10b981" font-size="8">WS3</text>
+                        </g>
+
+                        <!-- Products moving on belt -->
+                        <rect x="55" y="42" width="12" height="8" rx="1" fill="#10b981" opacity="0.5">
+                            <animate attributeName="x" values="20;180" dur="4s" repeatCount="indefinite"/>
+                        </rect>
+
+                        <!-- Label -->
+                        <text x="100" y="75" text-anchor="middle" fill="#10b981" font-family="JetBrains Mono, monospace" font-size="9" font-weight="500">PRODUCTION FLOOR</text>
+                    </g>
+
+                    <!-- LEVEL 3: Warehouse (WMS) - Upper Middle -->
+                    <g transform="translate(20, 150)">
+                        <!-- Shelving units -->
+                        <g>
+                            <rect x="0" y="0" width="60" height="70" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+                            <line x1="0" y1="23" x2="60" y2="23" stroke="#f59e0b" stroke-width="1"/>
+                            <line x1="0" y1="46" x2="60" y2="46" stroke="#f59e0b" stroke-width="1"/>
+                            <!-- Boxes -->
+                            <rect x="5" y="5" width="15" height="14" fill="#f59e0b" opacity="0.3"/>
+                            <rect x="25" y="5" width="15" height="14" fill="#f59e0b" opacity="0.2"/>
+                            <rect x="5" y="28" width="15" height="14" fill="#f59e0b" opacity="0.4"/>
+                            <rect x="40" y="28" width="15" height="14" fill="#f59e0b" opacity="0.3"/>
+                            <rect x="25" y="51" width="15" height="14" fill="#f59e0b" opacity="0.2"/>
+                            <rect x="40" y="51" width="15" height="14" fill="#f59e0b" opacity="0.4"/>
+                        </g>
+
+                        <!-- Forklift simplified -->
+                        <g transform="translate(90, 35)">
+                            <rect x="0" y="15" width="25" height="20" rx="2" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+                            <rect x="25" y="5" width="4" height="30" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+                            <circle cx="5" cy="38" r="4" fill="none" stroke="#f59e0b" stroke-width="1"/>
+                            <circle cx="20" cy="38" r="4" fill="none" stroke="#f59e0b" stroke-width="1"/>
+                        </g>
+
+                        <!-- Second shelf -->
+                        <g transform="translate(140, 0)">
+                            <rect x="0" y="0" width="50" height="70" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+                            <line x1="0" y1="23" x2="50" y2="23" stroke="#f59e0b" stroke-width="1"/>
+                            <line x1="0" y1="46" x2="50" y2="46" stroke="#f59e0b" stroke-width="1"/>
+                            <rect x="5" y="5" width="12" height="14" fill="#f59e0b" opacity="0.3"/>
+                            <rect x="20" y="28" width="12" height="14" fill="#f59e0b" opacity="0.4"/>
+                            <rect x="33" y="51" width="12" height="14" fill="#f59e0b" opacity="0.2"/>
+                        </g>
+
+                        <!-- Label -->
+                        <text x="100" y="90" text-anchor="middle" fill="#f59e0b" font-family="JetBrains Mono, monospace" font-size="9" font-weight="500">WAREHOUSE</text>
+                    </g>
+                </g>
+
+                <!-- ========== RIGHT SIDE: Office/ERP Layer ========== -->
+                <g transform="translate(1100, 200)" opacity="0.18">
+                    <!-- Office Building -->
+                    <rect x="0" y="100" width="200" height="300" rx="4" fill="none" stroke="#3798E4" stroke-width="2"/>
+                    <!-- Windows grid -->
+                    <g stroke="#3798E4" stroke-width="1">
+                        <rect x="20" y="130" width="30" height="25" rx="2" fill="none"/>
+                        <rect x="65" y="130" width="30" height="25" rx="2" fill="none"/>
+                        <rect x="110" y="130" width="30" height="25" rx="2" fill="none"/>
+                        <rect x="155" y="130" width="30" height="25" rx="2" fill="none"/>
+
+                        <rect x="20" y="175" width="30" height="25" rx="2" fill="none"/>
+                        <rect x="65" y="175" width="30" height="25" rx="2" fill="none"/>
+                        <rect x="110" y="175" width="30" height="25" rx="2" fill="none"/>
+                        <rect x="155" y="175" width="30" height="25" rx="2" fill="none"/>
+                    </g>
+
+                    <!-- Dashboard screens inside -->
+                    <g transform="translate(30, 240)">
+                        <!-- Screen 1: Chart -->
+                        <rect x="0" y="0" width="55" height="40" rx="3" fill="none" stroke="#3798E4" stroke-width="1.5"/>
+                        <path d="M8 30 L18 20 L28 25 L38 12 L48 18" fill="none" stroke="#3798E4" stroke-width="1.5"/>
+                        <text x="27" y="50" text-anchor="middle" fill="#3798E4" font-size="7">FINANCE</text>
+                    </g>
+
+                    <g transform="translate(110, 240)">
+                        <!-- Screen 2: Table/Grid -->
+                        <rect x="0" y="0" width="55" height="40" rx="3" fill="none" stroke="#3798E4" stroke-width="1.5"/>
+                        <line x1="5" y1="12" x2="50" y2="12" stroke="#3798E4" stroke-width="1"/>
+                        <line x1="5" y1="22" x2="50" y2="22" stroke="#3798E4" stroke-width="1"/>
+                        <line x1="5" y1="32" x2="50" y2="32" stroke="#3798E4" stroke-width="1"/>
+                        <text x="27" y="50" text-anchor="middle" fill="#3798E4" font-size="7">PLANNING</text>
+                    </g>
+
+                    <g transform="translate(70, 310)">
+                        <!-- Screen 3: KPIs -->
+                        <rect x="0" y="0" width="60" height="45" rx="3" fill="none" stroke="#3798E4" stroke-width="1.5"/>
+                        <text x="30" y="18" text-anchor="middle" fill="#3798E4" font-size="16" font-weight="bold">98%</text>
+                        <text x="30" y="32" text-anchor="middle" fill="#3798E4" font-size="7">OEE</text>
+                        <text x="30" y="55" text-anchor="middle" fill="#3798E4" font-size="7">VISIBILITY</text>
+                    </g>
+
+                    <!-- Label -->
+                    <text x="100" y="420" text-anchor="middle" fill="#3798E4" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500">BUSINESS INTELLIGENCE</text>
+                </g>
+
+                <!-- ========== CENTER: Data Hub + Flow Lines ========== -->
+                <g transform="translate(700, 450)">
+                    <!-- Central Data Hub -->
+                    <circle r="50" fill="#253B50" opacity="0.08"/>
+                    <circle r="35" fill="none" stroke="#253B50" stroke-width="2" opacity="0.15"/>
+                    <circle r="20" fill="none" stroke="#3798E4" stroke-width="2" opacity="0.3"/>
+                    <circle r="8" fill="#3798E4" opacity="0.4">
+                        <animate attributeName="r" values="6;10;6" dur="3s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="0.3;0.6;0.3" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    <text y="70" text-anchor="middle" fill="#253B50" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" opacity="0.4">ONE DATABASE</text>
+                </g>
+
+                <!-- ========== DATA FLOW ARROWS ========== -->
+                <!-- These show data flowing FROM factory TO hub TO office -->
+
+                <!-- AIoT → Hub (Machine data flows up) -->
+                <g opacity="0.35">
+                    <path d="M280 580 Q400 550 640 470" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="8 4" marker-end="url(#arrow-blue)">
+                        <animate attributeName="stroke-dashoffset" values="24;0" dur="2s" repeatCount="indefinite"/>
+                    </path>
+                    <text x="400" y="540" fill="#8b5cf6" font-family="JetBrains Mono, monospace" font-size="8" opacity="0.8">machine data</text>
+                </g>
+
+                <!-- MES → Hub (Production data flows up) -->
+                <g opacity="0.35">
+                    <path d="M280 480 Q450 460 640 450" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="8 4" marker-end="url(#arrow-blue)">
+                        <animate attributeName="stroke-dashoffset" values="24;0" dur="2.2s" repeatCount="indefinite"/>
+                    </path>
+                    <text x="420" y="445" fill="#10b981" font-family="JetBrains Mono, monospace" font-size="8" opacity="0.8">production status</text>
+                </g>
+
+                <!-- WMS → Hub (Inventory data flows up) -->
+                <g opacity="0.35">
+                    <path d="M280 380 Q480 390 640 430" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="8 4" marker-end="url(#arrow-blue)">
+                        <animate attributeName="stroke-dashoffset" values="24;0" dur="1.8s" repeatCount="indefinite"/>
+                    </path>
+                    <text x="440" y="375" fill="#f59e0b" font-family="JetBrains Mono, monospace" font-size="8" opacity="0.8">inventory levels</text>
+                </g>
+
+                <!-- Hub → ERP/Office (Unified data to decisions) -->
+                <g opacity="0.35">
+                    <path d="M760 450 Q900 430 1100 380" fill="none" stroke="#3798E4" stroke-width="2.5" stroke-dasharray="8 4" marker-end="url(#arrow-blue)">
+                        <animate attributeName="stroke-dashoffset" values="24;0" dur="2s" repeatCount="indefinite"/>
+                    </path>
+                    <text x="920" y="400" fill="#3798E4" font-family="JetBrains Mono, monospace" font-size="8" opacity="0.8">unified insights</text>
+                </g>
+
+                <!-- ERP → Back to operations (Decisions flow back) -->
+                <g opacity="0.25">
+                    <path d="M1100 520 Q900 560 760 480" fill="none" stroke="#3798E4" stroke-width="1.5" stroke-dasharray="6 4">
+                        <animate attributeName="stroke-dashoffset" values="0;20" dur="2.5s" repeatCount="indefinite"/>
+                    </path>
+                    <text x="920" y="550" fill="#3798E4" font-family="JetBrains Mono, monospace" font-size="8" opacity="0.7">work orders</text>
+                </g>
+
+                <g opacity="0.25">
+                    <path d="M640 480 Q500 530 280 530" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6 4">
+                        <animate attributeName="stroke-dashoffset" values="0;20" dur="2.8s" repeatCount="indefinite"/>
+                    </path>
+                    <text x="450" y="520" fill="#10b981" font-family="JetBrains Mono, monospace" font-size="8" opacity="0.7">schedule updates</text>
+                </g>
+            </svg>
+        </div>
+        <div class="grid-pattern"></div>
+
+        <div class="products-section-header">
+            <p class="products-section-label">The Complete Stack</p>
+            <h2 class="products-section-title">Four Products. One Ecosystem.</h2>
+            <p class="products-section-subtitle">Each product is powerful alone. Together, they're unstoppable.</p>
+        </div>
+
+        <div class="products-grid">
+            <!-- ERP Card -->
+            <a href="products/erp.html" class="product-card product-card--erp">
+                <div class="product-card-header">
+                    <div class="product-card-icon product-card-icon--erp">
+                        <!-- Custom ERP Icon: Chart/Database -->
+                        <svg viewBox="0 0 40 40">
+                            <rect x="4" y="4" width="32" height="32" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M4 14h32" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M14 14v22" stroke="currentColor" stroke-width="1.5"/>
+                            <rect x="17" y="18" width="8" height="4" rx="1" fill="currentColor" opacity="0.3"/>
+                            <rect x="17" y="25" width="12" height="4" rx="1" fill="currentColor" opacity="0.3"/>
+                            <rect x="17" y="32" width="6" height="2" rx="0.5" fill="currentColor" opacity="0.5"/>
+                            <circle cx="9" cy="9" r="2" fill="currentColor" opacity="0.6"/>
+                        </svg>
+                    </div>
+                    <div class="product-card-titles">
+                        <div class="product-card-eyebrow">Core System</div>
+                        <h3 class="product-card-title">ERP: T100 & iGP</h3>
+                    </div>
+                </div>
+                <div class="product-card-tagline">"The Brain" — Financial Control & Visibility</div>
+                <p class="product-card-desc">Complete enterprise resource planning built for manufacturing complexity. From multi-entity financials to shop floor scheduling, manage your entire operation with software that speaks manufacturing.</p>
+                <ul class="product-card-features">
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> See real costs across all entities</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Build any product structure</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Know what to make and when</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Close the books faster</li>
+                </ul>
+                <div class="product-card-cta">
+                    Explore ERP Solutions
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </a>
+
+            <!-- MES Card -->
+            <a href="products/mes.html" class="product-card product-card--mes">
+                <div class="product-card-header">
+                    <div class="product-card-icon product-card-icon--mes">
+                        <!-- Custom MES Icon: Factory/Production Line -->
+                        <svg viewBox="0 0 40 40">
+                            <path d="M4 32h32" stroke="currentColor" stroke-width="1.5"/>
+                            <rect x="6" y="18" width="8" height="14" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            <rect x="16" y="12" width="8" height="20" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            <rect x="26" y="8" width="8" height="24" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            <circle cx="10" cy="22" r="2" fill="currentColor" opacity="0.6"/>
+                            <circle cx="20" cy="16" r="2" fill="currentColor" opacity="0.6"/>
+                            <circle cx="30" cy="12" r="2" fill="currentColor" opacity="0.6"/>
+                            <path d="M10 24v4M20 18v10M30 14v14" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+                        </svg>
+                    </div>
+                    <div class="product-card-titles">
+                        <div class="product-card-eyebrow">Shop Floor</div>
+                        <h3 class="product-card-title">MES: sMES & SFT</h3>
+                    </div>
+                </div>
+                <div class="product-card-tagline">"Eyes on Production" — Real-Time Visibility</div>
+                <p class="product-card-desc">Stop guessing what's happening on the floor. Real-time production tracking connects every workstation to your management dashboard. See what's happening—as it happens.</p>
+                <ul class="product-card-features">
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> See every job's status live</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Catch defects before they spread</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Know who built what, when</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Trace any part to its source</li>
+                </ul>
+                <div class="product-card-cta">
+                    Explore MES Solutions
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </a>
+
+            <!-- WMS Card -->
+            <a href="products/wms.html" class="product-card product-card--wms">
+                <div class="product-card-header">
+                    <div class="product-card-icon product-card-icon--wms">
+                        <!-- Custom WMS Icon: Warehouse/Boxes -->
+                        <svg viewBox="0 0 40 40">
+                            <path d="M20 4L4 12v20l16 8 16-8V12L20 4z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M4 12l16 8 16-8" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M20 20v20" stroke="currentColor" stroke-width="1.5"/>
+                            <rect x="8" y="22" width="6" height="6" fill="currentColor" opacity="0.3" transform="skewY(-10)"/>
+                            <rect x="26" y="22" width="6" height="6" fill="currentColor" opacity="0.3" transform="skewY(10)"/>
+                            <circle cx="20" cy="12" r="2" fill="currentColor" opacity="0.6"/>
+                        </svg>
+                    </div>
+                    <div class="product-card-titles">
+                        <div class="product-card-eyebrow">Warehouse</div>
+                        <h3 class="product-card-title">WMS: sFLS</h3>
+                    </div>
+                </div>
+                <div class="product-card-tagline">"Every Item Accounted For" — Zero Ghost Inventory</div>
+                <p class="product-card-desc">Smart warehouse management that knows where everything is, guides picking and putaway, and keeps inventory accurate without manual counts. End the ghost inventory problem.</p>
+                <ul class="product-card-features">
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Scan instead of count</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Find any item in seconds</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Pick faster with guided waves</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Ship the right batch every time</li>
+                </ul>
+                <div class="product-card-cta">
+                    Explore WMS Solutions
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </a>
+
+            <!-- AIoT Card -->
+            <a href="products/aiot.html" class="product-card product-card--aiot">
+                <div class="product-card-header">
+                    <div class="product-card-icon product-card-icon--aiot">
+                        <!-- Custom AIoT Icon: Connected Devices/Sensors -->
+                        <svg viewBox="0 0 40 40">
+                            <circle cx="20" cy="20" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            <circle cx="20" cy="20" r="2" fill="currentColor"/>
+                            <circle cx="20" cy="20" r="12" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4" stroke-dasharray="4 2"/>
+                            <circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="1" opacity="0.2" stroke-dasharray="2 4"/>
+                            <circle cx="8" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            <circle cx="32" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            <circle cx="8" cy="28" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            <circle cx="32" cy="28" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M11 14l5 3M29 14l-5 3M11 26l5-3M29 26l-5-3" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+                        </svg>
+                    </div>
+                    <div class="product-card-titles">
+                        <div class="product-card-eyebrow">Smart Factory</div>
+                        <h3 class="product-card-title">AIoT Platform</h3>
+                    </div>
+                </div>
+                <div class="product-card-tagline">"Intelligence at Scale" — Machine Connectivity</div>
+                <p class="product-card-desc">Machine connectivity and AI-powered analytics that turn your equipment data into competitive advantage. Predictive maintenance, OEE optimization, and energy management.</p>
+                <ul class="product-card-features">
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Connect any machine, any brand</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> See machine utilization live</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Fix problems before they stop you</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Cut energy waste automatically</li>
+                </ul>
+                <div class="product-card-cta">
+                    Explore AIoT Solutions
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Integration Section -->
+    <section class="integration-section">
+        <div class="integration-inner">
+            <div class="integration-header">
+                <h2 class="integration-title">One Integrated Ecosystem</h2>
+                <p class="integration-subtitle">All products share a common data platform—no integration nightmares, no data silos, no reconciliation headaches.</p>
+            </div>
+
+            <div class="integration-diagram">
+                <!-- Animated data flow SVG (behind everything) -->
+                <svg class="data-flow-svg" viewBox="0 0 480 480">
+                    <!-- Animated flow lines from center to nodes -->
+                    <line class="data-flow-line data-flow-line--erp" x1="240" y1="240" x2="240" y2="60"/>
+                    <line class="data-flow-line data-flow-line--mes" x1="240" y1="240" x2="420" y2="240"/>
+                    <line class="data-flow-line data-flow-line--wms" x1="240" y1="240" x2="240" y2="420"/>
+                    <line class="data-flow-line data-flow-line--aiot" x1="240" y1="240" x2="60" y2="240"/>
+
+                    <!-- Data flow indicator dots -->
+                    <circle class="data-flow-dot data-flow-dot--erp" cx="240" cy="150" r="5"/>
+                    <circle class="data-flow-dot data-flow-dot--mes" cx="330" cy="240" r="5"/>
+                    <circle class="data-flow-dot data-flow-dot--wms" cx="240" cy="330" r="5"/>
+                    <circle class="data-flow-dot data-flow-dot--aiot" cx="150" cy="240" r="5"/>
+                </svg>
+
+                <!-- Central Hub -->
+                <div class="integration-hub">
+                    <svg class="integration-hub-icon" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor"/>
+                        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor"/>
+                        <path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="currentColor"/>
+                    </svg>
+                    <span class="integration-hub-label">Data Hub</span>
+                </div>
+
+                <!-- Orbit with nodes -->
+                <div class="integration-orbit">
+                    <!-- ERP Node -->
+                    <div class="integration-node integration-node--erp">
+                        <div class="integration-node-icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M3 9h18M9 21V9"/>
+                            </svg>
+                        </div>
+                        <span class="integration-node-name">ERP</span>
+                    </div>
+
+                    <!-- MES Node -->
+                    <div class="integration-node integration-node--mes">
+                        <div class="integration-node-icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                <path d="M6 8v8M10 8v8M14 8v8M18 8v8"/>
+                            </svg>
+                        </div>
+                        <span class="integration-node-name">MES</span>
+                    </div>
+
+                    <!-- WMS Node -->
+                    <div class="integration-node integration-node--wms">
+                        <div class="integration-node-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            </svg>
+                        </div>
+                        <span class="integration-node-name">WMS</span>
+                    </div>
+
+                    <!-- AIoT Node -->
+                    <div class="integration-node integration-node--aiot">
+                        <div class="integration-node-icon">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+                                <circle cx="12" cy="12" r="8" fill="none"/>
+                            </svg>
+                        </div>
+                        <span class="integration-node-name">AIoT</span>
+                    </div>
+                </div>
+
+                <!-- Data flow labels -->
+                <div class="data-flow-labels">
+                    <span class="data-flow-label data-flow-label--top">FINANCE</span>
+                    <span class="data-flow-label data-flow-label--right">PRODUCTION</span>
+                    <span class="data-flow-label data-flow-label--bottom">INVENTORY</span>
+                    <span class="data-flow-label data-flow-label--left">MACHINES</span>
+                </div>
+            </div>
+
+            <div class="integration-message">
+                <span class="integration-message-quote">"</span>
+                <p>Unlike point solutions that create data silos, every DigiWin product is built on the same foundation. Your ERP talks to your MES. Your WMS knows what's on the floor. Your AIoT feeds insights back to planning. <strong>One database. One truth. Zero integration tax.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why DigiWin Products -->
+    <section class="why-section">
+        <div class="why-inner">
+            <div class="why-header">
+                <p class="why-label">The DigiWin Advantage</p>
+                <h2 class="why-title">Why Choose DigiWin Products?</h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-card-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3 class="why-card-title">Manufacturing-Only Focus</h3>
+                    <p class="why-card-desc">If your last ERP failed, it probably wasn't built for manufacturing. Generic systems treat a factory like an office. We don't sell to banks, retailers, or hospitals—<span class="dw-years">44</span> years of exclusive focus means we speak BOMs, routings, and OEE natively.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 3v18h18"/>
+                            <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
+                        </svg>
+                    </div>
+                    <h3 class="why-card-title">Grows With You</h3>
+                    <p class="why-card-desc">Your ERP should grow with you, not hold you hostage. Start with what you need today—iGP, MES, or WMS—and add capabilities as you grow. Your investment compounds, never resets. No starting over.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3 class="why-card-title">Local Support Team</h3>
+                    <p class="why-card-desc">50+ team members in Thailand. Bilingual support. Local implementation expertise backed by <span class="dw-years">44</span> years of global manufacturing knowledge.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="products-cta">
+        <div class="products-cta-glow"></div>
+        <div class="products-cta-inner">
+            <h2 class="products-cta-title">Not Sure Where to Start?</h2>
+            <p class="products-cta-subtitle">Tell us about your factory and we'll recommend the right solution for your needs. No obligation, no pressure—just clarity.</p>
+            <div class="products-cta-buttons">
+                <a href="demo.html" class="btn-white">Request a Free Assessment</a>
+                <a href="industries.html" class="btn-outline-white">View by Industry</a>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="dw-footer">
+        <div class="dw-footer-inner">
+            <div class="dw-footer-grid">
+                <div class="dw-footer-brand">
+                    <div class="dw-footer-logo">Digi<span>Win</span></div>
+                    <p class="dw-footer-tagline"><span class="dw-years">44</span> years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
+                    <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Products</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="products/erp.html">ERP: T100 & iGP</a></li>
+                        <li><a href="products/mes.html">MES: sMES & SFT</a></li>
+                        <li><a href="products/wms.html">WMS: sFLS</a></li>
+                        <li><a href="products/aiot.html">AIoT & Smart Factory</a></li>
+                    </ul>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Industries</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="industries.html">All Industries</a></li>
+                        <li><a href="industries/automotive.html">Automotive Parts</a></li>
+                        <li><a href="industries/electronics.html">Electronics Assembly</a></li>
+                        <li><a href="industries/metal-plastics.html">Metal & Plastics</a></li>
+                    </ul>
+                    <h4 style="margin-top: 24px;">Partners</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="partner-program.html">Partner Program</a></li>
+                        <li><a href="partner-program/economics.html">Partner Economics</a></li>
+                    </ul>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Contact</h4>
+                    <div class="dw-footer-contact">
+                        <p>
+                            <strong>DigiWin Thailand</strong><br>
+                            Bangkok Office
+                        </p>
+                        <p>
+                            <a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a>
+                        </p>
+                    </div>
+                    <div class="dw-footer-social">
+                        <a href="#" title="LinkedIn">in</a>
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="LINE">L</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dw-footer-bottom">
+                <p class="dw-footer-copyright">© 2026 DigiWin Thailand. All rights reserved.</p>
+                <div class="dw-footer-legal">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="about.html">About Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+    (function() {
+        // Dropdown menus
+        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
+        dropdowns.forEach(function(item) {
+            const menu = item.querySelector('.dw-mega-menu');
+            item.addEventListener('mouseenter', function() {
+                dropdowns.forEach(function(other) {
+                    if (other !== item) {
+                        other.classList.remove('active');
+                        const m = other.querySelector('.dw-mega-menu');
+                        if (m) m.classList.remove('active');
+                    }
+                });
+                item.classList.add('active');
+                if (menu) menu.classList.add('active');
+            });
+            item.addEventListener('mouseleave', function() {
+                item.classList.remove('active');
+                if (menu) menu.classList.remove('active');
+            });
+        });
+
+        // Scroll-triggered animations for product cards
+        const observerOptions = {
+            threshold: 0.12,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const cardObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry, index) {
+                if (entry.isIntersecting) {
+                    // Staggered delay based on card position
+                    const card = entry.target;
+                    const cards = Array.from(document.querySelectorAll('.product-card'));
+                    const cardIndex = cards.indexOf(card);
+
+                    setTimeout(function() {
+                        card.classList.add('visible');
+                    }, cardIndex * 120);
+
+                    cardObserver.unobserve(card);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.product-card').forEach(function(card) {
+            cardObserver.observe(card);
+        });
+
+        // Why cards animation
+        const whyObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry, index) {
+                if (entry.isIntersecting) {
+                    const cards = Array.from(document.querySelectorAll('.why-card'));
+                    const cardIndex = cards.indexOf(entry.target);
+
+                    setTimeout(function() {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, cardIndex * 100);
+
+                    whyObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.why-card').forEach(function(card) {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+            whyObserver.observe(card);
+        });
+
+        // Integration diagram animation on scroll
+        const diagramObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const diagram = document.querySelector('.integration-diagram');
+        if (diagram) {
+            diagramObserver.observe(diagram);
+        }
+    })();
+    </script>
+    <script src="digiwin-dynamic.js"></script>
+</body>
+</html>

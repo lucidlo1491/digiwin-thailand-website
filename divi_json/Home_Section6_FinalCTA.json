@@ -1,0 +1,85 @@
+{
+  "sections": [
+    {
+      "type": "et_pb_section",
+      "attrs": {
+        "background_color": "#253B50",
+        "custom_padding": "80px||80px||true|false"
+      },
+      "children": [
+        {
+          "type": "et_pb_row",
+          "attrs": {
+            "column_structure": "4_4"
+          },
+          "children": [
+            {
+              "type": "et_pb_column",
+              "attrs": { "type": "4_4" },
+              "children": [
+                {
+                  "type": "et_pb_text",
+                  "attrs": {
+                    "content": "<h2 style='text-align: center; color: #FFFFFF; font-size: 36px; font-weight: 700; margin-bottom: 15px;'>Ready to See What DigiWin Can Do?</h2>",
+                    "text_orientation": "center"
+                  }
+                },
+                {
+                  "type": "et_pb_text",
+                  "attrs": {
+                    "content": "<p style='text-align: center; color: rgba(255,255,255,0.8); font-size: 18px;'>Whether you're a manufacturer seeking solutions or a consultant building your practice—we're ready to talk.</p>",
+                    "text_orientation": "center"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "et_pb_row",
+          "attrs": {
+            "column_structure": "4_4",
+            "custom_padding": "30px||0px||false|false"
+          },
+          "children": [
+            {
+              "type": "et_pb_column",
+              "attrs": { "type": "4_4" },
+              "children": [
+                {
+                  "type": "et_pb_button",
+                  "attrs": {
+                    "button_text": "Request a Demo",
+                    "button_url": "/contact",
+                    "button_alignment": "center",
+                    "custom_button": "on",
+                    "button_bg_color": "#3798E4",
+                    "button_text_color": "#FFFFFF",
+                    "button_border_radius": "4px",
+                    "button_font": "|||on|||||",
+                    "custom_margin": "||15px||false|false"
+                  }
+                },
+                {
+                  "type": "et_pb_button",
+                  "attrs": {
+                    "button_text": "Become a Partner",
+                    "button_url": "/partner-program",
+                    "button_alignment": "center",
+                    "custom_button": "on",
+                    "button_bg_color": "transparent",
+                    "button_text_color": "#FFFFFF",
+                    "button_border_width": "2px",
+                    "button_border_color": "#FFFFFF",
+                    "button_border_radius": "4px",
+                    "button_font": "|||on|||||"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

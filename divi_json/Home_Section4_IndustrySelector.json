@@ -1,0 +1,89 @@
+{
+  "sections": [
+    {
+      "type": "et_pb_section",
+      "attrs": {
+        "background_color": "#FFFFFF",
+        "custom_padding": "80px||80px||true|false"
+      },
+      "children": [
+        {
+          "type": "et_pb_row",
+          "attrs": {
+            "column_structure": "4_4",
+            "custom_padding": "0px||40px||false|false"
+          },
+          "children": [
+            {
+              "type": "et_pb_column",
+              "attrs": { "type": "4_4" },
+              "children": [
+                {
+                  "type": "et_pb_text",
+                  "attrs": {
+                    "content": "<h2 style='text-align: center; color: #333333; font-size: 36px; font-weight: 700;'>Built for Your Industry</h2>",
+                    "text_orientation": "center"
+                  }
+                },
+                {
+                  "type": "et_pb_text",
+                  "attrs": {
+                    "content": "<p style='text-align: center; color: #666666; font-size: 18px;'>Manufacturing-specific solutions tailored to your vertical's unique challenges.</p>",
+                    "text_orientation": "center"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "et_pb_row",
+          "attrs": {
+            "column_structure": "4_4"
+          },
+          "children": [
+            {
+              "type": "et_pb_column",
+              "attrs": { "type": "4_4" },
+              "children": [
+                {
+                  "type": "et_pb_tabs",
+                  "attrs": {
+                    "active_tab_background_color": "#3798E4",
+                    "inactive_tab_background_color": "#F5F7FA",
+                    "tab_font": "|||on|||||",
+                    "tab_text_color": "#333333",
+                    "body_text_color": "#666666"
+                  },
+                  "children": [
+                    {
+                      "type": "et_pb_tab",
+                      "attrs": {
+                        "title": "Automotive Parts",
+                        "content": "<div style='display: flex; gap: 40px; align-items: center; padding: 30px 0;'><div style='flex: 1;'><img src='https://images.unsplash.com/photo-1565043666747-69f6646db940?w=600' alt='Automotive manufacturing' style='width: 100%; border-radius: 8px;'/></div><div style='flex: 1;'><h3 style='color: #333333; font-size: 24px; margin-bottom: 15px;'>Tier-1 Supplier Ready</h3><p style='color: #666666; font-size: 16px; line-height: 1.6;'>Meet OEM traceability requirements with lot tracking, FIFO enforcement, and EDI integration. Support JIT delivery with real-time production visibility.</p><a href='/industries/automotive' style='display: inline-block; margin-top: 20px; color: #3798E4; font-weight: 600;'>Learn More →</a></div></div>"
+                      }
+                    },
+                    {
+                      "type": "et_pb_tab",
+                      "attrs": {
+                        "title": "Electronics Assembly",
+                        "content": "<div style='display: flex; gap: 40px; align-items: center; padding: 30px 0;'><div style='flex: 1;'><img src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=600' alt='Electronics manufacturing' style='width: 100%; border-radius: 8px;'/></div><div style='flex: 1;'><h3 style='color: #333333; font-size: 24px; margin-bottom: 15px;'>SMT & PCB Excellence</h3><p style='color: #666666; font-size: 16px; line-height: 1.6;'>Component-level traceability for RoHS compliance. Machine integration for SMT lines. Real-time defect tracking and SPC monitoring.</p><a href='/industries/electronics' style='display: inline-block; margin-top: 20px; color: #3798E4; font-weight: 600;'>Learn More →</a></div></div>"
+                      }
+                    },
+                    {
+                      "type": "et_pb_tab",
+                      "attrs": {
+                        "title": "Metal & Plastics",
+                        "content": "<div style='display: flex; gap: 40px; align-items: center; padding: 30px 0;'><div style='flex: 1;'><img src='https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600' alt='Metal fabrication' style='width: 100%; border-radius: 8px;'/></div><div style='flex: 1;'><h3 style='color: #333333; font-size: 24px; margin-bottom: 15px;'>Process & Discrete Hybrid</h3><p style='color: #666666; font-size: 16px; line-height: 1.6;'>Handle both continuous processes and discrete operations. Mold/die tracking, machine maintenance scheduling, and scrap reduction analytics.</p><a href='/industries/metal-plastics' style='display: inline-block; margin-top: 20px; color: #3798E4; font-weight: 600;'>Learn More →</a></div></div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

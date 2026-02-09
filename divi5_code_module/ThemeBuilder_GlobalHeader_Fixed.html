@@ -1,0 +1,437 @@
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+
+.dw-header {
+    background: #ffffff;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    position: relative;
+    z-index: 999999;
+}
+
+.dw-header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 80px;
+}
+
+.dw-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.dw-logo-text {
+    font-family: 'Lexend', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #253B50;
+}
+
+.dw-logo-text span {
+    color: #3798E4;
+}
+
+.dw-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow: visible;
+}
+
+.dw-nav-item {
+    position: relative;
+    overflow: visible;
+}
+
+.dw-nav-link {
+    font-family: 'Lexend', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #253B50;
+    text-decoration: none;
+    padding: 28px 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease;
+    cursor: pointer;
+}
+
+.dw-nav-link:hover {
+    color: #3798E4;
+}
+
+.dw-nav-link svg {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.2s ease;
+}
+
+.dw-mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    padding: 32px;
+    min-width: 580px;
+    z-index: 999999;
+    display: none;
+    overflow: visible;
+}
+
+.dw-mega-menu.active {
+    display: block;
+}
+
+.dw-mega-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #ffffff;
+}
+
+.dw-mega-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.dw-mega-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.dw-mega-item:hover {
+    background: #F5F7FA;
+}
+
+.dw-mega-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #3798E4 0%, #0ea5e9 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.dw-mega-content {
+    flex: 1;
+}
+
+.dw-mega-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #253B50;
+    margin: 0 0 4px 0;
+}
+
+.dw-mega-desc {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.dw-mega-hub {
+    grid-column: 1 / -1;
+    background: #F5F7FA;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.dw-mega-hub:hover {
+    background: #e8eef3;
+}
+
+.dw-mega-hub-text {
+    font-family: 'Lexend', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #3798E4;
+}
+
+.dw-mega-hub-arrow {
+    color: #3798E4;
+    font-size: 18px;
+}
+
+.dw-header-cta {
+    font-family: 'Lexend', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    background: #3798E4;
+    color: #ffffff !important;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(55, 152, 228, 0.25);
+}
+
+.dw-header-cta:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(55, 152, 228, 0.35);
+    color: #ffffff !important;
+}
+
+.dw-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px;
+    background: none;
+    border: none;
+}
+
+.dw-menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background: #253B50;
+    transition: all 0.3s ease;
+}
+
+.dw-nav-item.active .dw-nav-link svg {
+    transform: rotate(180deg);
+}
+
+@media (max-width: 1024px) {
+    .dw-header-inner {
+        padding: 0 24px;
+        height: 70px;
+    }
+    .dw-nav {
+        display: none;
+    }
+    .dw-menu-toggle {
+        display: flex;
+    }
+    .dw-header-cta {
+        display: none;
+    }
+}
+</style>
+
+<header class="dw-header">
+    <div class="dw-header-inner">
+        <a href="/" class="dw-logo">
+            <span class="dw-logo-text">Digi<span>Win</span></span>
+        </a>
+
+        <nav class="dw-nav">
+            <div class="dw-nav-item">
+                <a href="/" class="dw-nav-link">Home</a>
+            </div>
+
+            <div class="dw-nav-item" data-dropdown>
+                <span class="dw-nav-link">
+                    Products
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </span>
+                <div class="dw-mega-menu">
+                    <div class="dw-mega-grid">
+                        <a href="/products/erp" class="dw-mega-item">
+                            <div class="dw-mega-icon">📊</div>
+                            <div class="dw-mega-content">
+                                <p class="dw-mega-title">ERP Core: T100 & iGP</p>
+                                <p class="dw-mega-desc">Financial control & visibility for factories</p>
+                            </div>
+                        </a>
+                        <a href="/products/mes" class="dw-mega-item">
+                            <div class="dw-mega-icon">🏭</div>
+                            <div class="dw-mega-content">
+                                <p class="dw-mega-title">MES: sMES & SFT</p>
+                                <p class="dw-mega-desc">Real-time production monitoring</p>
+                            </div>
+                        </a>
+                        <a href="/products/wms" class="dw-mega-item">
+                            <div class="dw-mega-icon">📦</div>
+                            <div class="dw-mega-content">
+                                <p class="dw-mega-title">WMS: sFLS</p>
+                                <p class="dw-mega-desc">Smart warehouse management</p>
+                            </div>
+                        </a>
+                        <a href="/products/aiot" class="dw-mega-item">
+                            <div class="dw-mega-icon">🤖</div>
+                            <div class="dw-mega-content">
+                                <p class="dw-mega-title">AIoT & Smart Factory</p>
+                                <p class="dw-mega-desc">Machine connectivity & automation</p>
+                            </div>
+                        </a>
+                    </div>
+                    <a href="/products" class="dw-mega-hub">
+                        <span class="dw-mega-hub-text">View All Products</span>
+                        <span class="dw-mega-hub-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="dw-nav-item" data-dropdown>
+                <span class="dw-nav-link">
+                    Industries
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </span>
+                <div class="dw-mega-menu">
+                    <div class="dw-mega-grid">
+                        <a href="/industries/automotive" class="dw-mega-item">
+                            <div class="dw-mega-icon">🚗</div>
+                            <div class="dw-mega-content">
+                                <p class="dw-mega-title">Automotive Parts</p>
+                                <p class="dw-mega-desc">JIT, traceability & EDI integration</p>
+                            </div>
+                        </a>
+                        <a href="/industries/electronics" class="dw-mega-item">
+                            <div class="dw-mega-icon">💻</div>
+                            <div class="dw-mega-content">
+                                <p class="dw-mega-title">Electronics Assembly</p>
+                                <p class="dw-mega-desc">Component tracking & SMT</p>
+                            </div>
+                        </a>
+                        <a href="/industries/metal-plastics" class="dw-mega-item">
+                            <div class="dw-mega-icon">⚙️</div>
+                            <div class="dw-mega-content">
+                                <p class="dw-mega-title">Metal & Plastics</p>
+                                <p class="dw-mega-desc">Process manufacturing & yield</p>
+                            </div>
+                        </a>
+                    </div>
+                    <a href="/industries" class="dw-mega-hub">
+                        <span class="dw-mega-hub-text">Explore All Industries</span>
+                        <span class="dw-mega-hub-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="dw-nav-item" data-dropdown>
+                <span class="dw-nav-link">
+                    Partners
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </span>
+                <div class="dw-mega-menu">
+                    <div class="dw-mega-grid">
+                        <a href="/partner-program/business-model" class="dw-mega-item">
+                            <div class="dw-mega-icon">📈</div>
+                            <div class="dw-mega-content">
+                                <p class="dw-mega-title">The Business Model Crisis</p>
+                                <p class="dw-mega-desc">Why man-day billing limits growth</p>
+                            </div>
+                        </a>
+                        <a href="/partner-program/solutions" class="dw-mega-item">
+                            <div class="dw-mega-icon">🎯</div>
+                            <div class="dw-mega-content">
+                                <p class="dw-mega-title">The Solution Stack</p>
+                                <p class="dw-mega-desc">Your product portfolio to resell</p>
+                            </div>
+                        </a>
+                        <a href="/partner-program/economics" class="dw-mega-item">
+                            <div class="dw-mega-icon">💰</div>
+                            <div class="dw-mega-content">
+                                <p class="dw-mega-title">Partner Economics</p>
+                                <p class="dw-mega-desc">The math behind partnership</p>
+                            </div>
+                        </a>
+                    </div>
+                    <a href="/partner-program" class="dw-mega-hub">
+                        <span class="dw-mega-hub-text">Learn About Partnership</span>
+                        <span class="dw-mega-hub-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="dw-nav-item">
+                <a href="/about" class="dw-nav-link">About</a>
+            </div>
+        </nav>
+
+        <a href="/demo" class="dw-header-cta">Request a Demo</a>
+
+        <button class="dw-menu-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<script>
+(function() {
+    // Get all dropdown items
+    const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
+
+    dropdowns.forEach(function(item) {
+        const menu = item.querySelector('.dw-mega-menu');
+        const link = item.querySelector('.dw-nav-link');
+
+        // Mouse enter - show menu
+        item.addEventListener('mouseenter', function() {
+            // Close all other menus first
+            dropdowns.forEach(function(other) {
+                if (other !== item) {
+                    other.classList.remove('active');
+                    const otherMenu = other.querySelector('.dw-mega-menu');
+                    if (otherMenu) otherMenu.classList.remove('active');
+                }
+            });
+            // Open this menu
+            item.classList.add('active');
+            if (menu) menu.classList.add('active');
+        });
+
+        // Mouse leave - hide menu
+        item.addEventListener('mouseleave', function() {
+            item.classList.remove('active');
+            if (menu) menu.classList.remove('active');
+        });
+
+        // Click on link (for mobile)
+        if (link) {
+            link.addEventListener('click', function(e) {
+                if (menu) {
+                    e.preventDefault();
+                    item.classList.toggle('active');
+                    menu.classList.toggle('active');
+                }
+            });
+        }
+    });
+
+    // Close menus when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dw-nav-item[data-dropdown]')) {
+            dropdowns.forEach(function(item) {
+                item.classList.remove('active');
+                const menu = item.querySelector('.dw-mega-menu');
+                if (menu) menu.classList.remove('active');
+            });
+        }
+    });
+})();
+</script>

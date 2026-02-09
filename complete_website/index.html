@@ -1,0 +1,3261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiWin Thailand - Manufacturing Intelligence for ASEAN Factories</title>
+    <meta name="description" content="44+ years of manufacturing expertise. 50,000+ factories worldwide. ERP, MES, WMS, and AIoT solutions built specifically for manufacturing.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Homepage-specific styles - Industrial Premium Aesthetic */
+
+        /* Animated grain overlay for texture */
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-2%, -2%); }
+            20% { transform: translate(2%, 2%); }
+            30% { transform: translate(-1%, 1%); }
+            40% { transform: translate(1%, -1%); }
+            50% { transform: translate(-2%, 1%); }
+            60% { transform: translate(2%, -2%); }
+            70% { transform: translate(-1%, -1%); }
+            80% { transform: translate(1%, 1%); }
+            90% { transform: translate(-2%, 2%); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes draw-line {
+            from { stroke-dashoffset: 1000; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        .dw-hero-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: calc(100vh - 80px);
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .dw-hero-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Factory Panel - Dark Industrial */
+        .dw-hero-panel--factory {
+            background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #253B50 100%);
+            position: relative;
+        }
+
+        .dw-hero-panel--factory::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            animation: grain 8s steps(10) infinite;
+        }
+
+        /* Factory SVG Illustration Background */
+        .factory-illustration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .factory-illustration svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.45;
+        }
+
+        .factory-illustration .machine-line {
+            stroke: #3798E4;
+            stroke-width: 1;
+            fill: none;
+            stroke-dasharray: 1000;
+            animation: draw-line 3s ease-out forwards;
+        }
+
+        .factory-illustration .machine-fill {
+            fill: #3798E4;
+            opacity: 0.1;
+        }
+
+        .factory-illustration .gear {
+            animation: rotate-gear 20s linear infinite;
+            transform-origin: center;
+        }
+
+        @keyframes rotate-gear {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .factory-illustration .gear-reverse {
+            animation: rotate-gear-reverse 15s linear infinite;
+            transform-origin: center;
+        }
+
+        @keyframes rotate-gear-reverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        .factory-illustration .data-pulse {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        /* Partner Panel - Dynamic Blue */
+        .dw-hero-panel--partner {
+            background: linear-gradient(165deg, #0369a1 0%, #0284c7 40%, #0ea5e9 100%);
+            position: relative;
+        }
+
+        .dw-hero-panel--partner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.04;
+            pointer-events: none;
+        }
+
+        /* Partner SVG Illustration Background */
+        .partner-illustration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .partner-illustration svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.45;
+        }
+
+        .partner-illustration .chart-bar {
+            animation: grow-bar 1.5s ease-out forwards;
+            transform-origin: bottom;
+        }
+
+        @keyframes grow-bar {
+            from { transform: scaleY(0); }
+            to { transform: scaleY(1); }
+        }
+
+        .partner-illustration .chart-bar:nth-child(2) { animation-delay: 0.1s; }
+        .partner-illustration .chart-bar:nth-child(3) { animation-delay: 0.2s; }
+        .partner-illustration .chart-bar:nth-child(4) { animation-delay: 0.3s; }
+        .partner-illustration .chart-bar:nth-child(5) { animation-delay: 0.4s; }
+
+        .partner-illustration .rising-line {
+            stroke-dasharray: 500;
+            stroke-dashoffset: 500;
+            animation: draw-line 2s ease-out 0.5s forwards;
+        }
+
+        .partner-illustration .connection-dot {
+            animation: pulse-glow 1.5s ease-in-out infinite;
+        }
+
+        /* Light leak effect for partner panel */
+        .dw-hero-panel--partner::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .dw-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 520px;
+            animation: slide-up 0.8s ease-out;
+        }
+
+        .dw-hero-panel--partner .dw-hero-content {
+            animation-delay: 0.2s;
+            animation-fill-mode: backwards;
+        }
+
+        .dw-hero-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #3798E4;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .dw-hero-label::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #3798E4);
+        }
+
+        .dw-hero-panel--partner .dw-hero-label {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .dw-hero-panel--partner .dw-hero-label::before {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8));
+        }
+
+        .dw-hero-panel .dw-hero-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(32px, 3.5vw, 52px);
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 24px 0;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+
+        .dw-hero-title .highlight {
+            color: #3798E4;
+        }
+
+        .dw-hero-panel--partner .dw-hero-title .highlight {
+            color: #fef3c7;
+        }
+
+        .dw-hero-panel .dw-hero-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 18px;
+            color: rgba(255,255,255,0.75);
+            margin: 0 0 36px 0;
+            line-height: 1.75;
+        }
+
+        .dw-hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            animation: fade-in 1s ease-out 0.5s both;
+        }
+
+        .dw-hero-stat {
+            text-align: left;
+        }
+
+        .dw-hero-stat-number {
+            font-family: 'Lexend', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: #3798E4;
+            line-height: 1;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .dw-hero-panel--partner .dw-hero-stat-number {
+            color: #ffffff;
+        }
+
+        .dw-hero-stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Enhanced button styles */
+        .dw-hero-panel .dw-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dw-hero-panel .dw-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .dw-hero-panel .dw-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Client Logo Bar */
+        .dw-clients-section {
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dw-clients-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+        }
+
+        .dw-clients-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dw-clients-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .dw-clients-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #64748b;
+            margin: 0;
+        }
+
+        .dw-clients-logos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+            padding: 0 20px;
+        }
+
+        .dw-client-logo {
+            height: 48px;
+            min-width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .dw-client-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .dw-client-logo img {
+            max-height: 100%;
+            max-width: 140px;
+            object-fit: contain;
+        }
+
+        .dw-client-logo span {
+            font-family: 'Lexend', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #94a3b8;
+            background: #f1f5f9;
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: 2px dashed #e2e8f0;
+        }
+
+        .dw-clients-stats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            padding-top: 32px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .dw-clients-stat {
+            text-align: center;
+        }
+
+        .dw-clients-stat-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #253B50;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .dw-clients-stat-label {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 13px;
+            color: #64748b;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* Understanding Checks Section */
+        .dw-checks-section {
+            padding: 100px 40px;
+            position: relative;
+        }
+
+        .dw-checks-section--factory {
+            background: linear-gradient(165deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .dw-checks-section--partner {
+            background: linear-gradient(165deg, #0f1419 0%, #1a2632 50%, #253B50 100%);
+        }
+
+        .dw-checks-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dw-checks-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .dw-checks-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .dw-checks-section--factory .dw-checks-label {
+            color: #3798E4;
+        }
+
+        .dw-checks-section--partner .dw-checks-label {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .dw-checks-label::before,
+        .dw-checks-label::after {
+            content: '';
+            width: 40px;
+            height: 1px;
+        }
+
+        .dw-checks-section--factory .dw-checks-label::before,
+        .dw-checks-section--factory .dw-checks-label::after {
+            background: linear-gradient(90deg, transparent, #3798E4);
+        }
+
+        .dw-checks-section--partner .dw-checks-label::before,
+        .dw-checks-section--partner .dw-checks-label::after {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4));
+        }
+
+        .dw-checks-label::after {
+            transform: scaleX(-1);
+        }
+
+        .dw-checks-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(32px, 4vw, 44px);
+            font-weight: 700;
+            line-height: 1.15;
+            margin: 0 0 16px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .dw-checks-section--factory .dw-checks-title {
+            color: #253B50;
+        }
+
+        .dw-checks-section--partner .dw-checks-title {
+            color: #ffffff;
+        }
+
+        .dw-checks-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .dw-checks-section--factory .dw-checks-subtitle {
+            color: #64748b;
+        }
+
+        .dw-checks-section--partner .dw-checks-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .dw-checks-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .dw-check-card {
+            padding: 40px 32px;
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dw-checks-section--factory .dw-check-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        .dw-checks-section--factory .dw-check-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(55, 152, 228, 0.12);
+            border-color: #3798E4;
+        }
+
+        .dw-checks-section--partner .dw-check-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dw-checks-section--partner .dw-check-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .dw-check-number {
+            font-family: 'Lexend', sans-serif;
+            font-size: 64px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 24px;
+            opacity: 0.15;
+        }
+
+        .dw-checks-section--factory .dw-check-number {
+            color: #3798E4;
+        }
+
+        .dw-checks-section--partner .dw-check-number {
+            color: #ffffff;
+        }
+
+        .dw-check-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 0 16px 0;
+        }
+
+        .dw-checks-section--factory .dw-check-title {
+            color: #253B50;
+        }
+
+        .dw-checks-section--partner .dw-check-title {
+            color: #ffffff;
+        }
+
+        .dw-check-quote {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            font-style: italic;
+            line-height: 1.7;
+            margin: 0 0 20px 0;
+            padding-left: 16px;
+            border-left: 3px solid #3798E4;
+        }
+
+        .dw-checks-section--factory .dw-check-quote {
+            color: #475569;
+        }
+
+        .dw-checks-section--partner .dw-check-quote {
+            color: rgba(255, 255, 255, 0.8);
+            border-left-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .dw-check-desc {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .dw-checks-section--factory .dw-check-desc {
+            color: #64748b;
+        }
+
+        .dw-checks-section--partner .dw-check-desc {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .dw-checks-cta {
+            text-align: center;
+            margin-top: 56px;
+        }
+
+        /* Value Props Grid */
+        .dw-value-props {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .dw-value-prop {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px 28px;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+            border: 1px solid #f1f5f9;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dw-value-prop::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3798E4, #0ea5e9);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .dw-value-prop:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(55, 152, 228, 0.12);
+            border-color: transparent;
+        }
+
+        .dw-value-prop:hover::before {
+            transform: scaleX(1);
+        }
+
+        .dw-value-prop-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(145deg, #253B50 0%, #1e3a5f 100%);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px auto;
+            position: relative;
+            transition: transform 0.4s ease;
+        }
+
+        .dw-value-prop:hover .dw-value-prop-icon {
+            transform: scale(1.05) rotate(-3deg);
+        }
+
+        .dw-value-prop-icon::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 26px;
+            background: linear-gradient(135deg, #3798E4, transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .dw-value-prop:hover .dw-value-prop-icon::after {
+            opacity: 1;
+        }
+
+        .dw-value-prop-icon svg {
+            width: 36px;
+            height: 36px;
+            color: #3798E4;
+        }
+
+        .dw-value-prop-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #253B50;
+            margin: 0 0 10px 0;
+        }
+
+        .dw-value-prop-desc {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0;
+            text-align: left;
+        }
+
+        .dw-prop-fullname {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: #3798E4;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .dw-prop-tagline {
+            display: block;
+            font-family: 'Lexend', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #253B50;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .dw-prop-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 12px 0;
+        }
+
+        .dw-prop-features li {
+            font-size: 13px;
+            color: #64748b;
+            padding: 4px 0;
+            padding-left: 12px;
+            position: relative;
+        }
+
+        .dw-prop-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 4px;
+            height: 4px;
+            background: #3798E4;
+            border-radius: 50%;
+        }
+
+        .dw-prop-features li em {
+            font-style: normal;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .dw-prop-benefit {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: #3798E4;
+            padding-top: 10px;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 4px;
+        }
+
+        /* Industry Tabs - Unified Tab Design */
+        .dw-industry-tabs {
+            display: inline-flex;
+            background: #f1f5f9;
+            border-radius: 16px 16px 0 0;
+            padding: 6px 6px 0 6px;
+            margin: 0 auto 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dw-industry-tab {
+            font-family: 'Lexend', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: #64748b;
+            padding: 14px 28px;
+            border-radius: 12px 12px 0 0;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+
+        .dw-industry-tab:hover {
+            color: #3798E4;
+            background: rgba(55, 152, 228, 0.08);
+        }
+
+        .dw-industry-tab.active {
+            color: #253B50;
+            background: #ffffff;
+            font-weight: 600;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+        }
+
+        .dw-industry-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3798E4, #0ea5e9);
+        }
+
+        .dw-industry-tab span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Wrapper to center tabs and connect to content */
+        .dw-industry-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dw-industry-content {
+            display: none;
+            background: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.08);
+            width: 100%;
+            margin-top: -1px;
+        }
+
+        .dw-industry-content.active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            animation: fade-in 0.5s ease-out;
+        }
+
+        .dw-industry-image {
+            height: 450px;
+            background: linear-gradient(145deg, #0f1419 0%, #1a2632 50%, #253B50 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dw-industry-image svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .dw-industry-info {
+            padding: 56px;
+        }
+
+        .dw-industry-info h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #253B50;
+            margin: 0 0 16px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .dw-industry-info p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 17px;
+            color: #64748b;
+            line-height: 1.75;
+            margin: 0 0 28px 0;
+        }
+
+        .dw-industry-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 36px 0;
+        }
+
+        .dw-industry-features li {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            color: #475569;
+            padding: 10px 0 10px 32px;
+            position: relative;
+        }
+
+        .dw-industry-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #3798E4, #0ea5e9);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dw-industry-features li::after {
+            content: '✓';
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Trust Anchors Section */
+        .dw-trust-section {
+            padding: 100px 40px;
+        }
+
+        .dw-trust-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .dw-trust-card {
+            background: linear-gradient(135deg, #253B50 0%, #1e3a5f 50%, #0f172a 100%);
+            border-radius: 20px;
+            padding: 36px;
+            border: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+        }
+
+        .dw-trust-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .dw-trust-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Large background icon */
+        .dw-trust-icon-bg {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 180px;
+            height: 180px;
+            opacity: 0.08;
+            pointer-events: none;
+            transition: all 0.4s ease;
+        }
+
+        .dw-trust-card:hover .dw-trust-icon-bg {
+            opacity: 0.12;
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .dw-trust-icon-bg svg {
+            width: 100%;
+            height: 100%;
+            stroke: #3798E4;
+            stroke-width: 1;
+        }
+
+        /* Small icon badge */
+        .dw-trust-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(55, 152, 228, 0.15);
+            border: 1px solid rgba(55, 152, 228, 0.3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dw-trust-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #3798E4;
+        }
+
+        .dw-trust-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            color: #3798E4;
+            background: rgba(55, 152, 228, 0.15);
+            border: 1px solid rgba(55, 152, 228, 0.25);
+            padding: 5px 12px;
+            border-radius: 6px;
+            margin-bottom: 14px;
+            letter-spacing: 0.05em;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dw-trust-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 12px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dw-trust-headline {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin: 0 0 14px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dw-trust-detail {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.65;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Stats Section Enhancement */
+        .dw-stats-section {
+            background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #253B50 100%);
+            padding: 100px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dw-stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .dw-stats-section::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(55, 152, 228, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .dw-stats-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dw-stat {
+            padding: 0 16px;
+            position: relative;
+        }
+
+        .dw-stat::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 60%;
+            background: linear-gradient(180deg, transparent, rgba(55, 152, 228, 0.3), transparent);
+        }
+
+        .dw-stat:last-child::after {
+            display: none;
+        }
+
+        .dw-stat-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(48px, 6vw, 72px);
+            font-weight: 800;
+            color: #3798E4;
+            line-height: 1;
+            margin-bottom: 16px;
+            letter-spacing: -0.03em;
+        }
+
+        .dw-stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        /* CTA Section Enhancement */
+        .dw-cta-section {
+            background: linear-gradient(135deg, #3798E4 0%, #0ea5e9 50%, #0284c7 100%);
+            padding: 120px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dw-cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .dw-cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .dw-cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dw-cta-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(36px, 4.5vw, 52px);
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 20px 0;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .dw-cta-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 20px;
+            color: rgba(255,255,255,0.9);
+            margin: 0 0 48px 0;
+            line-height: 1.65;
+        }
+
+        .dw-cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .dw-btn-white {
+            background: #ffffff;
+            color: #0284c7 !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            font-weight: 600;
+        }
+
+        .dw-btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+
+        .dw-btn-outline-white {
+            background: transparent;
+            color: #ffffff !important;
+            border: 2px solid rgba(255,255,255,0.6);
+        }
+
+        .dw-btn-outline-white:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: #ffffff;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .dw-hero-split {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+            .dw-hero-panel {
+                min-height: 80vh;
+                padding: 60px 40px;
+            }
+            .dw-value-props {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .dw-trust-grid {
+                grid-template-columns: 1fr;
+            }
+            .dw-industry-content.active {
+                grid-template-columns: 1fr;
+            }
+            .dw-industry-image {
+                height: 300px;
+            }
+            .dw-stats-inner {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+            .dw-stat::after {
+                display: none;
+            }
+            .dw-clients-logos {
+                gap: 32px;
+            }
+            .dw-clients-stats {
+                gap: 40px;
+            }
+            .dw-checks-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .dw-checks-grid .dw-check-card:last-child {
+                grid-column: span 2;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dw-clients-logos {
+                gap: 24px;
+            }
+            .dw-client-logo {
+                min-width: 100px;
+                height: 40px;
+            }
+            .dw-clients-stats {
+                flex-direction: column;
+                gap: 24px;
+            }
+            .dw-checks-grid {
+                grid-template-columns: 1fr;
+            }
+            .dw-checks-grid .dw-check-card:last-child {
+                grid-column: span 1;
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .dw-hero-panel {
+                padding: 48px 24px;
+                min-height: 90vh;
+            }
+            .dw-hero-stats {
+                flex-direction: column;
+                gap: 24px;
+            }
+            .dw-value-props {
+                grid-template-columns: 1fr;
+            }
+            .dw-industry-tabs {
+                flex-direction: column;
+                width: 100%;
+                border-radius: 16px 16px 0 0;
+                padding: 4px 4px 0 4px;
+            }
+            .dw-industry-tab {
+                width: 100%;
+                border-radius: 10px 10px 0 0;
+                padding: 12px 20px;
+                font-size: 13px;
+            }
+            .dw-industry-wrapper {
+                width: 100%;
+            }
+            .dw-industry-info {
+                padding: 36px 24px;
+            }
+            .dw-clients-section {
+                padding: 40px 24px;
+            }
+            .dw-clients-logos {
+                gap: 20px;
+            }
+            .dw-client-logo {
+                min-width: 80px;
+                height: 36px;
+            }
+            .dw-client-logo span {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+            .dw-checks-section {
+                padding: 64px 24px;
+            }
+            .dw-check-card {
+                padding: 32px 24px;
+            }
+            .dw-trust-card {
+                padding: 28px 24px;
+                min-height: auto;
+            }
+            .dw-trust-icon-bg {
+                width: 120px;
+                height: 120px;
+                top: -10px;
+                right: -10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="dw-header">
+        <div class="dw-header-inner">
+            <a href="index.html" class="dw-logo">
+                <div class="dw-logo-mark">
+                    <!-- DigiWin Logo Mark - Stylized D -->
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 8h20c8.837 0 16 7.163 16 16s-7.163 16-16 16H8V8z" fill="#3798E4"/>
+                        <path d="M14 14h12c6.627 0 12 5.373 12 12s-5.373 12-12 12H14V14z" fill="#ffffff"/>
+                        <path d="M14 18h8c5.523 0 10 4.477 10 10s-4.477 10-10 10h-8V18z" fill="#3798E4"/>
+                        <path d="M14 24h4c3.314 0 6 2.686 6 6s-2.686 6-6 6h-4V24z" fill="#ffffff"/>
+                    </svg>
+                </div>
+                <div class="dw-logo-wordmark">
+                    <span class="dw-logo-text-en">Digi<span>Win</span></span>
+                    <span class="dw-logo-text-zh">鼎新數智</span>
+                </div>
+            </a>
+
+            <nav class="dw-nav">
+                <div class="dw-nav-item">
+                    <a href="index.html" class="dw-nav-link">Home</a>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Products
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Core Systems -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Core Systems</div>
+                                <a href="products/erp.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3z"/><path d="M3 9h18M9 21V9"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">ERP: T100 & iGP</p>
+                                        <p class="dw-mega-desc">Finance, supply chain, and operations</p>
+                                    </div>
+                                </a>
+                                <a href="products/mes.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M2 20h20M6 20V10l4-6h4l4 6v10"/><path d="M6 14h12"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">MES: sMES & SFT</p>
+                                        <p class="dw-mega-desc">Production tracking and quality</p>
+                                    </div>
+                                </a>
+                                <a href="products/wms.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">WMS: sFLS</p>
+                                        <p class="dw-mega-desc">Warehouse and inventory</p>
+                                    </div>
+                                </a>
+                                <a href="products/aiot.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">AIoT & Smart Factory</p>
+                                        <p class="dw-mega-desc">Machine connectivity and analytics</p>
+                                    </div>
+                                </a>
+                                <a href="products.html" class="dw-mega-viewall">
+                                    View All Products
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Featured: Manufacturing Suite -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M20 90V50l20-20h40l20 20v40" stroke-linecap="round"/><path d="M35 90V65h20v25M65 90V55h20v35"/><circle cx="60" cy="25" r="8"/><path d="M60 33v12"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">Complete Stack</span>
+                                    <h3 class="dw-mega-featured-title">Manufacturing & Distribution</h3>
+                                    <p class="dw-mega-featured-desc">Tailor-made ERP for manufacturing and distribution companies in Thailand and ASEAN.</p>
+                                    <a href="products.html" class="dw-mega-featured-cta">
+                                        Explore Solutions
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Industries
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Manufacturing Sectors -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Manufacturing Sectors</div>
+                                <a href="industries/automotive.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-6l2-4h12l2 4v6h-2M5 17h10"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Automotive Parts</p>
+                                        <p class="dw-mega-desc">JIT delivery and OEM traceability</p>
+                                    </div>
+                                </a>
+                                <a href="industries/electronics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Electronics Assembly</p>
+                                        <p class="dw-mega-desc">SMT integration and MSD tracking</p>
+                                    </div>
+                                </a>
+                                <a href="industries/metal-plastics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Metal & Plastics</p>
+                                        <p class="dw-mega-desc">Yield optimization and scrap reduction</p>
+                                    </div>
+                                </a>
+                                <a href="industries.html" class="dw-mega-viewall">
+                                    View All Industries
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Featured: Industry Expertise -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M20 100V60l15-25h50l15 25v40" stroke-linecap="round"/><rect x="35" y="70" width="20" height="30" rx="2"/><rect x="65" y="60" width="20" height="40" rx="2"/><path d="M45 40h30M60 25v15"/><circle cx="60" cy="20" r="5"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">50,000+ Factories</span>
+                                    <h3 class="dw-mega-featured-title">Industry-Specific Solutions</h3>
+                                    <p class="dw-mega-featured-desc">Pre-configured templates and best practices for your specific manufacturing sector.</p>
+                                    <a href="industries.html" class="dw-mega-featured-cta">
+                                        Find Your Industry
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Partners
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Why Partner -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Why Partner</div>
+                                <a href="partner-program/business-model.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">The Business Model Crisis</p>
+                                    </div>
+                                </a>
+                                <a href="partner-program/economics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Partner Economics</p>
+                                    </div>
+                                </a>
+                                <a href="partner-program/solutions.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Solution Stack</p>
+                                    </div>
+                                </a>
+                                <a href="partner-program.html" class="dw-mega-viewall">
+                                    Partner Overview
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Column 2: Getting Started -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Getting Started</div>
+                                <a href="partner-program.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Become a Partner</p>
+                                    </div>
+                                </a>
+                                <a href="demo.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Schedule a Conversation</p>
+                                    </div>
+                                </a>
+                                <a href="about.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">About DigiWin</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Featured: Partner Program -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(55,152,228,0.3)"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">For ERP Implementers</span>
+                                    <h3 class="dw-mega-featured-title">Escape the Man-Day Trap</h3>
+                                    <p class="dw-mega-featured-desc">40-50% license margins. 100% service fees. Recurring revenue that compounds.</p>
+                                    <a href="partner-program.html" class="dw-mega-featured-cta">
+                                        Become a Partner
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item">
+                    <a href="about.html" class="dw-nav-link">About</a>
+                </div>
+            </nav>
+
+            <a href="demo.html" class="dw-header-cta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;margin-right:8px;vertical-align:middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span style="vertical-align:middle;">Let's Talk</span>
+            </a>
+
+            <button class="dw-menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- Split Screen Hero -->
+    <section class="dw-hero-split">
+        <!-- Factory Operators Panel -->
+        <div class="dw-hero-panel dw-hero-panel--factory">
+            <!-- Factory Illustration: "INVISIBLE COSTS" Visual Narrative -->
+            <div class="factory-illustration">
+                <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+                    <defs>
+                        <!-- Ghost/Transparent effect for "invisible" elements -->
+                        <linearGradient id="ghost-fade" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#3798E4;stop-opacity:0.4"/>
+                            <stop offset="100%" style="stop-color:#3798E4;stop-opacity:0.05"/>
+                        </linearGradient>
+                        <linearGradient id="reality-solid" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#3798E4;stop-opacity:0.7"/>
+                            <stop offset="100%" style="stop-color:#3798E4;stop-opacity:0.4"/>
+                        </linearGradient>
+                        <filter id="ghost-blur">
+                            <feGaussianBlur stdDeviation="2" result="blur"/>
+                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                        <pattern id="excel-grid" width="12" height="12" patternUnits="userSpaceOnUse">
+                            <rect width="12" height="12" fill="none" stroke="rgba(55,152,228,0.15)" stroke-width="0.5"/>
+                        </pattern>
+                    </defs>
+
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <!-- GHOST INVENTORY: "System says 100, Shelf says 50"       -->
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <g transform="translate(420, 80)">
+                        <!-- Warehouse Shelf Structure -->
+                        <rect x="0" y="0" width="280" height="220" fill="none" stroke="rgba(55,152,228,0.25)" stroke-width="2" rx="8"/>
+                        <line x1="0" y1="55" x2="280" y2="55" stroke="rgba(55,152,228,0.2)" stroke-width="2"/>
+                        <line x1="0" y1="110" x2="280" y2="110" stroke="rgba(55,152,228,0.2)" stroke-width="2"/>
+                        <line x1="0" y1="165" x2="280" y2="165" stroke="rgba(55,152,228,0.2)" stroke-width="2"/>
+                        <line x1="95" y1="0" x2="95" y2="220" stroke="rgba(55,152,228,0.15)" stroke-width="1"/>
+                        <line x1="190" y1="0" x2="190" y2="220" stroke="rgba(55,152,228,0.15)" stroke-width="1"/>
+
+                        <!-- Top Row: 3 GHOST boxes (dashed = what system thinks) -->
+                        <rect x="15" y="15" width="60" height="30" fill="url(#ghost-fade)" stroke="rgba(55,152,228,0.5)" stroke-width="1" stroke-dasharray="4 2" rx="4" filter="url(#ghost-blur)">
+                            <animate attributeName="opacity" values="0.3;0.6;0.3" dur="3s" repeatCount="indefinite"/>
+                        </rect>
+                        <rect x="110" y="15" width="60" height="30" fill="url(#ghost-fade)" stroke="rgba(55,152,228,0.5)" stroke-width="1" stroke-dasharray="4 2" rx="4" filter="url(#ghost-blur)">
+                            <animate attributeName="opacity" values="0.4;0.7;0.4" dur="2.5s" repeatCount="indefinite"/>
+                        </rect>
+                        <rect x="205" y="15" width="60" height="30" fill="url(#ghost-fade)" stroke="rgba(55,152,228,0.5)" stroke-width="1" stroke-dasharray="4 2" rx="4" filter="url(#ghost-blur)">
+                            <animate attributeName="opacity" values="0.2;0.5;0.2" dur="3.5s" repeatCount="indefinite"/>
+                        </rect>
+
+                        <!-- Middle Row: 2 REAL boxes, 1 GHOST -->
+                        <rect x="15" y="70" width="60" height="30" fill="url(#reality-solid)" stroke="#3798E4" stroke-width="1.5" rx="4"/>
+                        <rect x="110" y="70" width="60" height="30" fill="url(#ghost-fade)" stroke="rgba(55,152,228,0.4)" stroke-width="1" stroke-dasharray="4 2" rx="4" filter="url(#ghost-blur)">
+                            <animate attributeName="opacity" values="0.3;0.5;0.3" dur="2.8s" repeatCount="indefinite"/>
+                        </rect>
+                        <rect x="205" y="70" width="60" height="30" fill="url(#reality-solid)" stroke="#3798E4" stroke-width="1.5" rx="4"/>
+
+                        <!-- Bottom Row: 1 REAL, 2 GHOST -->
+                        <rect x="15" y="125" width="60" height="30" fill="url(#ghost-fade)" stroke="rgba(55,152,228,0.4)" stroke-width="1" stroke-dasharray="4 2" rx="4" filter="url(#ghost-blur)">
+                            <animate attributeName="opacity" values="0.25;0.55;0.25" dur="3.2s" repeatCount="indefinite"/>
+                        </rect>
+                        <rect x="110" y="125" width="60" height="30" fill="url(#reality-solid)" stroke="#3798E4" stroke-width="1.5" rx="4"/>
+                        <rect x="205" y="125" width="60" height="30" fill="url(#ghost-fade)" stroke="rgba(55,152,228,0.4)" stroke-width="1" stroke-dasharray="4 2" rx="4" filter="url(#ghost-blur)">
+                            <animate attributeName="opacity" values="0.35;0.6;0.35" dur="2.6s" repeatCount="indefinite"/>
+                        </rect>
+
+                        <!-- Inventory Count Labels -->
+                        <g transform="translate(0, 180)">
+                            <text x="45" y="25" text-anchor="middle" fill="rgba(55,152,228,0.4)" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500">SYS:100</text>
+                            <text x="140" y="25" text-anchor="middle" fill="#3798E4" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600">REAL:47</text>
+                            <text x="235" y="25" text-anchor="middle" fill="rgba(255,100,100,0.7)" font-family="JetBrains Mono, monospace" font-size="9">Δ -53</text>
+                        </g>
+                    </g>
+
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <!-- SHADOW EXCEL: Fragmenting Spreadsheets                   -->
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <g transform="translate(450, 320)">
+                        <!-- Main Excel "window" - cracking apart -->
+                        <rect x="0" y="0" width="180" height="130" fill="url(#excel-grid)" stroke="rgba(55,152,228,0.3)" stroke-width="1.5" rx="6"/>
+
+                        <!-- Excel header bar -->
+                        <rect x="0" y="0" width="180" height="20" fill="rgba(55,152,228,0.15)" rx="6"/>
+                        <rect x="0" y="14" width="180" height="6" fill="rgba(55,152,228,0.15)"/>
+                        <circle cx="12" cy="10" r="4" fill="rgba(255,100,100,0.5)"/>
+                        <circle cx="26" cy="10" r="4" fill="rgba(255,200,100,0.5)"/>
+                        <circle cx="40" cy="10" r="4" fill="rgba(100,200,100,0.5)"/>
+
+                        <!-- Fragmenting pieces flying off -->
+                        <g>
+                            <rect x="190" y="-20" width="35" height="25" fill="url(#excel-grid)" stroke="rgba(55,152,228,0.2)" rx="3" transform="rotate(15)">
+                                <animateTransform attributeName="transform" type="translate" values="0,0; 30,-40; 60,-30" dur="4s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.6;0.3;0" dur="4s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="200" y="60" width="28" height="22" fill="url(#excel-grid)" stroke="rgba(55,152,228,0.2)" rx="3" transform="rotate(-10)">
+                                <animateTransform attributeName="transform" type="translate" values="0,0; 40,20; 70,50" dur="5s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.5;0.25;0" dur="5s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="195" y="120" width="32" height="20" fill="url(#excel-grid)" stroke="rgba(55,152,228,0.2)" rx="3" transform="rotate(8)">
+                                <animateTransform attributeName="transform" type="translate" values="0,0; 25,35; 55,70" dur="4.5s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.55;0.2;0" dur="4.5s" repeatCount="indefinite"/>
+                            </rect>
+                        </g>
+
+                        <!-- "SHADOW" label -->
+                        <text x="90" y="80" text-anchor="middle" fill="rgba(55,152,228,0.25)" font-family="JetBrains Mono, monospace" font-size="14" font-weight="600" letter-spacing="0.15em">SHADOW.xlsx</text>
+                    </g>
+
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <!-- BROKEN DATA STREAMS: Misaligned Information              -->
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <g transform="translate(30, 100)">
+                        <!-- Data stream with "breaks" -->
+                        <path d="M0 0 Q60 -20 120 0 T240 -10" fill="none" stroke="rgba(55,152,228,0.5)" stroke-width="3" stroke-linecap="round">
+                            <animate attributeName="stroke-dasharray" values="0,300;150,150;300,0" dur="3s" repeatCount="indefinite"/>
+                        </path>
+
+                        <!-- Broken segment -->
+                        <path d="M280 -5 L320 15 L340 -20" fill="none" stroke="rgba(255,100,100,0.4)" stroke-width="2" stroke-dasharray="8 4">
+                            <animate attributeName="opacity" values="0.3;0.7;0.3" dur="1.5s" repeatCount="indefinite"/>
+                        </path>
+
+                        <!-- Data particles -->
+                        <circle r="5" fill="#3798E4">
+                            <animateMotion dur="2.5s" repeatCount="indefinite" path="M0 0 Q60 -20 120 0 T240 -10"/>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="2.5s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle r="4" fill="rgba(255,100,100,0.6)">
+                            <animateMotion dur="3s" repeatCount="indefinite" path="M280 -5 L320 15 L340 -20"/>
+                            <animate attributeName="opacity" values="0;0.8;0" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+                    </g>
+
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <!-- HIDDEN COST REVEAL: Materializing Problems               -->
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <g transform="translate(50, 350)">
+                        <!-- Cost "bubble" rising and becoming visible -->
+                        <g>
+                            <circle cx="30" cy="100" r="25" fill="none" stroke="rgba(255,150,100,0.3)" stroke-width="2">
+                                <animate attributeName="cy" values="150;50;-50" dur="6s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0;0.8;0" dur="6s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="15;30;40" dur="6s" repeatCount="indefinite"/>
+                            </circle>
+                            <text x="30" y="105" text-anchor="middle" fill="rgba(255,150,100,0.6)" font-family="Lexend" font-size="11" font-weight="600">
+                                <animate attributeName="y" values="155;55;-45" dur="6s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0;1;0" dur="6s" repeatCount="indefinite"/>
+                                $$$
+                            </text>
+                        </g>
+
+                        <g transform="translate(100, 30)">
+                            <circle cx="25" cy="100" r="20" fill="none" stroke="rgba(255,150,100,0.25)" stroke-width="2">
+                                <animate attributeName="cy" values="140;60;-20" dur="7s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0;0.7;0" dur="7s" repeatCount="indefinite"/>
+                            </circle>
+                            <text x="25" y="105" text-anchor="middle" fill="rgba(255,150,100,0.5)" font-family="Lexend" font-size="9">
+                                <animate attributeName="y" values="145;65;-15" dur="7s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0;0.9;0" dur="7s" repeatCount="indefinite"/>
+                                COST
+                            </text>
+                        </g>
+                    </g>
+
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <!-- FACTORY OUTLINE: Faint backdrop                          -->
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <g transform="translate(580, 450)" opacity="0.15">
+                        <path d="M0 100 L0 60 L30 60 L30 40 L60 40 L60 20 L90 20 L90 40 L120 40 L120 60 L150 60 L150 100 Z" fill="none" stroke="#3798E4" stroke-width="2"/>
+                        <rect x="20" y="70" width="25" height="25" fill="#3798E4" opacity="0.3" rx="2"/>
+                        <rect x="60" y="50" width="30" height="45" fill="#3798E4" opacity="0.3" rx="2"/>
+                        <rect x="105" y="65" width="20" height="30" fill="#3798E4" opacity="0.3" rx="2"/>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="dw-hero-content">
+                <p class="dw-hero-label">For Manufacturing Business Owners</p>
+                <h1 class="dw-hero-title">Your True Costs Are <span class="highlight">Invisible.</span></h1>
+                <p class="dw-hero-subtitle">"Shadow Excel" files have replaced your standard operating procedures. Ghost inventory means system says 100, shelf says 50. We fix this—because we've spent <span class="dw-years">44</span> years doing nothing but manufacturing software.</p>
+                <a href="products.html" class="dw-btn dw-btn-primary">See How We Fix It</a>
+
+                <div class="dw-hero-stats">
+                    <div class="dw-hero-stat">
+                        <div class="dw-hero-stat-number dw-years">44</div>
+                        <div class="dw-hero-stat-label">Years Manufacturing Focus</div>
+                    </div>
+                    <div class="dw-hero-stat">
+                        <div class="dw-hero-stat-number">50K+</div>
+                        <div class="dw-hero-stat-label">Factories Served</div>
+                    </div>
+                    <div class="dw-hero-stat">
+                        <div class="dw-hero-stat-number">300378</div>
+                        <div class="dw-hero-stat-label">Shenzhen Listed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partner Prospects Panel -->
+        <div class="dw-hero-panel dw-hero-panel--partner">
+            <!-- Partner Illustration: "ESCAPE THE MAN-DAY TRAP" Visual Narrative -->
+            <div class="partner-illustration">
+                <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+                    <defs>
+                        <linearGradient id="freedom-gradient" x1="0%" y1="100%" x2="0%" y2="0%">
+                            <stop offset="0%" style="stop-color:#fef3c7;stop-opacity:0.2"/>
+                            <stop offset="100%" style="stop-color:#fef3c7;stop-opacity:0.6"/>
+                        </linearGradient>
+                        <linearGradient id="cage-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.2"/>
+                            <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.05"/>
+                        </linearGradient>
+                        <filter id="glow-warm">
+                            <feGaussianBlur stdDeviation="3" result="glow"/>
+                            <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                    </defs>
+
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <!-- THE CAGE: Man-Day Trap (Breaking Open)                   -->
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <g transform="translate(50, 150)">
+                        <!-- Cage bars - some breaking -->
+                        <line x1="0" y1="0" x2="0" y2="180" stroke="rgba(255,255,255,0.25)" stroke-width="4" stroke-linecap="round"/>
+                        <line x1="40" y1="0" x2="40" y2="180" stroke="rgba(255,255,255,0.25)" stroke-width="4" stroke-linecap="round"/>
+                        <line x1="80" y1="0" x2="80" y2="180" stroke="rgba(255,255,255,0.2)" stroke-width="4" stroke-linecap="round"/>
+
+                        <!-- BREAKING BAR - bent outward -->
+                        <path d="M120 0 Q140 60 160 90 Q180 120 200 130" stroke="rgba(255,255,255,0.35)" stroke-width="4" stroke-linecap="round" fill="none">
+                            <animate attributeName="d" values="M120 0 L120 180;M120 0 Q140 60 160 90 Q180 120 200 130" dur="2s" fill="freeze"/>
+                        </path>
+
+                        <!-- Top/Bottom of cage -->
+                        <line x1="-10" y1="0" x2="130" y2="0" stroke="rgba(255,255,255,0.2)" stroke-width="3"/>
+                        <line x1="-10" y1="180" x2="130" y2="180" stroke="rgba(255,255,255,0.2)" stroke-width="3"/>
+
+                        <!-- "MAN-DAY" label inside cage -->
+                        <text x="60" y="100" text-anchor="middle" fill="rgba(255,255,255,0.15)" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" transform="rotate(-90, 60, 100)">MAN-DAY</text>
+
+                        <!-- Freedom particles escaping -->
+                        <circle r="4" fill="#fef3c7">
+                            <animate attributeName="cx" values="100;180;260" dur="3s" repeatCount="indefinite"/>
+                            <animate attributeName="cy" values="90;60;30" dur="3s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle r="3" fill="#fef3c7">
+                            <animate attributeName="cx" values="110;200;290" dur="3.5s" repeatCount="indefinite"/>
+                            <animate attributeName="cy" values="100;80;50" dur="3.5s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0;0.8;0" dur="3.5s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle r="5" fill="rgba(254,243,199,0.8)">
+                            <animate attributeName="cx" values="95;170;250" dur="2.8s" repeatCount="indefinite"/>
+                            <animate attributeName="cy" values="85;45;10" dur="2.8s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0;1;0" dur="2.8s" repeatCount="indefinite"/>
+                        </circle>
+                    </g>
+
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <!-- REVENUE CEILING: Breaking Through                        -->
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <g transform="translate(380, 80)">
+                        <!-- The Ceiling Line (cracking) -->
+                        <line x1="0" y1="120" x2="350" y2="120" stroke="rgba(255,255,255,0.2)" stroke-width="3" stroke-dasharray="20 10"/>
+
+                        <!-- Ceiling Label -->
+                        <text x="175" y="145" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.1em">REVENUE CAP</text>
+
+                        <!-- Revenue line that BREAKS THROUGH -->
+                        <path d="M20 280 L70 250 L120 230 L170 200 L220 150 L270 90 L320 20" fill="none" stroke="url(#freedom-gradient)" stroke-width="4" stroke-linecap="round" filter="url(#glow-warm)">
+                            <animate attributeName="stroke-dasharray" values="0,600;600,0" dur="2.5s" fill="freeze"/>
+                        </path>
+
+                        <!-- Arrow head bursting through -->
+                        <g transform="translate(320, 20)">
+                            <polygon points="0,0 -15,20 -5,15 -8,30 8,30 5,15 15,20" fill="#fef3c7" opacity="0.9">
+                                <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite"/>
+                            </polygon>
+                        </g>
+
+                        <!-- "Explosion" particles at breakthrough point -->
+                        <g transform="translate(280, 100)">
+                            <circle cx="0" cy="0" r="3" fill="#fef3c7">
+                                <animate attributeName="cx" values="0;-30;-50" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="cy" values="0;-20;-40" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="1;0.5;0" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="0" cy="0" r="2" fill="rgba(255,255,255,0.8)">
+                                <animate attributeName="cx" values="0;30;60" dur="2.2s" repeatCount="indefinite"/>
+                                <animate attributeName="cy" values="0;-25;-55" dur="2.2s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="1;0.6;0" dur="2.2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="0" cy="0" r="4" fill="#fef3c7">
+                                <animate attributeName="cx" values="0;10;25" dur="1.8s" repeatCount="indefinite"/>
+                                <animate attributeName="cy" values="0;-35;-70" dur="1.8s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="1;0.7;0" dur="1.8s" repeatCount="indefinite"/>
+                            </circle>
+                        </g>
+                    </g>
+
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <!-- COMPOUNDING REVENUE STREAMS: Multiple Flows              -->
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <g transform="translate(450, 380)">
+                        <!-- Multiple revenue streams converging -->
+                        <path d="M0 0 Q50 30 100 20" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2">
+                            <animate attributeName="stroke-dasharray" values="0,200;100,100;200,0" dur="3s" repeatCount="indefinite"/>
+                        </path>
+                        <path d="M0 40 Q50 50 100 30" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2">
+                            <animate attributeName="stroke-dasharray" values="0,200;100,100;200,0" dur="3.3s" repeatCount="indefinite"/>
+                        </path>
+                        <path d="M0 80 Q50 70 100 40" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2">
+                            <animate attributeName="stroke-dasharray" values="0,200;100,100;200,0" dur="3.6s" repeatCount="indefinite"/>
+                        </path>
+
+                        <!-- Combined thick stream -->
+                        <path d="M100 30 Q150 35 200 10 Q250 -15 300 -50" fill="none" stroke="url(#freedom-gradient)" stroke-width="6" stroke-linecap="round">
+                            <animate attributeName="stroke-dasharray" values="0,400;200,200;400,0" dur="2.5s" repeatCount="indefinite"/>
+                        </path>
+
+                        <!-- Labels -->
+                        <text x="10" y="-10" fill="rgba(255,255,255,0.3)" font-family="JetBrains Mono, monospace" font-size="8">LICENSE</text>
+                        <text x="10" y="32" fill="rgba(255,255,255,0.3)" font-family="JetBrains Mono, monospace" font-size="8">SERVICE</text>
+                        <text x="10" y="72" fill="rgba(255,255,255,0.3)" font-family="JetBrains Mono, monospace" font-size="8">RECURRING</text>
+
+                        <!-- "COMPOUND" label on merged stream -->
+                        <text x="200" y="5" fill="rgba(254,243,199,0.5)" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600">COMPOUND</text>
+                    </g>
+
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <!-- CLOCK TRANSFORMATION: Time Pressure → Freedom            -->
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <g transform="translate(180, 380)">
+                        <!-- Old oppressive clock (fading) -->
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2">
+                            <animate attributeName="opacity" values="0.4;0.1;0.4" dur="4s" repeatCount="indefinite"/>
+                        </circle>
+                        <line x1="50" y1="50" x2="50" y2="20" stroke="rgba(255,255,255,0.2)" stroke-width="3" stroke-linecap="round">
+                            <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="8s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="50" y1="50" x2="70" y2="50" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round">
+                            <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="60s" repeatCount="indefinite"/>
+                        </line>
+
+                        <!-- "BILLABLE HRS" text fading -->
+                        <text x="50" y="110" text-anchor="middle" fill="rgba(255,255,255,0.12)" font-family="JetBrains Mono, monospace" font-size="8">BILLABLE HRS</text>
+                    </g>
+
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <!-- FREEDOM BURST: Rising Energy                             -->
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <g transform="translate(600, 480)">
+                        <!-- Radiant burst -->
+                        <line x1="40" y1="40" x2="40" y2="-20" stroke="rgba(254,243,199,0.4)" stroke-width="2">
+                            <animate attributeName="y2" values="20;-30;20" dur="2s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.2;0.6;0.2" dur="2s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="40" y1="40" x2="80" y2="10" stroke="rgba(254,243,199,0.3)" stroke-width="2">
+                            <animate attributeName="x2" values="60;90;60" dur="2.2s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.2s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="40" y1="40" x2="0" y2="10" stroke="rgba(254,243,199,0.3)" stroke-width="2">
+                            <animate attributeName="x2" values="20;-10;20" dur="2.4s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.4s" repeatCount="indefinite"/>
+                        </line>
+
+                        <!-- Core glow -->
+                        <circle cx="40" cy="40" r="15" fill="rgba(254,243,199,0.15)">
+                            <animate attributeName="r" values="10;20;10" dur="2s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                    </g>
+
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <!-- PERCENTAGE MARKERS: Growing Margins                      -->
+                    <!-- ═══════════════════════════════════════════════════════ -->
+                    <g transform="translate(550, 300)">
+                        <text x="0" y="0" fill="rgba(254,243,199,0.6)" font-family="Lexend" font-size="32" font-weight="700">30%</text>
+                        <text x="90" y="0" fill="rgba(254,243,199,0.4)" font-family="Lexend" font-size="24" font-weight="600">→</text>
+                        <text x="120" y="0" fill="rgba(254,243,199,0.8)" font-family="Lexend" font-size="38" font-weight="800" filter="url(#glow-warm)">50%</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="dw-hero-content">
+                <p class="dw-hero-label">For ERP Implementers</p>
+                <h1 class="dw-hero-title">Trapped in the <span class="highlight">Man-Day</span> Model?</h1>
+                <p class="dw-hero-subtitle">Your revenue is capped by headcount. Customization wars burn out your best consultants. We offer a way out—product-based margins that compound instead of compress.</p>
+                <a href="partner-program.html" class="dw-btn dw-btn-ghost">Escape the Trap</a>
+
+                <div class="dw-hero-stats">
+                    <div class="dw-hero-stat">
+                        <div class="dw-hero-stat-number">30-40%</div>
+                        <div class="dw-hero-stat-label">License Margin</div>
+                    </div>
+                    <div class="dw-hero-stat">
+                        <div class="dw-hero-stat-number">50%</div>
+                        <div class="dw-hero-stat-label">Recurring Revenue</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Logo Bar - Trusted By -->
+    <section class="dw-clients-section">
+        <div class="dw-clients-inner">
+            <div class="dw-clients-header">
+                <p class="dw-clients-label">Trusted by Leading Manufacturers in Thailand</p>
+            </div>
+            <div class="dw-clients-logos">
+                <!-- Replace these placeholder logos with actual client logos -->
+                <div class="dw-client-logo" title="Client Logo 1">
+                    <img src="logos/client-1.png" alt="Client 1" onerror="this.parentElement.innerHTML='<span>Client Logo</span>'">
+                </div>
+                <div class="dw-client-logo" title="Client Logo 2">
+                    <img src="logos/client-2.png" alt="Client 2" onerror="this.parentElement.innerHTML='<span>Client Logo</span>'">
+                </div>
+                <div class="dw-client-logo" title="Client Logo 3">
+                    <img src="logos/client-3.png" alt="Client 3" onerror="this.parentElement.innerHTML='<span>Client Logo</span>'">
+                </div>
+                <div class="dw-client-logo" title="Client Logo 4">
+                    <img src="logos/client-4.png" alt="Client 4" onerror="this.parentElement.innerHTML='<span>Client Logo</span>'">
+                </div>
+                <div class="dw-client-logo" title="Client Logo 5">
+                    <img src="logos/client-5.png" alt="Client 5" onerror="this.parentElement.innerHTML='<span>Client Logo</span>'">
+                </div>
+                <div class="dw-client-logo" title="Client Logo 6">
+                    <img src="logos/client-6.png" alt="Client 6" onerror="this.parentElement.innerHTML='<span>Client Logo</span>'">
+                </div>
+            </div>
+            <div class="dw-clients-stats">
+                <div class="dw-clients-stat">
+                    <span class="dw-clients-stat-value">50,000+</span>
+                    <span class="dw-clients-stat-label">Factories Worldwide</span>
+                </div>
+                <div class="dw-clients-stat">
+                    <span class="dw-clients-stat-value dw-years">44</span>
+                    <span class="dw-clients-stat-label">Years in Manufacturing</span>
+                </div>
+                <div class="dw-clients-stat">
+                    <span class="dw-clients-stat-value">Certified</span>
+                    <span class="dw-clients-stat-label">Thai Revenue Department</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Factory Path - Understanding Checks -->
+    <section class="dw-checks-section dw-checks-section--factory">
+        <div class="dw-checks-container">
+            <div class="dw-checks-header">
+                <p class="dw-checks-label">For Manufacturing Business Owners</p>
+                <h2 class="dw-checks-title">Do You Recognize These Problems?</h2>
+                <p class="dw-checks-subtitle">If any of these sound familiar, you're not alone. We've helped 50,000+ factories escape these exact traps.</p>
+            </div>
+
+            <div class="dw-checks-grid">
+                <div class="dw-check-card">
+                    <div class="dw-check-number">01</div>
+                    <h3 class="dw-check-title">"Shadow Excel" Reality</h3>
+                    <p class="dw-check-quote">"You know your factory isn't actually running on your current system—it's running on spreadsheets because your staff finds the software too rigid or slow."</p>
+                    <p class="dw-check-desc">Your real operations live in unconnected Excel files, not in your ERP. Financial data doesn't match physical reality because planners work outside the system.</p>
+                </div>
+
+                <div class="dw-check-card">
+                    <div class="dw-check-number">02</div>
+                    <h3 class="dw-check-title">"The Black Box" Problem</h3>
+                    <p class="dw-check-quote">"You know exactly how much raw material you bought and how many finished goods you sold, but the 3 weeks in between (WIP) are invisible."</p>
+                    <p class="dw-check-desc">You rely on paper reports filled out yesterday to understand what happened today. You can't see what's happening on the floor right now without walking over and asking.</p>
+                </div>
+
+                <div class="dw-check-card">
+                    <div class="dw-check-number">03</div>
+                    <h3 class="dw-check-title">"Ghost Inventory" Crisis</h3>
+                    <p class="dw-check-quote">"The system says you have 100 units, but the shelf has 50. This discrepancy forces your team to hoard 'safety stock' just to survive."</p>
+                    <p class="dw-check-desc">Inventory inaccuracy ties up millions in unnecessary capital and destroys your ability to promise reliable delivery dates. The "borrowing culture" has replaced discipline.</p>
+                </div>
+            </div>
+
+            <div class="dw-checks-cta">
+                <a href="products.html" class="dw-btn dw-btn-primary">See How We Fix This</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Distributor Path - Understanding Checks -->
+    <section class="dw-checks-section dw-checks-section--partner">
+        <div class="dw-checks-container">
+            <div class="dw-checks-header">
+                <p class="dw-checks-label">For ERP Implementers</p>
+                <h2 class="dw-checks-title">Trapped in These Cycles?</h2>
+                <p class="dw-checks-subtitle">The consulting model has structural limits. Recognizing these traps is the first step to escaping them.</p>
+            </div>
+
+            <div class="dw-checks-grid">
+                <div class="dw-check-card">
+                    <div class="dw-check-number">01</div>
+                    <h3 class="dw-check-title">"The Man-Day Trap"</h3>
+                    <p class="dw-check-quote">"Your revenue is mathematically capped by your headcount. You cannot grow your top line without proportionally increasing your payroll costs."</p>
+                    <p class="dw-check-desc">You are selling hours, not assets. Revenue = Hours Worked, making exponential growth impossible. Every January, you start at zero again.</p>
+                </div>
+
+                <div class="dw-check-card">
+                    <div class="dw-check-number">02</div>
+                    <h3 class="dw-check-title">"Customization Death Spiral"</h3>
+                    <p class="dw-check-quote">"You accept customization requests to win the deal, but then you become married to that code forever."</p>
+                    <p class="dw-check-desc">You can't upgrade clients on custom code. Support becomes a nightmare of unbillable hours. Your profit evaporated the moment you said "Yes" to a non-standard request.</p>
+                </div>
+
+                <div class="dw-check-card">
+                    <div class="dw-check-number">03</div>
+                    <h3 class="dw-check-title">"The Ghost IT Burden"</h3>
+                    <p class="dw-check-quote">"You aren't just their ERP consultant—you are their unpaid IT department, fixing Wi-Fi, printers, and user discipline issues."</p>
+                    <p class="dw-check-desc">80% of Thai SMEs lack an internal IT Manager. You subsidize their operations with your margins. The "free work" that kills your spirit but you feel forced to do to keep the relationship.</p>
+                </div>
+            </div>
+
+            <div class="dw-checks-cta">
+                <a href="partner-program.html" class="dw-btn dw-btn-ghost">See the Way Out</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Propositions / Product Pillars -->
+    <section class="dw-section" style="background: #F5F7FA;">
+        <div class="dw-container">
+            <div class="dw-section-header">
+                <p class="dw-section-label">Complete Manufacturing Stack</p>
+                <h2 class="dw-section-title">One Ecosystem. Total Visibility.</h2>
+                <p class="dw-section-subtitle">From financials to the factory floor, every DigiWin product works together—no integration nightmares, no data silos.</p>
+            </div>
+
+            <div class="dw-value-props">
+                <a href="products/erp.html" class="dw-value-prop">
+                    <div class="dw-value-prop-icon">
+                        <!-- ERP: Financial documents, calculator, money -->
+                        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Main document -->
+                            <rect x="4" y="3" width="16" height="22" rx="2" fill="#3798E4" fill-opacity="0.15" stroke="#3798E4" stroke-width="2"/>
+                            <!-- Document lines -->
+                            <path d="M8 9h8M8 13h6M8 17h7" stroke="#3798E4" stroke-width="2" stroke-linecap="round"/>
+                            <!-- Calculator overlay -->
+                            <rect x="16" y="14" width="14" height="18" rx="2" fill="#253B50" stroke="#3798E4" stroke-width="2"/>
+                            <rect x="19" y="17" width="8" height="4" rx="1" fill="#3798E4" fill-opacity="0.3"/>
+                            <circle cx="21" cy="26" r="1.5" fill="#3798E4"/>
+                            <circle cx="26" cy="26" r="1.5" fill="#3798E4"/>
+                            <circle cx="21" cy="29" r="1.5" fill="#3798E4"/>
+                            <circle cx="26" cy="29" r="1.5" fill="#3798E4"/>
+                            <!-- Dollar sign -->
+                            <circle cx="28" cy="7" r="5" fill="#253B50" stroke="#3798E4" stroke-width="2"/>
+                            <text x="28" y="10" text-anchor="middle" fill="#3798E4" font-size="8" font-weight="bold">$</text>
+                        </svg>
+                    </div>
+                    <h3 class="dw-value-prop-title">ERP Core</h3>
+                    <div class="dw-value-prop-desc">
+                        <span class="dw-prop-fullname">Enterprise Resource Planning</span>
+                        <span class="dw-prop-tagline">The central brain of your business</span>
+                        <ul class="dw-prop-features">
+                            <li><em>Financials</em> — accounting, invoicing, budgets in one place</li>
+                            <li><em>Inventory</em> — real-time stock levels across locations</li>
+                            <li><em>Operations</em> — purchase orders, sales, and costs connected</li>
+                        </ul>
+                        <span class="dw-prop-benefit">Replace scattered spreadsheets with one source of truth.</span>
+                    </div>
+                </a>
+
+                <a href="products/mes.html" class="dw-value-prop">
+                    <div class="dw-value-prop-icon">
+                        <!-- MES: Factory with production line and machines -->
+                        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Factory building -->
+                            <path d="M3 28V12l8-6v8l8-6v8l8-6v12" fill="#3798E4" fill-opacity="0.15" stroke="#3798E4" stroke-width="2" stroke-linejoin="round"/>
+                            <!-- Windows/machines -->
+                            <rect x="6" y="16" width="4" height="4" rx="0.5" fill="#3798E4"/>
+                            <rect x="14" y="16" width="4" height="4" rx="0.5" fill="#3798E4"/>
+                            <rect x="22" y="16" width="4" height="4" rx="0.5" fill="#3798E4"/>
+                            <!-- Conveyor belt -->
+                            <rect x="3" y="28" width="30" height="4" rx="1" fill="#253B50" stroke="#3798E4" stroke-width="2"/>
+                            <!-- Products on conveyor -->
+                            <rect x="8" y="25" width="5" height="4" rx="1" fill="#3798E4"/>
+                            <rect x="18" y="25" width="5" height="4" rx="1" fill="#3798E4" fill-opacity="0.6"/>
+                            <!-- Rollers -->
+                            <circle cx="8" cy="30" r="1.5" fill="#3798E4"/>
+                            <circle cx="18" cy="30" r="1.5" fill="#3798E4"/>
+                            <circle cx="28" cy="30" r="1.5" fill="#3798E4"/>
+                        </svg>
+                    </div>
+                    <h3 class="dw-value-prop-title">MES</h3>
+                    <div class="dw-value-prop-desc">
+                        <span class="dw-prop-fullname">Manufacturing Execution System</span>
+                        <span class="dw-prop-tagline">Your digital eyes on the production floor</span>
+                        <ul class="dw-prop-features">
+                            <li><em>Track</em> — follow every product through each workstation</li>
+                            <li><em>Record</em> — who made what, when, and how</li>
+                            <li><em>Alert</em> — spot delays and quality issues instantly</li>
+                        </ul>
+                        <span class="dw-prop-benefit">Answer "which batch was my order?" in seconds.</span>
+                    </div>
+                </a>
+
+                <a href="products/wms.html" class="dw-value-prop">
+                    <div class="dw-value-prop-icon">
+                        <!-- WMS: Warehouse shelves with boxes -->
+                        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Shelf structure -->
+                            <path d="M4 32V4M14 32V4M24 32V4M34 32V4" stroke="#3798E4" stroke-width="2"/>
+                            <path d="M4 12h30M4 22h30M4 32h30" stroke="#3798E4" stroke-width="2"/>
+                            <!-- Boxes on shelves -->
+                            <rect x="6" y="6" width="6" height="5" rx="1" fill="#3798E4"/>
+                            <rect x="16" y="7" width="6" height="4" rx="1" fill="#3798E4" fill-opacity="0.7"/>
+                            <rect x="26" y="6" width="6" height="5" rx="1" fill="#3798E4" fill-opacity="0.5"/>
+                            <rect x="6" y="15" width="6" height="6" rx="1" fill="#3798E4" fill-opacity="0.6"/>
+                            <rect x="16" y="14" width="6" height="7" rx="1" fill="#3798E4"/>
+                            <rect x="26" y="16" width="6" height="5" rx="1" fill="#3798E4" fill-opacity="0.8"/>
+                            <rect x="6" y="25" width="6" height="6" rx="1" fill="#3798E4" fill-opacity="0.5"/>
+                            <rect x="17" y="24" width="5" height="7" rx="1" fill="#3798E4" fill-opacity="0.7"/>
+                            <rect x="26" y="25" width="6" height="6" rx="1" fill="#3798E4"/>
+                        </svg>
+                    </div>
+                    <h3 class="dw-value-prop-title">WMS</h3>
+                    <div class="dw-value-prop-desc">
+                        <span class="dw-prop-fullname">Warehouse Management System</span>
+                        <span class="dw-prop-tagline">Never lose track of inventory again</span>
+                        <ul class="dw-prop-features">
+                            <li><em>Locate</em> — know which shelf, bin, and zone for every item</li>
+                            <li><em>Guide</em> — barcode scanning for pick, pack, and ship</li>
+                            <li><em>Count</em> — cycle counts that match reality</li>
+                        </ul>
+                        <span class="dw-prop-benefit">Faster fulfillment, fewer mistakes, accurate stock.</span>
+                    </div>
+                </a>
+
+                <a href="products/aiot.html" class="dw-value-prop">
+                    <div class="dw-value-prop-icon">
+                        <!-- AIoT: Connected sensors network -->
+                        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Central hub -->
+                            <rect x="12" y="12" width="12" height="12" rx="2" fill="#253B50" stroke="#3798E4" stroke-width="2"/>
+                            <text x="18" y="20" text-anchor="middle" fill="#3798E4" font-size="6" font-weight="bold">AI</text>
+                            <!-- Connection lines -->
+                            <path d="M12 18H6M24 18h6M18 12V6M18 24v6" stroke="#3798E4" stroke-width="2"/>
+                            <path d="M13 13L8 8M23 13l5-5M13 23l-5 5M23 23l5 5" stroke="#3798E4" stroke-width="1.5" stroke-dasharray="3 2"/>
+                            <!-- Sensor nodes -->
+                            <circle cx="5" cy="18" r="3" fill="#3798E4"/>
+                            <circle cx="31" cy="18" r="3" fill="#3798E4"/>
+                            <circle cx="18" cy="5" r="3" fill="#3798E4"/>
+                            <circle cx="18" cy="31" r="3" fill="#3798E4"/>
+                            <circle cx="6" cy="6" r="2.5" fill="#3798E4" fill-opacity="0.6"/>
+                            <circle cx="30" cy="6" r="2.5" fill="#3798E4" fill-opacity="0.6"/>
+                            <circle cx="6" cy="30" r="2.5" fill="#3798E4" fill-opacity="0.6"/>
+                            <circle cx="30" cy="30" r="2.5" fill="#3798E4" fill-opacity="0.6"/>
+                        </svg>
+                    </div>
+                    <h3 class="dw-value-prop-title">AIoT</h3>
+                    <div class="dw-value-prop-desc">
+                        <span class="dw-prop-fullname">AI + Internet of Things</span>
+                        <span class="dw-prop-tagline">Connect your machines to the digital world</span>
+                        <ul class="dw-prop-features">
+                            <li><em>Collect</em> — temperature, speed, vibration automatically</li>
+                            <li><em>Predict</em> — machine breakdowns before they happen</li>
+                            <li><em>Optimize</em> — energy usage and efficiency gains</li>
+                        </ul>
+                        <span class="dw-prop-benefit">No manual logging. AI finds what humans miss.</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Selector -->
+    <section class="dw-section" style="background: #ffffff;">
+        <div class="dw-container">
+            <div class="dw-section-header">
+                <p class="dw-section-label">Industry Expertise</p>
+                <h2 class="dw-section-title">Built for Your Industry</h2>
+                <p class="dw-section-subtitle">We don't just understand manufacturing—we understand YOUR manufacturing.</p>
+            </div>
+
+            <div class="dw-industry-wrapper">
+                <div class="dw-industry-tabs">
+                    <button class="dw-industry-tab active" data-industry="automotive"><span>Automotive Parts</span></button>
+                    <button class="dw-industry-tab" data-industry="electronics"><span>Electronics Assembly</span></button>
+                    <button class="dw-industry-tab" data-industry="metal"><span>Metal & Plastics</span></button>
+                </div>
+
+                <div class="dw-industry-content active" id="industry-automotive">
+                <div class="dw-industry-image">
+                    <!-- Automotive Parts: Full-bleed factory floor illustration -->
+                    <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background gradient overlay -->
+                        <defs>
+                            <linearGradient id="auto-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0f1419"/>
+                                <stop offset="50%" stop-color="#1a2632"/>
+                                <stop offset="100%" stop-color="#253B50"/>
+                            </linearGradient>
+                            <linearGradient id="auto-glow" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#3798E4" stop-opacity="0.3"/>
+                                <stop offset="100%" stop-color="#3798E4" stop-opacity="0"/>
+                            </linearGradient>
+                            <filter id="auto-blur">
+                                <feGaussianBlur stdDeviation="2"/>
+                            </filter>
+                        </defs>
+                        <rect width="600" height="450" fill="url(#auto-bg)"/>
+
+                        <!-- Grid floor pattern -->
+                        <g stroke="#3798E4" stroke-width="0.5" opacity="0.15">
+                            <line x1="0" y1="350" x2="600" y2="350"/>
+                            <line x1="0" y1="380" x2="600" y2="380"/>
+                            <line x1="0" y1="410" x2="600" y2="410"/>
+                            <line x1="0" y1="440" x2="600" y2="440"/>
+                            <line x1="50" y1="320" x2="0" y2="450"/>
+                            <line x1="150" y1="320" x2="50" y2="450"/>
+                            <line x1="250" y1="320" x2="150" y2="450"/>
+                            <line x1="350" y1="320" x2="250" y2="450"/>
+                            <line x1="450" y1="320" x2="350" y2="450"/>
+                            <line x1="550" y1="320" x2="450" y2="450"/>
+                            <line x1="650" y1="320" x2="550" y2="450"/>
+                        </g>
+
+                        <!-- Assembly line conveyor - full width -->
+                        <rect x="0" y="360" width="600" height="25" fill="rgba(55,152,228,0.1)" stroke="#3798E4" stroke-width="1"/>
+                        <g fill="#253B50">
+                            <circle cx="30" cy="372" r="8"/>
+                            <circle cx="100" cy="372" r="8"/>
+                            <circle cx="170" cy="372" r="8"/>
+                            <circle cx="240" cy="372" r="8"/>
+                            <circle cx="310" cy="372" r="8"/>
+                            <circle cx="380" cy="372" r="8"/>
+                            <circle cx="450" cy="372" r="8"/>
+                            <circle cx="520" cy="372" r="8"/>
+                            <circle cx="590" cy="372" r="8"/>
+                        </g>
+
+                        <!-- Car body on assembly line -->
+                        <g>
+                            <path d="M80 280 L110 280 L130 240 L200 225 L320 225 L380 240 L420 280 L450 280" stroke="#3798E4" stroke-width="3" fill="none"/>
+                            <path d="M130 240 L200 225 L320 225 L380 240" fill="rgba(55,152,228,0.15)"/>
+                            <!-- Windows -->
+                            <path d="M145 245 L185 232 L280 232 L310 245 Z" fill="rgba(55,152,228,0.1)" stroke="#3798E4" stroke-width="1"/>
+                            <!-- Wheels -->
+                            <circle cx="140" cy="300" r="28" stroke="#3798E4" stroke-width="3" fill="rgba(55,152,228,0.1)"/>
+                            <circle cx="140" cy="300" r="12" stroke="#3798E4" stroke-width="2" fill="#0f1419"/>
+                            <circle cx="390" cy="300" r="28" stroke="#3798E4" stroke-width="3" fill="rgba(55,152,228,0.1)"/>
+                            <circle cx="390" cy="300" r="12" stroke="#3798E4" stroke-width="2" fill="#0f1419"/>
+                            <!-- Door lines -->
+                            <line x1="220" y1="235" x2="220" y2="280" stroke="#3798E4" stroke-width="1" opacity="0.5"/>
+                            <line x1="280" y1="235" x2="280" y2="280" stroke="#3798E4" stroke-width="1" opacity="0.5"/>
+                            <!-- Animated -->
+                            <animateTransform attributeName="transform" type="translate" values="0,0;20,0;0,0" dur="4s" repeatCount="indefinite"/>
+                        </g>
+
+                        <!-- Robotic Arm 1 - Left -->
+                        <g transform="translate(50, 80)">
+                            <!-- Base -->
+                            <rect x="20" y="200" width="60" height="30" rx="4" fill="rgba(55,152,228,0.2)" stroke="#3798E4" stroke-width="2"/>
+                            <!-- Arm segments -->
+                            <rect x="40" y="120" width="20" height="85" rx="4" fill="rgba(55,152,228,0.15)" stroke="#3798E4" stroke-width="2">
+                                <animateTransform attributeName="transform" type="rotate" values="-5 50 200;5 50 200;-5 50 200" dur="3s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="35" y="60" width="30" height="70" rx="4" fill="rgba(55,152,228,0.15)" stroke="#3798E4" stroke-width="2"/>
+                            <!-- Gripper -->
+                            <path d="M35 40 L35 60 M65 40 L65 60" stroke="#3798E4" stroke-width="3"/>
+                            <rect x="30" y="30" width="15" height="15" fill="#3798E4" opacity="0.6">
+                                <animate attributeName="width" values="15;10;15" dur="2s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="55" y="30" width="15" height="15" fill="#3798E4" opacity="0.6">
+                                <animate attributeName="width" values="15;10;15" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="x" values="55;60;55" dur="2s" repeatCount="indefinite"/>
+                            </rect>
+                            <!-- Joint circles -->
+                            <circle cx="50" cy="120" r="8" fill="#253B50" stroke="#3798E4" stroke-width="2"/>
+                            <circle cx="50" cy="60" r="8" fill="#253B50" stroke="#3798E4" stroke-width="2"/>
+                        </g>
+
+                        <!-- Robotic Arm 2 - Right -->
+                        <g transform="translate(450, 60)">
+                            <!-- Base -->
+                            <rect x="20" y="220" width="60" height="30" rx="4" fill="rgba(55,152,228,0.2)" stroke="#3798E4" stroke-width="2"/>
+                            <!-- Arm segments -->
+                            <rect x="40" y="140" width="20" height="85" rx="4" fill="rgba(55,152,228,0.15)" stroke="#3798E4" stroke-width="2">
+                                <animateTransform attributeName="transform" type="rotate" values="5 50 220;-5 50 220;5 50 220" dur="3.5s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="35" y="80" width="30" height="70" rx="4" fill="rgba(55,152,228,0.15)" stroke="#3798E4" stroke-width="2"/>
+                            <!-- Welding head -->
+                            <circle cx="50" cy="65" r="15" fill="rgba(55,152,228,0.2)" stroke="#3798E4" stroke-width="2"/>
+                            <!-- Welding sparks -->
+                            <g opacity="0.8">
+                                <circle cx="50" cy="50" r="3" fill="#fbbf24">
+                                    <animate attributeName="opacity" values="0;1;0" dur="0.2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="45" cy="45" r="2" fill="#fbbf24">
+                                    <animate attributeName="opacity" values="0;1;0" dur="0.3s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="55" cy="48" r="2" fill="#fbbf24">
+                                    <animate attributeName="opacity" values="0;1;0" dur="0.25s" repeatCount="indefinite"/>
+                                </circle>
+                            </g>
+                            <!-- Joint circles -->
+                            <circle cx="50" cy="140" r="8" fill="#253B50" stroke="#3798E4" stroke-width="2"/>
+                            <circle cx="50" cy="80" r="8" fill="#253B50" stroke="#3798E4" stroke-width="2"/>
+                        </g>
+
+                        <!-- Large gear - background -->
+                        <g transform="translate(480, 20)" opacity="0.3">
+                            <circle cx="60" cy="60" r="55" stroke="#3798E4" stroke-width="2" fill="none">
+                                <animateTransform attributeName="transform" type="rotate" from="0 60 60" to="360 60 60" dur="20s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="60" cy="60" r="20" fill="#1a2632"/>
+                            <g stroke="#3798E4" stroke-width="4">
+                                <line x1="60" y1="0" x2="60" y2="15"/>
+                                <line x1="60" y1="105" x2="60" y2="120"/>
+                                <line x1="0" y1="60" x2="15" y2="60"/>
+                                <line x1="105" y1="60" x2="120" y2="60"/>
+                                <line x1="18" y1="18" x2="28" y2="28"/>
+                                <line x1="92" y1="92" x2="102" y2="102"/>
+                                <line x1="92" y1="28" x2="102" y2="18"/>
+                                <line x1="18" y1="102" x2="28" y2="92"/>
+                            </g>
+                        </g>
+
+                        <!-- Engine parts on conveyor -->
+                        <g>
+                            <rect x="180" y="340" width="40" height="25" rx="4" fill="rgba(55,152,228,0.3)" stroke="#3798E4" stroke-width="1.5">
+                                <animate attributeName="x" values="180;520;-60;180" dur="10s" repeatCount="indefinite"/>
+                            </rect>
+                        </g>
+                        <g>
+                            <rect x="350" y="342" width="35" height="20" rx="3" fill="rgba(55,152,228,0.25)" stroke="#3798E4" stroke-width="1">
+                                <animate attributeName="x" values="350;520;-60;350" dur="12s" repeatCount="indefinite"/>
+                            </rect>
+                        </g>
+
+                        <!-- Data flow lines -->
+                        <path d="M50 50 Q150 30 250 50 T450 40" stroke="#3798E4" stroke-width="1" stroke-dasharray="8 4" opacity="0.4">
+                            <animate attributeName="stroke-dashoffset" values="0;-24" dur="2s" repeatCount="indefinite"/>
+                        </path>
+
+                        <!-- Status indicators -->
+                        <g transform="translate(20, 20)">
+                            <rect x="0" y="0" width="100" height="60" rx="4" fill="rgba(0,0,0,0.4)" stroke="#3798E4" stroke-width="1"/>
+                            <text x="10" y="20" fill="#3798E4" font-size="10" font-family="monospace">LINE STATUS</text>
+                            <circle cx="20" cy="40" r="6" fill="#22c55e">
+                                <animate attributeName="opacity" values="0.5;1;0.5" dur="1s" repeatCount="indefinite"/>
+                            </circle>
+                            <text x="35" y="44" fill="#22c55e" font-size="11" font-family="monospace">RUNNING</text>
+                        </g>
+
+                        <!-- JIT label -->
+                        <g transform="translate(530, 400)">
+                            <rect x="0" y="0" width="50" height="25" rx="3" fill="rgba(55,152,228,0.2)" stroke="#3798E4" stroke-width="1"/>
+                            <text x="25" y="17" text-anchor="middle" fill="#3798E4" font-size="11" font-family="monospace">JIT</text>
+                        </g>
+
+                        <!-- Ambient particles -->
+                        <circle cx="100" cy="150" r="2" fill="#3798E4" opacity="0.3">
+                            <animate attributeName="cy" values="150;130;150" dur="4s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.3;0.6;0.3" dur="4s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="300" cy="100" r="1.5" fill="#3798E4" opacity="0.4">
+                            <animate attributeName="cy" values="100;80;100" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="500" cy="180" r="2" fill="#3798E4" opacity="0.3">
+                            <animate attributeName="cy" values="180;160;180" dur="5s" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
+                </div>
+                <div class="dw-industry-info">
+                    <h3>Automotive Parts Manufacturing</h3>
+                    <p>Thailand is ASEAN's automotive hub. We understand what tier-1 OEMs demand: perfect traceability, JIT delivery, and EDI integration that works—every time.</p>
+                    <ul class="dw-industry-features">
+                        <li>Toyota/Honda/Denso EDI integration</li>
+                        <li>IATF 16949 compliance support</li>
+                        <li>Lot-level traceability for recalls</li>
+                        <li>Kanban and JIT scheduling</li>
+                    </ul>
+                    <a href="industries/automotive.html" class="dw-btn dw-btn-primary">Explore Automotive Solutions</a>
+                </div>
+            </div>
+
+            <div class="dw-industry-content" id="industry-electronics">
+                <div class="dw-industry-image">
+                    <!-- Electronics Assembly: Full-bleed PCB factory illustration -->
+                    <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="elec-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0a1520"/>
+                                <stop offset="50%" stop-color="#0f2030"/>
+                                <stop offset="100%" stop-color="#1a3050"/>
+                            </linearGradient>
+                            <pattern id="pcb-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                <circle cx="10" cy="10" r="1" fill="#3798E4" opacity="0.15"/>
+                            </pattern>
+                        </defs>
+                        <rect width="600" height="450" fill="url(#elec-bg)"/>
+                        <rect width="600" height="450" fill="url(#pcb-grid)"/>
+
+                        <!-- Main PCB Board - large -->
+                        <rect x="40" y="60" width="520" height="330" rx="8" fill="rgba(55,152,228,0.06)" stroke="#3798E4" stroke-width="2"/>
+
+                        <!-- PCB Traces - extensive network -->
+                        <g stroke="#3798E4" stroke-width="1.5" opacity="0.3">
+                            <!-- Horizontal traces -->
+                            <path d="M60 100 H200"/>
+                            <path d="M60 150 H180 V200 H280"/>
+                            <path d="M60 250 H150"/>
+                            <path d="M60 320 H250"/>
+                            <path d="M350 100 H540"/>
+                            <path d="M400 180 H540"/>
+                            <path d="M320 280 H540"/>
+                            <path d="M400 350 H540"/>
+                            <!-- Vertical traces -->
+                            <path d="M200 100 V180"/>
+                            <path d="M280 150 V250 H350"/>
+                            <path d="M150 250 V350"/>
+                            <path d="M450 100 V200"/>
+                            <path d="M520 180 V320"/>
+                        </g>
+
+                        <!-- Signal flow animations on traces -->
+                        <circle r="4" fill="#3798E4">
+                            <animateMotion dur="3s" repeatCount="indefinite" path="M60 100 H200 V180"/>
+                        </circle>
+                        <circle r="4" fill="#3798E4">
+                            <animateMotion dur="4s" repeatCount="indefinite" path="M350 100 H540 V200"/>
+                        </circle>
+                        <circle r="4" fill="#22c55e">
+                            <animateMotion dur="3.5s" repeatCount="indefinite" path="M60 320 H250 V350"/>
+                        </circle>
+
+                        <!-- Main CPU - Center -->
+                        <g transform="translate(220, 150)">
+                            <rect x="0" y="0" width="160" height="140" rx="6" fill="rgba(55,152,228,0.15)" stroke="#3798E4" stroke-width="2"/>
+                            <rect x="20" y="20" width="120" height="100" rx="4" fill="#0a1520" stroke="#3798E4" stroke-width="1"/>
+                            <text x="80" y="65" text-anchor="middle" fill="#3798E4" font-size="14" font-family="monospace">ARM</text>
+                            <text x="80" y="85" text-anchor="middle" fill="#3798E4" font-size="11" font-family="monospace">Cortex-M7</text>
+                            <!-- Pin rows - top -->
+                            <g stroke="#3798E4" stroke-width="2">
+                                <line x1="25" y1="0" x2="25" y2="-15"/>
+                                <line x1="45" y1="0" x2="45" y2="-15"/>
+                                <line x1="65" y1="0" x2="65" y2="-15"/>
+                                <line x1="85" y1="0" x2="85" y2="-15"/>
+                                <line x1="105" y1="0" x2="105" y2="-15"/>
+                                <line x1="125" y1="0" x2="125" y2="-15"/>
+                            </g>
+                            <!-- Pin rows - bottom -->
+                            <g stroke="#3798E4" stroke-width="2">
+                                <line x1="25" y1="140" x2="25" y2="155"/>
+                                <line x1="45" y1="140" x2="45" y2="155"/>
+                                <line x1="65" y1="140" x2="65" y2="155"/>
+                                <line x1="85" y1="140" x2="85" y2="155"/>
+                                <line x1="105" y1="140" x2="105" y2="155"/>
+                                <line x1="125" y1="140" x2="125" y2="155"/>
+                            </g>
+                            <!-- Pin rows - left -->
+                            <g stroke="#3798E4" stroke-width="2">
+                                <line x1="0" y1="30" x2="-15" y2="30"/>
+                                <line x1="0" y1="55" x2="-15" y2="55"/>
+                                <line x1="0" y1="80" x2="-15" y2="80"/>
+                                <line x1="0" y1="105" x2="-15" y2="105"/>
+                            </g>
+                            <!-- Pin rows - right -->
+                            <g stroke="#3798E4" stroke-width="2">
+                                <line x1="160" y1="30" x2="175" y2="30"/>
+                                <line x1="160" y1="55" x2="175" y2="55"/>
+                                <line x1="160" y1="80" x2="175" y2="80"/>
+                                <line x1="160" y1="105" x2="175" y2="105"/>
+                            </g>
+                        </g>
+
+                        <!-- Memory chips -->
+                        <g transform="translate(430, 80)">
+                            <rect x="0" y="0" width="90" height="45" rx="3" fill="rgba(55,152,228,0.12)" stroke="#3798E4" stroke-width="1.5"/>
+                            <text x="45" y="28" text-anchor="middle" fill="#3798E4" font-size="10" font-family="monospace">FLASH 32MB</text>
+                            <g stroke="#3798E4" stroke-width="1.5">
+                                <line x1="10" y1="0" x2="10" y2="-8"/>
+                                <line x1="25" y1="0" x2="25" y2="-8"/>
+                                <line x1="40" y1="0" x2="40" y2="-8"/>
+                                <line x1="55" y1="0" x2="55" y2="-8"/>
+                                <line x1="70" y1="0" x2="70" y2="-8"/>
+                            </g>
+                        </g>
+
+                        <g transform="translate(430, 200)">
+                            <rect x="0" y="0" width="90" height="45" rx="3" fill="rgba(55,152,228,0.12)" stroke="#3798E4" stroke-width="1.5"/>
+                            <text x="45" y="28" text-anchor="middle" fill="#3798E4" font-size="10" font-family="monospace">SDRAM 64MB</text>
+                        </g>
+
+                        <!-- SMT Components - scattered across board -->
+                        <g fill="#3798E4">
+                            <!-- Capacitors -->
+                            <rect x="80" y="120" width="15" height="8" rx="1" opacity="0.6"/>
+                            <rect x="80" y="140" width="15" height="8" rx="1" opacity="0.6"/>
+                            <rect x="80" y="160" width="15" height="8" rx="1" opacity="0.6"/>
+                            <rect x="80" y="180" width="15" height="8" rx="1" opacity="0.6"/>
+                            <!-- Resistor arrays -->
+                            <rect x="120" y="90" width="10" height="5" rx="1" opacity="0.5"/>
+                            <rect x="135" y="90" width="10" height="5" rx="1" opacity="0.5"/>
+                            <rect x="150" y="90" width="10" height="5" rx="1" opacity="0.5"/>
+                            <rect x="165" y="90" width="10" height="5" rx="1" opacity="0.5"/>
+                            <!-- More SMT -->
+                            <rect x="470" y="310" width="10" height="5" rx="1" opacity="0.5"/>
+                            <rect x="490" y="310" width="10" height="5" rx="1" opacity="0.5"/>
+                            <rect x="510" y="310" width="10" height="5" rx="1" opacity="0.5"/>
+                            <rect x="530" y="310" width="10" height="5" rx="1" opacity="0.5"/>
+                        </g>
+
+                        <!-- Crystal oscillators -->
+                        <ellipse cx="180" y="350" rx="20" ry="10" fill="rgba(55,152,228,0.15)" stroke="#3798E4" stroke-width="1.5"/>
+                        <text x="180" y="354" text-anchor="middle" fill="#3798E4" font-size="8" font-family="monospace">48MHz</text>
+
+                        <!-- Connectors -->
+                        <g transform="translate(60, 280)">
+                            <rect x="0" y="0" width="60" height="30" rx="3" fill="rgba(55,152,228,0.1)" stroke="#3798E4" stroke-width="1.5"/>
+                            <g stroke="#3798E4" stroke-width="3">
+                                <line x1="12" y1="8" x2="12" y2="22"/>
+                                <line x1="24" y1="8" x2="24" y2="22"/>
+                                <line x1="36" y1="8" x2="36" y2="22"/>
+                                <line x1="48" y1="8" x2="48" y2="22"/>
+                            </g>
+                            <text x="30" y="45" text-anchor="middle" fill="#3798E4" font-size="8" font-family="monospace" opacity="0.7">USB-C</text>
+                        </g>
+
+                        <!-- Power section -->
+                        <g transform="translate(60, 340)">
+                            <rect x="0" y="0" width="50" height="35" rx="3" fill="rgba(55,152,228,0.15)" stroke="#3798E4" stroke-width="1.5"/>
+                            <text x="25" y="22" text-anchor="middle" fill="#3798E4" font-size="9" font-family="monospace">PWR</text>
+                        </g>
+
+                        <!-- LED status row -->
+                        <g transform="translate(500, 340)">
+                            <circle cx="0" cy="10" r="6" fill="#22c55e" opacity="0.4">
+                                <animate attributeName="opacity" values="0.4;1;0.4" dur="1s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="20" cy="10" r="6" fill="#3798E4" opacity="0.3">
+                                <animate attributeName="opacity" values="0.3;0.8;0.3" dur="0.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="40" cy="10" r="6" fill="#f59e0b" opacity="0.3">
+                                <animate attributeName="opacity" values="0.3;0.9;0.3" dur="1.5s" repeatCount="indefinite"/>
+                            </circle>
+                        </g>
+
+                        <!-- Via holes scattered -->
+                        <g fill="#0a1520" stroke="#3798E4" stroke-width="1">
+                            <circle cx="200" cy="100" r="4"/>
+                            <circle cx="280" cy="150" r="4"/>
+                            <circle cx="350" cy="250" r="4"/>
+                            <circle cx="150" cy="250" r="4"/>
+                            <circle cx="450" cy="100" r="4"/>
+                            <circle cx="520" cy="180" r="4"/>
+                            <circle cx="520" cy="320" r="4"/>
+                        </g>
+
+                        <!-- Test points -->
+                        <g fill="#3798E4">
+                            <circle cx="250" cy="350" r="5" opacity="0.4"/>
+                            <circle cx="280" cy="350" r="5" opacity="0.4"/>
+                            <circle cx="310" cy="350" r="5" opacity="0.4"/>
+                            <text x="280" y="375" text-anchor="middle" fill="#3798E4" font-size="8" font-family="monospace" opacity="0.5">TEST POINTS</text>
+                        </g>
+
+                        <!-- AOI Scanner indication -->
+                        <rect x="40" y="60" width="520" height="4" fill="url(#elec-bg)" opacity="0">
+                            <animate attributeName="y" values="60;386;60" dur="4s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0;0.8;0" dur="4s" repeatCount="indefinite"/>
+                        </rect>
+                        <rect x="40" y="60" width="520" height="2" fill="#22c55e" opacity="0">
+                            <animate attributeName="y" values="60;386;60" dur="4s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0;0.6;0" dur="4s" repeatCount="indefinite"/>
+                        </rect>
+
+                        <!-- Label -->
+                        <g transform="translate(20, 15)">
+                            <rect x="0" y="0" width="120" height="35" rx="4" fill="rgba(0,0,0,0.5)" stroke="#3798E4" stroke-width="1"/>
+                            <text x="10" y="15" fill="#3798E4" font-size="9" font-family="monospace">PCB-2024-A1</text>
+                            <text x="10" y="28" fill="#22c55e" font-size="9" font-family="monospace">AOI: PASS ✓</text>
+                        </g>
+                    </svg>
+                </div>
+                <div class="dw-industry-info">
+                    <h3>Electronics Assembly</h3>
+                    <p>High-mix, low-volume. Fast product cycles. Thousands of components per board. We built our MES for exactly this complexity.</p>
+                    <ul class="dw-industry-features">
+                        <li>SMT machine integration</li>
+                        <li>Component-level traceability</li>
+                        <li>MSD (moisture sensitivity) management</li>
+                        <li>AOI integration and defect tracking</li>
+                    </ul>
+                    <a href="industries/electronics.html" class="dw-btn dw-btn-primary">Explore Electronics Solutions</a>
+                </div>
+            </div>
+
+            <div class="dw-industry-content" id="industry-metal">
+                <div class="dw-industry-image">
+                    <!-- Metal & Plastics: Full-bleed CNC/injection mold facility illustration -->
+                    <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="metal-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0a0f14"/>
+                                <stop offset="50%" stop-color="#151e28"/>
+                                <stop offset="100%" stop-color="#1f2d3d"/>
+                            </linearGradient>
+                            <linearGradient id="metal-glow" x1="50%" y1="0%" x2="50%" y2="100%">
+                                <stop offset="0%" stop-color="#3798E4" stop-opacity="0.2"/>
+                                <stop offset="100%" stop-color="#3798E4" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="600" height="450" fill="url(#metal-bg)"/>
+
+                        <!-- Industrial floor grid -->
+                        <g stroke="#3798E4" stroke-width="0.5" opacity="0.1">
+                            <line x1="0" y1="400" x2="600" y2="400"/>
+                            <line x1="0" y1="420" x2="600" y2="420"/>
+                            <line x1="0" y1="440" x2="600" y2="440"/>
+                            <line x1="100" y1="360" x2="0" y2="450"/>
+                            <line x1="200" y1="360" x2="100" y2="450"/>
+                            <line x1="300" y1="360" x2="200" y2="450"/>
+                            <line x1="400" y1="360" x2="300" y2="450"/>
+                            <line x1="500" y1="360" x2="400" y2="450"/>
+                            <line x1="600" y1="360" x2="500" y2="450"/>
+                        </g>
+
+                        <!-- Large CNC Machine - Left -->
+                        <g transform="translate(30, 100)">
+                            <!-- Machine frame -->
+                            <rect x="0" y="0" width="220" height="220" rx="8" fill="rgba(55,152,228,0.06)" stroke="#3798E4" stroke-width="2"/>
+                            <!-- Working area -->
+                            <rect x="20" y="30" width="180" height="140" rx="4" fill="#0a0f14" stroke="#3798E4" stroke-width="1.5"/>
+
+                            <!-- Spindle head -->
+                            <rect x="80" y="5" width="60" height="40" rx="4" fill="rgba(55,152,228,0.2)" stroke="#3798E4" stroke-width="2"/>
+                            <rect x="100" y="45" width="20" height="60" fill="#3798E4" opacity="0.5">
+                                <animate attributeName="height" values="60;40;60" dur="1s" repeatCount="indefinite"/>
+                            </rect>
+                            <!-- Tool bit -->
+                            <path d="M105 105 L115 105 L110 130 Z" fill="#3798E4" opacity="0.8">
+                                <animate attributeName="d" values="M105 105 L115 105 L110 130 Z;M105 105 L115 105 L110 115 Z;M105 105 L115 105 L110 130 Z" dur="1s" repeatCount="indefinite"/>
+                            </path>
+
+                            <!-- Workpiece -->
+                            <rect x="60" y="140" width="100" height="25" rx="3" fill="rgba(55,152,228,0.3)" stroke="#3798E4" stroke-width="1.5"/>
+
+                            <!-- Sparks -->
+                            <g>
+                                <circle cx="110" cy="130" r="2" fill="#fbbf24">
+                                    <animate attributeName="opacity" values="0;1;0" dur="0.15s" repeatCount="indefinite"/>
+                                    <animate attributeName="cx" values="110;100;110" dur="0.3s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="110" cy="130" r="2" fill="#fbbf24">
+                                    <animate attributeName="opacity" values="0;1;0" dur="0.2s" repeatCount="indefinite"/>
+                                    <animate attributeName="cx" values="110;120;110" dur="0.25s" repeatCount="indefinite"/>
+                                </circle>
+                                <line x1="110" y1="130" x2="95" y2="120" stroke="#fbbf24" stroke-width="1">
+                                    <animate attributeName="opacity" values="0;1;0" dur="0.3s" repeatCount="indefinite"/>
+                                </line>
+                                <line x1="110" y1="130" x2="125" y2="118" stroke="#fbbf24" stroke-width="1">
+                                    <animate attributeName="opacity" values="0;1;0" dur="0.25s" repeatCount="indefinite"/>
+                                </line>
+                                <line x1="110" y1="130" x2="108" y2="115" stroke="#fbbf24" stroke-width="1">
+                                    <animate attributeName="opacity" values="0;1;0" dur="0.35s" repeatCount="indefinite"/>
+                                </line>
+                            </g>
+
+                            <!-- Control panel -->
+                            <rect x="15" y="180" width="80" height="35" rx="4" fill="rgba(55,152,228,0.15)" stroke="#3798E4" stroke-width="1"/>
+                            <circle cx="30" cy="195" r="6" fill="#22c55e">
+                                <animate attributeName="opacity" values="0.5;1;0.5" dur="1s" repeatCount="indefinite"/>
+                            </circle>
+                            <rect x="45" y="188" width="40" height="5" fill="#3798E4" opacity="0.4"/>
+                            <rect x="45" y="198" width="35" height="5" fill="#3798E4" opacity="0.4"/>
+                            <text x="110" y="200" fill="#3798E4" font-size="10" font-family="monospace">CNC-5AXIS</text>
+                        </g>
+
+                        <!-- Injection Molding Machine - Center Right -->
+                        <g transform="translate(300, 60)">
+                            <!-- Machine base -->
+                            <rect x="0" y="180" width="260" height="40" rx="4" fill="rgba(55,152,228,0.1)" stroke="#3798E4" stroke-width="2"/>
+
+                            <!-- Clamping unit - Left platen -->
+                            <rect x="30" y="60" width="50" height="120" rx="4" fill="rgba(55,152,228,0.12)" stroke="#3798E4" stroke-width="2"/>
+                            <!-- Mold - Left half -->
+                            <rect x="80" y="70" width="35" height="100" rx="2" fill="rgba(55,152,228,0.2)" stroke="#3798E4" stroke-width="1.5"/>
+
+                            <!-- Mold - Right half (moving) -->
+                            <rect x="120" y="70" width="35" height="100" rx="2" fill="rgba(55,152,228,0.2)" stroke="#3798E4" stroke-width="1.5">
+                                <animate attributeName="x" values="120;118;120" dur="3s" repeatCount="indefinite"/>
+                            </rect>
+
+                            <!-- Clamping unit - Right platen -->
+                            <rect x="160" y="60" width="50" height="120" rx="4" fill="rgba(55,152,228,0.12)" stroke="#3798E4" stroke-width="2">
+                                <animate attributeName="x" values="160;155;160" dur="3s" repeatCount="indefinite"/>
+                            </rect>
+
+                            <!-- Tie bars -->
+                            <line x1="30" y1="80" x2="210" y2="80" stroke="#3798E4" stroke-width="3" opacity="0.5"/>
+                            <line x1="30" y1="160" x2="210" y2="160" stroke="#3798E4" stroke-width="3" opacity="0.5"/>
+
+                            <!-- Injection unit -->
+                            <rect x="215" y="95" width="80" height="50" rx="4" fill="rgba(55,152,228,0.15)" stroke="#3798E4" stroke-width="2"/>
+                            <rect x="205" y="110" width="15" height="20" fill="#3798E4" opacity="0.4"/>
+                            <!-- Hopper -->
+                            <path d="M250 60 L270 60 L275 95 L245 95 Z" fill="rgba(55,152,228,0.2)" stroke="#3798E4" stroke-width="1.5"/>
+                            <text x="260" y="80" text-anchor="middle" fill="#3798E4" font-size="8" font-family="monospace" opacity="0.6">RESIN</text>
+
+                            <!-- Ejected part animation -->
+                            <ellipse cx="15" cy="120" rx="8" ry="15" fill="#3798E4" opacity="0">
+                                <animate attributeName="cx" values="115;15" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0;0;0.6;0.6;0" dur="3s" repeatCount="indefinite"/>
+                            </ellipse>
+
+                            <!-- Machine label -->
+                            <text x="130" y="210" text-anchor="middle" fill="#3798E4" font-size="11" font-family="monospace">INJ-350T</text>
+                        </g>
+
+                        <!-- Stamping Press - Bottom Left -->
+                        <g transform="translate(50, 340)">
+                            <!-- Frame -->
+                            <rect x="0" y="0" width="140" height="90" rx="4" fill="rgba(55,152,228,0.08)" stroke="#3798E4" stroke-width="2"/>
+                            <!-- Columns -->
+                            <rect x="10" y="10" width="25" height="70" fill="rgba(55,152,228,0.15)" stroke="#3798E4" stroke-width="1"/>
+                            <rect x="105" y="10" width="25" height="70" fill="rgba(55,152,228,0.15)" stroke="#3798E4" stroke-width="1"/>
+                            <!-- Ram -->
+                            <rect x="35" y="15" width="70" height="30" fill="#3798E4" opacity="0.4">
+                                <animate attributeName="y" values="15;50;15" dur="1.5s" repeatCount="indefinite"/>
+                            </rect>
+                            <!-- Die bed -->
+                            <rect x="35" y="65" width="70" height="15" fill="rgba(55,152,228,0.25)" stroke="#3798E4" stroke-width="1"/>
+                            <!-- Metal sheet feed -->
+                            <line x1="-30" y1="72" x2="35" y2="72" stroke="#3798E4" stroke-width="3"/>
+                            <line x1="105" y1="72" x2="170" y2="72" stroke="#3798E4" stroke-width="3"/>
+                            <text x="70" y="105" text-anchor="middle" fill="#3798E4" font-size="9" font-family="monospace">PRESS-200T</text>
+                        </g>
+
+                        <!-- Conveyor with parts -->
+                        <g transform="translate(200, 380)">
+                            <rect x="0" y="0" width="380" height="20" rx="3" fill="rgba(55,152,228,0.1)" stroke="#3798E4" stroke-width="1"/>
+                            <!-- Rollers -->
+                            <circle cx="20" cy="10" r="6" fill="#0a0f14" stroke="#3798E4" stroke-width="1"/>
+                            <circle cx="100" cy="10" r="6" fill="#0a0f14" stroke="#3798E4" stroke-width="1"/>
+                            <circle cx="180" cy="10" r="6" fill="#0a0f14" stroke="#3798E4" stroke-width="1"/>
+                            <circle cx="260" cy="10" r="6" fill="#0a0f14" stroke="#3798E4" stroke-width="1"/>
+                            <circle cx="340" cy="10" r="6" fill="#0a0f14" stroke="#3798E4" stroke-width="1"/>
+                            <!-- Parts on conveyor -->
+                            <rect x="50" y="-8" width="25" height="10" rx="2" fill="#3798E4" opacity="0.5">
+                                <animate attributeName="x" values="50;330;50" dur="8s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="150" y="-8" width="25" height="10" rx="2" fill="#3798E4" opacity="0.4">
+                                <animate attributeName="x" values="150;330;50;150" dur="8s" repeatCount="indefinite"/>
+                            </rect>
+                        </g>
+
+                        <!-- Overhead crane/gantry -->
+                        <g stroke="#3798E4" stroke-width="2" opacity="0.3">
+                            <line x1="0" y1="40" x2="600" y2="40"/>
+                            <rect x="280" y="40" width="60" height="30" rx="3" fill="rgba(55,152,228,0.1)" stroke="#3798E4" stroke-width="1">
+                                <animate attributeName="x" values="280;450;100;280" dur="15s" repeatCount="indefinite"/>
+                            </rect>
+                        </g>
+
+                        <!-- Status displays -->
+                        <g transform="translate(480, 100)">
+                            <rect x="0" y="0" width="100" height="100" rx="6" fill="rgba(0,0,0,0.5)" stroke="#3798E4" stroke-width="1"/>
+                            <text x="50" y="20" text-anchor="middle" fill="#3798E4" font-size="10" font-family="monospace">YIELD RATE</text>
+                            <text x="50" y="55" text-anchor="middle" fill="#22c55e" font-size="28" font-weight="bold" font-family="monospace">98.2%</text>
+                            <rect x="15" y="70" width="70" height="8" rx="2" fill="rgba(55,152,228,0.2)"/>
+                            <rect x="15" y="70" width="65" height="8" rx="2" fill="#22c55e" opacity="0.8"/>
+                            <text x="50" y="92" text-anchor="middle" fill="#3798E4" font-size="8" font-family="monospace" opacity="0.7">TARGET: 98%</text>
+                        </g>
+
+                        <!-- Ambient industrial atmosphere -->
+                        <circle cx="150" cy="200" r="100" fill="url(#metal-glow)" opacity="0.3"/>
+                        <circle cx="400" cy="150" r="80" fill="url(#metal-glow)" opacity="0.2"/>
+                    </svg>
+                </div>
+                <div class="dw-industry-info">
+                    <h3>Metal & Plastics Processing</h3>
+                    <p>Stamping, injection molding, CNC machining. Process manufacturing where yield optimization and scrap reduction drive your margins.</p>
+                    <ul class="dw-industry-features">
+                        <li>Process parameter monitoring</li>
+                        <li>Mold/die lifecycle management</li>
+                        <li>Scrap analysis and reduction</li>
+                        <li>Cycle time optimization</li>
+                    </ul>
+                    <a href="industries/metal-plastics.html" class="dw-btn dw-btn-primary">Explore Metal & Plastics Solutions</a>
+                </div>
+            </div>
+            </div><!-- end .dw-industry-wrapper -->
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="dw-stats-section">
+        <div class="dw-stats-inner">
+            <div class="dw-stat">
+                <div class="dw-stat-value dw-years">44</div>
+                <div class="dw-stat-label">Years Manufacturing Focus</div>
+            </div>
+            <div class="dw-stat">
+                <div class="dw-stat-value">50,000+</div>
+                <div class="dw-stat-label">Factories Across Asia</div>
+            </div>
+            <div class="dw-stat">
+                <div class="dw-stat-value">100+</div>
+                <div class="dw-stat-label">Thai Implementations</div>
+            </div>
+            <div class="dw-stat">
+                <div class="dw-stat-value">300378</div>
+                <div class="dw-stat-label">Shenzhen Stock Exchange</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Anchors - 4 Credibility Statements -->
+    <section class="dw-section dw-trust-section" style="background: #ffffff;">
+        <div class="dw-container">
+            <div class="dw-section-header">
+                <p class="dw-section-label">Why Trust DigiWin</p>
+                <h2 class="dw-section-title">Credibility Without Hype</h2>
+                <p class="dw-section-subtitle">We don't just claim to be different. Here's the evidence.</p>
+            </div>
+
+            <div class="dw-trust-grid">
+                <div class="dw-trust-card">
+                    <!-- Large background icon -->
+                    <div class="dw-trust-icon-bg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>
+                        </svg>
+                    </div>
+                    <div class="dw-trust-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>
+                        </svg>
+                    </div>
+                    <div class="dw-trust-badge">300378</div>
+                    <h3 class="dw-trust-title">Financial Stability</h3>
+                    <p class="dw-trust-headline">We are a publicly traded company with transparent financials—the stability partners and clients need for a 10-year relationship.</p>
+                    <p class="dw-trust-detail">Unlike "fly-by-night" software houses or small local vendors who might go bankrupt, DigiWin is a Shenzhen-listed company with regulated governance. Proves vendor is a permanent entity with capital to support partners long-term.</p>
+                </div>
+
+                <div class="dw-trust-card">
+                    <!-- Large background icon -->
+                    <div class="dw-trust-icon-bg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <div class="dw-trust-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <div class="dw-trust-badge">Foxconn FII</div>
+                    <h3 class="dw-trust-title">Manufacturing DNA</h3>
+                    <p class="dw-trust-headline">Strategic investment from Foxconn Industrial Internet validates our software handles the world's largest electronics manufacturer.</p>
+                    <p class="dw-trust-detail">This isn't just "IT software"—it's Industrial Reality. When the company that builds iPhones trusts DigiWin, it proves "Smart Factory" capabilities at the highest level of complexity.</p>
+                </div>
+
+                <div class="dw-trust-card">
+                    <!-- Large background icon -->
+                    <div class="dw-trust-icon-bg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <div class="dw-trust-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <div class="dw-trust-badge">Since 1982</div>
+                    <h3 class="dw-trust-title">Domain Endurance</h3>
+                    <p class="dw-trust-headline">We have spent <span class="dw-years">44</span> years exclusively in manufacturing software—built on decades of shop-floor reality, not temporary tech trends.</p>
+                    <p class="dw-trust-detail">DigiWin has survived every technology shift (DOS → Windows → Cloud) while staying focused on manufacturing. We didn't pivot to crypto or retail POS when it was trendy.</p>
+                </div>
+
+                <div class="dw-trust-card">
+                    <!-- Large background icon -->
+                    <div class="dw-trust-icon-bg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <div class="dw-trust-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <div class="dw-trust-badge">50,000+</div>
+                    <h3 class="dw-trust-title">Scale Proof</h3>
+                    <p class="dw-trust-headline">Our methodology is refined from 50,000+ implementations across Asia—adopt a proven standard, not a beta product.</p>
+                    <p class="dw-trust-detail">The software logic has been battle-tested in thousands of Asian factories. It handles specific complexities (Thai tax, sub-contracting, circular BOMs) that break smaller systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="dw-cta-section">
+        <div class="dw-cta-inner">
+            <h2 class="dw-cta-title">Let's Start a Conversation</h2>
+            <p class="dw-cta-subtitle">We're eager to understand your challenges and explore how we can help. No pressure, no sales pitch—just a genuine conversation about your manufacturing operations.</p>
+            <div class="dw-cta-buttons">
+                <a href="demo.html" class="dw-btn dw-btn-white">Talk to Our Team</a>
+                <a href="partner-program.html" class="dw-btn dw-btn-outline-white">Explore Partnership</a>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="dw-footer">
+        <div class="dw-footer-inner">
+            <div class="dw-footer-grid">
+                <div class="dw-footer-brand">
+                    <div class="dw-footer-logo">Digi<span>Win</span></div>
+                    <p class="dw-footer-tagline"><span class="dw-years">44</span> years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
+                    <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Products</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="products/erp.html">ERP: T100 & iGP</a></li>
+                        <li><a href="products/mes.html">MES: sMES & SFT</a></li>
+                        <li><a href="products/wms.html">WMS: sFLS</a></li>
+                        <li><a href="products/aiot.html">AIoT & Smart Factory</a></li>
+                    </ul>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Industries</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="industries.html">All Industries</a></li>
+                        <li><a href="industries/automotive.html">Automotive Parts</a></li>
+                        <li><a href="industries/electronics.html">Electronics Assembly</a></li>
+                        <li><a href="industries/metal-plastics.html">Metal & Plastics</a></li>
+                    </ul>
+                    <h4 style="margin-top: 24px;">Partners</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="partner-program.html">Partner Program</a></li>
+                        <li><a href="partner-program/economics.html">Partner Economics</a></li>
+                    </ul>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Contact</h4>
+                    <div class="dw-footer-contact">
+                        <p>
+                            <strong>DigiWin Thailand</strong><br>
+                            Bangkok Office
+                        </p>
+                        <p>
+                            <a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a>
+                        </p>
+                    </div>
+                    <div class="dw-footer-social">
+                        <a href="#" title="LinkedIn">in</a>
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="LINE">L</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dw-footer-bottom">
+                <p class="dw-footer-copyright">© 2026 DigiWin Thailand. All rights reserved.</p>
+                <div class="dw-footer-legal">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="about.html">About Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+    (function() {
+        // Header scroll effect
+        const header = document.querySelector('.dw-header');
+        if (header) {
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        }
+
+        // Dropdown menus
+        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
+        dropdowns.forEach(function(item) {
+            const menu = item.querySelector('.dw-mega-menu');
+            const link = item.querySelector('.dw-nav-link');
+            item.addEventListener('mouseenter', function() {
+                dropdowns.forEach(function(other) {
+                    if (other !== item) {
+                        other.classList.remove('active');
+                        const otherMenu = other.querySelector('.dw-mega-menu');
+                        if (otherMenu) otherMenu.classList.remove('active');
+                    }
+                });
+                item.classList.add('active');
+                if (menu) menu.classList.add('active');
+            });
+            item.addEventListener('mouseleave', function() {
+                item.classList.remove('active');
+                if (menu) menu.classList.remove('active');
+            });
+            if (link) {
+                link.addEventListener('click', function(e) {
+                    if (menu) {
+                        e.preventDefault();
+                        item.classList.toggle('active');
+                        menu.classList.toggle('active');
+                    }
+                });
+            }
+        });
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.dw-nav-item[data-dropdown]')) {
+                dropdowns.forEach(function(item) {
+                    item.classList.remove('active');
+                    const menu = item.querySelector('.dw-mega-menu');
+                    if (menu) menu.classList.remove('active');
+                });
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.dw-menu-toggle');
+        const nav = document.querySelector('.dw-nav');
+        if (menuToggle && nav) {
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('dw-nav--open');
+            });
+        }
+
+        // Industry tabs
+        const industryTabs = document.querySelectorAll('.dw-industry-tab');
+        const industryContents = document.querySelectorAll('.dw-industry-content');
+
+        industryTabs.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                const industry = this.getAttribute('data-industry');
+
+                // Update active tab
+                industryTabs.forEach(function(t) { t.classList.remove('active'); });
+                this.classList.add('active');
+
+                // Update active content
+                industryContents.forEach(function(content) {
+                    content.classList.remove('active');
+                });
+                document.getElementById('industry-' + industry).classList.add('active');
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Add staggered animation delays (faster fade-in)
+        document.querySelectorAll('.dw-value-prop, .dw-check-card, .dw-trust-card, .dw-client-logo').forEach(function(el, index) {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.4s ease ' + (index * 0.07) + 's, transform 0.4s ease ' + (index * 0.07) + 's';
+            observer.observe(el);
+        });
+
+        // Client stats animation
+        const clientStats = document.querySelectorAll('.dw-clients-stat');
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        clientStats.forEach(function(el) {
+            statsObserver.observe(el);
+        });
+    })();
+    </script>
+    <script src="digiwin-dynamic.js"></script>
+</body>
+</html>

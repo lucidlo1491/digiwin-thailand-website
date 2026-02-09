@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industries - DigiWin Thailand</title>
+    <link rel="stylesheet" href="{{basePath}}styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #253B50;
+            --navy-deep: #0f1419;
+            --navy-mid: #1a2632;
+            --blue: #3798E4;
+            --blue-light: #0ea5e9;
+            --gray-light: #F5F7FA;
+            --white: #ffffff;
+        }
+
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-2%, -2%); }
+            20% { transform: translate(2%, 2%); }
+            30% { transform: translate(-1%, 1%); }
+            40% { transform: translate(1%, -1%); }
+            50% { transform: translate(-2%, 1%); }
+        }
+
+        @keyframes slide-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        .industries-hero {
+            background: linear-gradient(165deg, var(--navy-deep) 0%, var(--navy-mid) 40%, var(--navy) 100%);
+            padding: 160px 0 120px;
+            position: relative;
+            overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Grain texture overlay */
+        .industries-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            animation: grain 8s steps(10) infinite;
+        }
+
+        /* Gradient overlays */
+        .industries-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 70% 30%, rgba(55, 152, 228, 0.12) 0%, transparent 50%),
+                        radial-gradient(ellipse at 30% 80%, rgba(55, 152, 228, 0.08) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .industries-hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            animation: slide-up 0.8s ease-out;
+        }
+        .industries-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(55, 152, 228, 0.1);
+            border: 1px solid rgba(55, 152, 228, 0.3);
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: var(--blue);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 28px;
+        }
+        .industries-hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--blue);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        .industries-hero h1 {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(40px, 5vw, 56px);
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 24px 0;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+        .industries-hero h1 span {
+            color: var(--blue);
+        }
+        .industries-hero-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 19px;
+            color: rgba(255,255,255,0.75);
+            max-width: 680px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        .industries-hero-stats {
+            display: flex;
+            gap: 48px;
+            justify-content: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .industries-hero-stat {
+            text-align: center;
+        }
+        .industries-hero-stat-number {
+            font-family: 'Lexend', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--blue);
+            letter-spacing: -0.02em;
+        }
+        .industries-hero-stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 6px;
+        }
+
+        /* Thailand Context Section */
+        .context-section {
+            padding: 120px 0;
+            background: var(--white);
+            position: relative;
+        }
+        .context-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--blue), transparent);
+        }
+        .context-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .context-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .context-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .context-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        .context-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .context-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        .context-stat {
+            text-align: center;
+            padding: 40px 24px;
+            background: var(--gray-light);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            border: 1px solid transparent;
+        }
+        .context-stat:hover {
+            background: var(--white);
+            border-color: rgba(55, 152, 228, 0.2);
+            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.1);
+            transform: translateY(-4px);
+        }
+        .context-stat-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 44px;
+            font-weight: 800;
+            color: var(--blue);
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+        .context-stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 12px;
+            line-height: 1.4;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Industry Cards Section */
+        .industries-section {
+            padding: 120px 0;
+            background: var(--gray-light);
+            position: relative;
+        }
+        .industries-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle, rgba(55, 152, 228, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+        .industries-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+        .industries-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .industries-header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+        .industries-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        .industries-header p {
+            font-size: 18px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+        .industry-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+        }
+        .industry-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            border: 1px solid #e8eef3;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        .industry-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .industry-card:hover {
+            box-shadow: 0 24px 64px rgba(55, 152, 228, 0.18);
+            transform: translateY(-8px);
+            border-color: transparent;
+        }
+        .industry-card:nth-child(even) {
+            direction: rtl;
+        }
+        .industry-card:nth-child(even) > * {
+            direction: ltr;
+        }
+        .industry-card-visual {
+            background: linear-gradient(165deg, var(--navy-deep) 0%, var(--navy-mid) 50%, var(--navy) 100%);
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .industry-card-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+        .industry-card-icon {
+            width: 100px;
+            height: 100px;
+            background: rgba(55, 152, 228, 0.15);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.2));
+        }
+        .industry-card-icon svg {
+            width: 52px;
+            height: 52px;
+            stroke: #fff;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .industry-card-stat {
+            color: #fff;
+        }
+        .industry-card-stat-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 52px;
+            font-weight: 800;
+            color: var(--blue);
+            letter-spacing: -0.02em;
+        }
+        .industry-card-stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .industry-card-content {
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .industry-card-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 28px;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .industry-card-desc {
+            font-size: 16px;
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        .industry-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .industry-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #475569;
+        }
+        .industry-feature svg {
+            width: 16px;
+            height: 16px;
+            color: #3798E4;
+            flex-shrink: 0;
+        }
+        .industry-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #3798E4;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+        .industry-card:hover .industry-card-link {
+            gap: 12px;
+        }
+
+        /* Universal Challenges Section */
+        .challenges-section {
+            padding: 100px 0;
+            background: #fff;
+        }
+        .challenges-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .challenges-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .challenges-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 36px;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .challenges-header p {
+            font-size: 18px;
+            color: #64748b;
+        }
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .challenge-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .challenge-card:hover {
+            border-color: #3798E4;
+            box-shadow: 0 8px 30px rgba(55, 152, 228, 0.12);
+            transform: translateY(-4px);
+        }
+        .challenge-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, rgba(55, 152, 228, 0.1), rgba(55, 152, 228, 0.05));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: all 0.4s ease;
+        }
+        .challenge-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: #3798E4;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .challenge-card:hover .challenge-icon {
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+        }
+        .challenge-card:hover .challenge-icon svg {
+            stroke: #fff;
+        }
+        .challenge-card h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 20px;
+            color: #253B50;
+            margin-bottom: 12px;
+        }
+        .challenge-card p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Approach Section */
+        .approach-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #253B50 0%, #1a2e40 100%);
+        }
+        .approach-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .approach-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .approach-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 36px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .approach-header p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.7);
+        }
+        .approach-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .approach-step {
+            text-align: center;
+        }
+        .approach-step-number {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #3798E4, #2563eb);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Lexend', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 auto 20px;
+        }
+        .approach-step h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .approach-step p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #3798E4 0%, #2563eb 100%);
+            text-align: center;
+        }
+        .cta-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .cta-section h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .cta-section p {
+            font-size: 20px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+        .cta-btn-primary {
+            background: #fff;
+            color: #3798E4;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .cta-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .cta-btn-secondary {
+            background: transparent;
+            color: #fff;
+            padding: 16px 32px;
+            border: 2px solid rgba(255,255,255,0.4);
+            border-radius: 8px;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .cta-btn-secondary:hover {
+            border-color: #fff;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .industries-hero h1 { font-size: 40px; }
+            .context-stats { grid-template-columns: repeat(2, 1fr); }
+            .industry-card { grid-template-columns: 1fr; }
+            .industry-card:nth-child(even) { direction: ltr; }
+            .challenges-grid { grid-template-columns: repeat(2, 1fr); }
+            .approach-steps { grid-template-columns: 1fr; gap: 40px; }
+        }
+        @media (max-width: 640px) {
+            .industries-hero { padding: 120px 0 80px; }
+            .industries-hero h1 { font-size: 32px; }
+            .industries-hero-subtitle { font-size: 17px; }
+            .context-stats { grid-template-columns: 1fr; }
+            .context-stat-value { font-size: 32px; }
+            .industry-card-visual { padding: 40px; }
+            .industry-card-content { padding: 32px; }
+            .industry-card-title { font-size: 24px; }
+            .industry-features { grid-template-columns: 1fr; }
+            .challenges-grid { grid-template-columns: 1fr; }
+            .cta-section h2 { font-size: 28px; }
+            .cta-buttons { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+{{header}}
+
+    <!-- Hero Section -->
+    <section class="industries-hero">
+        <div class="industries-hero-inner">
+            <div class="industries-hero-badge">
+                <span>Deep Manufacturing Expertise</span>
+            </div>
+            <h1>Built for <span>Your Industry</span></h1>
+            <p class="industries-hero-subtitle">We don't just understand manufacturing—we understand YOUR manufacturing. <span class="dw-years">44</span> years of vertical expertise in ASEAN's core industrial sectors.</p>
+            <div class="industries-hero-stats">
+                <div class="industries-hero-stat">
+                    <div class="industries-hero-stat-number dw-years">44</div>
+                    <div class="industries-hero-stat-label">Years Focus</div>
+                </div>
+                <div class="industries-hero-stat">
+                    <div class="industries-hero-stat-number">50K+</div>
+                    <div class="industries-hero-stat-label">Factories</div>
+                </div>
+                <div class="industries-hero-stat">
+                    <div class="industries-hero-stat-number">100+</div>
+                    <div class="industries-hero-stat-label">Thai Customers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thailand Context Section -->
+    <section class="context-section">
+        <div class="context-inner">
+            <p class="context-label">Market Context</p>
+            <div class="context-header">
+                <h2>Thailand: ASEAN's Manufacturing Hub</h2>
+                <p>The region's most mature industrial ecosystem, with deep supply chains and demanding global customers</p>
+            </div>
+            <div class="context-stats">
+                <div class="context-stat">
+                    <div class="context-stat-value">#1</div>
+                    <div class="context-stat-label">ASEAN auto production</div>
+                </div>
+                <div class="context-stat">
+                    <div class="context-stat-value">2,500+</div>
+                    <div class="context-stat-label">Auto parts suppliers</div>
+                </div>
+                <div class="context-stat">
+                    <div class="context-stat-value">$40B</div>
+                    <div class="context-stat-label">Electronics exports</div>
+                </div>
+                <div class="context-stat">
+                    <div class="context-stat-value">10%</div>
+                    <div class="context-stat-label">GDP from manufacturing</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Cards Section -->
+    <section class="industries-section">
+        <div class="industries-inner">
+            <p class="industries-label">Specialized Solutions</p>
+            <div class="industries-header">
+                <h2>Choose Your Industry</h2>
+                <p>Specialized solutions for Thailand's core manufacturing sectors</p>
+            </div>
+            <div class="industry-cards">
+                <!-- Automotive -->
+                <a href="{{basePath}}industries/automotive.html" class="industry-card">
+                    <div class="industry-card-visual">
+                        <div class="industry-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M7 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/><path d="M5 15H3V9l2-4h10l4 4v6h-2"/><path d="M9 15h6"/><path d="M5 9h14"/></svg>
+                        </div>
+                        <div class="industry-card-stat">
+                            <div class="industry-card-stat-value">500+</div>
+                            <div class="industry-card-stat-label">Tier 1-3 suppliers served</div>
+                        </div>
+                    </div>
+                    <div class="industry-card-content">
+                        <h3 class="industry-card-title">Automotive Parts Manufacturing</h3>
+                        <p class="industry-card-desc">Thailand is ASEAN's Detroit. We understand what tier-1 OEMs demand: perfect lot traceability, JIT delivery schedules, and EDI integration that actually works with Toyota, Honda, and Denso systems.</p>
+                        <div class="industry-features">
+                            <div class="industry-feature">
+                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                <span>OEM EDI integration</span>
+                            </div>
+                            <div class="industry-feature">
+                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                <span>IATF 16949 compliance</span>
+                            </div>
+                            <div class="industry-feature">
+                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                <span>Lot-level traceability</span>
+                            </div>
+                            <div class="industry-feature">
+                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                <span>Kanban & JIT</span>
+                            </div>
+                        </div>
+                        <span class="industry-card-link">Explore Automotive Solutions <span>→</span></span>
+                    </div>
+                </a>
+
+                <!-- Electronics -->
+                <a href="{{basePath}}industries/electronics.html" class="industry-card">
+                    <div class="industry-card-visual">
+                        <div class="industry-card-icon">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <div class="industry-card-stat">
+                            <div class="industry-card-stat-value">1000+</div>
+                            <div class="industry-card-stat-label">Component types tracked</div>
+                        </div>
+                    </div>
+                    <div class="industry-card-content">
+                        <h3 class="industry-card-title">Electronics Assembly</h3>
+                        <p class="industry-card-desc">High-mix, low-volume. Fast product cycles. Thousands of components per board. Moisture-sensitive parts. We built our MES specifically for this complexity.</p>
+                        <div class="industry-features">
+                            <div class="industry-feature">
+                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                <span>SMT integration</span>
+                            </div>
+                            <div class="industry-feature">
+                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                <span>Component traceability</span>
+                            </div>
+                            <div class="industry-feature">
+                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                <span>MSD management</span>
+                            </div>
+                            <div class="industry-feature">
+                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                <span>AOI integration</span>
+                            </div>
+                        </div>
+                        <span class="industry-card-link">Explore Electronics Solutions <span>→</span></span>
+                    </div>
+                </a>
+
+                <!-- Metal & Plastics -->
+                <a href="{{basePath}}industries/metal-plastics.html" class="industry-card">
+                    <div class="industry-card-visual">
+                        <div class="industry-card-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        </div>
+                        <div class="industry-card-stat">
+                            <div class="industry-card-stat-value">15%</div>
+                            <div class="industry-card-stat-label">Average yield improvement</div>
+                        </div>
+                    </div>
+                    <div class="industry-card-content">
+                        <h3 class="industry-card-title">Metal & Plastics Processing</h3>
+                        <p class="industry-card-desc">Stamping, injection molding, die casting, CNC machining. Process manufacturing where yield optimization and scrap reduction directly drive your margins.</p>
+                        <div class="industry-features">
+                            <div class="industry-feature">
+                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                <span>Process monitoring</span>
+                            </div>
+                            <div class="industry-feature">
+                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                <span>Mold/die tracking</span>
+                            </div>
+                            <div class="industry-feature">
+                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                <span>Scrap analysis</span>
+                            </div>
+                            <div class="industry-feature">
+                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                                <span>Cycle optimization</span>
+                            </div>
+                        </div>
+                        <span class="industry-card-link">Explore Metal & Plastics Solutions <span>→</span></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Universal Challenges Section -->
+    <section class="challenges-section">
+        <div class="challenges-inner">
+            <div class="challenges-header">
+                <h2>What Every Factory Needs</h2>
+                <p>Regardless of industry, these challenges are universal</p>
+            </div>
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/></svg>
+                    </div>
+                    <h3>Visibility</h3>
+                    <p>Know what's happening on your floor—right now, not tomorrow morning in a report.</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <h3>Traceability</h3>
+                    <p>Answer any customer audit question in minutes, not days of spreadsheet hunting.</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+                    </div>
+                    <h3>Control</h3>
+                    <p>Costs, quality, delivery—manage them proactively instead of fighting fires.</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+                    </div>
+                    <h3>Efficiency</h3>
+                    <p>Do more with the same resources. Grow revenue without growing headcount proportionally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="approach-section">
+        <div class="approach-inner">
+            <div class="approach-header">
+                <h2>Our Approach</h2>
+                <p>How we help you succeed, regardless of your starting point</p>
+            </div>
+            <div class="approach-steps">
+                <div class="approach-step">
+                    <div class="approach-step-number">1</div>
+                    <h3>Understand</h3>
+                    <p>We start by understanding your specific challenges—not pushing a generic solution. Every factory is different.</p>
+                </div>
+                <div class="approach-step">
+                    <div class="approach-step-number">2</div>
+                    <h3>Design</h3>
+                    <p>We design a solution that matches your maturity level. Start where you are, not where you "should" be.</p>
+                </div>
+                <div class="approach-step">
+                    <div class="approach-step-number">3</div>
+                    <h3>Deliver</h3>
+                    <p>We implement in phases, delivering value quickly. You see ROI before the full project is complete.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-inner">
+            <h2>Let's Talk About Your Factory</h2>
+            <p>Every factory is different. Let us understand yours.</p>
+            <div class="cta-buttons">
+                <a href="{{basePath}}demo.html" class="cta-btn-primary">Get in Touch</a>
+                <a href="{{basePath}}products.html" class="cta-btn-secondary">View Products</a>
+            </div>
+        </div>
+    </section>
+{{footer}}
+
+
+    <script>
+    (function() {
+        // Dropdown menus
+        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
+        dropdowns.forEach(function(item) {
+            const menu = item.querySelector('.dw-mega-menu');
+            item.addEventListener('mouseenter', function() {
+                dropdowns.forEach(function(other) { if (other !== item) { other.classList.remove('active'); const m = other.querySelector('.dw-mega-menu'); if (m) m.classList.remove('active'); }});
+                item.classList.add('active'); if (menu) menu.classList.add('active');
+            });
+            item.addEventListener('mouseleave', function() { item.classList.remove('active'); if (menu) menu.classList.remove('active'); });
+        });
+
+        // Scroll-triggered animations for industry cards
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -60px 0px'
+        };
+
+        const cardObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const card = entry.target;
+                    const cards = Array.from(document.querySelectorAll('.industry-card'));
+                    const cardIndex = cards.indexOf(card);
+
+                    setTimeout(function() {
+                        card.classList.add('visible');
+                    }, cardIndex * 150);
+
+                    cardObserver.unobserve(card);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.industry-card').forEach(function(card) {
+            cardObserver.observe(card);
+        });
+
+        // Challenge cards animation
+        const challengeObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const cards = Array.from(document.querySelectorAll('.challenge-card'));
+                    const cardIndex = cards.indexOf(entry.target);
+
+                    setTimeout(function() {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, cardIndex * 100);
+
+                    challengeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.challenge-card').forEach(function(card) {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            challengeObserver.observe(card);
+        });
+
+        // Context stats animation
+        const statObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const stats = Array.from(document.querySelectorAll('.context-stat'));
+                    const statIndex = stats.indexOf(entry.target);
+
+                    setTimeout(function() {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, statIndex * 80);
+
+                    statObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.context-stat').forEach(function(stat) {
+            stat.style.opacity = '0';
+            stat.style.transform = 'translateY(20px)';
+            stat.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            statObserver.observe(stat);
+        });
+    })();
+    </script>
+    <script src="{{basePath}}digiwin-dynamic.js"></script>
+</body>
+</html>

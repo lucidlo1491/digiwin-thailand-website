@@ -1,0 +1,148 @@
+{
+  "sections": [
+    {
+      "type": "et_pb_section",
+      "attrs": {
+        "background_color": "#F5F7FA",
+        "custom_padding": "80px||80px||true|false"
+      },
+      "children": [
+        {
+          "type": "et_pb_row",
+          "attrs": {
+            "column_structure": "4_4",
+            "custom_padding": "0px||40px||false|false"
+          },
+          "children": [
+            {
+              "type": "et_pb_column",
+              "attrs": { "type": "4_4" },
+              "children": [
+                {
+                  "type": "et_pb_text",
+                  "attrs": {
+                    "content": "<h2 style='text-align: center; color: #333333; font-size: 36px; font-weight: 700;'>Complete Manufacturing Software Stack</h2>",
+                    "text_orientation": "center"
+                  }
+                },
+                {
+                  "type": "et_pb_text",
+                  "attrs": {
+                    "content": "<p style='text-align: center; color: #666666; font-size: 18px; max-width: 600px; margin: 0 auto;'>From shop floor to top floor—integrated solutions that speak the language of manufacturing.</p>",
+                    "text_orientation": "center"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "et_pb_row",
+          "attrs": {
+            "column_structure": "1_4,1_4,1_4,1_4",
+            "use_custom_gutter": "on",
+            "gutter_width": "3"
+          },
+          "children": [
+            {
+              "type": "et_pb_column",
+              "attrs": { "type": "1_4" },
+              "children": [
+                {
+                  "type": "et_pb_blurb",
+                  "attrs": {
+                    "title": "ERP",
+                    "content": "<p>Manufacturing-native ERP built over 44 years. BOM, MRP, production scheduling, and costing—all in one system.</p>",
+                    "use_icon": "on",
+                    "font_icon": "&#xe0e3;",
+                    "icon_color": "#3798E4",
+                    "icon_placement": "top",
+                    "content_max_width": "100%",
+                    "header_font": "|||on|||||",
+                    "header_text_color": "#333333",
+                    "body_text_color": "#666666",
+                    "text_orientation": "center",
+                    "url": "/products/erp",
+                    "url_new_window": "off"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "et_pb_column",
+              "attrs": { "type": "1_4" },
+              "children": [
+                {
+                  "type": "et_pb_blurb",
+                  "attrs": {
+                    "title": "MES",
+                    "content": "<p>Real-time production tracking. Know exactly what's happening on every line, every shift, every second.</p>",
+                    "use_icon": "on",
+                    "font_icon": "&#xe0b8;",
+                    "icon_color": "#3798E4",
+                    "icon_placement": "top",
+                    "content_max_width": "100%",
+                    "header_font": "|||on|||||",
+                    "header_text_color": "#333333",
+                    "body_text_color": "#666666",
+                    "text_orientation": "center",
+                    "url": "/products/mes",
+                    "url_new_window": "off"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "et_pb_column",
+              "attrs": { "type": "1_4" },
+              "children": [
+                {
+                  "type": "et_pb_blurb",
+                  "attrs": {
+                    "title": "WMS",
+                    "content": "<p>Zero ghost inventory. Real-time warehouse visibility from receiving dock to shipping bay.</p>",
+                    "use_icon": "on",
+                    "font_icon": "&#xe0e8;",
+                    "icon_color": "#3798E4",
+                    "icon_placement": "top",
+                    "content_max_width": "100%",
+                    "header_font": "|||on|||||",
+                    "header_text_color": "#333333",
+                    "body_text_color": "#666666",
+                    "text_orientation": "center",
+                    "url": "/products/wms",
+                    "url_new_window": "off"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "et_pb_column",
+              "attrs": { "type": "1_4" },
+              "children": [
+                {
+                  "type": "et_pb_blurb",
+                  "attrs": {
+                    "title": "AIoT",
+                    "content": "<p>Smart factory connectivity. Machine data, predictive maintenance, and OEE dashboards in real-time.</p>",
+                    "use_icon": "on",
+                    "font_icon": "&#xe0c3;",
+                    "icon_color": "#3798E4",
+                    "icon_placement": "top",
+                    "content_max_width": "100%",
+                    "header_font": "|||on|||||",
+                    "header_text_color": "#333333",
+                    "body_text_color": "#666666",
+                    "text_orientation": "center",
+                    "url": "/products/aiot",
+                    "url_new_window": "off"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "sections": [
+    {
+      "type": "et_pb_section",
+      "attrs": {
+        "background_color": "#FFFFFF",
+        "custom_padding": "60px||60px||true|false"
+      },
+      "children": [
+        {
+          "type": "et_pb_row",
+          "attrs": {
+            "column_structure": "4_4",
+            "custom_padding": "0px||30px||false|false"
+          },
+          "children": [
+            {
+              "type": "et_pb_column",
+              "attrs": {
+                "type": "4_4"
+              },
+              "children": [
+                {
+                  "type": "et_pb_text",
+                  "attrs": {
+                    "content": "<p style='text-align: center; color: #666666; font-size: 14px; text-transform: uppercase; letter-spacing: 2px;'>Trusted by 50,000+ Manufacturers Worldwide</p>",
+                    "text_orientation": "center"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "et_pb_row",
+          "attrs": {
+            "column_structure": "1_4,1_4,1_4,1_4",
+            "custom_padding": "0px||0px||false|false",
+            "_comment": "Stats fallback - replace with logo carousel when client logos available"
+          },
+          "children": [
+            {
+              "type": "et_pb_column",
+              "attrs": { "type": "1_4" },
+              "children": [
+                {
+                  "type": "et_pb_number_counter",
+                  "attrs": {
+                    "title": "Years in Manufacturing",
+                    "number": "44",
+                    "percent_sign": "off",
+                    "counter_color": "#3798E4",
+                    "title_font": "||||||||",
+                    "title_text_color": "#666666",
+                    "number_font": "|||on|||||",
+                    "text_orientation": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "et_pb_column",
+              "attrs": { "type": "1_4" },
+              "children": [
+                {
+                  "type": "et_pb_number_counter",
+                  "attrs": {
+                    "title": "Clients Worldwide",
+                    "number": "50000",
+                    "percent_sign": "off",
+                    "counter_color": "#3798E4",
+                    "title_font": "||||||||",
+                    "title_text_color": "#666666",
+                    "number_font": "|||on|||||",
+                    "text_orientation": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "et_pb_column",
+              "attrs": { "type": "1_4" },
+              "children": [
+                {
+                  "type": "et_pb_number_counter",
+                  "attrs": {
+                    "title": "Thai Implementations",
+                    "number": "100",
+                    "percent_sign": "off",
+                    "counter_color": "#3798E4",
+                    "title_font": "||||||||",
+                    "title_text_color": "#666666",
+                    "number_font": "|||on|||||",
+                    "text_orientation": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "et_pb_column",
+              "attrs": { "type": "1_4" },
+              "children": [
+                {
+                  "type": "et_pb_number_counter",
+                  "attrs": {
+                    "title": "Thai Staff Members",
+                    "number": "50",
+                    "percent_sign": "off",
+                    "counter_color": "#3798E4",
+                    "title_font": "||||||||",
+                    "title_text_color": "#666666",
+                    "number_font": "|||on|||||",
+                    "text_orientation": "center"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

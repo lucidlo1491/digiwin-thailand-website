@@ -1,0 +1,142 @@
+{
+  "sections": [
+    {
+      "type": "et_pb_section",
+      "attrs": {
+        "fullwidth": "on",
+        "background_color": "#253B50",
+        "background_image": "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1920",
+        "background_blend": "overlay",
+        "custom_padding": "0px||0px||false|false"
+      },
+      "children": [
+        {
+          "type": "et_pb_fullwidth_header",
+          "attrs": {
+            "title": "",
+            "subhead": "",
+            "background_overlay_color": "rgba(37,59,80,0.7)",
+            "content_max_width": "100%",
+            "custom_padding": "0px||0px||false|false"
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "et_pb_section",
+      "attrs": {
+        "background_color": "#253B50",
+        "background_image": "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1920",
+        "background_blend": "overlay",
+        "custom_padding": "100px||100px||true|false",
+        "background_overlay_color": "rgba(37,59,80,0.7)"
+      },
+      "children": [
+        {
+          "type": "et_pb_row",
+          "attrs": {
+            "column_structure": "1_2,1_2",
+            "use_custom_gutter": "on",
+            "gutter_width": "1",
+            "custom_padding": "0px||0px||false|false"
+          },
+          "children": [
+            {
+              "type": "et_pb_column",
+              "attrs": {
+                "type": "1_2",
+                "background_color": "rgba(55,152,228,0.15)",
+                "custom_padding": "60px|40px|60px|40px|true|true"
+              },
+              "children": [
+                {
+                  "type": "et_pb_text",
+                  "attrs": {
+                    "content": "<p style='color: #3798E4; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;'>For Manufacturers</p>",
+                    "text_orientation": "left"
+                  }
+                },
+                {
+                  "type": "et_pb_text",
+                  "attrs": {
+                    "content": "<h1 style='color: #FFFFFF; font-size: 42px; font-weight: 700; line-height: 1.2; margin-bottom: 20px;'>Smarter Manufacturing Starts Here</h1>",
+                    "text_orientation": "left"
+                  }
+                },
+                {
+                  "type": "et_pb_text",
+                  "attrs": {
+                    "content": "<p style='color: rgba(255,255,255,0.85); font-size: 18px; line-height: 1.6;'>ERP, MES, and WMS solutions built exclusively for manufacturing. 44 years of shop floor expertise. 100+ Thai implementations.</p>",
+                    "text_orientation": "left"
+                  }
+                },
+                {
+                  "type": "et_pb_button",
+                  "attrs": {
+                    "button_text": "Explore Solutions",
+                    "button_url": "/products",
+                    "button_alignment": "left",
+                    "custom_button": "on",
+                    "button_bg_color": "#3798E4",
+                    "button_text_color": "#FFFFFF",
+                    "button_border_radius": "4px",
+                    "button_font": "||||||||",
+                    "custom_margin": "20px||||false|false"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "et_pb_column",
+              "attrs": {
+                "type": "1_2",
+                "background_color": "rgba(37,59,80,0.9)",
+                "custom_padding": "60px|40px|60px|40px|true|true"
+              },
+              "children": [
+                {
+                  "type": "et_pb_text",
+                  "attrs": {
+                    "content": "<p style='color: #4CAF50; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;'>For Partners</p>",
+                    "text_orientation": "left"
+                  }
+                },
+                {
+                  "type": "et_pb_text",
+                  "attrs": {
+                    "content": "<h1 style='color: #FFFFFF; font-size: 42px; font-weight: 700; line-height: 1.2; margin-bottom: 20px;'>Grow Your Consulting Business</h1>",
+                    "text_orientation": "left"
+                  }
+                },
+                {
+                  "type": "et_pb_text",
+                  "attrs": {
+                    "content": "<p style='color: rgba(255,255,255,0.85); font-size: 18px; line-height: 1.6;'>Stop selling man-days. Start building recurring revenue with manufacturing software that creates client dependency.</p>",
+                    "text_orientation": "left"
+                  }
+                },
+                {
+                  "type": "et_pb_button",
+                  "attrs": {
+                    "button_text": "Partner Program",
+                    "button_url": "/partner-program",
+                    "button_alignment": "left",
+                    "custom_button": "on",
+                    "button_bg_color": "transparent",
+                    "button_text_color": "#FFFFFF",
+                    "button_border_width": "2px",
+                    "button_border_color": "#FFFFFF",
+                    "button_border_radius": "4px",
+                    "button_font": "||||||||",
+                    "custom_margin": "20px||||false|false"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

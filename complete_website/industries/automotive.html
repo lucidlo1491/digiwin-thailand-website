@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automotive Parts Manufacturing - DigiWin Thailand</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .auto-hero {
+            background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+            padding: 140px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .auto-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233798E4' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .auto-hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        .auto-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(55, 152, 228, 0.2);
+            border: 1px solid rgba(55, 152, 228, 0.3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: #7EC8F2;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+        .auto-hero h1 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.15;
+        }
+        .auto-hero h1 span {
+            color: #3798E4;
+        }
+        .auto-hero-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 20px;
+            color: rgba(255,255,255,0.85);
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+        }
+        .auto-hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+        }
+        .auto-hero-stat {
+            text-align: center;
+        }
+        .auto-hero-stat-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #3798E4;
+        }
+        .auto-hero-stat-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            margin-top: 4px;
+        }
+
+        /* Context Section */
+        .context-section {
+            padding: 100px 0;
+            background: #fff;
+        }
+        .context-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+        .context-inner h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 36px;
+            color: #253B50;
+            margin-bottom: 24px;
+        }
+        .context-inner p {
+            font-size: 18px;
+            color: #64748b;
+            line-height: 1.8;
+        }
+        .context-inner p strong {
+            color: #253B50;
+        }
+
+        /* Stakes Section */
+        .stakes-section {
+            padding: 100px 0;
+            background: #F5F7FA;
+        }
+        .stakes-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .stakes-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .stakes-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 36px;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .stakes-header p {
+            font-size: 18px;
+            color: #64748b;
+        }
+        .stakes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .stake-card {
+            background: linear-gradient(145deg, #fef2f2 0%, #fee2e2 100%);
+            border: 1px solid #fecaca;
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+        }
+        .stake-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            transition: all 0.4s ease;
+        }
+        .stake-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: #b91c1c;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .stake-card:hover .stake-icon {
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+        }
+        .stake-card:hover .stake-icon svg {
+            stroke: #fff;
+        }
+        .stake-card h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 22px;
+            color: #991b1b;
+            margin-bottom: 16px;
+        }
+        .stake-card p {
+            font-size: 15px;
+            color: #b91c1c;
+            line-height: 1.7;
+        }
+
+        /* Solutions Section */
+        .solutions-section {
+            padding: 100px 0;
+            background: #fff;
+        }
+        .solutions-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .solutions-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .solutions-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 36px;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .solutions-header p {
+            font-size: 18px;
+            color: #64748b;
+        }
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        .solution-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+        .solution-card:hover {
+            border-color: #3798E4;
+            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+            transform: translateY(-4px);
+        }
+        .solution-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, rgba(55, 152, 228, 0.15), rgba(55, 152, 228, 0.05));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            transition: all 0.4s ease;
+        }
+        .solution-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: #3798E4;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .solution-card:hover .solution-icon {
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+        }
+        .solution-card:hover .solution-icon svg {
+            stroke: #fff;
+        }
+        .solution-card h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 22px;
+            color: #253B50;
+            margin-bottom: 12px;
+        }
+        .solution-card > p {
+            font-size: 15px;
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .solution-features {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .solution-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #475569;
+        }
+        .solution-feature svg {
+            width: 18px;
+            height: 18px;
+            color: #3798E4;
+            flex-shrink: 0;
+        }
+
+        /* OEM Section */
+        .oem-section {
+            padding: 80px 0;
+            background: #F5F7FA;
+        }
+        .oem-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+        .oem-inner h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 24px;
+            color: #253B50;
+            margin-bottom: 40px;
+        }
+        .oem-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+        }
+        .oem-logo {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px 32px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 100px 0;
+            background: #fff;
+        }
+        .products-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .products-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .products-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 36px;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .product-card {
+            background: #fff;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            border-color: #3798E4;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+        }
+        .product-card-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(55, 152, 228, 0.1), rgba(55, 152, 228, 0.05));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+        }
+        .product-card-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: #3798E4;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .product-card:hover .product-card-icon {
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+        }
+        .product-card:hover .product-card-icon svg {
+            stroke: #fff;
+        }
+        .product-card h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 20px;
+            color: #253B50;
+            margin-bottom: 12px;
+        }
+        .product-card p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .product-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #3798E4;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .product-card:hover .product-card-link {
+            gap: 10px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #3798E4 0%, #2563eb 100%);
+            text-align: center;
+        }
+        .cta-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .cta-section h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .cta-section p {
+            font-size: 20px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+        .cta-btn-primary {
+            background: #fff;
+            color: #3798E4;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .cta-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .cta-btn-secondary {
+            background: transparent;
+            color: #fff;
+            padding: 16px 32px;
+            border: 2px solid rgba(255,255,255,0.4);
+            border-radius: 8px;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .cta-btn-secondary:hover {
+            border-color: #fff;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .auto-hero h1 { font-size: 40px; }
+            .auto-hero-stats { gap: 40px; }
+            .stakes-grid { grid-template-columns: 1fr; }
+            .solutions-grid { grid-template-columns: 1fr; }
+            .products-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .auto-hero { padding: 120px 0 80px; }
+            .auto-hero h1 { font-size: 32px; }
+            .auto-hero-subtitle { font-size: 17px; }
+            .auto-hero-stats { flex-direction: column; gap: 24px; }
+            .auto-hero-stat-value { font-size: 36px; }
+            .stake-card { padding: 32px 24px; }
+            .solution-card { padding: 32px; }
+            .cta-section h2 { font-size: 28px; }
+            .cta-buttons { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header class="dw-header">
+        <div class="dw-header-inner">
+            <a href="../index.html" class="dw-logo">
+                <div class="dw-logo-mark">
+                    <!-- DigiWin Logo Mark - Stylized D -->
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 8h20c8.837 0 16 7.163 16 16s-7.163 16-16 16H8V8z" fill="#3798E4"/>
+                        <path d="M14 14h12c6.627 0 12 5.373 12 12s-5.373 12-12 12H14V14z" fill="#ffffff"/>
+                        <path d="M14 18h8c5.523 0 10 4.477 10 10s-4.477 10-10 10h-8V18z" fill="#3798E4"/>
+                        <path d="M14 24h4c3.314 0 6 2.686 6 6s-2.686 6-6 6h-4V24z" fill="#ffffff"/>
+                    </svg>
+                </div>
+                <div class="dw-logo-wordmark">
+                    <span class="dw-logo-text-en">Digi<span>Win</span></span>
+                    <span class="dw-logo-text-zh">鼎新數智</span>
+                </div>
+            </a>
+
+            <nav class="dw-nav">
+                <div class="dw-nav-item">
+                    <a href="../index.html" class="dw-nav-link">Home</a>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Products
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Core Systems -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Core Systems</div>
+                                <a href="../products/erp.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3z"/><path d="M3 9h18M9 21V9"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">ERP: T100 & iGP</p>
+                                        <p class="dw-mega-desc">Finance, supply chain, and operations</p>
+                                    </div>
+                                </a>
+                                <a href="../products/mes.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M2 20h20M6 20V10l4-6h4l4 6v10"/><path d="M6 14h12"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">MES: sMES & SFT</p>
+                                        <p class="dw-mega-desc">Production tracking and quality</p>
+                                    </div>
+                                </a>
+                                <a href="../products/wms.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">WMS: sFLS</p>
+                                        <p class="dw-mega-desc">Warehouse and inventory</p>
+                                    </div>
+                                </a>
+                                <a href="../products/aiot.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">AIoT & Smart Factory</p>
+                                        <p class="dw-mega-desc">Machine connectivity and analytics</p>
+                                    </div>
+                                </a>
+                                <a href="../products.html" class="dw-mega-viewall">
+                                    View All Products
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Featured: Manufacturing Suite -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M20 90V50l20-20h40l20 20v40" stroke-linecap="round"/><path d="M35 90V65h20v25M65 90V55h20v35"/><circle cx="60" cy="25" r="8"/><path d="M60 33v12"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">Complete Stack</span>
+                                    <h3 class="dw-mega-featured-title">Manufacturing & Distribution</h3>
+                                    <p class="dw-mega-featured-desc">Tailor-made ERP for manufacturing and distribution companies in Thailand and ASEAN.</p>
+                                    <a href="../products.html" class="dw-mega-featured-cta">
+                                        Explore Solutions
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Industries
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Manufacturing Sectors -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Manufacturing Sectors</div>
+                                <a href="../industries/automotive.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-6l2-4h12l2 4v6h-2M5 17h10"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Automotive Parts</p>
+                                        <p class="dw-mega-desc">JIT delivery and OEM traceability</p>
+                                    </div>
+                                </a>
+                                <a href="../industries/electronics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Electronics Assembly</p>
+                                        <p class="dw-mega-desc">SMT integration and MSD tracking</p>
+                                    </div>
+                                </a>
+                                <a href="../industries/metal-plastics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Metal & Plastics</p>
+                                        <p class="dw-mega-desc">Yield optimization and scrap reduction</p>
+                                    </div>
+                                </a>
+                                <a href="../industries.html" class="dw-mega-viewall">
+                                    View All Industries
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Featured: Industry Expertise -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M20 100V60l15-25h50l15 25v40" stroke-linecap="round"/><rect x="35" y="70" width="20" height="30" rx="2"/><rect x="65" y="60" width="20" height="40" rx="2"/><path d="M45 40h30M60 25v15"/><circle cx="60" cy="20" r="5"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">50,000+ Factories</span>
+                                    <h3 class="dw-mega-featured-title">Industry-Specific Solutions</h3>
+                                    <p class="dw-mega-featured-desc">Pre-configured templates and best practices for your specific manufacturing sector.</p>
+                                    <a href="../industries.html" class="dw-mega-featured-cta">
+                                        Find Your Industry
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Partners
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Why Partner -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Why Partner</div>
+                                <a href="../partner-program/business-model.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">The Business Model Crisis</p>
+                                    </div>
+                                </a>
+                                <a href="../partner-program/economics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Partner Economics</p>
+                                    </div>
+                                </a>
+                                <a href="../partner-program/solutions.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Solution Stack</p>
+                                    </div>
+                                </a>
+                                <a href="../partner-program.html" class="dw-mega-viewall">
+                                    Partner Overview
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Column 2: Getting Started -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Getting Started</div>
+                                <a href="../partner-program.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Become a Partner</p>
+                                    </div>
+                                </a>
+                                <a href="../demo.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Schedule a Conversation</p>
+                                    </div>
+                                </a>
+                                <a href="../about.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">About DigiWin</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Featured: Partner Program -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(55,152,228,0.3)"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">For ERP Implementers</span>
+                                    <h3 class="dw-mega-featured-title">Escape the Man-Day Trap</h3>
+                                    <p class="dw-mega-featured-desc">40-50% license margins. 100% service fees. Recurring revenue that compounds.</p>
+                                    <a href="../partner-program.html" class="dw-mega-featured-cta">
+                                        Become a Partner
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item">
+                    <a href="../about.html" class="dw-nav-link">About</a>
+                </div>
+            </nav>
+
+            <a href="../demo.html" class="dw-header-cta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;margin-right:8px;vertical-align:middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span style="vertical-align:middle;">Let's Talk</span>
+            </a>
+
+            <button class="dw-menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="auto-hero">
+        <div class="auto-hero-inner">
+            <div class="auto-hero-badge">
+                <span>Automotive Parts Manufacturing</span>
+            </div>
+            <h1>Built for What <span>OEMs Demand</span></h1>
+            <p class="auto-hero-subtitle">JIT delivery. Complete traceability. EDI integration. Thailand is ASEAN's automotive hub—we help tier 1-3 suppliers stay competitive.</p>
+            <div class="auto-hero-stats">
+                <div class="auto-hero-stat">
+                    <div class="auto-hero-stat-value">500+</div>
+                    <div class="auto-hero-stat-label">Auto suppliers served</div>
+                </div>
+                <div class="auto-hero-stat">
+                    <div class="auto-hero-stat-value">100%</div>
+                    <div class="auto-hero-stat-label">Traceability coverage</div>
+                </div>
+                <div class="auto-hero-stat">
+                    <div class="auto-hero-stat-value">99.5%</div>
+                    <div class="auto-hero-stat-label">On-time delivery</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Context Section -->
+    <section class="context-section">
+        <div class="context-inner">
+            <h2>Thailand: ASEAN's Detroit</h2>
+            <p>Thailand produces <strong>1.9 million vehicles annually</strong>, making it the largest automotive manufacturing hub in Southeast Asia. Behind every vehicle are <strong>2,500+ tier 1-3 suppliers</strong> facing relentless demands: perfect quality, complete traceability, and JIT delivery windows measured in hours, not days. DigiWin has spent 20+ years helping these suppliers meet—and exceed—OEM expectations.</p>
+        </div>
+    </section>
+
+    <!-- Stakes Section -->
+    <section class="stakes-section">
+        <div class="stakes-inner">
+            <div class="stakes-header">
+                <h2>The Automotive Stakes Are High</h2>
+                <p>In automotive, there's no room for "good enough"</p>
+            </div>
+            <div class="stakes-grid">
+                <div class="stake-card">
+                    <div class="stake-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3>JIT or Else</h3>
+                    <p>Miss one delivery window and Toyota stops the line. The penalty isn't a warning—it's the cost of that downtime, plus losing the contract entirely.</p>
+                </div>
+                <div class="stake-card">
+                    <div class="stake-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <h3>Trace or Lose</h3>
+                    <p>A quality issue surfaces. OEM asks: which lot? Which raw materials? Which operator? If you can't answer in hours, you're not a tier-1 supplier anymore.</p>
+                </div>
+                <div class="stake-card">
+                    <div class="stake-icon">
+                        <svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="15" y2="16"/></svg>
+                    </div>
+                    <h3>Audit Anxiety</h3>
+                    <p>IATF 16949. Customer audits quarterly. Documentation requirements that keep growing. Manual systems simply can't keep up.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions-section">
+        <div class="solutions-inner">
+            <div class="solutions-header">
+                <h2>How DigiWin Solves It</h2>
+                <p>Purpose-built capabilities for automotive supply chain</p>
+            </div>
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <svg viewBox="0 0 24 24"><path d="M6.5 12a5.5 5.5 0 1 0 11 0 5.5 5.5 0 1 0-11 0"/><path d="M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0"/><circle cx="12" cy="12" r="2"/></svg>
+                    </div>
+                    <h3>OEM EDI Integration</h3>
+                    <p>Direct connection to Toyota, Honda, Denso, and other OEM systems. No manual data entry, no missed signals.</p>
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Receive forecasts & POs automatically</span>
+                        </div>
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Send ASN & delivery confirmations</span>
+                        </div>
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Quality data exchange</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                    </div>
+                    <h3>Lot-Level Traceability</h3>
+                    <p>Track every component from receiving through shipping. Answer "where did this part go?" in seconds, not days.</p>
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Forward & backward traceability</span>
+                        </div>
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Barcode/QR code scanning</span>
+                        </div>
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Recall scope analysis</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
+                    <h3>Kanban & JIT Scheduling</h3>
+                    <p>Production scheduling that understands kanban signals, sequence orders, and delivery windows.</p>
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Plan backwards from ship date</span>
+                        </div>
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Sequence delivery support</span>
+                        </div>
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Multi-plant coordination</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    </div>
+                    <h3>Quality Documentation</h3>
+                    <p>PPAP support. Control plans. Inspection records. SPC data. All captured digitally, all audit-ready.</p>
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>IATF 16949 compliance</span>
+                        </div>
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>SPC charts & analysis</span>
+                        </div>
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>8D reporting</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OEM Section -->
+    <section class="oem-section">
+        <div class="oem-inner">
+            <h3>Integrated with Major OEM Systems</h3>
+            <div class="oem-logos">
+                <div class="oem-logo">Toyota</div>
+                <div class="oem-logo">Honda</div>
+                <div class="oem-logo">Nissan</div>
+                <div class="oem-logo">Isuzu</div>
+                <div class="oem-logo">Denso</div>
+                <div class="oem-logo">Mitsubishi</div>
+                <div class="oem-logo">Mazda</div>
+                <div class="oem-logo">Suzuki</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="products-inner">
+            <div class="products-header">
+                <h2>Recommended Products for Automotive</h2>
+            </div>
+            <div class="products-grid">
+                <a href="../products/erp.html" class="product-card">
+                    <div class="product-card-icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                    </div>
+                    <h3>T100 ERP</h3>
+                    <p>Multi-site, multi-currency ERP with automotive-specific modules for EDI, JIT scheduling, and supplier management.</p>
+                    <span class="product-card-link">Learn More <span>→</span></span>
+                </a>
+                <a href="../products/mes.html" class="product-card">
+                    <div class="product-card-icon">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/><circle cx="6" cy="12" r="1"/><circle cx="10" cy="12" r="1"/><circle cx="14" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg>
+                    </div>
+                    <h3>sMES</h3>
+                    <p>Full traceability, quality data collection, and real-time production visibility for automotive precision requirements.</p>
+                    <span class="product-card-link">Learn More <span>→</span></span>
+                </a>
+                <a href="../products/wms.html" class="product-card">
+                    <div class="product-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg>
+                    </div>
+                    <h3>sFLS WMS</h3>
+                    <p>FIFO enforcement, lot tracking, and sequence delivery support for JIT warehouse operations.</p>
+                    <span class="product-card-link">Learn More <span>→</span></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-inner">
+            <h2>Meet OEM Demands with Confidence</h2>
+            <p>See how DigiWin helps Thailand's top automotive suppliers</p>
+            <div class="cta-buttons">
+                <a href="../demo.html" class="cta-btn-primary">Get in Touch</a>
+                <a href="../industries.html" class="cta-btn-secondary">View Other Industries</a>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="dw-footer">
+        <div class="dw-footer-inner">
+            <div class="dw-footer-grid">
+                <div class="dw-footer-brand">
+                    <div class="dw-footer-logo">Digi<span>Win</span></div>
+                    <p class="dw-footer-tagline"><span class="dw-years">44</span> years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
+                    <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Products</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../products.html">All Products</a></li>
+                        <li><a href="../products/erp.html">ERP: T100 & iGP</a></li>
+                        <li><a href="../products/mes.html">MES: sMES & SFT</a></li>
+                        <li><a href="../products/wms.html">WMS: sFLS</a></li>
+                        <li><a href="../products/aiot.html">AIoT & Smart Factory</a></li>
+                    </ul>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Industries</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../industries.html">All Industries</a></li>
+                        <li><a href="../industries/automotive.html">Automotive Parts</a></li>
+                        <li><a href="../industries/electronics.html">Electronics Assembly</a></li>
+                        <li><a href="../industries/metal-plastics.html">Metal & Plastics</a></li>
+                    </ul>
+                    <h4 style="margin-top: 24px;">Partners</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../partner-program.html">Partner Program</a></li>
+                        <li><a href="../partner-program/economics.html">Partner Economics</a></li>
+                    </ul>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Contact</h4>
+                    <div class="dw-footer-contact">
+                        <p>
+                            <strong>DigiWin Thailand</strong><br>
+                            Bangkok Office
+                        </p>
+                        <p>
+                            <a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a>
+                        </p>
+                    </div>
+                    <div class="dw-footer-social">
+                        <a href="#" title="LinkedIn">in</a>
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="LINE">L</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dw-footer-bottom">
+                <p class="dw-footer-copyright">© 2026 DigiWin Thailand. All rights reserved.</p>
+                <div class="dw-footer-legal">
+                    <a href="../privacy-policy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Service</a>
+                    <a href="../about.html">About Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+    (function() {
+        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
+        dropdowns.forEach(function(item) {
+            const menu = item.querySelector('.dw-mega-menu');
+            item.addEventListener('mouseenter', function() {
+                dropdowns.forEach(function(other) { if (other !== item) { other.classList.remove('active'); const m = other.querySelector('.dw-mega-menu'); if (m) m.classList.remove('active'); }});
+                item.classList.add('active'); if (menu) menu.classList.add('active');
+            });
+            item.addEventListener('mouseleave', function() { item.classList.remove('active'); if (menu) menu.classList.remove('active'); });
+        });
+    })();
+    </script>
+    <script src="../digiwin-dynamic.js"></script>
+</body>
+</html>

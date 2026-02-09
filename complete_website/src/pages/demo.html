@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Demo - DigiWin Thailand</title>
+    <link rel="stylesheet" href="{{basePath}}styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Demo Hero */
+        .demo-hero {
+            background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+            padding: 140px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .demo-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .demo-hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .demo-hero h1 {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .demo-hero h1 span { color: #3798E4; }
+        .demo-hero-subtitle {
+            font-size: 18px;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+        .demo-trust {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .demo-trust-item {
+            text-align: center;
+        }
+        .demo-trust-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #3798E4;
+            display: block;
+        }
+        .demo-trust-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Form Section */
+        .demo-form-section {
+            padding: 80px 24px;
+            background: #fff;
+        }
+        .demo-form-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+        }
+        .demo-form-container {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        }
+        .demo-form-header {
+            margin-bottom: 32px;
+        }
+        .demo-form-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 8px;
+        }
+        .demo-form-header p {
+            font-size: 15px;
+            color: #64748b;
+        }
+        .form-group {
+            margin-bottom: 24px;
+        }
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #253B50;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: 'Source Sans 3', sans-serif;
+            transition: all 0.2s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #3798E4;
+            box-shadow: 0 0 0 3px rgba(55, 152, 228, 0.1);
+        }
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .form-checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            padding: 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+        .form-checkbox-label:hover {
+            border-color: #3798E4;
+            background: #f8fafc;
+        }
+        .form-checkbox-label input {
+            width: 20px;
+            height: 20px;
+            accent-color: #3798E4;
+        }
+        .checkbox-content h4 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #253B50;
+            margin-bottom: 2px;
+        }
+        .checkbox-content p {
+            font-size: 13px;
+            color: #64748b;
+            margin: 0;
+        }
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(55, 152, 228, 0.3);
+        }
+        .form-alternative {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        .form-alternative p {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+        .form-alternative a {
+            color: #3798E4;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Why Talk to Us */
+        .demo-why {
+            padding: 0 0 80px;
+        }
+        .demo-why h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #253B50;
+            margin-bottom: 24px;
+        }
+        .why-points {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .why-point {
+            display: flex;
+            gap: 16px;
+        }
+        .why-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .why-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #3798E4;
+        }
+        .why-content h4 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #253B50;
+            margin-bottom: 4px;
+        }
+        .why-content p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .demo-proof {
+            background: linear-gradient(135deg, #253B50, #1a2e40);
+            border-radius: 20px;
+            padding: 32px;
+            margin-top: 40px;
+        }
+        .demo-proof-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: #4ade80;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 16px;
+        }
+        .demo-proof-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .proof-stat {
+            text-align: center;
+            padding: 16px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+        }
+        .proof-stat-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #3798E4;
+            display: block;
+        }
+        .proof-stat-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* What to Expect */
+        .demo-expect {
+            padding: 80px 24px;
+            background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+        }
+        .demo-expect-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .demo-expect-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .demo-expect-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 12px;
+        }
+        .demo-expect-header p {
+            font-size: 17px;
+            color: #64748b;
+        }
+        .expect-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .expect-step {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .expect-step:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Lexend', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 auto 20px;
+        }
+        .expect-step h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #253B50;
+            margin-bottom: 12px;
+        }
+        .expect-step p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .demo-form-inner {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            .demo-trust {
+                flex-wrap: wrap;
+                gap: 24px;
+            }
+        }
+        @media (max-width: 640px) {
+            .demo-hero {
+                padding: 120px 20px 60px;
+            }
+            .demo-form-container {
+                padding: 32px 24px;
+            }
+            .expect-steps {
+                grid-template-columns: 1fr;
+            }
+            .demo-proof-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+{{header}}
+
+    <!-- Hero -->
+    <section class="demo-hero">
+        <div class="demo-hero-inner">
+            <h1>Let's Talk About <span>Your Factory</span></h1>
+            <p class="demo-hero-subtitle">Whether you're a factory owner seeking solutions or a distributor exploring partnership—we'll listen first, then show you what's relevant.</p>
+            <div class="demo-trust">
+                <div class="demo-trust-item">
+                    <span class="demo-trust-value dw-years">44</span>
+                    <span class="demo-trust-label">Years Experience</span>
+                </div>
+                <div class="demo-trust-item">
+                    <span class="demo-trust-value">50K+</span>
+                    <span class="demo-trust-label">Factories</span>
+                </div>
+                <div class="demo-trust-item">
+                    <span class="demo-trust-value">100+</span>
+                    <span class="demo-trust-label">Thai Customers</span>
+                </div>
+                <div class="demo-trust-item">
+                    <span class="demo-trust-value">300378</span>
+                    <span class="demo-trust-label">Stock Listed</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="demo-form-section">
+        <div class="demo-form-inner">
+            <div class="demo-form-container">
+                <div class="demo-form-header">
+                    <h2>Request a Demo</h2>
+                    <p>Tell us about your situation. We'll respond within 1 business day.</p>
+                </div>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label class="form-label">Your Name *</label>
+                        <input type="text" required class="form-input" placeholder="Khun Somchai">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email *</label>
+                        <input type="email" required class="form-input" placeholder="somchai@company.co.th">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Company *</label>
+                        <input type="text" required class="form-input" placeholder="Your company name">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Phone</label>
+                        <input type="tel" class="form-input" placeholder="+66">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">I'm interested in:</label>
+                        <div class="form-checkbox-group">
+                            <label class="form-checkbox-label">
+                                <input type="checkbox" name="interest" value="factory">
+                                <div class="checkbox-content">
+                                    <h4>Solutions for My Factory</h4>
+                                    <p>I own or manage a manufacturing facility</p>
+                                </div>
+                            </label>
+                            <label class="form-checkbox-label">
+                                <input type="checkbox" name="interest" value="partner">
+                                <div class="checkbox-content">
+                                    <h4>Becoming a DigiWin Partner</h4>
+                                    <p>I run a software/consulting firm</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Tell us about your current situation</label>
+                        <textarea class="form-input form-textarea" placeholder="What challenges are you facing? What systems do you currently use?"></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit">Submit Request</button>
+                </form>
+
+                <div class="form-alternative">
+                    <p>Prefer to email directly?</p>
+                    <a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a>
+                </div>
+            </div>
+
+            <div class="demo-why">
+                <h3>Why Talk to Us?</h3>
+                <div class="why-points">
+                    <div class="why-point">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        </div>
+                        <div class="why-content">
+                            <h4>No Sales Pitch</h4>
+                            <p>Our first call is about your situation, not our features. We listen before we talk.</p>
+                        </div>
+                    </div>
+                    <div class="why-point">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <div class="why-content">
+                            <h4><span class="dw-years">44</span> Years Manufacturing Only</h4>
+                            <p>We understand factories because that's all we've ever done. No retail. No hospitality. Just manufacturing.</p>
+                        </div>
+                    </div>
+                    <div class="why-point">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/></svg>
+                        </div>
+                        <div class="why-content">
+                            <h4>Local Thai Team</h4>
+                            <p>Thai-speaking consultants based in Bangkok. No overseas call centers. Real local support.</p>
+                        </div>
+                    </div>
+                    <div class="why-point">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <div class="why-content">
+                            <h4>Thai Revenue Dept. Certified</h4>
+                            <p>Already localized for Thai taxation, Withholding Tax, e-Tax integration, and BOI reporting.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-proof">
+                    <span class="demo-proof-label">Why We're Different</span>
+                    <div class="demo-proof-stats">
+                        <div class="proof-stat">
+                            <span class="proof-stat-value">72%</span>
+                            <span class="proof-stat-label">Taiwan Listed Cos. Trust Us</span>
+                        </div>
+                        <div class="proof-stat">
+                            <span class="proof-stat-value">Foxconn FII</span>
+                            <span class="proof-stat-label">Strategic Investor</span>
+                        </div>
+                        <div class="proof-stat">
+                            <span class="proof-stat-value">1,300+</span>
+                            <span class="proof-stat-label">R&D Engineers</span>
+                        </div>
+                        <div class="proof-stat">
+                            <span class="proof-stat-value">CMMI 4</span>
+                            <span class="proof-stat-label">Certified Since 2010</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Expect -->
+    <section class="demo-expect">
+        <div class="demo-expect-inner">
+            <div class="demo-expect-header">
+                <h2>What to Expect</h2>
+                <p>No pressure. No obligation. Just a conversation about what's possible.</p>
+            </div>
+            <div class="expect-steps">
+                <div class="expect-step">
+                    <div class="step-number">1</div>
+                    <h3>Discovery Call</h3>
+                    <p>We'll learn about your factory, challenges, and goals. We ask questions first—no sales pitch. 30-45 minutes.</p>
+                </div>
+                <div class="expect-step">
+                    <div class="step-number">2</div>
+                    <h3>Tailored Demo</h3>
+                    <p>See only the products that fit your needs. We'll focus on your industry and specific use cases. No generic slide decks.</p>
+                </div>
+                <div class="expect-step">
+                    <div class="step-number">3</div>
+                    <h3>Honest Assessment</h3>
+                    <p>If there's a fit, we'll provide a detailed proposal. If not, we'll tell you honestly. We'd rather build trust than force a sale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{{footer}}
+
+
+    <script>
+    (function() {
+        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
+        dropdowns.forEach(function(item) {
+            const menu = item.querySelector('.dw-mega-menu');
+            item.addEventListener('mouseenter', function() {
+                dropdowns.forEach(function(other) { if (other !== item) { other.classList.remove('active'); const m = other.querySelector('.dw-mega-menu'); if (m) m.classList.remove('active'); }});
+                item.classList.add('active'); if (menu) menu.classList.add('active');
+            });
+            item.addEventListener('mouseleave', function() { item.classList.remove('active'); if (menu) menu.classList.remove('active'); });
+        });
+    })();
+    </script>
+    <script src="{{basePath}}digiwin-dynamic.js"></script>
+</body>
+</html>

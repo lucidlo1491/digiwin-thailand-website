@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+
+.dw-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.dw-hero-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.dw-hero-panel--left {
+    background:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(37, 59, 80, 0.80) 100%),
+        url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+.dw-hero-panel--right {
+    background:
+        linear-gradient(145deg, rgba(14, 165, 233, 0.88) 0%, rgba(2, 132, 199, 0.85) 50%, rgba(3, 105, 161, 0.90) 100%),
+        url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+.dw-hero-panel--right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(255,255,255,0.10) 0%, transparent 40%);
+    pointer-events: none;
+}
+
+.dw-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+}
+
+.dw-hero-label {
+    font-family: 'Lexend', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dw-hero-label::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: #3798E4;
+}
+
+.dw-hero-panel--right .dw-hero-label::before {
+    background: #ffffff;
+}
+
+.dw-hero-title {
+    font-family: 'Lexend', sans-serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 700;
+    color: white;
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.dw-hero-subtitle {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 20px;
+    color: rgba(255,255,255,0.9);
+    margin: 0 0 36px 0;
+    line-height: 1.6;
+    max-width: 440px;
+}
+
+.dw-btn {
+    font-family: 'Lexend', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dw-btn-primary {
+    background: #3798E4;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 14px rgba(55, 152, 228, 0.35);
+}
+
+.dw-btn-primary:hover {
+    background: #2563eb;
+    box-shadow: 0 6px 20px rgba(55, 152, 228, 0.45);
+    transform: translateY(-2px);
+}
+
+.dw-btn-ghost {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border: 2px solid rgba(255,255,255,0.9);
+    backdrop-filter: blur(4px);
+}
+
+.dw-btn-ghost:hover {
+    background: white;
+    color: #0369a1;
+    border-color: white;
+}
+
+@media (max-width: 1024px) {
+    .dw-hero {
+        grid-template-columns: 1fr;
+    }
+    .dw-hero-panel {
+        min-height: 70vh;
+        padding: 60px 40px;
+    }
+}
+
+@media (max-width: 640px) {
+    .dw-hero-panel {
+        min-height: 80vh;
+        padding: 48px 24px;
+    }
+    .dw-hero-title {
+        font-size: 32px;
+    }
+    .dw-hero-subtitle {
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Solution Stack - DigiWin Partner Program</title>
+    <link rel="stylesheet" href="{{basePath}}styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Hero Section */
+        .stack-hero {
+            background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+            padding: 140px 24px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .stack-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .stack-hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .stack-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 24px;
+        }
+        .stack-breadcrumb a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .stack-breadcrumb a:hover {
+            color: #3798E4;
+        }
+        .stack-hero h1 {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+        .stack-hero h1 span {
+            color: #3798E4;
+        }
+        .stack-hero-subtitle {
+            font-size: 20px;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
+            max-width: 700px;
+            margin-bottom: 48px;
+        }
+        .stack-hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .stack-stat {
+            text-align: center;
+        }
+        .stack-stat-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #3798E4;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .stack-stat-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.4;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 100px 24px;
+            background: #fff;
+        }
+        .products-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .products-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .products-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .products-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .product-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            padding: 48px;
+            margin-bottom: 32px;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            border-color: #3798E4;
+            box-shadow: 0 12px 48px rgba(55, 152, 228, 0.12);
+        }
+        .product-card:nth-child(even) {
+            direction: rtl;
+        }
+        .product-card:nth-child(even) > * {
+            direction: ltr;
+        }
+        .product-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .product-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            width: fit-content;
+            margin-bottom: 20px;
+        }
+        .product-card h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .product-card .description {
+            font-size: 16px;
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        .product-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 24px 0;
+        }
+        .product-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .product-features li:last-child {
+            border-bottom: none;
+        }
+        .product-features li svg {
+            width: 20px;
+            height: 20px;
+            stroke: #3798E4;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .product-features li span {
+            font-size: 15px;
+            color: #475569;
+        }
+        .product-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #3798E4;
+            text-decoration: none;
+            margin-top: auto;
+        }
+        .product-link svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            transition: transform 0.2s;
+        }
+        .product-link:hover svg {
+            transform: translateX(4px);
+        }
+        .product-metrics {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            border-radius: 16px;
+            padding: 32px;
+        }
+        .metrics-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #253B50;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+        .metric-label {
+            font-size: 14px;
+            color: #64748b;
+        }
+        .metric-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #253B50;
+        }
+        .metric-value.highlight {
+            color: #3798E4;
+        }
+
+        /* Land and Expand Lifecycle */
+        .lifecycle-section {
+            padding: 100px 24px;
+            background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+        }
+        .lifecycle-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .lifecycle-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .lifecycle-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            color: #3798E4;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .lifecycle-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .lifecycle-header p {
+            font-size: 18px;
+            color: #64748b;
+        }
+        .lifecycle-phases {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .lifecycle-phase {
+            background: #fff;
+            border: 2px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            max-width: 240px;
+            transition: all 0.3s ease;
+        }
+        .lifecycle-phase:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.15);
+        }
+        .lifecycle-phase.phase-1 { border-color: #3798E4; }
+        .lifecycle-phase.phase-2 { border-color: #10b981; }
+        .lifecycle-phase.phase-3 { border-color: #f59e0b; }
+        .lifecycle-phase.phase-4 { border-color: #8b5cf6; }
+        .phase-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Lexend', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 auto 16px;
+        }
+        .phase-1 .phase-number { background: #3798E4; }
+        .phase-2 .phase-number { background: #10b981; }
+        .phase-3 .phase-number { background: #f59e0b; }
+        .phase-4 .phase-number { background: #8b5cf6; }
+        .lifecycle-phase h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 8px;
+        }
+        .phase-products {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 6px 12px;
+            border-radius: 50px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        .lifecycle-phase p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        .phase-revenue {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .lifecycle-arrow {
+            flex-shrink: 0;
+        }
+        .lifecycle-arrow svg {
+            width: 32px;
+            height: 32px;
+            color: #cbd5e1;
+        }
+        .lifecycle-proof {
+            text-align: center;
+            margin-top: 48px;
+            padding: 24px;
+            background: linear-gradient(135deg, #253B50 0%, #1a2e40 100%);
+            border-radius: 16px;
+        }
+        .lifecycle-proof p {
+            color: rgba(255,255,255,0.9);
+            font-size: 16px;
+            margin: 0;
+        }
+
+        /* Reverse Cut Strategy */
+        .reverse-cut-section {
+            padding: 100px 24px;
+            background: #fff;
+        }
+        .reverse-cut-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .reverse-cut-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .reverse-cut-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            color: #f59e0b;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .reverse-cut-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .reverse-cut-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .reverse-cut-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+        .reverse-cut-phase {
+            background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 32px;
+        }
+        .reverse-cut-phase-header {
+            margin-bottom: 16px;
+        }
+        .phase-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: #f59e0b;
+            background: #fef3c7;
+            padding: 4px 10px;
+            border-radius: 50px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+        .reverse-cut-phase h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #253B50;
+        }
+        .reverse-cut-phase p {
+            font-size: 15px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .client-experience {
+            background: #253B50;
+            border-radius: 12px;
+            padding: 16px;
+        }
+        .exp-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .exp-quote {
+            font-size: 14px;
+            font-style: italic;
+            color: #fff;
+            line-height: 1.5;
+        }
+        .reverse-cut-comparison {
+            background: linear-gradient(135deg, #253B50 0%, #1a2e40 100%);
+            border-radius: 20px;
+            padding: 40px;
+        }
+        .reverse-cut-comparison h4 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .comparison-table {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+        .comparison-row.header {
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            padding-bottom: 20px;
+            margin-bottom: 8px;
+        }
+        .comparison-row.header span {
+            font-family: 'Lexend', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .comparison-row span {
+            font-size: 15px;
+            color: rgba(255,255,255,0.9);
+        }
+        .comparison-row span:first-child {
+            font-weight: 600;
+            color: #fff;
+        }
+        .comparison-row span.old {
+            color: #f87171;
+            text-decoration: line-through;
+            opacity: 0.8;
+        }
+        .comparison-row span.new {
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            color: #4ade80;
+        }
+
+        /* Competitive Positioning */
+        .competitive-section {
+            padding: 100px 24px;
+            background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+        }
+        .competitive-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .competitive-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .competitive-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            color: #8b5cf6;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .competitive-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .competitive-header p {
+            font-size: 18px;
+            color: #64748b;
+        }
+        .competitive-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+        .competitive-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+        .competitive-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+        .competitor-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: #ef4444;
+            background: #fef2f2;
+            padding: 4px 10px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+        .competitive-card h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 20px;
+        }
+        .competitive-points {
+            margin-bottom: 20px;
+        }
+        .comp-point {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .comp-point:last-child {
+            border-bottom: none;
+        }
+        .comp-point strong {
+            color: #253B50;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .use-when {
+            font-size: 12px;
+            color: #10b981;
+            background: #f0fdf4;
+            padding: 12px 16px;
+            border-radius: 12px;
+        }
+        .use-when strong {
+            color: #059669;
+        }
+        .ace-card {
+            background: linear-gradient(135deg, #253B50 0%, #1a2e40 100%);
+            border-radius: 24px;
+            padding: 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .ace-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .ace-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            color: #f59e0b;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .ace-quote {
+            font-size: 20px;
+            color: rgba(255,255,255,0.95);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .ace-quote strong {
+            color: #3798E4;
+        }
+
+        /* CTA Section */
+        .stack-cta {
+            padding: 100px 24px;
+            background: linear-gradient(135deg, #3798E4 0%, #2d7bc4 50%, #1e5a8a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .stack-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.07'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .stack-cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .stack-cta h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .stack-cta p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
+        }
+        .stack-cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .product-card {
+                grid-template-columns: 1fr;
+                direction: ltr !important;
+            }
+            .product-card > * {
+                direction: ltr !important;
+            }
+            .lifecycle-phases {
+                flex-direction: column;
+            }
+            .lifecycle-arrow {
+                transform: rotate(90deg);
+            }
+            .lifecycle-phase {
+                max-width: none;
+            }
+            .reverse-cut-grid {
+                grid-template-columns: 1fr;
+            }
+            .comparison-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                text-align: center;
+            }
+            .competitive-grid {
+                grid-template-columns: 1fr;
+            }
+            .stack-hero-stats {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+        @media (max-width: 640px) {
+            .stack-hero {
+                padding: 120px 20px 80px;
+            }
+            .stack-hero h1 {
+                font-size: 28px;
+            }
+            .product-card {
+                padding: 32px 24px;
+            }
+            .lifecycle-header h2,
+            .reverse-cut-header h2,
+            .competitive-header h2 {
+                font-size: 32px;
+            }
+            .reverse-cut-comparison {
+                padding: 24px;
+            }
+            .ace-card {
+                padding: 32px 24px;
+            }
+            .ace-quote {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+{{header}}
+
+    <!-- Hero Section -->
+    <section class="stack-hero">
+        <div class="stack-hero-inner">
+            <div class="stack-breadcrumb">
+                <a href="{{basePath}}partner-program.html">Partner Program</a>
+                <span>/</span>
+                <span>Solution Stack</span>
+            </div>
+            <h1>Stop Building Custom Code.<br><span>Start Deploying a Modular Arsenal.</span></h1>
+            <p class="stack-hero-subtitle">You're not just reselling software. You're deploying a complete Customer Lifecycle Management strategy—land with one product, expand to the full stack, lock in recurring revenue for years.</p>
+            <div class="stack-hero-stats">
+                <div class="stack-stat">
+                    <div class="stack-stat-value dw-years">44</div>
+                    <div class="stack-stat-label">Years of R&D Investment</div>
+                </div>
+                <div class="stack-stat">
+                    <div class="stack-stat-value">50K+</div>
+                    <div class="stack-stat-label">Manufacturing Clients</div>
+                </div>
+                <div class="stack-stat">
+                    <div class="stack-stat-value">4</div>
+                    <div class="stack-stat-label">Revenue Engines</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="products-inner">
+            <div class="products-header">
+                <h2>Your Product Portfolio as Revenue Engines</h2>
+                <p>Each product isn't just software—it's a business model with specific revenue characteristics and cross-sell paths.</p>
+            </div>
+
+            <!-- T100 ERP: The "Tier-1 Killer" -->
+            <div class="product-card">
+                <div class="product-info">
+                    <span class="product-badge">The "Tier-1 Killer"</span>
+                    <h3>T100 Enterprise ERP</h3>
+                    <p class="description">Win the "Big Fish" accounts—multi-site automotive and electronics suppliers—that usually go to SAP or Oracle. Offer <strong>Tier-1 capability at Tier-2 pricing</strong>, targeting EV supply chain factories that need bilingual support and complex costing.</p>
+                    <ul class="product-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Multi-site, multi-currency, multi-company architecture</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Complex costing logic for automotive & electronics</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Chinese/Thai/English bilingual out of the box</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span><strong>Cross-sell path:</strong> T100 → eMES → WMS → AIoT → BPM</span>
+                        </li>
+                    </ul>
+                    <a href="{{basePath}}products/erp.html" class="product-link">Learn more about T100 <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                </div>
+                <div class="product-metrics">
+                    <div class="metrics-title">Your Revenue Model: High-Value Project</div>
+                    <div class="metric-row">
+                        <span class="metric-label">Target Customer</span>
+                        <span class="metric-value">200+ employees</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">License Margin</span>
+                        <span class="metric-value highlight">40-50%</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Implementation Fees</span>
+                        <span class="metric-value highlight">100% yours</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Revenue Type</span>
+                        <span class="metric-value">Enterprise Asset</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- iGP ERP: The "Volume Engine" -->
+            <div class="product-card">
+                <div class="product-info">
+                    <span class="product-badge">The "Volume Engine"</span>
+                    <h3>Workflow iGP Growth ERP</h3>
+                    <p class="description">Your "Rapid Deployment" weapon for Thai SMEs. Addresses the massive automation gap where local accounting fails to handle production logic, but global ERPs are too expensive. <strong>Pre-localized for Thai Revenue Department (certified).</strong></p>
+                    <ul class="product-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>3-6 month deployments—turn projects faster, bill sooner</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Lower barrier = higher volume of local manufacturers</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Thai taxation certified—easy sell to Finance Directors</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span><strong>Cross-sell path:</strong> iGP → eMES → WMS → AIoT</span>
+                        </li>
+                    </ul>
+                    <a href="{{basePath}}products/erp.html" class="product-link">Learn more about iGP <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                </div>
+                <div class="product-metrics">
+                    <div class="metrics-title">Your Revenue Model: Cash Flow Engine</div>
+                    <div class="metric-row">
+                        <span class="metric-label">Target Customer</span>
+                        <span class="metric-value">20-200 employees</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Turn Time</span>
+                        <span class="metric-value highlight">3-6 months</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Avoid</span>
+                        <span class="metric-value">"Long project death"</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Revenue Type</span>
+                        <span class="metric-value">SME Cash Flow</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- eMES: The "Strategic Wedge" -->
+            <div class="product-card">
+                <div class="product-info">
+                    <span class="product-badge">The "Strategic Wedge"</span>
+                    <h3>eMES Essential MES</h3>
+                    <p class="description">The <strong>"Reverse Cut" Strategy.</strong> You don't have to rip and replace their existing ERP—even if it's SAP. Sell eMES as the "Shop Floor Enforcer" that fixes inventory accuracy and OEE tracking. Appeals to owners tired of "Shadow Excel" wanting real-time visibility.</p>
+                    <ul class="product-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>"Keep SAP for Finance. Use Digiwin for the factory floor."</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Premium rates for process consulting & hardware integration</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Once you control shop floor data, client cannot leave</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span><strong>"Trojan Horse":</strong> eMES → WMS → AIoT → T100/iGP</span>
+                        </li>
+                    </ul>
+                    <a href="{{basePath}}products/mes.html" class="product-link">Learn more about eMES <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                </div>
+                <div class="product-metrics">
+                    <div class="metrics-title">Your Revenue Model: Sticky Recurring</div>
+                    <div class="metric-row">
+                        <span class="metric-label">Entry Point</span>
+                        <span class="metric-value highlight">~1M THB (vs. 5M+ ERP)</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Timeline</span>
+                        <span class="metric-value highlight">3-6 months (vs. 18mo)</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Retention</span>
+                        <span class="metric-value">Higher barrier to exit</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Revenue Type</span>
+                        <span class="metric-value">Retention Asset</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AIoT & WMS: The "Value Multipliers" -->
+            <div class="product-card">
+                <div class="product-info">
+                    <span class="product-badge">The "Value Multipliers"</span>
+                    <h3>AIoT & WMS: Lock-In Layers</h3>
+                    <p class="description"><strong>WMS — "Zero Ghost Inventory":</strong> Sell to owners terrified of theft or audit failure. Digitizes physical movement of goods. <strong>AIoT — "Future Proofing":</strong> Shows you have capability to connect machines (PLCs) directly to ERP. Differentiates you from accounting firms.</p>
+                    <ul class="product-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Hardware/middleware resale opportunity (handhelds, sensors)</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Recurring data monitoring & optimization services</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Solves "system says 100, shelf has 50" problem</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span><strong>Physical lock-in:</strong> Scanners & sensors = 10+ year relationships</span>
+                        </li>
+                    </ul>
+                    <a href="{{basePath}}products/aiot.html" class="product-link">Learn more about AIoT & WMS <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                </div>
+                <div class="product-metrics">
+                    <div class="metrics-title">Your Revenue Model: Differentiation</div>
+                    <div class="metric-row">
+                        <span class="metric-label">Physical Integration</span>
+                        <span class="metric-value highlight">Ultimate lock-in</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Hardware Drag</span>
+                        <span class="metric-value">Scanners, sensors, PLCs</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Client Lifetime</span>
+                        <span class="metric-value highlight">10+ years</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Revenue Type</span>
+                        <span class="metric-value">Differentiation Asset</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Land and Expand Lifecycle -->
+    <section class="lifecycle-section">
+        <div class="lifecycle-inner">
+            <div class="lifecycle-header">
+                <span class="lifecycle-label">CUSTOMER LIFECYCLE MANAGEMENT</span>
+                <h2>The "Land and Expand" Strategy</h2>
+                <p>You're not selling software. You're executing a 4-phase account takeover strategy.</p>
+            </div>
+            <div class="lifecycle-phases">
+                <div class="lifecycle-phase phase-1">
+                    <div class="phase-number">1</div>
+                    <h3>Land</h3>
+                    <div class="phase-products">iGP (Volume) or eMES (Reverse Cut)</div>
+                    <p>Entry point with immediate value. Fast project, quick cash.</p>
+                    <div class="phase-revenue">Project fees + License</div>
+                </div>
+                <div class="lifecycle-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+                <div class="lifecycle-phase phase-2">
+                    <div class="phase-number">2</div>
+                    <h3>Stabilize</h3>
+                    <div class="phase-products">WMS</div>
+                    <p>Control inventory accuracy. Solve "Ghost Inventory" pain.</p>
+                    <div class="phase-revenue">Project + Hardware</div>
+                </div>
+                <div class="lifecycle-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+                <div class="lifecycle-phase phase-3">
+                    <div class="phase-number">3</div>
+                    <h3>Expand</h3>
+                    <div class="phase-products">T100 ERP</div>
+                    <p>Scale to enterprise. High-value project revenue.</p>
+                    <div class="phase-revenue">Enterprise project</div>
+                </div>
+                <div class="lifecycle-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+                <div class="lifecycle-phase phase-4">
+                    <div class="phase-number">4</div>
+                    <h3>Lock</h3>
+                    <div class="phase-products">AIoT</div>
+                    <p>Physical integration = permanent retention.</p>
+                    <div class="phase-revenue">Subscription + Data</div>
+                </div>
+            </div>
+            <div class="lifecycle-proof">
+                <p><strong>This isn't just software—it's a Customer Lifecycle Management strategy that compounds revenue over years.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reverse Cut Strategy -->
+    <section class="reverse-cut-section">
+        <div class="reverse-cut-inner">
+            <div class="reverse-cut-header">
+                <span class="reverse-cut-label">THE REVERSE CUT STRATEGY</span>
+                <h2>How to Win SAP & Oracle Accounts</h2>
+                <p>Don't fight the castle at the front gate. Enter through the factory door with MES, make yourself indispensable, and win the ERP business from the inside out.</p>
+            </div>
+
+            <div class="reverse-cut-grid">
+                <div class="reverse-cut-phase">
+                    <div class="reverse-cut-phase-header">
+                        <span class="phase-tag">Phase 1</span>
+                        <h3>The Wedge</h3>
+                    </div>
+                    <p>Sell eMES as the "Shop Floor Enforcer" that fixes production data accuracy. <strong>"Keep SAP for Finance. Use Digiwin for the factory floor."</strong></p>
+                    <div class="client-experience">
+                        <span class="exp-label">Client Experience:</span>
+                        <span class="exp-quote">"Finally, I can see what's actually happening on the floor."</span>
+                    </div>
+                </div>
+
+                <div class="reverse-cut-phase">
+                    <div class="reverse-cut-phase-header">
+                        <span class="phase-tag">Phase 2</span>
+                        <h3>The Contrast</h3>
+                    </div>
+                    <p>Client realizes Digiwin eMES is flexible and "manufacturing-native" while their legacy ERP is rigid. The "integration tax" of maintaining two systems becomes annoying.</p>
+                    <div class="client-experience">
+                        <span class="exp-label">Client Experience:</span>
+                        <span class="exp-quote">"Why is updating SAP so painful when Digiwin just works?"</span>
+                    </div>
+                </div>
+
+                <div class="reverse-cut-phase">
+                    <div class="reverse-cut-phase-header">
+                        <span class="phase-tag">Phase 3</span>
+                        <h3>The Replacement</h3>
+                    </div>
+                    <p>When legacy ERP needs upgrade or license renewal, propose T100. <strong>"You already run your factory on Digiwin. Why not run your books on it too?"</strong></p>
+                    <div class="client-experience">
+                        <span class="exp-label">Client Experience:</span>
+                        <span class="exp-quote">"Let's just consolidate everything on Digiwin."</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reverse-cut-comparison">
+                <h4>Why It Works: Lower Risk Threshold</h4>
+                <div class="comparison-table">
+                    <div class="comparison-row header">
+                        <span>Metric</span>
+                        <span>Full ERP Replacement</span>
+                        <span>eMES Entry (Reverse Cut)</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span>Budget</span>
+                        <span class="old">5M+ THB</span>
+                        <span class="new">~1M THB</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span>Timeline</span>
+                        <span class="old">9-18 months</span>
+                        <span class="new">3-6 months</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span>Disruption</span>
+                        <span class="old">High (rip-and-replace)</span>
+                        <span class="new">Low (overlay)</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span>Client Risk</span>
+                        <span class="old">High</span>
+                        <span class="new">Low</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Positioning -->
+    <section class="competitive-section">
+        <div class="competitive-inner">
+            <div class="competitive-header">
+                <span class="competitive-label">COMPETITIVE POSITIONING</span>
+                <h2>Your Talking Points for Sales Conversations</h2>
+                <p>How to position DigiWin against the competition in any sales conversation.</p>
+            </div>
+
+            <div class="competitive-grid">
+                <!-- vs Generic ERPs -->
+                <div class="competitive-card">
+                    <div class="competitor-tag">vs. SAP Business One / NetSuite</div>
+                    <h3>"They Stop at the Office Door"</h3>
+                    <div class="competitive-points">
+                        <div class="comp-point">
+                            <strong>The Manufacturing Void:</strong> SAP B1 and NetSuite treat manufacturing as simple kitting. They struggle with Thai production realities—mold management, regrind (scrap reuse), complex sub-contracting loops. We handle these natively.
+                        </div>
+                        <div class="comp-point">
+                            <strong>The Phantom Problem:</strong> Competitors force you to create thousands of 'dummy' inventory transactions for Phantom BOMs. Digiwin manages this automatically, keeping warehouse data clean.
+                        </div>
+                        <div class="comp-point">
+                            <strong>The Cost of "Good Enough":</strong> To make NetSuite handle deep manufacturing, you need 3rd party SuiteApps. This increases TCO and creates "version lock" risks. Digiwin's MES/WMS are native.
+                        </div>
+                    </div>
+                    <div class="use-when"><strong>Use when:</strong> Client has SAP B1/NetSuite but complains about production visibility.</div>
+                </div>
+
+                <!-- vs Enterprise Giants -->
+                <div class="competitive-card">
+                    <div class="competitor-tag">vs. SAP S/4HANA / Oracle</div>
+                    <h3>"Tier-1 Capability, No German Logic"</h3>
+                    <div class="competitive-points">
+                        <div class="comp-point">
+                            <strong>Agility vs. Rigidity:</strong> SAP forces rigid "German Logic"—linear processes that break when rush orders arrive or machines fail. Digiwin T100 handles urgent order splitting and mid-production changes without rolling back schedules.
+                        </div>
+                        <div class="comp-point">
+                            <strong>Total Cost Advantage:</strong> We deliver 90% of Tier-1 capability at ~70% of the price. Shorter implementation (6-9 months vs. 12-18 months) using pre-built Automotive/Electronics templates.
+                        </div>
+                        <div class="comp-point">
+                            <strong>Hidden License Fees:</strong> Unlike Oracle where audit risks and "named user" costs spiral, Digiwin offers transparent pricing for high-volume shop floor users.
+                        </div>
+                    </div>
+                    <div class="use-when"><strong>Use when:</strong> Client is evaluating SAP/Oracle but has budget concerns or flexibility needs.</div>
+                </div>
+
+                <!-- vs Local/OSS -->
+                <div class="competitive-card">
+                    <div class="competitor-tag">vs. Thai Vendors / Odoo</div>
+                    <h3>"Scale Without the Dead End"</h3>
+                    <div class="competitive-points">
+                        <div class="comp-point">
+                            <strong>The Vanishing Vendor:</strong> Local ERPs are 30% cheaper but lack R&D budget to survive the next tech shift (AI, IoT). Digiwin is publicly listed (300378) with <span class="dw-years">44</span> years of history and Foxconn backing.
+                        </div>
+                        <div class="comp-point">
+                            <strong>The Feature Ceiling:</strong> Odoo hits a complexity wall when you need real-time machine integration (IoT) or traceability for ISO/IATF audits. Digiwin has these built-in.
+                        </div>
+                        <div class="comp-point">
+                            <strong>Financial Credibility:</strong> Your bank and auditors know Digiwin. Using T100 or iGP helps with IPO preparation and loan approvals in ways custom-built local software cannot.
+                        </div>
+                    </div>
+                    <div class="use-when"><strong>Use when:</strong> Client is tempted by low-cost local options or Odoo.</div>
+                </div>
+            </div>
+
+            <!-- The Ace Card -->
+            <div class="ace-card">
+                <div class="ace-label">THE ACE CARD</div>
+                <p class="ace-quote">"SAP manages your General Ledger. Local software manages your Invoices. <strong>Digiwin manages your Factory Floor.</strong> We are the only ones who understand that the physical reality of a Thai production line doesn't always match the accounting rules."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="stack-cta">
+        <div class="stack-cta-inner">
+            <h2>Now See the Actual Economics</h2>
+            <p>You've seen the arsenal. Now see the math—margins, recurring revenue, and 5-year projections for your business.</p>
+            <div class="stack-cta-buttons">
+                <a href="economics.html" class="dw-btn dw-btn-white">See Partner Economics →</a>
+                <a href="{{basePath}}demo.html" class="dw-btn dw-btn-outline-white">Schedule Discovery Call</a>
+            </div>
+        </div>
+    </section>
+{{footer}}
+
+
+    <script>
+    (function() {
+        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
+        dropdowns.forEach(function(item) {
+            const menu = item.querySelector('.dw-mega-menu');
+            item.addEventListener('mouseenter', function() {
+                dropdowns.forEach(function(other) { if (other !== item) { other.classList.remove('active'); const m = other.querySelector('.dw-mega-menu'); if (m) m.classList.remove('active'); }});
+                item.classList.add('active'); if (menu) menu.classList.add('active');
+            });
+            item.addEventListener('mouseleave', function() { item.classList.remove('active'); if (menu) menu.classList.remove('active'); });
+        });
+    })();
+    </script>
+    <script src="{{basePath}}digiwin-dynamic.js"></script>
+</body>
+</html>

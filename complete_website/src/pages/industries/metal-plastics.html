@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metal & Plastics Processing - DigiWin Thailand</title>
+    <link rel="stylesheet" href="{{basePath}}styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .metal-hero {
+            background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+            padding: 140px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .metal-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233798E4' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .metal-hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        .metal-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(55, 152, 228, 0.2);
+            border: 1px solid rgba(55, 152, 228, 0.3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: #7EC8F2;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+        .metal-hero h1 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.15;
+        }
+        .metal-hero h1 span {
+            color: #3798E4;
+        }
+        .metal-hero-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 20px;
+            color: rgba(255,255,255,0.85);
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+        }
+        .metal-hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+        }
+        .metal-hero-stat {
+            text-align: center;
+        }
+        .metal-hero-stat-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #3798E4;
+        }
+        .metal-hero-stat-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            margin-top: 4px;
+        }
+
+        /* Context Section */
+        .context-section {
+            padding: 100px 0;
+            background: #fff;
+        }
+        .context-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+        .context-inner h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 36px;
+            color: #253B50;
+            margin-bottom: 24px;
+        }
+        .context-inner p {
+            font-size: 18px;
+            color: #64748b;
+            line-height: 1.8;
+        }
+        .context-inner p strong {
+            color: #253B50;
+        }
+
+        /* Challenges Section */
+        .challenges-section {
+            padding: 100px 0;
+            background: #F5F7FA;
+        }
+        .challenges-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .challenges-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .challenges-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 36px;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .challenges-header p {
+            font-size: 18px;
+            color: #64748b;
+        }
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .challenge-card {
+            background: linear-gradient(145deg, #fef2f2 0%, #fee2e2 100%);
+            border: 1px solid #fecaca;
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+        }
+        .challenge-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            transition: all 0.4s ease;
+        }
+        .challenge-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: #b91c1c;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .challenge-card:hover .challenge-icon {
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+        }
+        .challenge-card:hover .challenge-icon svg {
+            stroke: #fff;
+        }
+        .challenge-card h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 22px;
+            color: #991b1b;
+            margin-bottom: 16px;
+        }
+        .challenge-card p {
+            font-size: 15px;
+            color: #b91c1c;
+            line-height: 1.7;
+        }
+
+        /* Solutions Section */
+        .solutions-section {
+            padding: 100px 0;
+            background: #fff;
+        }
+        .solutions-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .solutions-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .solutions-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 36px;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .solutions-header p {
+            font-size: 18px;
+            color: #64748b;
+        }
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        .solution-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+        .solution-card:hover {
+            border-color: #3798E4;
+            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+            transform: translateY(-4px);
+        }
+        .solution-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, rgba(55, 152, 228, 0.15), rgba(55, 152, 228, 0.05));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            transition: all 0.4s ease;
+        }
+        .solution-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: #3798E4;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .solution-card:hover .solution-icon {
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+        }
+        .solution-card:hover .solution-icon svg {
+            stroke: #fff;
+        }
+        .solution-card h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 22px;
+            color: #253B50;
+            margin-bottom: 12px;
+        }
+        .solution-card > p {
+            font-size: 15px;
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .solution-features {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .solution-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #475569;
+        }
+        .solution-feature svg {
+            width: 18px;
+            height: 18px;
+            color: #3798E4;
+            flex-shrink: 0;
+        }
+
+        /* Processes Section */
+        .processes-section {
+            padding: 80px 0;
+            background: #F5F7FA;
+        }
+        .processes-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+        .processes-inner h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 24px;
+            color: #253B50;
+            margin-bottom: 40px;
+        }
+        .processes-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+        }
+        .process-logo {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px 32px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 100px 0;
+            background: #fff;
+        }
+        .products-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .products-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .products-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 36px;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .product-card {
+            background: #fff;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            border-color: #3798E4;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+        }
+        .product-card-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(55, 152, 228, 0.1), rgba(55, 152, 228, 0.05));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+        }
+        .product-card-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: #3798E4;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .product-card:hover .product-card-icon {
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+        }
+        .product-card:hover .product-card-icon svg {
+            stroke: #fff;
+        }
+        .product-card h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 20px;
+            color: #253B50;
+            margin-bottom: 12px;
+        }
+        .product-card p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .product-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #3798E4;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .product-card:hover .product-card-link {
+            gap: 10px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #3798E4 0%, #2563eb 100%);
+            text-align: center;
+        }
+        .cta-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .cta-section h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .cta-section p {
+            font-size: 20px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+        .cta-btn-primary {
+            background: #fff;
+            color: #3798E4;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .cta-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .cta-btn-secondary {
+            background: transparent;
+            color: #fff;
+            padding: 16px 32px;
+            border: 2px solid rgba(255,255,255,0.4);
+            border-radius: 8px;
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .cta-btn-secondary:hover {
+            border-color: #fff;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .metal-hero h1 { font-size: 40px; }
+            .metal-hero-stats { gap: 40px; }
+            .challenges-grid { grid-template-columns: 1fr; }
+            .solutions-grid { grid-template-columns: 1fr; }
+            .products-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .metal-hero { padding: 120px 0 80px; }
+            .metal-hero h1 { font-size: 32px; }
+            .metal-hero-subtitle { font-size: 17px; }
+            .metal-hero-stats { flex-direction: column; gap: 24px; }
+            .metal-hero-stat-value { font-size: 36px; }
+            .challenge-card { padding: 32px 24px; }
+            .solution-card { padding: 32px; }
+            .cta-section h2 { font-size: 28px; }
+            .cta-buttons { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+{{header}}
+
+    <!-- Hero Section -->
+    <section class="metal-hero">
+        <div class="metal-hero-inner">
+            <div class="metal-hero-badge">
+                <span>Metal & Plastics Processing</span>
+            </div>
+            <h1>Optimize Yield. <span>Minimize Scrap.</span></h1>
+            <p class="metal-hero-subtitle">Stamping, injection molding, die casting, CNC machining. Process manufacturing where cycle time and yield drive your margins.</p>
+            <div class="metal-hero-stats">
+                <div class="metal-hero-stat">
+                    <div class="metal-hero-stat-value">+15%</div>
+                    <div class="metal-hero-stat-label">Average yield improvement</div>
+                </div>
+                <div class="metal-hero-stat">
+                    <div class="metal-hero-stat-value">-30%</div>
+                    <div class="metal-hero-stat-label">Unplanned downtime</div>
+                </div>
+                <div class="metal-hero-stat">
+                    <div class="metal-hero-stat-value">100%</div>
+                    <div class="metal-hero-stat-label">Cycle time visibility</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Context Section -->
+    <section class="context-section">
+        <div class="context-inner">
+            <h2>Where Margins Are Made</h2>
+            <p>In metal and plastics processing, <strong>material costs are 50-70% of your total cost</strong>. Every defective part is money in the scrap bin. Every second of cycle time drift is capacity you'll never recover. Small improvements in yield and efficiency <strong>translate directly to the bottom line</strong>—but you can't improve what you can't measure.</p>
+        </div>
+    </section>
+
+    <!-- Challenges Section -->
+    <section class="challenges-section">
+        <div class="challenges-inner">
+            <div class="challenges-header">
+                <h2>The Process Manufacturing Challenge</h2>
+                <p>Hidden losses that erode your margins</p>
+            </div>
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 6 6"/><path d="M6 6v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6"/><path d="M19 6h-1a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2H5"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                    </div>
+                    <h3>Scrap Eats Margins</h3>
+                    <p>Material costs are your biggest expense. Every defective part is money thrown away. Small yield improvements create significant profit impact.</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3>Die/Mold Mysteries</h3>
+                    <p>Which die is causing defects? When does a mold need maintenance? Without data, you're guessing until it fails catastrophically.</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3>Cycle Time Drift</h3>
+                    <p>Machines slow down gradually. Operators don't notice 0.5 seconds per cycle—but over a shift, that's real capacity loss.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions-section">
+        <div class="solutions-inner">
+            <div class="solutions-header">
+                <h2>How DigiWin Solves It</h2>
+                <p>Data-driven visibility for process manufacturing</p>
+            </div>
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+                    </div>
+                    <h3>Process Parameter Monitoring</h3>
+                    <p>Capture temperature, pressure, speed from every cycle. Correlate parameters to quality outcomes.</p>
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Real-time parameter capture</span>
+                        </div>
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Quality correlation analysis</span>
+                        </div>
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Out-of-spec alerts</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3>Die/Mold Management</h3>
+                    <p>Track shot counts, maintenance history, and performance by tool. Predict maintenance needs before failures.</p>
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Shot count tracking</span>
+                        </div>
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Maintenance scheduling</span>
+                        </div>
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Tool performance trending</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3>Scrap Analysis</h3>
+                    <p>Categorize defects by type, correlate to machine, shift, material lot. Find root causes, not just symptoms.</p>
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Defect categorization</span>
+                        </div>
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Pareto analysis</span>
+                        </div>
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Root cause correlation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">
+                        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3>Cycle Time Optimization</h3>
+                    <p>Real-time cycle time monitoring against standards. Alert on drift and identify bottlenecks.</p>
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Auto cycle detection</span>
+                        </div>
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>Drift alerts</span>
+                        </div>
+                        <div class="solution-feature">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                            <span>OEE calculation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processes Section -->
+    <section class="processes-section">
+        <div class="processes-inner">
+            <h3>Process Types We Support</h3>
+            <div class="processes-logos">
+                <div class="process-logo">Stamping</div>
+                <div class="process-logo">Injection Molding</div>
+                <div class="process-logo">Die Casting</div>
+                <div class="process-logo">CNC Machining</div>
+                <div class="process-logo">Forging</div>
+                <div class="process-logo">Extrusion</div>
+                <div class="process-logo">Sheet Metal</div>
+                <div class="process-logo">Blow Molding</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="products-inner">
+            <div class="products-header">
+                <h2>Recommended Products for Metal & Plastics</h2>
+            </div>
+            <div class="products-grid">
+                <a href="{{basePath}}products/aiot.html" class="product-card">
+                    <div class="product-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                    <h3>AIoT</h3>
+                    <p>Machine connectivity for presses, injection molders, and CNC machines. Real-time OEE and process parameter capture.</p>
+                    <span class="product-card-link">Learn More <span>→</span></span>
+                </a>
+                <a href="{{basePath}}products/mes.html" class="product-card">
+                    <div class="product-card-icon">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/><circle cx="6" cy="12" r="1"/><circle cx="10" cy="12" r="1"/><circle cx="14" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg>
+                    </div>
+                    <h3>sMES</h3>
+                    <p>Production tracking, quality data collection, scrap analysis, and die/mold management for process manufacturing.</p>
+                    <span class="product-card-link">Learn More <span>→</span></span>
+                </a>
+                <a href="{{basePath}}products/erp.html" class="product-card">
+                    <div class="product-card-icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                    </div>
+                    <h3>iGP ERP</h3>
+                    <p>Right-sized ERP for metal and plastics operations with strong inventory and costing capabilities.</p>
+                    <span class="product-card-link">Learn More <span>→</span></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-inner">
+            <h2>Improve Yield, Reduce Scrap</h2>
+            <p>See how DigiWin helps process manufacturers</p>
+            <div class="cta-buttons">
+                <a href="{{basePath}}demo.html" class="cta-btn-primary">Get in Touch</a>
+                <a href="{{basePath}}industries.html" class="cta-btn-secondary">View Other Industries</a>
+            </div>
+        </div>
+    </section>
+{{footer}}
+
+
+    <script>
+    (function() {
+        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
+        dropdowns.forEach(function(item) {
+            const menu = item.querySelector('.dw-mega-menu');
+            item.addEventListener('mouseenter', function() {
+                dropdowns.forEach(function(other) { if (other !== item) { other.classList.remove('active'); const m = other.querySelector('.dw-mega-menu'); if (m) m.classList.remove('active'); }});
+                item.classList.add('active'); if (menu) menu.classList.add('active');
+            });
+            item.addEventListener('mouseleave', function() { item.classList.remove('active'); if (menu) menu.classList.remove('active'); });
+        });
+    })();
+    </script>
+    <script src="{{basePath}}digiwin-dynamic.js"></script>
+</body>
+</html>

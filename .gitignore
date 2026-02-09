@@ -1,0 +1,14 @@
+# Large binary files
+Digwin Brand Guidelines.pdf
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+
+# Editor
+.vscode/
+*.swp
+*.swo

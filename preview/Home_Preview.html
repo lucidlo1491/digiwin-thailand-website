@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiWin Thailand | Manufacturing ERP, MES, WMS Solutions</title>
+
+    <!-- Fonts: Corporate Trust pairing from ui-ux-pro-max -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           DESIGN SYSTEM - DigiWin Thailand
+           Based on PRD v1.2 + Peter's Reference
+           ============================================ */
+
+        :root {
+            /* Colors from PRD Section 7.1 */
+            --primary-blue: #3798E4;
+            --primary-blue-dark: #2563eb;
+            --dark-navy: #253B50;
+            --dark-navy-deep: #1a2836;
+            --white: #FFFFFF;
+            --light-gray: #F5F7FA;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --text-muted: #94a3b8;
+            --accent-green: #4CAF50;
+
+            /* Extended palette for depth */
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+
+            /* Typography */
+            --font-heading: 'Lexend', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+
+            /* Spacing */
+            --section-padding: 100px;
+            --container-width: 1200px;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+
+            /* Transitions */
+            --transition-fast: 150ms ease;
+            --transition-base: 250ms ease;
+            --transition-slow: 350ms ease;
+        }
+
+        /* Reset & Base */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ============================================
+           HEADER - Global Navigation
+           ============================================ */
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--slate-200);
+            transition: var(--transition-base);
+        }
+
+        .header-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--dark-navy);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #2563eb 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-link {
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--slate-600);
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: var(--transition-base);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .btn {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition-base);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+            box-shadow: 0 4px 14px rgba(55, 152, 228, 0.35);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-blue-dark);
+            box-shadow: 0 6px 20px rgba(55, 152, 228, 0.45);
+            transform: translateY(-1px);
+        }
+
+        .btn-ghost {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.8);
+            backdrop-filter: blur(4px);
+        }
+
+        .btn-ghost:hover {
+            background: white;
+            color: var(--dark-navy);
+            border-color: white;
+        }
+
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 16px;
+        }
+
+        /* ============================================
+           SECTION 1: HERO - Split Screen
+           ============================================ */
+
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-top: 72px;
+        }
+
+        .hero-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Left Panel - Track A: Factory Owners */
+        .hero-panel--left {
+            background:
+                linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(37, 59, 80, 0.85) 100%),
+                url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Right Panel - Track B: Distributor Prospects */
+        .hero-panel--right {
+            background: linear-gradient(145deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%);
+            position: relative;
+        }
+
+        .hero-panel--right::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(255,255,255,0.08) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 520px;
+        }
+
+        .hero-label {
+            font-family: var(--font-heading);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-label::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--primary-blue);
+        }
+
+        .hero-title {
+            font-size: clamp(36px, 4vw, 52px);
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 36px;
+            line-height: 1.6;
+            max-width: 440px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================
+           SECTION 2: SOCIAL PROOF - Stats Row
+           ============================================ */
+
+        .stats-section {
+            background: var(--slate-50);
+            padding: 60px 24px;
+            border-bottom: 1px solid var(--slate-200);
+        }
+
+        .stats-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .stats-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .stats-header h2 {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-light);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 24px;
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 60px;
+            width: 1px;
+            background: var(--slate-200);
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: clamp(40px, 5vw, 56px);
+            font-weight: 700;
+            color: var(--primary-blue);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--slate-600);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ============================================
+           SECTION 3: VALUE PROPS - Icon Grid
+           ============================================ */
+
+        .value-props {
+            padding: var(--section-padding) 24px;
+            background: white;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(32px, 4vw, 42px);
+            color: var(--slate-900);
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 20px;
+            color: var(--slate-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+        }
+
+        .value-card {
+            background: var(--slate-50);
+            border-radius: 16px;
+            padding: 40px 28px;
+            text-align: center;
+            transition: var(--transition-base);
+            border: 1px solid var(--slate-200);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), #0ea5e9);
+            opacity: 0;
+            transition: var(--transition-base);
+        }
+
+        .value-card:hover {
+            background: white;
+            box-shadow: var(--shadow-xl);
+            border-color: transparent;
+            transform: translateY(-4px);
+        }
+
+        .value-card:hover::before {
+            opacity: 1;
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-base);
+        }
+
+        .value-card:hover .value-icon {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #0284c7 100%);
+        }
+
+        .value-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--primary-blue);
+            transition: var(--transition-base);
+        }
+
+        .value-card:hover .value-icon svg {
+            stroke: white;
+        }
+
+        .value-card h3 {
+            font-size: 20px;
+            color: var(--slate-900);
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            font-size: 15px;
+            color: var(--slate-600);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .value-link {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition-fast);
+        }
+
+        .value-link:hover {
+            gap: 10px;
+        }
+
+        /* ============================================
+           SECTION 4: INDUSTRY SELECTOR
+           ============================================ */
+
+        .industries {
+            padding: var(--section-padding) 24px;
+            background: var(--slate-50);
+        }
+
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .industry-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+        }
+
+        .industry-card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-4px);
+        }
+
+        .industry-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .industry-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+
+        .industry-card:hover .industry-image img {
+            transform: scale(1.05);
+        }
+
+        .industry-content {
+            padding: 28px;
+        }
+
+        .industry-content h3 {
+            font-size: 24px;
+            color: var(--slate-900);
+            margin-bottom: 12px;
+        }
+
+        .industry-content p {
+            font-size: 15px;
+            color: var(--slate-600);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* ============================================
+           SECTION 5: DIGIWIN DIFFERENCE
+           ============================================ */
+
+        .difference {
+            padding: var(--section-padding) 24px;
+            background: white;
+        }
+
+        .difference-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+        }
+
+        .difference-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .difference-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 28px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #0284c7 100%);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(55, 152, 228, 0.3);
+        }
+
+        .difference-icon svg {
+            width: 48px;
+            height: 48px;
+            stroke: white;
+        }
+
+        .difference-item h3 {
+            font-size: 22px;
+            color: var(--slate-900);
+            margin-bottom: 16px;
+        }
+
+        .difference-item p {
+            font-size: 16px;
+            color: var(--slate-600);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           SECTION 6: CASE STUDY
+           ============================================ */
+
+        .case-study {
+            padding: var(--section-padding) 24px;
+            background: var(--slate-900);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-study::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(55, 152, 228, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(14, 165, 233, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .case-study-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .case-study-label {
+            font-family: var(--font-heading);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .case-study-label::before {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: var(--primary-blue);
+        }
+
+        .case-study-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .case-study-content h2 {
+            font-size: clamp(28px, 3vw, 36px);
+            color: white;
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        .case-study-content p {
+            font-size: 18px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .case-study-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .metric {
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .metric-value {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .case-study-image {
+            position: relative;
+        }
+
+        .case-study-image img {
+            border-radius: 16px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .case-study-badge {
+            position: absolute;
+            bottom: -20px;
+            right: 40px;
+            background: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .case-study-badge-label {
+            font-size: 12px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .case-study-badge-value {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--slate-900);
+        }
+
+        /* ============================================
+           SECTION 7: FINAL CTA BANNER
+           ============================================ */
+
+        .final-cta {
+            padding: 80px 24px;
+            background: linear-gradient(135deg, var(--dark-navy) 0%, var(--slate-800) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(55, 152, 228, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .final-cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(28px, 4vw, 42px);
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .final-cta p {
+            font-size: 20px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .final-cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+
+        .footer {
+            background: var(--slate-900);
+            padding: 64px 24px 32px;
+            border-top: 1px solid var(--slate-800);
+        }
+
+        .footer-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand {
+            color: white;
+        }
+
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .footer-stock {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .footer-stock strong {
+            color: var(--primary-blue);
+        }
+
+        .footer-column h4 {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            font-size: 15px;
+            color: var(--text-muted);
+            transition: var(--transition-fast);
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid var(--slate-800);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-panel {
+                min-height: 70vh;
+                padding: 60px 40px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-item:nth-child(2)::after {
+                display: none;
+            }
+
+            .value-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .industry-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .difference-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .case-study-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .header-inner {
+                height: 64px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .hero {
+                margin-top: 64px;
+            }
+
+            .hero-panel {
+                min-height: 80vh;
+                padding: 48px 24px;
+            }
+
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+
+            .stat-item::after {
+                display: none;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-study-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .final-cta-buttons {
+                flex-direction: column;
+            }
+
+            .final-cta-buttons .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo">
+                <div class="logo-icon">D</div>
+                DigiWin
+            </a>
+            <nav class="nav">
+                <a href="/products" class="nav-link">Products</a>
+                <a href="/industries" class="nav-link">Industries</a>
+                <a href="/partner-program" class="nav-link">Partner Program</a>
+                <a href="/about" class="nav-link">About Us</a>
+                <a href="/contact" class="btn btn-primary">Request a Demo</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- SECTION 1: HERO - Split Screen -->
+    <section class="hero">
+        <!-- Left Panel - Track A: Factory Owners -->
+        <div class="hero-panel hero-panel--left">
+            <div class="hero-content">
+                <div class="hero-label">For Manufacturers</div>
+                <h1 class="hero-title">Smarter Manufacturing Starts Here</h1>
+                <p class="hero-subtitle">See your factory floor in real-time. Control costs. Ship on time.</p>
+                <div class="hero-cta">
+                    <a href="/products" class="btn btn-primary btn-large">Explore Solutions</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Track B: Distributor Prospects -->
+        <div class="hero-panel hero-panel--right">
+            <div class="hero-content">
+                <div class="hero-label">For Partners</div>
+                <h1 class="hero-title">Grow Your Consulting Business</h1>
+                <p class="hero-subtitle">Partner with the ERP company that's been manufacturing-only for 44 years.</p>
+                <div class="hero-cta">
+                    <a href="/partner-program" class="btn btn-ghost btn-large">Become a Partner</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: SOCIAL PROOF - Stats Row -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stats-header">
+                <h2>Trusted by Manufacturers Worldwide</h2>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">44+</div>
+                    <div class="stat-label">Years of ERP Excellence</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50,000+</div>
+                    <div class="stat-label">Clients Worldwide</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Thai Implementations</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">300378</div>
+                    <div class="stat-label">Stock Code (Shenzhen)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: VALUE PROPS - Icon Grid -->
+    <section class="value-props">
+        <div class="container">
+            <div class="section-header">
+                <h2>Complete Manufacturing Solutions</h2>
+                <p>Four pillars of digital transformation for your factory</p>
+            </div>
+            <div class="value-grid">
+                <!-- ERP -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                        </svg>
+                    </div>
+                    <h3>44 Years of ERP Excellence</h3>
+                    <p>Purpose-built for manufacturing. From SME workshops to enterprise groups.</p>
+                    <a href="/products/erp" class="value-link">
+                        Learn More
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- MES -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3>Real-Time Production Visibility</h3>
+                    <p>See OEE, track work orders, and monitor every machine - as it happens.</p>
+                    <a href="/products/mes" class="value-link">
+                        Learn More
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- WMS -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3>Zero Ghost Inventory</h3>
+                    <p>Every item. Every location. Every time. Barcode and RFID-enabled.</p>
+                    <a href="/products/wms" class="value-link">
+                        Learn More
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- AIoT -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
+                            <rect x="9" y="9" width="6" height="6"/>
+                            <line x1="9" y1="1" x2="9" y2="4"/>
+                            <line x1="15" y1="1" x2="15" y2="4"/>
+                            <line x1="9" y1="20" x2="9" y2="23"/>
+                            <line x1="15" y1="20" x2="15" y2="23"/>
+                            <line x1="20" y1="9" x2="23" y2="9"/>
+                            <line x1="20" y1="14" x2="23" y2="14"/>
+                            <line x1="1" y1="9" x2="4" y2="9"/>
+                            <line x1="1" y1="14" x2="4" y2="14"/>
+                        </svg>
+                    </div>
+                    <h3>Smart Factory Ready</h3>
+                    <p>Connect machines, collect data, and make smarter decisions automatically.</p>
+                    <a href="/products/aiot" class="value-link">
+                        Learn More
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: INDUSTRY SELECTOR -->
+    <section class="industries">
+        <div class="container">
+            <div class="section-header">
+                <h2>Built for Your Industry</h2>
+                <p>DigiWin serves manufacturers who need precision, traceability, and control.</p>
+            </div>
+            <div class="industry-grid">
+                <!-- Automotive -->
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&h=500&fit=crop" alt="Automotive manufacturing">
+                    </div>
+                    <div class="industry-content">
+                        <h3>Automotive Parts</h3>
+                        <p>JIT delivery, full traceability, EDI integration. Built for Tier-1 and Tier-2 suppliers.</p>
+                        <a href="/industries/automotive" class="value-link">
+                            Learn More
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Electronics -->
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=500&fit=crop" alt="Electronics manufacturing">
+                    </div>
+                    <div class="industry-content">
+                        <h3>Electronics Assembly</h3>
+                        <p>Component traceability, SMT integration, yield calculation. From PCB to final assembly.</p>
+                        <a href="/industries/electronics" class="value-link">
+                            Learn More
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Metal & Plastics -->
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebb6122?w=800&h=500&fit=crop" alt="Metal and plastics manufacturing">
+                    </div>
+                    <div class="industry-content">
+                        <h3>Metal & Plastics</h3>
+                        <p>Dual-unit conversion, scrap tracking, material yield optimization. For stamping, molding, and extrusion.</p>
+                        <a href="/industries/metal-plastics" class="value-link">
+                            Learn More
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: DIGIWIN DIFFERENCE -->
+    <section class="difference">
+        <div class="container">
+            <div class="section-header">
+                <h2>The DigiWin Difference</h2>
+                <p>What sets us apart from generic ERP vendors.</p>
+            </div>
+            <div class="difference-grid">
+                <div class="difference-item">
+                    <div class="difference-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+                            <path d="M17 18h1"/>
+                            <path d="M12 18h1"/>
+                            <path d="M7 18h1"/>
+                        </svg>
+                    </div>
+                    <h3>Manufacturing-Only. For 44 Years.</h3>
+                    <p>We don't sell to banks, retailers, or hospitals. Every feature is built for the factory floor.</p>
+                </div>
+
+                <div class="difference-item">
+                    <div class="difference-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                    <h3>One Ecosystem. Unlimited Growth.</h3>
+                    <p>Start with Workflow ERP. Add MES when ready. Scale to T100 for enterprise. Your investment compounds.</p>
+                </div>
+
+                <div class="difference-item">
+                    <div class="difference-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>50+ Staff in Thailand</h3>
+                    <p>Thai-speaking support. Bangkok office. 8 years serving Thai manufacturers. Not a remote vendor - your local partner.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: CASE STUDY -->
+    <section class="case-study">
+        <div class="case-study-container">
+            <div class="case-study-grid">
+                <div class="case-study-content">
+                    <div class="case-study-label">Thailand Success Story</div>
+                    <h2>How Srangsern Transformed Their Operations with DigiWin</h2>
+                    <p>A Thai plastics manufacturer facing labor shortages and Covid-19 disruption partnered with DigiWin to systematize their operations. The results speak for themselves.</p>
+
+                    <div class="case-study-metrics">
+                        <div class="metric">
+                            <div class="metric-value">90%</div>
+                            <div class="metric-label">Inventory Efficiency</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">1 Hour</div>
+                            <div class="metric-label">Material Traceability</div>
+                        </div>
+                    </div>
+
+                    <a href="/case-studies/srangsern" class="btn btn-primary">Read Full Case Study</a>
+                </div>
+                <div class="case-study-image">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop" alt="Manufacturing facility">
+                    <div class="case-study-badge">
+                        <div class="case-study-badge-label">Product Used</div>
+                        <div class="case-study-badge-value">Workflow ERP</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: FINAL CTA BANNER -->
+    <section class="final-cta">
+        <div class="final-cta-container">
+            <h2>Ready to See What DigiWin Can Do?</h2>
+            <p>Whether you're a factory looking for better control or a consultant building a new revenue stream - let's talk.</p>
+            <div class="final-cta-buttons">
+                <a href="/contact" class="btn btn-primary btn-large">Request a Demo</a>
+                <a href="/partner-program" class="btn btn-ghost btn-large">Become a Partner</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">D</div>
+                        DigiWin
+                    </div>
+                    <p>44 years of manufacturing intelligence. Purpose-built ERP, MES, WMS, and AIoT solutions for factories worldwide.</p>
+                    <div class="footer-stock">
+                        Shenzhen Stock Exchange: <strong>300378</strong>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="/products/erp">ERP Solutions</a></li>
+                        <li><a href="/products/mes">MES</a></li>
+                        <li><a href="/products/wms">WMS</a></li>
+                        <li><a href="/products/aiot">AIoT</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Industries</h4>
+                    <ul>
+                        <li><a href="/industries/automotive">Automotive</a></li>
+                        <li><a href="/industries/electronics">Electronics</a></li>
+                        <li><a href="/industries/metal-plastics">Metal & Plastics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/partner-program">Partner Program</a></li>
+                        <li><a href="/case-studies">Case Studies</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DigiWin Thailand. All rights reserved.</p>
+                <p>Bangkok, Thailand | +66 2 XXX XXXX | info@digiwin.co.th</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

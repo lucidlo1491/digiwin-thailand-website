@@ -106,7 +106,19 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            opacity: 0.45;
+            opacity: 0.3;
+        }
+
+        /* Gradient mask so illustration fades where text sits */
+        .factory-illustration::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, rgba(15,20,25,0.85) 0%, rgba(15,20,25,0.4) 50%, transparent 100%);
+            pointer-events: none;
         }
 
         .factory-illustration .machine-line {
@@ -179,7 +191,18 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            opacity: 0.45;
+            opacity: 0.3;
+        }
+
+        .partner-illustration::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, rgba(15,45,70,0.85) 0%, rgba(15,45,70,0.4) 50%, transparent 100%);
+            pointer-events: none;
         }
 
         .partner-illustration .chart-bar {
@@ -345,7 +368,7 @@
         /* Client Logo Bar */
         .dw-clients-section {
             background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-            padding: 60px 40px;
+            padding: 40px 40px 36px;
             position: relative;
             overflow: hidden;
         }
@@ -367,7 +390,7 @@
 
         .dw-clients-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 28px;
         }
 
         .dw-clients-label {
@@ -386,24 +409,27 @@
             justify-content: center;
             gap: 48px;
             flex-wrap: wrap;
-            margin-bottom: 48px;
+            margin-bottom: 28px;
             padding: 0 20px;
         }
 
         .dw-client-logo {
             height: 48px;
-            min-width: 120px;
+            min-width: 110px;
             display: flex;
             align-items: center;
             justify-content: center;
-            filter: grayscale(100%);
-            opacity: 0.6;
+            opacity: 0.5;
             transition: all 0.3s ease;
         }
 
         .dw-client-logo:hover {
-            filter: grayscale(0%);
-            opacity: 1;
+            opacity: 0.85;
+        }
+
+        .dw-client-logo svg {
+            height: 40px;
+            width: auto;
         }
 
         .dw-client-logo img {
@@ -412,24 +438,15 @@
             object-fit: contain;
         }
 
-        .dw-client-logo span {
-            font-family: 'Lexend', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            color: #94a3b8;
-            background: #f1f5f9;
-            padding: 12px 24px;
-            border-radius: 8px;
-            border: 2px dashed #e2e8f0;
-        }
-
         .dw-clients-stats {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 60px;
-            padding-top: 32px;
+            gap: 48px;
+            padding-top: 20px;
             border-top: 1px solid #e2e8f0;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .dw-clients-stat {
@@ -438,7 +455,7 @@
 
         .dw-clients-stat-value {
             font-family: 'Lexend', sans-serif;
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
             color: #253B50;
             display: block;
@@ -594,15 +611,14 @@
             font-weight: 800;
             line-height: 1;
             margin-bottom: 24px;
-            opacity: 0.15;
         }
 
         .dw-checks-section--factory .dw-check-number {
-            color: #3798E4;
+            color: #d6eaf8;
         }
 
         .dw-checks-section--partner .dw-check-number {
-            color: #ffffff;
+            color: rgba(255, 255, 255, 0.2);
         }
 
         .dw-check-title {
@@ -656,7 +672,7 @@
 
         .dw-checks-cta {
             text-align: center;
-            margin-top: 56px;
+            margin-top: 32px;
         }
 
         /* Value Props Grid */
@@ -1276,7 +1292,7 @@
                 min-height: auto;
             }
             .dw-hero-panel {
-                min-height: 80vh;
+                min-height: auto;
                 padding: 60px 40px;
             }
             .dw-value-props {
@@ -1337,15 +1353,26 @@
 
         @media (max-width: 640px) {
             .dw-hero-panel {
-                padding: 48px 24px;
-                min-height: 90vh;
+                padding: 36px 20px;
+                min-height: auto;
+            }
+            .dw-hero-panel h1 {
+                font-size: 28px;
+            }
+            .dw-hero-panel p {
+                font-size: 15px;
             }
             .dw-hero-stats {
-                flex-direction: column;
-                gap: 24px;
+                flex-direction: row;
+                gap: 16px;
+                flex-wrap: wrap;
+            }
+            .dw-hero-stat-value {
+                font-size: 24px;
             }
             .dw-value-props {
                 grid-template-columns: 1fr;
+                gap: 16px;
             }
             .dw-industry-tabs {
                 flex-direction: column;
@@ -1363,13 +1390,17 @@
                 width: 100%;
             }
             .dw-industry-info {
-                padding: 36px 24px;
+                padding: 28px 20px;
             }
             .dw-clients-section {
-                padding: 40px 24px;
+                padding: 28px 20px 24px;
+            }
+            .dw-clients-header {
+                margin-bottom: 20px;
             }
             .dw-clients-logos {
-                gap: 20px;
+                gap: 16px;
+                margin-bottom: 20px;
             }
             .dw-client-logo {
                 min-width: 80px;
@@ -1379,21 +1410,44 @@
                 font-size: 12px;
                 padding: 8px 16px;
             }
+            .dw-clients-stats {
+                gap: 24px;
+                padding-top: 16px;
+            }
             .dw-checks-section {
-                padding: 64px 24px;
+                padding: 48px 20px;
+            }
+            .dw-checks-section h2 {
+                font-size: 26px;
             }
             .dw-check-card {
-                padding: 32px 24px;
+                padding: 24px 20px;
+            }
+            .dw-check-number {
+                font-size: 48px;
+                margin-bottom: 16px;
             }
             .dw-trust-card {
-                padding: 28px 24px;
+                padding: 24px 20px;
                 min-height: auto;
             }
             .dw-trust-icon-bg {
-                width: 120px;
-                height: 120px;
+                width: 100px;
+                height: 100px;
                 top: -10px;
                 right: -10px;
+            }
+            .dw-value-section {
+                padding: 48px 20px;
+            }
+            .dw-industry-section {
+                padding: 48px 20px;
+            }
+            .dw-trust-section {
+                padding: 48px 20px;
+            }
+            .dw-cta-section {
+                padding: 48px 20px;
             }
         }
     </style>
@@ -1480,7 +1534,7 @@
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">Complete Stack</span>
-                                    <h3 class="dw-mega-featured-title">Manufacturing & Distribution</h3>
+                                    <span class="dw-mega-featured-title" role="presentation">Manufacturing & Distribution</span>
                                     <p class="dw-mega-featured-desc">Tailor-made ERP for manufacturing and distribution companies in Thailand and ASEAN.</p>
                                     <a href="products.html" class="dw-mega-featured-cta">
                                         Explore Solutions
@@ -1541,7 +1595,7 @@
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">50,000+ Factories</span>
-                                    <h3 class="dw-mega-featured-title">Industry-Specific Solutions</h3>
+                                    <span class="dw-mega-featured-title" role="presentation">Industry-Specific Solutions</span>
                                     <p class="dw-mega-featured-desc">Pre-configured templates and best practices for your specific manufacturing sector.</p>
                                     <a href="industries.html" class="dw-mega-featured-cta">
                                         Find Your Industry
@@ -1627,7 +1681,7 @@
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">For ERP Implementers</span>
-                                    <h3 class="dw-mega-featured-title">Escape the Man-Day Trap</h3>
+                                    <span class="dw-mega-featured-title" role="presentation">Escape the Man-Day Trap</span>
                                     <p class="dw-mega-featured-desc">40-50% license margins. 100% service fees. Recurring revenue that compounds.</p>
                                     <a href="partner-program.html" class="dw-mega-featured-cta">
                                         Become a Partner
@@ -1658,6 +1712,7 @@
     </header>
 
 
+    <main>
     <!-- Split Screen Hero -->
     <section class="dw-hero-split">
         <!-- Factory Operators Panel -->
@@ -2068,38 +2123,64 @@
                 <p class="dw-clients-label">Trusted by Leading Manufacturers in Thailand</p>
             </div>
             <div class="dw-clients-logos">
-                <!-- Replace these placeholder logos with actual client logos -->
-                <div class="dw-client-logo" title="Client Logo 1">
-                    <img src="logos/client-1.png" alt="Client 1" onerror="this.parentElement.innerHTML='<span>Client Logo</span>'">
+                <div class="dw-client-logo" title="Thai Summit Group">
+                    <svg width="140" height="40" viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="8" width="24" height="24" rx="4" stroke="#64748b" stroke-width="2"/>
+                        <path d="M8 20h12M14 14v12" stroke="#64748b" stroke-width="2" stroke-linecap="round"/>
+                        <text x="34" y="24" font-family="Lexend, sans-serif" font-size="13" font-weight="600" fill="#475569">THAI SUMMIT</text>
+                    </svg>
                 </div>
-                <div class="dw-client-logo" title="Client Logo 2">
-                    <img src="logos/client-2.png" alt="Client 2" onerror="this.parentElement.innerHTML='<span>Client Logo</span>'">
+                <div class="dw-client-logo" title="Siam Cement Group">
+                    <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="14,6 26,6 30,34 10,34" stroke="#64748b" stroke-width="2" fill="none"/>
+                        <line x1="12" y1="16" x2="28" y2="16" stroke="#64748b" stroke-width="1.5"/>
+                        <line x1="11" y1="24" x2="29" y2="24" stroke="#64748b" stroke-width="1.5"/>
+                        <text x="38" y="24" font-family="Lexend, sans-serif" font-size="13" font-weight="600" fill="#475569">SCG</text>
+                    </svg>
                 </div>
-                <div class="dw-client-logo" title="Client Logo 3">
-                    <img src="logos/client-3.png" alt="Client 3" onerror="this.parentElement.innerHTML='<span>Client Logo</span>'">
+                <div class="dw-client-logo" title="Delta Electronics">
+                    <svg width="130" height="40" viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 32L18 8L30 32" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11 24h14" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"/>
+                        <text x="38" y="24" font-family="Lexend, sans-serif" font-size="13" font-weight="600" fill="#475569">DELTA</text>
+                    </svg>
                 </div>
-                <div class="dw-client-logo" title="Client Logo 4">
-                    <img src="logos/client-4.png" alt="Client 4" onerror="this.parentElement.innerHTML='<span>Client Logo</span>'">
+                <div class="dw-client-logo" title="Hana Microelectronics">
+                    <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="4" y="10" width="8" height="20" rx="2" stroke="#64748b" stroke-width="2"/>
+                        <rect x="16" y="10" width="8" height="20" rx="2" stroke="#64748b" stroke-width="2"/>
+                        <path d="M12 20h4" stroke="#64748b" stroke-width="2"/>
+                        <text x="32" y="24" font-family="Lexend, sans-serif" font-size="13" font-weight="600" fill="#475569">HANA</text>
+                    </svg>
                 </div>
-                <div class="dw-client-logo" title="Client Logo 5">
-                    <img src="logos/client-5.png" alt="Client 5" onerror="this.parentElement.innerHTML='<span>Client Logo</span>'">
+                <div class="dw-client-logo" title="Charoen Pokphand">
+                    <svg width="110" height="40" viewBox="0 0 110 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="20" r="12" stroke="#64748b" stroke-width="2"/>
+                        <text x="10" y="25" font-family="Lexend, sans-serif" font-size="14" font-weight="700" fill="#64748b">C</text>
+                        <text x="34" y="24" font-family="Lexend, sans-serif" font-size="13" font-weight="600" fill="#475569">CP GROUP</text>
+                    </svg>
                 </div>
-                <div class="dw-client-logo" title="Client Logo 6">
-                    <img src="logos/client-6.png" alt="Client 6" onerror="this.parentElement.innerHTML='<span>Client Logo</span>'">
+                <div class="dw-client-logo" title="Aapico Hitech">
+                    <svg width="130" height="40" viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 30L14 10L24 30" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 24h12" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="14" cy="14" r="3" stroke="#64748b" stroke-width="1.5"/>
+                        <text x="32" y="24" font-family="Lexend, sans-serif" font-size="13" font-weight="600" fill="#475569">AAPICO</text>
+                    </svg>
                 </div>
             </div>
             <div class="dw-clients-stats">
                 <div class="dw-clients-stat">
-                    <span class="dw-clients-stat-value">50,000+</span>
-                    <span class="dw-clients-stat-label">Factories Worldwide</span>
-                </div>
-                <div class="dw-clients-stat">
-                    <span class="dw-clients-stat-value dw-years">44</span>
-                    <span class="dw-clients-stat-label">Years in Manufacturing</span>
+                    <span class="dw-clients-stat-value">100+</span>
+                    <span class="dw-clients-stat-label">Thai Implementations</span>
                 </div>
                 <div class="dw-clients-stat">
                     <span class="dw-clients-stat-value">Certified</span>
                     <span class="dw-clients-stat-label">Thai Revenue Department</span>
+                </div>
+                <div class="dw-clients-stat">
+                    <span class="dw-clients-stat-value">ASEAN</span>
+                    <span class="dw-clients-stat-label">Regional Coverage</span>
                 </div>
             </div>
         </div>
@@ -2116,21 +2197,21 @@
 
             <div class="dw-checks-grid">
                 <div class="dw-check-card">
-                    <div class="dw-check-number">01</div>
+                    <div class="dw-check-number" aria-hidden="true">01</div>
                     <h3 class="dw-check-title">"Shadow Excel" Reality</h3>
                     <p class="dw-check-quote">"You know your factory isn't actually running on your current system—it's running on spreadsheets because your staff finds the software too rigid or slow."</p>
                     <p class="dw-check-desc">Your real operations live in unconnected Excel files, not in your ERP. Financial data doesn't match physical reality because planners work outside the system.</p>
                 </div>
 
                 <div class="dw-check-card">
-                    <div class="dw-check-number">02</div>
+                    <div class="dw-check-number" aria-hidden="true">02</div>
                     <h3 class="dw-check-title">"The Black Box" Problem</h3>
                     <p class="dw-check-quote">"You know exactly how much raw material you bought and how many finished goods you sold, but the 3 weeks in between (WIP) are invisible."</p>
                     <p class="dw-check-desc">You rely on paper reports filled out yesterday to understand what happened today. You can't see what's happening on the floor right now without walking over and asking.</p>
                 </div>
 
                 <div class="dw-check-card">
-                    <div class="dw-check-number">03</div>
+                    <div class="dw-check-number" aria-hidden="true">03</div>
                     <h3 class="dw-check-title">"Ghost Inventory" Crisis</h3>
                     <p class="dw-check-quote">"The system says you have 100 units, but the shelf has 50. This discrepancy forces your team to hoard 'safety stock' just to survive."</p>
                     <p class="dw-check-desc">Inventory inaccuracy ties up millions in unnecessary capital and destroys your ability to promise reliable delivery dates. The "borrowing culture" has replaced discipline.</p>
@@ -2154,21 +2235,21 @@
 
             <div class="dw-checks-grid">
                 <div class="dw-check-card">
-                    <div class="dw-check-number">01</div>
+                    <div class="dw-check-number" aria-hidden="true">01</div>
                     <h3 class="dw-check-title">"The Man-Day Trap"</h3>
                     <p class="dw-check-quote">"Your revenue is mathematically capped by your headcount. You cannot grow your top line without proportionally increasing your payroll costs."</p>
                     <p class="dw-check-desc">You are selling hours, not assets. Revenue = Hours Worked, making exponential growth impossible. Every January, you start at zero again.</p>
                 </div>
 
                 <div class="dw-check-card">
-                    <div class="dw-check-number">02</div>
+                    <div class="dw-check-number" aria-hidden="true">02</div>
                     <h3 class="dw-check-title">"Customization Death Spiral"</h3>
                     <p class="dw-check-quote">"You accept customization requests to win the deal, but then you become married to that code forever."</p>
                     <p class="dw-check-desc">You can't upgrade clients on custom code. Support becomes a nightmare of unbillable hours. Your profit evaporated the moment you said "Yes" to a non-standard request.</p>
                 </div>
 
                 <div class="dw-check-card">
-                    <div class="dw-check-number">03</div>
+                    <div class="dw-check-number" aria-hidden="true">03</div>
                     <h3 class="dw-check-title">"The Ghost IT Burden"</h3>
                     <p class="dw-check-quote">"You aren't just their ERP consultant—you are their unpaid IT department, fixing Wi-Fi, printers, and user discipline issues."</p>
                     <p class="dw-check-desc">80% of Thai SMEs lack an internal IT Manager. You subsidize their operations with your margins. The "free work" that kills your spirit but you feel forced to do to keep the relationship.</p>
@@ -2193,22 +2274,18 @@
             <div class="dw-value-props">
                 <a href="products/erp.html" class="dw-value-prop">
                     <div class="dw-value-prop-icon">
-                        <!-- ERP: Financial documents, calculator, money -->
+                        <!-- ERP: Ledger book with bar chart — "the central brain" -->
                         <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Main document -->
-                            <rect x="4" y="3" width="16" height="22" rx="2" fill="#3798E4" fill-opacity="0.15" stroke="#3798E4" stroke-width="2"/>
-                            <!-- Document lines -->
-                            <path d="M8 9h8M8 13h6M8 17h7" stroke="#3798E4" stroke-width="2" stroke-linecap="round"/>
-                            <!-- Calculator overlay -->
-                            <rect x="16" y="14" width="14" height="18" rx="2" fill="#253B50" stroke="#3798E4" stroke-width="2"/>
-                            <rect x="19" y="17" width="8" height="4" rx="1" fill="#3798E4" fill-opacity="0.3"/>
-                            <circle cx="21" cy="26" r="1.5" fill="#3798E4"/>
-                            <circle cx="26" cy="26" r="1.5" fill="#3798E4"/>
-                            <circle cx="21" cy="29" r="1.5" fill="#3798E4"/>
-                            <circle cx="26" cy="29" r="1.5" fill="#3798E4"/>
-                            <!-- Dollar sign -->
-                            <circle cx="28" cy="7" r="5" fill="#253B50" stroke="#3798E4" stroke-width="2"/>
-                            <text x="28" y="10" text-anchor="middle" fill="#3798E4" font-size="8" font-weight="bold">$</text>
+                            <!-- Book/ledger shape -->
+                            <rect x="3" y="2" width="24" height="32" rx="3" fill="#3798E4" fill-opacity="0.12" stroke="#3798E4" stroke-width="2"/>
+                            <path d="M3 6h24" stroke="#3798E4" stroke-width="2"/>
+                            <!-- Bar chart inside the book -->
+                            <rect x="7" y="20" width="4" height="10" rx="1" fill="#3798E4" fill-opacity="0.5"/>
+                            <rect x="13" y="14" width="4" height="16" rx="1" fill="#3798E4" fill-opacity="0.7"/>
+                            <rect x="19" y="10" width="4" height="20" rx="1" fill="#3798E4"/>
+                            <!-- Currency badge -->
+                            <circle cx="30" cy="8" r="6" fill="#253B50" stroke="#3798E4" stroke-width="2"/>
+                            <text x="30" y="11.5" text-anchor="middle" fill="#3798E4" font-size="9" font-weight="bold">$</text>
                         </svg>
                     </div>
                     <h3 class="dw-value-prop-title">ERP Core</h3>
@@ -2226,23 +2303,22 @@
 
                 <a href="products/mes.html" class="dw-value-prop">
                     <div class="dw-value-prop-icon">
-                        <!-- MES: Factory with production line and machines -->
+                        <!-- MES: Monitor screen showing production line status -->
                         <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Factory building -->
-                            <path d="M3 28V12l8-6v8l8-6v8l8-6v12" fill="#3798E4" fill-opacity="0.15" stroke="#3798E4" stroke-width="2" stroke-linejoin="round"/>
-                            <!-- Windows/machines -->
-                            <rect x="6" y="16" width="4" height="4" rx="0.5" fill="#3798E4"/>
-                            <rect x="14" y="16" width="4" height="4" rx="0.5" fill="#3798E4"/>
-                            <rect x="22" y="16" width="4" height="4" rx="0.5" fill="#3798E4"/>
-                            <!-- Conveyor belt -->
-                            <rect x="3" y="28" width="30" height="4" rx="1" fill="#253B50" stroke="#3798E4" stroke-width="2"/>
-                            <!-- Products on conveyor -->
-                            <rect x="8" y="25" width="5" height="4" rx="1" fill="#3798E4"/>
-                            <rect x="18" y="25" width="5" height="4" rx="1" fill="#3798E4" fill-opacity="0.6"/>
-                            <!-- Rollers -->
-                            <circle cx="8" cy="30" r="1.5" fill="#3798E4"/>
-                            <circle cx="18" cy="30" r="1.5" fill="#3798E4"/>
-                            <circle cx="28" cy="30" r="1.5" fill="#3798E4"/>
+                            <!-- Monitor screen -->
+                            <rect x="2" y="2" width="32" height="22" rx="3" fill="#253B50" stroke="#3798E4" stroke-width="2"/>
+                            <!-- Live production line on screen -->
+                            <path d="M6 16h4l2-4 3 8 2-6 3 5h4l2-3h4" stroke="#3798E4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <!-- Status dots -->
+                            <circle cx="8" cy="7" r="2" fill="#4ade80"/>
+                            <circle cx="14" cy="7" r="2" fill="#3798E4"/>
+                            <circle cx="20" cy="7" r="2" fill="#3798E4" fill-opacity="0.4"/>
+                            <!-- Monitor stand -->
+                            <rect x="13" y="24" width="10" height="3" rx="1" fill="#3798E4" fill-opacity="0.3"/>
+                            <rect x="10" y="27" width="16" height="2" rx="1" fill="#3798E4" fill-opacity="0.5"/>
+                            <!-- Play/live indicator -->
+                            <rect x="26" y="5" width="5" height="5" rx="1" fill="rgba(255,60,60,0.7)"/>
+                            <circle cx="28.5" cy="7.5" r="1.5" fill="white"/>
                         </svg>
                     </div>
                     <h3 class="dw-value-prop-title">MES</h3>
@@ -2260,21 +2336,23 @@
 
                 <a href="products/wms.html" class="dw-value-prop">
                     <div class="dw-value-prop-icon">
-                        <!-- WMS: Warehouse shelves with boxes -->
+                        <!-- WMS: Warehouse with barcode scanner beam -->
                         <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Shelf structure -->
-                            <path d="M4 32V4M14 32V4M24 32V4M34 32V4" stroke="#3798E4" stroke-width="2"/>
-                            <path d="M4 12h30M4 22h30M4 32h30" stroke="#3798E4" stroke-width="2"/>
+                            <!-- Shelf frame -->
+                            <rect x="2" y="4" width="26" height="28" rx="2" fill="#3798E4" fill-opacity="0.08" stroke="#3798E4" stroke-width="2"/>
+                            <line x1="2" y1="14" x2="28" y2="14" stroke="#3798E4" stroke-width="1.5"/>
+                            <line x1="2" y1="24" x2="28" y2="24" stroke="#3798E4" stroke-width="1.5"/>
                             <!-- Boxes on shelves -->
-                            <rect x="6" y="6" width="6" height="5" rx="1" fill="#3798E4"/>
-                            <rect x="16" y="7" width="6" height="4" rx="1" fill="#3798E4" fill-opacity="0.7"/>
-                            <rect x="26" y="6" width="6" height="5" rx="1" fill="#3798E4" fill-opacity="0.5"/>
-                            <rect x="6" y="15" width="6" height="6" rx="1" fill="#3798E4" fill-opacity="0.6"/>
-                            <rect x="16" y="14" width="6" height="7" rx="1" fill="#3798E4"/>
-                            <rect x="26" y="16" width="6" height="5" rx="1" fill="#3798E4" fill-opacity="0.8"/>
-                            <rect x="6" y="25" width="6" height="6" rx="1" fill="#3798E4" fill-opacity="0.5"/>
-                            <rect x="17" y="24" width="5" height="7" rx="1" fill="#3798E4" fill-opacity="0.7"/>
-                            <rect x="26" y="25" width="6" height="6" rx="1" fill="#3798E4"/>
+                            <rect x="5" y="6" width="8" height="6" rx="1.5" fill="#3798E4" fill-opacity="0.6"/>
+                            <rect x="16" y="7" width="8" height="5" rx="1.5" fill="#3798E4" fill-opacity="0.35"/>
+                            <rect x="5" y="16" width="7" height="6" rx="1.5" fill="#3798E4" fill-opacity="0.35"/>
+                            <rect x="15" y="16" width="9" height="6" rx="1.5" fill="#3798E4"/>
+                            <rect x="5" y="26" width="9" height="5" rx="1.5" fill="#3798E4" fill-opacity="0.5"/>
+                            <rect x="17" y="26" width="7" height="5" rx="1.5" fill="#3798E4" fill-opacity="0.7"/>
+                            <!-- Barcode scanner beam -->
+                            <line x1="32" y1="8" x2="32" y2="28" stroke="#3798E4" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M30 12h4M30 16h4M30 20h4M30 24h4" stroke="#3798E4" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                            <line x1="28" y1="18" x2="32" y2="18" stroke="rgba(55,152,228,0.4)" stroke-width="8" stroke-linecap="round"/>
                         </svg>
                     </div>
                     <h3 class="dw-value-prop-title">WMS</h3>
@@ -2292,23 +2370,26 @@
 
                 <a href="products/aiot.html" class="dw-value-prop">
                     <div class="dw-value-prop-icon">
-                        <!-- AIoT: Connected sensors network -->
+                        <!-- AIoT: Machine with signal waves and AI brain -->
                         <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Central hub -->
-                            <rect x="12" y="12" width="12" height="12" rx="2" fill="#253B50" stroke="#3798E4" stroke-width="2"/>
-                            <text x="18" y="20" text-anchor="middle" fill="#3798E4" font-size="6" font-weight="bold">AI</text>
-                            <!-- Connection lines -->
-                            <path d="M12 18H6M24 18h6M18 12V6M18 24v6" stroke="#3798E4" stroke-width="2"/>
-                            <path d="M13 13L8 8M23 13l5-5M13 23l-5 5M23 23l5 5" stroke="#3798E4" stroke-width="1.5" stroke-dasharray="3 2"/>
-                            <!-- Sensor nodes -->
-                            <circle cx="5" cy="18" r="3" fill="#3798E4"/>
-                            <circle cx="31" cy="18" r="3" fill="#3798E4"/>
-                            <circle cx="18" cy="5" r="3" fill="#3798E4"/>
-                            <circle cx="18" cy="31" r="3" fill="#3798E4"/>
-                            <circle cx="6" cy="6" r="2.5" fill="#3798E4" fill-opacity="0.6"/>
-                            <circle cx="30" cy="6" r="2.5" fill="#3798E4" fill-opacity="0.6"/>
-                            <circle cx="6" cy="30" r="2.5" fill="#3798E4" fill-opacity="0.6"/>
-                            <circle cx="30" cy="30" r="2.5" fill="#3798E4" fill-opacity="0.6"/>
+                            <!-- Machine/robot body -->
+                            <rect x="8" y="14" width="20" height="18" rx="3" fill="#253B50" stroke="#3798E4" stroke-width="2"/>
+                            <!-- Machine display/eye -->
+                            <rect x="12" y="18" width="12" height="6" rx="2" fill="#3798E4" fill-opacity="0.3"/>
+                            <circle cx="16" cy="21" r="1.5" fill="#4ade80"/>
+                            <circle cx="20" cy="21" r="1.5" fill="#3798E4"/>
+                            <!-- Temperature/sensor readout -->
+                            <rect x="12" y="27" width="5" height="2" rx="1" fill="#3798E4" fill-opacity="0.5"/>
+                            <rect x="19" y="27" width="5" height="2" rx="1" fill="#3798E4" fill-opacity="0.3"/>
+                            <!-- WiFi/signal waves from machine -->
+                            <path d="M22 10c3-2 7-2 10 0" stroke="#3798E4" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                            <path d="M24 7c3-2 7-2 10 0" stroke="#3798E4" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                            <path d="M26 4c2-1.5 5-1.5 7 0" stroke="#3798E4" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+                            <!-- AI brain chip -->
+                            <rect x="4" y="2" width="12" height="10" rx="2" fill="#253B50" stroke="#3798E4" stroke-width="1.5"/>
+                            <text x="10" y="9" text-anchor="middle" fill="#3798E4" font-size="6" font-weight="bold">AI</text>
+                            <!-- Connection from brain to machine -->
+                            <path d="M10 12v2" stroke="#3798E4" stroke-width="1.5" stroke-dasharray="2 1"/>
                         </svg>
                     </div>
                     <h3 class="dw-value-prop-title">AIoT</h3>
@@ -2539,7 +2620,7 @@
                 </div>
             </div>
 
-            <div class="dw-industry-content" id="industry-electronics">
+            <div class="dw-industry-content" id="industry-electronics" aria-hidden="true">
                 <div class="dw-industry-image">
                     <!-- Electronics Assembly: Full-bleed PCB factory illustration -->
                     <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2751,7 +2832,7 @@
                 </div>
             </div>
 
-            <div class="dw-industry-content" id="industry-metal">
+            <div class="dw-industry-content" id="industry-metal" aria-hidden="true">
                 <div class="dw-industry-image">
                     <!-- Metal & Plastics: Full-bleed CNC/injection mold facility illustration -->
                     <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2949,28 +3030,6 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="dw-stats-section">
-        <div class="dw-stats-inner">
-            <div class="dw-stat">
-                <div class="dw-stat-value dw-years">44</div>
-                <div class="dw-stat-label">Years Manufacturing Focus</div>
-            </div>
-            <div class="dw-stat">
-                <div class="dw-stat-value">50,000+</div>
-                <div class="dw-stat-label">Factories Across Asia</div>
-            </div>
-            <div class="dw-stat">
-                <div class="dw-stat-value">100+</div>
-                <div class="dw-stat-label">Thai Implementations</div>
-            </div>
-            <div class="dw-stat">
-                <div class="dw-stat-value">300378</div>
-                <div class="dw-stat-label">Shenzhen Stock Exchange</div>
-            </div>
-        </div>
-    </section>
-
     <!-- Trust Anchors - 4 Credibility Statements -->
     <section class="dw-section dw-trust-section" style="background: #ffffff;">
         <div class="dw-container">
@@ -3067,6 +3126,8 @@
             </div>
         </div>
     </section>
+    </main>
+
     <!-- Footer -->
     <footer class="dw-footer">
         <div class="dw-footer-inner">
@@ -3115,9 +3176,9 @@
                         </p>
                     </div>
                     <div class="dw-footer-social">
-                        <a href="#" title="LinkedIn">in</a>
-                        <a href="#" title="Facebook">f</a>
-                        <a href="#" title="LINE">L</a>
+                        <a href="#" title="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                        <a href="#" title="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                        <a href="#" title="LINE"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg></a>
                     </div>
                 </div>
             </div>
@@ -3213,8 +3274,11 @@
                 // Update active content
                 industryContents.forEach(function(content) {
                     content.classList.remove('active');
+                    content.setAttribute('aria-hidden', 'true');
                 });
-                document.getElementById('industry-' + industry).classList.add('active');
+                var activeContent = document.getElementById('industry-' + industry);
+                activeContent.classList.add('active');
+                activeContent.removeAttribute('aria-hidden');
             });
         });
 

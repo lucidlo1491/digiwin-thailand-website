@@ -681,6 +681,265 @@
                 flex-direction: column;
             }
         }
+
+        /* Product Growth Ladder */
+        .growth-ladder {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 48px 40px 40px;
+            background: linear-gradient(135deg, #253B50 0%, #1a2632 100%);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .growth-ladder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .growth-ladder-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .growth-ladder-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            margin: 0 0 12px 0;
+        }
+
+        .growth-ladder-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            margin: 0 0 40px 0;
+        }
+
+        .growth-ladder-steps {
+            display: flex;
+            align-items: stretch;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ladder-step {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 20px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .ladder-step:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .ladder-step-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+        }
+
+        .ladder-step-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .ladder-step-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: #fff;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .ladder-step:nth-child(1) .ladder-step-icon { background: linear-gradient(135deg, #3798E4, #0284c7); }
+        .ladder-step:nth-child(2) .ladder-step-icon { background: linear-gradient(135deg, #3798E4, #0369a1); }
+        .ladder-step:nth-child(3) .ladder-step-icon { background: linear-gradient(135deg, #10b981, #059669); }
+        .ladder-step:nth-child(4) .ladder-step-icon { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .ladder-step:nth-child(5) .ladder-step-icon { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+
+        .ladder-step-name {
+            font-family: 'Lexend', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .ladder-step-role {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.45);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .ladder-step-revenue {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #3798E4;
+            background: rgba(55, 152, 228, 0.1);
+            border: 1px solid rgba(55, 152, 228, 0.2);
+            border-radius: 6px;
+            padding: 6px 10px;
+            margin-top: auto;
+            line-height: 1.3;
+        }
+
+        .ladder-step:nth-child(3) .ladder-step-revenue { color: #10b981; background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2); }
+        .ladder-step:nth-child(4) .ladder-step-revenue { color: #f59e0b; background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.2); }
+        .ladder-step:nth-child(5) .ladder-step-revenue { color: #8b5cf6; background: rgba(139, 92, 246, 0.1); border-color: rgba(139, 92, 246, 0.2); }
+
+        .ladder-connector {
+            display: flex;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 18px;
+            flex-shrink: 0;
+            align-self: center;
+        }
+
+        @media (max-width: 768px) {
+            .growth-ladder {
+                padding: 32px 20px;
+            }
+
+            .growth-ladder-steps {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .ladder-step {
+                flex-direction: row;
+                text-align: left;
+                gap: 14px;
+                padding: 16px;
+            }
+
+            .ladder-step-icon {
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+
+            .ladder-step-number {
+                display: none;
+            }
+
+            .ladder-step-revenue {
+                margin-top: 6px;
+            }
+
+            .ladder-connector {
+                display: none;
+            }
+        }
+
+        /* Partner Social Proof Strip */
+        .partner-proof {
+            background: #253B50;
+            padding: 32px 0;
+            position: relative;
+        }
+
+        .partner-proof::before,
+        .partner-proof::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(55, 152, 228, 0.4), transparent);
+        }
+
+        .partner-proof::before { top: 0; }
+        .partner-proof::after { bottom: 0; }
+
+        .partner-proof-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .partner-proof-item {
+            text-align: center;
+        }
+
+        .partner-proof-number {
+            font-family: 'Lexend', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+
+        .partner-proof-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 4px;
+        }
+
+        .partner-proof-divider {
+            width: 1px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        @media (max-width: 640px) {
+            .partner-proof-inner {
+                gap: 24px;
+            }
+
+            .partner-proof-divider {
+                display: none;
+            }
+
+            .partner-proof-item {
+                flex: 1;
+                min-width: 100px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1003,7 +1262,7 @@
             <h1>Tired of Selling <span>Man-Hours?</span><br>The Problem Isn't Your Team.</h1>
             <p class="partner-hero-subtitle">You're fighting customization wars that burn out your best consultants. Your margins have compressed from 35% to 18%. The problem isn't execution—it's your business model. We offer a different architecture.</p>
             <div class="partner-hero-ctas">
-                <a href="demo.html" class="dw-btn dw-btn-primary">Schedule Partner Strategy Session</a>
+                <a href="demo.html" class="dw-btn dw-btn-primary">Schedule a Discovery Call</a>
                 <a href="partner-program/economics.html" class="dw-btn dw-btn-secondary">See the Math First</a>
             </div>
             <div class="partner-hero-stats">
@@ -1023,6 +1282,31 @@
                     <div class="partner-stat-value">6 mo</div>
                     <div class="partner-stat-label">Lead Lock Protection</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Strip -->
+    <section class="partner-proof">
+        <div class="partner-proof-inner">
+            <div class="partner-proof-item">
+                <div class="partner-proof-number"><span class="dw-years">44</span></div>
+                <div class="partner-proof-label">Years Manufacturing Only</div>
+            </div>
+            <div class="partner-proof-divider"></div>
+            <div class="partner-proof-item">
+                <div class="partner-proof-number">50,000+</div>
+                <div class="partner-proof-label">Factories Worldwide</div>
+            </div>
+            <div class="partner-proof-divider"></div>
+            <div class="partner-proof-item">
+                <div class="partner-proof-number">300378</div>
+                <div class="partner-proof-label">Shenzhen Stock Exchange</div>
+            </div>
+            <div class="partner-proof-divider"></div>
+            <div class="partner-proof-item">
+                <div class="partner-proof-number">100+</div>
+                <div class="partner-proof-label">Thai Implementations</div>
             </div>
         </div>
     </section>
@@ -1051,10 +1335,10 @@
                 </div>
                 <div class="reality-card">
                     <div class="reality-icon">
-                        <svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/><path d="M18 10l4-4M18 10l-4-4" opacity="0.5"/></svg>
                     </div>
-                    <h3>The "Ghost IT" Burden</h3>
-                    <p>You aren't just their ERP consultant—you've become their unpaid IT department. <strong>80% of Thai SMEs</strong> lack an IT manager, so your senior staff wastes billable hours on Wi-Fi and password resets.</p>
+                    <h3>The "Product Ceiling"</h3>
+                    <p>Your client outgrows your solution—and <strong>leaves entirely</strong>. You have no upsell path, no next product to offer. You built the relationship, trained the team, and now a bigger vendor walks in and takes the account.</p>
                 </div>
             </div>
         </div>
@@ -1154,6 +1438,64 @@
                             <strong>9%</strong> annual maintenance annuity
                         </li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- Product Growth Ladder -->
+            <div class="growth-ladder">
+                <p class="growth-ladder-label">From Man-Days to Recurring Revenue</p>
+                <h3 class="growth-ladder-title">The Product Growth Ladder</h3>
+                <p class="growth-ladder-subtitle">Each product you add deepens the client relationship and compounds your revenue.</p>
+                <div class="growth-ladder-steps">
+                    <div class="ladder-step">
+                        <div class="ladder-step-number">Step 1</div>
+                        <div class="ladder-step-icon">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        </div>
+                        <div class="ladder-step-name">iGP</div>
+                        <div class="ladder-step-role">SME entry point<br>Fast cash flow</div>
+                        <div class="ladder-step-revenue">Project + License fees</div>
+                    </div>
+                    <div class="ladder-connector">→</div>
+                    <div class="ladder-step">
+                        <div class="ladder-step-number">Step 2</div>
+                        <div class="ladder-step-icon">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        </div>
+                        <div class="ladder-step-name">T100</div>
+                        <div class="ladder-step-role">Enterprise scale<br>High-value deals</div>
+                        <div class="ladder-step-revenue">Enterprise asset</div>
+                    </div>
+                    <div class="ladder-connector">→</div>
+                    <div class="ladder-step">
+                        <div class="ladder-step-number">Step 3</div>
+                        <div class="ladder-step-icon">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8v8M10 8v8M14 8v8M18 8v8"/></svg>
+                        </div>
+                        <div class="ladder-step-name">MES</div>
+                        <div class="ladder-step-role">Shop floor control<br>Upsell from ERP</div>
+                        <div class="ladder-step-revenue">Recurring + services</div>
+                    </div>
+                    <div class="ladder-connector">→</div>
+                    <div class="ladder-step">
+                        <div class="ladder-step-number">Step 4</div>
+                        <div class="ladder-step-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 16V8l-9-5-9 5v8l9 5 9-5z"/><path d="M3.27 6.96L12 12.01l8.73-5.05"/></svg>
+                        </div>
+                        <div class="ladder-step-name">WMS</div>
+                        <div class="ladder-step-role">Warehouse lock-in<br>Hardware revenue</div>
+                        <div class="ladder-step-revenue">Hardware + recurring</div>
+                    </div>
+                    <div class="ladder-connector">→</div>
+                    <div class="ladder-step">
+                        <div class="ladder-step-number">Step 5</div>
+                        <div class="ladder-step-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+                        </div>
+                        <div class="ladder-step-name">AIoT</div>
+                        <div class="ladder-step-role">Smart factory<br>Permanent retention</div>
+                        <div class="ladder-step-revenue">Subscription + data</div>
+                    </div>
                 </div>
             </div>
 
@@ -1275,7 +1617,7 @@
                 <div class="journey-step">
                     <div class="journey-number"><span>2</span></div>
                     <h3>Evaluate the "Weapon"</h3>
-                    <p>See if DigiWin gives you a better weapon to fight the price war against Kingdee, Odoo, or specialized MES providers.</p>
+                    <p>See if DigiWin gives you a better weapon to fight the price war against low-cost open-source ERPs and local accounting software.</p>
                     <a href="partner-program/solutions.html" class="dw-btn dw-btn-secondary" style="margin-top: 16px; display: inline-block;">The Solution Stack →</a>
                 </div>
                 <div class="journey-step">
@@ -1321,7 +1663,7 @@
             <h2>Ready to Discuss Your Territory?</h2>
             <p>This is not a "sales call." It's a business consultation about <em>your</em> margins and <em>your</em> market. Let's see if the fit is real.</p>
             <div class="partner-cta-buttons">
-                <a href="demo.html" class="dw-btn dw-btn-white">Schedule Partner Strategy Session</a>
+                <a href="demo.html" class="dw-btn dw-btn-white">Schedule a Discovery Call</a>
                 <a href="partner-program/economics.html" class="dw-btn dw-btn-outline-white">See the Math First</a>
             </div>
             <p style="margin-top: 32px; font-size: 14px; color: rgba(255,255,255,0.7);">

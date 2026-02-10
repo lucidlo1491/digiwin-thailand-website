@@ -1,0 +1,505 @@
+[et_pb_section fb_built="1" _builder_version="4.27.4" admin_label="Section 1: Hero Split Screen" background_color="#0f1419" custom_padding="0px||0px||false|false"]
+[et_pb_row column_structure="1_2,1_2" _builder_version="4.27.4" width="100%" max_width="100%" custom_padding="0px||0px||false|false" make_equal="on"]
+[et_pb_column type="1_2" _builder_version="4.27.4" use_background_color_gradient="on" background_color_gradient_direction="165deg" background_color_gradient_start="#0f1419" background_color_gradient_end="#253B50" custom_padding="80px|60px|80px|60px|true|true"]
+[et_pb_text _builder_version="4.27.4" text_font="JetBrains Mono|600||on|||||" text_text_color="#3798E4" text_font_size="14px" text_letter_spacing="0.15em"]
+<p>FOR MANUFACTURING BUSINESS OWNERS</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_font="Lexend|700|||||||" header_text_color="#ffffff" header_font_size="52px" header_line_height="1.1em" header_letter_spacing="-0.03em"]
+<h1>Your True Costs Are <span style="color:#3798E4">Invisible.</span></h1>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="rgba(255,255,255,0.75)" text_font_size="18px" text_line_height="1.75em"]
+<p>&ldquo;Shadow Excel&rdquo; files have replaced your standard operating procedures. Ghost inventory means system says 100, shelf says 50. We fix this&mdash;because we&rsquo;ve spent 44 years doing nothing but manufacturing software.</p>
+[/et_pb_text]
+[et_pb_button button_text="See How We Fix It" button_url="/products/" _builder_version="4.27.4" custom_button="on" button_text_color="#ffffff" button_bg_color="#3798E4" button_border_radius="12px" button_font="Source Sans 3|600|||||||" button_icon="5||divi||400" /]
+[et_pb_text _builder_version="4.27.4" custom_padding="48px||||false|false" border_width_top="1px" border_color_top="rgba(255,255,255,0.1)"]
+<div style="display:flex;gap:40px;padding-top:32px;">
+<div><span style="font-family:Lexend;font-size:32px;font-weight:800;color:#3798E4;display:block;">44</span><span style="font-family:JetBrains Mono;font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;">Years Manufacturing Focus</span></div>
+<div><span style="font-family:Lexend;font-size:32px;font-weight:800;color:#3798E4;display:block;">50K+</span><span style="font-family:JetBrains Mono;font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;">Factories Served</span></div>
+<div><span style="font-family:Lexend;font-size:32px;font-weight:800;color:#3798E4;display:block;">300378</span><span style="font-family:JetBrains Mono;font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;">Shenzhen Listed</span></div>
+</div>
+[/et_pb_text]
+[/et_pb_column]
+[et_pb_column type="1_2" _builder_version="4.27.4" use_background_color_gradient="on" background_color_gradient_direction="165deg" background_color_gradient_start="#0369a1" background_color_gradient_end="#2d7bc4" custom_padding="80px|60px|80px|60px|true|true"]
+[et_pb_text _builder_version="4.27.4" text_font="JetBrains Mono|600||on|||||" text_text_color="rgba(255,255,255,0.9)" text_font_size="14px" text_letter_spacing="0.15em"]
+<p>FOR ERP IMPLEMENTERS</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_font="Lexend|700|||||||" header_text_color="#ffffff" header_font_size="52px" header_line_height="1.1em" header_letter_spacing="-0.03em"]
+<h1>Trapped in the <span style="color:#fef3c7">Man-Day</span> Model?</h1>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="rgba(255,255,255,0.75)" text_font_size="18px" text_line_height="1.75em"]
+<p>Your revenue is capped by headcount. Customization wars burn out your best consultants. We offer a way out&mdash;product-based margins that compound instead of compress.</p>
+[/et_pb_text]
+[et_pb_button button_text="Escape the Trap" button_url="/partner-program/" _builder_version="4.27.4" custom_button="on" button_text_color="#ffffff" button_bg_color="rgba(255,255,255,0)" button_border_width="2" button_border_color="rgba(255,255,255,0.6)" button_border_radius="12px" button_font="Source Sans 3|600|||||||" /]
+[et_pb_text _builder_version="4.27.4" custom_padding="48px||||false|false" border_width_top="1px" border_color_top="rgba(255,255,255,0.1)"]
+<div style="display:flex;gap:40px;padding-top:32px;">
+<div><span style="font-family:Lexend;font-size:32px;font-weight:800;color:#ffffff;display:block;">30-40%</span><span style="font-family:JetBrains Mono;font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;">License Margin</span></div>
+<div><span style="font-family:Lexend;font-size:32px;font-weight:800;color:#ffffff;display:block;">50%</span><span style="font-family:JetBrains Mono;font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;">Recurring Revenue</span></div>
+</div>
+[/et_pb_text]
+[/et_pb_column]
+[/et_pb_row]
+[/et_pb_section]
+[et_pb_section fb_built="1" _builder_version="4.27.4" admin_label="Section 2: Client Logo Bar" use_background_color_gradient="on" background_color_gradient_start="#f8fafc" background_color_gradient_end="#ffffff" background_color_gradient_direction="180deg" custom_padding="60px|40px|60px|40px|true|true"]
+[et_pb_row _builder_version="4.27.4" max_width="1200px"]
+[et_pb_column type="4_4" _builder_version="4.27.4"]
+[et_pb_text _builder_version="4.27.4" text_font="JetBrains Mono|500||on|||||" text_text_color="#64748b" text_font_size="12px" text_letter_spacing="0.15em" text_orientation="center"]
+<p>TRUSTED BY LEADING MANUFACTURERS IN THAILAND</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_orientation="center" custom_margin="40px||||false|false"]
+<div style="display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap;padding:0 20px;">
+<span style="font-family:Lexend;font-size:14px;font-weight:600;color:#94a3b8;background:#f1f5f9;padding:12px 24px;border-radius:8px;border:2px dashed #e2e8f0;">Client Logo 1</span>
+<span style="font-family:Lexend;font-size:14px;font-weight:600;color:#94a3b8;background:#f1f5f9;padding:12px 24px;border-radius:8px;border:2px dashed #e2e8f0;">Client Logo 2</span>
+<span style="font-family:Lexend;font-size:14px;font-weight:600;color:#94a3b8;background:#f1f5f9;padding:12px 24px;border-radius:8px;border:2px dashed #e2e8f0;">Client Logo 3</span>
+<span style="font-family:Lexend;font-size:14px;font-weight:600;color:#94a3b8;background:#f1f5f9;padding:12px 24px;border-radius:8px;border:2px dashed #e2e8f0;">Client Logo 4</span>
+<span style="font-family:Lexend;font-size:14px;font-weight:600;color:#94a3b8;background:#f1f5f9;padding:12px 24px;border-radius:8px;border:2px dashed #e2e8f0;">Client Logo 5</span>
+<span style="font-family:Lexend;font-size:14px;font-weight:600;color:#94a3b8;background:#f1f5f9;padding:12px 24px;border-radius:8px;border:2px dashed #e2e8f0;">Client Logo 6</span>
+</div>
+[/et_pb_text]
+[/et_pb_column]
+[/et_pb_row]
+[et_pb_row column_structure="1_3,1_3,1_3" _builder_version="4.27.4" max_width="1200px" custom_padding="32px||||false|false" border_width_top="1px" border_color_top="#e2e8f0"]
+[et_pb_column type="1_3" _builder_version="4.27.4"]
+[et_pb_number_counter title="Factories Worldwide" number="50000" _builder_version="4.27.4" title_font="Source Sans 3||||||||" title_text_color="#64748b" title_font_size="13px" number_font="Lexend|700|||||||" number_text_color="#253B50" number_font_size="28px" text_orientation="center" /]
+[/et_pb_column]
+[et_pb_column type="1_3" _builder_version="4.27.4"]
+[et_pb_number_counter title="Years in Manufacturing" number="44" _builder_version="4.27.4" title_font="Source Sans 3||||||||" title_text_color="#64748b" title_font_size="13px" number_font="Lexend|700|||||||" number_text_color="#253B50" number_font_size="28px" text_orientation="center" /]
+[/et_pb_column]
+[et_pb_column type="1_3" _builder_version="4.27.4"]
+[et_pb_text _builder_version="4.27.4" text_orientation="center"]
+<div style="text-align:center;"><span style="font-family:Lexend;font-size:28px;font-weight:700;color:#253B50;display:block;">Certified</span><span style="font-family:Source Sans 3;font-size:13px;color:#64748b;">Thai Revenue Department</span></div>
+[/et_pb_text]
+[/et_pb_column]
+[/et_pb_row]
+[/et_pb_section]
+[et_pb_section fb_built="1" _builder_version="4.27.4" admin_label="Section 3: Factory Path Checks" use_background_color_gradient="on" background_color_gradient_start="#f8fafc" background_color_gradient_end="#f1f5f9" background_color_gradient_direction="165deg" custom_padding="100px|40px|100px|40px|true|true"]
+[et_pb_row _builder_version="4.27.4" max_width="1200px"]
+[et_pb_column type="4_4" _builder_version="4.27.4"]
+[et_pb_text _builder_version="4.27.4" text_font="JetBrains Mono|500||on|||||" text_text_color="#3798E4" text_font_size="11px" text_letter_spacing="0.2em" text_orientation="center"]
+<p>FOR MANUFACTURING BUSINESS OWNERS</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_2_font="Lexend|700|||||||" header_2_text_color="#253B50" header_2_font_size="44px" text_orientation="center"]
+<h2>Do You Recognize These Problems?</h2>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="#64748b" text_font_size="18px" text_orientation="center" max_width="700px" module_alignment="center"]
+<p>If any of these sound familiar, you&rsquo;re not alone. We&rsquo;ve helped 50,000+ factories escape these exact traps.</p>
+[/et_pb_text]
+[/et_pb_column]
+[/et_pb_row]
+[et_pb_row column_structure="1_3,1_3,1_3" _builder_version="4.27.4" max_width="1200px"]
+[et_pb_column type="1_3" _builder_version="4.27.4" background_color="#ffffff" custom_padding="40px|32px|40px|32px|true|true" border_radii="on|20px|20px|20px|20px" border_width_all="1px" border_color_all="#e2e8f0" custom_css_main_element="transition: all 0.4s ease;||:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(55,152,228,0.15); border-color: #3798E4; }"]
+[et_pb_text _builder_version="4.27.4" text_font="Lexend|800|||||||" text_text_color="rgba(55,152,228,0.15)" text_font_size="64px"]
+<p>01</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_3_font="Lexend|700|||||||" header_3_text_color="#253B50" header_3_font_size="20px"]
+<h3>&ldquo;Shadow Excel&rdquo; Reality</h3>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||on||||||" text_text_color="#475569" text_font_size="16px" border_width_left="3px" border_color_left="#3798E4" custom_padding="||0px|16px|false|false"]
+<p>&ldquo;You know your factory isn&rsquo;t actually running on your current system&mdash;it&rsquo;s running on spreadsheets because your staff finds the software too rigid or slow.&rdquo;</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="#64748b" text_font_size="15px" text_line_height="1.6em"]
+<p>Your real operations live in unconnected Excel files, not in your ERP. Financial data doesn&rsquo;t match physical reality because planners work outside the system.</p>
+[/et_pb_text]
+[/et_pb_column]
+[et_pb_column type="1_3" _builder_version="4.27.4" background_color="#ffffff" custom_padding="40px|32px|40px|32px|true|true" border_radii="on|20px|20px|20px|20px" border_width_all="1px" border_color_all="#e2e8f0"]
+[et_pb_text _builder_version="4.27.4" text_font="Lexend|800|||||||" text_text_color="rgba(55,152,228,0.15)" text_font_size="64px"]
+<p>02</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_3_font="Lexend|700|||||||" header_3_text_color="#253B50" header_3_font_size="20px"]
+<h3>&ldquo;The Black Box&rdquo; Problem</h3>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||on||||||" text_text_color="#475569" text_font_size="16px" border_width_left="3px" border_color_left="#3798E4" custom_padding="||0px|16px|false|false"]
+<p>&ldquo;You know exactly how much raw material you bought and how many finished goods you sold, but the 3 weeks in between (WIP) are invisible.&rdquo;</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="#64748b" text_font_size="15px" text_line_height="1.6em"]
+<p>You rely on paper reports filled out yesterday to understand what happened today. You can&rsquo;t see what&rsquo;s happening on the floor right now without walking over and asking.</p>
+[/et_pb_text]
+[/et_pb_column]
+[et_pb_column type="1_3" _builder_version="4.27.4" background_color="#ffffff" custom_padding="40px|32px|40px|32px|true|true" border_radii="on|20px|20px|20px|20px" border_width_all="1px" border_color_all="#e2e8f0"]
+[et_pb_text _builder_version="4.27.4" text_font="Lexend|800|||||||" text_text_color="rgba(55,152,228,0.15)" text_font_size="64px"]
+<p>03</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_3_font="Lexend|700|||||||" header_3_text_color="#253B50" header_3_font_size="20px"]
+<h3>&ldquo;Ghost Inventory&rdquo; Crisis</h3>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||on||||||" text_text_color="#475569" text_font_size="16px" border_width_left="3px" border_color_left="#3798E4" custom_padding="||0px|16px|false|false"]
+<p>&ldquo;The system says you have 100 units, but the shelf has 50. This discrepancy forces your team to hoard &lsquo;safety stock&rsquo; just to survive.&rdquo;</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="#64748b" text_font_size="15px" text_line_height="1.6em"]
+<p>Inventory inaccuracy ties up millions in unnecessary capital and destroys your ability to promise reliable delivery dates. The &ldquo;borrowing culture&rdquo; has replaced discipline.</p>
+[/et_pb_text]
+[/et_pb_column]
+[/et_pb_row]
+[et_pb_row column_structure="1_2,1_2" _builder_version="4.27.4" max_width="800px"]
+[et_pb_column type="1_2" _builder_version="4.27.4" background_color="#ffffff" custom_padding="40px|32px|40px|32px|true|true" border_radii="on|20px|20px|20px|20px" border_width_all="1px" border_color_all="#e2e8f0"]
+[et_pb_text _builder_version="4.27.4" text_font="Lexend|800|||||||" text_text_color="rgba(55,152,228,0.15)" text_font_size="64px"]
+<p>04</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_3_font="Lexend|700|||||||" header_3_text_color="#253B50" header_3_font_size="20px"]
+<h3>&ldquo;Cost Guesswork&rdquo; Trap</h3>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||on||||||" text_text_color="#475569" text_font_size="16px" border_width_left="3px" border_color_left="#3798E4" custom_padding="||0px|16px|false|false"]
+<p>&ldquo;You quoted a price last month based on estimated costs. This month the same product costs 15% more to make&mdash;and you have no idea why.&rdquo;</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="#64748b" text_font_size="15px" text_line_height="1.6em"]
+<p>Batch-to-batch cost fluctuations are invisible without production-order-level tracking. You&rsquo;re pricing based on last quarter&rsquo;s averages, not this morning&rsquo;s reality.</p>
+[/et_pb_text]
+[/et_pb_column]
+[et_pb_column type="1_2" _builder_version="4.27.4" background_color="#ffffff" custom_padding="40px|32px|40px|32px|true|true" border_radii="on|20px|20px|20px|20px" border_width_all="1px" border_color_all="#e2e8f0"]
+[et_pb_text _builder_version="4.27.4" text_font="Lexend|800|||||||" text_text_color="rgba(55,152,228,0.15)" text_font_size="64px"]
+<p>05</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_3_font="Lexend|700|||||||" header_3_text_color="#253B50" header_3_font_size="20px"]
+<h3>&ldquo;10-Second Answer&rdquo; Failure</h3>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||on||||||" text_text_color="#475569" text_font_size="16px" border_width_left="3px" border_color_left="#3798E4" custom_padding="||0px|16px|false|false"]
+<p>&ldquo;When your biggest customer calls and asks &lsquo;where is my order?&rsquo;&mdash;you put them on hold, walk to the shop floor, and hope someone knows.&rdquo;</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="#64748b" text_font_size="15px" text_line_height="1.6em"]
+<p>Real-time delivery status should be a click away, not a 20-minute investigation. Every hold costs you credibility with the customers who matter most.</p>
+[/et_pb_text]
+[/et_pb_column]
+[/et_pb_row]
+[et_pb_row _builder_version="4.27.4"]
+[et_pb_column type="4_4" _builder_version="4.27.4"]
+[et_pb_button button_text="See How We Fix This" button_url="/products/" _builder_version="4.27.4" custom_button="on" button_text_color="#ffffff" button_bg_color="#3798E4" button_border_radius="12px" button_font="Source Sans 3|600|||||||" button_alignment="center" /]
+[/et_pb_column]
+[/et_pb_row]
+[/et_pb_section]
+[et_pb_section fb_built="1" _builder_version="4.27.4" admin_label="Section 4: Partner Path Checks" use_background_color_gradient="on" background_color_gradient_start="#0f1419" background_color_gradient_end="#253B50" background_color_gradient_direction="165deg" custom_padding="100px|40px|100px|40px|true|true"]
+[et_pb_row _builder_version="4.27.4" max_width="1200px"]
+[et_pb_column type="4_4" _builder_version="4.27.4"]
+[et_pb_text _builder_version="4.27.4" text_font="JetBrains Mono|500||on|||||" text_text_color="rgba(255,255,255,0.7)" text_font_size="11px" text_letter_spacing="0.2em" text_orientation="center"]
+<p>FOR ERP IMPLEMENTERS</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_2_font="Lexend|700|||||||" header_2_text_color="#ffffff" header_2_font_size="44px" text_orientation="center"]
+<h2>Do You Recognize These Traps?</h2>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="rgba(255,255,255,0.7)" text_font_size="18px" text_orientation="center" max_width="700px" module_alignment="center"]
+<p>Your consulting business model has structural ceilings. The good news: there&rsquo;s a way out.</p>
+[/et_pb_text]
+[/et_pb_column]
+[/et_pb_row]
+[et_pb_row column_structure="1_3,1_3,1_3" _builder_version="4.27.4" max_width="1200px"]
+[et_pb_column type="1_3" _builder_version="4.27.4" background_color="rgba(255,255,255,0.05)" custom_padding="40px|32px|40px|32px|true|true" border_radii="on|20px|20px|20px|20px" border_width_all="1px" border_color_all="rgba(255,255,255,0.1)"]
+[et_pb_text _builder_version="4.27.4" text_font="Lexend|800|||||||" text_text_color="rgba(255,255,255,0.15)" text_font_size="64px"]
+<p>01</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_3_font="Lexend|700|||||||" header_3_text_color="#ffffff" header_3_font_size="20px"]
+<h3>&ldquo;The Man-Day Trap&rdquo;</h3>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||on||||||" text_text_color="rgba(255,255,255,0.8)" text_font_size="16px" border_width_left="3px" border_color_left="rgba(255,255,255,0.3)" custom_padding="||0px|16px|false|false"]
+<p>&ldquo;Your revenue is mathematically capped by your headcount. You cannot grow your top line without proportionally increasing your payroll costs.&rdquo;</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="rgba(255,255,255,0.6)" text_font_size="15px" text_line_height="1.6em"]
+<p>You are selling hours, not assets. Revenue = Hours Worked, making exponential growth impossible. Every January, you start at zero again.</p>
+[/et_pb_text]
+[/et_pb_column]
+[et_pb_column type="1_3" _builder_version="4.27.4" background_color="rgba(255,255,255,0.05)" custom_padding="40px|32px|40px|32px|true|true" border_radii="on|20px|20px|20px|20px" border_width_all="1px" border_color_all="rgba(255,255,255,0.1)"]
+[et_pb_text _builder_version="4.27.4" text_font="Lexend|800|||||||" text_text_color="rgba(255,255,255,0.15)" text_font_size="64px"]
+<p>02</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_3_font="Lexend|700|||||||" header_3_text_color="#ffffff" header_3_font_size="20px"]
+<h3>&ldquo;Customization Death Spiral&rdquo;</h3>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||on||||||" text_text_color="rgba(255,255,255,0.8)" text_font_size="16px" border_width_left="3px" border_color_left="rgba(255,255,255,0.3)" custom_padding="||0px|16px|false|false"]
+<p>&ldquo;You accept customization requests to win the deal, but then you become married to that code forever.&rdquo;</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="rgba(255,255,255,0.6)" text_font_size="15px" text_line_height="1.6em"]
+<p>You can&rsquo;t upgrade clients on custom code. Support becomes a nightmare of unbillable hours. Your profit evaporated the moment you said &ldquo;Yes&rdquo; to a non-standard request.</p>
+[/et_pb_text]
+[/et_pb_column]
+[et_pb_column type="1_3" _builder_version="4.27.4" background_color="rgba(255,255,255,0.05)" custom_padding="40px|32px|40px|32px|true|true" border_radii="on|20px|20px|20px|20px" border_width_all="1px" border_color_all="rgba(255,255,255,0.1)"]
+[et_pb_text _builder_version="4.27.4" text_font="Lexend|800|||||||" text_text_color="rgba(255,255,255,0.15)" text_font_size="64px"]
+<p>03</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_3_font="Lexend|700|||||||" header_3_text_color="#ffffff" header_3_font_size="20px"]
+<h3>&ldquo;The Ghost IT Burden&rdquo;</h3>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||on||||||" text_text_color="rgba(255,255,255,0.8)" text_font_size="16px" border_width_left="3px" border_color_left="rgba(255,255,255,0.3)" custom_padding="||0px|16px|false|false"]
+<p>&ldquo;You aren&rsquo;t just their ERP consultant&mdash;you are their unpaid IT department, fixing Wi-Fi, printers, and user discipline issues.&rdquo;</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="rgba(255,255,255,0.6)" text_font_size="15px" text_line_height="1.6em"]
+<p>80% of Thai SMEs lack an internal IT Manager. You subsidize their operations with your margins. The &ldquo;free work&rdquo; that kills your spirit but you feel forced to do to keep the relationship.</p>
+[/et_pb_text]
+[/et_pb_column]
+[/et_pb_row]
+[et_pb_row _builder_version="4.27.4"]
+[et_pb_column type="4_4" _builder_version="4.27.4"]
+[et_pb_button button_text="See the Way Out" button_url="/partner-program/" _builder_version="4.27.4" custom_button="on" button_text_color="#ffffff" button_bg_color="rgba(255,255,255,0)" button_border_width="2" button_border_color="rgba(255,255,255,0.6)" button_border_radius="12px" button_font="Source Sans 3|600|||||||" button_alignment="center" /]
+[/et_pb_column]
+[/et_pb_row]
+[/et_pb_section]
+[et_pb_section fb_built="1" _builder_version="4.27.4" admin_label="Section 5: Product Pillars" background_color="#F5F7FA" custom_padding="100px|40px|100px|40px|true|true"]
+[et_pb_row _builder_version="4.27.4" max_width="1200px"]
+[et_pb_column type="4_4" _builder_version="4.27.4"]
+[et_pb_text _builder_version="4.27.4" text_font="JetBrains Mono|500||on|||||" text_text_color="#3798E4" text_font_size="11px" text_letter_spacing="0.2em" text_orientation="center"]
+<p>COMPLETE MANUFACTURING STACK</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_2_font="Lexend|700|||||||" header_2_text_color="#253B50" header_2_font_size="44px" text_orientation="center"]
+<h2>One Ecosystem. Total Visibility.</h2>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="#64748b" text_font_size="18px" text_orientation="center" max_width="700px" module_alignment="center"]
+<p>From financials to the factory floor, every DigiWin product works together&mdash;no integration nightmares, no data silos.</p>
+[/et_pb_text]
+[/et_pb_column]
+[/et_pb_row]
+[et_pb_row column_structure="1_4,1_4,1_4,1_4" _builder_version="4.27.4" max_width="1200px"]
+[et_pb_column type="1_4" _builder_version="4.27.4" background_color="#ffffff" custom_padding="32px|24px|32px|24px|true|true" border_radii="on|20px|20px|20px|20px" box_shadow_style="preset1" box_shadow_blur="20px" box_shadow_color="rgba(0,0,0,0.06)"]
+[et_pb_text _builder_version="4.27.4" header_3_font="Lexend|700|||||||" header_3_text_color="#253B50" header_3_font_size="20px"]
+<h3>ERP Core</h3>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="JetBrains Mono||||on||||" text_text_color="#3798E4" text_font_size="11px" text_letter_spacing="0.05em"]
+<p>ENTERPRISE RESOURCE PLANNING</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Lexend|600|||||||" text_text_color="#253B50" text_font_size="15px" text_line_height="1.3em"]
+<p>The central brain of your business</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="#64748b" text_font_size="14px" text_line_height="1.6em"]
+<ul>
+<li><strong>Financials</strong> &mdash; accounting, invoicing, budgets in one place</li>
+<li><strong>Inventory</strong> &mdash; real-time stock levels across locations</li>
+<li><strong>Operations</strong> &mdash; purchase orders, sales, and costs connected</li>
+</ul>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3|500|||||||" text_text_color="#3798E4" text_font_size="13px" border_width_top="1px" border_color_top="#e2e8f0" custom_padding="16px||||false|false"]
+<p>Replace scattered spreadsheets with one source of truth.</p>
+[/et_pb_text]
+[/et_pb_column]
+[et_pb_column type="1_4" _builder_version="4.27.4" background_color="#ffffff" custom_padding="32px|24px|32px|24px|true|true" border_radii="on|20px|20px|20px|20px" box_shadow_style="preset1" box_shadow_blur="20px" box_shadow_color="rgba(0,0,0,0.06)"]
+[et_pb_text _builder_version="4.27.4" header_3_font="Lexend|700|||||||" header_3_text_color="#253B50" header_3_font_size="20px"]
+<h3>MES</h3>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="JetBrains Mono||||on||||" text_text_color="#3798E4" text_font_size="11px" text_letter_spacing="0.05em"]
+<p>MANUFACTURING EXECUTION SYSTEM</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Lexend|600|||||||" text_text_color="#253B50" text_font_size="15px" text_line_height="1.3em"]
+<p>Your digital eyes on the production floor</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="#64748b" text_font_size="14px" text_line_height="1.6em"]
+<ul>
+<li><strong>Track</strong> &mdash; follow every product through each workstation</li>
+<li><strong>Record</strong> &mdash; who made what, when, and how</li>
+<li><strong>Alert</strong> &mdash; spot delays and quality issues instantly</li>
+</ul>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3|500|||||||" text_text_color="#3798E4" text_font_size="13px" border_width_top="1px" border_color_top="#e2e8f0" custom_padding="16px||||false|false"]
+<p>Answer &ldquo;which batch was my order?&rdquo; in seconds.</p>
+[/et_pb_text]
+[/et_pb_column]
+[et_pb_column type="1_4" _builder_version="4.27.4" background_color="#ffffff" custom_padding="32px|24px|32px|24px|true|true" border_radii="on|20px|20px|20px|20px" box_shadow_style="preset1" box_shadow_blur="20px" box_shadow_color="rgba(0,0,0,0.06)"]
+[et_pb_text _builder_version="4.27.4" header_3_font="Lexend|700|||||||" header_3_text_color="#253B50" header_3_font_size="20px"]
+<h3>WMS</h3>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="JetBrains Mono||||on||||" text_text_color="#3798E4" text_font_size="11px" text_letter_spacing="0.05em"]
+<p>WAREHOUSE MANAGEMENT SYSTEM</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Lexend|600|||||||" text_text_color="#253B50" text_font_size="15px" text_line_height="1.3em"]
+<p>Never lose track of inventory again</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="#64748b" text_font_size="14px" text_line_height="1.6em"]
+<ul>
+<li><strong>Locate</strong> &mdash; know which shelf, bin, and zone for every item</li>
+<li><strong>Guide</strong> &mdash; barcode scanning for pick, pack, and ship</li>
+<li><strong>Count</strong> &mdash; cycle counts that match reality</li>
+</ul>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3|500|||||||" text_text_color="#3798E4" text_font_size="13px" border_width_top="1px" border_color_top="#e2e8f0" custom_padding="16px||||false|false"]
+<p>Faster fulfillment, fewer mistakes, accurate stock.</p>
+[/et_pb_text]
+[/et_pb_column]
+[et_pb_column type="1_4" _builder_version="4.27.4" background_color="#ffffff" custom_padding="32px|24px|32px|24px|true|true" border_radii="on|20px|20px|20px|20px" box_shadow_style="preset1" box_shadow_blur="20px" box_shadow_color="rgba(0,0,0,0.06)"]
+[et_pb_text _builder_version="4.27.4" header_3_font="Lexend|700|||||||" header_3_text_color="#253B50" header_3_font_size="20px"]
+<h3>AIoT</h3>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="JetBrains Mono||||on||||" text_text_color="#3798E4" text_font_size="11px" text_letter_spacing="0.05em"]
+<p>AI + INTERNET OF THINGS</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Lexend|600|||||||" text_text_color="#253B50" text_font_size="15px" text_line_height="1.3em"]
+<p>Connect your machines to the digital world</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="#64748b" text_font_size="14px" text_line_height="1.6em"]
+<ul>
+<li><strong>Collect</strong> &mdash; temperature, speed, vibration automatically</li>
+<li><strong>Predict</strong> &mdash; machine breakdowns before they happen</li>
+<li><strong>Optimize</strong> &mdash; energy usage and efficiency gains</li>
+</ul>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3|500|||||||" text_text_color="#3798E4" text_font_size="13px" border_width_top="1px" border_color_top="#e2e8f0" custom_padding="16px||||false|false"]
+<p>No manual logging. AI finds what humans miss.</p>
+[/et_pb_text]
+[/et_pb_column]
+[/et_pb_row]
+[/et_pb_section]
+[et_pb_section fb_built="1" _builder_version="4.27.4" admin_label="Section 6: Industry Selector" background_color="#ffffff" custom_padding="100px|40px|100px|40px|true|true"]
+[et_pb_row _builder_version="4.27.4" max_width="1200px"]
+[et_pb_column type="4_4" _builder_version="4.27.4"]
+[et_pb_text _builder_version="4.27.4" text_font="JetBrains Mono|500||on|||||" text_text_color="#3798E4" text_font_size="11px" text_letter_spacing="0.2em" text_orientation="center"]
+<p>INDUSTRY EXPERTISE</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_2_font="Lexend|700|||||||" header_2_text_color="#253B50" header_2_font_size="44px" text_orientation="center"]
+<h2>Built for Your Industry</h2>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="#64748b" text_font_size="18px" text_orientation="center" max_width="700px" module_alignment="center"]
+<p>We don&rsquo;t just understand manufacturing&mdash;we understand YOUR manufacturing.</p>
+[/et_pb_text]
+[et_pb_tabs _builder_version="4.27.4" tab_font="Lexend|500|||||||" tab_text_color="#64748b" tab_font_size="15px" body_font="Source Sans 3||||||||" body_text_color="#333333" body_font_size="16px" body_line_height="1.7em" background_color="#ffffff" border_radii="on|24px|24px|24px|24px" box_shadow_style="preset1" box_shadow_blur="48px" box_shadow_color="rgba(0,0,0,0.08)"]
+[et_pb_tab title="Automotive Parts" _builder_version="4.27.4"]
+<h3 style="font-family:Lexend;font-size:32px;font-weight:700;color:#253B50;">Automotive Parts Manufacturing</h3>
+<p>Thailand is ASEAN&rsquo;s automotive hub. We understand what tier-1 OEMs demand: perfect traceability, JIT delivery, and EDI integration that works&mdash;every time.</p>
+<ul>
+<li>Toyota/Honda/Denso EDI integration</li>
+<li>IATF 16949 compliance support</li>
+<li>Lot-level traceability for recalls</li>
+<li>Kanban and JIT scheduling</li>
+</ul>
+<p><a href="/industries/automotive/" style="color:#3798E4;font-weight:600;">Explore Automotive Solutions &rarr;</a></p>
+[/et_pb_tab]
+[et_pb_tab title="Electronics Assembly" _builder_version="4.27.4"]
+<h3 style="font-family:Lexend;font-size:32px;font-weight:700;color:#253B50;">Electronics Assembly</h3>
+<p>High-mix, low-volume. Fast product cycles. Thousands of components per board. We built our MES for exactly this complexity.</p>
+<ul>
+<li>SMT machine integration</li>
+<li>Component-level traceability</li>
+<li>MSD (moisture sensitivity) management</li>
+<li>AOI integration and defect tracking</li>
+</ul>
+<p><a href="/industries/electronics/" style="color:#3798E4;font-weight:600;">Explore Electronics Solutions &rarr;</a></p>
+[/et_pb_tab]
+[et_pb_tab title="Metal &amp; Plastics" _builder_version="4.27.4"]
+<h3 style="font-family:Lexend;font-size:32px;font-weight:700;color:#253B50;">Metal &amp; Plastics Processing</h3>
+<p>Stamping, injection molding, CNC machining. Process manufacturing where yield optimization and scrap reduction drive your margins.</p>
+<ul>
+<li>Process parameter monitoring</li>
+<li>Mold/die lifecycle management</li>
+<li>Scrap analysis and reduction</li>
+<li>Cycle time optimization</li>
+</ul>
+<p><a href="/industries/metal-plastics/" style="color:#3798E4;font-weight:600;">Explore Metal &amp; Plastics Solutions &rarr;</a></p>
+[/et_pb_tab]
+[/et_pb_tabs]
+[/et_pb_column]
+[/et_pb_row]
+[/et_pb_section]
+[et_pb_section fb_built="1" _builder_version="4.27.4" admin_label="Section 7: Stats Banner" use_background_color_gradient="on" background_color_gradient_start="#0f1419" background_color_gradient_end="#253B50" background_color_gradient_direction="165deg" custom_padding="100px|40px|100px|40px|true|true"]
+[et_pb_row column_structure="1_4,1_4,1_4,1_4" _builder_version="4.27.4" max_width="1200px"]
+[et_pb_column type="1_4" _builder_version="4.27.4"]
+[et_pb_number_counter title="Years Manufacturing Focus" number="44" _builder_version="4.27.4" title_font="JetBrains Mono|500||on|||||" title_text_color="rgba(255,255,255,0.6)" title_font_size="11px" title_letter_spacing="0.12em" number_font="Lexend|800|||||||" number_text_color="#3798E4" number_font_size="72px" text_orientation="center" /]
+[/et_pb_column]
+[et_pb_column type="1_4" _builder_version="4.27.4"]
+[et_pb_number_counter title="Factories Across Asia" number="50000" percent_sign="off" _builder_version="4.27.4" title_font="JetBrains Mono|500||on|||||" title_text_color="rgba(255,255,255,0.6)" title_font_size="11px" title_letter_spacing="0.12em" number_font="Lexend|800|||||||" number_text_color="#3798E4" number_font_size="72px" text_orientation="center" /]
+[/et_pb_column]
+[et_pb_column type="1_4" _builder_version="4.27.4"]
+[et_pb_number_counter title="Thai Implementations" number="100" percent_sign="off" _builder_version="4.27.4" title_font="JetBrains Mono|500||on|||||" title_text_color="rgba(255,255,255,0.6)" title_font_size="11px" title_letter_spacing="0.12em" number_font="Lexend|800|||||||" number_text_color="#3798E4" number_font_size="72px" text_orientation="center" /]
+[/et_pb_column]
+[et_pb_column type="1_4" _builder_version="4.27.4"]
+[et_pb_text _builder_version="4.27.4" text_orientation="center"]
+<div style="text-align:center;"><span style="font-family:Lexend;font-size:72px;font-weight:800;color:#3798E4;display:block;line-height:1;">300378</span><span style="font-family:JetBrains Mono;font-size:11px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;">Shenzhen Stock Exchange</span></div>
+[/et_pb_text]
+[/et_pb_column]
+[/et_pb_row]
+[/et_pb_section]
+[et_pb_section fb_built="1" _builder_version="4.27.4" admin_label="Section 8: Trust Anchors" background_color="#ffffff" custom_padding="100px|40px|100px|40px|true|true"]
+[et_pb_row _builder_version="4.27.4" max_width="1200px"]
+[et_pb_column type="4_4" _builder_version="4.27.4"]
+[et_pb_text _builder_version="4.27.4" text_font="JetBrains Mono|500||on|||||" text_text_color="#3798E4" text_font_size="11px" text_letter_spacing="0.2em" text_orientation="center"]
+<p>WHY TRUST DIGIWIN</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_2_font="Lexend|700|||||||" header_2_text_color="#253B50" header_2_font_size="44px" text_orientation="center"]
+<h2>Credibility Without Hype</h2>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="#64748b" text_font_size="18px" text_orientation="center" max_width="700px" module_alignment="center"]
+<p>We don&rsquo;t just claim to be different. Here&rsquo;s the evidence.</p>
+[/et_pb_text]
+[/et_pb_column]
+[/et_pb_row]
+[et_pb_row column_structure="1_2,1_2" _builder_version="4.27.4" max_width="1200px"]
+[et_pb_column type="1_2" _builder_version="4.27.4" use_background_color_gradient="on" background_color_gradient_start="#253B50" background_color_gradient_end="#0f172a" background_color_gradient_direction="135deg" custom_padding="36px|36px|36px|36px|true|true" border_radii="on|20px|20px|20px|20px"]
+[et_pb_text _builder_version="4.27.4" text_font="JetBrains Mono||||||||" text_text_color="#3798E4" text_font_size="11px" background_color="rgba(55,152,228,0.15)" custom_padding="5px|12px|5px|12px|true|true" border_radii="on|6px|6px|6px|6px" border_width_all="1px" border_color_all="rgba(55,152,228,0.25)" max_width="fit-content"]
+<p>300378</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_3_font="Lexend|700|||||||" header_3_text_color="#ffffff" header_3_font_size="22px"]
+<h3>Financial Stability</h3>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3|500|||||||" text_text_color="rgba(255,255,255,0.9)" text_font_size="15px"]
+<p>We are a publicly traded company with transparent financials&mdash;the stability partners and clients need for a 10-year relationship.</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="rgba(255,255,255,0.55)" text_font_size="13px" text_line_height="1.65em"]
+<p>Unlike &ldquo;fly-by-night&rdquo; software houses or small local vendors who might go bankrupt, DigiWin is a Shenzhen-listed company with regulated governance. Proves vendor is a permanent entity with capital to support partners long-term.</p>
+[/et_pb_text]
+[/et_pb_column]
+[et_pb_column type="1_2" _builder_version="4.27.4" use_background_color_gradient="on" background_color_gradient_start="#253B50" background_color_gradient_end="#0f172a" background_color_gradient_direction="135deg" custom_padding="36px|36px|36px|36px|true|true" border_radii="on|20px|20px|20px|20px"]
+[et_pb_text _builder_version="4.27.4" text_font="JetBrains Mono||||||||" text_text_color="#3798E4" text_font_size="11px" background_color="rgba(55,152,228,0.15)" custom_padding="5px|12px|5px|12px|true|true" border_radii="on|6px|6px|6px|6px" border_width_all="1px" border_color_all="rgba(55,152,228,0.25)" max_width="fit-content"]
+<p>Foxconn FII</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_3_font="Lexend|700|||||||" header_3_text_color="#ffffff" header_3_font_size="22px"]
+<h3>Manufacturing DNA</h3>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3|500|||||||" text_text_color="rgba(255,255,255,0.9)" text_font_size="15px"]
+<p>Strategic investment from Foxconn Industrial Internet validates our software handles the world&rsquo;s largest electronics manufacturer.</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="rgba(255,255,255,0.55)" text_font_size="13px" text_line_height="1.65em"]
+<p>This isn&rsquo;t just &ldquo;IT software&rdquo;&mdash;it&rsquo;s Industrial Reality. When the company that builds iPhones trusts DigiWin, it proves &ldquo;Smart Factory&rdquo; capabilities at the highest level of complexity.</p>
+[/et_pb_text]
+[/et_pb_column]
+[/et_pb_row]
+[et_pb_row column_structure="1_2,1_2" _builder_version="4.27.4" max_width="1200px"]
+[et_pb_column type="1_2" _builder_version="4.27.4" use_background_color_gradient="on" background_color_gradient_start="#253B50" background_color_gradient_end="#0f172a" background_color_gradient_direction="135deg" custom_padding="36px|36px|36px|36px|true|true" border_radii="on|20px|20px|20px|20px"]
+[et_pb_text _builder_version="4.27.4" text_font="JetBrains Mono||||||||" text_text_color="#3798E4" text_font_size="11px" background_color="rgba(55,152,228,0.15)" custom_padding="5px|12px|5px|12px|true|true" border_radii="on|6px|6px|6px|6px" border_width_all="1px" border_color_all="rgba(55,152,228,0.25)" max_width="fit-content"]
+<p>Since 1982</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_3_font="Lexend|700|||||||" header_3_text_color="#ffffff" header_3_font_size="22px"]
+<h3>Domain Endurance</h3>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3|500|||||||" text_text_color="rgba(255,255,255,0.9)" text_font_size="15px"]
+<p>We have spent 44 years exclusively in manufacturing software&mdash;built on decades of shop-floor reality, not temporary tech trends.</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="rgba(255,255,255,0.55)" text_font_size="13px" text_line_height="1.65em"]
+<p>DigiWin has survived every technology shift (DOS &rarr; Windows &rarr; Cloud) while staying focused on manufacturing. We didn&rsquo;t pivot to crypto or retail POS when it was trendy.</p>
+[/et_pb_text]
+[/et_pb_column]
+[et_pb_column type="1_2" _builder_version="4.27.4" use_background_color_gradient="on" background_color_gradient_start="#253B50" background_color_gradient_end="#0f172a" background_color_gradient_direction="135deg" custom_padding="36px|36px|36px|36px|true|true" border_radii="on|20px|20px|20px|20px"]
+[et_pb_text _builder_version="4.27.4" text_font="JetBrains Mono||||||||" text_text_color="#3798E4" text_font_size="11px" background_color="rgba(55,152,228,0.15)" custom_padding="5px|12px|5px|12px|true|true" border_radii="on|6px|6px|6px|6px" border_width_all="1px" border_color_all="rgba(55,152,228,0.25)" max_width="fit-content"]
+<p>50,000+</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_3_font="Lexend|700|||||||" header_3_text_color="#ffffff" header_3_font_size="22px"]
+<h3>Scale Proof</h3>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3|500|||||||" text_text_color="rgba(255,255,255,0.9)" text_font_size="15px"]
+<p>Our methodology is refined from 50,000+ implementations across Asia&mdash;adopt a proven standard, not a beta product.</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="rgba(255,255,255,0.55)" text_font_size="13px" text_line_height="1.65em"]
+<p>The software logic has been battle-tested in thousands of Asian factories. It handles specific complexities (Thai tax, sub-contracting, circular BOMs) that break smaller systems.</p>
+[/et_pb_text]
+[/et_pb_column]
+[/et_pb_row]
+[et_pb_row _builder_version="4.27.4" max_width="1200px"]
+[et_pb_column type="4_4" _builder_version="4.27.4" use_background_color_gradient="on" background_color_gradient_start="#253B50" background_color_gradient_end="#0f172a" background_color_gradient_direction="135deg" custom_padding="36px|36px|36px|36px|true|true" border_radii="on|20px|20px|20px|20px"]
+[et_pb_text _builder_version="4.27.4" text_font="JetBrains Mono||||||||" text_text_color="#3798E4" text_font_size="11px" background_color="rgba(55,152,228,0.15)" custom_padding="5px|12px|5px|12px|true|true" border_radii="on|6px|6px|6px|6px" border_width_all="1px" border_color_all="rgba(55,152,228,0.25)" max_width="fit-content"]
+<p>BOI Ready</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" header_3_font="Lexend|700|||||||" header_3_text_color="#ffffff" header_3_font_size="22px"]
+<h3>BOI Compliance</h3>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3|500|||||||" text_text_color="rgba(255,255,255,0.9)" text_font_size="15px"]
+<p>Production-order-level material reconciliation that passes BOI audits&mdash;the capability no competitor can match.</p>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="rgba(255,255,255,0.55)" text_font_size="13px" text_line_height="1.65em"]
+<p>One factory saved 10M+ THB/year in supplementary taxes. Our system tracks actual material consumption per production order, not theoretical BOM calculations. <a href="/blog/boi-compliance-jin-hai/" style="color:#3798E4;">Read the full story &rarr;</a></p>
+[/et_pb_text]
+[/et_pb_column]
+[/et_pb_row]
+[/et_pb_section]
+[et_pb_section fb_built="1" _builder_version="4.27.4" admin_label="Section 9: Final CTA" use_background_color_gradient="on" background_color_gradient_start="#3798E4" background_color_gradient_end="#2d7bc4" background_color_gradient_direction="135deg" custom_padding="120px|40px|120px|40px|true|true"]
+[et_pb_row _builder_version="4.27.4" max_width="800px"]
+[et_pb_column type="4_4" _builder_version="4.27.4"]
+[et_pb_text _builder_version="4.27.4" header_2_font="Lexend|700|||||||" header_2_text_color="#ffffff" header_2_font_size="52px" header_2_line_height="1.15em" header_2_letter_spacing="-0.02em" text_orientation="center"]
+<h2>Let&rsquo;s Start a Conversation</h2>
+[/et_pb_text]
+[et_pb_text _builder_version="4.27.4" text_font="Source Sans 3||||||||" text_text_color="rgba(255,255,255,0.9)" text_font_size="20px" text_line_height="1.65em" text_orientation="center"]
+<p>We&rsquo;re eager to understand your challenges and explore how we can help. No pressure, no sales pitch&mdash;just a genuine conversation about your manufacturing operations.</p>
+[/et_pb_text]
+[et_pb_button button_text="Talk to Our Team" button_url="/contact/" _builder_version="4.27.4" custom_button="on" button_text_color="#2d7bc4" button_bg_color="#ffffff" button_border_radius="12px" button_font="Source Sans 3|600|||||||" button_alignment="center" /]
+[et_pb_button button_text="Explore Partnership" button_url="/partner-program/" _builder_version="4.27.4" custom_button="on" button_text_color="#ffffff" button_bg_color="rgba(255,255,255,0)" button_border_width="2" button_border_color="rgba(255,255,255,0.6)" button_border_radius="12px" button_font="Source Sans 3|600|||||||" button_alignment="center" /]
+[/et_pb_column]
+[/et_pb_row]
+[/et_pb_section]

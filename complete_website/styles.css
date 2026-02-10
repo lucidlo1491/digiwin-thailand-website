@@ -2018,29 +2018,29 @@ img {
 }
 
 /* Industry Logos / OEM / Equipment Section */
-.oem-section, .equipment-section {
+.oem-section, .equipment-section, .processes-section {
     padding: 80px 0;
     background: #F5F7FA;
 }
-.oem-inner, .equipment-inner {
+.oem-inner, .equipment-inner, .processes-inner {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 24px;
     text-align: center;
 }
-.oem-inner h3, .equipment-inner h3 {
+.oem-inner h3, .equipment-inner h3, .processes-inner h3 {
     font-family: 'Lexend', sans-serif;
     font-size: 24px;
     color: #253B50;
     margin-bottom: 40px;
 }
-.oem-logos, .equipment-logos {
+.oem-logos, .equipment-logos, .processes-logos {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 24px;
 }
-.oem-logo, .equipment-logo {
+.oem-logo, .equipment-logo, .process-logo {
     background: #fff;
     border: 1px solid #e2e8f0;
     border-radius: 12px;

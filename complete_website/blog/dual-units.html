@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual Units: Why Your ERP Should Show Both Kilograms AND Pieces - DigiWin Thailand</title>
+    <meta name="description" content="When your sales team thinks in pieces but production measures in kilograms, your ERP should handle both simultaneously — not force you to choose one.">
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .blog-category-badge { background: #059669; }
+    </style>
+</head>
+<body>
+    <header class="dw-header">
+        <div class="dw-header-inner">
+            <a href="../index.html" class="dw-logo">
+                <div class="dw-logo-mark">
+                    <!-- DigiWin Logo Mark - Stylized D -->
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 8h20c8.837 0 16 7.163 16 16s-7.163 16-16 16H8V8z" fill="#3798E4"/>
+                        <path d="M14 14h12c6.627 0 12 5.373 12 12s-5.373 12-12 12H14V14z" fill="#ffffff"/>
+                        <path d="M14 18h8c5.523 0 10 4.477 10 10s-4.477 10-10 10h-8V18z" fill="#3798E4"/>
+                        <path d="M14 24h4c3.314 0 6 2.686 6 6s-2.686 6-6 6h-4V24z" fill="#ffffff"/>
+                    </svg>
+                </div>
+                <div class="dw-logo-wordmark">
+                    <span class="dw-logo-text-en">Digi<span>Win</span></span>
+                    <span class="dw-logo-text-zh">鼎新數智</span>
+                </div>
+            </a>
+
+            <nav class="dw-nav">
+                <div class="dw-nav-item">
+                    <a href="../index.html" class="dw-nav-link">Home</a>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Products
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Core Systems -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Core Systems</div>
+                                <a href="../products/erp.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3z"/><path d="M3 9h18M9 21V9"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">ERP: T100 & iGP</p>
+                                        <p class="dw-mega-desc">Finance, supply chain, and operations</p>
+                                    </div>
+                                </a>
+                                <a href="../products/mes.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M2 20h20M6 20V10l4-6h4l4 6v10"/><path d="M6 14h12"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">MES: sMES & SFT</p>
+                                        <p class="dw-mega-desc">Production tracking and quality</p>
+                                    </div>
+                                </a>
+                                <a href="../products/wms.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">WMS: sFLS</p>
+                                        <p class="dw-mega-desc">Warehouse and inventory</p>
+                                    </div>
+                                </a>
+                                <a href="../products/aiot.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">AIoT & Smart Factory</p>
+                                        <p class="dw-mega-desc">Machine connectivity and analytics</p>
+                                    </div>
+                                </a>
+                                <a href="../products.html" class="dw-mega-viewall">
+                                    View All Products
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Featured: Manufacturing Suite -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M20 90V50l20-20h40l20 20v40" stroke-linecap="round"/><path d="M35 90V65h20v25M65 90V55h20v35"/><circle cx="60" cy="25" r="8"/><path d="M60 33v12"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">Complete Stack</span>
+                                    <h3 class="dw-mega-featured-title">Manufacturing & Distribution</h3>
+                                    <p class="dw-mega-featured-desc">Tailor-made ERP for manufacturing and distribution companies in Thailand and ASEAN.</p>
+                                    <a href="../products.html" class="dw-mega-featured-cta">
+                                        Explore Solutions
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Industries
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Manufacturing Sectors -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Manufacturing Sectors</div>
+                                <a href="../industries/automotive.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-6l2-4h12l2 4v6h-2M5 17h10"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Automotive Parts</p>
+                                        <p class="dw-mega-desc">JIT delivery and OEM traceability</p>
+                                    </div>
+                                </a>
+                                <a href="../industries/electronics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Electronics Assembly</p>
+                                        <p class="dw-mega-desc">SMT integration and MSD tracking</p>
+                                    </div>
+                                </a>
+                                <a href="../industries/metal-plastics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Metal & Plastics</p>
+                                        <p class="dw-mega-desc">Yield optimization and scrap reduction</p>
+                                    </div>
+                                </a>
+                                <a href="../industries.html" class="dw-mega-viewall">
+                                    View All Industries
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Featured: Industry Expertise -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M20 100V60l15-25h50l15 25v40" stroke-linecap="round"/><rect x="35" y="70" width="20" height="30" rx="2"/><rect x="65" y="60" width="20" height="40" rx="2"/><path d="M45 40h30M60 25v15"/><circle cx="60" cy="20" r="5"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">50,000+ Factories</span>
+                                    <h3 class="dw-mega-featured-title">Industry-Specific Solutions</h3>
+                                    <p class="dw-mega-featured-desc">Pre-configured templates and best practices for your specific manufacturing sector.</p>
+                                    <a href="../industries.html" class="dw-mega-featured-cta">
+                                        Find Your Industry
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Partners
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Why Partner -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Why Partner</div>
+                                <a href="../partner-program/business-model.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">The Evolving Business Model</p>
+                                    </div>
+                                </a>
+                                <a href="../partner-program/economics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Partner Economics</p>
+                                    </div>
+                                </a>
+                                <a href="../partner-program/solutions.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Solution Stack</p>
+                                    </div>
+                                </a>
+                                <a href="../partner-program.html" class="dw-mega-viewall">
+                                    Partner Overview
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Column 2: Getting Started -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Getting Started</div>
+                                <a href="../partner-program.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Become a Partner</p>
+                                    </div>
+                                </a>
+                                <a href="../demo.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Schedule a Conversation</p>
+                                    </div>
+                                </a>
+                                <a href="../about.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">About DigiWin</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Featured: Partner Program -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(55,152,228,0.3)"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">For ERP Implementers</span>
+                                    <h3 class="dw-mega-featured-title">Grow Beyond the Man-Day Model</h3>
+                                    <p class="dw-mega-featured-desc">40-50% license margins. 100% service fees. Recurring revenue that compounds.</p>
+                                    <a href="../partner-program.html" class="dw-mega-featured-cta">
+                                        Become a Partner
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Resources
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Learn & Connect</div>
+                                <a href="../news.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">News & Events</p>
+                                        <p class="dw-mega-desc">Seminars, workshops, and factory visits</p>
+                                    </div>
+                                </a>
+                                <a href="../blog.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Insights & Knowledge</p>
+                                        <p class="dw-mega-desc">Technical guides and implementation stories</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Featured: Latest Insight -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(55,152,228,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">Latest Insight</span>
+                                    <h3 class="dw-mega-featured-title">BOI Compliance: 10M THB Saved</h3>
+                                    <p class="dw-mega-featured-desc">How one factory eliminated supplementary taxes through production-order-level reconciliation.</p>
+                                    <a href="../blog/boi-compliance-jin-hai.html" class="dw-mega-featured-cta">
+                                        Read the Story
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item">
+                    <a href="../about.html" class="dw-nav-link">About</a>
+                </div>
+            </nav>
+
+            <a href="../demo.html" class="dw-header-cta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;margin-right:8px;vertical-align:middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span style="vertical-align:middle;">Let's Talk</span>
+            </a>
+
+            <button class="dw-menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- Hero -->
+    <section class="blog-hero">
+        <div class="blog-hero-inner">
+            <a href="../blog.html" class="blog-back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to Insights
+            </a>
+            <div class="blog-category-badge">Cost Management</div>
+            <h1>Dual Units: Why Your ERP Should Show Both Kilograms AND Pieces</h1>
+            <div class="blog-meta">
+                <span>6 min read</span>
+                <span class="blog-meta-dot"></span>
+                <span>February 2026</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Body -->
+    <article class="blog-body">
+
+        <!-- Opening -->
+        <p class="fade-in">
+            Your sales team sells in pieces. Your production floor measures in kilograms. Your warehouse counts in boxes. Your purchasing team orders in rolls or sheets. Every department uses different units of measure for the same product — and somehow your ERP is supposed to keep everyone on the same page.
+        </p>
+
+        <p class="fade-in">
+            For many manufacturers, the ERP forces a choice: pick one primary unit, and convert everything else manually. This creates friction, errors, and wasted time at every handoff point. Sales enters an order for 500 pieces. Warehouse needs to know that's 125 kg. Production needs 3 rolls of raw material. Purchasing needs 2 pallets. Every conversion is manual — and every manual conversion is an error waiting to happen.
+        </p>
+
+        <hr class="blog-divider fade-in">
+
+        <!-- Section: The Single-Unit Problem -->
+        <h2 class="fade-in">The Single-Unit Problem</h2>
+
+        <p class="fade-in">
+            Many ERP systems — including certain major brands operating in Thailand — support only one primary unit of measure per item. You define a product as "kilograms" or "pieces" but not both simultaneously. The system picks one as the "master" unit, and everything else is treated as a conversion that must be calculated on the fly.
+        </p>
+
+        <p class="fade-in">
+            This seems like a reasonable technical decision until you live with the consequences. Sales enters an order for 500 pieces. Warehouse needs to know that's 125 kg. The system doesn't show both. The warehouse clerk has to remember — or look up — that this particular item weighs 0.25 kg per piece. If they get it wrong, they ship 120 kg when they should have shipped 125 kg. The customer receives 480 pieces instead of 500.
+        </p>
+
+        <p class="fade-in">
+            Production faces the same problem. The production order says to manufacture 1,000 units. The floor supervisor needs to know how many kilograms of raw material to requisition. The BOM (Bill of Materials) might show it in kg, but the production order shows units. Every handoff requires a mental conversion — or a separate lookup table — to connect what the system says to what the operation needs.
+        </p>
+
+        <p class="fade-in">
+            Purchasing encounters the inverse issue. Suppliers sell raw materials by the kilogram, roll, or sheet. Production consumes materials by the piece or meter. Inventory is tracked in yet another unit. When the purchasing team places an order, they need to translate production consumption rates (in pieces) into supplier order quantities (in kg or rolls). This translation happens outside the ERP, in spreadsheets or through manual calculation, because the system only understands one unit at a time.
+        </p>
+
+        <div class="blog-pullquote fade-in">
+            When your salesperson promises 500 pieces and your warehouse ships 120 kg, someone made a conversion error. Dual units eliminate the conversion entirely.
+        </div>
+
+        <!-- Section: What Dual Units Solve -->
+        <h2 class="fade-in">What Dual Units Solve</h2>
+
+        <p class="fade-in">
+            DigiWin's ERP displays both units simultaneously. On one screen, you see: <strong>500 pieces = 125 kg</strong>. No mental math, no conversion tables, no "let me check." The system understands that this product is measured in two ways, and it shows both wherever they matter.
+        </p>
+
+        <p class="fade-in">
+            Inventory shows current stock in both units. If you have 240 kg in the warehouse, the screen also shows you have 960 pieces (assuming 0.25 kg per piece). Sales orders display the customer quantity in pieces and the warehouse fulfillment quantity in kg. Production orders show required output in pieces and material consumption in kg. Purchase orders display supplier units (kg, rolls, sheets) alongside the production units (pieces, meters) they translate into.
+        </p>
+
+        <p class="fade-in">
+            This isn't just convenience — it's accuracy. Every time a human has to convert units manually, there's a chance of error. Use the wrong conversion factor. Transpose digits. Forget to account for packaging waste. Round incorrectly. These errors propagate through the system until they surface as shipping discrepancies, production shortages, or inventory write-offs.
+        </p>
+
+        <div class="blog-data-card fade-in">
+            <div class="blog-data-card-content">
+                <div class="blog-data-number">2 Units, 1 Screen</div>
+                <div class="blog-data-label">See inventory, orders, and production in both measurement units simultaneously</div>
+            </div>
+        </div>
+
+        <p class="fade-in">
+            Dual units also matter for compliance and reporting. BOI-certified manufacturers often need to report material consumption in the units specified by import declarations — which may differ from the units used in production. If you import steel by the ton but produce parts by the kilogram (and sell them by the piece), your BOI report needs to reconcile all three. A dual-unit system makes this reconciliation automatic rather than manual.
+        </p>
+
+        <!-- Section: Where It Matters Most -->
+        <h2 class="fade-in">Where It Matters Most</h2>
+
+        <p class="fade-in">
+            Dual units are particularly critical in industries where the sales unit and the production unit naturally diverge. Consider the following scenarios where single-unit ERPs create operational friction:
+        </p>
+
+        <ul class="fade-in">
+            <li><strong>Plastics:</strong> Resin is purchased and tracked by kilogram. Injection-molded parts are counted and sold by the piece. Production needs to know how many kg of resin are required to produce 10,000 pieces. Inventory needs to show both the kg remaining and how many pieces that translates into.</li>
+            <li><strong>Metal fabrication:</strong> Steel is bought by the ton. Sheets are cut and processed into parts counted by the unit. When a customer orders 5,000 brackets, purchasing needs to know how many tons of steel to order.</li>
+            <li><strong>Food manufacturing:</strong> Ingredients are purchased and measured by kilogram or liter. Finished goods are packaged and sold by the case or unit. The recipe (BOM) uses kg; the sales order uses cases.</li>
+            <li><strong>Chemicals:</strong> Raw materials are procured by the liter or barrel. Production consumes them by kilogram (weight-based). Finished products are sold by volume or by weight depending on the customer.</li>
+        </ul>
+
+        <p class="fade-in">
+            In every case, the organization is forced to choose one unit as "primary" and treat the other as secondary. This choice reverberates through every transaction. Warehouse staff calculate conversions. Sales staff check reference tables. Production planners maintain spreadsheets to translate between sales forecasts (in pieces) and material requirements (in kg).
+        </p>
+
+        <p class="fade-in">
+            The cost isn't just the time spent converting. It's the errors that result. A shipping mistake caused by a unit conversion error doesn't just delay a delivery — it damages customer trust, consumes internal labor to fix, and potentially triggers penalty clauses in supply agreements. Over hundreds of transactions per month, the cumulative impact becomes significant.
+        </p>
+
+        <div class="blog-highlight fade-in">
+            <p><strong>BOI reporting note:</strong> Bonded materials are often tracked in import units (tons, barrels, cases) while production consumption is measured in different units (kg, liters, pieces). Dual-unit display ensures BOI reconciliation reports show consumption in both the import unit and the production unit without requiring manual conversion.</p>
+        </div>
+
+        <hr class="blog-divider fade-in">
+
+        <!-- Closing -->
+        <h2 class="fade-in">A Small Feature with Large Impact</h2>
+
+        <p class="fade-in">
+            It seems like a small thing — two units on one screen. But across thousands of transactions per month, across every department, the cumulative impact of eliminating unit-of-measure conversion errors is significant.
+        </p>
+
+        <p class="fade-in">
+            Fewer shipping mistakes. Faster order processing. More accurate inventory. Cleaner BOI reports. Less time wasted looking up conversion factors. Fewer spreadsheets maintained outside the system to bridge the gap between what sales says and what production needs.
+        </p>
+
+        <p class="fade-in">
+            If your current ERP forces you to choose between kilograms and pieces, you've already felt this friction. Your team has developed workarounds — reference tables, conversion spreadsheets, mental math routines. These workarounds function until they don't. And when they fail, the cost is immediate and measurable.
+        </p>
+
+        <p class="fade-in">
+            Dual-unit display isn't a luxury feature. It's the difference between an ERP that reflects how your business actually operates and one that forces your business to conform to its limitations.
+        </p>
+
+    </article>
+
+    <!-- Related Articles -->
+    <section class="blog-related">
+        <div class="blog-related-inner">
+            <h2 class="fade-in">Related Articles</h2>
+            <div class="blog-related-grid">
+                <a href="../blog/co-product-cost-accounting.html" class="blog-related-card fade-in">
+                    <div class="blog-related-card-category">Cost Management</div>
+                    <h3>Co-Product Cost Accounting: Allocating Costs When One Process Makes Many Products</h3>
+                    <span class="blog-related-card-link">
+                        Read article
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+                <a href="../blog/feature-codes.html" class="blog-related-card fade-in">
+                    <div class="blog-related-card-category">Production Planning</div>
+                    <h3>Feature Codes: How to Handle "Same Product, Different Specs" Without Drowning in SKUs</h3>
+                    <span class="blog-related-card-link">
+                        Read article
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+                <a href="../blog/boi-compliance-jin-hai.html" class="blog-related-card fade-in">
+                    <div class="blog-related-card-category">BOI &amp; Compliance</div>
+                    <h3>How One Factory Saved 10M THB/Year in BOI Supplementary Taxes</h3>
+                    <span class="blog-related-card-link">
+                        Read article
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="blog-cta">
+        <div class="blog-cta-inner">
+            <h2 class="fade-in">Tired of Unit Conversion Headaches?</h2>
+            <p class="fade-in">See how dual-unit display eliminates errors across your entire operation.</p>
+            <a href="../demo.html" class="blog-cta-btn fade-in">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Let's Talk
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="dw-footer">
+        <div class="dw-footer-inner">
+            <div class="dw-footer-grid">
+                <div class="dw-footer-brand">
+                    <div class="dw-footer-logo">Digi<span>Win</span></div>
+                    <p class="dw-footer-tagline"><span class="dw-years">44</span> years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
+                    <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Products</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../products.html">All Products</a></li>
+                        <li><a href="../products/erp.html">ERP: T100 & iGP</a></li>
+                        <li><a href="../products/mes.html">MES: sMES & SFT</a></li>
+                        <li><a href="../products/wms.html">WMS: sFLS</a></li>
+                        <li><a href="../products/aiot.html">AIoT & Smart Factory</a></li>
+                    </ul>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Industries</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../industries.html">All Industries</a></li>
+                        <li><a href="../industries/automotive.html">Automotive Parts</a></li>
+                        <li><a href="../industries/electronics.html">Electronics Assembly</a></li>
+                        <li><a href="../industries/metal-plastics.html">Metal & Plastics</a></li>
+                    </ul>
+                    <h4 style="margin-top: 24px;">Partners</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../partner-program.html">Partner Program</a></li>
+                        <li><a href="../partner-program/economics.html">Partner Economics</a></li>
+                    </ul>
+                    <h4 style="margin-top: 24px;">Resources</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../news.html">News & Events</a></li>
+                        <li><a href="../blog.html">Insights & Knowledge</a></li>
+                    </ul>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Contact</h4>
+                    <div class="dw-footer-contact">
+                        <p>
+                            <strong>DigiWin Thailand</strong><br>
+                            No. 2/117-118, Bangna Complex Office Tower,<br>
+                            22nd Floor, Theparat Road,<br>
+                            Bangna, Bangkok 10260
+                        </p>
+                        <p>
+                            <a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a>
+                        </p>
+                    </div>
+                    <div class="dw-footer-social">
+                        <a href="#" title="LinkedIn">in</a>
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="LINE">L</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dw-footer-bottom">
+                <p class="dw-footer-copyright">© 2026 DigiWin Thailand. All rights reserved.</p>
+                <div class="dw-footer-legal">
+                    <a href="../privacy-policy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Service</a>
+                    <a href="../about.html">About Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../digiwin-components.js"></script>
+    <script src="../digiwin-dynamic.js"></script>
+
+</body>
+</html>

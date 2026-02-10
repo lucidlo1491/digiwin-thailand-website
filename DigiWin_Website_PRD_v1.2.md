@@ -1,9 +1,9 @@
 # DigiWin Thailand Website â€” Product Requirements Document
 
-**Version:** 1.2
-**Last Updated:** February 3, 2026
+**Version:** 1.3
+**Last Updated:** February 9, 2026
 **Author:** Peter (Head of Distributor) + Claude (AI Operating System)
-**Status:** Draft â€” Under Review
+**Status:** Draft â€" Under Review
 
 ---
 
@@ -26,14 +26,29 @@ SYSPRO.com serves as the primary design and persuasion reference. Key patterns t
 - Capability pillars presented as icon + headline + one-liner (not paragraphs)
 - Industry vertical selector with tabbed/accordion UI showing relevant imagery per vertical
 - Differentiator section ("Only with DigiWin") with 3 unique selling points
-- Persistent "Request a Demo" / "Contact Us" CTA in header and as page closer
+- Persistent "Let's Talk" / "Contact Us" CTA in header and as page closer
 - Clean, modern aesthetic: dark hero sections, bright accent colors, plenty of whitespace
 
 ### 1.3 Key Differentiator
 
 Unlike SYSPRO which serves only end-users, DigiWin Thailand's website must serve a dual audience: factory operators AND distributor prospects. The homepage splits traffic; the Partner Program path (2.x) is entirely separate from the Products path (3.x). This dual-audience architecture is the defining structural decision of this project.
 
-### 1.4 Voice & Tone
+**BOI Compliance as Competitive Moat:** DigiWin's production-order-based material reconciliation is the only solution that passes BOI audit scrutiny. Competitors (Kingdee, Yonyou, SAP) rely on theoretical BOM calculations that create gaps between imported materials and actual production consumption â€" gaps that result in supplementary taxes. Proven: Jin Hai client reduced 10M+ THB/year in supplementary taxes to zero.
+
+### 1.4 Competitive Landscape (Thailand 2026)
+
+- **Kingdee:** ~20 staff, expanding but no production-level BOI reconciliation
+- **Yonyou:** ~20 staff, Vietnam-first strategy, same BOI weakness
+- **SAP:** Established but expensive; ECC end-of-life 2027 creates migration window; no co-product accounting, no dual units, weak Thai localization
+- **Odoo:** SEO-dominant, low distributor margins (2-5% real), BOM/WO module only released Nov 2025 â€" implementers can't deploy yet
+
+### 1.5 Product Naming Clarification
+
+- **iGP** is the current branded name for what was previously called **WorkFlow ERP**. All internal transcripts reference "WorkFlow ERP"; marketing materials use "iGP."
+- On the website: use **iGP** in navigation, product cards, and headers. Add "(WorkFlow ERP)" parenthetical on first detailed mention in product pages and blog articles for audiences familiar with the legacy name.
+- **T100** is the flagship enterprise ERP â€" no naming ambiguity.
+
+### 1.6 Voice & Tone
 
 Expert, confident, manufacturing-specific. Never generic. Always grounded in concrete numbers: 44 years, 50,000+ clients, 100+ Thai implementations. The tone says "we've done this thousands of times" without arrogance.
 
@@ -88,7 +103,9 @@ These are the unspoken objections both audiences carry. The Persuasion Playbook 
 2. "We tried ERP before and it failed" â†’ Address with: manufacturing-specific vs. generic distinction, case studies from similar factories
 3. "We'll be locked into a vendor" â†’ Address with: "grows with you" product ladder, open integration architecture
 4. "My team can't learn a new system" â†’ Address with: Thai-language support, bilingual team, training program
-5. "It's too expensive for our size" â†’ Address with: iGP for SME (not enterprise pricing), ROI within 12 months
+5. "It's too expensive for our size" â†' Address with: iGP for SME (not enterprise pricing), ROI within 12 months
+6. "BOI compliance is handled by our accountant" â†' Address with: production-order-level reconciliation vs. theoretical BOM; Jin Hai case study (10M THB â†' zero)
+7. "We already have Kingdee/Yonyou/SAP" â†' Address with: specific technical gaps (co-product, LRP, dual units, AMRP) without naming competitors on Track A pages
 
 **Distributor Prospect Fears:**
 1. "DigiWin will compete with me for clients" â†’ Address with: zero channel conflict guarantee, territory protection
@@ -127,12 +144,15 @@ The site is organized into 5 main sections. Hub pages aggregate and route; leaf 
 â””â”€â”€ 5.0 Resources & Company
     â”œâ”€â”€ 5.1 Case Studies
     â”œâ”€â”€ 5.2 About Us
-    â””â”€â”€ 5.3 ESG & Net Zero
+    â""â"€â"€ 5.3 ESG & Net Zero
+6.0 News & Events
+7.0 Blog / Knowledge Base
+    â""â"€â"€ Article Template
 ```
 
-Total: 20 pages (5 hubs + 15 leaves). About Us is a comprehensive multi-section page.
+Total: 22 pages (5 hubs + 15 leaves + 2 content marketing). About Us is a comprehensive multi-section page.
 
-Priority: Partner Program path (2.x) first, then Home (1.0), then Products (3.x), Industries (4.x), Resources (5.x).
+Priority: Partner Program path (2.x) first, then Home (1.0), then Products (3.x), Industries (4.x), Resources (5.x), then Content Marketing (6.0, 7.0).
 
 ---
 
@@ -184,7 +204,7 @@ Purpose: Why choose DigiWin
 Purpose: Convert interested visitors
 
 - "Ready to See What DigiWin Can Do?"
-- Two buttons: "Request a Demo" + "Become a Partner"
+- Two buttons: "Let's Talk" + "Become a Partner"
 
 **Notes:** Must load fast. No heavy animations. Route within 5 seconds.
 
@@ -492,7 +512,7 @@ Purpose: Key capabilities
 **Section 3: Case Study + CTA**
 Purpose: Proof
 
-- One measurable case study. "Request ERP Demo"
+- One measurable case study. "Let's Talk About ERP"
 
 ---
 
@@ -693,20 +713,25 @@ Purpose: Company purpose statement (matches SYSPRO's "We Move Industry Forward" 
 - Mention the name origin: é¼Žæ–° (DÇng XÄ«n) = "to innovate, to renew" â€” this is the DNA
 - Left side: mission text. Right side: hero image of DigiWin team or implementation
 
-**Section 3: The DigiWin Timeline â€” 44 Years of Milestones**
+**Section 3: The DigiWin Timeline â€" 44 Years of Milestones**
 Purpose: Visual history that builds trust through longevity
 
-- Interactive or visual timeline from 1982 to present
-- Key milestones:
-  - 1982: Founded in Taiwan as é¼Žæ–°é›»è…¦ (DigiWin Computer), focused on accounting software for local businesses
-  - 1990s: Pivot to manufacturing ERP as Taiwan's industrial sector boomed. First major factory deployments
-  - 2000s: Expansion across Greater China. Product suite grows from ERP to include MES, WMS
-  - 2008: Listed on Shenzhen Stock Exchange (300378) â€” public company milestone
-  - 2010s: Smart manufacturing push â€” AIoT, cloud, Industry 4.0 integration
-  - 2017: DigiWin Thailand established, entering the ASEAN market
-  - 2020s: 50,000+ client milestone. Digital transformation across manufacturing verticals
-  - 2024-2025: Thai local market expansion via distributor program
-- Visual: horizontal scrolling timeline or vertical milestone cards with images per era
+- **Layout: Horizontal Scroll Rail** â€" a single horizontal line runs left-to-right (the "rail"). Year-dot markers sit on the line. Milestone cards alternate above and below the rail (odd milestones above, even below), creating a compact zigzag rhythm. The container uses `overflow-x: auto` with `scroll-snap-type: x mandatory` for smooth scrolling. Gradient fade masks at left/right edges hint at scrollability.
+- **Industrial metaphor:** The horizontal rail reads like a production line / conveyor belt â€" on-brand for manufacturing.
+- **Responsive:** At â‰¤768px, switches to a compact vertical timeline (single column, cards on one side of a vertical line).
+- 12 key milestones (each: year, title, 1-2 line description, optional badge):
+  - 1982: Founded â€" DigiWin founded in Taiwan by Sun Ai-bin & Gu Feng-yong
+  - 1989: First Product â€" First MRPII manufacturing software released
+  - 1992: First Award â€" Taiwan Information Month Outstanding Software Package
+  - 1995: TIPTOP ERP â€" Asia's first Browser/Server architecture ERP
+  - 2001: Taiwan IPO â€" Listed on Taiwan Stock Exchange
+  - 2006: China #1 â€" #1 Manufacturing ERP vendor in China
+  - 2014: Shenzhen IPO â€" Listed on Shenzhen Stock Exchange (300378.SZ)
+  - 2017: Thailand â€" ASEAN expansion accelerates from Bangkok
+  - 2020: Foxconn Invests â€" CNY 560M strategic investment from Foxconn FII
+  - 2022: Red Dot Award â€" German Red Dot Design Award for Athena Platform
+  - 2024: #1 PLM + MES â€" IDC #1 in discrete manufacturing, Indonesia entry
+  - 2026: AI Era â€" SUPA AI framework, smart manufacturing intelligence
 
 **Section 4: By the Numbers â€” Stats Banner**
 Purpose: Hard credibility metrics (matches SYSPRO's stats pattern)
@@ -745,7 +770,7 @@ Purpose: Outcome-focused benefits (adapts SYSPRO's "Because of Syspro you can...
 Purpose: Specific Thailand context (unique to DigiWin's dual-market positioning)
 
 - Subsection: "Serving Thailand Since 2017"
-- Paragraph on Thailand establishment: originally serving Taiwanese/Chinese companies establishing in Thailand
+- Paragraph on Thailand establishment: entered Thailand in 2017 serving Taiwanese/Chinese manufacturers; formally registered Thai company in 2019 as demand grew
 - Team composition: 50+ employees, 60%+ bilingual (Thai + Chinese), deep understanding of both Thai business culture and manufacturing practices
 - The evolution: from direct sales to Taiwanese/Chinese clients â†’ now opening the Thai local market through distributors
 - Photo: DigiWin Thailand office or team photo
@@ -777,7 +802,7 @@ Purpose: Third-party validation
 Purpose: Convert visitors who've read this far
 
 - "Ready to Work with a Team That Understands Manufacturing?"
-- Two paths: "Request a Demo" (factory buyers) / "Become a Partner" (distributors)
+- Two paths: "Let's Talk" (factory buyers) / "Become a Partner" (distributors)
 - Contact information: Bangkok office address, phone, email
 
 **Notes:** This page must tell a COMPLETE story. Visitors doing due diligence (distributor owners evaluating us, factory CFOs checking vendor stability, procurement teams) will read this page end-to-end. Depth is intentional.
@@ -798,6 +823,66 @@ Purpose: Future-facing credibility
 - Connection to Thailand's sustainability regulations
 
 **Notes:** Lower priority. Simple single-section initially.
+
+---
+
+### 6.0 News & Events
+
+**Audience:** Both â€" factory operators seeking learning opportunities, distributor prospects evaluating DigiWin's market presence
+**Objective:** Drive event registrations and demonstrate active market engagement
+
+#### Section Flow
+
+| Section | Content | Module |
+|---------|---------|--------|
+| Hero | Badge: "NEWS & EVENTS" / Title: "Where Manufacturing Intelligence Meets Action" / Subtitle: "Seminars, workshops, factory visits, and trade shows â€" where Thai manufacturers discover what's possible." | Full-width dark gradient |
+| Featured Event | Large card: event image, type badge, title, date/time/location, description, CTA button | 2-column (60/40) |
+| Upcoming Events Grid | 3-column event cards, color-coded by type: Seminar (#3798E4), Workshop (#22C55E), Factory Visit (#F59E0B), Trade Show (#8B5CF6) | Card grid |
+| Event Series | "Manufacturing Competitiveness Series" â€" themed monthly campaign: BOI Compliance â†' Production Transparency â†' Cash Flow Management â†' SAP Migration Options | Timeline/progression |
+| Past Events Archive | Filterable grid with type tabs | Tab filter + card grid |
+| CTA | "Don't Miss the Next Event" â€" email subscribe + "Let's Talk" | CTA banner |
+
+**Notes:** Events are a primary lead generation channel for Thai market. Color-coded event types help visitors quickly identify relevant opportunities.
+
+---
+
+### 7.0 Blog / Knowledge Base
+
+**Audience:** Both â€" factory operators researching solutions, distributor prospects evaluating DigiWin's expertise
+**Objective:** Establish thought leadership, drive organic search traffic, nurture leads with educational content
+
+#### Section Flow
+
+| Section | Content | Module |
+|---------|---------|--------|
+| Hero | Badge: "INSIGHTS & KNOWLEDGE" / Title: "Manufacturing Intelligence, Shared" / Subtitle: "Technical guides, compliance insights, and real implementation stories from Thailand's manufacturing floor." | Full-width dark gradient |
+| Featured Article | Large 2-column card featuring the strongest proof-backed article (BOI compliance first) | 2-column (60/40) |
+| Article Grid | 3-column cards with category filter tabs: All / BOI & Compliance / Production Planning / Cost Management / Smart Factory / Industry Insights | Tab filter + card grid |
+| Deep Dive Library | Structured list grouped by category for longer technical content | Accordion/list |
+| CTA | "Have a Manufacturing Challenge? Let's Talk" | CTA banner |
+
+**Notes:** BOI compliance content should be prioritized first â€" it's the strongest proof point and highest-intent search topic for Thai manufacturers.
+
+---
+
+### 7.1 Blog Article Template
+
+**Audience:** Readers of individual blog/knowledge base articles
+**Objective:** Deliver expert content with clear structure, then convert to conversation
+
+#### Article Template Specification
+
+| Element | Specification |
+|---------|--------------|
+| Hero | Compact: dark gradient, category badge, title, author, date, read time |
+| Body | Max-width 800px, Lexend headings, Source Sans 3 body 18px/1.8 line-height |
+| Pull Quotes | Blue left border (#3798E4), italic, larger font |
+| Data Callouts | JetBrains Mono, dark background cards, large numbers |
+| Highlight Boxes | Light blue background (#EBF5FF), key takeaways |
+| Related Articles | 3-card grid at bottom |
+| CTA | Soft: "Have questions about [topic]? Let's Talk" |
+
+**Notes:** Article template should feel premium and focused. No sidebar clutter. Reader's attention stays on content, with a gentle conversion path at the end.
 
 ---
 
@@ -908,8 +993,9 @@ Before scaling to all 20 pages, we run a single-page validation test to confirm 
 | **Batch 4** | 3.0 Products Hub, 3.1, 3.2, 3.3 | End-user product pages |
 | **Batch 5** | 4.0, 4.1, 4.2, 4.3 | Industry vertical pages |
 | **Batch 6** | 5.0, 5.1, 5.2, 5.3 | Resources and About Us |
+| **Batch 7** | 6.0 News & Events, 7.0 Blog | Content marketing |
 
-Total: 20 pages across 7 batches (including validation).
+Total: 22 pages across 8 batches (including validation).
 
 **Global header and footer** are built FIRST, before Batch 0, using DIVI Theme Builder. These persist across all pages automatically.
 
@@ -966,8 +1052,8 @@ Since we're importing page content via DIVI JSON templates, we MUST define a glo
 | Element | Specification |
 |---------|---------------|
 | Logo | DigiWin logo, left-aligned, links to Home |
-| Navigation | Home Â· Products Â· Industries Â· Partner Program Â· Resources Â· About Us |
-| CTA Button | "Request a Demo" â€” #3798E4 background, white text, right-aligned |
+| Navigation | Home Â· Products Â· Industries Â· Partners Â· Resources (News & Events, Insights & Knowledge) Â· About Us |
+| CTA Button | "Let's Talk" â€" #3798E4 background, white text, right-aligned |
 | Language Selector | EN / TH toggle (if bilingual v1) |
 | Behavior | Sticky on scroll, white background with subtle shadow |
 
@@ -1013,8 +1099,9 @@ Since we're importing page content via DIVI JSON templates, we MUST define a glo
 |---------|------|---------|
 | 1.0 | Feb 3, 2026 | Initial PRD â€” 20-page architecture, persuasion framework, page specs, production workflow |
 | 1.1 | Feb 3, 2026 | Expanded About Us (11 sections, SYSPRO-modeled), DigiWin Taiwan style guide extraction, global header/footer specs, content-to-DIVI mapping |
-| 1.2 | Feb 3, 2026 | Rewrote Section 2 (dual-track persuasion framework with fear inventory), added Three-Layer Documentation Model (Section 5), rewrote Production Workflow (Section 6) for DIVI JSON import pipeline â€” Claude handles import via Chrome browser, direct stock image URLs (no upload step), changed Batch 0 validation to Home page, expanded Open Items from 12 to 14 |
+| 1.2 | Feb 3, 2026 | Rewrote Section 2 (dual-track persuasion framework with fear inventory), added Three-Layer Documentation Model (Section 5), rewrote Production Workflow (Section 6) for DIVI JSON import pipeline â€" Claude handles import via Chrome browser, direct stock image URLs (no upload step), changed Batch 0 validation to Home page, expanded Open Items from 12 to 14 |
+| 1.3 | Feb 9, 2026 | +News/Events page (6.0) and Blog (7.0) specs, +blog article template (7.1), +BOI compliance differentiator, +competitive landscape, +iGP/WorkFlow branding note, fixed CTA language ("Let's Talk"), updated build order |
 
 ---
 
-*â€” End of PRD v1.2 â€”*
+*â€" End of PRD v1.3 â€"*

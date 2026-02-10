@@ -10,10 +10,7 @@
     <style>
         /* Homepage-specific styles - Industrial Premium Aesthetic */
 
-        /* Animated grain overlay for texture */
-        @keyframes grain {
-            0%, 100% { transform: translate(0, 0); }
-            10% { transform: translate(-2%, -2%); }
+        /* Animated grain overlay for texture */10% { transform: translate(-2%, -2%); }
             20% { transform: translate(2%, 2%); }
             30% { transform: translate(-1%, 1%); }
             40% { transform: translate(1%, -1%); }
@@ -22,24 +19,13 @@
             70% { transform: translate(-1%, -1%); }
             80% { transform: translate(1%, 1%); }
             90% { transform: translate(-2%, 2%); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+        }50% { transform: translateY(-10px); }
         }
 
         @keyframes pulse-glow {
             0%, 100% { opacity: 0.4; }
             50% { opacity: 0.8; }
-        }
-
-        @keyframes slide-up {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
+        }to {
                 opacity: 1;
                 transform: translateY(0);
             }
@@ -148,7 +134,7 @@
 
         /* Partner Panel - Dynamic Blue */
         .dw-hero-panel--partner {
-            background: linear-gradient(165deg, #0369a1 0%, #0284c7 40%, #0ea5e9 100%);
+            background: linear-gradient(165deg, #0369a1 0%, #2d7bc4 40%, #2d7bc4 100%);
             position: relative;
         }
 
@@ -687,7 +673,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #3798E4, #0ea5e9);
+            background: linear-gradient(90deg, #3798E4, #2d7bc4);
             transform: scaleX(0);
             transition: transform 0.4s ease;
         }
@@ -863,7 +849,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #3798E4, #0ea5e9);
+            background: linear-gradient(90deg, #3798E4, #2d7bc4);
         }
 
         .dw-industry-tab span {
@@ -953,7 +939,7 @@
             transform: translateY(-50%);
             width: 20px;
             height: 20px;
-            background: linear-gradient(135deg, #3798E4, #0ea5e9);
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
             border-radius: 6px;
             display: flex;
             align-items: center;
@@ -980,6 +966,10 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 24px;
+        }
+
+        .dw-trust-card:last-child {
+            grid-column: 1 / -1;
         }
 
         .dw-trust-card {
@@ -1185,7 +1175,7 @@
 
         /* CTA Section Enhancement */
         .dw-cta-section {
-            background: linear-gradient(135deg, #3798E4 0%, #0ea5e9 50%, #0284c7 100%);
+            background: linear-gradient(135deg, #3798E4 0%, #2d7bc4 50%, #2d7bc4 100%);
             padding: 120px 40px;
             position: relative;
             overflow: hidden;
@@ -1248,7 +1238,7 @@
 
         .dw-btn-white {
             background: #ffffff;
-            color: #0284c7 !important;
+            color: #2d7bc4 !important;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
             font-weight: 600;
         }
@@ -1877,6 +1867,21 @@
                     <h3 class="dw-check-title">"Ghost Inventory" Crisis</h3>
                     <p class="dw-check-quote">"The system says you have 100 units, but the shelf has 50. This discrepancy forces your team to hoard 'safety stock' just to survive."</p>
                     <p class="dw-check-desc">Inventory inaccuracy ties up millions in unnecessary capital and destroys your ability to promise reliable delivery dates. The "borrowing culture" has replaced discipline.</p>
+                </div>
+            </div>
+
+                <div class="dw-check-card">
+                    <div class="dw-check-number">04</div>
+                    <h3 class="dw-check-title">"Cost Guesswork" Trap</h3>
+                    <p class="dw-check-quote">"You quoted a price last month based on estimated costs. This month the same product costs 15% more to make — and you have no idea why."</p>
+                    <p class="dw-check-desc">Batch-to-batch cost fluctuations are invisible without production-order-level tracking. You're pricing based on last quarter's averages, not this morning's reality.</p>
+                </div>
+
+                <div class="dw-check-card">
+                    <div class="dw-check-number">05</div>
+                    <h3 class="dw-check-title">"10-Second Answer" Failure</h3>
+                    <p class="dw-check-quote">"When your biggest customer calls and asks 'where is my order?' — you put them on hold, walk to the shop floor, and hope someone knows."</p>
+                    <p class="dw-check-desc">Real-time delivery status should be a click away, not a 20-minute investigation. Every hold costs you credibility with the customers who matter most.</p>
                 </div>
             </div>
 
@@ -2795,6 +2800,25 @@
                     <p class="dw-trust-headline">Our methodology is refined from 50,000+ implementations across Asia—adopt a proven standard, not a beta product.</p>
                     <p class="dw-trust-detail">The software logic has been battle-tested in thousands of Asian factories. It handles specific complexities (Thai tax, sub-contracting, circular BOMs) that break smaller systems.</p>
                 </div>
+
+                <div class="dw-trust-card">
+                    <!-- Large background icon -->
+                    <div class="dw-trust-icon-bg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <div class="dw-trust-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <div class="dw-trust-badge">BOI Ready</div>
+                    <h3 class="dw-trust-title">BOI Compliance</h3>
+                    <p class="dw-trust-headline">Production-order-level material reconciliation that passes BOI audits — the capability no competitor can match.</p>
+                    <p class="dw-trust-detail">One factory saved 10M+ THB/year in supplementary taxes. Our system tracks actual material consumption per production order, not theoretical BOM calculations. <a href="{{basePath}}blog/boi-compliance-jin-hai.html" style="color: #3798E4;">Read the full story →</a></p>
+                </div>
             </div>
         </div>
     </section>
@@ -2815,125 +2839,32 @@
 
     <script>
     (function() {
-        // Header scroll effect
-        const header = document.querySelector('.dw-header');
-        if (header) {
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-        }
-
-        // Dropdown menus
-        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
-        dropdowns.forEach(function(item) {
-            const menu = item.querySelector('.dw-mega-menu');
-            const link = item.querySelector('.dw-nav-link');
-            item.addEventListener('mouseenter', function() {
-                dropdowns.forEach(function(other) {
-                    if (other !== item) {
-                        other.classList.remove('active');
-                        const otherMenu = other.querySelector('.dw-mega-menu');
-                        if (otherMenu) otherMenu.classList.remove('active');
-                    }
-                });
-                item.classList.add('active');
-                if (menu) menu.classList.add('active');
-            });
-            item.addEventListener('mouseleave', function() {
-                item.classList.remove('active');
-                if (menu) menu.classList.remove('active');
-            });
-            if (link) {
-                link.addEventListener('click', function(e) {
-                    if (menu) {
-                        e.preventDefault();
-                        item.classList.toggle('active');
-                        menu.classList.toggle('active');
-                    }
-                });
-            }
-        });
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.dw-nav-item[data-dropdown]')) {
-                dropdowns.forEach(function(item) {
-                    item.classList.remove('active');
-                    const menu = item.querySelector('.dw-mega-menu');
-                    if (menu) menu.classList.remove('active');
-                });
-            }
-        });
-
-        // Mobile menu toggle
-        const menuToggle = document.querySelector('.dw-menu-toggle');
-        const nav = document.querySelector('.dw-nav');
-        if (menuToggle && nav) {
-            menuToggle.addEventListener('click', function() {
-                nav.classList.toggle('dw-nav--open');
-            });
-        }
-
         // Industry tabs
-        const industryTabs = document.querySelectorAll('.dw-industry-tab');
-        const industryContents = document.querySelectorAll('.dw-industry-content');
-
+        var industryTabs = document.querySelectorAll('.dw-industry-tab');
+        var industryContents = document.querySelectorAll('.dw-industry-content');
         industryTabs.forEach(function(tab) {
             tab.addEventListener('click', function() {
-                const industry = this.getAttribute('data-industry');
-
-                // Update active tab
+                var industry = this.getAttribute('data-industry');
                 industryTabs.forEach(function(t) { t.classList.remove('active'); });
                 this.classList.add('active');
-
-                // Update active content
-                industryContents.forEach(function(content) {
-                    content.classList.remove('active');
-                });
+                industryContents.forEach(function(c) { c.classList.remove('active'); });
                 document.getElementById('industry-' + industry).classList.add('active');
             });
         });
 
-        // Animate elements on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Add staggered animation delays (faster fade-in)
-        document.querySelectorAll('.dw-value-prop, .dw-check-card, .dw-trust-card, .dw-client-logo').forEach(function(el, index) {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.4s ease ' + (index * 0.07) + 's, transform 0.4s ease ' + (index * 0.07) + 's';
-            observer.observe(el);
+        // Scroll animations
+        DigiWinUI.initScrollAnimation('.dw-value-prop, .dw-check-card, .dw-trust-card, .dw-client-logo', {
+            stagger: 70, distance: 20, duration: 400
         });
 
-        // Client stats animation
-        const clientStats = document.querySelectorAll('.dw-clients-stat');
-        const statsObserver = new IntersectionObserver(function(entries) {
+        // Client stats
+        var statsObserver = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('animated');
             });
         }, { threshold: 0.5 });
-
-        clientStats.forEach(function(el) {
-            statsObserver.observe(el);
-        });
+        document.querySelectorAll('.dw-clients-stat').forEach(function(el) { statsObserver.observe(el); });
     })();
     </script>
-    <script src="{{basePath}}digiwin-dynamic.js"></script>
 </body>
 </html>

@@ -1014,21 +1014,5 @@
         </div>
     </section>
 {{footer}}
-
-
-    <script>
-    (function() {
-        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
-        dropdowns.forEach(function(item) {
-            const menu = item.querySelector('.dw-mega-menu');
-            item.addEventListener('mouseenter', function() {
-                dropdowns.forEach(function(other) { if (other !== item) { other.classList.remove('active'); const m = other.querySelector('.dw-mega-menu'); if (m) m.classList.remove('active'); }});
-                item.classList.add('active'); if (menu) menu.classList.add('active');
-            });
-            item.addEventListener('mouseleave', function() { item.classList.remove('active'); if (menu) menu.classList.remove('active'); });
-        });
-    })();
-    </script>
-    <script src="{{basePath}}digiwin-dynamic.js"></script>
 </body>
 </html>

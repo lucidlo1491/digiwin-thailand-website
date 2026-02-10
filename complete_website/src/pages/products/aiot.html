@@ -82,10 +82,7 @@
             background: #22c55e;
             border-radius: 50%;
             animation: pulse-dot 1.5s infinite;
-        }
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
+        }50% { opacity: 0.5; transform: scale(1.2); }
         }
         .aiot-sensor-grid {
             display: grid;
@@ -363,7 +360,7 @@
         .dataflow-stage-number {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, #3798E4, #2563eb);
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
             color: #fff;
             border-radius: 50%;
             display: flex;
@@ -582,7 +579,7 @@
             transition: all 0.3s ease;
         }
         .integration-node.aiot-active {
-            background: linear-gradient(135deg, #3798E4, #2563eb);
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
             border-color: #3798E4;
         }
         .integration-node.aiot-active .node-title,
@@ -667,65 +664,6 @@
             font-weight: 500;
         }
 
-        /* CTA Section */
-        .cta-section {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #3798E4 0%, #2563eb 100%);
-            text-align: center;
-        }
-        .cta-inner {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        .cta-section h2 {
-            font-family: 'Lexend', sans-serif;
-            font-size: 40px;
-            color: #fff;
-            margin-bottom: 16px;
-        }
-        .cta-section p {
-            font-size: 20px;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 40px;
-        }
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-        }
-        .cta-btn-primary {
-            background: #fff;
-            color: #3798E4;
-            padding: 16px 32px;
-            border-radius: 8px;
-            font-family: 'Lexend', sans-serif;
-            font-weight: 600;
-            font-size: 16px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .cta-btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-        }
-        .cta-btn-secondary {
-            background: transparent;
-            color: #fff;
-            padding: 16px 32px;
-            border: 2px solid rgba(255,255,255,0.4);
-            border-radius: 8px;
-            font-family: 'Lexend', sans-serif;
-            font-weight: 600;
-            font-size: 16px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .cta-btn-secondary:hover {
-            border-color: #fff;
-            background: rgba(255,255,255,0.1);
-        }
-
         /* Responsive */
         @media (max-width: 1024px) {
             .aiot-hero-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -751,8 +689,6 @@
             .metrics-grid { grid-template-columns: 1fr; }
             .integration-diagram { flex-direction: column; }
             .integration-arrow { transform: rotate(90deg); }
-            .cta-section h2 { font-size: 28px; }
-            .cta-buttons { flex-direction: column; }
         }
     </style>
 </head>
@@ -1136,21 +1072,5 @@
         </div>
     </section>
 {{footer}}
-
-
-    <script>
-    (function() {
-        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
-        dropdowns.forEach(function(item) {
-            const menu = item.querySelector('.dw-mega-menu');
-            item.addEventListener('mouseenter', function() {
-                dropdowns.forEach(function(other) { if (other !== item) { other.classList.remove('active'); const m = other.querySelector('.dw-mega-menu'); if (m) m.classList.remove('active'); }});
-                item.classList.add('active'); if (menu) menu.classList.add('active');
-            });
-            item.addEventListener('mouseleave', function() { item.classList.remove('active'); if (menu) menu.classList.remove('active'); });
-        });
-    })();
-    </script>
-    <script src="{{basePath}}digiwin-dynamic.js"></script>
 </body>
 </html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMRP: Why You Don't Need a Separate APS System - DigiWin Thailand</title>
+    <meta name="description" content="Most ERPs require an expensive separate APS system for capacity planning. DigiWin's AMRP builds capacity planning directly into the ERP — at no extra cost.">
+    <link rel="stylesheet" href="{{basePath}}styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .blog-category-badge { background: #3798E4; }
+    </style>
+</head>
+<body>
+{{header}}
+
+    <!-- Hero -->
+    <section class="blog-hero">
+        <div class="blog-hero-inner">
+            <a href="{{basePath}}blog.html" class="blog-back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to Insights
+            </a>
+            <div class="blog-category-badge">PRODUCTION PLANNING</div>
+            <h1>AMRP: Why You Don't Need a Separate APS System</h1>
+            <div class="blog-meta">
+                <span>8 min read</span>
+                <span class="blog-meta-dot"></span>
+                <span>February 2026</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Body -->
+    <article class="blog-body">
+
+        <!-- Opening -->
+        <p class="fade-in">
+            You bought an ERP for your factory. You set up your Bill of Materials (BOM), configured your production workflows, and trained your team. Then you sit down with your planner to create the production schedule for next month. You tell the system: here are the customer orders, here are the delivery dates, now show me the production plan. The system calculates material requirements, checks inventory, generates purchase orders. Everything looks good on paper. Then your planner looks at the calendar and says: "This won't work. Our CNC line can't handle this volume. We're going to miss half these delivery dates."
+        </p>
+
+        <p class="fade-in">
+            That is when you discover the gap. Your ERP only does MRP — Material Requirements Planning. It assumes you have infinite production capacity. It tells you what materials you need and when, but not whether your production lines can actually execute the plan. The schedule looks perfect until you try to run it on real machines with real constraints. To add capacity planning, your vendor says, you need a separate APS system — Advanced Planning and Scheduling. That is another license, another vendor, another integration project. Oracle works this way. SAP works this way. Most manufacturing ERPs work this way.
+        </p>
+
+        <p class="fade-in">
+            DigiWin's AMRP (Advanced MRP) does not work this way. It builds capacity planning directly into the ERP — at no extra cost, no separate system, no integration complexity. Materials and capacity planned together, in one database, from day one.
+        </p>
+
+        <hr class="blog-divider fade-in">
+
+        <!-- Section: What Standard MRP Misses -->
+        <h2 class="fade-in">What Standard MRP Misses</h2>
+
+        <p class="fade-in">
+            Standard MRP calculates material requirements but assumes unlimited production capacity. It looks at your orders, explodes the BOMs, calculates gross requirements, nets against inventory, and generates planned orders for materials. This is useful — you know what to buy and when. But it tells you nothing about whether your production floor can actually make those goods on time.
+        </p>
+
+        <p class="fade-in">
+            The result is production plans that look correct on paper but are impossible to execute. Your bottleneck machines get overloaded. Some work centers sit idle while others are double-booked. Delivery dates slip because the system scheduled more work than a production line can physically handle. Your planners spend hours — sometimes entire days — manually adjusting the MRP output to fit real capacity constraints.
+        </p>
+
+        <p class="fade-in">
+            Consider a typical scenario. You have three customer orders all due in Week 10. MRP schedules them all for production in Week 9 to allow time for final testing and shipping. But Week 9 already has 120 hours of work scheduled on your CNC line, and the line only has 100 hours of available capacity (after accounting for maintenance downtime and shift constraints). MRP does not see this problem. It generates the plan anyway. Then your production manager crosses out half the work orders and reschedules them by hand, knowing that some deliveries will now be late.
+        </p>
+
+        <div class="blog-pullquote fade-in">
+            MRP assumes infinite capacity. Your production floor does not have infinite capacity. That gap is why your delivery dates keep slipping.
+        </div>
+
+        <hr class="blog-divider fade-in">
+
+        <!-- Section: What AMRP Does Differently -->
+        <h2 class="fade-in">What AMRP Does Differently</h2>
+
+        <p class="fade-in">
+            DigiWin's AMRP integrates material planning and capacity planning in one system. When you schedule a production order, AMRP checks both material availability and production line capacity — simultaneously, in real time, from the same database.
+        </p>
+
+        <p class="fade-in">
+            <strong>Key capabilities:</strong>
+        </p>
+
+        <ul class="fade-in">
+            <li><strong>Backward scheduling from delivery date:</strong> AMRP starts with the customer delivery date and schedules backward, checking at each step whether materials are available and whether the required production line has capacity. If a bottleneck appears, the system flags it immediately — not after your planner discovers it manually.</li>
+            <li><strong>Forward scheduling when backward fails:</strong> If backward scheduling is not feasible (materials will arrive late, or capacity is already committed), AMRP automatically switches to forward scheduling and calculates the earliest realistic delivery date. You know immediately whether you can meet the customer's timeline or need to negotiate.</li>
+            <li><strong>Considers already-committed capacity:</strong> AMRP tracks capacity at the work center level, accounting for already-scheduled production orders. When a new order arrives, the system knows which time slots are still available and which are already blocked. No double-booking.</li>
+            <li><strong>Assembly coordination for JIT material arrival:</strong> For complex assemblies with multiple sub-components, AMRP schedules material arrivals to minimize inventory holding time. Components arrive just in time for assembly, not weeks early.</li>
+            <li><strong>Resource priority settings:</strong> You can configure priority rankings for internal production lines versus OEM outsourcing partners. AMRP schedules internal capacity first, then overflows to external partners only when internal lines are fully loaded.</li>
+            <li><strong>Rush order recalculation:</strong> When a priority order arrives mid-month, AMRP recalculates remaining capacity across all existing orders and reschedules in seconds — not hours of manual replanning.</li>
+        </ul>
+
+        <p class="fade-in">
+            This is not a separate APS system layered on top of the ERP. It is built into the core planning engine. One system. One database. Materials and capacity planned together.
+        </p>
+
+        <div class="blog-data-card fade-in">
+            <div class="blog-data-card-content">
+                <div class="blog-data-inline">
+                    <div>
+                        <div class="blog-data-number">MRP</div>
+                        <div class="blog-data-label">Materials Only<br>(Assumes Infinite Capacity)</div>
+                    </div>
+                    <div style="font-size: 32px; color: rgba(255,255,255,0.4);">→</div>
+                    <div>
+                        <div class="blog-data-number">AMRP</div>
+                        <div class="blog-data-label">Materials + Capacity<br>(Built into DigiWin ERP)</div>
+                    </div>
+                </div>
+                <div class="blog-data-label" style="margin-top: 24px; font-size: 15px; color: rgba(255,255,255,0.9);">No extra license. No separate system. No integration complexity.</div>
+            </div>
+        </div>
+
+        <hr class="blog-divider fade-in">
+
+        <!-- Section: The APS Tax -->
+        <h2 class="fade-in">The APS Tax: What Other Vendors Charge</h2>
+
+        <p class="fade-in">
+            Oracle and SAP require separate APS purchases for capacity-aware planning. These are not small add-ons. Enterprise APS systems can cost as much as the ERP itself — sometimes more, depending on the number of production lines and complexity of scheduling rules. You pay for the APS license, the implementation project, the integration middleware, and the ongoing maintenance of two separate systems that need to stay synchronized.
+        </p>
+
+        <p class="fade-in">
+            And even after you pay for it, you still have integration complexity. The ERP manages orders, inventory, and financials. The APS system manages scheduling. Data flows back and forth between the two. When a rush order arrives, you update the ERP, wait for the data to sync to APS, run the APS optimizer, then push the revised schedule back to the ERP. This takes time — often hours, sometimes longer if the integration has issues. Your planners spend significant effort managing the handoff between systems rather than focusing on production optimization.
+        </p>
+
+        <p class="fade-in">
+            AMRP eliminates this entirely. There is no separate APS license to buy. No integration project. No synchronization delays. Capacity planning is built into the ERP from day one, using the same database, the same user interface, the same workflow your team already knows. When a rush order arrives, you update one system — and the capacity recalculation happens immediately.
+        </p>
+
+        <hr class="blog-divider fade-in">
+
+        <!-- Section: Real-World Impact -->
+        <h2 class="fade-in">Real-World Impact: Rush Orders and Resource Priority</h2>
+
+        <p class="fade-in">
+            <strong>Rush orders:</strong> In most factories, a priority customer order arriving mid-month triggers a day of chaos. The planner pulls up the existing MRP schedule, prints it out, and manually marks which orders can be delayed to make room for the rush job. Then they recalculate material requirements, check with the warehouse, call the production supervisor to confirm feasibility, and finally update the system with the revised plan. This takes hours — and the plan is already outdated by the time it is entered, because other orders have progressed or materials have arrived in the meantime.
+        </p>
+
+        <p class="fade-in">
+            With AMRP, the planner enters the rush order, flags it as priority, and clicks "reschedule." The system recalculates capacity across all existing orders, identifies which work can be deferred without missing critical deadlines, and generates a new schedule that accommodates the rush order — in seconds. The revised schedule accounts for material availability, production line capacity, and delivery date commitments across every order in the system. AMRP can be run multiple times per day for dynamic rescheduling as conditions change. Your planners spend less time updating spreadsheets and more time managing exceptions.
+        </p>
+
+        <p class="fade-in">
+            <strong>Resource priority:</strong> Many factories use a combination of internal production lines and external OEM partners. You want to maximize utilization of your own equipment (you already paid for it), and only overflow to OEM partners when internal capacity is fully booked. But coordinating this manually is complex — you need to know the real-time load on every internal line, compare it against incoming orders, and decide which jobs to send external.
+        </p>
+
+        <p class="fade-in">
+            AMRP lets you configure resource priority rules. You rank your internal production lines first, then list OEM partners in order of preference. When AMRP schedules a production order, it checks internal capacity first. If internal lines have available slots, the work is scheduled there. If internal capacity is fully loaded, AMRP assigns the order to the highest-priority external partner with availability. The system enforces your strategy automatically, without manual intervention.
+        </p>
+
+        <div class="blog-pullquote fade-in">
+            Your production plan is only as good as the capacity behind it. If your ERP ignores capacity, your plan is fiction.
+        </div>
+
+        <hr class="blog-divider fade-in">
+
+        <!-- Section: What This Means for Your Factory -->
+        <h2 class="fade-in">What This Means for Your Factory</h2>
+
+        <p class="fade-in">
+            If you are running standard MRP, you already know the pain. Your planners manually adjust the MRP output every week — or every day — to fit real capacity constraints. Your delivery performance suffers because the system schedules work that cannot physically be completed on time. You have considered buying a separate APS system, but the cost and complexity have kept you from pulling the trigger.
+        </p>
+
+        <p class="fade-in">
+            AMRP changes the calculation. You get capacity planning without the APS tax. No separate license. No integration project. No data synchronization delays. Capacity planning is built into the ERP, using the same database your team already works with. The cost is zero (beyond the standard DigiWin T100 license you are already using). The implementation complexity is zero (it is already there). The value is immediate — production plans that account for real capacity constraints, delivery dates you can actually meet, and planners who spend less time manually correcting the system.
+        </p>
+
+        <p class="fade-in">
+            This is not a future feature. It is not a premium add-on. It is standard functionality in DigiWin T100, available today, included in the base ERP license. If you are planning production for a manufacturing operation with capacity constraints — and every real factory has capacity constraints — AMRP eliminates the gap between your plan and your reality.
+        </p>
+
+    </article>
+
+    <!-- Related Articles -->
+    <section class="blog-related">
+        <div class="blog-related-inner">
+            <h2 class="fade-in">Related Articles</h2>
+            <div class="blog-related-grid">
+                <a href="{{basePath}}blog/lrp-vs-mrp.html" class="blog-related-card fade-in">
+                    <div class="blog-related-card-category">Production Planning</div>
+                    <h3>LRP vs MRP: Which Planning Method Fits Your Factory?</h3>
+                    <span class="blog-related-card-link">
+                        Read article
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+                <a href="{{basePath}}blog/feature-codes.html" class="blog-related-card fade-in">
+                    <div class="blog-related-card-category">Production Planning</div>
+                    <h3>Feature Codes: How to Plan Products That Change Per Customer</h3>
+                    <span class="blog-related-card-link">
+                        Read article
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+                <a href="{{basePath}}blog/shop-floor-scheduling.html" class="blog-related-card fade-in">
+                    <div class="blog-related-card-category">Smart Factory</div>
+                    <h3>Shop Floor Mini-Scheduling: Real-Time Dispatch from AMRP to MES</h3>
+                    <span class="blog-related-card-link">
+                        Read article
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="blog-cta">
+        <div class="blog-cta-inner">
+            <h2 class="fade-in">Ready to Plan with Real Capacity?</h2>
+            <p class="fade-in">See how AMRP eliminates the gap between your production plan and your production reality.</p>
+            <a href="{{basePath}}demo.html" class="blog-cta-btn fade-in">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Let's Talk
+            </a>
+        </div>
+    </section>
+
+{{footer}}
+</body>
+</html>

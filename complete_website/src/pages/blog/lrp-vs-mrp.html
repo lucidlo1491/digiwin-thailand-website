@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LRP vs MRP: Why Your Production Planning Takes Hours Instead of Minutes - DigiWin Thailand</title>
+    <meta name="description" content="Traditional MRP takes hours to recalculate your entire factory. LRP (Lot Requirements Planning) gives you per-order material answers in under a minute. Learn why this changes everything for Thai manufacturers.">
+    <link rel="stylesheet" href="{{basePath}}styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ===== Article Hero ===== */
+        .article-hero {
+            background: linear-gradient(135deg, #1a2332 0%, #253B50 50%, #1e3a5f 100%);
+            padding: 160px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .article-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .article-hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(55, 152, 228, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .article-hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .article-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            margin-bottom: 32px;
+            transition: color 0.3s ease;
+        }
+        .article-back:hover {
+            color: #3798E4;
+        }
+        .article-back svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+        .article-category {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #ffffff;
+            background: #3798E4;
+            padding: 6px 16px;
+            border-radius: 4px;
+            margin-bottom: 24px;
+        }
+        .article-hero h1 {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.15;
+            margin: 0 0 24px;
+            letter-spacing: -0.02em;
+        }
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            color: rgba(255,255,255,0.6);
+        }
+        .article-meta-divider {
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+        }
+
+        /* ===== Article Body ===== */
+        .article-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 64px 24px 80px;
+        }
+        .article-body p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 18px;
+            color: #475569;
+            line-height: 1.8;
+            margin: 0 0 24px;
+        }
+        .article-body h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #253B50;
+            margin: 56px 0 20px;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+        .article-body h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #253B50;
+            margin: 40px 0 16px;
+            line-height: 1.3;
+        }
+        .article-body ul, .article-body ol {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 18px;
+            color: #475569;
+            line-height: 1.8;
+            margin: 0 0 24px;
+            padding-left: 24px;
+        }
+        .article-body li {
+            margin-bottom: 8px;
+        }
+        .article-body strong {
+            color: #253B50;
+            font-weight: 600;
+        }
+
+        /* Lead paragraph */
+        .article-lead {
+            font-size: 20px !important;
+            color: #334155 !important;
+            line-height: 1.7 !important;
+            border-left: 3px solid #3798E4;
+            padding-left: 24px;
+            margin-bottom: 40px !important;
+        }
+
+        /* Pull quote */
+        .article-pullquote {
+            border-left: 4px solid #3798E4;
+            padding: 24px 32px;
+            margin: 40px 0;
+            background: transparent;
+        }
+        .article-pullquote p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 20px !important;
+            font-style: italic;
+            color: #253B50 !important;
+            line-height: 1.6 !important;
+            margin: 0 !important;
+        }
+
+        /* Data callout */
+        .article-data-callout {
+            background: linear-gradient(135deg, #253B50 0%, #1e3a5f 100%);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 24px;
+            text-align: center;
+        }
+        .article-data-callout-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .article-data-callout-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .article-data-callout-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 500;
+            color: #ffffff;
+            line-height: 1;
+        }
+        .article-data-callout-value.highlight {
+            color: #3798E4;
+        }
+        .article-data-callout-arrow {
+            font-size: 32px;
+            color: rgba(255,255,255,0.3);
+        }
+
+        /* Highlight box */
+        .article-highlight {
+            background: #EBF5FF;
+            border-left: 4px solid #3798E4;
+            border-radius: 0 12px 12px 0;
+            padding: 24px 32px;
+            margin: 40px 0;
+        }
+        .article-highlight p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 17px !important;
+            color: #1e3a5f !important;
+            line-height: 1.7 !important;
+            margin: 0 !important;
+        }
+        .article-highlight strong {
+            color: #253B50;
+        }
+
+        /* Scenario box */
+        .article-scenario {
+            background: #F5F7FA;
+            border-radius: 16px;
+            padding: 32px;
+            margin: 40px 0;
+        }
+        .article-scenario-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #3798E4;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+        .article-scenario ol {
+            margin: 0 !important;
+            padding-left: 20px;
+        }
+        .article-scenario li {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 17px;
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        /* ===== Related Articles ===== */
+        .related-section {
+            background: #F5F7FA;
+            padding: 80px 24px;
+        }
+        .related-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .related-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            color: #3798E4;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .related-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 40px;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .related-card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+        .related-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+        }
+        .related-card-image {
+            height: 160px;
+            background: linear-gradient(135deg, #253B50, #1e3a5f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .related-card-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M20 0l20 20-20 20L0 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .related-card-image svg {
+            width: 56px;
+            height: 56px;
+            stroke: rgba(55, 152, 228, 0.5);
+            stroke-width: 1.5;
+            fill: none;
+            position: relative;
+            z-index: 1;
+        }
+        .related-card-body {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .related-card-category {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .related-card-category.cat-compliance { color: #16a34a; }
+        .related-card-category.cat-cost { color: #d97706; }
+        .related-card-category.cat-planning { color: #3798E4; }
+        .related-card-title {
+            font-family: 'Lexend', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #253B50;
+            line-height: 1.35;
+            margin: 0;
+            flex: 1;
+        }
+        .related-card-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #3798E4;
+            margin-top: 16px;
+            transition: gap 0.3s ease;
+        }
+        .related-card:hover .related-card-arrow {
+            gap: 10px;
+        }
+        .related-card-arrow svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        /* ===== CTA Section ===== */
+        .article-cta {
+            background: linear-gradient(135deg, #253B50 0%, #1e3a5f 50%, #0f172a 100%);
+            padding: 80px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .article-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(55, 152, 228, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .article-cta-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .article-cta-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(55, 152, 228, 0.15);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+        .article-cta-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: #3798E4;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .article-cta h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 16px;
+            line-height: 1.2;
+        }
+        .article-cta p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 18px;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.6;
+            margin: 0 0 32px;
+        }
+        .article-cta .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            background: linear-gradient(135deg, #3798E4 0%, #2d7bc4 100%);
+            padding: 16px 36px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(55, 152, 228, 0.35);
+        }
+        .article-cta .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(55, 152, 228, 0.45);
+        }
+        .article-cta .cta-btn svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            transition: transform 0.3s ease;
+        }
+        .article-cta .cta-btn:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* ===== Scroll Animations ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .article-hero {
+                padding: 130px 20px 60px;
+            }
+            .article-hero h1 {
+                font-size: 28px;
+            }
+            .article-body {
+                padding: 40px 20px 60px;
+            }
+            .article-body h2 {
+                font-size: 24px;
+            }
+            .article-data-callout {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                padding: 32px 24px;
+            }
+            .article-data-callout-arrow {
+                transform: rotate(90deg);
+            }
+            .related-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .article-pullquote {
+                padding: 20px 24px;
+            }
+            .article-highlight {
+                padding: 20px 24px;
+            }
+            .article-scenario {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+{{header}}
+
+<main class="dw-main">
+
+    <!-- ===== Article Hero ===== -->
+    <section class="article-hero">
+        <div class="article-hero-inner">
+            <a href="{{basePath}}blog.html" class="article-back fade-up">
+                <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to Insights
+            </a>
+            <div class="article-category fade-up">Production Planning</div>
+            <h1 class="fade-up">LRP vs MRP: Why Your Production Planning Takes Hours Instead of Minutes</h1>
+            <div class="article-meta fade-up">
+                <span>6 min read</span>
+                <span class="article-meta-divider"></span>
+                <span>February 2026</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Article Body ===== -->
+    <article class="article-body">
+
+        <p class="article-lead fade-up">Every production planner knows the frustration: you kick off an MRP run at 6 PM, and by the time it finishes hours later, two rush orders have already changed everything. The plan was outdated before it was even printed.</p>
+
+        <p class="fade-up">This is not an edge case. It is the daily reality for thousands of Thai factories running traditional MRP. And it raises a question that most ERP vendors prefer to avoid: <strong>why does production planning still take so long?</strong></p>
+
+        <!-- Section: The MRP Problem -->
+        <h2 class="fade-up">The MRP Problem Nobody Talks About</h2>
+
+        <p class="fade-up">MRP &mdash; Material Requirements Planning &mdash; was designed in the 1970s for a world of batch processing and overnight mainframe runs. The core logic is straightforward: take the master production schedule, explode the BOM (Bill of Materials) for every item, check inventory, and calculate what needs to be purchased or produced.</p>
+
+        <p class="fade-up">The problem is scale. MRP recalculates <strong>everything</strong> &mdash; every active item, every level of the BOM, every open purchase order, every work order in progress. For a typical Thai factory with thousands of active items and multi-level BOMs, this process takes hours. Some factories report MRP runs of 4 to 8 hours for a single cycle.</p>
+
+        <p class="fade-up">During those hours, the shop floor keeps moving. New orders arrive. Customers call asking about delivery dates. Material shipments are delayed. But the planner cannot answer any of these questions until the MRP run completes &mdash; and by then, the inputs have already changed.</p>
+
+        <div class="article-pullquote fade-up">
+            <p>An MRP run that takes 4 hours to complete is already 4 hours out of date. You are making decisions today based on a picture from yesterday.</p>
+        </div>
+
+        <p class="fade-up">This is the planning-versus-reality disconnect. The longer the planning cycle, the wider the gap between what the system recommends and what the factory actually needs. Planners compensate by padding safety stock, over-ordering materials, or simply relying on gut feel &mdash; none of which is a real solution.</p>
+
+        <!-- Section: What If You Could Plan Per Order? -->
+        <h2 class="fade-up">What If You Could Plan Per Order?</h2>
+
+        <p class="fade-up">LRP &mdash; Lot Requirements Planning &mdash; flips the approach entirely. Instead of recalculating the entire factory from top to bottom, LRP calculates material requirements for <strong>a specific production order</strong>.</p>
+
+        <p class="fade-up">The logic is targeted: given this one order, what materials are needed? What is already in stock? What is allocated to other orders? What needs to be purchased, and when? LRP answers these questions in <strong>under a minute</strong>, because it is only looking at one order's worth of data &mdash; not the entire factory.</p>
+
+        <div class="article-data-callout fade-up">
+            <div class="article-data-callout-item">
+                <span class="article-data-callout-label">Traditional MRP</span>
+                <span class="article-data-callout-value">Hours</span>
+                <span class="article-data-callout-label">per full run</span>
+            </div>
+            <div class="article-data-callout-arrow">&rarr;</div>
+            <div class="article-data-callout-item">
+                <span class="article-data-callout-label">LRP</span>
+                <span class="article-data-callout-value highlight">&lt; 1 min</span>
+                <span class="article-data-callout-label">per order</span>
+            </div>
+        </div>
+
+        <p class="fade-up">This changes the nature of production planning from a batch activity to a real-time conversation. The planner is no longer waiting for a nightly run. They are getting actionable answers <strong>right now</strong>, for the order that matters right now.</p>
+
+        <!-- Section: How LRP Works in Practice -->
+        <h2 class="fade-up">How LRP Works in Practice</h2>
+
+        <p class="fade-up">Picture a typical scenario. It is 10 AM on a Tuesday. A customer calls with a rush order for 500 units of a product that requires 12 different materials and 3 production stages.</p>
+
+        <div class="article-scenario fade-up">
+            <div class="article-scenario-title">What the planner does next</div>
+            <ol>
+                <li>Enters the order into the system</li>
+                <li>Runs LRP on that specific order &mdash; <strong>results come back in under a minute</strong></li>
+                <li>Instantly sees what materials are needed and what is already in stock</li>
+                <li>Sees what is allocated to other orders and what remains available</li>
+                <li>Knows exactly what needs to be purchased and the required delivery dates</li>
+                <li>Can tell the customer when production can start and when they can expect delivery</li>
+            </ol>
+        </div>
+
+        <p class="fade-up">No waiting for a full MRP cycle. No opening a spreadsheet to manually check stock levels. No calling the warehouse to ask what is actually on the shelf. The system gives the planner a complete picture for that specific order, immediately.</p>
+
+        <div class="article-highlight fade-up">
+            <p><strong>LRP does not replace MRP &mdash; it complements it.</strong> Run MRP nightly for the big picture: aggregate demand, long-range purchasing schedules, capacity loading. Use LRP throughout the day for real-time, order-level decisions. Together, they give planners both strategic visibility and tactical speed.</p>
+        </div>
+
+        <!-- Section: Why This Matters for Thai Manufacturers -->
+        <h2 class="fade-up">Why This Matters for Thai Manufacturers</h2>
+
+        <p class="fade-up">Thai manufacturers often operate in a different rhythm than their Western counterparts. Orders tend to be smaller, more frequent, and more varied. A factory might receive 20 to 30 new orders per day from different customers, each with different product configurations, quantities, and delivery requirements.</p>
+
+        <p class="fade-up">In this environment, the question that matters most is deceptively simple: <strong>"When your customer calls about delivery, can you answer in 10 seconds?"</strong></p>
+
+        <p class="fade-up">With traditional MRP alone, the honest answer is usually no. The planner needs to wait for the next run, or make an educated guess based on experience and a rough check of stock levels. Both options carry risk &mdash; promise too early and you miss the date; promise too late and you lose the order to a competitor.</p>
+
+        <p class="fade-up">LRP makes the 10-second answer possible. The planner can run a quick requirements check while the customer is still on the phone, and give a confident delivery commitment backed by real data &mdash; not guesswork.</p>
+
+        <p class="fade-up">For factories that compete on responsiveness &mdash; and in Thailand, that is most factories &mdash; this is not a nice-to-have feature. It is the difference between winning and losing orders.</p>
+
+        <!-- Section: The Competitive Reality -->
+        <h2 class="fade-up">The Competitive Reality</h2>
+
+        <p class="fade-up">Most ERP systems on the market still only offer traditional MRP. The planning cycle is a batch process: collect data, run the engine, distribute the results, repeat tomorrow. If you need faster planning, the typical answer is to bolt on a separate APS (Advanced Planning and Scheduling) system.</p>
+
+        <p class="fade-up">The problem with that approach is cost and complexity. A standalone APS system can cost as much as the ERP itself. It requires its own implementation, its own data integration, its own training. You end up maintaining two systems to solve a problem that should have been solved by one.</p>
+
+        <p class="fade-up">DigiWin takes a different approach. LRP is built directly into the ERP, alongside AMRP (Advanced Material Requirements Planning) &mdash; a capacity-aware planning engine that considers machine availability, workforce constraints, and production sequencing. No separate purchase. No separate integration. It is part of the standard manufacturing planning toolkit.</p>
+
+        <div class="article-pullquote fade-up">
+            <p>You should not need to buy a second system just to plan production accurately. Planning speed and planning intelligence should be built into the ERP from the start.</p>
+        </div>
+
+        <p class="fade-up">The result is a planning environment where nightly MRP handles the big picture, LRP handles the minute-by-minute order questions, and AMRP ensures that plans are feasible given actual capacity &mdash; all from a single system, with a single data source, and no reconciliation gaps between tools.</p>
+
+        <p class="fade-up">For Thai manufacturers dealing with frequent orders, tight delivery windows, and customers who expect immediate answers, this is not just a technical improvement. It is a competitive advantage that compounds with every order.</p>
+
+    </article>
+
+    <!-- ===== Related Articles ===== -->
+    <section class="related-section">
+        <div class="related-inner">
+            <div class="related-label fade-up">Keep Reading</div>
+            <h2 class="related-title fade-up">Related Insights</h2>
+            <div class="related-grid">
+
+                <!-- Card 1: BOI Compliance -->
+                <a href="{{basePath}}blog/boi-compliance-jin-hai.html" class="related-card fade-up">
+                    <div class="related-card-image">
+                        <svg viewBox="0 0 64 64"><path d="M12 52V20l20-12 20 12v32" stroke-linecap="round"/><rect x="22" y="30" width="20" height="22" rx="2"/><path d="M32 30v22"/><path d="M22 40h20"/></svg>
+                    </div>
+                    <div class="related-card-body">
+                        <span class="related-card-category cat-compliance">BOI & Compliance</span>
+                        <h3 class="related-card-title">BOI Compliance: How One Factory Saved 10M THB Per Year</h3>
+                        <span class="related-card-arrow">
+                            Read article
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Card 2: Co-Product Cost Accounting -->
+                <a href="{{basePath}}blog/co-product-cost-accounting.html" class="related-card fade-up">
+                    <div class="related-card-image">
+                        <svg viewBox="0 0 64 64"><path d="M8 52V28l12-8v32"/><path d="M24 52V20l12-8v40"/><path d="M40 52V12l12-8v48"/><path d="M8 52h48" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="related-card-body">
+                        <span class="related-card-category cat-cost">Cost Management</span>
+                        <h3 class="related-card-title">Co-Product Cost Accounting: Getting the Split Right</h3>
+                        <span class="related-card-arrow">
+                            Read article
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Card 3: AMRP -->
+                <a href="{{basePath}}blog/amrp-capacity-planning.html" class="related-card fade-up">
+                    <div class="related-card-image">
+                        <svg viewBox="0 0 64 64"><rect x="8" y="16" width="48" height="36" rx="3"/><path d="M8 26h48"/><path d="M18 34h8M18 42h12M38 34h8M38 42h8"/><circle cx="32" cy="10" r="4"/></svg>
+                    </div>
+                    <div class="related-card-body">
+                        <span class="related-card-category cat-planning">Production Planning</span>
+                        <h3 class="related-card-title">AMRP: Why You Should Not Need a Separate APS System</h3>
+                        <span class="related-card-arrow">
+                            Read article
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA Section ===== -->
+    <section class="article-cta">
+        <div class="article-cta-inner fade-up">
+            <div class="article-cta-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            </div>
+            <h2>Struggling with Production Planning?</h2>
+            <p>Our team can show you how LRP and AMRP work for factories like yours &mdash; no obligation, no sales pitch. Just a conversation about what faster planning could look like for your operation.</p>
+            <a href="{{basePath}}demo.html" class="cta-btn">
+                Let's Talk
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </section>
+
+</main>
+
+{{footer}}
+
+</body>
+</html>

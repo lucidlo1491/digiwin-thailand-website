@@ -91,7 +91,48 @@ ContentSpec_Home_1.0.md              # Layer 3: Production blueprint (per page)
 - Never link to pages that don't exist
 - Check actual files before adding navigation
 
+## Guardrails (CRITICAL)
+
+**Four rules that trigger every time a page is touched:**
+1. **Before** — Check PRD, Playbook, ContentSpec. Warn if anything contradicts them.
+2. **During** — Extract shareable CSS to `styles.css`. Flag better technical approaches.
+3. **After** — Run `/ui-ux-pro-max` audit on that page.
+4. **Always** — If you see a suboptimal path, say so before doing the work.
+
+**Source-of-Truth Check Before Every Change:**
+- Before modifying any page's content, tone, or structure, ALWAYS re-read the relevant source documents:
+  1. `DigiWin_Website_PRD_v1.2.md` — for architecture, design system, page requirements
+  2. `DigiWin_Persuasion_Playbook_v1.0.md` — for voice, emotional arcs, objection scripts
+  3. The page's `ContentSpec_*.md` (if one exists) — for exact approved copy and layout
+- If the user's request contradicts any of these documents, **warn them explicitly** before proceeding. Do NOT silently override the source documents.
+- Example: If user says "make the CTA say 'Book a Demo'" but the PRD says no demos, respond with a warning and suggest an alternative.
+- Rationale: Blindly editing what sounds right in the moment causes cumulative drift that is harder to fix than the original build.
+
+**Per-Page Audit After Every Modification:**
+- After creating or modifying any page, ALWAYS run a `/ui-ux-pro-max review` audit on that specific page before presenting the result to the user.
+- Do not wait until the entire site is finished — audit incrementally, page by page.
+- Check at minimum: color consistency, typography, animation timing, CTA wording, tone alignment with Playbook.
+
+**CSS Extraction On Every Page Touch:**
+- When creating or modifying any page, check its inline `<style>` block for CSS that duplicates patterns already in `styles.css` or that could be shared with other pages.
+- If duplicated or shareable CSS exists, extract it to `styles.css` as part of the current task — do not defer it.
+- The goal: every page should contain ONLY page-specific CSS inline. Shared patterns (hero badges, card components, section layouts, @keyframes, responsive breakpoints) belong in `styles.css`.
+- After extraction, rebuild with `node build.js` and verify the page still renders correctly.
+- Reference: Industry pages and blog articles are already at zero inline CSS — use them as the standard to work toward.
+
 ## Collaboration Style
+
+**Proactive Technical Guidance (CRITICAL):**
+- Peter is a business leader, not a developer. He relies on Claude to know the better technical path.
+- When you see a suboptimal approach — even one you yourself are about to take — STOP and suggest the better way before proceeding.
+- Frame suggestions in plain language: what the problem is, what the better approach is, and why it saves time/money/trouble.
+- Do NOT stay silent out of politeness. Silence = letting technical debt accumulate on someone who trusts you to know better.
+- Examples of things to flag proactively:
+  - "We're duplicating 500 lines of CSS in every file — let me consolidate into one shared stylesheet"
+  - "This layout approach will break on mobile — let me use a responsive pattern instead"
+  - "We're hardcoding dates that will go stale — let me make them dynamic"
+  - "This page structure will make future edits painful — let me restructure it now while it's easy"
+- Timing: Flag BEFORE doing the work, not after. Give Peter the choice.
 
 **Proactive Pattern Application:**
 - Once a pattern is established on one page, apply it across all pages without waiting to be asked
@@ -124,6 +165,9 @@ ContentSpec_Home_1.0.md              # Layer 3: Production blueprint (per page)
 
 ## Reference Documents
 
-Before generating any Content Spec, always reference:
-1. `DigiWin_Persuasion_Playbook_v1.0.md` for voice calibration and objection scripts
-2. `DigiWin_Website_PRD_v1.2.md` Section 4 for page-specific requirements
+Before generating or modifying any page or Content Spec, always reference:
+1. `DigiWin_Website_PRD_v1.2.md` — architecture, design system, page-specific requirements
+2. `DigiWin_Persuasion_Playbook_v1.0.md` — voice calibration, emotional arcs, objection scripts
+3. Relevant `ContentSpec_*.md` — approved copy, layout, and module mapping for that page
+
+These are the source of truth. If a user request conflicts with them, warn first — don't edit blindly.

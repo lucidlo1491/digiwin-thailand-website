@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Events - DigiWin Thailand</title>
+    <link rel="stylesheet" href="{{basePath}}styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ===== Hero Section ===== */
+        .news-hero {
+            background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+            padding: 140px 24px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .news-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .news-hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .news-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(55, 152, 228, 0.2);
+            border: 1px solid rgba(55, 152, 228, 0.3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 500;
+            color: #7EC8F2;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .news-hero h1 {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .news-hero h1 span {
+            color: #3798E4;
+        }
+        .news-hero-subtitle {
+            font-size: 18px;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
+            max-width: 680px;
+            margin: 0 auto 48px;
+        }
+        .news-hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 700px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .news-hero-stat {
+            text-align: center;
+        }
+        .news-hero-stat-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #3798E4;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .news-hero-stat-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.4;
+        }
+
+        /* ===== Featured Event Section ===== */
+        .featured-section {
+            padding: 100px 24px;
+            background: #fff;
+        }
+        .featured-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .featured-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            color: #3798E4;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            display: block;
+        }
+        .featured-card {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+        .featured-card:hover {
+            border-color: #3798E4;
+            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+        }
+        .featured-image {
+            background: linear-gradient(135deg, #253B50, #1a2e40);
+            min-height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .featured-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M20 0l20 20-20 20L0 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .featured-image svg {
+            width: 120px;
+            height: 120px;
+            opacity: 0.2;
+            position: relative;
+            z-index: 1;
+        }
+        .featured-content {
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .event-type-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            width: fit-content;
+        }
+        .event-type-badge.seminar {
+            background: rgba(55, 152, 228, 0.12);
+            color: #3798E4;
+        }
+        .event-type-badge.workshop {
+            background: rgba(34, 197, 94, 0.12);
+            color: #22C55E;
+        }
+        .event-type-badge.factory-visit {
+            background: rgba(245, 158, 11, 0.12);
+            color: #F59E0B;
+        }
+        .event-type-badge.trade-show {
+            background: rgba(139, 92, 246, 0.12);
+            color: #8B5CF6;
+        }
+        .featured-content h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #253B50;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+        .event-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .event-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #64748b;
+        }
+        .event-meta-item svg {
+            width: 16px;
+            height: 16px;
+            stroke: #3798E4;
+            fill: none;
+            flex-shrink: 0;
+        }
+        .featured-content p {
+            font-size: 15px;
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+        .event-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 12px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+        .event-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(55, 152, 228, 0.3);
+        }
+
+        /* ===== Upcoming Events Grid ===== */
+        .upcoming-section {
+            padding: 100px 24px;
+            background: #F5F7FA;
+        }
+        .upcoming-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .upcoming-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            color: #3798E4;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .upcoming-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 0;
+        }
+        .upcoming-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .upcoming-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .upcoming-card:hover {
+            border-color: #3798E4;
+            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+            transform: translateY(-4px);
+        }
+        .upcoming-card-border {
+            height: 4px;
+        }
+        .upcoming-card-border.seminar { background: #3798E4; }
+        .upcoming-card-border.workshop { background: #22C55E; }
+        .upcoming-card-border.factory-visit { background: #F59E0B; }
+        .upcoming-card-border.trade-show { background: #8B5CF6; }
+        .upcoming-card-body {
+            padding: 32px;
+        }
+        .upcoming-card-body .event-type-badge {
+            margin-bottom: 16px;
+        }
+        .upcoming-card-body h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #253B50;
+            line-height: 1.35;
+            margin-bottom: 16px;
+        }
+        .upcoming-card-body .event-meta {
+            margin-bottom: 16px;
+        }
+        .upcoming-card-body p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .event-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #3798E4;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .event-link:hover {
+            gap: 10px;
+        }
+
+        /* ===== Event Series Section ===== */
+        .series-section {
+            padding: 100px 24px;
+            background: #fff;
+        }
+        .series-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .series-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        .series-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 16px;
+        }
+        .series-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        .series-timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            position: relative;
+        }
+        .series-timeline::before {
+            content: '';
+            position: absolute;
+            top: 32px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 3px;
+            background: linear-gradient(90deg, #3798E4, #22C55E, #F59E0B, #8B5CF6);
+            border-radius: 2px;
+            z-index: 0;
+        }
+        .series-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 0 16px;
+        }
+        .series-step-number {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            position: relative;
+        }
+        .series-step:nth-child(1) .series-step-number { background: linear-gradient(135deg, #3798E4, #2d7bc4); }
+        .series-step:nth-child(2) .series-step-number { background: linear-gradient(135deg, #22C55E, #16a34a); }
+        .series-step:nth-child(3) .series-step-number { background: linear-gradient(135deg, #F59E0B, #d97706); }
+        .series-step:nth-child(4) .series-step-number { background: linear-gradient(135deg, #8B5CF6, #7c3aed); }
+        .series-step-number::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .series-step:nth-child(1) .series-step-number::after { border-color: rgba(55, 152, 228, 0.3); }
+        .series-step:nth-child(2) .series-step-number::after { border-color: rgba(34, 197, 94, 0.3); }
+        .series-step:nth-child(3) .series-step-number::after { border-color: rgba(245, 158, 11, 0.3); }
+        .series-step:nth-child(4) .series-step-number::after { border-color: rgba(139, 92, 246, 0.3); }
+        .series-step-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: #94a3b8;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .series-step h4 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #253B50;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        .series-step p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* ===== Past Events Archive ===== */
+        .past-section {
+            padding: 100px 24px;
+            background: #F5F7FA;
+        }
+        .past-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .past-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .past-header h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #253B50;
+            margin-bottom: 0;
+        }
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 48px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 6px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 48px;
+        }
+        .filter-tab {
+            flex: 1;
+            padding: 12px 16px;
+            text-align: center;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #64748b;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .filter-tab:hover {
+            color: #253B50;
+            background: #f8fafc;
+        }
+        .filter-tab.active {
+            background: #3798E4;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(55, 152, 228, 0.25);
+        }
+        .past-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .past-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+        .past-card:hover {
+            border-color: #3798E4;
+            box-shadow: 0 8px 32px rgba(55, 152, 228, 0.1);
+            transform: translateY(-4px);
+        }
+        .past-card .event-type-badge {
+            margin-bottom: 12px;
+        }
+        .past-card h4 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+            color: #253B50;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .past-card .event-date {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .past-card .event-link {
+            font-size: 13px;
+        }
+
+        /* ===== CTA Section ===== */
+        .news-cta {
+            padding: 100px 24px;
+            background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .news-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .news-cta-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .news-cta h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .news-cta p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        .subscribe-form {
+            display: flex;
+            gap: 12px;
+            max-width: 520px;
+            margin: 0 auto 24px;
+        }
+        .subscribe-input {
+            flex: 1;
+            padding: 16px 20px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 16px;
+            font-family: 'Source Sans 3', sans-serif;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .subscribe-input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+        .subscribe-input:focus {
+            border-color: #3798E4;
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 0 0 3px rgba(55, 152, 228, 0.2);
+        }
+        .subscribe-btn {
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .subscribe-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(55, 152, 228, 0.3);
+        }
+        .cta-secondary-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .cta-secondary-link:hover {
+            color: #3798E4;
+            gap: 10px;
+        }
+
+        /* ===== Animations ===== */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 1024px) {
+            .featured-card {
+                grid-template-columns: 1fr;
+            }
+            .featured-image {
+                min-height: 260px;
+            }
+            .upcoming-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .series-timeline {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+            .series-timeline::before {
+                display: none;
+            }
+            .past-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .filter-bar {
+                flex-wrap: wrap;
+            }
+        }
+        @media (max-width: 640px) {
+            .news-hero {
+                padding: 120px 20px 80px;
+            }
+            .news-hero h1 {
+                font-size: 28px;
+            }
+            .news-hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+            }
+            .news-hero-stat-value {
+                font-size: 32px;
+            }
+            .featured-content {
+                padding: 28px;
+            }
+            .featured-content h3 {
+                font-size: 22px;
+            }
+            .upcoming-grid {
+                grid-template-columns: 1fr;
+            }
+            .series-timeline {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .past-grid {
+                grid-template-columns: 1fr;
+            }
+            .filter-bar {
+                flex-direction: column;
+                gap: 4px;
+            }
+            .filter-tab {
+                padding: 10px 16px;
+            }
+            .subscribe-form {
+                flex-direction: column;
+            }
+            .subscribe-btn {
+                width: 100%;
+            }
+            .news-cta h2 {
+                font-size: 28px;
+            }
+            .upcoming-header h2,
+            .series-header h2,
+            .past-header h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+{{header}}
+
+    <!-- Hero Section -->
+    <section class="news-hero">
+        <div class="news-hero-inner">
+            <div class="news-hero-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                News & Events
+            </div>
+            <h1>Where Manufacturing Intelligence <span>Meets Action</span></h1>
+            <p class="news-hero-subtitle">Seminars, workshops, factory visits, and trade shows -- where Thai manufacturers discover what's possible.</p>
+            <div class="news-hero-stats">
+                <div class="news-hero-stat">
+                    <div class="news-hero-stat-value">4+</div>
+                    <div class="news-hero-stat-label">Monthly Events</div>
+                </div>
+                <div class="news-hero-stat">
+                    <div class="news-hero-stat-value">12+</div>
+                    <div class="news-hero-stat-label">Industries Covered</div>
+                </div>
+                <div class="news-hero-stat">
+                    <div class="news-hero-stat-value">20+</div>
+                    <div class="news-hero-stat-label">Expert Speakers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Event Section -->
+    <section class="featured-section fade-in-section">
+        <div class="featured-inner">
+            <span class="featured-label">Featured Event</span>
+            <div class="featured-card">
+                <div class="featured-image">
+                    <svg viewBox="0 0 200 200" fill="none" stroke="#3798E4" stroke-width="1.5">
+                        <rect x="50" y="30" width="100" height="100" rx="8"/>
+                        <line x1="50" y1="60" x2="150" y2="60"/>
+                        <line x1="80" y1="30" x2="80" y2="60"/>
+                        <line x1="120" y1="30" x2="120" y2="60"/>
+                        <rect x="65" y="75" width="20" height="15" rx="2"/>
+                        <rect x="90" y="75" width="20" height="15" rx="2"/>
+                        <rect x="115" y="75" width="20" height="15" rx="2"/>
+                        <rect x="65" y="100" width="20" height="15" rx="2"/>
+                        <rect x="90" y="100" width="20" height="15" rx="2"/>
+                        <rect x="115" y="100" width="20" height="15" rx="2"/>
+                        <circle cx="100" cy="160" r="20" stroke-dasharray="4 4"/>
+                        <path d="M92 160l5 5 11-11"/>
+                    </svg>
+                </div>
+                <div class="featured-content">
+                    <span class="event-type-badge seminar">Seminar</span>
+                    <h3>BOI Compliance Workshop: How to Eliminate Supplementary Taxes</h3>
+                    <div class="event-meta">
+                        <div class="event-meta-item">
+                            <svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            March 15, 2026 | 9:00 AM -- 4:00 PM
+                        </div>
+                        <div class="event-meta-item">
+                            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Bangkok, Thailand
+                        </div>
+                    </div>
+                    <p>Learn how Thai manufacturers are using production-level data reconciliation to eliminate supplementary taxes and achieve full BOI compliance. Featuring real case studies from factories that saved millions in annual tax exposure.</p>
+                    <a href="{{basePath}}demo.html" class="event-cta">Register Now
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Grid -->
+    <section class="upcoming-section">
+        <div class="upcoming-inner">
+            <div class="upcoming-header fade-in-section">
+                <span class="section-label">Upcoming Events</span>
+                <h2>What's Next</h2>
+            </div>
+            <div class="upcoming-grid">
+                <!-- Event 1: Seminar -->
+                <div class="upcoming-card fade-in-section">
+                    <div class="upcoming-card-border seminar"></div>
+                    <div class="upcoming-card-body">
+                        <span class="event-type-badge seminar">Seminar</span>
+                        <h3>Production Transparency: From Paper Reports to Real-Time Dashboards</h3>
+                        <div class="event-meta">
+                            <div class="event-meta-item">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                April 10, 2026 | 1:00 PM -- 5:00 PM
+                            </div>
+                            <div class="event-meta-item">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Bangkok, Thailand
+                            </div>
+                        </div>
+                        <p>Discover how factories replace paper-based reporting with live production dashboards that surface issues before they become costly delays.</p>
+                        <a href="{{basePath}}demo.html" class="event-link">Learn More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Event 2: Workshop -->
+                <div class="upcoming-card fade-in-section">
+                    <div class="upcoming-card-border workshop"></div>
+                    <div class="upcoming-card-body">
+                        <span class="event-type-badge workshop">Workshop</span>
+                        <h3>Hands-On: Setting Up Shop Floor Data Collection with eMES</h3>
+                        <div class="event-meta">
+                            <div class="event-meta-item">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                April 24, 2026 | 9:00 AM -- 4:00 PM
+                            </div>
+                            <div class="event-meta-item">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Bangkok, Thailand
+                            </div>
+                        </div>
+                        <p>A hands-on workshop where you configure real eMES modules, connect shop floor devices, and see live OEE data flow from machine to dashboard.</p>
+                        <a href="{{basePath}}demo.html" class="event-link">Learn More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Event 3: Factory Visit -->
+                <div class="upcoming-card fade-in-section">
+                    <div class="upcoming-card-border factory-visit"></div>
+                    <div class="upcoming-card-body">
+                        <span class="event-type-badge factory-visit">Factory Visit</span>
+                        <h3>Live Factory Tour: See DigiWin MES in Action</h3>
+                        <div class="event-meta">
+                            <div class="event-meta-item">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                May 8, 2026 | 10:00 AM -- 3:00 PM
+                            </div>
+                            <div class="event-meta-item">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                EEC Industrial Zone, Thailand
+                            </div>
+                        </div>
+                        <p>Walk the shop floor of a real factory running DigiWin MES. See how production data flows from machines to management dashboards in real time.</p>
+                        <a href="{{basePath}}demo.html" class="event-link">Learn More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Event 4: Trade Show -->
+                <div class="upcoming-card fade-in-section">
+                    <div class="upcoming-card-border trade-show"></div>
+                    <div class="upcoming-card-body">
+                        <span class="event-type-badge trade-show">Trade Show</span>
+                        <h3>Manufacturing Expo Thailand 2026</h3>
+                        <div class="event-meta">
+                            <div class="event-meta-item">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                May 20-22, 2026
+                            </div>
+                            <div class="event-meta-item">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                BITEC, Bangkok
+                            </div>
+                        </div>
+                        <p>Visit us at Booth A12. Live demos of ERP, MES, WMS, and AIoT solutions. Meet our Thai team and see the full manufacturing intelligence stack in action.</p>
+                        <a href="{{basePath}}demo.html" class="event-link">Learn More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Series Section -->
+    <section class="series-section">
+        <div class="series-inner">
+            <div class="series-header fade-in-section">
+                <span class="section-label">Recurring Campaign</span>
+                <h2>Manufacturing Competitiveness Series</h2>
+                <p>A monthly deep-dive into the challenges Thai manufacturers face -- and the tools that solve them.</p>
+            </div>
+            <div class="series-timeline fade-in-section">
+                <div class="series-step">
+                    <div class="series-step-number">1</div>
+                    <span class="series-step-label">Month 1</span>
+                    <h4>BOI Compliance</h4>
+                    <p>Eliminate supplementary taxes through production-level reconciliation</p>
+                </div>
+                <div class="series-step">
+                    <div class="series-step-number">2</div>
+                    <span class="series-step-label">Month 2</span>
+                    <h4>Production Transparency</h4>
+                    <p>Replace paper reports with real-time shop floor visibility</p>
+                </div>
+                <div class="series-step">
+                    <div class="series-step-number">3</div>
+                    <span class="series-step-label">Month 3</span>
+                    <h4>Cash Flow Management</h4>
+                    <p>Connect production costs to financial planning in real-time</p>
+                </div>
+                <div class="series-step">
+                    <div class="series-step-number">4</div>
+                    <span class="series-step-label">Month 4</span>
+                    <h4>SAP Migration Options</h4>
+                    <p>What to do when your current ERP reaches end of life</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Past Events Archive -->
+    <section class="past-section">
+        <div class="past-inner">
+            <div class="past-header fade-in-section">
+                <span class="section-label">Past Events</span>
+                <h2>What We've Done</h2>
+            </div>
+            <div class="filter-bar fade-in-section">
+                <button class="filter-tab active" data-filter="all">All</button>
+                <button class="filter-tab" data-filter="seminar">Seminars</button>
+                <button class="filter-tab" data-filter="workshop">Workshops</button>
+                <button class="filter-tab" data-filter="factory-visit">Factory Visits</button>
+                <button class="filter-tab" data-filter="trade-show">Trade Shows</button>
+            </div>
+            <div class="past-grid" id="past-events-grid">
+                <!-- Past Event 1 -->
+                <div class="past-card fade-in-section" data-type="seminar">
+                    <span class="event-type-badge seminar">Seminar</span>
+                    <h4>ERP for Thai Manufacturing: What to Look For in 2026</h4>
+                    <span class="event-date">January 18, 2026</span>
+                    <a href="#" class="event-link">View Recap <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                </div>
+                <!-- Past Event 2 -->
+                <div class="past-card fade-in-section" data-type="workshop">
+                    <span class="event-type-badge workshop">Workshop</span>
+                    <h4>Warehouse Efficiency: WMS Basics for Factory Operations</h4>
+                    <span class="event-date">December 12, 2025</span>
+                    <a href="#" class="event-link">View Recap <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                </div>
+                <!-- Past Event 3 -->
+                <div class="past-card fade-in-section" data-type="trade-show">
+                    <span class="event-type-badge trade-show">Trade Show</span>
+                    <h4>Manufacturing Expo Thailand 2025 Recap</h4>
+                    <span class="event-date">November 15-17, 2025</span>
+                    <a href="#" class="event-link">View Recap <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="news-cta">
+        <div class="news-cta-inner fade-in-section">
+            <h2>Don't Miss the Next Event</h2>
+            <p>Get notified about upcoming seminars, workshops, and factory visits in Thailand.</p>
+            <form class="subscribe-form" onsubmit="event.preventDefault();">
+                <input type="email" class="subscribe-input" placeholder="Enter your email address" required>
+                <button type="submit" class="subscribe-btn">Subscribe</button>
+            </form>
+            <a href="{{basePath}}demo.html" class="cta-secondary-link">Or talk to us directly <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+    </section>
+
+{{footer}}
+
+
+    <script>
+    (function() {
+        // Scroll animations
+        DigiWinUI.initScrollAnimation('.fade-in-section', {
+            mode: 'class', className: 'is-visible', stagger: 70,
+            threshold: 0.1, rootMargin: '0px 0px -40px 0px'
+        });
+
+        // Past Events Filter
+        var filterTabs = document.querySelectorAll('.filter-tab');
+        var pastCards = document.querySelectorAll('.past-card');
+        filterTabs.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                filterTabs.forEach(function(t) { t.classList.remove('active'); });
+                tab.classList.add('active');
+                var filter = tab.getAttribute('data-filter');
+                pastCards.forEach(function(card) {
+                    if (filter === 'all' || card.getAttribute('data-type') === filter) {
+                        card.style.display = '';
+                        card.classList.remove('is-visible');
+                        setTimeout(function() { card.classList.add('is-visible'); }, 50);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    })();
+    </script>
+</body>
+</html>

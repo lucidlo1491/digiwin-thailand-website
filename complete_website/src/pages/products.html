@@ -15,7 +15,7 @@
             --navy-deep: #0f1419;
             --navy-mid: #1a2632;
             --blue: #3798E4;
-            --blue-light: #0ea5e9;
+            --blue-light: #2d7bc4;
             --blue-glow: rgba(55, 152, 228, 0.4);
             --gray-light: #F5F7FA;
             --white: #ffffff;
@@ -24,10 +24,7 @@
             --violet: #8b5cf6;
         }
 
-        /* Animations */
-        @keyframes grain {
-            0%, 100% { transform: translate(0, 0); }
-            10% { transform: translate(-2%, -2%); }
+        /* Animations */10% { transform: translate(-2%, -2%); }
             20% { transform: translate(2%, 2%); }
             30% { transform: translate(-1%, 1%); }
             40% { transform: translate(1%, -1%); }
@@ -47,11 +44,7 @@
         @keyframes data-flow {
             0% { stroke-dashoffset: 20; }
             100% { stroke-dashoffset: 0; }
-        }
-
-        @keyframes slide-up {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+        }to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes draw-path {
@@ -335,7 +328,7 @@
         .stack-layer-erp {
             top: 280px;
             right: 60px;
-            background: linear-gradient(135deg, var(--blue) 0%, #0284c7 100%);
+            background: linear-gradient(135deg, var(--blue) 0%, #2d7bc4 100%);
             animation: float-layer 4s ease-in-out infinite;
             animation-delay: 0.9s;
         }
@@ -666,7 +659,7 @@
         }
 
         .product-card-icon--erp {
-            background: linear-gradient(135deg, var(--blue) 0%, #0284c7 100%);
+            background: linear-gradient(135deg, var(--blue) 0%, #2d7bc4 100%);
         }
 
         .product-card-icon--erp::after {
@@ -792,7 +785,7 @@
             fill: none;
         }
 
-        .product-card--erp .product-card-features .check { background: linear-gradient(135deg, var(--blue), #0284c7); }
+        .product-card--erp .product-card-features .check { background: linear-gradient(135deg, var(--blue), #2d7bc4); }
         .product-card--mes .product-card-features .check { background: linear-gradient(135deg, #10b981, #059669); }
         .product-card--wms .product-card-features .check { background: linear-gradient(135deg, #f59e0b, #d97706); }
         .product-card--aiot .product-card-features .check { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
@@ -1035,7 +1028,7 @@
         }
 
         .integration-node--erp .integration-node-icon {
-            background: linear-gradient(135deg, var(--blue) 0%, #0284c7 100%);
+            background: linear-gradient(135deg, var(--blue) 0%, #2d7bc4 100%);
         }
 
         .integration-node--mes {
@@ -1292,7 +1285,7 @@
         /* CTA Section */
         .products-cta {
             padding: 140px 0;
-            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 50%, #0284c7 100%);
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 50%, #2d7bc4 100%);
             position: relative;
             overflow: hidden;
         }
@@ -1368,7 +1361,7 @@
 
         .btn-white {
             background: var(--white);
-            color: #0284c7;
+            color: #2d7bc4;
             padding: 20px 40px;
             border-radius: 14px;
             font-family: 'Lexend', sans-serif;
@@ -1692,6 +1685,10 @@
                     <div class="products-hero-stat">
                         <div class="products-hero-stat-number">50K+</div>
                         <div class="products-hero-stat-label">Factories</div>
+                    </div>
+                    <div class="products-hero-stat">
+                        <div class="products-hero-stat-number">100+</div>
+                        <div class="products-hero-stat-label">Thai Implementations</div>
                     </div>
                     <div class="products-hero-stat">
                         <div class="products-hero-stat-number">4</div>
@@ -2312,93 +2309,26 @@
 
     <script>
     (function() {
-        // Dropdown menus
-        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
-        dropdowns.forEach(function(item) {
-            const menu = item.querySelector('.dw-mega-menu');
-            item.addEventListener('mouseenter', function() {
-                dropdowns.forEach(function(other) {
-                    if (other !== item) {
-                        other.classList.remove('active');
-                        const m = other.querySelector('.dw-mega-menu');
-                        if (m) m.classList.remove('active');
-                    }
-                });
-                item.classList.add('active');
-                if (menu) menu.classList.add('active');
-            });
-            item.addEventListener('mouseleave', function() {
-                item.classList.remove('active');
-                if (menu) menu.classList.remove('active');
-            });
+        // Product cards
+        DigiWinUI.initScrollAnimation('.product-card', {
+            mode: 'class', className: 'visible', stagger: 120,
+            threshold: 0.12, rootMargin: '0px 0px -80px 0px'
         });
 
-        // Scroll-triggered animations for product cards
-        const observerOptions = {
-            threshold: 0.12,
-            rootMargin: '0px 0px -80px 0px'
-        };
-
-        const cardObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry, index) {
-                if (entry.isIntersecting) {
-                    // Staggered delay based on card position
-                    const card = entry.target;
-                    const cards = Array.from(document.querySelectorAll('.product-card'));
-                    const cardIndex = cards.indexOf(card);
-
-                    setTimeout(function() {
-                        card.classList.add('visible');
-                    }, cardIndex * 120);
-
-                    cardObserver.unobserve(card);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.product-card').forEach(function(card) {
-            cardObserver.observe(card);
+        // Why cards
+        DigiWinUI.initScrollAnimation('.why-card', {
+            stagger: 100, distance: 30, duration: 700, threshold: 0.15
         });
 
-        // Why cards animation
-        const whyObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry, index) {
-                if (entry.isIntersecting) {
-                    const cards = Array.from(document.querySelectorAll('.why-card'));
-                    const cardIndex = cards.indexOf(entry.target);
-
-                    setTimeout(function() {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, cardIndex * 100);
-
-                    whyObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.why-card').forEach(function(card) {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-            whyObserver.observe(card);
-        });
-
-        // Integration diagram animation on scroll
-        const diagramObserver = new IntersectionObserver(function(entries) {
+        // Integration diagram
+        var diagramObserver = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('animate');
             });
         }, { threshold: 0.3 });
-
-        const diagram = document.querySelector('.integration-diagram');
-        if (diagram) {
-            diagramObserver.observe(diagram);
-        }
+        var diagram = document.querySelector('.integration-diagram');
+        if (diagram) diagramObserver.observe(diagram);
     })();
     </script>
-    <script src="{{basePath}}digiwin-dynamic.js"></script>
 </body>
 </html>

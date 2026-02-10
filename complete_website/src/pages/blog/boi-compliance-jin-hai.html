@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How One Factory Saved 10M THB/Year in BOI Supplementary Taxes - DigiWin Thailand</title>
+    <meta name="description" content="A Thai BOI-certified manufacturer was paying over 10 million baht per year in supplementary taxes. Through production-order-level material reconciliation, they eliminated that cost entirely.">
+    <link rel="stylesheet" href="{{basePath}}styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .blog-category-badge { background: #DC2626; }
+    </style>
+</head>
+<body>
+{{header}}
+
+    <!-- Hero -->
+    <section class="blog-hero">
+        <div class="blog-hero-inner">
+            <a href="{{basePath}}blog.html" class="blog-back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to Insights
+            </a>
+            <div class="blog-category-badge">BOI &amp; Compliance</div>
+            <h1>How One Factory Saved 10M THB/Year in BOI Supplementary Taxes</h1>
+            <div class="blog-meta">
+                <span>8 min read</span>
+                <span class="blog-meta-dot"></span>
+                <span>February 2026</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Body -->
+    <article class="blog-body">
+
+        <!-- Opening -->
+        <p class="fade-in">
+            If you operate a BOI-certified factory in Thailand, you know the drill. Once a year, the Board of Investment audits your operations. They compare what you imported under duty-free privileges against what you actually produced. Every kilogram of bonded material needs to map to a finished product that left your facility. When the numbers don't reconcile, you pay supplementary taxes on the gap. For one factory in Thailand, that gap was costing over 10 million baht every single year.
+        </p>
+
+        <p class="fade-in">
+            This is not an unusual story. It is a pattern that repeats across hundreds of BOI-certified manufacturers. The cause is almost always the same: their ERP system cannot track material consumption at the level the BOI board actually audits. The system says one thing. The production floor did another. And the factory pays the difference.
+        </p>
+
+        <hr class="blog-divider fade-in">
+
+        <!-- Section: The 10 Million Baht Gap -->
+        <h2 class="fade-in">The 10 Million Baht Gap</h2>
+
+        <p class="fade-in">
+            To understand why this gap exists, you need to understand how most ERP systems handle material consumption. When a factory sets up its system, it creates a Bill of Materials (BOM) for every product. The BOM says: to make one unit of Product A, you need 2.5 kg of Material X, 1.2 kg of Material Y, and 0.3 kg of Material Z. Clean, precise, theoretical.
+        </p>
+
+        <p class="fade-in">
+            But actual production is messy. Material waste varies from batch to batch depending on machine conditions, operator skill, and raw material quality. Operators substitute components when the specified material is out of stock. Yield rates fluctuate with ambient temperature, humidity, and equipment age. A batch that the BOM says should consume 500 kg of steel might actually consume 523 kg. Another batch might use 487 kg. Over thousands of production orders across a year, these small differences compound into enormous discrepancies.
+        </p>
+
+        <p class="fade-in">
+            Here is the critical problem: the BOI board does not care about your theoretical calculations. They do not want to see what your BOM says should have happened. They want to see what <strong>actually</strong> happened — at the production order level, material by material, order by order. When your system can only provide theoretical consumption but the physical inventory tells a different story, you have a gap. And that gap becomes supplementary tax.
+        </p>
+
+        <div class="blog-pullquote fade-in">
+            The BOI board doesn't audit your BOM. They audit your actual production consumption — order by order, material by material. If your ERP can't show that, you're paying for the gap.
+        </div>
+
+        <p class="fade-in">
+            For the factory in question — Jin Hai, a DigiWin customer that had been manufacturing in Thailand for over a decade — this gap had become an accepted cost of doing business. Every year, the BOI audit would reveal discrepancies between imported bonded materials and production output. Every year, supplementary taxes would exceed 10 million baht. And every year, the threat of BOI certificate revocation grew more real.
+        </p>
+
+        <!-- Section: Why Most ERPs Fail BOI Audits -->
+        <h2 class="fade-in">Why Most ERPs Fail BOI Audits</h2>
+
+        <p class="fade-in">
+            The root cause is architectural. Most ERP systems — including manufacturing-focused ones from vendors operating in the Thai market — calculate material consumption using a top-down approach. They take the standard BOM, multiply by production quantity, and generate a theoretical consumption figure. This is useful for cost estimation and purchasing planning, but it is fundamentally wrong for BOI compliance reporting.
+        </p>
+
+        <p class="fade-in">
+            Consider a typical scenario: your BOM says Product A requires 2.500 kg of bonded imported aluminum per unit. You produced 10,000 units this quarter. Your ERP reports consumption of 25,000 kg. But the warehouse physical count shows you actually issued 26,340 kg to the production floor. Where did the extra 1,340 kg go? Your ERP has no answer, because it never tracked actual issuance at the production order level. It only knows what <strong>should</strong> have been used according to the formula.
+        </p>
+
+        <p class="fade-in">
+            This forces a painful workaround. Accountants and compliance teams end up maintaining separate BOI filing systems outside the ERP — often in spreadsheets. They manually reconcile inventory records, production logs, and import declarations to prepare BOI reports. This process is time-consuming (weeks of preparation before each audit), error-prone (manual data entry across multiple sources), and inherently risky (any inconsistency triggers deeper scrutiny from the BOI board).
+        </p>
+
+        <div class="blog-data-card fade-in">
+            <div class="blog-data-card-content">
+                <div class="blog-data-inline">
+                    <div>
+                        <div class="blog-data-number">~100%</div>
+                        <div class="blog-data-label">of new manufacturing entrants<br>in Thailand have BOI certificates</div>
+                    </div>
+                    <div>
+                        <div class="blog-data-number">~80%</div>
+                        <div class="blog-data-label">handle bonded<br>material imports</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="fade-in">
+            The scale of this problem is significant. Almost every new manufacturing investment in Thailand comes with a BOI certificate — it is a core part of the country's industrial promotion strategy. And roughly 80% of these manufacturers handle bonded material imports, meaning they are subject to the exact reconciliation requirements that trip up most ERP systems. This is not a niche compliance issue. It is a structural challenge affecting the majority of the Thai manufacturing sector.
+        </p>
+
+        <!-- Section: Production-Order-Level Reconciliation -->
+        <h2 class="fade-in">Production-Order-Level Reconciliation: The DigiWin Difference</h2>
+
+        <p class="fade-in">
+            DigiWin's T100 ERP approaches material consumption tracking from the opposite direction. Instead of calculating consumption top-down from the BOM, T100 tracks material issuance and consumption at the <strong>individual production order level</strong>. Every time materials are issued to a production order, the system records the exact quantities. When production is complete, back-flush quantities are based on actual consumption, not theoretical BOM calculations.
+        </p>
+
+        <p class="fade-in">
+            This means the system knows, for every single production order, exactly which bonded materials were consumed and in what quantities. When waste occurs, it is captured. When substitutions happen, they are recorded. When yield varies from the standard, the variance is documented at the source — not reconstructed after the fact from aggregate numbers.
+        </p>
+
+        <div class="blog-highlight fade-in">
+            <p><strong>How production-order-level tracking works:</strong> When a production order is opened, the system creates a material consumption record specific to that order. As materials are issued from the warehouse to the production floor, each issuance is linked to the order. When the order closes, actual consumption is compared against the BOM standard — and the variance is captured. This per-order granularity means BOI reports can trace every gram of bonded material from import declaration through production to finished goods, exactly as the BOI board requires.</p>
+        </div>
+
+        <p class="fade-in">
+            The result is BOI-ready reports generated directly from the ERP — no separate filing system, no manual reconciliation, no spreadsheets maintained by the compliance team. The system produces reports that match exactly what the BOI board wants to see: a complete, auditable trail from bonded material import to production consumption to finished goods output, at the production order level.
+        </p>
+
+        <p class="fade-in">
+            No other ERP vendor operating in the Thai market — not the Chinese vendors scaling their Thai operations, not the global enterprise systems — offers production-order-level BOI reconciliation as a built-in capability. Most treat BOI compliance as an afterthought, something the customer's team needs to handle outside the system. DigiWin built it into the core architecture because it understood, from years of serving Thai manufacturers, that BOI compliance is not an add-on. It is a fundamental requirement that shapes how material consumption must be tracked from day one.
+        </p>
+
+        <!-- Section: The Results -->
+        <h2 class="fade-in">The Results</h2>
+
+        <div class="blog-data-card fade-in">
+            <div class="blog-data-card-content">
+                <div class="blog-data-number">10M+ THB/year</div>
+                <div class="blog-data-arrow">&darr;</div>
+                <div class="blog-data-number">150K THB (2024)</div>
+                <div class="blog-data-arrow">&darr;</div>
+                <div class="blog-data-number" style="color: #4ade80;">Zero (2025)</div>
+                <div class="blog-data-label" style="margin-top: 16px;">Annual supplementary tax liability — Jin Hai Factory</div>
+            </div>
+        </div>
+
+        <p class="fade-in">
+            Jin Hai's transformation was not instantaneous, but it was decisive. After implementing DigiWin T100 with production-order-level material tracking, their supplementary tax exposure began to collapse. The system captured actual consumption data with enough granularity to satisfy BOI audit requirements. Discrepancies that had previously been invisible — buried in the gap between theoretical BOM consumption and physical reality — were now visible, documented, and reconciled within the system.
+        </p>
+
+        <p class="fade-in">
+            By 2024, their annual supplementary tax had dropped from over 10 million baht to 150,000 baht. By 2025, it reached zero. The BOI revocation threat that had loomed over the company for years was eliminated entirely. And this was not through creative accounting or audit negotiation — it was through accurate data. The system simply showed the BOI board, at the production order level, exactly where every kilogram of bonded material went.
+        </p>
+
+        <div class="blog-pullquote fade-in">
+            The system didn't just reduce their supplementary taxes. It eliminated them entirely. Not through creative accounting, but through accurate data — the kind the BOI board actually wants to see.
+        </div>
+
+        <p class="fade-in">
+            The financial return is straightforward to calculate. DigiWin T100 implementation costs are a fraction of 10 million baht per year in supplementary taxes. The system paid for itself in avoided taxes alone within the first year — and that does not account for the reduced compliance labor, eliminated audit risk, and protection of the BOI certificate that underpins the factory's entire import duty structure.
+        </p>
+
+        <!-- Section: What This Means for Your Factory -->
+        <h2 class="fade-in">What This Means for Your Factory</h2>
+
+        <p class="fade-in">
+            If your factory holds a BOI certificate — and if you are a manufacturer in Thailand, you almost certainly do — this is not an optional consideration. BOI compliance is existential. Revocation of your certificate does not just mean paying supplementary taxes. It means losing all import duty privileges, retroactively and going forward. For factories that import significant volumes of bonded materials, that single event can threaten the viability of the entire operation.
+        </p>
+
+        <p class="fade-in">
+            Even if your current system appears to "work," consider this question honestly: <strong>can your ERP produce production-order-level material reconciliation reports that show actual (not theoretical) consumption of bonded materials, order by order?</strong>
+        </p>
+
+        <p class="fade-in">
+            If the answer is no, your compliance team is filling that gap manually. They are building spreadsheets, cross-referencing warehouse records, and preparing separate BOI filings outside the system. This works — until it doesn't. One data entry error, one missed substitution, one unrecorded variance, and you have an audit discrepancy that becomes a supplementary tax assessment.
+        </p>
+
+        <p class="fade-in">
+            The gap between theoretical BOM consumption and actual production consumption exists in every factory. The question is whether your system captures it or hides it. If it hides it, you are one audit away from a significant tax liability — or worse, a BOI revocation notice.
+        </p>
+
+        <div class="blog-highlight fade-in">
+            <p><strong>Coming soon:</strong> DigiWin is developing a standalone BOI compliance module — a web-based solution designed to work with any existing ERP system. If replacing your ERP is not feasible right now, this module can layer on top of your current system to provide the production-order-level reconciliation the BOI board requires. Contact our team to learn more about early access.</p>
+        </div>
+
+    </article>
+
+    <!-- Related Articles -->
+    <section class="blog-related">
+        <div class="blog-related-inner">
+            <h2 class="fade-in">Related Articles</h2>
+            <div class="blog-related-grid">
+                <a href="{{basePath}}blog/lrp-vs-mrp.html" class="blog-related-card fade-in">
+                    <div class="blog-related-card-category">Production Planning</div>
+                    <h3>LRP vs MRP: Which Planning Method Fits Your Factory?</h3>
+                    <span class="blog-related-card-link">
+                        Read article
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+                <a href="{{basePath}}blog/co-product-cost-accounting.html" class="blog-related-card fade-in">
+                    <div class="blog-related-card-category">Cost Management</div>
+                    <h3>Co-Product Cost Accounting: Allocating Costs When One Process Makes Many Products</h3>
+                    <span class="blog-related-card-link">
+                        Read article
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+                <a href="{{basePath}}blog/five-pain-points.html" class="blog-related-card fade-in">
+                    <div class="blog-related-card-category">Industry Insights</div>
+                    <h3>The 5 Universal Pain Points Every Thai Manufacturer Faces</h3>
+                    <span class="blog-related-card-link">
+                        Read article
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="blog-cta">
+        <div class="blog-cta-inner">
+            <h2 class="fade-in">Need Help with BOI Compliance?</h2>
+            <p class="fade-in">Our team has helped Thai manufacturers eliminate supplementary taxes and pass BOI audits with confidence.</p>
+            <a href="{{basePath}}demo.html" class="blog-cta-btn fade-in">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Let's Talk
+            </a>
+        </div>
+    </section>
+
+{{footer}}
+</body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products - Manufacturing Software by Manufacturing Experts | DigiWin Thailand</title>
-    <meta name="description" content="Complete manufacturing software suite: ERP, MES, WMS, and AIoT. 44+ years of manufacturing focus. One integrated ecosystem for Thai factories.">
+    <meta name="description" content="Complete manufacturing software suite: ERP, MES, WMS, and AIoT. <span class="dw-years">44</span> years of manufacturing focus. One integrated ecosystem for Thai factories.">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
@@ -15,7 +15,7 @@
             --navy-deep: #0f1419;
             --navy-mid: #1a2632;
             --blue: #3798E4;
-            --blue-light: #0ea5e9;
+            --blue-light: #2d7bc4;
             --blue-glow: rgba(55, 152, 228, 0.4);
             --gray-light: #F5F7FA;
             --white: #ffffff;
@@ -24,10 +24,7 @@
             --violet: #8b5cf6;
         }
 
-        /* Animations */
-        @keyframes grain {
-            0%, 100% { transform: translate(0, 0); }
-            10% { transform: translate(-2%, -2%); }
+        /* Animations */10% { transform: translate(-2%, -2%); }
             20% { transform: translate(2%, 2%); }
             30% { transform: translate(-1%, 1%); }
             40% { transform: translate(1%, -1%); }
@@ -47,11 +44,7 @@
         @keyframes data-flow {
             0% { stroke-dashoffset: 20; }
             100% { stroke-dashoffset: 0; }
-        }
-
-        @keyframes slide-up {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+        }to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes draw-path {
@@ -188,16 +181,6 @@
             animation: pulse-node 2s ease-in-out infinite;
         }
 
-        .products-hero-pain {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 17px;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.7;
-            margin: 0 0 24px 0;
-            max-width: 500px;
-            font-style: italic;
-        }
-
         .products-hero h1 {
             font-family: 'Lexend', sans-serif;
             font-size: clamp(40px, 5vw, 56px);
@@ -219,41 +202,6 @@
             max-width: 520px;
             margin: 0 0 40px 0;
             line-height: 1.7;
-        }
-
-        .products-hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--blue);
-            color: var(--white);
-            padding: 18px 36px;
-            border-radius: 14px;
-            font-family: 'Lexend', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 20px rgba(55, 152, 228, 0.3);
-            margin-bottom: 40px;
-        }
-
-        .products-hero-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 36px rgba(55, 152, 228, 0.4);
-        }
-
-        .products-hero-cta svg {
-            width: 18px;
-            height: 18px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
-            transition: transform 0.3s ease;
-        }
-
-        .products-hero-cta:hover svg {
-            transform: translateX(4px);
         }
 
         .products-hero-stats {
@@ -380,7 +328,7 @@
         .stack-layer-erp {
             top: 280px;
             right: 60px;
-            background: linear-gradient(135deg, var(--blue) 0%, #0284c7 100%);
+            background: linear-gradient(135deg, var(--blue) 0%, #2d7bc4 100%);
             animation: float-layer 4s ease-in-out infinite;
             animation-delay: 0.9s;
         }
@@ -415,95 +363,6 @@
         .data-particle:nth-child(3) { left: 65%; animation-delay: 1s; }
         .data-particle:nth-child(4) { left: 42%; animation-delay: 1.5s; }
         .data-particle:nth-child(5) { left: 58%; animation-delay: 2s; }
-
-        /* Social Proof Strip */
-        .products-proof-strip {
-            background: var(--navy);
-            padding: 36px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .products-proof-strip::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(55, 152, 228, 0.4), transparent);
-        }
-
-        .products-proof-strip::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(55, 152, 228, 0.4), transparent);
-        }
-
-        .products-proof-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 56px;
-            flex-wrap: wrap;
-        }
-
-        .products-proof-item {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .products-proof-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(55, 152, 228, 0.12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .products-proof-icon svg {
-            width: 20px;
-            height: 20px;
-            stroke: var(--blue);
-            fill: none;
-            stroke-width: 2;
-        }
-
-        .products-proof-text {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.4;
-        }
-
-        .products-proof-text strong {
-            display: block;
-            font-family: 'Lexend', sans-serif;
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--white);
-            letter-spacing: -0.01em;
-        }
-
-        @media (max-width: 640px) {
-            .products-proof-inner {
-                flex-direction: column;
-                gap: 24px;
-                align-items: flex-start;
-                padding: 0 32px;
-            }
-        }
 
         /* Product Cards Grid */
         .products-grid-section {
@@ -800,7 +659,7 @@
         }
 
         .product-card-icon--erp {
-            background: linear-gradient(135deg, var(--blue) 0%, #0284c7 100%);
+            background: linear-gradient(135deg, var(--blue) 0%, #2d7bc4 100%);
         }
 
         .product-card-icon--erp::after {
@@ -926,7 +785,7 @@
             fill: none;
         }
 
-        .product-card--erp .product-card-features .check { background: linear-gradient(135deg, var(--blue), #0284c7); }
+        .product-card--erp .product-card-features .check { background: linear-gradient(135deg, var(--blue), #2d7bc4); }
         .product-card--mes .product-card-features .check { background: linear-gradient(135deg, #10b981, #059669); }
         .product-card--wms .product-card-features .check { background: linear-gradient(135deg, #f59e0b, #d97706); }
         .product-card--aiot .product-card-features .check { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
@@ -1169,7 +1028,7 @@
         }
 
         .integration-node--erp .integration-node-icon {
-            background: linear-gradient(135deg, var(--blue) 0%, #0284c7 100%);
+            background: linear-gradient(135deg, var(--blue) 0%, #2d7bc4 100%);
         }
 
         .integration-node--mes {
@@ -1426,7 +1285,7 @@
         /* CTA Section */
         .products-cta {
             padding: 140px 0;
-            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 50%, #0284c7 100%);
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 50%, #2d7bc4 100%);
             position: relative;
             overflow: hidden;
         }
@@ -1502,7 +1361,7 @@
 
         .btn-white {
             background: var(--white);
-            color: #0284c7;
+            color: #2d7bc4;
             padding: 20px 40px;
             border-radius: 14px;
             font-family: 'Lexend', sans-serif;
@@ -1879,7 +1738,7 @@
                                         <svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
                                     </div>
                                     <div class="dw-mega-info">
-                                        <p class="dw-mega-title">The Business Model Crisis</p>
+                                        <p class="dw-mega-title">The Evolving Business Model</p>
                                     </div>
                                 </a>
                                 <a href="partner-program/economics.html" class="dw-mega-item">
@@ -1938,10 +1797,57 @@
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">For ERP Implementers</span>
-                                    <h3 class="dw-mega-featured-title">Escape the Man-Day Trap</h3>
+                                    <h3 class="dw-mega-featured-title">Grow Beyond the Man-Day Model</h3>
                                     <p class="dw-mega-featured-desc">40-50% license margins. 100% service fees. Recurring revenue that compounds.</p>
                                     <a href="partner-program.html" class="dw-mega-featured-cta">
                                         Become a Partner
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Resources
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Learn & Connect</div>
+                                <a href="news.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">News & Events</p>
+                                        <p class="dw-mega-desc">Seminars, workshops, and factory visits</p>
+                                    </div>
+                                </a>
+                                <a href="blog.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Insights & Knowledge</p>
+                                        <p class="dw-mega-desc">Technical guides and implementation stories</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Featured: Latest Insight -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(55,152,228,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">Latest Insight</span>
+                                    <h3 class="dw-mega-featured-title">BOI Compliance: 10M THB Saved</h3>
+                                    <p class="dw-mega-featured-desc">How one factory eliminated supplementary taxes through production-order-level reconciliation.</p>
+                                    <a href="blog/boi-compliance-jin-hai.html" class="dw-mega-featured-cta">
+                                        Read the Story
                                         <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                                     </a>
                                 </div>
@@ -2072,14 +1978,8 @@
         <div class="products-hero-inner">
             <div class="products-hero-content">
                 <div class="products-hero-badge">Complete Manufacturing Intelligence Stack</div>
-                <p class="products-hero-pain">Your production data lives in 5 different spreadsheets. Your inventory count never matches reality. And last month's report is already outdated.</p>
                 <h1>Manufacturing Software by <span class="highlight">Manufacturing Experts</span></h1>
-                <p class="products-hero-subtitle"><span class="dw-years">44</span> years. 50,000+ factories. One focus. An integrated ecosystem designed by manufacturers, for manufacturers—because your factory deserves software that speaks its language.</p>
-
-                <a href="demo.html" class="products-hero-cta">
-                    Request a Free Assessment
-                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
+                <p class="products-hero-subtitle">From ERP to shop floor, one integrated ecosystem designed by manufacturers, for manufacturers. <span class="dw-years">44</span> years of focus on one industry means we understand your factory.</p>
 
                 <div class="products-hero-stats">
                     <div class="products-hero-stat">
@@ -2089,6 +1989,10 @@
                     <div class="products-hero-stat">
                         <div class="products-hero-stat-number">50K+</div>
                         <div class="products-hero-stat-label">Factories</div>
+                    </div>
+                    <div class="products-hero-stat">
+                        <div class="products-hero-stat-number">100+</div>
+                        <div class="products-hero-stat-label">Thai Implementations</div>
                     </div>
                     <div class="products-hero-stat">
                         <div class="products-hero-stat-number">4</div>
@@ -2157,48 +2061,6 @@
                         </span>
                         ERP Foundation
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Proof Strip -->
-    <section class="products-proof-strip">
-        <div class="products-proof-inner">
-            <div class="products-proof-item">
-                <div class="products-proof-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
-                <div class="products-proof-text">
-                    <strong>50,000+</strong>
-                    Manufacturing Clients Worldwide
-                </div>
-            </div>
-            <div class="products-proof-item">
-                <div class="products-proof-icon">
-                    <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
-                </div>
-                <div class="products-proof-text">
-                    <strong>300378</strong>
-                    Shenzhen Stock Exchange Listed
-                </div>
-            </div>
-            <div class="products-proof-item">
-                <div class="products-proof-icon">
-                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                </div>
-                <div class="products-proof-text">
-                    <strong>100+</strong>
-                    Thai Implementations
-                </div>
-            </div>
-            <div class="products-proof-item">
-                <div class="products-proof-icon">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                </div>
-                <div class="products-proof-text">
-                    <strong><span class="dw-years">44</span> Years</strong>
-                    Manufacturing Only
                 </div>
             </div>
         </div>
@@ -2476,10 +2338,10 @@
                 <div class="product-card-tagline">"The Brain" — Financial Control & Visibility</div>
                 <p class="product-card-desc">Complete enterprise resource planning built for manufacturing complexity. From multi-entity financials to shop floor scheduling, manage your entire operation with software that speaks manufacturing.</p>
                 <ul class="product-card-features">
-                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> See real costs across all entities</li>
-                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Build any product structure</li>
-                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Know what to make and when</li>
-                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Close the books faster</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Multi-currency consolidation</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Advanced BOM/routing</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Integrated MRP/APS</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Real-time cost analysis</li>
                 </ul>
                 <div class="product-card-cta">
                     Explore ERP Solutions
@@ -2511,10 +2373,10 @@
                 <div class="product-card-tagline">"Eyes on Production" — Real-Time Visibility</div>
                 <p class="product-card-desc">Stop guessing what's happening on the floor. Real-time production tracking connects every workstation to your management dashboard. See what's happening—as it happens.</p>
                 <ul class="product-card-features">
-                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> See every job's status live</li>
-                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Catch defects before they spread</li>
-                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Know who built what, when</li>
-                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Trace any part to its source</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Live work order tracking</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Quality data collection</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Operator analytics</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Complete traceability</li>
                 </ul>
                 <div class="product-card-cta">
                     Explore MES Solutions
@@ -2544,10 +2406,10 @@
                 <div class="product-card-tagline">"Every Item Accounted For" — Zero Ghost Inventory</div>
                 <p class="product-card-desc">Smart warehouse management that knows where everything is, guides picking and putaway, and keeps inventory accurate without manual counts. End the ghost inventory problem.</p>
                 <ul class="product-card-features">
-                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Scan instead of count</li>
-                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Find any item in seconds</li>
-                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Pick faster with guided waves</li>
-                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Ship the right batch every time</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Barcode & RFID ready</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Zone/bin management</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Wave picking</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> FIFO/FEFO automation</li>
                 </ul>
                 <div class="product-card-cta">
                     Explore WMS Solutions
@@ -2580,10 +2442,10 @@
                 <div class="product-card-tagline">"Intelligence at Scale" — Machine Connectivity</div>
                 <p class="product-card-desc">Machine connectivity and AI-powered analytics that turn your equipment data into competitive advantage. Predictive maintenance, OEE optimization, and energy management.</p>
                 <ul class="product-card-features">
-                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Connect any machine, any brand</li>
-                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> See machine utilization live</li>
-                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Fix problems before they stop you</li>
-                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Cut energy waste automatically</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Universal connectivity</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Real-time OEE</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Predictive maintenance</li>
+                    <li><span class="check"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Energy monitoring</li>
                 </ul>
                 <div class="product-card-cta">
                     Explore AIoT Solutions
@@ -2707,7 +2569,7 @@
                         </svg>
                     </div>
                     <h3 class="why-card-title">Manufacturing-Only Focus</h3>
-                    <p class="why-card-desc">If your last ERP failed, it probably wasn't built for manufacturing. Generic systems treat a factory like an office. We don't sell to banks, retailers, or hospitals—<span class="dw-years">44</span> years of exclusive focus means we speak BOMs, routings, and OEE natively.</p>
+                    <p class="why-card-desc">We don't sell to banks, retailers, or hospitals. <span class="dw-years">44</span> years of exclusive manufacturing focus means features built for the factory floor, not adapted from other industries.</p>
                 </div>
                 <div class="why-card">
                     <div class="why-card-icon">
@@ -2717,7 +2579,7 @@
                         </svg>
                     </div>
                     <h3 class="why-card-title">Grows With You</h3>
-                    <p class="why-card-desc">Your ERP should grow with you, not hold you hostage. Start with what you need today—iGP, MES, or WMS—and add capabilities as you grow. Your investment compounds, never resets. No starting over.</p>
+                    <p class="why-card-desc">Start with what you need today. Add capabilities as you grow. From 20-person workshop to multi-site enterprise—same ecosystem, same partner, no starting over.</p>
                 </div>
                 <div class="why-card">
                     <div class="why-card-icon">
@@ -2780,6 +2642,11 @@
                         <li><a href="partner-program.html">Partner Program</a></li>
                         <li><a href="partner-program/economics.html">Partner Economics</a></li>
                     </ul>
+                    <h4 style="margin-top: 24px;">Resources</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="news.html">News & Events</a></li>
+                        <li><a href="blog.html">Insights & Knowledge</a></li>
+                    </ul>
                 </div>
 
                 <div class="dw-footer-column">
@@ -2787,7 +2654,9 @@
                     <div class="dw-footer-contact">
                         <p>
                             <strong>DigiWin Thailand</strong><br>
-                            Bangkok Office
+                            No. 2/117-118, Bangna Complex Office Tower,<br>
+                            22nd Floor, Theparat Road,<br>
+                            Bangna, Bangkok 10260
                         </p>
                         <p>
                             <a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a>
@@ -2811,98 +2680,33 @@
             </div>
         </div>
     </footer>
+    <script src="digiwin-components.js"></script>
+    <script src="digiwin-dynamic.js"></script>
 
 
 
     <script>
     (function() {
-        // Dropdown menus
-        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
-        dropdowns.forEach(function(item) {
-            const menu = item.querySelector('.dw-mega-menu');
-            item.addEventListener('mouseenter', function() {
-                dropdowns.forEach(function(other) {
-                    if (other !== item) {
-                        other.classList.remove('active');
-                        const m = other.querySelector('.dw-mega-menu');
-                        if (m) m.classList.remove('active');
-                    }
-                });
-                item.classList.add('active');
-                if (menu) menu.classList.add('active');
-            });
-            item.addEventListener('mouseleave', function() {
-                item.classList.remove('active');
-                if (menu) menu.classList.remove('active');
-            });
+        // Product cards
+        DigiWinUI.initScrollAnimation('.product-card', {
+            mode: 'class', className: 'visible', stagger: 120,
+            threshold: 0.12, rootMargin: '0px 0px -80px 0px'
         });
 
-        // Scroll-triggered animations for product cards
-        const observerOptions = {
-            threshold: 0.12,
-            rootMargin: '0px 0px -80px 0px'
-        };
-
-        const cardObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry, index) {
-                if (entry.isIntersecting) {
-                    // Staggered delay based on card position
-                    const card = entry.target;
-                    const cards = Array.from(document.querySelectorAll('.product-card'));
-                    const cardIndex = cards.indexOf(card);
-
-                    setTimeout(function() {
-                        card.classList.add('visible');
-                    }, cardIndex * 120);
-
-                    cardObserver.unobserve(card);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.product-card').forEach(function(card) {
-            cardObserver.observe(card);
+        // Why cards
+        DigiWinUI.initScrollAnimation('.why-card', {
+            stagger: 100, distance: 30, duration: 700, threshold: 0.15
         });
 
-        // Why cards animation
-        const whyObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry, index) {
-                if (entry.isIntersecting) {
-                    const cards = Array.from(document.querySelectorAll('.why-card'));
-                    const cardIndex = cards.indexOf(entry.target);
-
-                    setTimeout(function() {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, cardIndex * 100);
-
-                    whyObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.why-card').forEach(function(card) {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-            whyObserver.observe(card);
-        });
-
-        // Integration diagram animation on scroll
-        const diagramObserver = new IntersectionObserver(function(entries) {
+        // Integration diagram
+        var diagramObserver = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('animate');
             });
         }, { threshold: 0.3 });
-
-        const diagram = document.querySelector('.integration-diagram');
-        if (diagram) {
-            diagramObserver.observe(diagram);
-        }
+        var diagram = document.querySelector('.integration-diagram');
+        if (diagram) diagramObserver.observe(diagram);
     })();
     </script>
-    <script src="digiwin-dynamic.js"></script>
 </body>
 </html>

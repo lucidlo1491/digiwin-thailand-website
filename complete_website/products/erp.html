@@ -884,7 +884,7 @@
 
         .btn-white {
             background: var(--white);
-            color: #0284c7;
+            color: #2d7bc4;
             padding: 18px 36px;
             border-radius: 12px;
             font-family: 'Lexend', sans-serif;
@@ -916,6 +916,13 @@
         .btn-outline-white:hover {
             background: rgba(255, 255, 255, 0.1);
             border-color: var(--white);
+        }
+
+        /* Weapon Cards */
+        .weapon-card:hover {
+            border-color: #3798E4;
+            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+            transform: translateY(-4px);
         }
 
         /* Responsive */
@@ -960,6 +967,23 @@
 
             .integration-arrow {
                 transform: rotate(90deg);
+            }
+
+            .boi-callout-grid {
+                grid-template-columns: 1fr !important;
+                text-align: center;
+            }
+
+            .boi-callout-grid > div:first-child {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .boi-callout-grid {
+                grid-template-columns: 1fr !important;
+                padding: 32px !important;
+                gap: 32px !important;
             }
         }
 
@@ -1166,7 +1190,7 @@
                                         <svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
                                     </div>
                                     <div class="dw-mega-info">
-                                        <p class="dw-mega-title">The Business Model Crisis</p>
+                                        <p class="dw-mega-title">The Evolving Business Model</p>
                                     </div>
                                 </a>
                                 <a href="../partner-program/economics.html" class="dw-mega-item">
@@ -1225,10 +1249,57 @@
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">For ERP Implementers</span>
-                                    <h3 class="dw-mega-featured-title">Escape the Man-Day Trap</h3>
+                                    <h3 class="dw-mega-featured-title">Grow Beyond the Man-Day Model</h3>
                                     <p class="dw-mega-featured-desc">40-50% license margins. 100% service fees. Recurring revenue that compounds.</p>
                                     <a href="../partner-program.html" class="dw-mega-featured-cta">
                                         Become a Partner
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Resources
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Learn & Connect</div>
+                                <a href="../news.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">News & Events</p>
+                                        <p class="dw-mega-desc">Seminars, workshops, and factory visits</p>
+                                    </div>
+                                </a>
+                                <a href="../blog.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Insights & Knowledge</p>
+                                        <p class="dw-mega-desc">Technical guides and implementation stories</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Featured: Latest Insight -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(55,152,228,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">Latest Insight</span>
+                                    <h3 class="dw-mega-featured-title">BOI Compliance: 10M THB Saved</h3>
+                                    <p class="dw-mega-featured-desc">How one factory eliminated supplementary taxes through production-order-level reconciliation.</p>
+                                    <a href="../blog/boi-compliance-jin-hai.html" class="dw-mega-featured-cta">
+                                        Read the Story
                                         <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                                     </a>
                                 </div>
@@ -1562,6 +1633,145 @@
         </div>
     </section>
 
+    <!-- Technical Advantages - Competitive Weapons -->
+    <section style="background: #F5F7FA; padding: 100px 0;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <p style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: #3798E4; margin-bottom: 12px;">What Sets DigiWin Apart</p>
+                <h2 style="font-family: 'Lexend', sans-serif; font-size: 40px; font-weight: 700; color: #253B50; margin-bottom: 16px;">7 Technical Advantages No Competitor Can Match</h2>
+                <p style="font-family: 'Source Sans 3', sans-serif; font-size: 18px; color: #666; max-width: 700px; margin: 0 auto;">These aren't minor features — they're fundamental architectural capabilities that address real Thai manufacturing challenges.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px;">
+
+                <!-- 1. AMRP -->
+                <div class="weapon-card" style="background: #fff; border: 1px solid #e8eef3; border-radius: 20px; padding: 32px; transition: all 0.4s ease; position: relative;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(55,152,228,0.15), rgba(55,152,228,0.05)); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#3798E4" stroke-width="1.5" style="width: 24px; height: 24px;"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 5-9"/><circle cx="20" cy="3" r="1.5" fill="#3798E4" stroke="none"/></svg>
+                        </div>
+                        <div>
+                            <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 600; color: #253B50; margin: 0;">Advanced Material Requirements Planning</h3>
+                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3798E4; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">AMRP</p>
+                        </div>
+                    </div>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">Capacity planning built directly into the ERP. Schedule production based on actual machine capacity, material availability, and labor constraints — all calculated in one system.</p>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 14px; color: #3798E4; font-weight: 500;">Oracle and SAP require a separate APS purchase for this capability.</p>
+                </div>
+
+                <!-- 2. Co-Product Accounting -->
+                <div class="weapon-card" style="background: #fff; border: 1px solid #e8eef3; border-radius: 20px; padding: 32px; transition: all 0.4s ease; position: relative;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(55,152,228,0.15), rgba(55,152,228,0.05)); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#3798E4" stroke-width="1.5" style="width: 24px; height: 24px;"><path d="M12 3v6"/><path d="M12 9l-7 6"/><path d="M12 9l7 6"/><circle cx="12" cy="3" r="2"/><circle cx="5" cy="17" r="2"/><circle cx="19" cy="17" r="2"/></svg>
+                        </div>
+                        <div>
+                            <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 600; color: #253B50; margin: 0;">Co-Product Accounting</h3>
+                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3798E4; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">Multi-Output Work Orders</p>
+                        </div>
+                    </div>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">One work order produces multiple outputs with accurate cost allocation per product. Essential for plastics injection, food processing, and chemical manufacturing.</p>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 14px; color: #3798E4; font-weight: 500;">SAP, Kingdee, and Yonyou cannot handle native co-product work orders.</p>
+                </div>
+
+                <!-- 3. LRP -->
+                <div class="weapon-card" style="background: #fff; border: 1px solid #e8eef3; border-radius: 20px; padding: 32px; transition: all 0.4s ease; position: relative;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(55,152,228,0.15), rgba(55,152,228,0.05)); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#3798E4" stroke-width="1.5" style="width: 24px; height: 24px;"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        </div>
+                        <div>
+                            <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 600; color: #253B50; margin: 0;">Lot Requirements Planning</h3>
+                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3798E4; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">LRP</p>
+                        </div>
+                    </div>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">Calculate material requirements for a specific production order in under one minute. No waiting hours for a full MRP run to answer "can we accept this order?"</p>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 14px; color: #3798E4; font-weight: 500;">Traditional MRP systems take hours. LRP gives answers in minutes.</p>
+                </div>
+
+                <!-- 4. Dual Unit Tracking -->
+                <div class="weapon-card" style="background: #fff; border: 1px solid #e8eef3; border-radius: 20px; padding: 32px; transition: all 0.4s ease; position: relative;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(55,152,228,0.15), rgba(55,152,228,0.05)); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#3798E4" stroke-width="1.5" style="width: 24px; height: 24px;"><path d="M12 3v18"/><path d="M3 12l3-3v6l-3-3z" fill="#3798E4" stroke="none"/><path d="M21 12l-3-3v6l3-3z" fill="#3798E4" stroke="none"/><rect x="6" y="6" width="4" height="12" rx="1" opacity="0.3" fill="#3798E4" stroke="none"/><rect x="14" y="4" width="4" height="16" rx="1" opacity="0.3" fill="#3798E4" stroke="none"/></svg>
+                        </div>
+                        <div>
+                            <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 600; color: #253B50; margin: 0;">Dual Unit Tracking</h3>
+                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3798E4; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">Simultaneous UOM Display</p>
+                        </div>
+                    </div>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">Display and track both weight (kg) and quantity (pieces) simultaneously across all transactions. No conversions, no rounding errors, no confusion.</p>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 14px; color: #3798E4; font-weight: 500;">SAP Business One can only display one unit of measure at a time.</p>
+                </div>
+
+                <!-- 5. Shop Floor Mini-Scheduling -->
+                <div class="weapon-card" style="background: #fff; border: 1px solid #e8eef3; border-radius: 20px; padding: 32px; transition: all 0.4s ease; position: relative;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(55,152,228,0.15), rgba(55,152,228,0.05)); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#3798E4" stroke-width="1.5" style="width: 24px; height: 24px;"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 2v4M16 2v4"/><rect x="6" y="13" width="3" height="2" rx="0.5" fill="#3798E4" stroke="none"/><rect x="11" y="13" width="3" height="2" rx="0.5" fill="#3798E4" stroke="none" opacity="0.5"/><rect x="16" y="13" width="3" height="2" rx="0.5" fill="#3798E4" stroke="none" opacity="0.3"/></svg>
+                        </div>
+                        <div>
+                            <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 600; color: #253B50; margin: 0;">Shop Floor Mini-Scheduling</h3>
+                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3798E4; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">Real-Time Floor Adjustments</p>
+                        </div>
+                    </div>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">Floor supervisors adjust production schedules in real-time, and changes are immediately visible to planning. Bridge the gap between the plan and reality.</p>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 14px; color: #3798E4; font-weight: 500;">No competitor offers this level of bidirectional floor-to-planning visibility.</p>
+                </div>
+
+                <!-- 6. Feature Codes -->
+                <div class="weapon-card" style="background: #fff; border: 1px solid #e8eef3; border-radius: 20px; padding: 32px; transition: all 0.4s ease; position: relative;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(55,152,228,0.15), rgba(55,152,228,0.05)); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#3798E4" stroke-width="1.5" style="width: 24px; height: 24px;"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.5" fill="#3798E4" stroke="none"/></svg>
+                        </div>
+                        <div>
+                            <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 600; color: #253B50; margin: 0;">Feature Codes</h3>
+                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3798E4; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">Multi-Dimension Variants</p>
+                        </div>
+                    </div>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">Manage product variants across up to 3 dimensions (color, size, grade) under a single item code. Turn 27 SKUs into 1 manageable product with full traceability.</p>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 14px; color: #3798E4; font-weight: 500;">Reduces item master complexity by 90%+ for variant-heavy manufacturers.</p>
+                </div>
+
+                <!-- 7. BOI Reconciliation -->
+                <div class="weapon-card" style="background: #fff; border: 1px solid #e8eef3; border-radius: 20px; padding: 32px; transition: all 0.4s ease; position: relative;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(55,152,228,0.15), rgba(55,152,228,0.05)); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#3798E4" stroke-width="1.5" style="width: 24px; height: 24px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4" stroke-width="2"/></svg>
+                        </div>
+                        <div>
+                            <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 600; color: #253B50; margin: 0;">BOI Reconciliation</h3>
+                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3798E4; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">Production-Order-Level Tracking</p>
+                        </div>
+                    </div>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">Track actual material consumption at the production order level — not theoretical BOM calculations. Generate BOI-ready reports that match what the Board of Investment audits.</p>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 14px; color: #3798E4; font-weight: 500;">No competitor offers production-order-level BOI material reconciliation.</p>
+                </div>
+
+            </div>
+
+            <!-- BOI Callout -->
+            <div class="boi-callout-grid" style="margin-top: 48px; background: linear-gradient(135deg, #253B50, #1e3a5f); border-radius: 20px; padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+                <div>
+                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #3798E4; margin-bottom: 12px;">Proven Results</p>
+                    <h3 style="font-family: 'Lexend', sans-serif; font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 16px;">From 10M THB/Year to Zero in Supplementary Taxes</h3>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 17px; color: rgba(255,255,255,0.85); line-height: 1.7;">When the BOI board audited one of our clients, DigiWin's production-order-level reconciliation showed exact material consumption — no gaps, no guesswork. The result: supplementary taxes dropped from over 10 million baht annually to zero.</p>
+                    <a href="../blog/boi-compliance-jin-hai.html" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; font-family: 'Lexend', sans-serif; font-size: 15px; font-weight: 500; color: #3798E4; text-decoration: none;">Read the Full Story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+                <div style="text-align: center;">
+                    <div style="display: inline-block; background: rgba(55,152,228,0.15); border-radius: 20px; padding: 40px;">
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 56px; font-weight: 700; color: #3798E4;">10M+</div>
+                        <div style="font-family: 'Source Sans 3', sans-serif; font-size: 16px; color: rgba(255,255,255,0.7); margin-top: 8px;">THB/year saved</div>
+                        <div style="width: 40px; height: 2px; background: #3798E4; margin: 16px auto;"></div>
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 56px; font-weight: 700; color: #22C55E;">Zero</div>
+                        <div style="font-family: 'Source Sans 3', sans-serif; font-size: 16px; color: rgba(255,255,255,0.7); margin-top: 8px;">supplementary taxes in 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Integration Section -->
     <section class="integration-section">
         <div class="integration-inner">
@@ -1658,6 +1868,11 @@
                         <li><a href="../partner-program.html">Partner Program</a></li>
                         <li><a href="../partner-program/economics.html">Partner Economics</a></li>
                     </ul>
+                    <h4 style="margin-top: 24px;">Resources</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../news.html">News & Events</a></li>
+                        <li><a href="../blog.html">Insights & Knowledge</a></li>
+                    </ul>
                 </div>
 
                 <div class="dw-footer-column">
@@ -1665,7 +1880,9 @@
                     <div class="dw-footer-contact">
                         <p>
                             <strong>DigiWin Thailand</strong><br>
-                            Bangkok Office
+                            No. 2/117-118, Bangna Complex Office Tower,<br>
+                            22nd Floor, Theparat Road,<br>
+                            Bangna, Bangkok 10260
                         </p>
                         <p>
                             <a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a>
@@ -1689,22 +1906,8 @@
             </div>
         </div>
     </footer>
-
-
-
-    <script>
-    (function() {
-        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
-        dropdowns.forEach(function(item) {
-            const menu = item.querySelector('.dw-mega-menu');
-            item.addEventListener('mouseenter', function() {
-                dropdowns.forEach(function(other) { if (other !== item) { other.classList.remove('active'); const m = other.querySelector('.dw-mega-menu'); if (m) m.classList.remove('active'); }});
-                item.classList.add('active'); if (menu) menu.classList.add('active');
-            });
-            item.addEventListener('mouseleave', function() { item.classList.remove('active'); if (menu) menu.classList.remove('active'); });
-        });
-    })();
-    </script>
+    <script src="../digiwin-components.js"></script>
     <script src="../digiwin-dynamic.js"></script>
+
 </body>
 </html>

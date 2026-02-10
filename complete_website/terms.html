@@ -177,7 +177,7 @@
                                         <svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
                                     </div>
                                     <div class="dw-mega-info">
-                                        <p class="dw-mega-title">The Business Model Crisis</p>
+                                        <p class="dw-mega-title">The Evolving Business Model</p>
                                     </div>
                                 </a>
                                 <a href="partner-program/economics.html" class="dw-mega-item">
@@ -236,10 +236,57 @@
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">For ERP Implementers</span>
-                                    <h3 class="dw-mega-featured-title">Escape the Man-Day Trap</h3>
+                                    <h3 class="dw-mega-featured-title">Grow Beyond the Man-Day Model</h3>
                                     <p class="dw-mega-featured-desc">40-50% license margins. 100% service fees. Recurring revenue that compounds.</p>
                                     <a href="partner-program.html" class="dw-mega-featured-cta">
                                         Become a Partner
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Resources
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Learn & Connect</div>
+                                <a href="news.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">News & Events</p>
+                                        <p class="dw-mega-desc">Seminars, workshops, and factory visits</p>
+                                    </div>
+                                </a>
+                                <a href="blog.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Insights & Knowledge</p>
+                                        <p class="dw-mega-desc">Technical guides and implementation stories</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Featured: Latest Insight -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(55,152,228,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">Latest Insight</span>
+                                    <h3 class="dw-mega-featured-title">BOI Compliance: 10M THB Saved</h3>
+                                    <p class="dw-mega-featured-desc">How one factory eliminated supplementary taxes through production-order-level reconciliation.</p>
+                                    <a href="blog/boi-compliance-jin-hai.html" class="dw-mega-featured-cta">
+                                        Read the Story
                                         <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                                     </a>
                                 </div>
@@ -350,6 +397,11 @@
                         <li><a href="partner-program.html">Partner Program</a></li>
                         <li><a href="partner-program/economics.html">Partner Economics</a></li>
                     </ul>
+                    <h4 style="margin-top: 24px;">Resources</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="news.html">News & Events</a></li>
+                        <li><a href="blog.html">Insights & Knowledge</a></li>
+                    </ul>
                 </div>
 
                 <div class="dw-footer-column">
@@ -357,7 +409,9 @@
                     <div class="dw-footer-contact">
                         <p>
                             <strong>DigiWin Thailand</strong><br>
-                            Bangkok Office
+                            No. 2/117-118, Bangna Complex Office Tower,<br>
+                            22nd Floor, Theparat Road,<br>
+                            Bangna, Bangkok 10260
                         </p>
                         <p>
                             <a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a>
@@ -381,21 +435,8 @@
             </div>
         </div>
     </footer>
-
-
-    <script>
-    (function() {
-        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
-        dropdowns.forEach(function(item) {
-            const menu = item.querySelector('.dw-mega-menu');
-            item.addEventListener('mouseenter', function() {
-                dropdowns.forEach(function(other) { if (other !== item) { other.classList.remove('active'); const m = other.querySelector('.dw-mega-menu'); if (m) m.classList.remove('active'); }});
-                item.classList.add('active'); if (menu) menu.classList.add('active');
-            });
-            item.addEventListener('mouseleave', function() { item.classList.remove('active'); if (menu) menu.classList.remove('active'); });
-        });
-    })();
-    </script>
+    <script src="digiwin-components.js"></script>
     <script src="digiwin-dynamic.js"></script>
+
 </body>
 </html>

@@ -30,6 +30,11 @@
             const template = el.getAttribute('data-dw-years-text');
             el.textContent = template.replace('{years}', yearsSinceFounding);
         });
+
+        // Update current year elements (e.g. copyright)
+        document.querySelectorAll('.dw-current-year').forEach(function(el) {
+            el.textContent = currentYear;
+        });
     }
 
     // Run when DOM is ready

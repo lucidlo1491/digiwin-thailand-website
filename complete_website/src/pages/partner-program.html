@@ -1013,7 +1013,7 @@
                     <div class="journey-number"><span>1</span></div>
                     <h3>Deepen the "Why"</h3>
                     <p>Understand why your margin erosion is <em>structural</em>, not circumstantial. See if the diagnosis matches your reality.</p>
-                    <a href="{{basePath}}partner-program/business-model.html" class="dw-btn dw-btn-secondary" style="margin-top: 16px; display: inline-block;">The Business Model Crisis →</a>
+                    <a href="{{basePath}}partner-program/business-model.html" class="dw-btn dw-btn-secondary" style="margin-top: 16px; display: inline-block;">The Evolving Business Model →</a>
                 </div>
                 <div class="journey-step">
                     <div class="journey-number"><span>2</span></div>
@@ -1058,6 +1058,34 @@
         </div>
     </section>
 
+    <!-- Market Timing Section -->
+    <section style="background: #F5F7FA; padding: 80px 0;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+            <div style="text-align: center; margin-bottom: 48px;">
+                <p style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: #3798E4; margin-bottom: 12px;">Why Now</p>
+                <h2 style="font-family: 'Lexend', sans-serif; font-size: 36px; font-weight: 700; color: #253B50; margin-bottom: 16px;">The Thai Market Window Is Open</h2>
+                <p style="font-family: 'Source Sans 3', sans-serif; font-size: 18px; color: #666; max-width: 700px; margin: 0 auto;">Three converging forces are creating a rare opportunity for ERP partners in Thailand.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+                <div style="background: #fff; border-radius: 16px; padding: 32px; border: 1px solid #e8eef3;">
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: #DC2626; margin-bottom: 12px;">2027</div>
+                    <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 600; color: #253B50; margin-bottom: 8px;">SAP ECC End-of-Life</h3>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: #666; line-height: 1.6;">SAP ECC reaches end of maintenance in 2027. Thai manufacturers on SAP must migrate — and S/4HANA is prohibitively expensive for SMEs. This creates a migration window for alternative ERP providers.</p>
+                </div>
+                <div style="background: #fff; border-radius: 16px; padding: 32px; border: 1px solid #e8eef3;">
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: #F59E0B; margin-bottom: 12px;">~20</div>
+                    <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 600; color: #253B50; margin-bottom: 8px;">Competitors Scaling Fast</h3>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: #666; line-height: 1.6;">Kingdee and Yonyou each now have ~20 people in Thailand and growing. The window to establish market position is narrowing. First movers in the partner channel capture territory advantages.</p>
+                </div>
+                <div style="background: #fff; border-radius: 16px; padding: 32px; border: 1px solid #e8eef3;">
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: #22C55E; margin-bottom: 12px;">8,000</div>
+                    <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 600; color: #253B50; margin-bottom: 8px;">Target Factories Identified</h3>
+                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: #666; line-height: 1.6;">From 50,000+ Thai manufacturers, we've filtered to 8,000 genuine targets. Only 113 are properly qualified so far — leaving 7,000+ untouched opportunities for partners to pursue.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="partner-cta">
         <div class="partner-cta-inner">
@@ -1073,21 +1101,5 @@
         </div>
     </section>
 {{footer}}
-
-
-    <script>
-    (function() {
-        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
-        dropdowns.forEach(function(item) {
-            const menu = item.querySelector('.dw-mega-menu');
-            item.addEventListener('mouseenter', function() {
-                dropdowns.forEach(function(other) { if (other !== item) { other.classList.remove('active'); const m = other.querySelector('.dw-mega-menu'); if (m) m.classList.remove('active'); }});
-                item.classList.add('active'); if (menu) menu.classList.add('active');
-            });
-            item.addEventListener('mouseleave', function() { item.classList.remove('active'); if (menu) menu.classList.remove('active'); });
-        });
-    })();
-    </script>
-    <script src="{{basePath}}digiwin-dynamic.js"></script>
 </body>
 </html>

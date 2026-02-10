@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co-Product Cost Accounting: The Problem SAP Cannot Solve - DigiWin Thailand</title>
+    <meta name="description" content="Most ERPs force separate work orders for each output — destroying cost accuracy. Learn how native co-product handling delivers accurate per-product costing for plastics, food, and chemical manufacturing.">
+    <link rel="stylesheet" href="{{basePath}}styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ===== Article Hero ===== */
+        .article-hero {
+            background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+            padding: 140px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .article-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .article-hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .article-back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.6);
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 14px;
+            text-decoration: none;
+            margin-bottom: 28px;
+            transition: all 0.3s ease;
+        }
+        .article-back-link:hover {
+            color: #3798E4;
+            gap: 10px;
+        }
+        .article-back-link svg {
+            width: 16px;
+            height: 16px;
+        }
+        .article-category-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            background: rgba(5, 150, 105, 0.2);
+            color: #34d399;
+            border: 1px solid rgba(5, 150, 105, 0.3);
+        }
+        .article-hero h1 {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(28px, 4.5vw, 44px);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            color: rgba(255,255,255,0.6);
+        }
+        .article-meta-divider {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* ===== Article Body ===== */
+        .article-body {
+            padding: 72px 24px 100px;
+            background: #fff;
+        }
+        .article-body-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .article-body h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #253B50;
+            line-height: 1.3;
+            margin-top: 48px;
+            margin-bottom: 20px;
+        }
+        .article-body h2:first-child {
+            margin-top: 0;
+        }
+        .article-body p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 17px;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .article-body ul {
+            margin: 0 0 24px 0;
+            padding: 0 0 0 24px;
+        }
+        .article-body ul li {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 17px;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        .article-body ul li strong {
+            color: #253B50;
+        }
+        .article-body strong {
+            color: #253B50;
+            font-weight: 600;
+        }
+
+        /* Pull Quote */
+        .article-pull-quote {
+            border-left: 4px solid #3798E4;
+            padding: 24px 32px;
+            margin: 36px 0;
+            background: transparent;
+        }
+        .article-pull-quote p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 20px;
+            font-style: italic;
+            color: #253B50;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        /* Data Callout */
+        .article-data-callout {
+            background: linear-gradient(135deg, #1a2e40 0%, #253B50 100%);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .article-data-callout::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='20' cy='20' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .article-data-callout-content {
+            position: relative;
+            z-index: 1;
+        }
+        .article-data-callout .callout-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .article-data-callout .callout-flow-item {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(18px, 3vw, 28px);
+            font-weight: 500;
+            color: #fff;
+            white-space: nowrap;
+        }
+        .article-data-callout .callout-flow-arrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20px;
+            color: #3798E4;
+        }
+        .article-data-callout .callout-result {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 500;
+            color: #3798E4;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        .article-data-callout .callout-label {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Highlight Box */
+        .article-highlight-box {
+            background: #EBF5FF;
+            border-left: 4px solid #3798E4;
+            border-radius: 0 12px 12px 0;
+            padding: 24px 28px;
+            margin: 36px 0;
+        }
+        .article-highlight-box p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            color: #253B50;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        /* ===== Related Articles ===== */
+        .related-section {
+            padding: 80px 24px;
+            background: #F5F7FA;
+        }
+        .related-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .related-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            color: #3798E4;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            display: block;
+            text-align: center;
+        }
+        .related-header {
+            font-family: 'Lexend', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #253B50;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .related-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: #3798E4;
+            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+            transform: translateY(-4px);
+        }
+        .related-card-border {
+            height: 4px;
+        }
+        .related-card-border.blue { background: #3798E4; }
+        .related-card-border.orange { background: #F59E0B; }
+        .related-card-border.green { background: #059669; }
+        .related-card-body {
+            padding: 28px;
+        }
+        .related-card-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .related-card-badge.compliance {
+            background: rgba(55, 152, 228, 0.12);
+            color: #3798E4;
+        }
+        .related-card-badge.production {
+            background: rgba(245, 158, 11, 0.12);
+            color: #F59E0B;
+        }
+        .related-card-badge.cost {
+            background: rgba(5, 150, 105, 0.12);
+            color: #059669;
+        }
+        .related-card-body h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #253B50;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+        .related-card-body p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .related-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #3798E4;
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .related-card:hover .related-card-link {
+            gap: 10px;
+        }
+
+        /* ===== CTA Section ===== */
+        .article-cta {
+            padding: 100px 24px;
+            background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .article-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .article-cta-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .article-cta h2 {
+            font-family: 'Lexend', sans-serif;
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .article-cta p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 18px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        .article-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 14px;
+            font-family: 'Lexend', sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .article-cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(55, 152, 228, 0.35);
+        }
+        .article-cta-btn svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+        .article-cta-btn:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* ===== Animations ===== */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .article-hero {
+                padding: 120px 20px 60px;
+            }
+            .article-hero h1 {
+                font-size: 26px;
+            }
+            .article-meta {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .article-body {
+                padding: 48px 20px 80px;
+            }
+            .article-body h2 {
+                font-size: 22px;
+            }
+            .article-pull-quote {
+                padding: 20px 24px;
+                margin: 28px 0;
+            }
+            .article-pull-quote p {
+                font-size: 18px;
+            }
+            .article-data-callout {
+                padding: 28px 20px;
+            }
+            .article-data-callout .callout-flow {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .article-data-callout .callout-flow-arrow {
+                transform: rotate(90deg);
+            }
+            .related-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .related-header {
+                font-size: 26px;
+            }
+            .article-cta {
+                padding: 80px 20px;
+            }
+            .article-cta h2 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+{{header}}
+
+    <!-- Article Hero -->
+    <section class="article-hero">
+        <div class="article-hero-inner">
+            <a href="{{basePath}}blog.html" class="article-back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Back to Insights
+            </a>
+            <div class="article-category-badge">Cost Management</div>
+            <h1>Co-Product Cost Accounting: The Problem SAP Cannot Solve</h1>
+            <div class="article-meta">
+                <span>7 min read</span>
+                <div class="article-meta-divider"></div>
+                <span>February 2026</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Body -->
+    <section class="article-body">
+        <div class="article-body-inner">
+
+            <!-- Opening -->
+            <div class="fade-in-section">
+                <p>In Thai manufacturing, one production run often produces multiple outputs. A plastics injection cycle might yield three different parts from one mold. A food processing batch might produce a primary product, a by-product, and a co-product. A chemical reaction might generate two saleable outputs and a recyclable residue.</p>
+                <p>This is not an edge case. It is daily reality on thousands of shop floors across Thailand.</p>
+                <p>The question is simple: if your ERP cannot accurately allocate costs across multiple outputs from a single production run, your cost data is fiction. And if your cost data is fiction, so are your margins, your quotes, and your pricing strategy.</p>
+            </div>
+
+            <!-- Section: The Multi-Output Reality -->
+            <div class="fade-in-section">
+                <h2>The Multi-Output Reality</h2>
+                <p>Many Thai industries produce co-products and by-products as a natural part of manufacturing. This is not a special scenario that needs a workaround. It is the fundamental way these factories operate.</p>
+                <ul>
+                    <li><strong>Plastics injection molding:</strong> Multi-cavity molds produce different parts in a single cycle. Runners and sprues are recycled back into raw material. One machine setup yields multiple SKUs simultaneously.</li>
+                    <li><strong>Food and beverage processing:</strong> A single batch of raw material produces a primary product alongside by-products that carry commercial value -- cooking oils, animal feed, flavoring extracts.</li>
+                    <li><strong>Chemical manufacturing:</strong> Chemical reactions inherently produce multiple outputs. A single process might yield a primary compound, a secondary compound, and a recoverable solvent.</li>
+                    <li><strong>Metal processing:</strong> Stamping, cutting, and machining operations produce primary parts alongside scrap metal with resale value. Die-casting generates both finished components and reusable overflow material.</li>
+                </ul>
+            </div>
+
+            <div class="article-pull-quote fade-in-section">
+                <p>When one work order produces three outputs, your ERP needs to know how to split the cost accurately -- not just divide by three.</p>
+            </div>
+
+            <!-- Section: How Most ERPs Get This Wrong -->
+            <div class="fade-in-section">
+                <h2>How Most ERPs Get This Wrong</h2>
+                <p>The standard ERP architecture assumes a clean, simple relationship: one work order produces one output item. One BOM (Bill of Materials) in, one finished good out. This works perfectly for single-product assembly lines. It falls apart completely in co-product manufacturing.</p>
+                <p>When factories running these systems encounter multi-output production, they are forced into workarounds:</p>
+                <ul>
+                    <li><strong>Separate work orders for each output.</strong> The factory creates three work orders to represent what is actually one production run. This destroys the cost linkage between outputs. Material consumption cannot be accurately split because each work order pretends it is an independent process.</li>
+                    <li><strong>Manual journal entries to redistribute costs.</strong> The accounting team manually moves costs between accounts at month-end to approximate the correct allocation. This is error-prone, audit-risky, and always delayed. By the time the numbers are corrected, decisions have already been made on wrong data.</li>
+                    <li><strong>Ignore co-product costing entirely.</strong> Some factories simply assign zero cost to by-products and load everything onto the primary product. The P&L for the primary product looks worse than reality, the by-product appears to have infinite margins, and management decisions are based on distorted numbers.</li>
+                </ul>
+                <p>SAP Business One, Kingdee, and Yonyou -- the most common ERP systems encountered in Thai manufacturing -- all require one or more of these workarounds to handle co-product scenarios. None of them support native multi-output work orders at the SME tier.</p>
+            </div>
+
+            <div class="article-data-callout fade-in-section">
+                <div class="article-data-callout-content">
+                    <div class="callout-flow">
+                        <span class="callout-flow-item">1 Production Run</span>
+                        <span class="callout-flow-arrow">&rarr;</span>
+                        <span class="callout-flow-item">3 Outputs</span>
+                        <span class="callout-flow-arrow">&rarr;</span>
+                        <span class="callout-flow-item">3 Separate Work Orders</span>
+                    </div>
+                    <div class="callout-result">0% Cost Accuracy</div>
+                    <div class="callout-label">The broken model that most ERPs force on multi-output factories</div>
+                </div>
+            </div>
+
+            <!-- Section: Native Co-Product Handling -->
+            <div class="fade-in-section">
+                <h2>Native Co-Product Handling</h2>
+                <p>DigiWin approaches co-product manufacturing the way the shop floor actually works: one work order can declare multiple output items. There is no workaround. There is no manual redistribution. The system is architected from the ground up to handle multi-output production as a first-class scenario.</p>
+                <p>Here is how it works in practice:</p>
+                <ul>
+                    <li><strong>One work order, multiple outputs.</strong> A single work order defines the production run, the input materials, and all expected output items -- primary products, co-products, and by-products. The system knows from the start that this run will produce multiple items.</li>
+                    <li><strong>Flexible cost allocation methods.</strong> Costs can be distributed across outputs by weight, by quantity, by market value, or by a custom formula that reflects your specific production reality. A plastics factory might allocate by weight. A food processor might allocate by market value. A chemical plant might use a custom formula based on purity grades.</li>
+                    <li><strong>Material consumption tracks to the work order.</strong> All raw materials, labor, and overhead are consumed against the work order, then distributed across all outputs according to the allocation method. There is no ambiguity about where costs went.</li>
+                    <li><strong>Accurate per-product costing.</strong> The result is a true cost for each output item that reflects manufacturing reality -- not an estimate, not a manual adjustment, not a guess.</li>
+                </ul>
+            </div>
+
+            <div class="article-highlight-box fade-in-section">
+                <p><strong>Co-product cost accounting is not an edge case.</strong> In plastics injection molding alone -- one of Thailand's largest manufacturing sectors -- multi-output production is the default reality. Any ERP that cannot handle this natively is not built for Thai manufacturing.</p>
+            </div>
+
+            <!-- Section: Why Accurate Costing Matters More Than You Think -->
+            <div class="fade-in-section">
+                <h2>Why Accurate Costing Matters More Than You Think</h2>
+                <p>Inaccurate cost allocation does not just produce wrong numbers on a report. It cascades into every decision the factory makes.</p>
+                <p><strong>Wrong cost equals wrong pricing equals wrong margins.</strong> If your system overstates the cost of your primary product and understates the cost of a co-product, you are setting prices based on fiction. You might be underpricing a high-value co-product -- essentially giving away margin on every order -- while overpricing your primary product and losing deals.</p>
+                <p><strong>Quoting accuracy suffers.</strong> When a customer asks for a price on Product A, and Product A happens to be a co-product from a shared production run, you need to know what it actually costs to produce. If your ERP cannot provide that number, your sales team is quoting blind. Win rates drop. Margins erode. And you never know why because the root cause is buried in your cost accounting.</p>
+                <p><strong>BOI compliance becomes harder.</strong> For BOI-promoted factories, material consumption must reconcile with all outputs from a production run, not just the primary product. If your system only tracks the primary output against the work order, the reconciliation between imported raw materials and finished goods will have gaps. Those gaps trigger supplementary tax exposure -- the same problem we detailed in our <a href="{{basePath}}blog/boi-compliance-jin-hai.html" style="color:#3798E4;text-decoration:underline;">BOI compliance article</a>.</p>
+                <p><strong>Inventory valuation is distorted.</strong> By-products sitting in your warehouse with zero cost assigned? Your balance sheet does not reflect reality. Auditors will notice. So will your bank when you apply for a credit facility and your inventory numbers do not add up.</p>
+            </div>
+
+            <div class="article-pull-quote fade-in-section">
+                <p>If you are pricing co-products based on estimated costs, you might be giving away your margins on every order.</p>
+            </div>
+
+            <!-- Section: The Competitive Landscape -->
+            <div class="fade-in-section">
+                <h2>The Competitive Landscape</h2>
+                <p>This is not a minor feature gap. It is a fundamental architectural limitation in competing systems.</p>
+                <p><strong>SAP Business One</strong> -- the most common SAP product in Thai small and medium enterprises -- has no native co-product work order capability. The production module assumes one work order equals one output. To work around this, factories either create multiple work orders (destroying cost linkage) or use manual journal entries (introducing delay and error). Upgrading to SAP S/4HANA to access co-product capabilities would cost 10 to 50 times more than the SME ERP itself -- putting it out of reach for the vast majority of Thai manufacturers.</p>
+                <p><strong>Kingdee and Yonyou</strong>, both of which are expanding rapidly in Thailand, face the same architectural constraint at their SME product tiers. Their manufacturing modules were designed for single-output production. Co-product handling, where it exists at all, requires customization that increases implementation cost and ongoing maintenance burden.</p>
+                <p><strong>DigiWin includes native co-product support</strong> in both the T100 (mid-market ERP) and iGP/WorkFlow (SME ERP) platforms. This is not a premium add-on. It is not a customization. It is built into the standard manufacturing module because DigiWin was designed from day one for manufacturing -- including the multi-output processes that are standard in plastics, food, chemical, and metal processing industries.</p>
+                <p>For distributors and ERP consultants evaluating which product to bring to market: co-product handling is a proven deal-winning differentiator. In any competitive evaluation involving a plastics, food, or chemical manufacturer, the ability to demonstrate native co-product cost accounting ends the conversation in your favor.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Related Articles -->
+    <section class="related-section">
+        <div class="related-inner">
+            <span class="related-label">Related Insights</span>
+            <h2 class="related-header fade-in-section">Continue Reading</h2>
+            <div class="related-grid">
+                <!-- Card 1: BOI Compliance -->
+                <a href="{{basePath}}blog/boi-compliance-jin-hai.html" class="related-card fade-in-section">
+                    <div class="related-card-border blue"></div>
+                    <div class="related-card-body">
+                        <span class="related-card-badge compliance">BOI &amp; Compliance</span>
+                        <h3>BOI Compliance: How One Factory Eliminated 10M THB in Supplementary Taxes</h3>
+                        <p>Production-order-level reconciliation that satisfies BOI auditors and eliminates tax exposure.</p>
+                        <span class="related-card-link">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                    </div>
+                </a>
+                <!-- Card 2: LRP vs MRP -->
+                <a href="{{basePath}}blog/lrp-vs-mrp.html" class="related-card fade-in-section">
+                    <div class="related-card-border orange"></div>
+                    <div class="related-card-body">
+                        <span class="related-card-badge production">Production Planning</span>
+                        <h3>LRP vs MRP: Why Most Thai Factories Are Planning Production Wrong</h3>
+                        <p>The difference between rough-cut capacity planning and material requirements planning -- and why you need both.</p>
+                        <span class="related-card-link">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                    </div>
+                </a>
+                <!-- Card 3: Dual Units -->
+                <a href="{{basePath}}blog/dual-units.html" class="related-card fade-in-section">
+                    <div class="related-card-border green"></div>
+                    <div class="related-card-body">
+                        <span class="related-card-badge cost">Cost Management</span>
+                        <h3>Dual Units of Measure: Tracking What You Buy vs. What You Use</h3>
+                        <p>Purchase in kilograms, consume in meters. How dual-unit tracking prevents material variance from destroying your margins.</p>
+                        <span class="related-card-link">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="article-cta">
+        <div class="article-cta-inner fade-in-section">
+            <h2>Need Accurate Co-Product Costing?</h2>
+            <p>Our team can show you how DigiWin handles multi-output production -- from plastics injection to food processing to chemical manufacturing.</p>
+            <a href="{{basePath}}demo.html" class="article-cta-btn">
+                Let's Talk
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+        </div>
+    </section>
+
+{{footer}}
+</body>
+</html>

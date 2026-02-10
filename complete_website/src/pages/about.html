@@ -144,106 +144,240 @@
             margin: 0 auto;
         }
 
-        /* Horizontal Timeline Track */
-        .timeline-track {
+        /* Horizontal Scroll Rail Timeline */
+        .timeline-scroll-container {
             position: relative;
-            padding: 40px 0 20px;
+            overflow: hidden;
         }
-        .timeline-line {
+        /* Fade masks at edges */
+        .timeline-scroll-container::before,
+        .timeline-scroll-container::after {
+            content: '';
             position: absolute;
-            top: 64px;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .timeline-scroll-container::before {
+            left: 0;
+            background: linear-gradient(90deg, #1f3547 0%, transparent 100%);
+        }
+        .timeline-scroll-container::after {
+            right: 0;
+            background: linear-gradient(-90deg, #1f3547 0%, transparent 100%);
+        }
+        .timeline-rail-wrapper {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .timeline-rail-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+        .timeline-rail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 180px 100px;
+            min-width: max-content;
+            position: relative;
+        }
+        /* The horizontal line */
+        .timeline-rail::before {
+            content: '';
+            position: absolute;
+            top: 50%;
             left: 0;
             right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent 0%, rgba(55,152,228,0.3) 10%, rgba(55,152,228,0.5) 50%, rgba(55,152,228,0.3) 90%, transparent 100%);
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, rgba(55,152,228,0.15) 5%, rgba(55,152,228,0.4) 50%, rgba(55,152,228,0.15) 95%, transparent 100%);
+            transform: translateY(-50%);
         }
-        .timeline-decades {
+        .milestone {
+            scroll-snap-align: center;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
             position: relative;
+            flex-shrink: 0;
+            width: 180px;
         }
-        .timeline-decade {
-            flex: 1;
-            text-align: center;
+        /* Above: card on top, dot, connector down */
+        .milestone.above .milestone-card {
+            position: absolute;
+            bottom: calc(50% + 28px);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .milestone.above .milestone-dot {
             position: relative;
+            z-index: 1;
         }
-        .decade-dot {
-            width: 16px;
-            height: 16px;
+        .milestone.above .milestone-connector {
+            position: absolute;
+            bottom: calc(50% + 7px);
+            width: 2px;
+            height: 24px;
+            background: rgba(55,152,228,0.3);
+        }
+        /* Below: dot, connector, card below */
+        .milestone.below .milestone-card {
+            position: absolute;
+            top: calc(50% + 28px);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .milestone.below .milestone-connector {
+            position: absolute;
+            top: calc(50% + 7px);
+            width: 2px;
+            height: 24px;
+            background: rgba(55,152,228,0.3);
+        }
+        .milestone-dot {
+            width: 14px;
+            height: 14px;
             background: #253B50;
             border: 3px solid #3798E4;
             border-radius: 50%;
-            margin: 0 auto 16px;
             position: relative;
-            z-index: 2;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+        .milestone-dot.glow {
+            background: #3798E4;
+            box-shadow: 0 0 0 6px rgba(55,152,228,0.2);
+        }
+        .milestone-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 14px 16px;
+            width: 170px;
             transition: all 0.3s ease;
         }
-        .timeline-decade.highlight .decade-dot {
-            width: 20px;
-            height: 20px;
-            background: #3798E4;
-            box-shadow: 0 0 0 6px rgba(55, 152, 228, 0.2);
+        .milestone-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(55,152,228,0.3);
+            transform: translateX(-50%) translateY(-2px);
         }
-        .decade-label {
+        .milestone-year {
             font-family: 'JetBrains Mono', monospace;
             font-size: 14px;
             font-weight: 600;
             color: #3798E4;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
-        .decade-title {
+        .milestone-title {
             font-family: 'Lexend', sans-serif;
-            font-size: 13px;
-            font-weight: 500;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 6px;
+            line-height: 1.3;
         }
-        .decade-events {
-            font-size: 11px;
-            color: rgba(255,255,255,0.5);
-            line-height: 1.6;
+        .milestone-desc {
+            font-size: 12px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.5;
         }
-        .decade-events span {
-            display: block;
-            margin-bottom: 4px;
-        }
-        .decade-events .key-event {
-            color: rgba(255,255,255,0.8);
-            font-weight: 500;
-        }
-        .decade-badge {
+        .milestone-badge {
             display: inline-block;
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            color: #fff;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 9px;
-            font-weight: 500;
-            padding: 2px 6px;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 3px 8px;
             border-radius: 4px;
             margin-top: 8px;
+            letter-spacing: 0.5px;
         }
-        .decade-badge.blue {
+        .milestone-badge.gold {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #fff;
+        }
+        .milestone-badge.blue {
             background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            color: #fff;
         }
-        .decade-badge.green {
+        .milestone-badge.green {
             background: linear-gradient(135deg, #10b981, #059669);
+            color: #fff;
+        }
+        .milestone-badge.red {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: #fff;
+        }
+        .scroll-hint {
+            text-align: center;
+            margin-top: -8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: rgba(255,255,255,0.35);
+            letter-spacing: 1px;
         }
 
-        @media (max-width: 900px) {
-            .timeline-decades {
-                flex-wrap: wrap;
-                gap: 32px;
-            }
-            .timeline-decade {
-                flex: 0 0 calc(33.333% - 22px);
-            }
-            .timeline-line {
+        /* Mobile: vertical compact timeline */
+        @media (max-width: 768px) {
+            .timeline-scroll-container::before,
+            .timeline-scroll-container::after {
                 display: none;
             }
-        }
-        @media (max-width: 600px) {
-            .timeline-decade {
-                flex: 0 0 calc(50% - 16px);
+            .timeline-rail-wrapper {
+                overflow-x: visible;
+                scroll-snap-type: none;
+            }
+            .timeline-rail {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                padding: 0 0 0 28px;
+                min-width: 0;
+            }
+            .timeline-rail::before {
+                top: 0;
+                bottom: 0;
+                left: 6px;
+                right: auto;
+                width: 2px;
+                height: 100%;
+                background: linear-gradient(180deg, transparent, rgba(55,152,228,0.4), transparent);
+                transform: none;
+            }
+            .milestone {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 16px;
+                padding: 12px 0;
+                scroll-snap-align: none;
+                width: 100%;
+            }
+            .milestone.above .milestone-card,
+            .milestone.below .milestone-card {
+                position: static;
+                width: 100%;
+                left: auto;
+                transform: none;
+            }
+            .milestone.above .milestone-connector,
+            .milestone.below .milestone-connector {
+                display: none;
+            }
+            .milestone-dot {
+                margin-top: 4px;
+                position: absolute;
+                left: -28px;
+            }
+            .milestone-card {
+                width: 100%;
+            }
+            .milestone-card:hover {
+                transform: none;
+            }
+            .scroll-hint {
+                display: none;
             }
         }
 
@@ -430,7 +564,7 @@
         }
         .asia-map-svg {
             width: 100%;
-            max-width: 700px;
+            max-width: 900px;
             margin: 0 auto;
             display: block;
             position: relative;
@@ -1602,6 +1736,7 @@
                 <p>DigiWin exists to help manufacturers see clearly, act decisively, and grow confidently. For over four decades, we've been singularly focused on one thing: making factory operations visible, predictable, and profitable.</p>
                 <p>We don't serve banks, retailers, or hospitals. We serve the shop floor—the engineers tracking BOMs, the planners scheduling production runs, the operators monitoring OEE in real time. This focus isn't a marketing position. It's our DNA.</p>
                 <p>Every line of code we write, every consultant we train, every implementation we deliver is designed for one outcome: helping manufacturers compete and win.</p>
+                <p>Today, we're transforming from a software vendor into an AI infrastructure provider. With 168 AI Agents already deployed and 68 operational SOPs being rebuilt with intelligent automation, DigiWin is pioneering the Zhuge Platform — where AI doesn't just report on your factory, it helps run it.</p>
                 <div class="mission-origin">
                     <div class="mission-origin-chinese">鼎新</div>
                     <div class="mission-origin-pinyin">Dǐng Xīn</div>
@@ -1631,64 +1766,137 @@
                 <p>Every crisis survived. Every technology wave embraced. One focus: manufacturing.</p>
             </div>
 
-            <div class="timeline-track">
-                <div class="timeline-line"></div>
-                <div class="timeline-decades">
-                    <div class="timeline-decade">
-                        <div class="decade-dot"></div>
-                        <div class="decade-label">1982</div>
-                        <div class="decade-title">Foundation</div>
-                        <div class="decade-events">
-                            <span class="key-event">Founded in Taiwan</span>
-                            <span>First MRPII product (1989)</span>
+            <div class="timeline-scroll-container">
+                <div class="timeline-rail-wrapper">
+                    <div class="timeline-rail">
+                        <!-- 1. 1982 - Above -->
+                        <div class="milestone above">
+                            <div class="milestone-card">
+                                <div class="milestone-year">1982</div>
+                                <div class="milestone-title">Founded</div>
+                                <div class="milestone-desc">DigiWin founded in Taiwan by Sun Ai-bin & Gu Feng-yong</div>
+                                <span class="milestone-badge gold">Origin</span>
+                            </div>
+                            <div class="milestone-connector"></div>
+                            <div class="milestone-dot glow"></div>
                         </div>
-                        <div class="decade-badge">Origin</div>
-                    </div>
-
-                    <div class="timeline-decade">
-                        <div class="decade-dot"></div>
-                        <div class="decade-label">1990s</div>
-                        <div class="decade-title">Taiwan Leader</div>
-                        <div class="decade-events">
-                            <span class="key-event">TIPTOP ERP launched</span>
-                            <span>Asia's first B/S architecture</span>
+                        <!-- 2. 1989 - Below -->
+                        <div class="milestone below">
+                            <div class="milestone-dot"></div>
+                            <div class="milestone-connector"></div>
+                            <div class="milestone-card">
+                                <div class="milestone-year">1989</div>
+                                <div class="milestone-title">First Product</div>
+                                <div class="milestone-desc">First MRPII manufacturing software released</div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="timeline-decade">
-                        <div class="decade-dot"></div>
-                        <div class="decade-label">2000s</div>
-                        <div class="decade-title">China Expansion</div>
-                        <div class="decade-events">
-                            <span class="key-event">Taiwan IPO (2001)</span>
-                            <span>#1 China Mfg. ERP (2006)</span>
+                        <!-- 3. 1992 - Above -->
+                        <div class="milestone above">
+                            <div class="milestone-card">
+                                <div class="milestone-year">1992</div>
+                                <div class="milestone-title">First Award</div>
+                                <div class="milestone-desc">Taiwan Information Month Outstanding Software Package</div>
+                            </div>
+                            <div class="milestone-connector"></div>
+                            <div class="milestone-dot"></div>
                         </div>
-                    </div>
-
-                    <div class="timeline-decade highlight">
-                        <div class="decade-dot"></div>
-                        <div class="decade-label">2014</div>
-                        <div class="decade-title">Shenzhen IPO</div>
-                        <div class="decade-events">
-                            <span class="key-event">300378.SZ Listed</span>
-                            <span>ASEAN expansion begins</span>
-                            <span>Thailand entry (2019)</span>
+                        <!-- 4. 1995 - Below -->
+                        <div class="milestone below">
+                            <div class="milestone-dot"></div>
+                            <div class="milestone-connector"></div>
+                            <div class="milestone-card">
+                                <div class="milestone-year">1995</div>
+                                <div class="milestone-title">TIPTOP ERP</div>
+                                <div class="milestone-desc">Asia's first Browser/Server architecture ERP</div>
+                            </div>
                         </div>
-                        <div class="decade-badge blue">300378</div>
-                    </div>
-
-                    <div class="timeline-decade highlight">
-                        <div class="decade-dot"></div>
-                        <div class="decade-label">2020s</div>
-                        <div class="decade-title">AI Era</div>
-                        <div class="decade-events">
-                            <span class="key-event">Foxconn FII investment</span>
-                            <span>Red Dot Award (2022)</span>
-                            <span>#1 PLM + MES (IDC)</span>
+                        <!-- 5. 2001 - Above -->
+                        <div class="milestone above">
+                            <div class="milestone-card">
+                                <div class="milestone-year">2001</div>
+                                <div class="milestone-title">Taiwan IPO</div>
+                                <div class="milestone-desc">Listed on Taiwan Stock Exchange</div>
+                                <span class="milestone-badge blue">TSEC</span>
+                            </div>
+                            <div class="milestone-connector"></div>
+                            <div class="milestone-dot"></div>
                         </div>
-                        <div class="decade-badge green">Now</div>
+                        <!-- 6. 2006 - Below -->
+                        <div class="milestone below">
+                            <div class="milestone-dot"></div>
+                            <div class="milestone-connector"></div>
+                            <div class="milestone-card">
+                                <div class="milestone-year">2006</div>
+                                <div class="milestone-title">China #1</div>
+                                <div class="milestone-desc">#1 Manufacturing ERP vendor in China</div>
+                            </div>
+                        </div>
+                        <!-- 7. 2014 - Above -->
+                        <div class="milestone above">
+                            <div class="milestone-card">
+                                <div class="milestone-year">2014</div>
+                                <div class="milestone-title">Shenzhen IPO</div>
+                                <div class="milestone-desc">Listed on Shenzhen Stock Exchange (300378.SZ)</div>
+                                <span class="milestone-badge blue">300378</span>
+                            </div>
+                            <div class="milestone-connector"></div>
+                            <div class="milestone-dot glow"></div>
+                        </div>
+                        <!-- 8. 2017 - Below -->
+                        <div class="milestone below">
+                            <div class="milestone-dot"></div>
+                            <div class="milestone-connector"></div>
+                            <div class="milestone-card">
+                                <div class="milestone-year">2017</div>
+                                <div class="milestone-title">Thailand</div>
+                                <div class="milestone-desc">ASEAN expansion accelerates from Bangkok</div>
+                                <span class="milestone-badge red">ASEAN</span>
+                            </div>
+                        </div>
+                        <!-- 9. 2020 - Above -->
+                        <div class="milestone above">
+                            <div class="milestone-card">
+                                <div class="milestone-year">2020</div>
+                                <div class="milestone-title">Foxconn Invests</div>
+                                <div class="milestone-desc">CNY 560M strategic investment from Foxconn FII</div>
+                            </div>
+                            <div class="milestone-connector"></div>
+                            <div class="milestone-dot"></div>
+                        </div>
+                        <!-- 10. 2022 - Below -->
+                        <div class="milestone below">
+                            <div class="milestone-dot"></div>
+                            <div class="milestone-connector"></div>
+                            <div class="milestone-card">
+                                <div class="milestone-year">2022</div>
+                                <div class="milestone-title">Red Dot Award</div>
+                                <div class="milestone-desc">German Red Dot Design Award for Athena Platform</div>
+                            </div>
+                        </div>
+                        <!-- 11. 2024 - Above -->
+                        <div class="milestone above">
+                            <div class="milestone-card">
+                                <div class="milestone-year">2024</div>
+                                <div class="milestone-title">#1 PLM + MES</div>
+                                <div class="milestone-desc">IDC #1 in discrete manufacturing, Indonesia entry</div>
+                            </div>
+                            <div class="milestone-connector"></div>
+                            <div class="milestone-dot"></div>
+                        </div>
+                        <!-- 12. 2026 - Below -->
+                        <div class="milestone below">
+                            <div class="milestone-dot glow"></div>
+                            <div class="milestone-connector"></div>
+                            <div class="milestone-card">
+                                <div class="milestone-year">2026</div>
+                                <div class="milestone-title">AI Era</div>
+                                <div class="milestone-desc">SUPA AI framework, smart manufacturing intelligence</div>
+                                <span class="milestone-badge green">Now</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="scroll-hint">SCROLL →</div>
             </div>
         </div>
     </section>
@@ -1705,12 +1913,12 @@
                 <div class="stat-description">Manufacturing Clients Worldwide</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">72%</div>
-                <div class="stat-description">Taiwan Listed Companies Served</div>
+                <div class="stat-number">100+</div>
+                <div class="stat-description">Thai Implementations</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">1,800+</div>
-                <div class="stat-description">Implementation Professionals</div>
+                <div class="stat-number">50+</div>
+                <div class="stat-description">Team Members in Thailand</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number white">300378</div>
@@ -1816,8 +2024,8 @@
                         <svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                     </div>
                     <div class="outcome-text">
-                        <h4>Meet Compliance Requirements Confidently</h4>
-                        <p>Full traceability, audit trails, Thai Revenue Department certification, and BOI reporting support built into every process.</p>
+                        <h4>Pass BOI Audits with Confidence</h4>
+                        <p>Production-order-level material reconciliation that matches exactly what the BOI board audits. One client saved 10M+ THB/year in supplementary taxes. Thai Revenue Department certified, with full traceability and audit trails built into every process.</p>
                     </div>
                 </div>
 
@@ -1834,6 +2042,83 @@
         </div>
     </section>
 
+    <!-- Thailand Commitment Section -->
+    <section class="thailand-section">
+        <div class="thailand-inner">
+            <div class="thailand-header">
+                <span class="section-label">PROVEN IN YOUR NEIGHBORHOOD</span>
+                <h2>Thailand Commitment</h2>
+                <p>Real support, no translation needed. You are not the "guinea pig."</p>
+            </div>
+            <div class="thailand-content">
+                <div class="thailand-text">
+                    <div class="thailand-proof-grid">
+                        <div class="thailand-proof">
+                            <span class="proof-number">100+</span>
+                            <span class="proof-text">Customers & Partners in Thailand</span>
+                        </div>
+                        <div class="thailand-proof">
+                            <span class="proof-number">50+</span>
+                            <span class="proof-text">Thai Team Members</span>
+                        </div>
+                        <div class="thailand-proof">
+                            <span class="proof-number">60%+</span>
+                            <span class="proof-text">Bilingual (Thai + Chinese)</span>
+                        </div>
+                        <div class="thailand-proof">
+                            <span class="proof-number">Since 2017</span>
+                            <span class="proof-text">Serving Thai Manufacturers</span>
+                        </div>
+                    </div>
+
+                    <p style="font-size: 15px; color: #475569; line-height: 1.8; margin: 24px 0;">DigiWin entered Thailand in 2017, initially serving Taiwanese and Chinese manufacturers who had set up operations here. As demand grew, we formally registered our Thai company in 2019 and built a local team from the ground up—hiring Thai consultants, learning Thai business culture, and building relationships with Thai factory owners. Today, we serve the Thai local market directly with 50+ team members. We're not a remote vendor sending consultants from overseas. We're your neighbor.</p>
+
+                    <h4>Named Thai References</h4>
+                    <p class="reference-intro">Active production environments running on our systems today:</p>
+                    <div class="reference-logos">
+                        <span class="reference-name">GoldenSea Sanki</span>
+                        <span class="reference-name">Top Mould</span>
+                        <span class="reference-name">Accauto</span>
+                        <span class="reference-name">Unique New Energy</span>
+                        <span class="reference-name">Intensive Mould</span>
+                    </div>
+
+                    <h4>Thai Compliance Ready</h4>
+                    <ul class="thailand-highlights">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span><strong>Thai Revenue Department certified</strong></span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Withholding Tax logic built-in</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>e-Tax integration ready</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>BOI reporting support</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h3>Thailand Office</h3>
+                    <div class="contact-item">
+                        <div class="contact-label">Address</div>
+                        <div class="contact-value">No. 2/117-118, Bangna Complex Office Tower,<br>22nd Floor, Theparat Road,<br>Bangna, Bangkok 10260</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value"><a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a></div>
+                    </div>
+                    <a href="{{basePath}}demo.html" class="contact-cta">Get in Touch →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Asia Presence Section - Unified -->
     <section class="asia-presence">
         <div class="asia-presence-inner">
@@ -1845,7 +2130,7 @@
 
             <!-- Asia Map Visual - Correct Proportions from Natural Earth Data -->
             <div class="asia-map-visual">
-                <svg class="asia-map-svg" viewBox="-50 -50 750 1000" fill="none" preserveAspectRatio="xMidYMid meet">
+                <svg class="asia-map-svg" viewBox="-450 -200 1300 1200" fill="none" preserveAspectRatio="xMidYMid meet">
                     <defs>
                         <filter id="glow">
                             <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
@@ -1875,59 +2160,59 @@
 
                     <!-- ====== CITY MARKERS ====== -->
 
-                    <!-- Beijing 北京 -->
+                    <!-- Beijing -->
                     <circle cx="416" cy="115" r="5" fill="#f97316"/>
-                    <text x="430" y="112" fill="rgba(255,255,255,0.8)" font-size="11" font-family="JetBrains Mono">北京</text>
+                    <text x="430" y="112" fill="rgba(255,255,255,0.8)" font-size="11" font-family="JetBrains Mono">Beijing</text>
 
-                    <!-- Jinan 濟南 -->
+                    <!-- Jinan -->
                     <circle cx="429" cy="187" r="4" fill="#f97316"/>
-                    <text x="405" y="182" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">濟南</text>
+                    <text x="443" y="184" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Jinan</text>
 
-                    <!-- Qingdao 青島 -->
+                    <!-- Qingdao -->
                     <circle cx="501" cy="201" r="4" fill="#f97316"/>
-                    <text x="510" y="198" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">青島</text>
+                    <text x="510" y="198" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Qingdao</text>
 
-                    <!-- Shanghai 上海 HQ -->
+                    <!-- Shanghai HQ -->
                     <circle cx="525" cy="312" r="10" fill="#3798E4" filter="url(#glow)"/>
-                    <text x="542" y="308" fill="#fff" font-size="14" font-weight="600" font-family="Lexend">上海</text>
+                    <text x="542" y="308" fill="#fff" font-size="14" font-weight="600" font-family="Lexend">Shanghai</text>
                     <text x="542" y="326" fill="rgba(55,152,228,0.8)" font-size="10" font-family="JetBrains Mono">China HQ</text>
 
-                    <!-- Nanjing 南京 -->
+                    <!-- Nanjing -->
                     <circle cx="467" cy="291" r="4" fill="#f97316"/>
-                    <text x="445" y="286" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">南京</text>
+                    <text x="437" y="286" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Nanjing</text>
 
-                    <!-- Hangzhou 杭州 -->
+                    <!-- Hangzhou -->
                     <circle cx="497" cy="332" r="4" fill="#f97316"/>
-                    <text x="508" y="340" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">杭州</text>
+                    <text x="508" y="340" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Hangzhou</text>
 
-                    <!-- Wuhan 武漢 -->
+                    <!-- Wuhan -->
                     <circle cx="371" cy="325" r="4" fill="#f97316"/>
-                    <text x="348" y="320" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">武漢</text>
+                    <text x="340" y="320" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Wuhan</text>
 
-                    <!-- Chengdu 成都 -->
+                    <!-- Chengdu -->
                     <circle cx="152" cy="323" r="4" fill="#f97316"/>
-                    <text x="128" y="318" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">成都</text>
+                    <text x="114" y="318" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Chengdu</text>
 
-                    <!-- Chongqing 重慶 -->
+                    <!-- Chongqing -->
                     <circle cx="204" cy="348" r="4" fill="#f97316"/>
-                    <text x="180" y="358" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">重慶</text>
+                    <text x="162" y="358" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Chongqing</text>
 
-                    <!-- Guangzhou 廣州 -->
+                    <!-- Guangzhou -->
                     <circle cx="349" cy="495" r="4" fill="#f97316"/>
-                    <text x="325" y="490" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">廣州</text>
+                    <text x="304" y="490" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Guangzhou</text>
 
-                    <!-- Shenzhen 深圳 -->
+                    <!-- Shenzhen -->
                     <circle cx="366" cy="508" r="4" fill="#f97316"/>
-                    <text x="375" y="515" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">深圳</text>
+                    <text x="375" y="518" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Shenzhen</text>
 
-                    <!-- TAIWAN - Taipei 台北 HQ -->
+                    <!-- TAIWAN - Taipei HQ -->
                     <circle cx="525" cy="452" r="9" fill="#3798E4" filter="url(#glow)"/>
-                    <text x="542" y="448" fill="#fff" font-size="13" font-weight="600" font-family="Lexend">台北</text>
+                    <text x="542" y="448" fill="#fff" font-size="13" font-weight="600" font-family="Lexend">Taipei</text>
                     <text x="542" y="465" fill="rgba(55,152,228,0.8)" font-size="10" font-family="JetBrains Mono">Taiwan HQ</text>
 
-                    <!-- Kaohsiung 高雄 -->
+                    <!-- Kaohsiung -->
                     <circle cx="499" cy="506" r="4" fill="#f97316"/>
-                    <text x="470" y="515" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">高雄</text>
+                    <text x="456" y="518" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Kaohsiung</text>
 
                     <!-- THAILAND - Bangkok (Featured) -->
                     <circle cx="75" cy="705" r="14" fill="#ef4444" filter="url(#glow)"/>
@@ -1935,16 +2220,16 @@
                         <animate attributeName="r" values="22;30;22" dur="2s" repeatCount="indefinite"/>
                         <animate attributeName="stroke-opacity" values="0.5;0.15;0.5" dur="2s" repeatCount="indefinite"/>
                     </circle>
-                    <text x="75" y="740" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Lexend">曼谷 Bangkok</text>
+                    <text x="75" y="740" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Lexend">Bangkok</text>
                     <text x="75" y="758" text-anchor="middle" fill="rgba(239,68,68,0.9)" font-size="11" font-family="JetBrains Mono">You Are Here</text>
 
                     <!-- VIETNAM - Ho Chi Minh City -->
                     <circle cx="208" cy="772" r="5" fill="#f97316"/>
-                    <text x="222" y="778" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">胡志明市</text>
+                    <text x="222" y="778" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Ho Chi Minh City</text>
 
                     <!-- MALAYSIA - Kuala Lumpur -->
                     <circle cx="101" cy="946" r="5" fill="#f97316"/>
-                    <text x="115" y="952" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">吉隆坡</text>
+                    <text x="115" y="952" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Kuala Lumpur</text>
 
                     <!-- Country Labels -->
                     <text x="350" y="250" fill="rgba(255,255,255,0.4)" font-size="16" font-family="Lexend" font-weight="500">China</text>
@@ -2042,7 +2327,7 @@
                                 </div>
                             </div>
                             <div class="thailand-details">
-                                <p>Gateway to EEC industrial corridor</p>
+                                <p>Theparat Road, Bangna District</p>
                                 <p>Thai + Bilingual consultants</p>
                             </div>
                         </div>
@@ -2117,85 +2402,6 @@
                         <div class="presence-stat-value">4</div>
                         <div class="presence-stat-label">ASEAN Countries</div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Thailand Commitment Section -->
-    <section class="thailand-section">
-        <div class="thailand-inner">
-            <div class="thailand-header">
-                <span class="section-label">PROVEN IN YOUR NEIGHBORHOOD</span>
-                <h2>Thailand Commitment</h2>
-                <p>Real support, no translation needed. You are not the "guinea pig."</p>
-            </div>
-            <div class="thailand-content">
-                <div class="thailand-text">
-                    <div class="thailand-proof-grid">
-                        <div class="thailand-proof">
-                            <span class="proof-number">100+</span>
-                            <span class="proof-text">Customers & Partners in Thailand</span>
-                        </div>
-                        <div class="thailand-proof">
-                            <span class="proof-number">Thai</span>
-                            <span class="proof-text">Call Center (native language)</span>
-                        </div>
-                        <div class="thailand-proof">
-                            <span class="proof-number">Bilingual</span>
-                            <span class="proof-text">Thai/Chinese Consultants</span>
-                        </div>
-                        <div class="thailand-proof">
-                            <span class="proof-number">Full Team</span>
-                            <span class="proof-text">Sales, Pre-sales, Delivery</span>
-                        </div>
-                    </div>
-
-                    <h4>Named Thai References</h4>
-                    <p class="reference-intro">Active production environments running on our systems today:</p>
-                    <div class="reference-logos">
-                        <span class="reference-name">GoldenSea Sanki</span>
-                        <span class="reference-name">Top Mould</span>
-                        <span class="reference-name">Accauto</span>
-                        <span class="reference-name">Unique New Energy</span>
-                        <span class="reference-name">Intensive Mould</span>
-                    </div>
-
-                    <h4>Thai Compliance Ready</h4>
-                    <ul class="thailand-highlights">
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span><strong>Thai Revenue Department certified</strong></span>
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Withholding Tax logic built-in</span>
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>e-Tax integration ready</span>
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>BOI reporting support</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="contact-card">
-                    <h3>Thailand Office</h3>
-                    <div class="contact-item">
-                        <div class="contact-label">Location</div>
-                        <div class="contact-value">Bangna Complex Office Tower<br>22nd Floor, Bangkok</div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-label">Position</div>
-                        <div class="contact-value">EEC Gateway<br>(Eastern Economic Corridor)</div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-label">Email</div>
-                        <div class="contact-value"><a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a></div>
-                    </div>
-                    <a href="{{basePath}}demo.html" class="contact-cta">Get in Touch →</a>
                 </div>
             </div>
         </div>
@@ -2315,13 +2521,13 @@
             <h2>Ready to Work with a Team That Understands Manufacturing?</h2>
             <p>See how <span class="dw-years">44</span> years of manufacturing expertise—backed by Foxconn FII—can help you compete on the global stage.</p>
             <div class="about-cta-buttons">
-                <a href="{{basePath}}demo.html" class="dw-btn dw-btn-white">Request a Demo</a>
-                <a href="{{basePath}}partner.html" class="dw-btn dw-btn-outline-white">Become a Partner</a>
+                <a href="{{basePath}}demo.html" class="dw-btn dw-btn-white">Let's Talk</a>
+                <a href="{{basePath}}partner-program.html" class="dw-btn dw-btn-outline-white">Become a Partner</a>
             </div>
             <div class="cta-contact-info">
                 <div class="cta-contact-item">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <span>Bangna Complex Office Tower, 22nd Floor, Bangkok</span>
+                    <span>No. 2/117-118, Bangna Complex Office Tower, 22F, Theparat Rd, Bangna, Bangkok 10260</span>
                 </div>
                 <div class="cta-contact-item">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -2334,23 +2540,10 @@
 
 
     <script>
-    (function() {
-        const dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
-        dropdowns.forEach(function(item) {
-            const menu = item.querySelector('.dw-mega-menu');
-            item.addEventListener('mouseenter', function() {
-                dropdowns.forEach(function(other) { if (other !== item) { other.classList.remove('active'); const m = other.querySelector('.dw-mega-menu'); if (m) m.classList.remove('active'); }});
-                item.classList.add('active'); if (menu) menu.classList.add('active');
-            });
-            item.addEventListener('mouseleave', function() { item.classList.remove('active'); if (menu) menu.classList.remove('active'); });
-        });
-    })();
-
     // Toggle China cities expand/collapse
     function toggleChinaCities() {
         document.getElementById('china-cities').classList.toggle('expanded');
     }
     </script>
-    <script src="{{basePath}}digiwin-dynamic.js"></script>
 </body>
 </html>

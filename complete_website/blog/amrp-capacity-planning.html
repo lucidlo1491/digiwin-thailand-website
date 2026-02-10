@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMRP: Why You Don't Need a Separate APS System - DigiWin Thailand</title>
+    <meta name="description" content="Most ERPs require an expensive separate APS system for capacity planning. DigiWin's AMRP builds capacity planning directly into the ERP — at no extra cost.">
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .blog-category-badge { background: #3798E4; }
+    </style>
+</head>
+<body>
+    <header class="dw-header">
+        <div class="dw-header-inner">
+            <a href="../index.html" class="dw-logo">
+                <div class="dw-logo-mark">
+                    <!-- DigiWin Logo Mark - Stylized D -->
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 8h20c8.837 0 16 7.163 16 16s-7.163 16-16 16H8V8z" fill="#3798E4"/>
+                        <path d="M14 14h12c6.627 0 12 5.373 12 12s-5.373 12-12 12H14V14z" fill="#ffffff"/>
+                        <path d="M14 18h8c5.523 0 10 4.477 10 10s-4.477 10-10 10h-8V18z" fill="#3798E4"/>
+                        <path d="M14 24h4c3.314 0 6 2.686 6 6s-2.686 6-6 6h-4V24z" fill="#ffffff"/>
+                    </svg>
+                </div>
+                <div class="dw-logo-wordmark">
+                    <span class="dw-logo-text-en">Digi<span>Win</span></span>
+                    <span class="dw-logo-text-zh">鼎新數智</span>
+                </div>
+            </a>
+
+            <nav class="dw-nav">
+                <div class="dw-nav-item">
+                    <a href="../index.html" class="dw-nav-link">Home</a>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Products
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Core Systems -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Core Systems</div>
+                                <a href="../products/erp.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3z"/><path d="M3 9h18M9 21V9"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">ERP: T100 & iGP</p>
+                                        <p class="dw-mega-desc">Finance, supply chain, and operations</p>
+                                    </div>
+                                </a>
+                                <a href="../products/mes.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M2 20h20M6 20V10l4-6h4l4 6v10"/><path d="M6 14h12"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">MES: sMES & SFT</p>
+                                        <p class="dw-mega-desc">Production tracking and quality</p>
+                                    </div>
+                                </a>
+                                <a href="../products/wms.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">WMS: sFLS</p>
+                                        <p class="dw-mega-desc">Warehouse and inventory</p>
+                                    </div>
+                                </a>
+                                <a href="../products/aiot.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">AIoT & Smart Factory</p>
+                                        <p class="dw-mega-desc">Machine connectivity and analytics</p>
+                                    </div>
+                                </a>
+                                <a href="../products.html" class="dw-mega-viewall">
+                                    View All Products
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Featured: Manufacturing Suite -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M20 90V50l20-20h40l20 20v40" stroke-linecap="round"/><path d="M35 90V65h20v25M65 90V55h20v35"/><circle cx="60" cy="25" r="8"/><path d="M60 33v12"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">Complete Stack</span>
+                                    <h3 class="dw-mega-featured-title">Manufacturing & Distribution</h3>
+                                    <p class="dw-mega-featured-desc">Tailor-made ERP for manufacturing and distribution companies in Thailand and ASEAN.</p>
+                                    <a href="../products.html" class="dw-mega-featured-cta">
+                                        Explore Solutions
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Industries
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Manufacturing Sectors -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Manufacturing Sectors</div>
+                                <a href="../industries/automotive.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-6l2-4h12l2 4v6h-2M5 17h10"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Automotive Parts</p>
+                                        <p class="dw-mega-desc">JIT delivery and OEM traceability</p>
+                                    </div>
+                                </a>
+                                <a href="../industries/electronics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Electronics Assembly</p>
+                                        <p class="dw-mega-desc">SMT integration and MSD tracking</p>
+                                    </div>
+                                </a>
+                                <a href="../industries/metal-plastics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Metal & Plastics</p>
+                                        <p class="dw-mega-desc">Yield optimization and scrap reduction</p>
+                                    </div>
+                                </a>
+                                <a href="../industries.html" class="dw-mega-viewall">
+                                    View All Industries
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Featured: Industry Expertise -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M20 100V60l15-25h50l15 25v40" stroke-linecap="round"/><rect x="35" y="70" width="20" height="30" rx="2"/><rect x="65" y="60" width="20" height="40" rx="2"/><path d="M45 40h30M60 25v15"/><circle cx="60" cy="20" r="5"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">50,000+ Factories</span>
+                                    <h3 class="dw-mega-featured-title">Industry-Specific Solutions</h3>
+                                    <p class="dw-mega-featured-desc">Pre-configured templates and best practices for your specific manufacturing sector.</p>
+                                    <a href="../industries.html" class="dw-mega-featured-cta">
+                                        Find Your Industry
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Partners
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Why Partner -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Why Partner</div>
+                                <a href="../partner-program/business-model.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">The Evolving Business Model</p>
+                                    </div>
+                                </a>
+                                <a href="../partner-program/economics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Partner Economics</p>
+                                    </div>
+                                </a>
+                                <a href="../partner-program/solutions.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Solution Stack</p>
+                                    </div>
+                                </a>
+                                <a href="../partner-program.html" class="dw-mega-viewall">
+                                    Partner Overview
+                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Column 2: Getting Started -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Getting Started</div>
+                                <a href="../partner-program.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Become a Partner</p>
+                                    </div>
+                                </a>
+                                <a href="../demo.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Schedule a Conversation</p>
+                                    </div>
+                                </a>
+                                <a href="../about.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">About DigiWin</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Featured: Partner Program -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(55,152,228,0.3)"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">For ERP Implementers</span>
+                                    <h3 class="dw-mega-featured-title">Grow Beyond the Man-Day Model</h3>
+                                    <p class="dw-mega-featured-desc">40-50% license margins. 100% service fees. Recurring revenue that compounds.</p>
+                                    <a href="../partner-program.html" class="dw-mega-featured-cta">
+                                        Become a Partner
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Resources
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Learn & Connect</div>
+                                <a href="../news.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">News & Events</p>
+                                        <p class="dw-mega-desc">Seminars, workshops, and factory visits</p>
+                                    </div>
+                                </a>
+                                <a href="../blog.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Insights & Knowledge</p>
+                                        <p class="dw-mega-desc">Technical guides and implementation stories</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Featured: Latest Insight -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(55,152,228,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">Latest Insight</span>
+                                    <h3 class="dw-mega-featured-title">BOI Compliance: 10M THB Saved</h3>
+                                    <p class="dw-mega-featured-desc">How one factory eliminated supplementary taxes through production-order-level reconciliation.</p>
+                                    <a href="../blog/boi-compliance-jin-hai.html" class="dw-mega-featured-cta">
+                                        Read the Story
+                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item">
+                    <a href="../about.html" class="dw-nav-link">About</a>
+                </div>
+            </nav>
+
+            <a href="../demo.html" class="dw-header-cta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;margin-right:8px;vertical-align:middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span style="vertical-align:middle;">Let's Talk</span>
+            </a>
+
+            <button class="dw-menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- Hero -->
+    <section class="blog-hero">
+        <div class="blog-hero-inner">
+            <a href="../blog.html" class="blog-back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to Insights
+            </a>
+            <div class="blog-category-badge">PRODUCTION PLANNING</div>
+            <h1>AMRP: Why You Don't Need a Separate APS System</h1>
+            <div class="blog-meta">
+                <span>8 min read</span>
+                <span class="blog-meta-dot"></span>
+                <span>February 2026</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Body -->
+    <article class="blog-body">
+
+        <!-- Opening -->
+        <p class="fade-in">
+            You bought an ERP for your factory. You set up your Bill of Materials (BOM), configured your production workflows, and trained your team. Then you sit down with your planner to create the production schedule for next month. You tell the system: here are the customer orders, here are the delivery dates, now show me the production plan. The system calculates material requirements, checks inventory, generates purchase orders. Everything looks good on paper. Then your planner looks at the calendar and says: "This won't work. Our CNC line can't handle this volume. We're going to miss half these delivery dates."
+        </p>
+
+        <p class="fade-in">
+            That is when you discover the gap. Your ERP only does MRP — Material Requirements Planning. It assumes you have infinite production capacity. It tells you what materials you need and when, but not whether your production lines can actually execute the plan. The schedule looks perfect until you try to run it on real machines with real constraints. To add capacity planning, your vendor says, you need a separate APS system — Advanced Planning and Scheduling. That is another license, another vendor, another integration project. Oracle works this way. SAP works this way. Most manufacturing ERPs work this way.
+        </p>
+
+        <p class="fade-in">
+            DigiWin's AMRP (Advanced MRP) does not work this way. It builds capacity planning directly into the ERP — at no extra cost, no separate system, no integration complexity. Materials and capacity planned together, in one database, from day one.
+        </p>
+
+        <hr class="blog-divider fade-in">
+
+        <!-- Section: What Standard MRP Misses -->
+        <h2 class="fade-in">What Standard MRP Misses</h2>
+
+        <p class="fade-in">
+            Standard MRP calculates material requirements but assumes unlimited production capacity. It looks at your orders, explodes the BOMs, calculates gross requirements, nets against inventory, and generates planned orders for materials. This is useful — you know what to buy and when. But it tells you nothing about whether your production floor can actually make those goods on time.
+        </p>
+
+        <p class="fade-in">
+            The result is production plans that look correct on paper but are impossible to execute. Your bottleneck machines get overloaded. Some work centers sit idle while others are double-booked. Delivery dates slip because the system scheduled more work than a production line can physically handle. Your planners spend hours — sometimes entire days — manually adjusting the MRP output to fit real capacity constraints.
+        </p>
+
+        <p class="fade-in">
+            Consider a typical scenario. You have three customer orders all due in Week 10. MRP schedules them all for production in Week 9 to allow time for final testing and shipping. But Week 9 already has 120 hours of work scheduled on your CNC line, and the line only has 100 hours of available capacity (after accounting for maintenance downtime and shift constraints). MRP does not see this problem. It generates the plan anyway. Then your production manager crosses out half the work orders and reschedules them by hand, knowing that some deliveries will now be late.
+        </p>
+
+        <div class="blog-pullquote fade-in">
+            MRP assumes infinite capacity. Your production floor does not have infinite capacity. That gap is why your delivery dates keep slipping.
+        </div>
+
+        <hr class="blog-divider fade-in">
+
+        <!-- Section: What AMRP Does Differently -->
+        <h2 class="fade-in">What AMRP Does Differently</h2>
+
+        <p class="fade-in">
+            DigiWin's AMRP integrates material planning and capacity planning in one system. When you schedule a production order, AMRP checks both material availability and production line capacity — simultaneously, in real time, from the same database.
+        </p>
+
+        <p class="fade-in">
+            <strong>Key capabilities:</strong>
+        </p>
+
+        <ul class="fade-in">
+            <li><strong>Backward scheduling from delivery date:</strong> AMRP starts with the customer delivery date and schedules backward, checking at each step whether materials are available and whether the required production line has capacity. If a bottleneck appears, the system flags it immediately — not after your planner discovers it manually.</li>
+            <li><strong>Forward scheduling when backward fails:</strong> If backward scheduling is not feasible (materials will arrive late, or capacity is already committed), AMRP automatically switches to forward scheduling and calculates the earliest realistic delivery date. You know immediately whether you can meet the customer's timeline or need to negotiate.</li>
+            <li><strong>Considers already-committed capacity:</strong> AMRP tracks capacity at the work center level, accounting for already-scheduled production orders. When a new order arrives, the system knows which time slots are still available and which are already blocked. No double-booking.</li>
+            <li><strong>Assembly coordination for JIT material arrival:</strong> For complex assemblies with multiple sub-components, AMRP schedules material arrivals to minimize inventory holding time. Components arrive just in time for assembly, not weeks early.</li>
+            <li><strong>Resource priority settings:</strong> You can configure priority rankings for internal production lines versus OEM outsourcing partners. AMRP schedules internal capacity first, then overflows to external partners only when internal lines are fully loaded.</li>
+            <li><strong>Rush order recalculation:</strong> When a priority order arrives mid-month, AMRP recalculates remaining capacity across all existing orders and reschedules in seconds — not hours of manual replanning.</li>
+        </ul>
+
+        <p class="fade-in">
+            This is not a separate APS system layered on top of the ERP. It is built into the core planning engine. One system. One database. Materials and capacity planned together.
+        </p>
+
+        <div class="blog-data-card fade-in">
+            <div class="blog-data-card-content">
+                <div class="blog-data-inline">
+                    <div>
+                        <div class="blog-data-number">MRP</div>
+                        <div class="blog-data-label">Materials Only<br>(Assumes Infinite Capacity)</div>
+                    </div>
+                    <div style="font-size: 32px; color: rgba(255,255,255,0.4);">→</div>
+                    <div>
+                        <div class="blog-data-number">AMRP</div>
+                        <div class="blog-data-label">Materials + Capacity<br>(Built into DigiWin ERP)</div>
+                    </div>
+                </div>
+                <div class="blog-data-label" style="margin-top: 24px; font-size: 15px; color: rgba(255,255,255,0.9);">No extra license. No separate system. No integration complexity.</div>
+            </div>
+        </div>
+
+        <hr class="blog-divider fade-in">
+
+        <!-- Section: The APS Tax -->
+        <h2 class="fade-in">The APS Tax: What Other Vendors Charge</h2>
+
+        <p class="fade-in">
+            Oracle and SAP require separate APS purchases for capacity-aware planning. These are not small add-ons. Enterprise APS systems can cost as much as the ERP itself — sometimes more, depending on the number of production lines and complexity of scheduling rules. You pay for the APS license, the implementation project, the integration middleware, and the ongoing maintenance of two separate systems that need to stay synchronized.
+        </p>
+
+        <p class="fade-in">
+            And even after you pay for it, you still have integration complexity. The ERP manages orders, inventory, and financials. The APS system manages scheduling. Data flows back and forth between the two. When a rush order arrives, you update the ERP, wait for the data to sync to APS, run the APS optimizer, then push the revised schedule back to the ERP. This takes time — often hours, sometimes longer if the integration has issues. Your planners spend significant effort managing the handoff between systems rather than focusing on production optimization.
+        </p>
+
+        <p class="fade-in">
+            AMRP eliminates this entirely. There is no separate APS license to buy. No integration project. No synchronization delays. Capacity planning is built into the ERP from day one, using the same database, the same user interface, the same workflow your team already knows. When a rush order arrives, you update one system — and the capacity recalculation happens immediately.
+        </p>
+
+        <hr class="blog-divider fade-in">
+
+        <!-- Section: Real-World Impact -->
+        <h2 class="fade-in">Real-World Impact: Rush Orders and Resource Priority</h2>
+
+        <p class="fade-in">
+            <strong>Rush orders:</strong> In most factories, a priority customer order arriving mid-month triggers a day of chaos. The planner pulls up the existing MRP schedule, prints it out, and manually marks which orders can be delayed to make room for the rush job. Then they recalculate material requirements, check with the warehouse, call the production supervisor to confirm feasibility, and finally update the system with the revised plan. This takes hours — and the plan is already outdated by the time it is entered, because other orders have progressed or materials have arrived in the meantime.
+        </p>
+
+        <p class="fade-in">
+            With AMRP, the planner enters the rush order, flags it as priority, and clicks "reschedule." The system recalculates capacity across all existing orders, identifies which work can be deferred without missing critical deadlines, and generates a new schedule that accommodates the rush order — in seconds. The revised schedule accounts for material availability, production line capacity, and delivery date commitments across every order in the system. AMRP can be run multiple times per day for dynamic rescheduling as conditions change. Your planners spend less time updating spreadsheets and more time managing exceptions.
+        </p>
+
+        <p class="fade-in">
+            <strong>Resource priority:</strong> Many factories use a combination of internal production lines and external OEM partners. You want to maximize utilization of your own equipment (you already paid for it), and only overflow to OEM partners when internal capacity is fully booked. But coordinating this manually is complex — you need to know the real-time load on every internal line, compare it against incoming orders, and decide which jobs to send external.
+        </p>
+
+        <p class="fade-in">
+            AMRP lets you configure resource priority rules. You rank your internal production lines first, then list OEM partners in order of preference. When AMRP schedules a production order, it checks internal capacity first. If internal lines have available slots, the work is scheduled there. If internal capacity is fully loaded, AMRP assigns the order to the highest-priority external partner with availability. The system enforces your strategy automatically, without manual intervention.
+        </p>
+
+        <div class="blog-pullquote fade-in">
+            Your production plan is only as good as the capacity behind it. If your ERP ignores capacity, your plan is fiction.
+        </div>
+
+        <hr class="blog-divider fade-in">
+
+        <!-- Section: What This Means for Your Factory -->
+        <h2 class="fade-in">What This Means for Your Factory</h2>
+
+        <p class="fade-in">
+            If you are running standard MRP, you already know the pain. Your planners manually adjust the MRP output every week — or every day — to fit real capacity constraints. Your delivery performance suffers because the system schedules work that cannot physically be completed on time. You have considered buying a separate APS system, but the cost and complexity have kept you from pulling the trigger.
+        </p>
+
+        <p class="fade-in">
+            AMRP changes the calculation. You get capacity planning without the APS tax. No separate license. No integration project. No data synchronization delays. Capacity planning is built into the ERP, using the same database your team already works with. The cost is zero (beyond the standard DigiWin T100 license you are already using). The implementation complexity is zero (it is already there). The value is immediate — production plans that account for real capacity constraints, delivery dates you can actually meet, and planners who spend less time manually correcting the system.
+        </p>
+
+        <p class="fade-in">
+            This is not a future feature. It is not a premium add-on. It is standard functionality in DigiWin T100, available today, included in the base ERP license. If you are planning production for a manufacturing operation with capacity constraints — and every real factory has capacity constraints — AMRP eliminates the gap between your plan and your reality.
+        </p>
+
+    </article>
+
+    <!-- Related Articles -->
+    <section class="blog-related">
+        <div class="blog-related-inner">
+            <h2 class="fade-in">Related Articles</h2>
+            <div class="blog-related-grid">
+                <a href="../blog/lrp-vs-mrp.html" class="blog-related-card fade-in">
+                    <div class="blog-related-card-category">Production Planning</div>
+                    <h3>LRP vs MRP: Which Planning Method Fits Your Factory?</h3>
+                    <span class="blog-related-card-link">
+                        Read article
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+                <a href="../blog/feature-codes.html" class="blog-related-card fade-in">
+                    <div class="blog-related-card-category">Production Planning</div>
+                    <h3>Feature Codes: How to Plan Products That Change Per Customer</h3>
+                    <span class="blog-related-card-link">
+                        Read article
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+                <a href="../blog/shop-floor-scheduling.html" class="blog-related-card fade-in">
+                    <div class="blog-related-card-category">Smart Factory</div>
+                    <h3>Shop Floor Mini-Scheduling: Real-Time Dispatch from AMRP to MES</h3>
+                    <span class="blog-related-card-link">
+                        Read article
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="blog-cta">
+        <div class="blog-cta-inner">
+            <h2 class="fade-in">Ready to Plan with Real Capacity?</h2>
+            <p class="fade-in">See how AMRP eliminates the gap between your production plan and your production reality.</p>
+            <a href="../demo.html" class="blog-cta-btn fade-in">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Let's Talk
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="dw-footer">
+        <div class="dw-footer-inner">
+            <div class="dw-footer-grid">
+                <div class="dw-footer-brand">
+                    <div class="dw-footer-logo">Digi<span>Win</span></div>
+                    <p class="dw-footer-tagline"><span class="dw-years">44</span> years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
+                    <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Products</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../products.html">All Products</a></li>
+                        <li><a href="../products/erp.html">ERP: T100 & iGP</a></li>
+                        <li><a href="../products/mes.html">MES: sMES & SFT</a></li>
+                        <li><a href="../products/wms.html">WMS: sFLS</a></li>
+                        <li><a href="../products/aiot.html">AIoT & Smart Factory</a></li>
+                    </ul>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Industries</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../industries.html">All Industries</a></li>
+                        <li><a href="../industries/automotive.html">Automotive Parts</a></li>
+                        <li><a href="../industries/electronics.html">Electronics Assembly</a></li>
+                        <li><a href="../industries/metal-plastics.html">Metal & Plastics</a></li>
+                    </ul>
+                    <h4 style="margin-top: 24px;">Partners</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../partner-program.html">Partner Program</a></li>
+                        <li><a href="../partner-program/economics.html">Partner Economics</a></li>
+                    </ul>
+                    <h4 style="margin-top: 24px;">Resources</h4>
+                    <ul class="dw-footer-links">
+                        <li><a href="../news.html">News & Events</a></li>
+                        <li><a href="../blog.html">Insights & Knowledge</a></li>
+                    </ul>
+                </div>
+
+                <div class="dw-footer-column">
+                    <h4>Contact</h4>
+                    <div class="dw-footer-contact">
+                        <p>
+                            <strong>DigiWin Thailand</strong><br>
+                            No. 2/117-118, Bangna Complex Office Tower,<br>
+                            22nd Floor, Theparat Road,<br>
+                            Bangna, Bangkok 10260
+                        </p>
+                        <p>
+                            <a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a>
+                        </p>
+                    </div>
+                    <div class="dw-footer-social">
+                        <a href="#" title="LinkedIn">in</a>
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="LINE">L</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dw-footer-bottom">
+                <p class="dw-footer-copyright">© 2026 DigiWin Thailand. All rights reserved.</p>
+                <div class="dw-footer-legal">
+                    <a href="../privacy-policy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Service</a>
+                    <a href="../about.html">About Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../digiwin-components.js"></script>
+    <script src="../digiwin-dynamic.js"></script>
+
+</body>
+</html>

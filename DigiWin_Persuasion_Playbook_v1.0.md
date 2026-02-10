@@ -1,8 +1,8 @@
 # DigiWin Thailand â€” Persuasion Playbook
 
 **Layer 2 Document**
-**Version:** 1.0
-**Last Updated:** February 3, 2026
+**Version:** 1.1
+**Last Updated:** February 9, 2026
 **Purpose:** Voice guide, copywriting patterns, and objection-handling scripts for all website content
 **Audience:** Claude (reference when generating Content Specs)
 
@@ -173,6 +173,56 @@ BOTTOM: "Here's your growth path" (4-stage maturity) + CTA
 - The 4-stage maturity path addresses "but how do I get from here to there?"
 - End with both a high-touch CTA (discovery call) and a self-serve CTA (download brief)
 
+### 3.6 News/Events Page Arc
+
+Arc: Recognition â†’ Interest â†’ Registration
+
+```
+TOP:    "This is where it happens" (visitor sees active, relevant events)
+MIDDLE: "This one's for me" (visitor identifies a relevant event type/topic)
+BOTTOM: "I don't want to miss this" (visitor registers or subscribes)
+```
+
+- Hero: Signal activity and relevance â€” "Where Manufacturing Intelligence Meets Action"
+- Featured event: Urgency through specificity (date, topic, limited seats)
+- Event grid: Color-coded types help self-selection (Seminar, Workshop, Factory Visit, Trade Show)
+- Event series: Monthly campaign progression creates "I should follow this" feeling
+- CTA: Low-friction email subscribe + direct contact option
+
+### 3.7 Blog/Knowledge Base Page Arc
+
+Arc: Curiosity â†’ Authority â†’ Trust â†’ Action
+
+```
+TOP:    "They actually know manufacturing" (category breadth signals expertise)
+MIDDLE: "This goes deeper than marketing fluff" (technical depth earns respect)
+BOTTOM: "I should talk to these people" (authority â†’ trust â†’ conversation)
+```
+
+- Hero: Position as knowledge resource, not sales content â€” "Manufacturing Intelligence, Shared"
+- Featured article: Lead with the strongest proof-backed piece (BOI compliance = first feature)
+- Category filters: Let visitors self-select into their pain area
+- Deep dive library: Signal depth â€” these aren't 500-word SEO pieces
+- CTA: Bridge from learning to conversation â€” "Have a Manufacturing Challenge? Let's Talk"
+
+### 3.8 Blog Article Arc
+
+Arc: Problem Recognition â†’ Technical Depth â†’ Proof â†’ CTA
+
+```
+TOP:    "Yes, I deal with this exact problem" (pain naming in the headline)
+MIDDLE: "They understand the technical reality" (manufacturing-specific depth)
+LOWER:  "And they can prove it works" (case study, data, real outcomes)
+BOTTOM: "I should explore this further" (related articles + soft CTA)
+```
+
+- Headline: Always a problem or question the reader recognizes â€” never a product name
+- Body: Max-width 800px for readability, Lexend headings, Source Sans 3 body at 18px/1.8
+- Pull quotes: Blue left border (#3798E4), used for key insights
+- Data callouts: JetBrains Mono, large numbers, dark background cards
+- Related articles: 3-card grid at bottom to keep readers in the knowledge ecosystem
+
+
 ---
 
 ## 4. Objection-Handling Scripts
@@ -259,6 +309,24 @@ The rule: objection handling is woven into page copy â€” never in a standal
 - **Reframe:** "8 years in Thailand. 50+ Thai staff. 60%+ bilingual. 100+ implementations. Thai-registered company with Thai majority ownership. We don't need to understand the Thai market â€” we're in it."
 - **Prove it:** Stats banner. Team photo. Bangkok office. Thai client logos.
 
+### 4.3 BOI Compliance Objection Script
+
+**Objection 6: "BOI compliance is handled by our accountant"**
+
+- **Where:** 3.1 (ERP), 4.x (Industry pages), Blog (BOI article)
+- **Name it:** "BOI compliance isn't an accounting problem â€” it's a production data problem."
+- **Reframe:** "When the BOI board audits your factory, they compare what you imported against what you produced â€” down to the production order level. If your ERP uses theoretical BOM calculations, the numbers will never match actual consumption. The supplementary tax bill is the gap between theory and reality."
+- **Prove it:** Jin Hai case study: 10M+ THB/year in supplementary taxes â†’ zero after DigiWin's production-order-based reconciliation. "Almost 100% of new manufacturing entrants have BOI certificates. This isn't a nice-to-have â€” it's existential."
+
+**Objection 7: "We already have Kingdee/Yonyou/SAP"**
+
+- **Where:** 3.1 (ERP), Blog (competitive articles)
+- **Name it:** "The question isn't whether your current ERP works. The question is what it can't do."
+- **Reframe:** "Can it handle co-product cost allocation â€” one work order producing multiple outputs with accurate cost distribution? Can it run capacity planning without a separate APS system? Can it show both kilograms and pieces simultaneously? These aren't edge cases in Thai manufacturing â€” they're daily reality."
+- **Prove it:** Feature comparison table (7 weapons). Link to relevant blog articles for technical depth.
+- **Note:** This objection uses Track B rules for competitor naming (acceptable for technical comparison). On Track A pages, use "Unlike other ERPs" framing instead of naming specific competitors.
+
+
 ---
 
 ## 5. Proof Formatting Guidelines
@@ -321,7 +389,7 @@ Rules:
 | 2 (Self-Serve) | Download | "Download Product Guide" | "Download Partner Economics Brief" |
 | 3 (Low-Touch) | Assessment | "Request a Free Assessment" | "See the Revenue Calculator" |
 | 4 (High-Touch) | Conversation | "Talk to Our Team" | "Schedule a Discovery Call" |
-| 5 (Conversion) | Action | "Request a Demo" | "Become a Partner" |
+| 5 (Conversion) | Action | "Let's Talk" | "Become a Partner" |
 
 ### 6.2 CTA Rules
 
@@ -330,7 +398,7 @@ Rules:
 - Never use "Submit" â€” always action language: "Send My Request," "Get My Assessment"
 - Track A CTAs emphasize low risk: "free," "no obligation," "see for yourself"
 - Track B CTAs emphasize exclusivity: "discovery call" (not sales call), "explore the partnership"
-- Shared pages (Home, About Us): always show dual CTAs â€” "Request a Demo" + "Become a Partner"
+- Shared pages (Home, About Us): always show dual CTAs â€” "Let's Talk" + "Become a Partner"
 
 ### 6.3 CTA Visual Standards
 
@@ -383,6 +451,24 @@ Rules:
 - Stats banner: most visually impactful element â€” large numbers, dark background, counter animation
 - "Because of DigiWin" section pivots from company story to visitor benefit
 - Thailand story (Section 7) directly addresses "will they understand Thai market?" â€” must feel authentic
+
+### 7.7 News/Events (6.0) â€” Activity Signals Trust
+
+- Event types convey different value: Seminars (knowledge), Workshops (hands-on), Factory Visits (proof), Trade Shows (industry presence)
+- Color-coding helps instant scanning â€” blue/green/amber/purple for four types
+- "Manufacturing Competitiveness Series" frames events as a coherent campaign, not random occurrences
+- Past events section shows track record â€” "they do this regularly"
+- Never show an empty events page â€” always have at least placeholder content with "Registration Opening Soon"
+
+### 7.8 Blog/Knowledge Base (7.0) â€” Technical Authority
+
+- Articles must earn respect in the first paragraph â€” no marketing fluff opening
+- Every article should reference at least one specific manufacturing scenario the reader recognizes
+- Categories map to pain areas, not product names: "BOI & Compliance" not "T100 Features"
+- Article length: 1,200-2,000 words for authority pieces, 600-800 for quick guides
+- Internal linking: every article should link to at least one related article and one product page
+- Source intelligence: Eddie's presale methodology translates directly to content â€” the 5 universal pain points are the 5 content pillars
+
 
 ---
 
@@ -456,7 +542,7 @@ What DigiWin copy must never do:
 
 1. **Sound generic.** If "SAP" could replace "DigiWin" and the sentence still works â€” rewrite it.
 2. **Lead with features.** Always outcomes first. "See all factories in one dashboard" not "multi-entity consolidated financials module."
-3. **Name competitors.** "Unlike generalist ERPs" not "unlike SAP." Let the reader fill in the name.
+3. **Name competitors on Track A pages.** Track A (factory operators): use "unlike other ERPs" framing â€” let the reader fill in the name. Track B (distributors/partners): naming competitors is acceptable because distributors need specific competitive positioning to evaluate the opportunity (e.g., "SAP ECC end-of-life 2027," "Kingdee can't handle co-products"). Blog technical articles may name competitors when making specific, factual technical comparisons.
 4. **Use fear on factory owners or operators.** Empathize, then solve. "You're not alone" not "you're losing money."
 5. **Make unsubstantiated claims.** Every claim needs a number, a case study, or a structural truth.
 6. **Shout.** Maximum 3 exclamation marks across the entire 20-page site.
@@ -465,12 +551,64 @@ What DigiWin copy must never do:
 
 ---
 
+## 11. Eddie's Presale Methodology â€” Website Application
+
+The presale training transcripts reveal a proven methodology for engaging Thai manufacturers. These principles translate directly to website content:
+
+### 11.1 "Never Open the ERP" â†’ Never Lead with Features
+
+Eddie's #1 rule: never open the ERP system in a demo presentation. The website equivalent: never lead a page or section with feature lists or system screenshots. Instead:
+- Lead with the manufacturing pain point the visitor recognizes
+- Show the outcome (what changes in their daily operation)
+- Only then introduce the capability that makes it possible
+
+### 11.2 Story-Driven Discovery â†’ Case Studies Before Product Pages
+
+Eddie trains presales to tell industry stories that resonate before asking about requirements. Website equivalent:
+- Blog articles and case studies should be entry points, not afterthoughts
+- Every industry page should open with a story a factory owner recognizes
+- Product pages should be destinations visitors arrive at after their pain has been named
+
+### 11.3 Five Universal Pain Points = Five Content Pillars
+
+From presale training, every Thai manufacturer shares these pains:
+1. **Cost Opacity** â€” "Do you know your real production cost per batch?" â†’ Content pillar: Cost Management
+2. **Production Transparency** â€” "Can you see your shop floor right now?" â†’ Content pillar: Smart Factory
+3. **Paper-Based Fraud** â€” "Are your production reports accurate, or just on time?" â†’ Content pillar: Production Planning
+4. **Planning vs. Reality** â€” "How often does your plan survive contact with the shop floor?" â†’ Content pillar: Production Planning
+5. **Delivery Accuracy** â€” "When your customer calls, can you answer in 10 seconds?" â†’ Content pillar: Industry Insights
+
+These map directly to blog categories and product page pain-point sections.
+
+### 11.4 Top-Down Messaging
+
+Eddie: "Always reach the boss first." Website equivalent:
+- Hero copy speaks to owner/MD concerns (competitiveness, margins, growth, succession)
+- Operator-level detail (OEE dashboards, scheduling screens) appears below the fold
+- CTA language assumes the reader is a decision-maker: "Let's Talk" not "Ask Your Manager"
+
+### 11.5 Manufacturing Language Glossary
+
+From presale training, terms the audience uses and expects:
+- **Shop floor** (not "production environment")
+- **Work order** (not "production order" for Thai audience)
+- **Yield rate** (not "efficiency metric")
+- **Scrap** (not "waste" â€” too generic)
+- **Back-flush** (material consumption method â€” expected in MES discussion)
+- **Kanban** (visual scheduling â€” universally understood on Thai factory floors)
+- **OEE** (Overall Equipment Effectiveness â€” the KPI every production manager knows)
+- **BOM explosion** (breaking a finished product into component materials)
+
+---
+
+
 ## Changelog
 
 | Version | Date | Changes |
 |---------|------|---------|
 | 1.0 | Feb 3, 2026 | Initial Playbook â€” dual-audience voice calibration, emotional arcs, objection scripts, proof formatting, CTA hierarchy, content formulas, translation notes, anti-patterns |
+| 1.1 | Feb 9, 2026 | +BOI compliance objection scripts (4.3), +Eddie's presale methodology (11), +News/Blog/Article emotional arcs (3.6-3.8), +page-specific notes for News/Blog (7.7-7.8), updated CTA Level 5 to "Let's Talk" (6.1), clarified competitor naming rule for Track B (10), 7 new manufacturing vocabulary terms (11.5) |
 
 ---
 
-*â€” End of Persuasion Playbook v1.0 â€”*
+*â€” End of Persuasion Playbook v1.1 â€”*

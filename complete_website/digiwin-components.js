@@ -25,31 +25,43 @@
     // Navigation Dropdown Menus
     // ==========================================
     var dropdowns = document.querySelectorAll('.dw-nav-item[data-dropdown]');
+    var isMobile = function() { return window.innerWidth <= 1024; };
+
+    function closeOtherDropdowns(except) {
+        dropdowns.forEach(function(other) {
+            if (other !== except) {
+                other.classList.remove('active');
+                var m = other.querySelector('.dw-mega-menu');
+                if (m) m.classList.remove('active');
+            }
+        });
+    }
+
     dropdowns.forEach(function(item) {
         var menu = item.querySelector('.dw-mega-menu');
         var link = item.querySelector('.dw-nav-link');
 
+        // Desktop: hover open/close
         item.addEventListener('mouseenter', function() {
-            dropdowns.forEach(function(other) {
-                if (other !== item) {
-                    other.classList.remove('active');
-                    var m = other.querySelector('.dw-mega-menu');
-                    if (m) m.classList.remove('active');
-                }
-            });
+            if (isMobile()) return;
+            closeOtherDropdowns(item);
             item.classList.add('active');
             if (menu) menu.classList.add('active');
         });
 
         item.addEventListener('mouseleave', function() {
+            if (isMobile()) return;
             item.classList.remove('active');
             if (menu) menu.classList.remove('active');
         });
 
+        // Both: click to toggle (primary method on mobile)
         if (link) {
             link.addEventListener('click', function(e) {
                 if (menu) {
                     e.preventDefault();
+                    e.stopPropagation();
+                    closeOtherDropdowns(item);
                     item.classList.toggle('active');
                     menu.classList.toggle('active');
                 }
@@ -60,11 +72,7 @@
     // Close dropdowns on outside click
     document.addEventListener('click', function(e) {
         if (!e.target.closest('.dw-nav-item[data-dropdown]')) {
-            dropdowns.forEach(function(item) {
-                item.classList.remove('active');
-                var menu = item.querySelector('.dw-mega-menu');
-                if (menu) menu.classList.remove('active');
-            });
+            closeOtherDropdowns(null);
         }
     });
 
@@ -75,7 +83,18 @@
     var nav = document.querySelector('.dw-nav');
     if (menuToggle && nav) {
         menuToggle.addEventListener('click', function() {
-            nav.classList.toggle('dw-nav--open');
+            var isOpen = nav.classList.toggle('dw-nav--open');
+            menuToggle.classList.toggle('active', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        // Close mobile menu when a non-dropdown link is tapped
+        nav.querySelectorAll('a.dw-nav-link, .dw-mega-item, .dw-mega-viewall').forEach(function(link) {
+            link.addEventListener('click', function() {
+                nav.classList.remove('dw-nav--open');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            });
         });
     }
 

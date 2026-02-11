@@ -9,7 +9,7 @@
     <style>
         /* ===== Hero Section ===== */
         .news-hero {
-            background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+            background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #253B50 100%);
             padding: 140px 24px 100px;
             position: relative;
             overflow: hidden;
@@ -18,8 +18,34 @@
             content: '';
             position: absolute;
             inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
             pointer-events: none;
+            animation: grain 8s steps(10) infinite;
+        }
+        .news-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(55,152,228,0.08), transparent 70%);
+            pointer-events: none;
+        }
+        .news-hero-illustration {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 600px;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .news-hero-illustration svg {
+            position: absolute;
+            bottom: -20px;
+            right: -40px;
+            width: 560px;
+            height: 480px;
+            opacity: 0.12;
         }
         .news-hero-inner {
             max-width: 1200px;
@@ -125,26 +151,109 @@
             box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
         }
         .featured-image {
-            background: linear-gradient(135deg, #253B50, #1a2e40);
+            background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #253B50 100%);
             min-height: 380px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
+            padding: 48px 32px;
+            gap: 24px;
         }
         .featured-image::before {
             content: '';
             position: absolute;
             inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M20 0l20 20-20 20L0 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            animation: grain 8s steps(10) infinite;
         }
-        .featured-image svg {
-            width: 120px;
-            height: 120px;
-            opacity: 0.2;
+        .featured-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 40%, rgba(55,152,228,0.1), transparent 60%);
+            pointer-events: none;
+        }
+        .date-poster {
             position: relative;
             z-index: 1;
+            text-align: center;
+        }
+        .date-poster-month {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            font-weight: 500;
+            color: #3798E4;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .date-poster-day {
+            font-family: 'Lexend', sans-serif;
+            font-size: 80px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .date-poster-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+        .date-poster-divider {
+            width: 48px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3798E4, transparent);
+            margin: 0 auto 20px;
+        }
+        .date-poster-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .date-poster-meta-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+        }
+        .date-poster-meta-item svg {
+            width: 15px;
+            height: 15px;
+            stroke: #3798E4;
+            fill: none;
+            flex-shrink: 0;
+        }
+        .urgency-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #F59E0B;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            border-radius: 50px;
+            position: relative;
+            z-index: 1;
+            margin-top: 4px;
         }
         .featured-content {
             padding: 48px;
@@ -527,7 +636,7 @@
         /* ===== CTA Section ===== */
         .news-cta {
             padding: 100px 24px;
-            background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+            background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #253B50 100%);
             position: relative;
             overflow: hidden;
         }
@@ -535,8 +644,10 @@
             content: '';
             position: absolute;
             inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
             pointer-events: none;
+            animation: grain 8s steps(10) infinite;
         }
         .news-cta-inner {
             max-width: 700px;
@@ -628,11 +739,19 @@
 
         /* ===== Responsive ===== */
         @media (max-width: 1024px) {
+            .news-hero-illustration {
+                width: 400px;
+                opacity: 0.7;
+            }
             .featured-card {
                 grid-template-columns: 1fr;
             }
             .featured-image {
-                min-height: 260px;
+                min-height: 240px;
+                padding: 36px 24px;
+            }
+            .date-poster-day {
+                font-size: 64px;
             }
             .upcoming-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -655,8 +774,14 @@
             .news-hero {
                 padding: 120px 20px 80px;
             }
+            .news-hero-illustration {
+                display: none;
+            }
             .news-hero h1 {
                 font-size: 28px;
+            }
+            .date-poster-day {
+                font-size: 56px;
             }
             .news-hero-stats {
                 grid-template-columns: repeat(3, 1fr);
@@ -935,7 +1060,7 @@
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">For ERP Implementers</span>
                                     <h3 class="dw-mega-featured-title">Grow Beyond the Man-Day Model</h3>
-                                    <p class="dw-mega-featured-desc">40-50% license margins. 100% service fees. Recurring revenue that compounds.</p>
+                                    <p class="dw-mega-featured-desc">30-40% license margins. 100% service fees. Recurring revenue that compounds.</p>
                                     <a href="partner-program.html" class="dw-mega-featured-cta">
                                         Become a Partner
                                         <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1014,25 +1139,72 @@
 
     <!-- Hero Section -->
     <section class="news-hero">
+        <div class="news-hero-illustration">
+            <svg viewBox="0 0 560 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Calendar grid -->
+                <rect x="320" y="60" width="200" height="180" rx="12" stroke="#3798E4" stroke-width="1.2"/>
+                <line x1="320" y1="100" x2="520" y2="100" stroke="#3798E4" stroke-width="0.8"/>
+                <line x1="370" y1="100" x2="370" y2="240" stroke="#3798E4" stroke-width="0.5" stroke-dasharray="4 4"/>
+                <line x1="420" y1="100" x2="420" y2="240" stroke="#3798E4" stroke-width="0.5" stroke-dasharray="4 4"/>
+                <line x1="470" y1="100" x2="470" y2="240" stroke="#3798E4" stroke-width="0.5" stroke-dasharray="4 4"/>
+                <line x1="320" y1="140" x2="520" y2="140" stroke="#3798E4" stroke-width="0.5" stroke-dasharray="4 4"/>
+                <line x1="320" y1="180" x2="520" y2="180" stroke="#3798E4" stroke-width="0.5" stroke-dasharray="4 4"/>
+                <line x1="320" y1="220" x2="520" y2="220" stroke="#3798E4" stroke-width="0.5" stroke-dasharray="4 4"/>
+                <!-- Calendar pins -->
+                <line x1="380" y1="45" x2="380" y2="75" stroke="#3798E4" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="460" y1="45" x2="460" y2="75" stroke="#3798E4" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Highlighted date cell -->
+                <rect x="371" y="141" width="48" height="38" rx="4" fill="#3798E4" fill-opacity="0.15"/>
+                <!-- Connection nodes -->
+                <circle cx="200" cy="160" r="6" stroke="#3798E4" stroke-width="1.2"/>
+                <circle cx="280" cy="120" r="4" stroke="#3798E4" stroke-width="1"/>
+                <circle cx="260" cy="220" r="5" stroke="#3798E4" stroke-width="1"/>
+                <circle cx="160" cy="280" r="4" stroke="#3798E4" stroke-width="1"/>
+                <circle cx="300" cy="300" r="6" stroke="#3798E4" stroke-width="1.2"/>
+                <circle cx="400" cy="320" r="5" stroke="#3798E4" stroke-width="1"/>
+                <!-- Connection lines -->
+                <line x1="206" y1="158" x2="276" y2="122" stroke="#3798E4" stroke-width="0.8" stroke-dasharray="6 4"/>
+                <line x1="198" y1="166" x2="262" y2="216" stroke="#3798E4" stroke-width="0.8" stroke-dasharray="6 4"/>
+                <line x1="264" y1="224" x2="296" y2="296" stroke="#3798E4" stroke-width="0.8" stroke-dasharray="6 4"/>
+                <line x1="306" y1="300" x2="396" y2="320" stroke="#3798E4" stroke-width="0.8" stroke-dasharray="6 4"/>
+                <line x1="164" y1="278" x2="294" y2="302" stroke="#3798E4" stroke-width="0.8" stroke-dasharray="6 4"/>
+                <!-- Clock arc -->
+                <circle cx="140" cy="380" r="40" stroke="#3798E4" stroke-width="1" stroke-dasharray="8 4"/>
+                <line x1="140" y1="380" x2="140" y2="352" stroke="#3798E4" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="140" y1="380" x2="160" y2="390" stroke="#3798E4" stroke-width="1.2" stroke-linecap="round"/>
+                <!-- Small tick marks on clock -->
+                <line x1="140" y1="342" x2="140" y2="346" stroke="#3798E4" stroke-width="0.8"/>
+                <line x1="178" y1="380" x2="174" y2="380" stroke="#3798E4" stroke-width="0.8"/>
+                <line x1="140" y1="418" x2="140" y2="414" stroke="#3798E4" stroke-width="0.8"/>
+                <line x1="102" y1="380" x2="106" y2="380" stroke="#3798E4" stroke-width="0.8"/>
+                <!-- Scattered dots for texture -->
+                <circle cx="450" cy="380" r="2" fill="#3798E4" fill-opacity="0.3"/>
+                <circle cx="480" cy="400" r="1.5" fill="#3798E4" fill-opacity="0.2"/>
+                <circle cx="350" cy="420" r="2" fill="#3798E4" fill-opacity="0.25"/>
+                <circle cx="240" cy="350" r="1.5" fill="#3798E4" fill-opacity="0.2"/>
+                <circle cx="100" cy="100" r="2" fill="#3798E4" fill-opacity="0.2"/>
+                <circle cx="140" cy="140" r="1.5" fill="#3798E4" fill-opacity="0.15"/>
+            </svg>
+        </div>
         <div class="news-hero-inner">
             <div class="news-hero-badge">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 News & Events
             </div>
             <h1>Where Manufacturing Intelligence <span>Meets Action</span></h1>
-            <p class="news-hero-subtitle">Seminars, workshops, factory visits, and trade shows -- where Thai manufacturers discover what's possible.</p>
+            <p class="news-hero-subtitle">Industry workshops, compliance seminars, factory visits, and trade exhibitions designed for Thai manufacturers ready to transform their operations.</p>
             <div class="news-hero-stats">
                 <div class="news-hero-stat">
                     <div class="news-hero-stat-value">4+</div>
-                    <div class="news-hero-stat-label">Monthly Events</div>
+                    <div class="news-hero-stat-label">Events per Quarter</div>
                 </div>
                 <div class="news-hero-stat">
-                    <div class="news-hero-stat-value">12+</div>
-                    <div class="news-hero-stat-label">Industries Covered</div>
+                    <div class="news-hero-stat-value">100+</div>
+                    <div class="news-hero-stat-label">Thai Factories Served</div>
                 </div>
                 <div class="news-hero-stat">
-                    <div class="news-hero-stat-value">20+</div>
-                    <div class="news-hero-stat-label">Expert Speakers</div>
+                    <div class="news-hero-stat-value">Free</div>
+                    <div class="news-hero-stat-label">Most Events</div>
                 </div>
             </div>
         </div>
@@ -1044,35 +1216,41 @@
             <span class="featured-label">Featured Event</span>
             <div class="featured-card">
                 <div class="featured-image">
-                    <svg viewBox="0 0 200 200" fill="none" stroke="#3798E4" stroke-width="1.5">
-                        <rect x="50" y="30" width="100" height="100" rx="8"/>
-                        <line x1="50" y1="60" x2="150" y2="60"/>
-                        <line x1="80" y1="30" x2="80" y2="60"/>
-                        <line x1="120" y1="30" x2="120" y2="60"/>
-                        <rect x="65" y="75" width="20" height="15" rx="2"/>
-                        <rect x="90" y="75" width="20" height="15" rx="2"/>
-                        <rect x="115" y="75" width="20" height="15" rx="2"/>
-                        <rect x="65" y="100" width="20" height="15" rx="2"/>
-                        <rect x="90" y="100" width="20" height="15" rx="2"/>
-                        <rect x="115" y="100" width="20" height="15" rx="2"/>
-                        <circle cx="100" cy="160" r="20" stroke-dasharray="4 4"/>
-                        <path d="M92 160l5 5 11-11"/>
-                    </svg>
+                    <div class="date-poster">
+                        <div class="date-poster-month">Mar</div>
+                        <div class="date-poster-day">15</div>
+                        <div class="date-poster-year">2026</div>
+                        <div class="date-poster-divider"></div>
+                    </div>
+                    <div class="date-poster-meta">
+                        <div class="date-poster-meta-item">
+                            <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            09:00 – 16:00
+                        </div>
+                        <div class="date-poster-meta-item">
+                            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Bangkok, Thailand
+                        </div>
+                    </div>
+                    <span class="urgency-badge">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v-2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                        Limited to 30 Participants
+                    </span>
                 </div>
                 <div class="featured-content">
-                    <span class="event-type-badge seminar">Seminar</span>
-                    <h3>BOI Compliance Workshop: How to Eliminate Supplementary Taxes</h3>
+                    <span class="event-type-badge workshop">Workshop</span>
+                    <h3>BOI Compliance Workshop: Production-Level Reconciliation That Passes Every Audit</h3>
                     <div class="event-meta">
                         <div class="event-meta-item">
                             <svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                            March 15, 2026 | 9:00 AM -- 4:00 PM
+                            March 15, 2026 | 09:00 – 16:00
                         </div>
                         <div class="event-meta-item">
                             <svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                             Bangkok, Thailand
                         </div>
                     </div>
-                    <p>Learn how Thai manufacturers are using production-level data reconciliation to eliminate supplementary taxes and achieve full BOI compliance. Featuring real case studies from factories that saved millions in annual tax exposure.</p>
+                    <p>Learn how production-order-level material tracking eliminates BOI supplementary taxes. Featuring the Jin Hai case study: from 10M THB/year to zero.</p>
                     <a href="demo.html" class="event-cta">Register Now
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </a>
@@ -1257,12 +1435,12 @@
     <section class="news-cta">
         <div class="news-cta-inner fade-in-section">
             <h2>Don't Miss the Next Event</h2>
-            <p>Get notified about upcoming seminars, workshops, and factory visits in Thailand.</p>
+            <p>Join 500+ Thai manufacturing professionals who stay informed about industry trends, compliance updates, and technology opportunities.</p>
             <form class="subscribe-form" onsubmit="event.preventDefault();">
                 <input type="email" class="subscribe-input" placeholder="Enter your email address" required>
                 <button type="submit" class="subscribe-btn">Subscribe</button>
             </form>
-            <a href="demo.html" class="cta-secondary-link">Or talk to us directly <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <a href="demo.html" class="cta-secondary-link">Or Let's Talk Directly <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
     </section>
 

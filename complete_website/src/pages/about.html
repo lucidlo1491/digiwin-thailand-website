@@ -564,7 +564,7 @@
         }
         .asia-map-svg {
             width: 100%;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             display: block;
             position: relative;
@@ -804,24 +804,14 @@
         .mission-image {
             width: 100%;
             height: 400px;
-            background: linear-gradient(135deg, #253B50, #1a2e40);
             border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
             position: relative;
         }
-        .mission-image::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-        .mission-image svg {
-            width: 200px;
-            height: 200px;
-            opacity: 0.3;
+        .mission-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Stats Banner Section */
@@ -944,28 +934,14 @@
         .outcomes-image {
             width: 100%;
             height: 500px;
-            background: linear-gradient(135deg, #253B50, #1a2e40);
             border-radius: 24px;
             overflow: hidden;
             position: relative;
         }
-        .outcomes-image::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M20 0l20 20-20 20L0 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-        .outcomes-image-inner {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .outcomes-image-inner svg {
-            width: 180px;
-            height: 180px;
-            opacity: 0.2;
+        .outcomes-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .outcomes-content h2 {
             font-family: 'Lexend', sans-serif;
@@ -1626,6 +1602,74 @@
             text-decoration: underline;
         }
 
+        /* Mobile Map Summary */
+        .asia-map-mobile {
+            display: none;
+            background: linear-gradient(135deg, #253B50, #1a2e40);
+            border-radius: 20px;
+            padding: 32px 24px;
+            margin-bottom: 32px;
+        }
+        .mobile-map-corridor {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .corridor-step {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 16px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .corridor-step.hq {
+            border-color: rgba(55,152,228,0.3);
+            background: rgba(55,152,228,0.08);
+        }
+        .corridor-step.featured {
+            border-color: rgba(239,68,68,0.4);
+            background: rgba(239,68,68,0.1);
+        }
+        .corridor-flag {
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+        .corridor-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .corridor-info strong {
+            font-family: 'Lexend', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+        }
+        .corridor-info span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+        }
+        .corridor-step.featured .corridor-info span {
+            color: rgba(239,68,68,0.9);
+            font-weight: 600;
+        }
+        .corridor-arrow {
+            text-align: center;
+            color: rgba(255,255,255,0.25);
+            font-size: 18px;
+            padding: 4px 0;
+            transform: rotate(90deg);
+        }
+        .mobile-map-subtitle {
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .about-hero-inner, .story-grid, .thailand-content, .mission-inner, .outcomes-inner {
@@ -1690,6 +1734,15 @@
             .mission-content h2, .outcomes-content h2 {
                 font-size: 28px;
             }
+            .asia-map-visual {
+                display: none;
+            }
+            .asia-map-mobile {
+                display: block;
+            }
+            .region-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -1745,13 +1798,7 @@
             </div>
             <div class="mission-visual">
                 <div class="mission-image">
-                    <svg viewBox="0 0 200 200" fill="none" stroke="#3798E4" stroke-width="1">
-                        <circle cx="100" cy="100" r="80" stroke-dasharray="4 4"/>
-                        <circle cx="100" cy="100" r="60"/>
-                        <circle cx="100" cy="100" r="40" stroke-dasharray="8 4"/>
-                        <path d="M100 20v160M20 100h160" stroke-opacity="0.5"/>
-                        <circle cx="100" cy="100" r="8" fill="#3798E4"/>
-                    </svg>
+                    <img src="{{basePath}}images/about-mission.jpg" alt="Smart factory floor with digital manufacturing technology" loading="lazy">
                 </div>
             </div>
         </div>
@@ -1964,16 +2011,7 @@
         <div class="outcomes-inner">
             <div class="outcomes-visual">
                 <div class="outcomes-image">
-                    <div class="outcomes-image-inner">
-                        <svg viewBox="0 0 200 200" fill="none" stroke="#3798E4" stroke-width="1.5">
-                            <rect x="40" y="60" width="120" height="80" rx="4"/>
-                            <path d="M40 80h120M70 60v80M130 60v80"/>
-                            <circle cx="55" cy="100" r="8"/>
-                            <circle cx="100" cy="100" r="8"/>
-                            <circle cx="145" cy="100" r="8"/>
-                            <path d="M55 108v20M100 108v20M145 108v20" stroke-dasharray="3 2"/>
-                        </svg>
-                    </div>
+                    <img src="{{basePath}}images/about-outcomes.jpg" alt="Team collaborating in modern manufacturing workspace" loading="lazy">
                 </div>
             </div>
             <div class="outcomes-content">
@@ -2130,7 +2168,7 @@
 
             <!-- Asia Map Visual - Correct Proportions from Natural Earth Data -->
             <div class="asia-map-visual">
-                <svg class="asia-map-svg" viewBox="-450 -200 1300 1200" fill="none" preserveAspectRatio="xMidYMid meet">
+                <svg class="asia-map-svg" viewBox="0 0 1000 800" fill="none" preserveAspectRatio="xMidYMid meet">
                     <defs>
                         <filter id="glow">
                             <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
@@ -2138,110 +2176,256 @@
                         </filter>
                     </defs>
 
-                    <!-- China - Real boundaries with correct proportions -->
-                    <path d="M297 573 L296 574 L291 584 L289 583 L290 592 L279 601 L273 601 L272 605 L250 598 L249 581 L264 571 L261 571 L263 567 L278 567 L282 563 L288 566 L287 563 L292 566 L293 561 L299 565 L301 573 L297 573 Z M178 489 L169 493 L165 501 L152 502 L149 508 L142 501 L139 506 L135 502 L129 510 L117 502 L112 510 L101 508 L97 514 L103 528 L102 539 L91 538 L87 525 L78 531 L68 532 L63 518 L46 516 L49 503 L54 499 L40 493 L36 475 L40 471 L11 476 L16 469 L11 464 L11 457 L16 455 L15 450 L24 438 L28 439 L36 432 L33 427 L37 425 L38 415 L36 393 L30 391 L28 394 L24 381 L14 372 L7 379 L-14 375 L-9 368 L-12 361 L-17 363 L-14 355 L-27 354 L-35 361 L-51 354 L-66 369 L-79 370 L-81 376 L-93 381 L-92 386 L-108 390 L-122 382 L-127 385 L-140 382 L-137 379 L-145 376 L-159 381 L-172 395 L-172 399 L-177 397 L-175 384 L-180 382 L-190 387 L-206 388 L-221 382 L-227 386 L-232 380 L-236 387 L-242 376 L-255 377 L-254 371 L-269 367 L-277 356 L-289 357 L-296 347 L-318 337 L-320 331 L-335 330 L-341 338 L-343 333 L-360 326 L-361 321 L-377 316 L-383 306 L-391 309 L-391 294 L-399 281 L-391 279 L-387 286 L-372 277 L-379 271 L-376 265 L-389 261 L-391 247 L-385 240 L-369 239 L-358 214 L-330 220 L-321 219 L-313 210 L-304 210 L-297 217 L-275 217 L-254 209 L-237 209 L-226 198 L-187 193 L-157 201 L-151 201 L-150 197 L-126 202 L-128 192 L-135 186 L-122 178 L-127 170 L-141 163 L-147 148 L-85 132 L-91 116 L-87 102 L-73 100 L-52 77 L-24 71 L-20 67 L-20 55 L-14 51 L97 56 L108 64 L143 73 L161 71 L161 76 L171 77 L209 61 L268 58 L287 50 L299 38 L320 29 L309 14 L321 -2 L356 6 L376 -9 L400 -10 L411 -16 L419 -29 L436 -31 L437 -35 L468 -40 L490 -37 L486 -49 L462 -67 L445 -68 L436 -60 L425 -65 L405 -61 L397 -71 L403 -73 L403 -80 L422 -109 L447 -102 L478 -115 L479 -121 L474 -122 L495 -150 L510 -161 L506 -166 L508 -170 L495 -171 L494 -175 L511 -187 L528 -186 L531 -181 L518 -171 L532 -164 L540 -169 L552 -164 L551 -152 L559 -143 L570 -140 L596 -144 L603 -149 L610 -147 L623 -135 L606 -115 L605 -95 L596 -93 L590 -71 L584 -80 L544 -53 L559 -41 L570 -42 L566 -36 L557 -36 L557 -32 L561 -28 L578 -29 L579 -17 L587 -10 L615 -12 L620 -5 L642 -3 L644 9 L655 10 L653 13 L660 21 L672 11 L683 33 L714 21 L716 30 L735 37 L731 47 L716 51 L719 54 L719 56 L705 45 L701 58 L693 58 L684 67 L665 68 L671 77 L667 82 L646 79 L641 72 L636 74 L622 93 L598 102 L581 117 L571 115 L550 123 L533 137 L528 136 L529 139 L518 142 L516 138 L529 134 L527 130 L534 126 L519 124 L526 121 L524 117 L542 102 L533 94 L533 90 L530 94 L514 94 L503 108 L483 115 L476 123 L477 127 L470 133 L444 133 L440 144 L444 150 L452 155 L470 156 L477 165 L472 164 L471 169 L475 177 L488 177 L497 165 L509 162 L527 171 L538 168 L540 171 L550 172 L543 185 L534 181 L528 187 L509 189 L514 191 L507 196 L508 200 L500 202 L499 197 L495 198 L499 204 L485 213 L476 226 L476 232 L498 241 L512 271 L511 278 L523 285 L524 291 L534 300 L520 296 L514 298 L506 292 L496 295 L489 287 L485 286 L484 289 L493 295 L498 296 L503 293 L509 294 L509 298 L530 310 L535 318 L515 326 L511 332 L505 330 L500 333 L496 334 L501 333 L506 330 L506 336 L510 337 L507 336 L520 331 L530 340 L534 341 L539 341 L524 350 L535 348 L534 357 L531 358 L525 362 L528 367 L517 365 L525 369 L528 378 L521 381 L518 375 L514 384 L505 381 L511 387 L506 389 L504 402 L497 400 L502 403 L494 409 L496 415 L489 417 L483 412 L488 416 L486 422 L485 423 L481 430 L478 430 L477 428 L476 427 L473 426 L478 430 L486 429 L481 436 L485 444 L478 438 L474 442 L479 446 L474 449 L469 446 L472 453 L462 454 L466 457 L463 462 L455 462 L453 468 L445 476 L443 473 L441 480 L437 475 L434 483 L427 482 L424 489 L418 487 L424 492 L418 492 L418 498 L403 503 L401 498 L394 499 L398 504 L391 502 L383 502 L383 507 L381 501 L375 504 L375 509 L373 506 L362 509 L354 497 L361 494 L352 495 L356 506 L353 516 L346 506 L351 515 L346 519 L341 261 L335 265 L333 263 L323 265 L315 259 L313 258 L315 260 L309 260 L317 264 L315 268 L308 264 L313 268 L308 270 L303 271 L296 272 L292 269 L290 273 L282 271 L284 272 L278 272 L277 275 L265 275 L253 278 L247 282 L255 286 L249 288 L242 288 L237 281 L243 275 L235 272 L234 275 L226 276 L215 270 L213 274 L210 273 L203 276 L199 273 L190 274 L176 270 L173 265 L179 262 L160 260 L178 489 Z"
-                          fill="rgba(55,152,228,0.12)" stroke="rgba(55,152,228,0.35)" stroke-width="1"/>
+                    <!-- ====== COUNTRY BOUNDARIES (Natural Earth 110m) ====== -->
+
+                    <!-- Mongolia -->
+                    <path d="M217 107L231 104L256 88L276 80L288 86L302 86L311 94L324 95L343 99L356 87L351 76L365 57L380 65L392 67L408 72L410 85L429 93L442 90L458 87L472 90L485 98L493 107L505 107L522 110L534 105L552 103L571 90L579 92L586 98L602 96L596 110L586 127L590 134L597 132L611 134L621 128L632 134L644 145L642 151L632 150L612 152L603 156L593 167L573 174L560 182L546 179L538 178L531 188L536 194L538 199L528 205L519 213L503 219L483 219L462 224L446 233L440 228L424 228L404 219L391 216L374 218L346 215L331 215L323 206L317 191L309 190L293 180L275 177L259 175L254 167L260 148L250 135L231 128L220 119L217 107Z"
+                          fill="rgba(100,116,139,0.05)" stroke="rgba(100,116,139,0.15)" stroke-width="0.5"/>
+
+                    <!-- North Korea -->
+                    <path d="M790 223L790 223L790 223L790 223Z M789 220L789 220L790 223L785 222L780 227L776 233L776 244L769 247L767 250L762 254L753 256L747 261L747 267L745 269L750 271L758 277L756 281L750 282L741 283L736 289L730 289L729 290L723 287L721 290L717 291L717 288L713 287L709 285L713 278L716 277L715 274L718 266L718 264L710 262L704 258L714 248L729 240L738 229L745 234L756 235L754 227L775 220L780 211L789 220Z"
+                          fill="rgba(100,116,139,0.08)" stroke="rgba(100,116,139,0.2)" stroke-width="0.5"/>
+
+                    <!-- South Korea -->
+                    <path d="M729 290L730 289L736 289L741 283L750 282L756 281L758 277L770 295L773 304L773 320L768 328L756 331L745 336L733 338L732 330L734 319L728 305L738 302L729 290Z"
+                          fill="rgba(100,116,139,0.08)" stroke="rgba(100,116,139,0.2)" stroke-width="0.5"/>
+
+                    <!-- Japan -->
+                    <path d="M938 269L926 284L926 299L921 310L924 317L917 327L900 334L876 335L857 350L848 345L848 335L825 338L809 344L793 345L807 355L798 378L789 383L783 378L786 366L778 362L772 353L785 348L792 340L805 333L815 323L841 319L856 322L870 296L879 303L898 289L906 283L914 265L912 248L917 239L932 236L939 257L938 269Z M975 196L984 189L987 207L967 211L956 227L935 216L928 233L913 233L911 218L917 206L932 205L936 183L940 170L955 187L965 192L975 196Z M812 350L819 342L827 344L832 338L842 341L844 346L836 354L831 350L824 353L820 361L812 357L812 350Z"
+                          fill="rgba(100,116,139,0.08)" stroke="rgba(100,116,139,0.2)" stroke-width="0.5"/>
+
+                    <!-- China -->
+                    <path d="M506 545L495 542L495 531L502 526L516 522L524 522L527 527L521 532L518 539L506 545Z M117 221L116 212L125 208L113 181L139 174L146 170L156 141L182 146L190 139L190 121L201 120L211 108L217 107L220 119L231 128L250 135L260 148L254 167L259 175L275 177L293 180L309 190L317 191L323 206L331 215L346 215L374 218L391 216L404 219L424 228L440 228L446 233L462 224L483 219L503 219L519 213L528 205L538 199L536 194L531 188L538 178L546 179L560 182L573 174L593 167L603 156L612 152L632 150L642 151L644 145L632 134L621 128L611 134L597 132L590 134L586 127L596 110L602 96L618 103L637 92L637 84L649 65L657 59L656 48L649 44L660 34L677 31L694 30L714 36L726 43L734 62L739 70L744 81L749 99L772 104L788 117L793 133L813 133L825 126L847 121L840 136L835 143L830 161L821 177L805 174L794 180L797 193L795 212L788 213L789 220L780 211L775 220L754 227L756 235L745 234L738 229L729 240L714 248L704 258L685 262L675 269L661 273L668 266L665 261L676 251L669 243L657 248L642 258L634 268L621 269L614 276L621 285L632 288L632 294L643 299L658 288L669 294L678 294L680 302L661 306L655 313L642 321L635 330L650 338L655 352L663 364L672 374L672 384L664 388L667 395L675 399L673 410L669 420L662 421L652 435L641 452L629 467L610 479L592 489L577 491L569 496L564 492L557 498L538 504L524 506L519 519L512 520L508 511L512 506L494 502L487 504L474 501L468 496L470 489L457 487L451 482L440 489L427 490L416 490L409 493L402 495L404 509L397 509L396 506L395 501L386 504L380 502L370 497L374 487L365 485L362 473L348 475L350 460L362 450L363 439L362 429L357 426L352 419L344 420L330 418L334 412L328 404L319 410L308 406L292 415L280 424L269 426L263 423L256 422L247 419L240 423L231 432L230 422L222 425L206 423L191 420L180 415L170 412L165 406L158 404L144 395L134 391L128 395L110 385L97 377L93 362L102 364L103 357L97 350L99 338L84 322L63 316L59 306L49 299L46 295L44 286L45 281L37 277L32 279L29 265L33 262L31 258L44 251L53 248L67 250L72 241L89 239L94 233L115 225L117 221Z"
+                          fill="rgba(55,152,228,0.15)" stroke="rgba(55,152,228,0.4)" stroke-width="1.2"/>
 
                     <!-- Taiwan -->
-                    <path d="M511 522 L508 521 L506 513 L500 508 L496 496 L494 496 L496 482 L514 453 L519 449 L526 445 L536 452 L532 455 L533 461 L527 473 L523 494 L512 511 L511 522 Z"
-                          fill="rgba(55,152,228,0.15)" stroke="rgba(55,152,228,0.4)" stroke-width="1.5"/>
+                    <path d="M670 469L662 489L657 499L650 489L648 480L656 467L667 458L673 462L670 469Z"
+                          fill="rgba(55,152,228,0.18)" stroke="rgba(55,152,228,0.5)" stroke-width="1.5"/>
+
+                    <!-- Myanmar -->
+                    <path d="M382 518L374 521L366 526L357 527L351 540L345 542L351 553L360 562L365 569L360 580L356 582L359 588L368 597L369 604L369 609L374 620L367 631L361 643L359 634L364 625L359 618L360 606L355 600L350 585L348 570L342 560L333 566L318 575L311 574L303 571L307 556L304 545L294 531L296 527L288 525L278 515L277 505L282 507L282 498L289 495L287 490L290 486L291 473L301 476L307 466L308 459L315 449L315 441L332 433L342 435L341 427L345 425L344 420L352 419L357 426L362 429L363 439L362 450L350 460L348 475L362 473L365 485L374 487L370 497L380 502L386 504L395 501L396 506L384 514L382 518Z"
+                          fill="rgba(100,116,139,0.08)" stroke="rgba(100,116,139,0.2)" stroke-width="0.5"/>
+
+                    <!-- Laos -->
+                    <path d="M478 593L467 589L461 597L450 592L454 587L455 577L444 566L443 555L433 545L423 544L420 548L412 548L408 546L394 554L394 543L397 530L388 529L387 522L382 518L384 514L396 506L397 509L404 509L402 495L409 493L417 503L423 514L439 514L444 525L436 528L432 532L448 540L459 554L467 564L478 573L481 581L478 593Z"
+                          fill="rgba(100,116,139,0.08)" stroke="rgba(100,116,139,0.2)" stroke-width="0.5"/>
 
                     <!-- Thailand (highlighted) -->
-                    <path d="M43 840 L44 837 L38 835 L36 827 L31 828 L31 832 L27 831 L26 819 L30 812 L28 808 L33 800 L38 775 L47 765 L56 749 L52 732 L45 722 L47 713 L45 703 L33 692 L25 675 L27 671 L33 670 L33 654 L39 652 L41 647 L39 644 L36 648 L31 632 L16 617 L14 603 L10 603 L8 597 L16 597 L14 589 L17 585 L16 578 L22 569 L27 572 L41 570 L44 562 L54 561 L52 556 L57 558 L63 555 L67 559 L72 556 L76 561 L73 570 L74 575 L91 575 L89 579 L93 587 L86 600 L89 603 L89 609 L83 619 L89 622 L109 605 L122 614 L129 610 L135 604 L150 603 L156 613 L167 624 L166 643 L172 652 L180 655 L185 663 L181 675 L184 678 L182 687 L174 695 L167 690 L148 692 L127 696 L120 709 L114 710 L118 730 L123 735 L127 751 L120 740 L114 741 L111 736 L109 732 L101 729 L95 732 L83 731 L86 712 L77 709 L70 711 L63 716 L67 721 L63 731 L65 741 L57 756 L54 771 L48 778 L46 795 L50 804 L51 809 L61 806 L64 822 L67 827 L77 854 L73 852 L70 846 L68 847 L74 855 L86 861 L93 861 L98 862 L109 875 L105 884 L96 883 L88 889 L85 885 L87 875 L82 875 L73 869 L68 865 L67 871 L58 861 L55 854 L51 851 L49 843 L43 840 Z"
+                    <path d="M450 592L437 590L420 593L411 602L414 617L402 611L391 611L393 602L381 602L380 615L373 632L369 643L370 651L378 651L384 662L386 672L394 678L402 680L409 686L404 690L395 692L394 686L383 681L381 683L376 679L374 673L367 666L360 661L358 668L355 661L357 654L361 643L367 631L374 620L369 609L369 604L368 597L359 588L356 582L360 580L365 569L360 562L351 553L345 542L351 540L357 527L366 526L374 521L382 518L387 522L388 529L397 530L394 543L394 554L408 546L412 548L420 548L423 544L433 545L443 555L444 566L455 577L454 587L450 592Z"
                           fill="rgba(239,68,68,0.15)" stroke="rgba(239,68,68,0.5)" stroke-width="1.5"/>
 
+                    <!-- Cambodia -->
+                    <path d="M414 617L411 602L420 593L437 590L450 592L461 597L467 589L478 593L482 601L480 615L457 624L463 631L449 632L438 636L427 635L421 629L414 617Z"
+                          fill="rgba(100,116,139,0.08)" stroke="rgba(100,116,139,0.2)" stroke-width="0.5"/>
+
                     <!-- Vietnam -->
-                    <path d="M168 823 L165 822 L171 819 L167 817 L168 796 L174 792 L167 785 L163 787 L160 781 L168 778 L173 774 L178 772 L187 767 L197 773 L196 769 L199 768 L191 763 L188 754 L193 750 L202 753 L201 746 L208 746 L218 739 L225 738 L224 722 L227 711 L221 697 L226 685 L224 677 L227 676 L217 660 L224 653 L214 648 L207 645 L204 633 L187 617 L181 606 L175 603 L174 594 L165 592 L147 580 L152 576 L150 572 L163 573 L171 565 L169 561 L158 555 L163 550 L151 543 L143 550 L131 545 L124 536 L127 525 L121 527 L120 522 L110 510 L117 502 L129 510 L135 502 L139 506 L149 508 L157 504 L165 501 L169 493 L178 489 L190 499 L198 500 L210 501 L204 510 L207 520 L214 521 L222 529 L231 527 L227 535 L222 541 L215 541 L211 545 L202 541 L209 543 L205 550 L205 559 L192 566 L188 574 L189 581 L185 587 L195 604 L200 608 L204 616 L217 630 L228 642 L237 647 L240 650 L249 667 L252 670 L256 672 L264 703 L262 708 L264 712 L267 730 L264 737 L263 748 L262 751 L260 755 L258 760 L220 782 L214 780 L212 776 L209 779 L210 784 L200 783 L210 787 L206 791 L203 790 L208 793 L195 785 L205 796 L201 801 L189 790 L197 801 L183 810 L177 818 L168 823 Z"
-                          fill="rgba(100,116,139,0.2)" stroke="rgba(100,116,139,0.35)" stroke-width="1"/>
+                    <path d="M438 636L449 632L463 631L457 624L480 615L482 601L478 593L481 581L478 573L467 564L459 554L448 540L432 532L436 528L444 525L439 514L423 514L417 503L409 493L416 490L427 490L440 489L451 482L457 487L470 489L468 496L474 501L487 504L470 515L458 526L455 535L466 548L478 563L490 571L498 580L504 602L503 623L492 630L476 638L465 648L449 658L444 651L448 643L438 636Z"
+                          fill="rgba(100,116,139,0.2)" stroke="rgba(100,116,139,0.4)" stroke-width="1"/>
 
                     <!-- Malaysia -->
-                    <path d="M107 962 L92 952 L94 949 L92 942 L82 931 L79 926 L78 922 L79 911 L72 901 L74 897 L72 881 L67 871 L68 865 L72 869 L80 870 L82 875 L87 875 L85 885 L88 889 L103 887 L109 875 L114 877 L131 895 L138 908 L139 919 L136 932 L139 937 L138 949 L149 963 L156 985 L152 985 L151 982 L150 984 L144 984 L140 988 L136 982 L107 962 Z"
-                          fill="rgba(100,116,139,0.15)" stroke="rgba(100,116,139,0.3)" stroke-width="1"/>
+                    <path d="M381 683L383 681L394 686L395 692L404 690L409 686L412 687L419 694L425 701L426 709L424 714L426 718L427 725L431 728L437 738L436 742L427 743L414 735L399 726L397 720L389 712L387 702L383 696L384 688L381 683Z M618 710L607 708L592 708L587 721L582 725L575 741L564 743L551 740L545 741L537 747L529 746L520 748L511 742L509 734L519 738L529 736L532 726L537 724L553 722L563 713L569 705L575 711L578 707L585 708L585 700L586 695L596 687L603 678L608 678L615 683L616 688L625 692L636 695L635 700L626 700L628 706L618 710Z"
+                          fill="rgba(100,116,139,0.15)" stroke="rgba(100,116,139,0.35)" stroke-width="1"/>
+
+                    <!-- Indonesia -->
+                    <path d="M927 787L927 824L927 862L915 852L902 850L898 853L882 854L887 844L896 841L892 829L886 819L860 809L849 808L829 798L825 803L820 804L817 800L817 795L807 789L821 785L830 785L829 782L810 782L804 776L793 774L787 768L805 765L812 761L833 766L835 770L839 789L853 796L864 784L879 777L891 777L902 781L912 785L927 787Z M713 859L714 862L715 865L706 874L694 876L693 875L694 871L700 864L713 859Z M836 836L835 828L837 823L840 820L843 823L843 828L836 836Z M618 710L611 720L621 731L618 736L633 747L617 748L613 756L614 766L601 774L600 786L595 803L593 799L578 804L573 797L563 796L557 793L541 797L536 791L527 792L516 791L514 775L508 772L501 762L499 752L501 742L509 734L511 742L520 748L529 746L537 747L545 741L551 740L564 743L575 741L582 725L587 721L592 708L607 708L618 710Z M772 789L786 793L791 801L780 797L769 796L761 796L752 796L755 790L772 789Z M738 801L729 798L727 793L740 793L743 797L738 801Z M752 732L753 738L761 739L763 744L762 754L755 753L753 760L758 766L755 767L749 760L745 746L748 736L752 732Z M686 747L701 747L714 738L717 741L706 752L696 754L683 752L661 753L649 754L647 763L659 773L666 768L691 764L690 769L684 768L679 774L667 779L679 794L677 798L689 811L689 818L682 822L676 818L683 808L670 813L667 810L668 805L659 798L660 787L651 791L652 804L652 820L644 822L638 819L642 808L640 797L634 797L630 789L636 782L638 773L644 755L647 751L658 742L669 746L686 747Z M651 875L633 867L645 865L652 868L657 872L656 875L651 875Z M665 855L673 854L685 850L683 856L663 860L646 858L646 854L656 852L665 855Z M623 853L632 852L635 857L620 859L610 861L603 861L608 854L615 854L619 850L623 853Z M493 831L495 835L521 836L523 831L548 837L553 844L573 846L589 853L574 858L560 853L547 853L534 852L521 850L506 846L496 845L490 846L466 842L464 837L452 836L461 825L477 825L488 830L493 831Z M438 770L441 778L445 784L455 785L461 792L458 806L458 824L443 824L432 815L414 805L409 798L399 789L392 781L382 765L370 755L366 745L361 736L349 729L342 719L332 713L318 700L317 694L326 695L346 697L358 708L369 716L376 721L389 733L402 733L413 741L421 751L431 756L426 765L433 769L438 770Z"
+                          fill="rgba(100,116,139,0.08)" stroke="rgba(100,116,139,0.2)" stroke-width="0.5"/>
+
+                    <!-- Philippines -->
+                    <path d="M658 611L651 602L662 602L667 606L663 616L658 611Z M681 642L684 639L686 632L693 631L691 639L701 628L700 639L695 643L691 650L687 653L678 645L681 642Z M732 660L733 668L734 675L729 685L724 673L718 679L722 688L719 693L703 686L699 678L703 673L695 667L691 672L684 672L674 678L672 675L677 665L686 662L693 657L698 662L708 659L710 654L720 654L719 645L730 650L731 656L732 660Z M627 650L609 661L616 653L625 646L633 638L640 626L643 636L634 642L627 650Z M678 545L676 550L680 559L677 568L669 572L667 582L670 591L677 593L683 591L699 598L698 604L702 607L701 612L691 607L686 601L682 605L674 598L662 600L655 597L656 592L660 589L656 586L654 591L648 584L646 579L645 567L650 571L652 552L656 542L664 542L673 545L677 542L678 545Z M674 626L672 620L680 624L688 624L688 629L682 633L673 637L673 632L674 626Z M720 617L724 630L713 627L714 631L717 638L711 641L710 632L706 632L704 625L712 626L712 621L704 612L716 612L720 617Z"
+                          fill="rgba(100,116,139,0.08)" stroke="rgba(100,116,139,0.2)" stroke-width="0.5"/>
 
                     <!-- ====== CITY MARKERS ====== -->
 
+                    <!-- ====== NORTH CHINA (labeled — spread out) ====== -->
+                    <!-- Shenyang -->
+                    <circle cx="692.0" cy="229.6" r="4" fill="#f97316"/>
+                    <text x="702.0" y="227.6" fill="rgba(255,255,255,0.6)" font-size="11" font-family="JetBrains Mono">Shenyang</text>
                     <!-- Beijing -->
-                    <circle cx="416" cy="115" r="5" fill="#f97316"/>
-                    <text x="430" y="112" fill="rgba(255,255,255,0.8)" font-size="11" font-family="JetBrains Mono">Beijing</text>
-
+                    <circle cx="598.7" cy="258.4" r="5" fill="#f97316"/>
+                    <text x="608.7" y="256.4" fill="rgba(255,255,255,0.8)" font-size="13" font-family="JetBrains Mono">Beijing</text>
+                    <!-- Tianjin -->
+                    <circle cx="609.3" cy="270.2" r="3" fill="#f97316"/>
+                    <text x="619.3" y="268.2" fill="rgba(255,255,255,0.5)" font-size="10" font-family="JetBrains Mono">Tianjin</text>
+                    <!-- Dalian -->
+                    <circle cx="668.0" cy="273.2" r="4" fill="#f97316"/>
+                    <text x="678.0" y="271.2" fill="rgba(255,255,255,0.6)" font-size="11" font-family="JetBrains Mono">Dalian</text>
                     <!-- Jinan -->
-                    <circle cx="429" cy="187" r="4" fill="#f97316"/>
-                    <text x="443" y="184" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Jinan</text>
-
+                    <circle cx="606.7" cy="305.0" r="4" fill="#f97316"/>
+                    <text x="616.7" y="303.0" fill="rgba(255,255,255,0.6)" font-size="11" font-family="JetBrains Mono">Jinan</text>
                     <!-- Qingdao -->
-                    <circle cx="501" cy="201" r="4" fill="#f97316"/>
-                    <text x="510" y="198" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Qingdao</text>
+                    <circle cx="652.0" cy="313.6" r="4" fill="#f97316"/>
+                    <text x="662.0" y="311.6" fill="rgba(255,255,255,0.6)" font-size="11" font-family="JetBrains Mono">Qingdao</text>
 
-                    <!-- Shanghai HQ -->
-                    <circle cx="525" cy="312" r="10" fill="#3798E4" filter="url(#glow)"/>
-                    <text x="542" y="308" fill="#fff" font-size="14" font-weight="600" font-family="Lexend">Shanghai</text>
-                    <text x="542" y="326" fill="rgba(55,152,228,0.8)" font-size="10" font-family="JetBrains Mono">China HQ</text>
-
-                    <!-- Nanjing -->
-                    <circle cx="467" cy="291" r="4" fill="#f97316"/>
-                    <text x="437" y="286" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Nanjing</text>
-
-                    <!-- Hangzhou -->
-                    <circle cx="497" cy="332" r="4" fill="#f97316"/>
-                    <text x="508" y="340" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Hangzhou</text>
-
+                    <!-- ====== CENTRAL CHINA (labeled — spread out) ====== -->
+                    <!-- Zhengzhou -->
+                    <circle cx="561.3" cy="333.2" r="4" fill="#f97316"/>
+                    <text x="571.3" y="331.2" fill="rgba(255,255,255,0.6)" font-size="11" font-family="JetBrains Mono">Zhengzhou</text>
+                    <!-- Xi'an -->
+                    <circle cx="498.7" cy="338.8" r="4" fill="#f97316"/>
+                    <text x="508.7" y="336.8" fill="rgba(255,255,255,0.6)" font-size="11" font-family="JetBrains Mono">Xi'an</text>
                     <!-- Wuhan -->
-                    <circle cx="371" cy="325" r="4" fill="#f97316"/>
-                    <text x="340" y="320" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Wuhan</text>
+                    <circle cx="570.7" cy="389.0" r="4" fill="#f97316"/>
+                    <text x="530.7" y="387.0" fill="rgba(255,255,255,0.6)" font-size="11" font-family="JetBrains Mono">Wuhan</text>
+                    <!-- Hefei -->
+                    <circle cx="610.7" cy="372.9" r="3" fill="#f97316"/>
+                    <text x="580.7" y="370.9" fill="rgba(255,255,255,0.5)" font-size="10" font-family="JetBrains Mono">Hefei</text>
+                    <!-- Nanchang -->
+                    <circle cx="592.0" cy="414.0" r="3" fill="#f97316"/>
+                    <text x="556.0" y="414.0" fill="rgba(255,255,255,0.5)" font-size="10" font-family="JetBrains Mono">Nanchang</text>
+                    <!-- Changsha -->
+                    <circle cx="553.3" cy="420.5" r="4" fill="#f97316"/>
+                    <text x="509.3" y="425.5" fill="rgba(255,255,255,0.6)" font-size="11" font-family="JetBrains Mono">Changsha</text>
 
+                    <!-- ====== WEST CHINA (labeled — spread out) ====== -->
                     <!-- Chengdu -->
-                    <circle cx="152" cy="323" r="4" fill="#f97316"/>
-                    <text x="114" y="318" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Chengdu</text>
-
+                    <circle cx="434.7" cy="389.0" r="4" fill="#f97316"/>
+                    <text x="390.7" y="387.0" fill="rgba(255,255,255,0.6)" font-size="11" font-family="JetBrains Mono">Chengdu</text>
                     <!-- Chongqing -->
-                    <circle cx="204" cy="348" r="4" fill="#f97316"/>
-                    <text x="162" y="358" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Chongqing</text>
+                    <circle cx="466.7" cy="402.2" r="4" fill="#f97316"/>
+                    <text x="420.7" y="414.2" fill="rgba(255,255,255,0.6)" font-size="11" font-family="JetBrains Mono">Chongqing</text>
+                    <!-- Kunming -->
+                    <circle cx="416.0" cy="461.5" r="4" fill="#f97316"/>
+                    <text x="426.0" y="459.5" fill="rgba(255,255,255,0.6)" font-size="11" font-family="JetBrains Mono">Kunming</text>
 
-                    <!-- Guangzhou -->
-                    <circle cx="349" cy="495" r="4" fill="#f97316"/>
-                    <text x="304" y="490" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Guangzhou</text>
+                    <!-- ====== SHANGHAI HQ ====== -->
+                    <circle cx="666.7" cy="381.0" r="10" fill="#3798E4" filter="url(#glow)"/>
+                    <text x="682.7" y="377.0" fill="#fff" font-size="16" font-weight="600" font-family="Lexend">Shanghai</text>
+                    <text x="682.7" y="395.0" fill="rgba(55,152,228,0.8)" font-size="12" font-family="JetBrains Mono">China HQ</text>
 
-                    <!-- Shenzhen -->
-                    <circle cx="366" cy="508" r="4" fill="#f97316"/>
-                    <text x="375" y="518" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Shenzhen</text>
+                    <!-- ====== YANGTZE RIVER DELTA (dots only for dense cluster) ====== -->
+                    <!-- Nanjing (labeled — far enough west) -->
+                    <circle cx="630.7" cy="368.9" r="3" fill="#f97316"/>
+                    <text x="598.7" y="366.9" fill="rgba(255,255,255,0.5)" font-size="10" font-family="JetBrains Mono">Nanjing</text>
+                    <!-- Changzhou (dot only) -->
+                    <circle cx="645.3" cy="372.9" r="2.5" fill="#f97316" opacity="0.7"/>
+                    <!-- Wuxi (dot only) -->
+                    <circle cx="650.7" cy="375.6" r="2.5" fill="#f97316" opacity="0.7"/>
+                    <!-- Suzhou (dot only) -->
+                    <circle cx="654.7" cy="379.6" r="2.5" fill="#f97316" opacity="0.7"/>
+                    <!-- Jiaxing (dot only) -->
+                    <circle cx="657.3" cy="386.3" r="2.5" fill="#f97316" opacity="0.7"/>
+                    <!-- Hangzhou (labeled — south of cluster) -->
+                    <circle cx="649.3" cy="393.0" r="3" fill="#f97316"/>
+                    <text x="659.3" y="407.0" fill="rgba(255,255,255,0.5)" font-size="10" font-family="JetBrains Mono">Hangzhou</text>
+                    <!-- Shaoxing (dot only) -->
+                    <circle cx="654.7" cy="396.9" r="2.5" fill="#f97316" opacity="0.7"/>
+                    <!-- Ningbo (labeled — east of cluster) -->
+                    <circle cx="666.7" cy="398.3" r="3" fill="#f97316"/>
+                    <text x="676.7" y="404.3" fill="rgba(255,255,255,0.5)" font-size="10" font-family="JetBrains Mono">Ningbo</text>
 
-                    <!-- TAIWAN - Taipei HQ -->
-                    <circle cx="525" cy="452" r="9" fill="#3798E4" filter="url(#glow)"/>
-                    <text x="542" y="448" fill="#fff" font-size="13" font-weight="600" font-family="Lexend">Taipei</text>
-                    <text x="542" y="465" fill="rgba(55,152,228,0.8)" font-size="10" font-family="JetBrains Mono">Taiwan HQ</text>
+                    <!-- ====== EAST COAST (labeled — enough space) ====== -->
+                    <!-- Wenzhou -->
+                    <circle cx="656.0" cy="423.1" r="3" fill="#f97316"/>
+                    <text x="666.0" y="421.1" fill="rgba(255,255,255,0.5)" font-size="10" font-family="JetBrains Mono">Wenzhou</text>
+                    <!-- Fuzhou -->
+                    <circle cx="637.3" cy="447.5" r="3" fill="#f97316"/>
+                    <text x="647.3" y="445.5" fill="rgba(255,255,255,0.5)" font-size="10" font-family="JetBrains Mono">Fuzhou</text>
+                    <!-- Xiamen -->
+                    <circle cx="621.3" cy="467.8" r="3" fill="#f97316"/>
+                    <text x="631.3" y="465.8" fill="rgba(255,255,255,0.5)" font-size="10" font-family="JetBrains Mono">Xiamen</text>
 
+                    <!-- ====== PEARL RIVER DELTA (labeled key cities, dots for rest) ====== -->
+                    <!-- Guangzhou (labeled) -->
+                    <circle cx="557.3" cy="485.3" r="4" fill="#f97316"/>
+                    <text x="497.3" y="480.3" fill="rgba(255,255,255,0.6)" font-size="11" font-family="JetBrains Mono">Guangzhou</text>
+                    <!-- Foshan (dot only) -->
+                    <circle cx="554.7" cy="486.5" r="2.5" fill="#f97316" opacity="0.7"/>
+                    <!-- Dongguan (dot only) -->
+                    <circle cx="563.3" cy="485.9" r="2.5" fill="#f97316" opacity="0.7"/>
+                    <!-- Huizhou (dot only) -->
+                    <circle cx="572.0" cy="485.3" r="2.5" fill="#f97316" opacity="0.7"/>
+                    <!-- Shenzhen (labeled) -->
+                    <circle cx="568.0" cy="492.7" r="4" fill="#f97316"/>
+                    <text x="578.0" y="502.7" fill="rgba(255,255,255,0.6)" font-size="11" font-family="JetBrains Mono">Shenzhen</text>
+                    <!-- Zhongshan (dot only) -->
+                    <circle cx="558.7" cy="492.7" r="2.5" fill="#f97316" opacity="0.7"/>
+                    <!-- Zhuhai (dot only) -->
+                    <circle cx="561.3" cy="495.2" r="2.5" fill="#f97316" opacity="0.7"/>
+
+                    <!-- ====== TAIWAN ====== -->
+                    <!-- Taipei HQ -->
+                    <circle cx="666.7" cy="461.5" r="9" fill="#3798E4" filter="url(#glow)"/>
+                    <text x="682.7" y="457.5" fill="#fff" font-size="16" font-weight="600" font-family="Lexend">Taipei</text>
+                    <text x="682.7" y="475.5" fill="rgba(55,152,228,0.8)" font-size="12" font-family="JetBrains Mono">Taiwan HQ</text>
                     <!-- Kaohsiung -->
-                    <circle cx="499" cy="506" r="4" fill="#f97316"/>
-                    <text x="456" y="518" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Kaohsiung</text>
+                    <circle cx="650.7" cy="491.5" r="3" fill="#f97316"/>
+                    <text x="610.7" y="503.5" fill="rgba(255,255,255,0.5)" font-size="10" font-family="JetBrains Mono">Kaohsiung</text>
 
-                    <!-- THAILAND - Bangkok (Featured) -->
-                    <circle cx="75" cy="705" r="14" fill="#ef4444" filter="url(#glow)"/>
-                    <circle cx="75" cy="705" r="22" fill="none" stroke="#ef4444" stroke-width="2" stroke-opacity="0.5">
+                    <!-- ====== THAILAND ====== -->
+                    <!-- Bangkok (Featured) -->
+                    <circle cx="386.7" cy="597.6" r="14" fill="#ef4444" filter="url(#glow)"/>
+                    <circle cx="386.7" cy="597.6" r="22" fill="none" stroke="#ef4444" stroke-width="2" stroke-opacity="0.5">
                         <animate attributeName="r" values="22;30;22" dur="2s" repeatCount="indefinite"/>
                         <animate attributeName="stroke-opacity" values="0.5;0.15;0.5" dur="2s" repeatCount="indefinite"/>
                     </circle>
-                    <text x="75" y="740" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Lexend">Bangkok</text>
-                    <text x="75" y="758" text-anchor="middle" fill="rgba(239,68,68,0.9)" font-size="11" font-family="JetBrains Mono">You Are Here</text>
+                    <text x="386.7" y="629.6" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" font-family="Lexend">Bangkok</text>
+                    <text x="386.7" y="645.6" text-anchor="middle" fill="rgba(239,68,68,0.9)" font-size="13" font-family="JetBrains Mono">You Are Here</text>
 
-                    <!-- VIETNAM - Ho Chi Minh City -->
-                    <circle cx="208" cy="772" r="5" fill="#f97316"/>
-                    <text x="222" y="778" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Ho Chi Minh City</text>
+                    <!-- ====== VIETNAM ====== -->
+                    <circle cx="469.3" cy="632.8" r="5" fill="#f97316"/>
+                    <text x="479.3" y="630.8" fill="rgba(255,255,255,0.7)" font-size="13" font-family="JetBrains Mono">Ho Chi Minh City</text>
 
-                    <!-- MALAYSIA - Kuala Lumpur -->
-                    <circle cx="101" cy="946" r="5" fill="#f97316"/>
-                    <text x="115" y="952" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono">Kuala Lumpur</text>
+                    <!-- ====== MALAYSIA ====== -->
+                    <circle cx="402.7" cy="721.6" r="5" fill="#f97316"/>
+                    <text x="412.7" y="719.6" fill="rgba(255,255,255,0.7)" font-size="13" font-family="JetBrains Mono">Kuala Lumpur</text>
 
                     <!-- Country Labels -->
-                    <text x="350" y="250" fill="rgba(255,255,255,0.4)" font-size="16" font-family="Lexend" font-weight="500">China</text>
-                    <text x="30" y="640" fill="rgba(239,68,68,0.6)" font-size="13" font-family="Lexend" font-weight="500">Thailand</text>
-                    <text x="180" y="680" fill="rgba(255,255,255,0.35)" font-size="11" font-family="JetBrains Mono">Vietnam</text>
-                    <text x="70" y="920" fill="rgba(255,255,255,0.35)" font-size="11" font-family="JetBrains Mono">Malaysia</text>
+                    <text x="380.0" y="300.8" fill="rgba(255,255,255,0.5)" font-size="28" font-family="Lexend" font-weight="500">China</text>
+                    <text x="350.0" y="571.6" fill="rgba(239,68,68,0.6)" font-size="14" font-family="Lexend" font-weight="500">Thailand</text>
+                    <text x="480.0" y="565.6" fill="rgba(255,255,255,0.4)" font-size="14" font-family="Lexend" font-weight="500">Vietnam</text>
+                    <text x="406.7" y="699.8" fill="rgba(255,255,255,0.4)" font-size="14" font-family="Lexend" font-weight="500">Malaysia</text>
                 </svg>
                 <div class="map-legend">
                     <div class="legend-item"><span class="legend-dot hq"></span> Headquarters</div>
                     <div class="legend-item"><span class="legend-dot thailand"></span> Thailand Office</div>
                     <div class="legend-item"><span class="legend-dot branch"></span> Branch Offices</div>
                 </div>
+            </div>
+
+            <!-- Mobile Map Summary (shown < 640px) -->
+            <div class="asia-map-mobile">
+                <div class="mobile-map-corridor">
+                    <div class="corridor-step hq">
+                        <span class="corridor-flag">🇹🇼</span>
+                        <div class="corridor-info">
+                            <strong>Taiwan</strong>
+                            <span>Global HQ</span>
+                        </div>
+                    </div>
+                    <div class="corridor-arrow">→</div>
+                    <div class="corridor-step">
+                        <span class="corridor-flag">🇨🇳</span>
+                        <div class="corridor-info">
+                            <strong>China</strong>
+                            <span>33 branches</span>
+                        </div>
+                    </div>
+                    <div class="corridor-arrow">→</div>
+                    <div class="corridor-step featured">
+                        <span class="corridor-flag">🇹🇭</span>
+                        <div class="corridor-info">
+                            <strong>Thailand</strong>
+                            <span>You Are Here</span>
+                        </div>
+                    </div>
+                    <div class="corridor-arrow">→</div>
+                    <div class="corridor-step">
+                        <span class="corridor-flag">🇻🇳</span>
+                        <div class="corridor-info">
+                            <strong>Vietnam</strong>
+                            <span>Ho Chi Minh</span>
+                        </div>
+                    </div>
+                    <div class="corridor-arrow">→</div>
+                    <div class="corridor-step">
+                        <span class="corridor-flag">🇲🇾</span>
+                        <div class="corridor-info">
+                            <strong>Malaysia</strong>
+                            <span>Kuala Lumpur</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="mobile-map-subtitle">Dual headquarters in Taiwan and Shanghai, with 40+ offices across China and ASEAN.</p>
             </div>
 
             <!-- Region Cards -->

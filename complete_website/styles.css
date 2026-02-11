@@ -372,9 +372,11 @@ img {
 /* Logo with official SVG assets */
 .dw-logo {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     text-decoration: none;
     transition: transform 0.3s ease;
+    gap: 0;
 }
 
 .dw-logo:hover {
@@ -393,6 +395,23 @@ img {
 .dw-logo-img--mobile {
     width: 32px;
     display: none;
+}
+
+.dw-logo-since {
+    display: block;
+    width: 100%;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--dw-blue);
+    margin-top: 2px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.dw-logo:hover .dw-logo-since {
+    opacity: 1;
 }
 
 /* Legacy logo classes (kept for footer text logo fallback) */

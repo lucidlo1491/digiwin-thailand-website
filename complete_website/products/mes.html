@@ -791,6 +791,7 @@
             <a href="../index.html" class="dw-logo">
                 <img src="../assets/digiwin-logo-en.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--desktop" width="160" height="40">
                 <img src="../assets/digiwin-d-mark.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--mobile" width="32" height="32">
+                <span class="dw-logo-since">Since 1982</span>
             </a>
 
             <nav class="dw-nav">
@@ -1149,7 +1150,7 @@
     </section>
 
     <!-- Before/After Section -->
-    <section class="beforeafter-section">
+    <section class="beforeafter-section" style="position: relative; overflow: hidden;">
         <div class="beforeafter-inner">
             <div class="section-header">
                 <h2 class="section-title">The Transformation</h2>
@@ -1211,7 +1212,7 @@
     </section>
 
     <!-- Two Products Section -->
-    <section class="products-section" id="compare">
+    <section class="products-section" id="compare" style="position: relative; overflow: hidden;">
         <div class="products-inner">
             <div class="section-header">
                 <h2 class="section-title">Two Solutions, One Mission</h2>
@@ -1272,8 +1273,6 @@
 
     <!-- Capabilities Section — wave-vertical right: vertical data flow along production lines -->
     <section class="capabilities-section" style="position: relative; overflow: hidden;">
-        <!-- Brand: Wave vertical right — data streaming vertically like production line flow -->
-        <div class="dw-wave-vertical dw-wave-vertical--right" style="opacity: 0.08;"></div>
         <div class="products-inner" style="position: relative; z-index: 2;">
             <div class="section-header">
                 <h2 class="section-title">What You Can See—Right Now</h2>
@@ -1343,8 +1342,6 @@
 
     <!-- Integration Section — wave-fade: sparse dots bridging planning to execution -->
     <section class="integration-section" style="position: relative; overflow: hidden;">
-        <!-- Brand: Wave fade — sparse data points representing the bridge between systems -->
-        <div class="dw-wave-fade" style="opacity: 0.06;"></div>
         <div class="integration-inner" style="position: relative; z-index: 2;">
             <div class="section-header">
                 <h2 class="section-title">Connected to Everything</h2>
@@ -1394,9 +1391,7 @@
     </section>
 
     <!-- Results Section — wave-circles: scattered quality checkpoints across the shop floor -->
-    <section class="results-section" style="position: relative; overflow: hidden;">
-        <!-- Brand: Wave circles — quality measurement nodes scattered across operations -->
-        <div class="dw-wave-circles" style="opacity: 0.07;"></div>
+    <section class="results-section" data-particles="bold" style="position: relative; overflow: hidden;">
         <div class="results-inner" style="position: relative; z-index: 2;">
             <div class="results-header">
                 <p class="results-label">Measured Impact</p>
@@ -1514,6 +1509,7 @@
     </footer>
     <script src="../digiwin-components.js"></script>
     <script src="../digiwin-dynamic.js"></script>
+    <script src="../particle-ocean.js"></script>
 
 </body>
 </html>

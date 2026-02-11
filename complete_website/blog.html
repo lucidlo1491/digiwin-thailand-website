@@ -7,848 +7,7 @@
     <meta name="description" content="Technical guides, compliance insights, and real implementation stories from Thailand's manufacturing floor. BOI compliance, production planning, cost management, and smart factory topics.">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        /* Blog Page Styles */
-
-        :root {
-            --navy: #253B50;
-            --navy-deep: #1a2e40;
-            --navy-darker: #0f1419;
-            --blue: #3798E4;
-            --blue-light: rgba(55, 152, 228, 0.1);
-            --gray-light: #F5F7FA;
-            --white: #ffffff;
-            --text-dark: #333333;
-            --text-light: #666666;
-            --cat-boi: #DC2626;
-            --cat-production: #3798E4;
-            --cat-cost: #059669;
-            --cat-smart: #7C3AED;
-            --cat-industry: #D97706;
-        }
-
-        /* Animations */10% { transform: translate(-2%, -2%); }
-            20% { transform: translate(2%, 2%); }
-            30% { transform: translate(-1%, 1%); }
-            40% { transform: translate(1%, -1%); }
-            50% { transform: translate(-2%, 1%); }
-        }to { opacity: 1; transform: translateY(0); }
-        }50% { opacity: 1; transform: scale(1.3); }
-        }
-
-        /* ========================================
-           SECTION 1: Hero
-           ======================================== */
-        .blog-hero {
-            background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
-            padding: 160px 0 100px;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        /* Grain texture overlay */
-        .blog-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-
-        /* Gradient overlays */
-        .blog-hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at 70% 30%, rgba(55, 152, 228, 0.12) 0%, transparent 50%),
-                        radial-gradient(ellipse at 30% 80%, rgba(55, 152, 228, 0.08) 0%, transparent 40%);
-            pointer-events: none;
-        }
-
-        .blog-hero-illustration {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 600px;
-            height: 100%;
-            z-index: 1;
-            overflow: hidden;
-        }
-        .blog-hero-illustration svg {
-            position: absolute;
-            bottom: -40px;
-            right: -20px;
-            width: 560px;
-            height: 480px;
-            opacity: 0.12;
-        }
-
-        .blog-hero-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 2;
-            animation: slide-up 0.8s ease-out;
-        }
-
-        .blog-hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(55, 152, 228, 0.1);
-            border: 1px solid rgba(55, 152, 228, 0.3);
-            padding: 10px 20px;
-            border-radius: 50px;
-            color: var(--blue);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 28px;
-        }
-
-        .blog-hero-badge::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--blue);
-            border-radius: 50%;
-            animation: pulse-dot 2s ease-in-out infinite;
-        }
-
-        .blog-hero h1 {
-            font-family: 'Lexend', sans-serif;
-            font-size: clamp(40px, 5vw, 56px);
-            font-weight: 700;
-            color: #fff;
-            margin: 0 0 24px 0;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-        }
-
-        .blog-hero-subtitle {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-            max-width: 640px;
-            margin: 0 auto 48px;
-        }
-
-        .blog-hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 48px;
-        }
-
-        .blog-hero-stat {
-            text-align: center;
-        }
-
-        .blog-hero-stat-number {
-            font-family: 'Lexend', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--blue);
-            margin-bottom: 4px;
-        }
-
-        .blog-hero-stat-label {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* ========================================
-           SECTION 2: Featured Article
-           ======================================== */
-        .featured-section {
-            padding: 100px 0;
-            background: var(--white);
-        }
-
-        .featured-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .section-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            font-weight: 500;
-            color: var(--blue);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 32px;
-            display: block;
-        }
-
-        .featured-card {
-            display: grid;
-            grid-template-columns: 55% 45%;
-            background: var(--white);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid #e8eef3;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-            transition: all 0.4s ease;
-        }
-
-        .featured-card:hover {
-            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
-            border-color: var(--blue);
-            transform: translateY(-4px);
-        }
-
-        .featured-card-image {
-            background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
-            min-height: 360px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .featured-card-image::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-
-        .featured-card-image svg {
-            width: 120px;
-            height: 120px;
-            stroke: rgba(55, 152, 228, 0.3);
-            fill: none;
-            stroke-width: 1;
-        }
-
-        .featured-card-content {
-            padding: 48px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .featured-category-badge {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--cat-boi);
-            margin-bottom: 16px;
-            display: inline-block;
-        }
-
-        .featured-card-content h3 {
-            font-family: 'Lexend', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--navy);
-            line-height: 1.25;
-            margin: 0 0 16px 0;
-        }
-
-        .featured-card-content p {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 16px;
-            color: var(--text-light);
-            line-height: 1.7;
-            margin: 0 0 20px 0;
-        }
-
-        .featured-meta {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 14px;
-            color: #999;
-            margin-bottom: 24px;
-        }
-
-        .featured-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Lexend', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--blue);
-            text-decoration: none;
-            transition: gap 0.3s ease;
-        }
-
-        .featured-cta:hover {
-            gap: 12px;
-        }
-
-        /* ========================================
-           SECTION 3: Article Grid
-           ======================================== */
-        .articles-section {
-            padding: 100px 0;
-            background: var(--gray-light);
-        }
-
-        .articles-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .articles-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .articles-header h2 {
-            font-family: 'Lexend', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: var(--navy);
-            margin: 8px 0 0 0;
-            letter-spacing: -0.02em;
-        }
-
-        /* Filter Tabs */
-        .filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 0;
-            margin-bottom: 48px;
-            background: var(--white);
-            border-radius: 12px;
-            padding: 6px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-            border: 1px solid #e8eef3;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .filter-tab {
-            padding: 12px 24px;
-            font-family: 'Lexend', sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-light);
-            background: transparent;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .filter-tab:hover {
-            color: var(--navy);
-            background: var(--gray-light);
-        }
-
-        .filter-tab.active {
-            background: var(--blue);
-            color: var(--white);
-            box-shadow: 0 2px 8px rgba(55, 152, 228, 0.3);
-        }
-
-        /* Article Cards Grid */
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        .article-card {
-            background: var(--white);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid #e8eef3;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-            transition: all 0.4s ease;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .article-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .article-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--blue);
-            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
-        }
-
-        .article-card.hidden {
-            display: none;
-        }
-
-        .article-card-image {
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .article-card-image svg {
-            width: 56px;
-            height: 56px;
-            stroke-width: 1.5;
-            fill: none;
-            opacity: 0.5;
-        }
-
-        /* Category-specific image gradients */
-        .article-card-image--boi {
-            background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 50%, #b91c1c 100%);
-        }
-        .article-card-image--boi svg { stroke: #fca5a5; }
-
-        .article-card-image--production {
-            background: linear-gradient(135deg, #1e3a5f 0%, #1e4a7a 50%, #2563a0 100%);
-        }
-        .article-card-image--production svg { stroke: #93c5fd; }
-
-        .article-card-image--cost {
-            background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
-        }
-        .article-card-image--cost svg { stroke: #6ee7b7; }
-
-        .article-card-image--smart {
-            background: linear-gradient(135deg, #3b0764 0%, #4c1d95 50%, #5b21b6 100%);
-        }
-        .article-card-image--smart svg { stroke: #c4b5fd; }
-
-        .article-card-image--industry {
-            background: linear-gradient(135deg, #78350f 0%, #92400e 50%, #a16207 100%);
-        }
-        .article-card-image--industry svg { stroke: #fcd34d; }
-
-        .article-card-body {
-            padding: 24px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .article-category-badge {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            padding: 4px 10px;
-            border-radius: 4px;
-            display: inline-block;
-            width: fit-content;
-            margin-bottom: 12px;
-        }
-
-        .badge--boi { background: rgba(220, 38, 38, 0.1); color: var(--cat-boi); }
-        .badge--production { background: rgba(55, 152, 228, 0.1); color: var(--cat-production); }
-        .badge--cost { background: rgba(5, 150, 105, 0.1); color: var(--cat-cost); }
-        .badge--smart { background: rgba(124, 58, 237, 0.1); color: var(--cat-smart); }
-        .badge--industry { background: rgba(217, 119, 6, 0.1); color: var(--cat-industry); }
-
-        .article-card-body h3 {
-            font-family: 'Lexend', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--navy);
-            line-height: 1.35;
-            margin: 0 0 12px 0;
-        }
-
-        .article-card-excerpt {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 15px;
-            color: var(--text-light);
-            line-height: 1.6;
-            margin: 0 0 20px 0;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            flex: 1;
-        }
-
-        .article-card-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 16px;
-            border-top: 1px solid #f0f0f0;
-            margin-top: auto;
-        }
-
-        .article-read-time {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 13px;
-            color: #999;
-        }
-
-        .article-read-link {
-            font-family: 'Lexend', sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--blue);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            transition: gap 0.3s ease;
-        }
-
-        .article-card:hover .article-read-link {
-            gap: 8px;
-        }
-
-        /* ========================================
-           SECTION 4: Deep Dive Library
-           ======================================== */
-        .library-section {
-            padding: 100px 0;
-            background: var(--white);
-        }
-
-        .library-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .library-header {
-            text-align: center;
-            margin-bottom: 56px;
-        }
-
-        .library-header h2 {
-            font-family: 'Lexend', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: var(--navy);
-            margin: 8px 0 0 0;
-            letter-spacing: -0.02em;
-        }
-
-        .library-groups {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
-        }
-
-        .library-group {
-            background: var(--gray-light);
-            border-radius: 16px;
-            padding: 32px;
-            border: 1px solid #e8eef3;
-        }
-
-        .library-group-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e8eef3;
-        }
-
-        .library-group-indicator {
-            width: 4px;
-            height: 32px;
-            border-radius: 2px;
-        }
-
-        .library-group-indicator--boi { background: var(--cat-boi); }
-        .library-group-indicator--production { background: var(--cat-production); }
-        .library-group-indicator--cost { background: var(--cat-cost); }
-        .library-group-indicator--smart { background: var(--cat-smart); }
-        .library-group-indicator--industry { background: var(--cat-industry); }
-
-        .library-group-header h3 {
-            font-family: 'Lexend', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--navy);
-            margin: 0;
-        }
-
-        .library-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 0;
-            border-bottom: 1px solid #e8eef3;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .library-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .library-item:hover {
-            padding-left: 8px;
-        }
-
-        .library-item-title {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--text-dark);
-            transition: color 0.3s ease;
-            flex: 1;
-            margin-right: 16px;
-        }
-
-        .library-item:hover .library-item-title {
-            color: var(--blue);
-        }
-
-        .library-item-meta {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-shrink: 0;
-        }
-
-        .library-item-time {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 13px;
-            color: #999;
-            white-space: nowrap;
-        }
-
-        .library-item-arrow {
-            font-size: 16px;
-            color: var(--blue);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .library-item:hover .library-item-arrow {
-            opacity: 1;
-        }
-
-        /* ========================================
-           SECTION 5: CTA
-           ======================================== */
-        .blog-cta {
-            padding: 120px 0;
-            background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .blog-cta::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-
-        .blog-cta::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at 50% 50%, rgba(55, 152, 228, 0.1) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .blog-cta-inner {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .blog-cta h2 {
-            font-family: 'Lexend', sans-serif;
-            font-size: clamp(32px, 4vw, 44px);
-            font-weight: 700;
-            color: #fff;
-            margin: 0 0 20px 0;
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-        }
-
-        .blog-cta p {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-            margin: 0 0 40px 0;
-        }
-
-        .blog-cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .cta-btn-white {
-            background: #fff;
-            color: var(--navy);
-            padding: 16px 36px;
-            border-radius: 12px;
-            font-family: 'Lexend', sans-serif;
-            font-weight: 600;
-            font-size: 16px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-        }
-
-        .cta-btn-white:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-btn-outline {
-            background: transparent;
-            color: #fff;
-            padding: 16px 36px;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            border-radius: 12px;
-            font-family: 'Lexend', sans-serif;
-            font-weight: 600;
-            font-size: 16px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .cta-btn-outline:hover {
-            border-color: #fff;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* ========================================
-           Responsive
-           ======================================== */
-        @media (max-width: 1024px) {
-            .blog-hero-illustration {
-                width: 400px;
-                opacity: 0.7;
-            }
-
-            .featured-card {
-                grid-template-columns: 1fr;
-            }
-
-            .featured-card-image {
-                min-height: 240px;
-            }
-
-            .articles-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .library-groups {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .blog-hero-illustration {
-                display: none;
-            }
-
-            .blog-hero {
-                padding: 120px 0 80px;
-            }
-
-            .blog-hero h1 {
-                font-size: 32px;
-            }
-
-            .blog-hero-subtitle {
-                font-size: 17px;
-            }
-
-            .blog-hero-stats {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .filter-tabs {
-                justify-content: flex-start;
-                gap: 0;
-            }
-
-            .filter-tab {
-                padding: 10px 16px;
-                font-size: 13px;
-            }
-
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .featured-card-content {
-                padding: 28px;
-            }
-
-            .featured-card-content h3 {
-                font-size: 22px;
-            }
-
-            .articles-header h2,
-            .library-header h2 {
-                font-size: 28px;
-            }
-
-            .blog-cta h2 {
-                font-size: 28px;
-            }
-
-            .blog-cta-buttons {
-                flex-direction: column;
-            }
-
-            .cta-btn-white,
-            .cta-btn-outline {
-                width: 100%;
-                text-align: center;
-            }
-
-            .library-group {
-                padding: 24px;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+    <!-- All styles in styles.css -->
 </head>
 <body>
     <header class="dw-header">
@@ -1160,7 +319,7 @@
     <!-- ==========================================
          SECTION 1: Hero
          ========================================== -->
-    <section class="blog-hero">
+    <section class="blog-hub-hero">
         <div class="blog-hero-illustration">
             <svg viewBox="0 0 560 480" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <!-- Document stack -->
@@ -1230,11 +389,11 @@
     <!-- ==========================================
          SECTION 2: Featured Article
          ========================================== -->
-    <section class="featured-section">
-        <div class="featured-inner">
-            <span class="section-label">Featured Insight</span>
-            <div class="featured-card">
-                <div class="featured-card-image">
+    <section class="blog-hub-featured-section">
+        <div class="blog-hub-featured-inner">
+            <span class="blog-hub-label">Featured Insight</span>
+            <div class="blog-hub-featured-card">
+                <div class="blog-hub-featured-card-image">
                     <!-- Document/Shield SVG icon -->
                     <svg viewBox="0 0 120 120">
                         <rect x="25" y="10" width="70" height="90" rx="6" stroke-width="2"/>
@@ -1245,12 +404,12 @@
                         <path d="M75 82 L72 85 L78 91" stroke-width="2" fill="none"/>
                     </svg>
                 </div>
-                <div class="featured-card-content">
-                    <span class="featured-category-badge">BOI & Compliance</span>
+                <div class="blog-hub-featured-card-content">
+                    <span class="blog-hub-category-badge">BOI & Compliance</span>
                     <h3>How One Factory Saved 10M THB/Year in BOI Supplementary Taxes</h3>
                     <p>When the BOI board audited Jin Hai's production records, the gap between imported materials and actual consumption had been costing them over 10 million baht annually. Here's how production-order-level reconciliation eliminated it completely.</p>
-                    <div class="featured-meta">8 min read</div>
-                    <a href="blog/boi-compliance-jin-hai.html" class="featured-cta">Read the Full Story <span>&rarr;</span></a>
+                    <div class="blog-hub-featured-meta">8 min read</div>
+                    <a href="blog/boi-compliance-jin-hai.html" class="blog-hub-featured-link">Read the Full Story <span>&rarr;</span></a>
                 </div>
             </div>
         </div>
@@ -1262,18 +421,18 @@
     <section class="articles-section">
         <div class="articles-inner">
             <div class="articles-header">
-                <span class="section-label">All Articles</span>
+                <span class="blog-hub-label">All Articles</span>
                 <h2>Browse by Topic</h2>
             </div>
 
             <!-- Filter Tabs -->
-            <div class="filter-tabs">
-                <button class="filter-tab active" data-filter="all">All</button>
-                <button class="filter-tab" data-filter="boi">BOI & Compliance</button>
-                <button class="filter-tab" data-filter="production">Production Planning</button>
-                <button class="filter-tab" data-filter="cost">Cost Management</button>
-                <button class="filter-tab" data-filter="smart">Smart Factory</button>
-                <button class="filter-tab" data-filter="industry">Industry Insights</button>
+            <div class="blog-hub-filter-tabs">
+                <button class="blog-hub-filter-tab active" data-filter="all">All</button>
+                <button class="blog-hub-filter-tab" data-filter="boi">BOI & Compliance</button>
+                <button class="blog-hub-filter-tab" data-filter="production">Production Planning</button>
+                <button class="blog-hub-filter-tab" data-filter="cost">Cost Management</button>
+                <button class="blog-hub-filter-tab" data-filter="smart">Smart Factory</button>
+                <button class="blog-hub-filter-tab" data-filter="industry">Industry Insights</button>
             </div>
 
             <!-- Article Cards -->
@@ -1449,7 +608,7 @@
     <section class="library-section">
         <div class="library-inner">
             <div class="library-header">
-                <span class="section-label">Deep Dive Library</span>
+                <span class="blog-hub-label">Deep Dive Library</span>
                 <h2>Structured Knowledge by Topic</h2>
             </div>
 
@@ -1570,13 +729,13 @@
     <!-- ==========================================
          SECTION 5: CTA
          ========================================== -->
-    <section class="blog-cta">
-        <div class="blog-cta-inner">
+    <section class="blog-hub-cta">
+        <div class="blog-hub-cta-inner">
             <h2>Have a Manufacturing Challenge?</h2>
             <p>Our team has helped 100+ Thai factories solve production, compliance, and cost challenges. Let's talk about yours.</p>
-            <div class="blog-cta-buttons">
-                <a href="demo.html" class="cta-btn-white">Let's Talk</a>
-                <a href="products.html" class="cta-btn-outline">Explore Products</a>
+            <div class="blog-hub-cta-buttons">
+                <a href="demo.html" class="blog-hub-btn-white">Let's Talk</a>
+                <a href="products.html" class="blog-hub-btn-outline">Explore Products</a>
             </div>
         </div>
     </section>
@@ -1660,7 +819,7 @@
     <script>
     (function() {
         // Filter tabs
-        var filterTabs = document.querySelectorAll('.filter-tab');
+        var filterTabs = document.querySelectorAll('.blog-hub-filter-tab');
         var articleCards = document.querySelectorAll('.article-card');
         filterTabs.forEach(function(tab) {
             tab.addEventListener('click', function() {
@@ -1685,13 +844,13 @@
             mode: 'class', className: 'visible', stagger: 70,
             threshold: 0.15, rootMargin: '0px 0px -60px 0px'
         });
-        DigiWinUI.initScrollAnimation('.featured-card', {
+        DigiWinUI.initScrollAnimation('.blog-hub-featured-card', {
             stagger: 0, distance: 30, duration: 400, threshold: 0.2
         });
         DigiWinUI.initScrollAnimation('.library-group', {
             stagger: 70, distance: 30, duration: 400, threshold: 0.15
         });
-        DigiWinUI.initScrollAnimation('.blog-cta-inner', {
+        DigiWinUI.initScrollAnimation('.blog-hub-cta-inner', {
             stagger: 0, distance: 30, duration: 400, threshold: 0.2
         });
     })();

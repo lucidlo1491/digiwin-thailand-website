@@ -1,8 +1,8 @@
 # DigiWin Thailand â€” Persuasion Playbook
 
 **Layer 2 Document**
-**Version:** 1.1
-**Last Updated:** February 9, 2026
+**Version:** 1.2
+**Last Updated:** February 11, 2026
 **Purpose:** Voice guide, copywriting patterns, and objection-handling scripts for all website content
 **Audience:** Claude (reference when generating Content Specs)
 
@@ -205,23 +205,77 @@ BOTTOM: "I should talk to these people" (authority â†’ trust â†’ conve
 - Deep dive library: Signal depth â€” these aren't 500-word SEO pieces
 - CTA: Bridge from learning to conversation â€” "Have a Manufacturing Challenge? Let's Talk"
 
-### 3.8 Blog Article Arc
+### 3.8 Blog Article Arcs (by Funnel Stage)
 
-Arc: Problem Recognition â†’ Technical Depth â†’ Proof â†’ CTA
+Not all articles serve the same purpose. A top-of-funnel awareness piece and a bottom-of-funnel decision piece need different emotional arcs and CTA strategies. The generic arc (Problem â†' Depth â†' Proof â†' CTA) is preserved as the foundation, but each funnel stage adjusts the emphasis and exit strategy.
 
-```
-TOP:    "Yes, I deal with this exact problem" (pain naming in the headline)
-MIDDLE: "They understand the technical reality" (manufacturing-specific depth)
-LOWER:  "And they can prove it works" (case study, data, real outcomes)
-BOTTOM: "I should explore this further" (related articles + soft CTA)
-```
-
-- Headline: Always a problem or question the reader recognizes â€” never a product name
+**Shared article design rules (all stages):**
+- Headline: Always a problem or question the reader recognizes â€" never a product name
 - Body: Max-width 800px for readability, Lexend headings, Source Sans 3 body at 18px/1.8
 - Pull quotes: Blue left border (#3798E4), used for key insights
 - Data callouts: JetBrains Mono, large numbers, dark background cards
 - Related articles: 3-card grid at bottom to keep readers in the knowledge ecosystem
 
+#### 3.8.1 TOFU Article Arc (Awareness)
+
+Arc: Recognition â†' Education â†' Curiosity â†' Next Step
+
+```
+TOP:    "Yes, I deal with this exact problem" (pain naming)
+MIDDLE: "I didn't know there was a framework for this" (educational value)
+LOWER:  "This company clearly understands manufacturing" (authority earned)
+BOTTOM: "Let me read another article" (soft CTA â†' related article or product overview)
+```
+
+CTA tone: Zero pressure. Reader should leave feeling smarter, not sold to.
+CTA example: "Want to see how this applies to your industry? [See automotive manufacturing â†']"
+
+#### 3.8.2 MOFU Article Arc (Consideration)
+
+Arc: Problem Recognition â†' Technical Depth â†' Proof â†' Bridge
+
+```
+TOP:    "This is the specific gap in my current system" (technical pain)
+MIDDLE: "Here's how a proper system handles this" (capability demonstration)
+LOWER:  "And here's proof it works" (case data, competitive comparison)
+BOTTOM: "I should see their product page" (bridge CTA â†' product/industry page)
+```
+
+CTA tone: Confident, specific. Points to a concrete "see how" rather than "talk to us."
+CTA example: "This co-product capability comes standard in T100 and iGP. [See our ERP features â†']"
+
+#### 3.8.3 BOFU Article Arc (Decision)
+
+Arc: Validation â†' Risk Removal â†' Social Proof â†' Action
+
+```
+TOP:    "Other factories my size have this problem too" (normalization)
+MIDDLE: "The implementation risk is lower than I feared" (fear neutralization)
+LOWER:  "Real factories, real numbers, real outcomes" (heavy proof)
+BOTTOM: "I'm ready to have a conversation" (direct CTA â†' demo.html)
+```
+
+CTA tone: Calm, action-oriented. The reader has earned their confidence; respect it.
+CTA example: "Have questions about how this works in your factory? Let's Talk."
+
+### 3.9 Track B Blog Article Arc (Partner/Distributor Content)
+
+Arc: Provocation â†' Opportunity â†' Evidence â†' Invitation
+
+```
+TOP:    "The current model isn't sustainable" (business model disruption)
+MIDDLE: "Here's what smart operators are doing differently" (alternative model)
+LOWER:  "And the economics actually work" (revenue scenarios)
+BOTTOM: "Explore the partner program" (CTA â†' partner-program.html)
+```
+
+CTA tone: Strategic, peer-to-peer. Speak to a business owner, not a salesperson.
+CTA example: "See the full economics of a DigiWin partnership â€" including territory protection and margin structure."
+
+New Blog Category: **"Partner Insights"** (#0EA5E9 teal-blue)
+- Track B content lives in its own category
+- Visible in blog listing alongside Track A categories
+- Provides dedicated entry point for distributor prospects browsing the blog
 
 ---
 
@@ -467,8 +521,37 @@ Rules:
 - Categories map to pain areas, not product names: "BOI & Compliance" not "T100 Features"
 - Article length: 1,200-2,000 words for authority pieces, 600-800 for quick guides
 - Internal linking: every article should link to at least one related article and one product page
-- Source intelligence: Eddie's presale methodology translates directly to content â€” the 5 universal pain points are the 5 content pillars
+- Source intelligence: Eddie's presale methodology translates directly to content â€" the 5 universal pain points are the 5 content pillars
 
+### 7.9 In-Article CTA Strategy
+
+Blog articles use a three-tier CTA system. The tiers escalate from soft (learning-oriented) to direct (conversion-oriented). No article uses all three mid-article â€" the bottom banner is always present, but mid-article CTAs are selective.
+
+**Tier 1 â€" Soft CTA (Mid-Article)**
+- Placement: After 2nd or 3rd H2 section (~40-60% scroll depth)
+- Style: `blog-highlight` box (light blue bg, blue left border, no button)
+- Tone: Extends learning, doesn't interrupt it
+- Example: "If BOI compliance is your primary concern, see how DigiWin's ERP handles production-order-level reconciliation â†'"
+- Use on: TOFU and MOFU articles
+
+**Tier 2 â€" Bridge CTA (Post-Proof)**
+- Placement: After a case study mention, data card, or competitive comparison
+- Style: White card with category-color accent, headline + 1 sentence + link
+- Tone: Confident, specific â€" "see how this works"
+- Example: "This capability comes standard in both T100 and iGP. Explore ERP Features â†'"
+- Use on: MOFU articles only
+
+**Tier 3 â€" Direct CTA (Bottom)**
+- Placement: Bottom of every article (existing pattern)
+- Style: Dark gradient banner with "Let's Talk" (existing)
+- Enhancement: Add secondary CTA "Exploring a Partnership?" â†' partner-program.html (only on articles that mention distributor/partner content)
+
+**Anti-Salesy Guardrails:**
+1. Never use "Learn More" â€" say what the reader will see
+2. Never interrupt mid-paragraph â€" place at natural section breaks
+3. Never repeat the same CTA twice in one article
+4. Max 2 CTAs above the bottom banner (1 soft + 1 bridge)
+5. Frame as reader's choice: "If you want to explore..." not "Contact us to..."
 
 ---
 
@@ -608,7 +691,8 @@ From presale training, terms the audience uses and expects:
 |---------|------|---------|
 | 1.0 | Feb 3, 2026 | Initial Playbook â€” dual-audience voice calibration, emotional arcs, objection scripts, proof formatting, CTA hierarchy, content formulas, translation notes, anti-patterns |
 | 1.1 | Feb 9, 2026 | +BOI compliance objection scripts (4.3), +Eddie's presale methodology (11), +News/Blog/Article emotional arcs (3.6-3.8), +page-specific notes for News/Blog (7.7-7.8), updated CTA Level 5 to "Let's Talk" (6.1), clarified competitor naming rule for Track B (10), 7 new manufacturing vocabulary terms (11.5) |
+| 1.2 | Feb 11, 2026 | Replaced generic blog arc (3.8) with funnel-specific arcs: TOFU (3.8.1), MOFU (3.8.2), BOFU (3.8.3). +Track B Blog Article Arc (3.9) with "Partner Insights" category. +In-Article CTA Strategy (7.9) with three-tier system (Soft/Bridge/Direct) and anti-salesy guardrails |
 
 ---
 
-*â€” End of Persuasion Playbook v1.1 â€”*
+*â€" End of Persuasion Playbook v1.2 â€"*

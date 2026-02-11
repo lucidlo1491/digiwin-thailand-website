@@ -1,7 +1,7 @@
 # DigiWin Thailand Website â€” Product Requirements Document
 
-**Version:** 1.3
-**Last Updated:** February 9, 2026
+**Version:** 1.4
+**Last Updated:** February 11, 2026
 **Author:** Peter (Head of Distributor) + Claude (AI Operating System)
 **Status:** Draft â€" Under Review
 
@@ -861,6 +861,40 @@ Purpose: Future-facing credibility
 | Deep Dive Library | Structured list grouped by category for longer technical content | Accordion/list |
 | CTA | "Have a Manufacturing Challenge? Let's Talk" | CTA banner |
 
+#### Content Funnel Staging
+
+Every article is mapped to a funnel stage, which determines its CTA strategy and cross-linking behavior:
+
+| Stage | Reader Mindset | Content Goal | CTA Type |
+|-------|---------------|--------------|----------|
+| TOFU (Awareness) | "I have this problem" | Name the pain, earn trust | Soft: "Read more" â†' related article or product overview |
+| MOFU (Consideration) | "I need a system â€" what are my options?" | Show depth, differentiate | Bridge: "See how this works" â†' product/industry page |
+| BOFU (Decision) | "Should I talk to DigiWin?" | Provide proof, remove risk | Direct: "Let's Talk" â†' demo.html |
+
+#### Blog-to-Product Linking Rules
+
+1. Every article links to 1-2 product/industry pages within its body (not just bottom CTA)
+2. Links placed AFTER educational explanation, never in first 3 paragraphs
+3. Maximum 2 product page links per article (avoid feeling promotional)
+4. Distinguish educational mentions (inline text link) from CTA moments (highlight box)
+
+#### Category-to-Product Mapping
+
+| Category | Primary Product Page | Secondary |
+|----------|---------------------|-----------|
+| BOI & Compliance | ERP (T100/iGP) | All industry pages |
+| Production Planning | ERP | MES |
+| Cost Management | ERP | â€" |
+| Smart Factory | MES | AIoT |
+| Industry Insights | Products hub | All industry pages |
+| Partner Insights (NEW) | â€" | All partner pages |
+
+#### Content Calendar
+
+- Publication frequency: 2 articles/month (bi-weekly)
+- Sequencing: alternate between Track A and Track B content
+- Priority: fill BOFU gaps and Track B gaps first (aligned with Q2 2026 deadline)
+
 **Notes:** BOI compliance content should be prioritized first â€" it's the strongest proof point and highest-intent search topic for Thai manufacturers.
 
 ---
@@ -1072,7 +1106,82 @@ Since we're importing page content via DIVI JSON templates, we MUST define a glo
 
 ---
 
-## 8. Open Items & Decisions Needed
+## 8. Reader Journey Map & Content Strategy
+
+This section defines how visitors flow through the site â€" from entry to conversion â€" and how content supports that journey.
+
+### 8.1 Entry Points by Channel
+
+| Channel | Typical Entry | Primary Audience |
+|---------|--------------|-----------------|
+| Organic Search | Blog articles | Track A (factory operators) |
+| LinkedIn | TOFU awareness articles, Partner Program pages | Both |
+| Referral (accounting firms) | Partner Program pages | Track B (distributors) |
+| Direct | Homepage â†' split into Track A/B | Both |
+| Events/QR codes | Specific articles matching seminar topic | Track A |
+
+### 8.2 Track A Journey (Factory Operators)
+
+B2B manufacturing ERP requires 5-7+ touches over weeks or months. The blog must support multiple return visits, not just one-and-done.
+
+```
+Touch 1: Blog article (problem awareness â€" "I have this problem too")
+Touch 2: Related article or product page (deepening â€" "there's a framework for this")
+Touch 3: Industry page (validation â€" "they serve my vertical")
+Touch 4: Return visit â€" another article or About Us (due diligence)
+Touch 5-7: Demo page â€" "Let's Talk" (conversion)
+```
+
+### 8.3 Track B Journey (Distributor Prospects)
+
+```
+Touch 1: LinkedIn/blog article (market opportunity awareness)
+Touch 2: Partner Program hub (business model reframe)
+Touch 3: Partner Economics page (the numbers)
+Touch 4: Blog articles (validating DigiWin's technical depth)
+Touch 5: Discovery call CTA (conversion)
+```
+
+### 8.4 Cross-Linking Architecture
+
+Content pages must link to each other bidirectionally to support multi-touch journeys:
+
+| From | To | Link Type |
+|------|----|-----------|
+| Blog articles | Product pages | Contextual links within article body (after educational content) |
+| Blog articles | Industry pages | When industry-specific scenarios are mentioned |
+| Blog articles | Partner pages | When distributor angle is present in the content |
+| Product pages | Blog articles | "Related Insights" section at bottom |
+| Industry pages | Blog articles | "Related Insights" section at bottom |
+| Homepage | Featured blog article | Keep fresh â€" rotate monthly |
+
+### 8.5 SEO Content Framework
+
+#### Topic Selection
+
+Every article targets a search intent. The portfolio should maintain this balance:
+
+| Intent Type | Share | Examples |
+|-------------|-------|---------|
+| Informational / Problem-aware | 60% | "What is MES?", "5 pain points Thai factories face" |
+| Comparison / Compliance | 30% | "SAP ECC end-of-life", "DigiWin vs. Odoo" |
+| Commercial | 10% | Landing pages, partner program |
+
+#### Article SEO Structure
+
+- **Title tag:** [Primary Keyword]: [Benefit] | DigiWin Thailand
+- **Meta description:** 120-155 characters, includes primary keyword
+- **H1:** Contains primary keyword, under 65 characters
+- **H2s:** Target long-tail keyword variations
+- **Schema markup:** Article + BreadcrumbList + FAQ (where applicable)
+
+#### Internal Linking for SEO
+
+Blog articles link to product/industry pages (passes authority to commercial pages). Product/industry pages link back to blog articles ("Related Insights" section). This bidirectional linking creates topical clusters that improve search ranking for both content and commercial pages.
+
+---
+
+## 9. Open Items & Decisions Needed
 
 | # | Item | Status | Owner | Notes |
 |---|------|--------|-------|-------|
@@ -1101,7 +1210,8 @@ Since we're importing page content via DIVI JSON templates, we MUST define a glo
 | 1.1 | Feb 3, 2026 | Expanded About Us (11 sections, SYSPRO-modeled), DigiWin Taiwan style guide extraction, global header/footer specs, content-to-DIVI mapping |
 | 1.2 | Feb 3, 2026 | Rewrote Section 2 (dual-track persuasion framework with fear inventory), added Three-Layer Documentation Model (Section 5), rewrote Production Workflow (Section 6) for DIVI JSON import pipeline â€" Claude handles import via Chrome browser, direct stock image URLs (no upload step), changed Batch 0 validation to Home page, expanded Open Items from 12 to 14 |
 | 1.3 | Feb 9, 2026 | +News/Events page (6.0) and Blog (7.0) specs, +blog article template (7.1), +BOI compliance differentiator, +competitive landscape, +iGP/WorkFlow branding note, fixed CTA language ("Let's Talk"), updated build order |
+| 1.4 | Feb 11, 2026 | +Content funnel staging for blog (TOFU/MOFU/BOFU), +blog-to-product linking rules, +category-to-product mapping, +content calendar. New Section 8: Reader Journey Map (entry points, Track A/B journeys, cross-linking architecture) + SEO Content Framework (topic selection, article SEO structure, internal linking for SEO). Renumbered Open Items to Section 9 |
 
 ---
 
-*â€" End of PRD v1.3 â€"*
+*â€" End of PRD v1.4 â€"*

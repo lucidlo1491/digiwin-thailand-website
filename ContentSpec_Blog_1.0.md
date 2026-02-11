@@ -1,9 +1,9 @@
-# ContentSpec: Blog / Insights & Knowledge (v1.0)
+# ContentSpec: Blog / Insights & Knowledge (v2.0)
 
 > **Pages:** Blog Listing (`blog.html`) + Article Template + 10 Articles
 > **Source Files:** `complete_website/src/pages/blog.html`, `complete_website/src/pages/blog/*.html`
-> **Status:** Built and deployed (10 articles)
-> **Last Updated:** 2026-02-09
+> **Status:** Built and deployed (10 articles). v2.0 adds funnel staging, product cross-links, content gaps, and reciprocal link specs.
+> **Last Updated:** 2026-02-11
 
 ---
 
@@ -13,12 +13,12 @@
 **URL:** `digiwin.co.th/blog.html`
 **Title Tag:** "Insights & Knowledge - DigiWin Thailand"
 **Audience:** Track A (Factory Operators) primary, Track B (Distributors) secondary
-**Emotional Arc:** Curiosity → Authority → Trust → Action (from Playbook v1.1, Section 3.7)
+**Emotional Arc:** Curiosity → Authority → Trust → Action (from Playbook v1.2, Section 3.7)
 **Purpose:** Establish DigiWin as a technical authority in Thai manufacturing. Drive engagement with deep-content articles that demonstrate domain expertise. Each article maps to a competitive weapon or pain point from transcript intelligence.
 
 ### Article Template
 **URL Pattern:** `digiwin.co.th/blog/{article-slug}.html`
-**Emotional Arc:** Problem Recognition → Technical Depth → Proof → CTA (from Playbook v1.1, Section 3.8)
+**Emotional Arc:** Varies by funnel stage — TOFU (3.8.1), MOFU (3.8.2), BOFU (3.8.3), Track B (3.9) — from Playbook v1.2, Section 3.8
 **Purpose:** Each article addresses a specific manufacturing challenge, provides genuine technical insight, and positions DigiWin's solution as the natural answer — without being salesy.
 
 ---
@@ -32,6 +32,7 @@
 | Cost Management | #059669 | Green | `--cat-cost` | 2 |
 | Smart Factory | #7C3AED | Purple | `--cat-smart` | 2 |
 | Industry Insights | #D97706 | Amber | `--cat-industry` | 2 |
+| Partner Insights | #0EA5E9 | Teal-Blue | `--cat-partner` | 0 (planned: 2) |
 
 ---
 
@@ -99,23 +100,24 @@ from Thailand's manufacturing floor.
 | Cost Management | cost | #059669 |
 | Smart Factory | smart | #7C3AED |
 | Industry Insights | industry | #D97706 |
+| Partner Insights | partner | #0EA5E9 |
 
 **Tab Design:** Unified bar, JetBrains Mono 12px uppercase. Active: category color bg + white text. Inactive: transparent bg, #666 text.
 
 **Article Cards (10 total):**
 
-| # | Slug | Title | Category | data-category | Read Time | Tier |
-|---|------|-------|----------|---------------|-----------|------|
-| 1 | boi-compliance-jin-hai | How One Factory Saved 10M THB/Year in BOI Supplementary Taxes | BOI & Compliance | boi | 8 min | 1 |
-| 2 | lrp-vs-mrp | LRP vs MRP: Why Your Production Planning Takes Hours Instead of Minutes | Production Planning | production | 7 min | 1 |
-| 3 | co-product-cost-accounting | Co-Product Cost Accounting: The Problem SAP Cannot Solve | Cost Management | cost | 7 min | 1 |
-| 4 | feature-codes | Feature Codes: How to Turn 27 SKUs Into 1 Product | Production Planning | production | 7 min | 2 |
-| 5 | amrp-capacity-planning | AMRP: Why You Don't Need a Separate APS System | Production Planning | production | 8 min | 2 |
-| 6 | five-pain-points | The 5 Universal Pain Points Every Thai Factory Owner Faces | Industry Insights | industry | 10 min | 2 |
-| 7 | sap-ecc-end-of-life | SAP ECC End-of-Life 2027: What Thai Manufacturers Need to Know | Industry Insights | industry | 7 min | 3 |
-| 8 | dual-units | Dual Units: Why Your ERP Should Show Both Kilograms AND Pieces | Cost Management | cost | 6 min | 3 |
-| 9 | shop-floor-scheduling | Shop Floor Mini-Scheduling: When Plans Meet Reality | Smart Factory | smart | 7 min | 3 |
-| 10 | production-transparency | From Paper Reports to Production Transparency: A Practical Guide | Smart Factory | smart | 9 min | 3 |
+| # | Slug | Title | Category | data-category | Read Time | Tier | Funnel Stage | Primary Product Link |
+|---|------|-------|----------|---------------|-----------|------|-------------|---------------------|
+| 1 | boi-compliance-jin-hai | How One Factory Saved 10M THB/Year in BOI Supplementary Taxes | BOI & Compliance | boi | 8 min | 1 | MOFU | products/erp.html |
+| 2 | lrp-vs-mrp | LRP vs MRP: Why Your Production Planning Takes Hours Instead of Minutes | Production Planning | production | 7 min | 1 | MOFU | products/erp.html |
+| 3 | co-product-cost-accounting | Co-Product Cost Accounting: The Problem SAP Cannot Solve | Cost Management | cost | 7 min | 1 | MOFU | products/erp.html |
+| 4 | feature-codes | Feature Codes: How to Turn 27 SKUs Into 1 Product | Production Planning | production | 7 min | 2 | MOFU | products/erp.html |
+| 5 | amrp-capacity-planning | AMRP: Why You Don't Need a Separate APS System | Production Planning | production | 8 min | 2 | MOFU | products/erp.html |
+| 6 | five-pain-points | The 5 Universal Pain Points Every Thai Factory Owner Faces | Industry Insights | industry | 10 min | 2 | TOFU | products.html |
+| 7 | sap-ecc-end-of-life | SAP ECC End-of-Life 2027: What Thai Manufacturers Need to Know | Industry Insights | industry | 7 min | 3 | TOFU | products/erp.html |
+| 8 | dual-units | Dual Units: Why Your ERP Should Show Both Kilograms AND Pieces | Cost Management | cost | 6 min | 3 | MOFU | products/erp.html |
+| 9 | shop-floor-scheduling | Shop Floor Mini-Scheduling: When Plans Meet Reality | Smart Factory | smart | 7 min | 3 | MOFU | products/mes.html |
+| 10 | production-transparency | From Paper Reports to Production Transparency: A Practical Guide | Smart Factory | smart | 9 min | 3 | TOFU/MOFU | products/mes.html, products/aiot.html |
 
 **Card Design:**
 - White card, 16px border-radius, 4px top border in category color
@@ -362,7 +364,7 @@ Every article links to 3 related articles. This matrix shows all cross-links:
 ## Content Strategy Notes
 
 ### Eddie's Presale Methodology as Content Source
-Articles are derived from DigiWin's actual presale methodology (Playbook v1.1, Section 11):
+Articles are derived from DigiWin's actual presale methodology (Playbook v1.2, Section 11):
 - **Pain-first approach:** Every article opens with a recognizable problem
 - **Story-driven:** Case studies and scenarios, not feature lists
 - **Top-down messaging:** Written for factory owners/operators, not IT teams
@@ -370,7 +372,7 @@ Articles are derived from DigiWin's actual presale methodology (Playbook v1.1, S
 
 ### Competitive Positioning
 - **Track A (factory operators):** Articles never name competitors directly. They describe capabilities gaps without attribution.
-- **Blog exception:** Factual comparisons are acceptable per Playbook v1.1 anti-pattern #3 update. SAP ECC end-of-life is treated as industry news, not competitive attack. Co-product article mentions "the problem SAP cannot solve" in title but frames as capability gap, not disparagement.
+- **Blog exception:** Factual comparisons are acceptable per Playbook v1.2 anti-pattern #3 update. SAP ECC end-of-life is treated as industry news, not competitive attack. Co-product article mentions "the problem SAP cannot solve" in title but frames as capability gap, not disparagement.
 
 ### SEO Strategy
 - Each article targets a specific long-tail keyword cluster
@@ -400,6 +402,90 @@ Articles are derived from DigiWin's actual presale methodology (Playbook v1.1, S
 | Body | Text + Code Modules | Pull quotes, data cards as Code modules |
 | Related | Blog Module (3-post) | Related by category |
 | CTA | Call to Action | Article-specific copy |
+
+---
+
+## Content Gap Analysis (Prioritized for Q2 2026)
+
+### TOFU Gaps (Awareness — Attracting New Visitors)
+
+| Priority | Proposed Title | Search Intent | Target Category | Notes |
+|----------|---------------|---------------|-----------------|-------|
+| P1 | BOI Audit Preparation Checklist 2026 | Compliance, high search intent | BOI & Compliance | Highest organic potential — factory owners actively searching |
+| P2 | What Is MES? A Factory Owner's Guide | Informational | Smart Factory | Supports "reverse cut" strategy — MES as entry point |
+| P3 | Why Thai Factories Still Run on Excel | Problem-aware | Industry Insights | High relatability, social media shareable |
+
+### BOFU Gaps (Decision — Converting Evaluators)
+
+| Priority | Proposed Title | Search Intent | Target Category | Notes |
+|----------|---------------|---------------|-----------------|-------|
+| P1 | DigiWin vs. Odoo for Thai Manufacturing | Comparison | Industry Insights | Competitive positioning — Odoo is SEO-dominant in Thailand |
+| P2 | What Happens After "Let's Talk": DigiWin's Implementation Process | Fear removal | Industry Insights | Directly addresses Objection 1 (implementation disruption) |
+
+### Track B Gaps (Distributor Recruitment)
+
+| Priority | Proposed Title | Search Intent | Target Category | Notes |
+|----------|---------------|---------------|-----------------|-------|
+| P1 | The Man-Day Trap: Why ERP Consultancies Hit Revenue Ceilings | Business model disruption | Partner Insights (NEW) | Blog entry point for distributors — uses Playbook 3.9 arc |
+| P2 | How to Add Manufacturing ERP to Your Consulting Portfolio | Commercial/informational | Partner Insights (NEW) | Bridges to partner-program.html |
+
+### Publication Priority
+
+First 4 articles to publish. Per PRD v1.4 content calendar: BOFU gaps and Track B gaps are filled first (aligned with Q2 2026 distributor deadline).
+
+1. **The Man-Day Trap: Why ERP Consultancies Hit Revenue Ceilings** (Track B — Q2 deadline for distributor pipeline)
+2. **DigiWin vs. Odoo for Thai Manufacturing** (BOFU, Track A — competitive positioning against SEO-dominant Odoo)
+3. **What Happens After "Let's Talk": DigiWin's Implementation Process** (BOFU, Track A — fear removal for evaluators)
+4. **BOI Audit Preparation Checklist 2026** (TOFU, Track A — highest organic search potential)
+
+---
+
+## Retrofit Cross-Links Specification
+
+Each existing article should be updated to include product/industry page links within its body, using the three-tier CTA system from Playbook v1.2 Section 7.9.
+
+| Article | Mid-Article Link (Tier 1 — Soft) | Post-Proof Link (Tier 2 — Bridge) | Partner Link? |
+|---------|----------------------------------|-----------------------------------|---------------|
+| BOI Compliance | products/erp.html (after "Why ERPs Fail" section) | Industry pages (after results section) | No |
+| LRP vs MRP | products/erp.html (after LRP explanation) | — | No |
+| Co-Product Cost | products/erp.html (after capability demo) | partner-program.html (after distributor paragraph) | Yes |
+| Feature Codes | products/erp.html (after 27→1 reduction) | — | No |
+| AMRP | products/erp.html (after APS comparison) | — | No |
+| 5 Pain Points | products.html (after Pain 3) | industries.html (after Pain 5) | No |
+| SAP ECC EOL | — (keep pure TOFU) | products/erp.html (after alternative path) | Yes |
+| Dual Units | products/erp.html (after dual-unit demo) | — | No |
+| Shop Floor Scheduling | products/mes.html (after scheduling demo) | — | No |
+| Production Transparency | products/mes.html (after paper problem) | products/aiot.html (after roadmap) | No |
+
+**Implementation notes:**
+- Tier 1 (Soft) uses existing `blog-highlight` box style — no new CSS needed
+- Tier 2 (Bridge) needs a new `blog-bridge-cta` component — white card with category-color accent
+- Partner links add a secondary CTA line to the bottom banner: "Exploring a Partnership?" → partner-program.html
+- Max 2 in-article CTAs per article (1 soft + 1 bridge). Bottom banner is always present.
+
+---
+
+## Reciprocal Links Specification
+
+Product and industry pages should link BACK to relevant blog articles via a "Related Insights" section at the bottom of each page. This creates the bidirectional linking architecture defined in PRD v1.4 Section 8.4.
+
+| Page | Blog Articles to Link | Notes |
+|------|----------------------|-------|
+| products.html | 5 Pain Points, SAP ECC End-of-Life | 2 articles (hub page — broad articles) |
+| products/erp.html | BOI Compliance, LRP vs MRP, Co-Product, Feature Codes, AMRP, Dual Units | 6 articles — show top 3, expandable |
+| products/mes.html | Shop Floor Scheduling, Production Transparency | 2 articles |
+| products/wms.html | (none yet) | Future: needs WMS-focused article |
+| products/aiot.html | Production Transparency | 1 article |
+| industries/automotive.html | 5 Pain Points, Shop Floor Scheduling | 2 articles |
+| industries/electronics.html | 5 Pain Points, Feature Codes | 2 articles |
+| industries/metal-plastics.html | Co-Product, Dual Units, 5 Pain Points | 3 articles |
+
+**"Related Insights" Section Design:**
+- Placement: After main content, before final CTA banner
+- Layout: 3-column card grid (same as blog article "Related Articles" component)
+- Card: Category badge + title + "Read article →" link
+- Background: #F5F7FA (light gray) to visually separate from main content
+- Responsive: 1-column on mobile
 
 ---
 

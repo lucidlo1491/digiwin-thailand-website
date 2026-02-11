@@ -351,6 +351,54 @@
             Production transparency does not mean more reports. It means closing the gap between what is happening and what you can see. It means knowing, in real time, the status of every work center, every production order, every piece of equipment — not as estimates, not as end-of-shift summaries, but as live data that updates while production is running.
         </p>
 
+        <!-- Diagram: 3-Layer Production Transparency Stack -->
+        <div class="article-diagram fade-in">
+            <svg viewBox="0 0 720 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="360" y="22" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#253B50">Production Transparency: Three-Layer Architecture</text>
+
+                <!-- Layer 3 (top): Real-Time Dashboard -->
+                <rect x="140" y="40" width="440" height="60" rx="10" stroke="#3798E4" stroke-width="2" fill="rgba(55,152,228,0.06)"/>
+                <text x="360" y="65" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#3798E4">Real-Time Dashboard</text>
+                <text x="360" y="85" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#666">OEE · WIP status · Quality alerts · Delivery tracking</text>
+
+                <!-- Connection arrows -->
+                <path d="M360 100 L360 120" stroke="#3798E4" stroke-width="1.5"/>
+                <polygon points="355,120 360,128 365,120" fill="#3798E4"/>
+
+                <!-- Layer 2 (middle): Data Collection Layer -->
+                <rect x="140" y="130" width="440" height="60" rx="10" stroke="#3798E4" stroke-width="1.5" fill="rgba(55,152,228,0.04)"/>
+                <text x="360" y="155" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#253B50">Data Collection Layer</text>
+                <text x="360" y="175" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#666">Barcode scan · Machine signals · Operator input · Auto-timing</text>
+
+                <!-- Connection arrows -->
+                <path d="M360 190 L360 210" stroke="#3798E4" stroke-width="1.5"/>
+                <polygon points="355,210 360,218 365,210" fill="#3798E4"/>
+
+                <!-- Layer 1 (bottom): Shop Floor Devices -->
+                <rect x="140" y="220" width="440" height="50" rx="10" stroke="#253B50" stroke-width="1.2" fill="rgba(37,59,80,0.04)"/>
+
+                <!-- Device icons -->
+                <rect x="175" y="232" width="36" height="28" rx="4" stroke="#253B50" stroke-width="1"/>
+                <text x="193" y="250" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="8" fill="#666">CNC</text>
+                <rect x="240" y="232" width="36" height="28" rx="4" stroke="#253B50" stroke-width="1"/>
+                <text x="258" y="250" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="8" fill="#666">PLC</text>
+                <rect x="305" y="232" width="36" height="28" rx="4" stroke="#253B50" stroke-width="1"/>
+                <text x="323" y="250" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="8" fill="#666">Scale</text>
+                <rect x="370" y="232" width="40" height="28" rx="4" stroke="#253B50" stroke-width="1"/>
+                <text x="390" y="250" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="8" fill="#666">Tablet</text>
+                <rect x="440" y="232" width="36" height="28" rx="4" stroke="#253B50" stroke-width="1"/>
+                <text x="458" y="250" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="8" fill="#666">RFID</text>
+                <rect x="505" y="232" width="46" height="28" rx="4" stroke="#253B50" stroke-width="1"/>
+                <text x="528" y="250" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="8" fill="#666">Scanner</text>
+
+                <!-- Side labels -->
+                <text x="110" y="75" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#3798E4">LAYER 3</text>
+                <text x="110" y="165" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#3798E4">LAYER 2</text>
+                <text x="110" y="250" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#253B50">LAYER 1</text>
+            </svg>
+            <p class="diagram-caption">Production transparency is built in layers — shop floor devices feed a data collection layer that powers real-time dashboards.</p>
+        </div>
+
         <hr class="blog-divider fade-in">
 
         <!-- Section: The Paper Problem -->

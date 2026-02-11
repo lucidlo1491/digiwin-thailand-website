@@ -347,6 +347,57 @@
             This is not a sign of poor planning. It is a reflection of manufacturing reality. Production schedules are built on assumptions about machine uptime, material availability, and stable demand. Every one of those assumptions gets challenged every day. The question is not whether your plan will need adjustment — it is whether your system makes those adjustments visible or invisible to the people who depend on accurate scheduling information.
         </p>
 
+        <!-- Diagram: ERP Plan vs Floor Reality with Mini-Scheduling Bridge -->
+        <div class="article-diagram fade-in">
+            <svg viewBox="0 0 720 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Left: ERP Plan -->
+                <rect x="30" y="50" width="200" height="160" rx="12" stroke="#7C3AED" stroke-width="1.5"/>
+                <text x="130" y="30" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#7C3AED">ERP Master Plan</text>
+
+                <!-- Gantt-like bars -->
+                <rect x="55" y="72" width="150" height="14" rx="3" fill="rgba(124,58,237,0.15)"/>
+                <text x="70" y="83" font-family="Source Sans 3, sans-serif" font-size="9" fill="#7C3AED">Order A — Week 9</text>
+                <rect x="55" y="94" width="130" height="14" rx="3" fill="rgba(124,58,237,0.12)"/>
+                <text x="70" y="105" font-family="Source Sans 3, sans-serif" font-size="9" fill="#7C3AED">Order B — Week 9</text>
+                <rect x="55" y="116" width="145" height="14" rx="3" fill="rgba(124,58,237,0.10)"/>
+                <text x="70" y="127" font-family="Source Sans 3, sans-serif" font-size="9" fill="#7C3AED">Order C — Week 10</text>
+
+                <text x="130" y="158" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">Assumes everything</text>
+                <text x="130" y="173" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">goes as planned</text>
+                <text x="130" y="198" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" fill="#253B50">Updated: weekly</text>
+
+                <!-- Gap zone -->
+                <rect x="260" y="60" width="200" height="140" rx="0" fill="rgba(220,38,38,0.04)" stroke="#DC2626" stroke-width="1" stroke-dasharray="6 4"/>
+                <text x="360" y="82" text-anchor="middle" font-family="Lexend, sans-serif" font-size="12" font-weight="600" fill="#DC2626">THE GAP</text>
+                <text x="360" y="105" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">Machine breakdowns</text>
+                <text x="360" y="122" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">Late materials</text>
+                <text x="360" y="139" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">Rush orders</text>
+                <text x="360" y="156" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">Quality holds</text>
+                <text x="360" y="185" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" fill="#DC2626">Invisible to ERP</text>
+
+                <!-- Right: Floor Reality -->
+                <rect x="490" y="50" width="200" height="160" rx="12" stroke="#3798E4" stroke-width="1.5"/>
+                <text x="590" y="30" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#3798E4">Shop Floor Reality</text>
+
+                <!-- Re-sequenced bars -->
+                <rect x="515" y="72" width="100" height="14" rx="3" fill="rgba(55,152,228,0.15)"/>
+                <text x="530" y="83" font-family="Source Sans 3, sans-serif" font-size="9" fill="#3798E4">Order C ↑ RUSH</text>
+                <rect x="515" y="94" width="70" height="14" rx="3" fill="rgba(220,38,38,0.12)"/>
+                <text x="530" y="105" font-family="Source Sans 3, sans-serif" font-size="9" fill="#DC2626">Order A ✕ HOLD</text>
+                <rect x="515" y="116" width="140" height="14" rx="3" fill="rgba(55,152,228,0.12)"/>
+                <text x="530" y="127" font-family="Source Sans 3, sans-serif" font-size="9" fill="#3798E4">Order B — rescheduled</text>
+
+                <text x="590" y="158" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">Adapts in real time</text>
+                <text x="590" y="173" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">to actual conditions</text>
+                <text x="590" y="198" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" fill="#3798E4">Updated: per shift</text>
+
+                <!-- Bridge arrow below -->
+                <path d="M260 220 Q360 250 460 220" stroke="#3798E4" stroke-width="2" fill="none"/>
+                <text x="360" y="252" text-anchor="middle" font-family="Lexend, sans-serif" font-size="12" font-weight="600" fill="#3798E4">Mini-Scheduling bridges the gap</text>
+            </svg>
+            <p class="diagram-caption">Mini-scheduling fills the gap between weekly ERP plans and minute-by-minute shop floor reality — keeping both in sync.</p>
+        </div>
+
         <hr class="blog-divider fade-in">
 
         <!-- Section: The Gap Between Planning and Floor -->

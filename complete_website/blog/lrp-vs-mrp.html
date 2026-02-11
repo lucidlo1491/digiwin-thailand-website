@@ -841,6 +841,56 @@
 
         <p class="fade-up">This is not an edge case. It is the daily reality for thousands of Thai factories running traditional MRP. And it raises a question that most ERP vendors prefer to avoid: <strong>why does production planning still take so long?</strong></p>
 
+        <!-- Diagram: MRP vs LRP Side-by-Side -->
+        <div class="article-diagram fade-up">
+            <svg viewBox="0 0 720 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Left: MRP -->
+                <rect x="20" y="30" width="310" height="200" rx="12" stroke="#253B50" stroke-width="1.2" stroke-dasharray="4 4"/>
+                <text x="175" y="22" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#253B50">Traditional MRP</text>
+
+                <!-- Full regen icon -->
+                <rect x="45" y="50" width="260" height="30" rx="4" fill="rgba(37,59,80,0.08)"/>
+                <text x="175" y="70" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#253B50">Full BOM explosion — ALL items</text>
+
+                <!-- Processing bars (slow) -->
+                <rect x="45" y="92" width="260" height="10" rx="2" fill="rgba(37,59,80,0.12)"/>
+                <rect x="45" y="108" width="220" height="10" rx="2" fill="rgba(37,59,80,0.10)"/>
+                <rect x="45" y="124" width="240" height="10" rx="2" fill="rgba(37,59,80,0.08)"/>
+                <rect x="45" y="140" width="200" height="10" rx="2" fill="rgba(37,59,80,0.06)"/>
+                <text x="175" y="170" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">Processing thousands of items...</text>
+
+                <!-- Time result -->
+                <text x="175" y="200" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="20" font-weight="600" fill="#253B50">4-8 hours</text>
+                <text x="175" y="218" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#999">Already outdated when finished</text>
+
+                <!-- VS -->
+                <text x="360" y="140" text-anchor="middle" font-family="Lexend, sans-serif" font-size="18" font-weight="700" fill="#3798E4">vs</text>
+
+                <!-- Right: LRP -->
+                <rect x="390" y="30" width="310" height="200" rx="12" stroke="#3798E4" stroke-width="1.5"/>
+                <text x="545" y="22" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#3798E4">LRP (DigiWin)</text>
+
+                <!-- Single order scope -->
+                <rect x="415" y="50" width="260" height="30" rx="4" fill="rgba(55,152,228,0.08)"/>
+                <text x="545" y="70" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#3798E4">Single order → targeted BOM only</text>
+
+                <!-- Quick processing (single bar) -->
+                <rect x="415" y="95" width="130" height="10" rx="2" fill="rgba(55,152,228,0.2)"/>
+                <circle cx="555" cy="100" r="8" stroke="#059669" stroke-width="1.5"/>
+                <path d="M551 100 L554 103 L559 97" stroke="#059669" stroke-width="1.5" fill="none"/>
+                <text x="545" y="130" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">Only affected items recalculated</text>
+
+                <!-- Time result -->
+                <text x="545" y="176" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="20" font-weight="600" fill="#3798E4">&lt; 1 minute</text>
+                <text x="545" y="194" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#999">Run anytime, plan per order</text>
+
+                <!-- Speedup callout -->
+                <rect x="465" y="206" width="160" height="18" rx="4" fill="rgba(55,152,228,0.1)"/>
+                <text x="545" y="220" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" font-weight="500" fill="#3798E4">240× faster planning</text>
+            </svg>
+            <p class="diagram-caption">LRP replans a single order in under a minute instead of regenerating the entire plan for hours — a fundamental shift in how production planning works.</p>
+        </div>
+
         <!-- Section: The MRP Problem -->
         <h2 class="fade-up">The MRP Problem Nobody Talks About</h2>
 

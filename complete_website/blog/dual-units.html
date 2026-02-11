@@ -347,6 +347,51 @@
             For many manufacturers, the ERP forces a choice: pick one primary unit, and convert everything else manually. This creates friction, errors, and wasted time at every handoff point. Sales enters an order for 500 pieces. Warehouse needs to know that's 125 kg. Production needs 3 rolls of raw material. Purchasing needs 2 pallets. Every conversion is manual — and every manual conversion is an error waiting to happen.
         </p>
 
+        <!-- Diagram: Unit Conversion Flow -->
+        <div class="article-diagram fade-in">
+            <svg viewBox="0 0 720 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="360" y="22" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#253B50">One Product, Multiple Units — Tracked Simultaneously</text>
+
+                <!-- Purchase stage -->
+                <rect x="30" y="60" width="140" height="70" rx="10" stroke="#3798E4" stroke-width="1.5" fill="rgba(55,152,228,0.06)"/>
+                <text x="100" y="85" text-anchor="middle" font-family="Lexend, sans-serif" font-size="13" font-weight="600" fill="#3798E4">Purchase</text>
+                <text x="100" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="500" fill="#253B50">500 kg</text>
+                <text x="100" y="148" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#999">Supplier ships by weight</text>
+
+                <!-- Arrow 1 -->
+                <path d="M170 95 L230 95" stroke="#3798E4" stroke-width="1.5"/>
+                <polygon points="230,90 242,95 230,100" fill="#3798E4"/>
+                <text x="206" y="85" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="10" fill="#3798E4">auto</text>
+
+                <!-- Production stage -->
+                <rect x="245" y="60" width="140" height="70" rx="10" stroke="#3798E4" stroke-width="1.5" fill="rgba(55,152,228,0.06)"/>
+                <text x="315" y="85" text-anchor="middle" font-family="Lexend, sans-serif" font-size="13" font-weight="600" fill="#3798E4">Production</text>
+                <text x="315" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="500" fill="#253B50">120 sheets</text>
+                <text x="315" y="148" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#999">Floor consumes by unit</text>
+
+                <!-- Arrow 2 -->
+                <path d="M385 95 L445 95" stroke="#3798E4" stroke-width="1.5"/>
+                <polygon points="445,90 457,95 445,100" fill="#3798E4"/>
+                <text x="421" y="85" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="10" fill="#3798E4">auto</text>
+
+                <!-- Sales stage -->
+                <rect x="460" y="60" width="140" height="70" rx="10" stroke="#3798E4" stroke-width="1.5" fill="rgba(55,152,228,0.06)"/>
+                <text x="530" y="85" text-anchor="middle" font-family="Lexend, sans-serif" font-size="13" font-weight="600" fill="#3798E4">Sales</text>
+                <text x="530" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="500" fill="#253B50">24 rolls</text>
+                <text x="530" y="148" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#999">Customer orders by pack</text>
+
+                <!-- Inventory bottom bar -->
+                <rect x="120" y="175" width="480" height="36" rx="8" stroke="#059669" stroke-width="1.2" fill="rgba(5,150,105,0.06)"/>
+                <text x="360" y="198" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#059669">Inventory shows all units simultaneously: 500 kg = 120 sheets = 24 rolls</text>
+
+                <!-- Dashed lines connecting to inventory bar -->
+                <line x1="100" y1="130" x2="200" y2="175" stroke="#059669" stroke-width="0.8" stroke-dasharray="3 3"/>
+                <line x1="315" y1="130" x2="360" y2="175" stroke="#059669" stroke-width="0.8" stroke-dasharray="3 3"/>
+                <line x1="530" y1="130" x2="520" y2="175" stroke="#059669" stroke-width="0.8" stroke-dasharray="3 3"/>
+            </svg>
+            <p class="diagram-caption">Dual-unit tracking eliminates manual conversions — each department sees the unit they work with, while inventory stays synchronized.</p>
+        </div>
+
         <hr class="blog-divider fade-in">
 
         <!-- Section: The Single-Unit Problem -->

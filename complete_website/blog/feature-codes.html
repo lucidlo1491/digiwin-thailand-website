@@ -347,6 +347,82 @@
             This is not a theoretical problem. It is a pattern that repeats across every manufacturing sector that deals with configurable products. Electronics (brand/version/source), apparel (size/color/fabric), solar panels (electrical properties), machinery (dimensions/capacity). The result is an ERP system choked with nearly identical item masters, a warehouse team managing dozens of picking locations for functionally identical products, and a purchasing department juggling hundreds of reorder points that should be consolidated under a single material plan.
         </p>
 
+        <!-- Diagram: SKU Explosion vs Feature Codes -->
+        <div class="article-diagram fade-in">
+            <svg viewBox="0 0 720 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Left side: 27 SKU grid -->
+                <text x="140" y="24" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#253B50">Traditional Approach</text>
+                <!-- 3x9 grid of mini boxes representing 27 SKUs -->
+                <g opacity="0.7">
+                    <rect x="20" y="40" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="62" y="40" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="104" y="40" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="146" y="40" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="188" y="40" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="230" y="40" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="20" y="74" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="62" y="74" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="104" y="74" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="146" y="74" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="188" y="74" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="230" y="74" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="20" y="108" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="62" y="108" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="104" y="108" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="146" y="108" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="188" y="108" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="230" y="108" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="20" y="142" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="62" y="142" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="104" y="142" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="146" y="142" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="188" y="142" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="230" y="142" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="62" y="176" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="104" y="176" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                    <rect x="146" y="176" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
+                </g>
+                <text x="140" y="230" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="500" fill="#253B50">27 separate SKUs</text>
+                <text x="140" y="250" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#999">27 BOMs · 27 reorder points</text>
+
+                <!-- Arrow -->
+                <path d="M290 120 L410 120" stroke="#3798E4" stroke-width="2" stroke-dasharray="6 4"/>
+                <polygon points="410,114 424,120 410,126" fill="#3798E4"/>
+                <text x="357" y="108" text-anchor="middle" font-family="Lexend, sans-serif" font-size="12" font-weight="500" fill="#3798E4">Feature Codes</text>
+
+                <!-- Right side: 1 item + 3 feature dimensions -->
+                <text x="570" y="24" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#3798E4">Feature Code Approach</text>
+                <!-- Central product box -->
+                <rect x="510" y="55" width="120" height="50" rx="8" stroke="#3798E4" stroke-width="2" fill="rgba(55,152,228,0.06)"/>
+                <text x="570" y="77" text-anchor="middle" font-family="Lexend, sans-serif" font-size="13" font-weight="600" fill="#253B50">1 Item Code</text>
+                <text x="570" y="95" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">1 BOM · 1 plan</text>
+
+                <!-- Feature dimension branches -->
+                <line x1="570" y1="105" x2="480" y2="150" stroke="#3798E4" stroke-width="1.2"/>
+                <line x1="570" y1="105" x2="570" y2="150" stroke="#3798E4" stroke-width="1.2"/>
+                <line x1="570" y1="105" x2="660" y2="150" stroke="#3798E4" stroke-width="1.2"/>
+
+                <!-- Size dimension -->
+                <rect x="440" y="150" width="80" height="36" rx="6" stroke="#3798E4" stroke-width="1.2" fill="rgba(55,152,228,0.06)"/>
+                <text x="480" y="173" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#3798E4">SIZE</text>
+                <text x="480" y="204" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">S · M · L</text>
+
+                <!-- Color dimension -->
+                <rect x="530" y="150" width="80" height="36" rx="6" stroke="#3798E4" stroke-width="1.2" fill="rgba(55,152,228,0.06)"/>
+                <text x="570" y="173" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#3798E4">COLOR</text>
+                <text x="570" y="204" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">Red · Blue · White</text>
+
+                <!-- Style dimension -->
+                <rect x="620" y="150" width="80" height="36" rx="6" stroke="#3798E4" stroke-width="1.2" fill="rgba(55,152,228,0.06)"/>
+                <text x="660" y="173" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#3798E4">STYLE</text>
+                <text x="660" y="204" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">V · Round · Polo</text>
+
+                <text x="570" y="240" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="500" fill="#3798E4">3 × 3 × 3 = 27 variants</text>
+                <text x="570" y="260" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#999">All managed under 1 item code</text>
+            </svg>
+            <p class="diagram-caption">Feature codes compress 27 SKUs into 1 item code with 3 feature dimensions — same product flexibility, 96% fewer master records.</p>
+        </div>
+
         <hr class="blog-divider fade-in">
 
         <!-- Section: The Problem with SKU Multiplication -->

@@ -347,6 +347,67 @@
             This is not an unusual story. It is a pattern that repeats across hundreds of BOI-certified manufacturers. The cause is almost always the same: their ERP system cannot track material consumption at the level the BOI board actually audits. The system says one thing. The production floor did another. And the factory pays the difference.
         </p>
 
+        <!-- Diagram: Before/After BOI Compliance -->
+        <div class="article-diagram fade-in">
+            <svg viewBox="0 0 720 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Left: Before (Scattered records with gap) -->
+                <text x="160" y="22" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#DC2626">Before: Traditional ERP</text>
+                <rect x="20" y="35" width="280" height="195" rx="12" stroke="#DC2626" stroke-width="1" stroke-dasharray="4 4" opacity="0.4"/>
+
+                <!-- Scattered document icons -->
+                <rect x="40" y="55" width="60" height="45" rx="4" stroke="#253B50" stroke-width="1" opacity="0.5"/>
+                <text x="70" y="82" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="10" fill="#666">BOM says</text>
+                <text x="70" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" fill="#253B50">25,000 kg</text>
+
+                <rect x="130" y="65" width="60" height="45" rx="4" stroke="#253B50" stroke-width="1" opacity="0.5"/>
+                <text x="160" y="82" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="10" fill="#666">Actual</text>
+                <text x="160" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" fill="#253B50">26,340 kg</text>
+
+                <!-- Gap indicator -->
+                <rect x="220" y="55" width="60" height="45" rx="4" stroke="#DC2626" stroke-width="1.5" fill="rgba(220,38,38,0.06)"/>
+                <text x="250" y="72" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="10" fill="#DC2626">GAP</text>
+                <text x="250" y="88" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#DC2626">1,340 kg</text>
+
+                <!-- Arrow down to tax -->
+                <path d="M160 120 L160 150" stroke="#DC2626" stroke-width="1.5"/>
+                <polygon points="155,150 160,160 165,150" fill="#DC2626"/>
+                <rect x="70" y="165" width="180" height="40" rx="6" fill="rgba(220,38,38,0.08)" stroke="#DC2626" stroke-width="1"/>
+                <text x="160" y="190" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="600" fill="#DC2626">10M+ THB/year tax</text>
+
+                <!-- Arrow -->
+                <path d="M320 130 L400 130" stroke="#3798E4" stroke-width="2"/>
+                <polygon points="400,124 414,130 400,136" fill="#3798E4"/>
+                <text x="367" y="118" text-anchor="middle" font-family="Lexend, sans-serif" font-size="11" font-weight="500" fill="#3798E4">DigiWin</text>
+
+                <!-- Right: After (Unified tracking, zero variance) -->
+                <text x="560" y="22" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#059669">After: Production-Order Tracking</text>
+                <rect x="420" y="35" width="280" height="195" rx="12" stroke="#059669" stroke-width="1.5"/>
+
+                <!-- Unified tracking flow -->
+                <rect x="445" y="55" width="100" height="36" rx="6" fill="rgba(5,150,105,0.08)"/>
+                <text x="495" y="78" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#253B50">Production Order</text>
+                <path d="M545 73 L565 73" stroke="#059669" stroke-width="1.2"/>
+                <polygon points="565,69 573,73 565,77" fill="#059669"/>
+                <rect x="575" y="55" width="100" height="36" rx="6" fill="rgba(5,150,105,0.08)"/>
+                <text x="625" y="78" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#253B50">Actual Issuance</text>
+
+                <!-- Merged arrow down -->
+                <path d="M560 91 L560 115" stroke="#059669" stroke-width="1.2"/>
+                <polygon points="555,115 560,123 565,115" fill="#059669"/>
+
+                <!-- Reconciliation box -->
+                <rect x="475" y="125" width="170" height="36" rx="6" fill="rgba(5,150,105,0.08)" stroke="#059669" stroke-width="1.2"/>
+                <text x="560" y="148" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" font-weight="500" fill="#059669">Order-Level Reconciliation</text>
+
+                <!-- Result -->
+                <path d="M560 161 L560 180" stroke="#059669" stroke-width="1.2"/>
+                <polygon points="555,180 560,188 565,180" fill="#059669"/>
+                <rect x="480" y="190" width="160" height="30" rx="6" fill="rgba(5,150,105,0.1)" stroke="#059669" stroke-width="1.2"/>
+                <text x="560" y="210" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#059669">Variance → 0</text>
+            </svg>
+            <p class="diagram-caption">Production-order-level reconciliation eliminates the gap between BOM-calculated and actual material consumption — the root cause of BOI supplementary taxes.</p>
+        </div>
+
         <hr class="blog-divider fade-in">
 
         <!-- Section: The 10 Million Baht Gap -->

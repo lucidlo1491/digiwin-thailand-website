@@ -786,6 +786,53 @@
                 <p>The question is simple: if your ERP cannot accurately allocate costs across multiple outputs from a single production run, your cost data is fiction. And if your cost data is fiction, so are your margins, your quotes, and your pricing strategy.</p>
             </div>
 
+            <!-- Diagram: Co-Product Cost Allocation -->
+            <div class="article-diagram fade-in-section">
+                <svg viewBox="0 0 720 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <text x="360" y="22" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#253B50">One Production Run → Multiple Outputs → Accurate Cost Allocation</text>
+
+                    <!-- Input: 1 Production Run -->
+                    <rect x="250" y="45" width="220" height="55" rx="10" stroke="#059669" stroke-width="2" fill="rgba(5,150,105,0.06)"/>
+                    <text x="360" y="68" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#059669">1 Production Run</text>
+                    <text x="360" y="88" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#666">Raw materials + labor + overhead</text>
+
+                    <!-- Splitting arrows -->
+                    <line x1="280" y1="100" x2="140" y2="150" stroke="#059669" stroke-width="1.5"/>
+                    <line x1="360" y1="100" x2="360" y2="150" stroke="#059669" stroke-width="1.5"/>
+                    <line x1="440" y1="100" x2="580" y2="150" stroke="#059669" stroke-width="1.5"/>
+
+                    <!-- Output 1: Primary Product -->
+                    <rect x="50" y="150" width="180" height="60" rx="8" stroke="#059669" stroke-width="1.5" fill="rgba(5,150,105,0.06)"/>
+                    <text x="140" y="173" text-anchor="middle" font-family="Lexend, sans-serif" font-size="12" font-weight="600" fill="#253B50">Primary Product</text>
+                    <text x="140" y="193" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#059669">60% of total cost</text>
+
+                    <!-- Output 2: Co-Product -->
+                    <rect x="270" y="150" width="180" height="60" rx="8" stroke="#059669" stroke-width="1.5" fill="rgba(5,150,105,0.06)"/>
+                    <text x="360" y="173" text-anchor="middle" font-family="Lexend, sans-serif" font-size="12" font-weight="600" fill="#253B50">Co-Product</text>
+                    <text x="360" y="193" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#059669">30% of total cost</text>
+
+                    <!-- Output 3: By-Product -->
+                    <rect x="490" y="150" width="180" height="60" rx="8" stroke="#253B50" stroke-width="1.2" fill="rgba(37,59,80,0.04)"/>
+                    <text x="580" y="173" text-anchor="middle" font-family="Lexend, sans-serif" font-size="12" font-weight="600" fill="#253B50">By-Product</text>
+                    <text x="580" y="193" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#666">10% of total cost</text>
+
+                    <!-- Allocation methods -->
+                    <text x="140" y="232" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">Allocated by: weight,</text>
+                    <text x="140" y="248" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">market value, or volume</text>
+
+                    <text x="360" y="232" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">Same allocation</text>
+                    <text x="360" y="248" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">logic applied</text>
+
+                    <text x="580" y="232" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">Net realizable value</text>
+                    <text x="580" y="248" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">or fixed rate</text>
+
+                    <!-- Bottom note -->
+                    <rect x="170" y="264" width="380" height="12" rx="2" fill="rgba(5,150,105,0.1)"/>
+                    <text x="360" y="274" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="10" fill="#059669">Total allocation = 100% — every cost accounted for, no manual spreadsheets</text>
+                </svg>
+                <p class="diagram-caption">DigiWin allocates production costs across all outputs using configurable methods — weight, market value, or volume — not the one-primary-product workaround most ERPs force.</p>
+            </div>
+
             <!-- Section: The Multi-Output Reality -->
             <div class="fade-in-section">
                 <h2>The Multi-Output Reality</h2>

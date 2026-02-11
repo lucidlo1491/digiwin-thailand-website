@@ -1554,6 +1554,24 @@ img {
     border-radius: 2px;
 }
 
+/* Blog Article Diagrams */
+.article-diagram {
+    max-width: 100%;
+    margin: 48px auto;
+    text-align: center;
+}
+.article-diagram svg {
+    max-width: 100%;
+    height: auto;
+}
+.diagram-caption {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    color: #999;
+    margin-top: 12px;
+    font-style: italic;
+}
+
 /* Blog Related Articles */
 .blog-related {
     background: #F5F7FA;

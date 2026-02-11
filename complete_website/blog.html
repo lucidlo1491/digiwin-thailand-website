@@ -648,32 +648,6 @@
             opacity: 1;
         }
 
-        /* Coming Soon styling */
-        .library-item--coming-soon {
-            pointer-events: none;
-        }
-
-        .library-item--coming-soon .library-item-title {
-            color: #bbb;
-        }
-
-        .library-item--coming-soon .library-item-time {
-            color: #ccc;
-        }
-
-        .coming-soon-badge {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 9px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #bbb;
-            background: rgba(0, 0, 0, 0.04);
-            padding: 3px 8px;
-            border-radius: 4px;
-            white-space: nowrap;
-        }
-
         /* ========================================
            SECTION 5: CTA
            ======================================== */
@@ -864,6 +838,14 @@
 
             .library-group {
                 padding: 24px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>

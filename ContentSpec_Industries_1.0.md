@@ -3,8 +3,8 @@
 **Batch:** 2
 **PRD Reference:** Section 4.0
 **Playbook Reference:** Section 3.1 (Hub Page Arc), Section 2.2 (Track A Voice), Section 4.1 (Factory Operator Objections)
-**Status:** v1.0 — Reverse-engineered from HTML build
-**Last Updated:** February 10, 2026
+**Status:** v1.1 — Updated to reflect hero redesign, GDP correction, and cross-industry capabilities rework
+**Last Updated:** February 11, 2026
 
 ---
 
@@ -32,18 +32,18 @@
 
 | Element | Content |
 |---------|---------|
-| **Badge** | `DEEP MANUFACTURING EXPERTISE` (JetBrains Mono, 11px, uppercase, 0.1em letter-spacing, blue pulse dot animation) |
-| **Headline** | `Built for <span>Your Industry</span>` (h1, Lexend 700, clamp 40-56px, -0.03em tracking; span in `--blue` #3798E4) |
-| **Subhead** | `We don't just understand manufacturing—we understand YOUR manufacturing. 44 years of vertical expertise in ASEAN's core industrial sectors.` (Source Sans 3, 19px, rgba white 0.75, max-width 680px) |
+| **Badge** | `INDUSTRY-SPECIFIC MANUFACTURING ERP` (JetBrains Mono, 11px, uppercase, 0.1em letter-spacing, blue pulse dot animation) |
+| **Headline** | `Built for Your Industry.<br><span>Proven by Experience.</span>` (h1, Lexend 700, clamp 40-56px, -0.03em tracking; "Proven by Experience." in `--blue` #3798E4) |
+| **Subhead** | `Your factory isn't generic — your ERP shouldn't be either. From automotive JIT scheduling to electronics component traceability to metal processing yield optimization, we've spent 44 years solving industry-specific challenges on the shop floor.` (Source Sans 3, 19px, rgba white 0.75, max-width 680px; "44" uses `dw-years` dynamic class) |
 | **Stats bar** | Three stats separated by 48px gap, border-top 1px rgba white 0.1, padding-top 40px |
 
 **Hero Stats:**
 
 | Stat | Value | Label |
 |------|-------|-------|
-| 1 | `44` (dynamic via `dw-years` class) | `YEARS FOCUS` |
-| 2 | `50K+` | `FACTORIES` |
-| 3 | `100+` | `THAI CUSTOMERS` |
+| 1 | `3` | `CORE VERTICALS` |
+| 2 | `100+` | `THAI IMPLEMENTATIONS` |
+| 3 | `44` (dynamic via `dw-years` class) | `YEARS MANUFACTURING-ONLY` |
 
 ---
 
@@ -71,7 +71,7 @@
 | 1 | `#1` | `ASEAN AUTO PRODUCTION` |
 | 2 | `2,500+` | `AUTO PARTS SUPPLIERS` |
 | 3 | `$40B` | `ELECTRONICS EXPORTS` |
-| 4 | `10%` | `GDP FROM MANUFACTURING` |
+| 4 | `~27%` | `GDP FROM MANUFACTURING` |
 
 *Stats are cards with `--gray-light` (#F5F7FA) background, 20px border-radius, 40px/24px padding. Hover: white background, blue border, shadow, translateY(-4px).*
 
@@ -133,9 +133,9 @@
 
 ---
 
-## Section 4: Universal Challenges (What Every Factory Needs)
+## Section 4: Cross-Industry Capabilities
 
-**Purpose:** Show cross-industry value — regardless of vertical, these pain points are universal.
+**Purpose:** Show DigiWin-specific differentiators that apply across all verticals — these are PRD-specified capabilities, not generic buzzwords.
 
 | Element | Specification |
 |---------|---------------|
@@ -146,17 +146,17 @@
 
 | Element | Content |
 |---------|---------|
-| **Headline** | `What Every Factory Needs` (Lexend, 36px, #253B50) |
-| **Subhead** | `Regardless of industry, these challenges are universal` (18px, #64748b) |
+| **Headline** | `Cross-Industry Capabilities` (Lexend, 36px, #253B50) |
+| **Subhead** | `Regardless of your vertical, these manufacturing fundamentals are built into every DigiWin solution` (18px, #64748b) |
 
-**Challenge Cards (4-column grid, 24px gap):**
+**Capability Cards (4-column grid, 24px gap):**
 
-| Card | Title | Body |
-|------|-------|------|
-| 1 (Eye icon) | `Visibility` | `Know what's happening on your floor—right now, not tomorrow morning in a report.` |
-| 2 (Search icon) | `Traceability` | `Answer any customer audit question in minutes, not days of spreadsheet hunting.` |
-| 3 (Bar chart icon) | `Control` | `Costs, quality, delivery—manage them proactively instead of fighting fires.` |
-| 4 (Arrow up icon) | `Efficiency` | `Do more with the same resources. Grow revenue without growing headcount proportionally.` |
+| Card | Icon | Title | Body |
+|------|------|-------|------|
+| 1 | Search | `Full Traceability` | `Lot-level tracking from raw material to finished goods. Answer any customer audit question in minutes, not days.` |
+| 2 | Clipboard check | `BOI Compliance` | `Production-order-level material reconciliation that passes BOI audit scrutiny. One client saved 10M+ THB/year in supplementary taxes.` |
+| 3 | Dual arrows | `Dual-Unit Conversion` | `Show kilograms AND pieces simultaneously across purchasing, production, and sales. No workarounds needed.` |
+| 4 | Eye | `Production Visibility` | `See your shop floor in real time — machine status, work order progress, and OEE — not yesterday's spreadsheet.` |
 
 *Cards: white bg, 1px #e2e8f0 border, 16px border-radius, 32px/24px padding. 64px icon containers with blue gradient. Hover: blue border, shadow, translateY(-4px), icon fills blue.*
 
@@ -263,19 +263,32 @@ This page has **significant inline CSS** (~580 lines) covering:
 
 3. **Missing from PRD spec — Approach section:** The PRD's Section 4.0 does not mention an "Our Approach" section (Understand → Design → Deliver). This was added in the build and aligns well with Objection 1 (fear of disruption) from Playbook Section 4.1. Good addition.
 
-4. **Missing from PRD spec — Market Context section:** The Thailand market context stats section (#1 ASEAN, 2,500+ suppliers, $40B electronics, 10% GDP) is not in the PRD. Good addition for credibility but stats should be source-verified.
+4. **Missing from PRD spec — Market Context section:** The Thailand market context stats section (#1 ASEAN, 2,500+ suppliers, $40B electronics, ~27% GDP) is not in the PRD. Good addition for credibility but stats should be source-verified.
 
-5. **Stat verification needed:** The following claims need source verification:
+5. **Stat verification status:**
+   - ~~"10% GDP from manufacturing"~~ **FIXED (v1.1):** Changed to ~27%, which aligns with World Bank/NESDC data for Thailand's manufacturing share of GDP.
    - "2,500+ auto parts suppliers" — plausible (Thai Automotive Institute figures), but check latest data
    - "$40B electronics exports" — check against BOI/NESDC data
-   - "10% GDP from manufacturing" — Thailand's manufacturing is closer to 25-27% of GDP. If this means a specific sub-sector, it should be clarified. **Likely incorrect.**
+   - "500+ Tier 1-3 suppliers served" (automotive card) — needs sourcing
+   - "1000+ component types tracked" (electronics card) — needs sourcing
+   - "15% average yield improvement" (metal card) — needs sourcing
+   - "One client saved 10M+ THB/year" (BOI card) — sourced from VP strategy transcript (verified in cross-check findings)
 
-6. **CSS inline vs. shared:** This page has ~580 lines of inline CSS. The `.challenges-section` class name conflicts with the shared class in `styles.css` used by the individual industry pages. The inline version overrides for this page, but this is fragile. Should be refactored to use a distinct class name (e.g., `.industries-hub-challenges`) or extracted to `styles.css` with proper scoping.
+6. **CSS inline vs. shared:** This page has ~580 lines of inline CSS. The `.challenges-section` class name conflicts with the shared class in `styles.css` used by the individual industry pages. The inline version overrides for this page, but this is fragile. Should be refactored to use a distinct class name (e.g., `.industries-hub-challenges`) or extracted to `styles.css` with proper scoping. **Deferred: will extract on next page touch per CLAUDE.md guardrail.**
 
-7. **CSS `:root` block is malformed:** Line 18 shows `--white: #ffffff;` immediately followed by `}10% { transform: translate(-2%, -2%); }` — this appears to be a corrupted merge of the `:root` block with `@keyframes grain` animation frames. The page likely still works because the browser may recover, but this is a bug that should be cleaned up.
+7. ~~**CSS `:root` block is malformed:**~~ **FIXED (v1.1):** Removed malformed `@keyframes` fragments that had corrupted the `:root` block. The actual keyframes exist in shared `styles.css`.
 
-8. **Dynamic years class:** Hero stats use `dw-years` class on both the subtitle ("44 years") and the stat number, which will be dynamically updated by `digiwin-dynamic.js`. Good pattern for keeping the founding year claim current.
+8. **Dynamic years class:** Hero subtitle uses `dw-years` class on "44" and hero stat uses `dw-years` on the "44" stat number. Both will be dynamically updated by `digiwin-dynamic.js`. Good pattern.
 
 9. **No case studies referenced:** PRD Section 4.0 doesn't require case studies on this hub page, and the build correctly omits them (leaf pages handle proof). Consistent with the Hub Page Arc (Section 3.1 of Playbook).
 
-10. **CTA links correctly to existing pages:** Primary CTA → `demo.html` (exists), Secondary → `products.html` (should verify exists). Industry card links all point to existing industry sub-pages.
+10. **CTA links correctly to existing pages:** Primary CTA → `demo.html` (exists), Secondary → `products.html` (exists). Industry card links all point to existing industry sub-pages.
+
+11. **v1.1 Changes Summary:**
+    - Hero badge: "Deep Manufacturing Expertise" → "Industry-Specific Manufacturing ERP"
+    - Hero headline: Added "Proven by Experience." second line in blue
+    - Hero subtitle: Rewritten — pain-first, mentions all 3 verticals, no caps "YOUR"
+    - Hero stats: Generic company stats (44/50K+/100+) → industry-specific (3 Core Verticals / 100+ Thai Implementations / 44 Years Manufacturing-Only)
+    - GDP stat: 10% → ~27% (factual correction)
+    - Cross-Industry section: "What Every Factory Needs" → "Cross-Industry Capabilities" with PRD differentiators (Full Traceability, BOI Compliance, Dual-Unit Conversion, Production Visibility)
+    - Broken CSS: Malformed `:root`/`@keyframes` merge cleaned up

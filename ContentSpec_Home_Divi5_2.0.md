@@ -133,8 +133,10 @@ Number styling: Lexend 800, 32px, #3798E4, -0.02em tracking. Label styling: JetB
 
 | Stat | Number | Label |
 |------|--------|-------|
-| 1 | `30-40%` | License Margin |
-| 2 | `50%` | Recurring Revenue |
+| 1 | `Industry-Leading` | License Margins |
+| 2 | `Your MA` | Your Revenue |
+
+> **Updated Feb 10, 2026:** Hero stats changed from specific percentages ("30-40% License Margin" / "50% Recurring Revenue") to qualitative statements. Rationale: (1) "50% Recurring Revenue" had no verified source, (2) actual margins (50-70%) made "30-40%" misleading, (3) undersell strategy — let the Partner Program page reveal specific numbers. MA positioning: "We keep the maintenance revenue in your hands, not ours."
 
 Number styling: white instead of blue. Use Text modules (not Number Counter, since these are ranges/percentages).
 
@@ -338,7 +340,9 @@ Identical structure to Section 3, but with dark theme:
 | **Number** | 03 |
 | **Title** | "The Ghost IT Burden" |
 | **Quote** | "You aren't just their ERP consultant—you are their unpaid IT department, fixing Wi-Fi, printers, and user discipline issues." |
-| **Description** | 80% of Thai SMEs lack an internal IT Manager. You subsidize their operations with your margins. The "free work" that kills your spirit but you feel forced to do to keep the relationship. |
+| **Description** | Most Thai SMEs lack a dedicated IT Manager. You subsidize their operations with your margins. The "free work" that kills your spirit but you feel forced to do to keep the relationship. |
+
+> **Updated Feb 10, 2026:** Changed "80% of Thai SMEs" → "Most Thai SMEs". The 80% figure appears in DigiWin's IDP documents but is not backed by an external source (no OSMEP/FTI/BOI citation). Using "most" is defensible; if challenged, say "based on our experience across 100+ Thai implementations."
 
 ### CTA Below Cards
 

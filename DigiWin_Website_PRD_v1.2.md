@@ -1,6 +1,6 @@
 # DigiWin Thailand Website â€” Product Requirements Document
 
-**Version:** 1.4
+**Version:** 1.5
 **Last Updated:** February 11, 2026
 **Author:** Peter (Head of Distributor) + Claude (AI Operating System)
 **Status:** Draft â€" Under Review
@@ -146,11 +146,12 @@ The site is organized into 5 main sections. Hub pages aggregate and route; leaf 
     â”œâ”€â”€ 5.2 About Us
     â""â"€â"€ 5.3 ESG & Net Zero
 6.0 News & Events
+    └── 6.1 Event Detail Page (Template — reused for all event types)
 7.0 Blog / Knowledge Base
     â""â"€â"€ Article Template
 ```
 
-Total: 22 pages (5 hubs + 15 leaves + 2 content marketing). About Us is a comprehensive multi-section page.
+Total: 23 pages (5 hubs + 15 leaves + 3 content marketing). About Us is a comprehensive multi-section page.
 
 Priority: Partner Program path (2.x) first, then Home (1.0), then Products (3.x), Industries (4.x), Resources (5.x), then Content Marketing (6.0, 7.0).
 
@@ -846,6 +847,42 @@ Purpose: Future-facing credibility
 
 ---
 
+### 6.1 Event Detail Page (Template)
+
+**Audience:** Track A (Factory Operators) — attendees seeking specific event information before committing
+**Objective:** Convert event interest into registration by providing event-specific context, outcomes, and logistics
+
+**Template Design:** One reusable template serves all four event types. Each type applies a CSS accent color:
+- Seminar: #3798E4 (blue)
+- Workshop: #22C55E (green)
+- Factory Visit: #F59E0B (amber)
+- Trade Show: #8B5CF6 (purple)
+
+#### Section Flow
+
+| # | Section | Background | Persuasion Purpose |
+|---|---------|------------|-------------------|
+| 1 | Hero | Dark gradient + grain (event-color accent) | Instant clarity: what, when, where + urgency |
+| 2 | The Problem | White | Pain-first: "This is YOUR challenge right now" |
+| 3 | What You'll Walk Away With | Light gray (#F5F7FA) | Outcomes > topics. "You'll leave knowing how to..." |
+| 4 | Agenda | White | Proves structure + professionalism, not a sales pitch |
+| 5 | Who Should Attend | Light gray | Self-selection: reader sees themselves |
+| 6 | Proof / Social Signal | White | Past event stats, attendee testimonials, track record |
+| 7 | Logistics | Light gray | Remove friction: venue, parking, what to bring |
+| 8 | Registration CTA | Dark gradient + grain | Urgency recap + simple action |
+| 9 | Related Events | Light gray | Keep them in funnel if this event doesn't fit |
+
+**Key Design Decisions:**
+- NO separate FAQ section — address objections inline (per Playbook: "Every unspoken fear addressed within page copy, not FAQ sections")
+- Hero includes "Register Now" button AND quick-facts bar (date/time/location/seats) — no scrolling needed to act
+- "What You'll Walk Away With" uses outcome language, not agenda language
+- "Who Should Attend" uses persona cards for self-selection
+- Back link to News & Events hub for navigation continuity
+
+**Notes:** Event pages link from the News hub (6.0). Registration CTA links to demo.html (contact form). One template, unlimited events — each event is a new page built from this template with event-specific content.
+
+---
+
 ### 7.0 Blog / Knowledge Base
 
 **Audience:** Both â€" factory operators researching solutions, distributor prospects evaluating DigiWin's expertise
@@ -1211,6 +1248,7 @@ Blog articles link to product/industry pages (passes authority to commercial pag
 | 1.2 | Feb 3, 2026 | Rewrote Section 2 (dual-track persuasion framework with fear inventory), added Three-Layer Documentation Model (Section 5), rewrote Production Workflow (Section 6) for DIVI JSON import pipeline â€" Claude handles import via Chrome browser, direct stock image URLs (no upload step), changed Batch 0 validation to Home page, expanded Open Items from 12 to 14 |
 | 1.3 | Feb 9, 2026 | +News/Events page (6.0) and Blog (7.0) specs, +blog article template (7.1), +BOI compliance differentiator, +competitive landscape, +iGP/WorkFlow branding note, fixed CTA language ("Let's Talk"), updated build order |
 | 1.4 | Feb 11, 2026 | +Content funnel staging for blog (TOFU/MOFU/BOFU), +blog-to-product linking rules, +category-to-product mapping, +content calendar. New Section 8: Reader Journey Map (entry points, Track A/B journeys, cross-linking architecture) + SEO Content Framework (topic selection, article SEO structure, internal linking for SEO). Renumbered Open Items to Section 9 |
+| 1.5 | Feb 11, 2026 | +Event Detail Page template (6.1) — reusable template for all event types with 9-section persuasion flow. Updated sitemap (23 pages). Added to build order under Batch 7 |
 
 ---
 

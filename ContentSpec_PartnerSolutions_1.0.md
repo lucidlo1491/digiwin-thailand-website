@@ -80,7 +80,9 @@
 | Metric | Value |
 |--------|-------|
 | Target Customer | 200+ employees |
-| License Margin | 40-50% (highlighted blue) |
+| License Margin | 30-40% (highlighted blue) |
+
+> **Updated Feb 10, 2026:** Changed from 40-50% to 30-40% per undersell strategy. Actual T100 Silver margin is 50%, Golden is 62%. Conservative number lets every distributor meeting exceed expectations.
 | Implementation Fees | 100% yours (highlighted blue) |
 | Revenue Type | Enterprise Asset |
 

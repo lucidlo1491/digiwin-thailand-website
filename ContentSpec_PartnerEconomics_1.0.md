@@ -44,7 +44,9 @@
 
 | Stat | Value | Label |
 |------|-------|-------|
-| 1 | 40-70% | License Margin |
+| 1 | 30-40% | License Margin |
+
+> **Updated Feb 10, 2026:** Hero stat aligned with undersell strategy (30-40%). The detailed tier breakdown later on the page reveals higher actual margins (Silver 50-62%, Golden 62-70%) — this is intentional. Hero understates; body content delivers the "exceed expectations" moment.
 | 2 | 100% | Service Revenue |
 | 3 | 75% | MA Split (9% of SSP) |
 | 4 | 6mo | Lead Lock Protection |
@@ -121,7 +123,7 @@ Each card has: dark header (`linear-gradient(135deg, #253B50, #1a2e40)`) with ic
 
 | Type | Margin |
 |------|--------|
-| Module Add-ons | Same 40-70% margin |
+| Module Add-ons | Same tier-based margin (30-40%+ depending on tier) |
 | Referral Fees | 5-10% of license (highlighted green) |
 
 | **Note** | *A single client can generate 3-4 additional license sales over 5 years.* |
@@ -324,7 +326,7 @@ Each card has: dark header (`linear-gradient(135deg, #253B50, #1a2e40)`) with ic
 
 1. **Revenue Figures are Highly Specific:** The 3-year journey includes exact THB figures (฿380K, ฿1.6M, ฿2.0M total for Year 1, etc.). PRD Section 2.3 notes: "Pricing: directional ranges only. Exact pricing requires HQ approval." These figures should be reviewed — they read as "scenario examples" rather than guaranteed pricing, but the specificity may create expectations. Consider adding a disclaimer like "Illustrative scenario — actual results depend on your market and effort."
 
-2. **License Margin Range Inconsistency:** Hero proof bar says "40-70% License Margin." Revenue streams section says Silver ~50%, Gold ~62-70%. The Partner Hub page says "40-50% License Commission." These ranges don't contradict each other (40-70% is the full range, 40-50% is Silver tier only) but could confuse readers comparing pages. Recommend harmonizing language.
+2. **License Margin Range — HARMONIZED (Feb 10, 2026):** All public-facing pages now use **30-40%** as the headline margin range (undersell strategy, confirmed by Peter). Actual margins from Price Sheet V2.0: Silver 50-62%, Golden 62-70%. The specific tier breakdowns on this Economics page can show higher numbers since visitors are deeper in the funnel — but hero/overview stats across all pages should say "30-40%". Homepage hero uses qualitative "Industry-Leading Margins" instead of a specific number.
 
 3. **MA Split Detail:** The page specifies MA = 12% of SSP, with 75/25 split (partner keeps 9%, DigiWin takes 3%). This is very specific and should be confirmed with HQ. The Partner Hub page states "9% Annual Maintenance Share" which aligns.
 

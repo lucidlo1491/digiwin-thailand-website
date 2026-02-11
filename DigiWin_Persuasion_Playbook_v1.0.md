@@ -1,7 +1,7 @@
 # DigiWin Thailand â€” Persuasion Playbook
 
 **Layer 2 Document**
-**Version:** 1.2
+**Version:** 1.3
 **Last Updated:** February 11, 2026
 **Purpose:** Voice guide, copywriting patterns, and objection-handling scripts for all website content
 **Audience:** Claude (reference when generating Content Specs)
@@ -276,6 +276,39 @@ New Blog Category: **"Partner Insights"** (#0EA5E9 teal-blue)
 - Track B content lives in its own category
 - Visible in blog listing alongside Track A categories
 - Provides dedicated entry point for distributor prospects browsing the blog
+
+### 3.10 Event Detail Page Arc
+
+Arc: Curiosity → Relevance → Urgency → Action
+
+```
+TOP:    "This event is about MY problem" (instant relevance via pain naming)
+UPPER:  "I'll walk out able to do THIS" (concrete outcomes, not vague agenda)
+MIDDLE: "It's structured and professional" (agenda + proof remove 'sales pitch' fear)
+LOWER:  "People like me will be there" (self-selection via persona cards)
+BOTTOM: "I need to act now — seats are limited" (urgency + frictionless registration)
+```
+
+**Event type differentiation — each type promises a different value:**
+- **Seminar** = knowledge: "Learn why..." — attendees leave understanding a framework or regulatory requirement
+- **Workshop** = hands-on skill: "Walk out able to..." — attendees leave with a capability they didn't have before
+- **Factory Visit** = proof: "See it running..." — attendees leave having witnessed a live system in a real factory
+- **Trade Show** = presence: "Find us at..." — attendees leave with a face-to-face connection and materials
+
+**Urgency/scarcity patterns for events:**
+- Capacity limits: "Limited to 30 participants" (workshops), "15 spots available" (factory visits)
+- Specific dates: Concrete date/time removes "I'll do it later" thinking
+- Regulatory deadlines: "BOI audits are annual — your next one is approaching" (for compliance events)
+- Series progression: "This is Month 1 of 4 — start from the beginning"
+
+**Objection scripts for events:**
+
+| Objection | Where Addressed | Neutralization |
+|-----------|----------------|----------------|
+| "Is this a vendor sales pitch?" | Section 2 (Problem) + Section 4 (Agenda) | Frame as education, show practical takeaways. Agenda proves structure. "You'll leave with a reconciliation checklist, not a sales deck." |
+| "Is it worth half a day?" | Section 3 (Outcomes) | Concrete outcomes, not vague promises. "You'll be able to run a BOI reconciliation report" not "BOI overview presentation." |
+| "Will people like me be there?" | Section 5 (Who Should Attend) | Persona-based self-selection. Reader sees their role, factory size, and challenge described. |
+| "What if I can't make it?" | Section 8 (CTA) | "Can't make this date? Register your interest and we'll notify you of the next session." |
 
 ---
 
@@ -553,6 +586,36 @@ Blog articles use a three-tier CTA system. The tiers escalate from soft (learnin
 4. Max 2 CTAs above the bottom banner (1 soft + 1 bridge)
 5. Frame as reader's choice: "If you want to explore..." not "Contact us to..."
 
+### 7.10 Event Detail Pages (6.1) — Conversion Through Specificity
+
+Event detail pages convert curiosity into registration. The key insight: specificity removes uncertainty, and uncertainty kills registration.
+
+**Pain-first, not agenda-first:**
+- Open with the problem the event solves, not a description of the event
+- "Your finance team spends 3 weeks preparing for each BOI audit" not "Join our BOI compliance workshop"
+- The reader must feel the relevance before they'll invest their time
+
+**Outcome language over topic language:**
+- "You'll walk out able to run a BOI reconciliation report" not "BOI compliance presentation"
+- "You'll see a live factory dashboard tracking 12 machines" not "MES demonstration"
+- Every agenda item starts with what the attendee gains, not what the speaker covers
+
+**Persona cards for self-selection:**
+- "Who Should Attend" section uses cards matching reader's identity: role + factory size + challenge
+- Reader should see themselves in at least one card
+- If none match, they self-select out — which is fine (quality > quantity)
+
+**Inline objection handling:**
+- "Is this a sales pitch?" → addressed in Section 2 (Problem) + Section 4 (Agenda) — structure proves substance
+- "Is it worth my time?" → addressed in Section 3 (Outcomes) — concrete deliverables, not vague benefits
+- NO standalone FAQ section. Objections woven into narrative flow.
+
+**Registration CTA strategy:**
+- Hero has "Register Now" + quick-facts bar (date/time/location/seats) — no scrolling needed to act
+- Bottom CTA repeats with urgency recap: remaining seats, date reminder
+- Secondary: "Can't make this date?" captures interest for future events
+- All registration links to demo.html (contact form)
+
 ---
 
 ## 8. Content Formulas
@@ -692,6 +755,7 @@ From presale training, terms the audience uses and expects:
 | 1.0 | Feb 3, 2026 | Initial Playbook â€” dual-audience voice calibration, emotional arcs, objection scripts, proof formatting, CTA hierarchy, content formulas, translation notes, anti-patterns |
 | 1.1 | Feb 9, 2026 | +BOI compliance objection scripts (4.3), +Eddie's presale methodology (11), +News/Blog/Article emotional arcs (3.6-3.8), +page-specific notes for News/Blog (7.7-7.8), updated CTA Level 5 to "Let's Talk" (6.1), clarified competitor naming rule for Track B (10), 7 new manufacturing vocabulary terms (11.5) |
 | 1.2 | Feb 11, 2026 | Replaced generic blog arc (3.8) with funnel-specific arcs: TOFU (3.8.1), MOFU (3.8.2), BOFU (3.8.3). +Track B Blog Article Arc (3.9) with "Partner Insights" category. +In-Article CTA Strategy (7.9) with three-tier system (Soft/Bridge/Direct) and anti-salesy guardrails |
+| 1.3 | Feb 11, 2026 | +Event Detail Page Arc (3.10) with Curiosity→Relevance→Urgency→Action flow, event type differentiation, urgency/scarcity patterns, and 4 event-specific objection scripts. +Event Detail Page copywriting notes (7.10) with pain-first, outcome language, and persona card guidance |
 
 ---
 

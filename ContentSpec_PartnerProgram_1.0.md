@@ -47,7 +47,9 @@
 | Stat | Value | Label |
 |------|-------|-------|
 | 1 | 100% | Service Fees You Keep |
-| 2 | 40-50% | License Commission |
+| 2 | 30-40% | License Margin |
+
+> **Updated Feb 10, 2026:** Changed from "40-50% License Commission" to "30-40% License Margin". Actual price sheet margins are 50-70%, but Peter confirmed undersell strategy — conservative number that every meeting can exceed. Aligned with Homepage hero messaging.
 | 3 | 9% | Annual Maintenance Share |
 | 4 | 6 mo | Lead Lock Protection |
 
@@ -75,7 +77,9 @@
 |------|------|-------|------|
 | 1 | Bar chart (declining) | The "Margin Erosion" Crisis | Your project margins have silently compressed from **35% to 18%** over the last few years. Clients demand Tier-1 capabilities (IoT, real-time costing) but refuse to pay more than Tier-3 prices. |
 | 2 | Dollar sign | The "Unbillable Overrun" | You spend weeks fixing data errors or creating workarounds for rigid software (phantom BOMs, regrind logic) that you **cannot bill for**, turning profitable projects into break-even disasters. |
-| 3 | Lock | The "Ghost IT" Burden | You aren't just their ERP consultant—you've become their unpaid IT department. **80% of Thai SMEs** lack an IT manager, so your senior staff wastes billable hours on Wi-Fi and password resets. |
+| 3 | Lock | The "Ghost IT" Burden | You aren't just their ERP consultant—you've become their unpaid IT department. **Most Thai SMEs** lack a dedicated IT manager, so your senior staff wastes billable hours on Wi-Fi and password resets. |
+
+> **Updated Feb 10, 2026:** Changed "80% of Thai SMEs" → "Most Thai SMEs". The 80% figure is a DigiWin field observation (from IDP docs), not externally cited. "Most" is defensible; if pressed, say "based on our experience across 100+ Thai implementations."
 
 ---
 
@@ -145,7 +149,7 @@
 | **Label** | "DigiWin Strategic Concession" |
 | **Title** | "Partner Keeps the Meat" |
 | **List Item 1** | (check) **100%** of implementation & service fees |
-| **List Item 2** | (check) **40-50%** commission on license sales |
+| **List Item 2** | (check) **30-40%** margin on license sales |
 | **List Item 3** | (check) **Zero** channel conflict—Thai market is yours |
 | **List Item 4** | (check) **9%** annual maintenance annuity |
 

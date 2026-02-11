@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Industries - DigiWin Thailand</title>
     <link rel="stylesheet" href="{{basePath}}styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="{{basePath}}assets/digiwin-d-mark.svg">
     <style>
         :root {
-            --navy: #253B50;
+            --navy: #000864;
             --navy-deep: #0f1419;
             --navy-mid: #1a2632;
-            --blue: #3798E4;
+            --blue: #00AFF0;
             --blue-light: #2d7bc4;
             --gray-light: #F5F7FA;
             --white: #ffffff;
@@ -49,8 +50,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(ellipse at 70% 30%, rgba(55, 152, 228, 0.12) 0%, transparent 50%),
-                        radial-gradient(ellipse at 30% 80%, rgba(55, 152, 228, 0.08) 0%, transparent 40%);
+            background: radial-gradient(ellipse at 70% 30%, rgba(0, 175, 240, 0.12) 0%, transparent 50%),
+                        radial-gradient(ellipse at 30% 80%, rgba(0, 175, 240, 0.08) 0%, transparent 40%);
             pointer-events: none;
         }
         .industries-hero-inner {
@@ -66,8 +67,8 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(55, 152, 228, 0.1);
-            border: 1px solid rgba(55, 152, 228, 0.3);
+            background: rgba(0, 175, 240, 0.1);
+            border: 1px solid rgba(0, 175, 240, 0.3);
             padding: 10px 20px;
             border-radius: 50px;
             color: var(--blue);
@@ -87,7 +88,7 @@
             animation: pulse-dot 2s ease-in-out infinite;
         }
         .industries-hero h1 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: clamp(40px, 5vw, 56px);
             font-weight: 700;
             color: #fff;
@@ -99,7 +100,7 @@
             color: var(--blue);
         }
         .industries-hero-subtitle {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 19px;
             color: rgba(255,255,255,0.75);
             max-width: 680px;
@@ -117,7 +118,7 @@
             text-align: center;
         }
         .industries-hero-stat-number {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 36px;
             font-weight: 800;
             color: var(--blue);
@@ -167,7 +168,7 @@
             margin-bottom: 60px;
         }
         .context-header h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
             color: var(--navy);
@@ -197,12 +198,12 @@
         }
         .context-stat:hover {
             background: var(--white);
-            border-color: rgba(55, 152, 228, 0.2);
-            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.1);
+            border-color: rgba(0, 175, 240, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 175, 240, 0.1);
             transform: translateY(-4px);
         }
         .context-stat-value {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 44px;
             font-weight: 800;
             color: var(--blue);
@@ -232,7 +233,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: radial-gradient(circle, rgba(55, 152, 228, 0.03) 1px, transparent 1px);
+            background-image: radial-gradient(circle, rgba(0, 175, 240, 0.03) 1px, transparent 1px);
             background-size: 30px 30px;
             pointer-events: none;
         }
@@ -258,7 +259,7 @@
             margin-bottom: 72px;
         }
         .industries-header h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
             color: var(--navy);
@@ -294,7 +295,7 @@
             transform: translateY(0);
         }
         .industry-card:hover {
-            box-shadow: 0 24px 64px rgba(55, 152, 228, 0.18);
+            box-shadow: 0 24px 64px rgba(0, 175, 240, 0.18);
             transform: translateY(-8px);
             border-color: transparent;
         }
@@ -329,7 +330,7 @@
         .industry-card-icon {
             width: 100px;
             height: 100px;
-            background: rgba(55, 152, 228, 0.15);
+            background: rgba(0, 175, 240, 0.15);
             border-radius: 24px;
             display: flex;
             align-items: center;
@@ -348,7 +349,7 @@
             color: #fff;
         }
         .industry-card-stat-value {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 52px;
             font-weight: 800;
             color: var(--blue);
@@ -369,9 +370,9 @@
             justify-content: center;
         }
         .industry-card-title {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 28px;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 16px;
         }
         .industry-card-desc {
@@ -396,15 +397,15 @@
         .industry-feature svg {
             width: 16px;
             height: 16px;
-            color: #3798E4;
+            color: #00AFF0;
             flex-shrink: 0;
         }
         .industry-card-link {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: #3798E4;
-            font-family: 'Lexend', sans-serif;
+            color: #00AFF0;
+            font-family: 'Noto Sans', sans-serif;
             font-weight: 600;
             font-size: 15px;
             text-decoration: none;
@@ -429,9 +430,9 @@
             margin-bottom: 60px;
         }
         .challenges-header h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 36px;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 16px;
         }
         .challenges-header p {
@@ -452,14 +453,14 @@
             transition: all 0.3s ease;
         }
         .challenge-card:hover {
-            border-color: #3798E4;
-            box-shadow: 0 8px 30px rgba(55, 152, 228, 0.12);
+            border-color: #00AFF0;
+            box-shadow: 0 8px 30px rgba(0, 175, 240, 0.12);
             transform: translateY(-4px);
         }
         .challenge-icon {
             width: 64px;
             height: 64px;
-            background: linear-gradient(135deg, rgba(55, 152, 228, 0.1), rgba(55, 152, 228, 0.05));
+            background: linear-gradient(135deg, rgba(0, 175, 240, 0.1), rgba(0, 175, 240, 0.05));
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -470,20 +471,20 @@
         .challenge-icon svg {
             width: 28px;
             height: 28px;
-            stroke: #3798E4;
+            stroke: #00AFF0;
             stroke-width: 1.5;
             fill: none;
         }
         .challenge-card:hover .challenge-icon {
-            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            background: linear-gradient(135deg, #00AFF0, #2d7bc4);
         }
         .challenge-card:hover .challenge-icon svg {
             stroke: #fff;
         }
         .challenge-card h3 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 20px;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 12px;
         }
         .challenge-card p {
@@ -495,7 +496,7 @@
         /* Approach Section */
         .approach-section {
             padding: 100px 0;
-            background: linear-gradient(135deg, #253B50 0%, #1a2e40 100%);
+            background: linear-gradient(135deg, #000864 0%, #000432 100%);
         }
         .approach-inner {
             max-width: 1000px;
@@ -507,7 +508,7 @@
             margin-bottom: 60px;
         }
         .approach-header h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 36px;
             color: #fff;
             margin-bottom: 16px;
@@ -527,19 +528,19 @@
         .approach-step-number {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            background: linear-gradient(135deg, #00AFF0, #2d7bc4);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 24px;
             font-weight: 700;
             color: #fff;
             margin: 0 auto 20px;
         }
         .approach-step h3 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 20px;
             color: #fff;
             margin-bottom: 12px;
@@ -578,7 +579,9 @@
 {{header}}
 
     <!-- Hero Section -->
-    <section class="industries-hero">
+    <section class="industries-hero" style="position: relative; overflow: hidden;">
+        <!-- Brand: Super D PARTICLE CENTER — the convergence point where all industries meet -->
+        <div class="dw-d-bg dw-d-bg--center dw-d-bg--particle dw-d-parallax" style="opacity: 0.10;"></div>
         <div class="industries-hero-inner">
             <div class="industries-hero-badge">
                 <span>Industry-Specific Manufacturing ERP</span>
@@ -601,6 +604,9 @@
             </div>
         </div>
     </section>
+
+    <!-- Brand: Wave fade — transition from hero into market context -->
+    <div class="dw-wave-fade" style="opacity: 0.08;"></div>
 
     <!-- Thailand Context Section -->
     <section class="context-section">
@@ -632,8 +638,10 @@
     </section>
 
     <!-- Industry Cards Section -->
-    <section class="industries-section">
-        <div class="industries-inner">
+    <section class="industries-section" style="position: relative; overflow: hidden;">
+        <!-- Brand: Wave section — subtle dot-grid texture behind industry cards -->
+        <div class="dw-wave-section" style="opacity: 0.04;"></div>
+        <div class="industries-inner" style="position: relative; z-index: 2;">
             <p class="industries-label">Specialized Solutions</p>
             <div class="industries-header">
                 <h2>Choose Your Industry</h2>
@@ -819,8 +827,12 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-inner">
+    <section class="cta-section" style="position: relative; overflow: hidden;">
+        <!-- Brand: Super D gradient BOTTOM-rise — industries converging upward toward action -->
+        <div class="dw-d-bg dw-d-bg--bottom dw-d-bg--gradient dw-d-parallax" style="opacity: 0.10;"></div>
+        <!-- Brand: Particle wave flow — manufacturing energy flowing toward contact -->
+        <div class="dw-wave-flow" style="height: 160px; opacity: 0.3; z-index: 1;"></div>
+        <div class="cta-inner" style="position: relative; z-index: 3;">
             <h2>Let's Talk About Your Factory</h2>
             <p>Every factory is different. Let us understand yours.</p>
             <div class="cta-buttons">

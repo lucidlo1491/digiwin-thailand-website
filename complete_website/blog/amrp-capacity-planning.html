@@ -6,28 +6,18 @@
     <title>AMRP: Why You Don't Need a Separate APS System - DigiWin Thailand</title>
     <meta name="description" content="Most ERPs require an expensive separate APS system for capacity planning. DigiWin's AMRP builds capacity planning directly into the ERP — at no extra cost.">
     <link rel="stylesheet" href="../styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../assets/digiwin-d-mark.svg">
     <style>
-        .blog-category-badge { background: #3798E4; }
+        .blog-category-badge { background: #00AFF0; }
     </style>
 </head>
 <body>
     <header class="dw-header">
         <div class="dw-header-inner">
             <a href="../index.html" class="dw-logo">
-                <div class="dw-logo-mark">
-                    <!-- DigiWin Logo Mark - Stylized D -->
-                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 8h20c8.837 0 16 7.163 16 16s-7.163 16-16 16H8V8z" fill="#3798E4"/>
-                        <path d="M14 14h12c6.627 0 12 5.373 12 12s-5.373 12-12 12H14V14z" fill="#ffffff"/>
-                        <path d="M14 18h8c5.523 0 10 4.477 10 10s-4.477 10-10 10h-8V18z" fill="#3798E4"/>
-                        <path d="M14 24h4c3.314 0 6 2.686 6 6s-2.686 6-6 6h-4V24z" fill="#ffffff"/>
-                    </svg>
-                </div>
-                <div class="dw-logo-wordmark">
-                    <span class="dw-logo-text-en">Digi<span>Win</span></span>
-                    <span class="dw-logo-text-zh">鼎新數智</span>
-                </div>
+                <img src="../assets/digiwin-logo-en.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--desktop" width="160" height="40">
+                <img src="../assets/digiwin-d-mark.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--mobile" width="32" height="32">
             </a>
 
             <nav class="dw-nav">
@@ -236,7 +226,7 @@
                             <!-- Featured: Partner Program -->
                             <div class="dw-mega-featured">
                                 <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(55,152,228,0.3)"/></svg>
+                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(0,175,240,0.3)"/></svg>
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">For ERP Implementers</span>
@@ -283,7 +273,7 @@
                             <!-- Featured: Latest Insight -->
                             <div class="dw-mega-featured">
                                 <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(55,152,228,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
+                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(0,175,240,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">Latest Insight</span>
@@ -319,8 +309,9 @@
 
 
     <!-- Hero -->
-    <section class="blog-hero">
-        <div class="blog-hero-inner">
+    <section class="blog-hero" style="position: relative; overflow: hidden;">
+        <div class="dw-d-bg dw-d-bg--corner-tl" style="opacity: 0.06;"></div>
+        <div class="blog-hero-inner" style="position: relative; z-index: 2;">
             <a href="../blog.html" class="blog-back-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                 Back to Insights
@@ -350,61 +341,6 @@
         <p class="fade-in">
             DigiWin's AMRP (Advanced MRP) does not work this way. It builds capacity planning directly into the ERP — at no extra cost, no separate system, no integration complexity. Materials and capacity planned together, in one database, from day one.
         </p>
-
-        <!-- Diagram: Traditional MRP vs AMRP comparison -->
-        <div class="article-diagram fade-in">
-            <svg viewBox="0 0 720 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Left: Traditional MRP -->
-                <rect x="20" y="30" width="310" height="200" rx="12" stroke="#253B50" stroke-width="1.2" stroke-dasharray="4 4"/>
-                <text x="175" y="22" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#253B50">Traditional MRP</text>
-
-                <!-- MRP process boxes -->
-                <rect x="50" y="50" width="110" height="40" rx="6" fill="rgba(37,59,80,0.08)"/>
-                <text x="105" y="75" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#253B50">All items at once</text>
-                <path d="M160 70 L185 70" stroke="#253B50" stroke-width="1.2"/>
-                <polygon points="185,66 193,70 185,74" fill="#253B50"/>
-                <rect x="195" y="50" width="110" height="40" rx="6" fill="rgba(37,59,80,0.08)"/>
-                <text x="250" y="75" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#253B50">Full regeneration</text>
-
-                <!-- Clock icon + hours -->
-                <circle cx="105" cy="130" r="18" stroke="#253B50" stroke-width="1.2"/>
-                <line x1="105" y1="118" x2="105" y2="130" stroke="#253B50" stroke-width="1.5"/>
-                <line x1="105" y1="130" x2="115" y2="135" stroke="#253B50" stroke-width="1.5"/>
-                <text x="105" y="168" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="16" font-weight="500" fill="#253B50">4-8 hrs</text>
-
-                <!-- No capacity check X -->
-                <rect x="180" y="112" width="120" height="36" rx="6" stroke="#DC2626" stroke-width="1.2"/>
-                <text x="240" y="134" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#DC2626">No capacity check</text>
-                <text x="175" y="195" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#999">Materials only · Assumes infinite capacity</text>
-
-                <!-- VS divider -->
-                <text x="360" y="140" text-anchor="middle" font-family="Lexend, sans-serif" font-size="16" font-weight="700" fill="#3798E4">vs</text>
-
-                <!-- Right: AMRP -->
-                <rect x="390" y="30" width="310" height="200" rx="12" stroke="#3798E4" stroke-width="1.5"/>
-                <text x="545" y="22" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#3798E4">AMRP (DigiWin)</text>
-
-                <!-- AMRP process boxes -->
-                <rect x="415" y="50" width="110" height="40" rx="6" fill="rgba(55,152,228,0.08)"/>
-                <text x="470" y="75" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#3798E4">Per-order planning</text>
-                <path d="M525 70 L555 70" stroke="#3798E4" stroke-width="1.2"/>
-                <polygon points="555,66 563,70 555,74" fill="#3798E4"/>
-                <rect x="565" y="50" width="110" height="40" rx="6" fill="rgba(55,152,228,0.08)"/>
-                <text x="620" y="75" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#3798E4">Incremental update</text>
-
-                <!-- Clock icon + seconds -->
-                <circle cx="470" cy="130" r="18" stroke="#3798E4" stroke-width="1.2"/>
-                <line x1="470" y1="118" x2="470" y2="130" stroke="#3798E4" stroke-width="1.5"/>
-                <line x1="470" y1="130" x2="480" y2="125" stroke="#3798E4" stroke-width="1.5"/>
-                <text x="470" y="168" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="16" font-weight="500" fill="#3798E4">&lt; 1 min</text>
-
-                <!-- Capacity check ✓ -->
-                <rect x="550" y="112" width="120" height="36" rx="6" stroke="#059669" stroke-width="1.2"/>
-                <text x="610" y="134" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#059669">Capacity-aware</text>
-                <text x="545" y="195" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#999">Materials + capacity · Real constraints</text>
-            </svg>
-            <p class="diagram-caption">AMRP plans per order in under a minute with built-in capacity checks — no separate APS system needed.</p>
-        </div>
 
         <hr class="blog-divider fade-in">
 
@@ -532,8 +468,9 @@
     </article>
 
     <!-- Related Articles -->
-    <section class="blog-related">
-        <div class="blog-related-inner">
+    <section class="blog-related" style="position: relative; overflow: hidden;">
+        <div class="dw-wave-circles" style="opacity: 0.04;"></div>
+        <div class="blog-related-inner" style="position: relative; z-index: 2;">
             <h2 class="fade-in">Related Articles</h2>
             <div class="blog-related-grid">
                 <a href="../blog/lrp-vs-mrp.html" class="blog-related-card fade-in">
@@ -581,7 +518,9 @@
         <div class="dw-footer-inner">
             <div class="dw-footer-grid">
                 <div class="dw-footer-brand">
-                    <div class="dw-footer-logo">Digi<span>Win</span></div>
+                    <div class="dw-footer-logo">
+                        <img src="../assets/digiwin-logo-en-white.svg" alt="DigiWin" width="140" height="35">
+                    </div>
                     <p class="dw-footer-tagline"><span class="dw-years">44</span> years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
                     <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
                 </div>

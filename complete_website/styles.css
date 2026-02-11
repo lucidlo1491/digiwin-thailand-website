@@ -1,8 +1,40 @@
 /* =============================================
    DIGIWIN THAILAND - COMPLETE WEBSITE STYLES
+   Official Brand Kit — aligned Feb 2026
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+/* ===== CSS CUSTOM PROPERTIES (Brand Kit) ===== */
+:root {
+    /* Primary */
+    --dw-blue: #00AFF0;
+    --dw-navy: #000864;
+    --dw-navy-deep: #000432;
+    --dw-navy-mid: #001080;
+
+    /* Secondary */
+    --dw-royal: #003CC8;
+    --dw-cyan: #00E6FF;
+
+    /* Neutrals */
+    --dw-gray-light: #F5F7FA;
+    --dw-text: #333333;
+    --dw-text-light: #666666;
+    --dw-text-muted: #64748b;
+
+    /* Accents */
+    --dw-purple: #644CE6;
+    --dw-green: #02D28C;
+    --dw-coral: #FF6E82;
+    --dw-yellow: #FFD700;
+    --dw-red: #DC2626;
+
+    /* Derived (rgba equivalents for overlays/shadows) */
+    --dw-blue-rgb: 0, 175, 240;
+    --dw-navy-rgb: 0, 8, 100;
+    --dw-cyan-rgb: 0, 230, 255;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap');
 
 * {
     margin: 0;
@@ -11,7 +43,7 @@
 }
 
 body {
-    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #333333;
     line-height: 1.6;
     background: #ffffff;
@@ -77,6 +109,238 @@ img {
     z-index: 1;
 }
 
+/* ===== BRAND GRAPHIC SYSTEM — Super D + Particle Wave ===== */
+
+/* Keyframes: Particle Wave */
+@keyframes dw-wave-drift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes dw-wave-breathe {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* Keyframes: Super D */
+@keyframes dw-d-glow {
+    0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 175, 240, 0.1)); }
+    50% { filter: drop-shadow(0 0 40px rgba(0, 175, 240, 0.25)); }
+}
+
+@keyframes dw-d-draw {
+    from { stroke-dashoffset: 1600; }
+    to { stroke-dashoffset: 0; }
+}
+
+/* Particle Wave: Flow (hero backgrounds, CTA sections) */
+.dw-wave-flow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 400px;
+    background: url('assets/digiwin-wave-flow.svg') repeat-x bottom left;
+    background-size: 50% 100%;
+    animation: dw-wave-drift 30s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Particle Wave: Fade (section transitions) */
+.dw-wave-fade {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    background: url('assets/digiwin-wave-fade.svg') no-repeat center;
+    background-size: 100% 100%;
+    pointer-events: none;
+    margin: -1px 0;
+}
+
+/* Particle Wave: Circles (subtle card/section backgrounds) */
+.dw-wave-circles {
+    position: absolute;
+    inset: 0;
+    background: url('assets/digiwin-wave-circles.svg') no-repeat center;
+    background-size: cover;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Particle Wave: Scroll reveal (dots scale in on viewport entry) */
+.dw-wave-reveal circle {
+    transform: scale(0);
+    transition: transform 0.4s ease;
+}
+.dw-wave-reveal.is-visible circle {
+    transform: scale(1);
+}
+
+/* Super D: Background device (right-bleed, 60%+ viewport height) */
+.dw-d-bg {
+    position: absolute;
+    right: -10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60%;
+    min-height: 60vh;
+    background: url('assets/digiwin-d-outline.svg') no-repeat center right;
+    background-size: contain;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.12;
+}
+
+/* Super D: Gradient variant */
+.dw-d-bg--gradient {
+    background-image: url('assets/digiwin-d-gradient.svg');
+    opacity: 0.15;
+}
+
+/* Super D: Particle variant */
+.dw-d-bg--particle {
+    background-image: url('assets/digiwin-d-particle.svg');
+    opacity: 0.2;
+}
+
+/* Super D: Stroke draw animation on scroll */
+.dw-d-draw path {
+    stroke-dasharray: 1600;
+    stroke-dashoffset: 1600;
+}
+.dw-d-draw.is-visible path {
+    animation: dw-d-draw 1.2s ease forwards;
+}
+
+/* Super D: Left-anchor (bleeds off left edge, content flows right) */
+.dw-d-bg--left {
+    right: auto;
+    left: -15%;
+    background-position: center left;
+}
+
+/* Super D: Bottom-rise (rises from bottom, cropped) */
+.dw-d-bg--bottom {
+    top: auto;
+    bottom: -20%;
+    transform: none;
+    background-position: center bottom;
+}
+
+/* Super D: Top-fall (descends from top, cropped) */
+.dw-d-bg--top {
+    top: -20%;
+    transform: none;
+    background-position: center top;
+}
+
+/* Super D: Center-fade (large, centered behind content) */
+.dw-d-bg--center {
+    right: auto;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    min-height: 80vh;
+    background-position: center center;
+}
+
+/* Super D: Corner peek (small, subtle corner accent) */
+.dw-d-bg--corner {
+    width: 30%;
+    min-height: 30vh;
+}
+.dw-d-bg--corner-tl {
+    right: auto;
+    left: -5%;
+    top: -5%;
+    transform: none;
+}
+.dw-d-bg--corner-br {
+    top: auto;
+    bottom: -5%;
+    right: -5%;
+    transform: none;
+}
+
+/* Super D: Small inline accent (for section headers, cards) */
+.dw-d-accent {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: url('assets/digiwin-d-outline.svg') no-repeat center;
+    background-size: contain;
+    pointer-events: none;
+    opacity: 0.08;
+}
+
+/* Super D: Bold opacity modifiers */
+.dw-d-bg--bold { opacity: 0.22 !important; }
+.dw-d-bg--medium { opacity: 0.14 !important; }
+.dw-d-bg--subtle { opacity: 0.06 !important; }
+
+/* Particle Wave: Top position variant */
+.dw-wave-flow--top {
+    bottom: auto;
+    top: 0;
+    transform: scaleY(-1);
+}
+
+/* Particle Wave: Section background (full-bleed, subtle) */
+.dw-wave-section {
+    position: absolute;
+    inset: 0;
+    background: url('assets/digiwin-wave-flow.svg') repeat-x center;
+    background-size: 100% 300px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.06;
+}
+
+/* Particle Wave: Vertical variant (rotated 90deg for sidebar effects) */
+.dw-wave-vertical {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 200%;
+    background: url('assets/digiwin-wave-fade.svg') repeat-y;
+    background-size: 100% auto;
+    transform: rotate(90deg);
+    pointer-events: none;
+    opacity: 0.08;
+    z-index: 0;
+}
+.dw-wave-vertical--left { left: -60px; }
+.dw-wave-vertical--right { right: -60px; left: auto; }
+
+/* Super D: Glow pulse */
+.dw-d-glow {
+    animation: dw-d-glow 3s ease-in-out infinite;
+}
+
+/* Super D: Parallax (slower scroll via JS) */
+.dw-d-parallax {
+    will-change: transform;
+}
+
+/* Reduced motion: disable animations, keep static versions */
+@media (prefers-reduced-motion: reduce) {
+    .dw-wave-flow {
+        animation: none;
+        width: 100%;
+        background-size: 100% 100%;
+    }
+    .dw-d-glow {
+        animation: none;
+    }
+    .dw-d-draw path {
+        stroke-dashoffset: 0;
+    }
+    .dw-wave-reveal circle {
+        transform: scale(1);
+    }
+}
+
 /* ===== HEADER ===== */
 .dw-header {
     background: rgba(255, 255, 255, 0.95);
@@ -105,11 +369,10 @@ img {
     height: 80px;
 }
 
-/* Logo with actual DigiWin branding */
+/* Logo with official SVG assets */
 .dw-logo {
     display: flex;
     align-items: center;
-    gap: 12px;
     text-decoration: none;
     transition: transform 0.3s ease;
 }
@@ -118,6 +381,21 @@ img {
     transform: scale(1.02);
 }
 
+.dw-logo-img {
+    height: auto;
+    display: block;
+}
+
+.dw-logo-img--desktop {
+    width: 160px;
+}
+
+.dw-logo-img--mobile {
+    width: 32px;
+    display: none;
+}
+
+/* Legacy logo classes (kept for footer text logo fallback) */
 .dw-logo-mark {
     width: 42px;
     height: 42px;
@@ -127,32 +405,6 @@ img {
 .dw-logo-mark svg {
     width: 100%;
     height: 100%;
-}
-
-.dw-logo-wordmark {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.1;
-}
-
-.dw-logo-text-en {
-    font-family: 'Lexend', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: #253B50;
-    letter-spacing: -0.02em;
-}
-
-.dw-logo-text-en span {
-    color: #3798E4;
-}
-
-.dw-logo-text-zh {
-    font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    color: #64748b;
-    letter-spacing: 0.15em;
 }
 
 /* Navigation */
@@ -167,10 +419,10 @@ img {
 }
 
 .dw-nav-link {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     font-weight: 500;
-    color: #253B50;
+    color: #000864;
     text-decoration: none;
     padding: 28px 20px;
     display: flex;
@@ -188,14 +440,14 @@ img {
     left: 20px;
     right: 20px;
     height: 2px;
-    background: linear-gradient(90deg, #3798E4, #0ea5e9);
+    background: linear-gradient(90deg, #00AFF0, #0ea5e9);
     border-radius: 2px;
     transform: scaleX(0);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dw-nav-link:hover {
-    color: #3798E4;
+    color: #00AFF0;
 }
 
 .dw-nav-link:hover::after {
@@ -247,7 +499,7 @@ img {
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #3798E4, #0ea5e9, #06b6d4);
+    background: linear-gradient(90deg, #00AFF0, #0ea5e9, #06b6d4);
 }
 
 .dw-mega-inner {
@@ -267,7 +519,7 @@ img {
 }
 
 .dw-mega-column-title {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 11px;
     font-weight: 600;
     color: #94a3b8;
@@ -294,7 +546,7 @@ img {
 }
 
 .dw-mega-item:hover .dw-mega-icon {
-    background: linear-gradient(135deg, #3798E4 0%, #0ea5e9 100%);
+    background: linear-gradient(135deg, #00AFF0 0%, #0ea5e9 100%);
 }
 
 .dw-mega-item:hover .dw-mega-icon svg {
@@ -302,7 +554,7 @@ img {
 }
 
 .dw-mega-item:hover .dw-mega-title {
-    color: #3798E4;
+    color: #00AFF0;
 }
 
 .dw-mega-icon {
@@ -332,16 +584,16 @@ img {
 }
 
 .dw-mega-title {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     font-weight: 500;
-    color: #253B50;
+    color: #000864;
     margin: 0;
     transition: color 0.2s ease;
 }
 
 .dw-mega-desc {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 12px;
     color: #94a3b8;
     margin: 2px 0 0;
@@ -359,7 +611,7 @@ img {
 
 .dw-mega-featured-image {
     height: 180px;
-    background: linear-gradient(135deg, #253B50 0%, #1e3a5f 50%, #0f172a 100%);
+    background: linear-gradient(135deg, #000864 0%, #1e3a5f 50%, #0f172a 100%);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -374,13 +626,13 @@ img {
     right: 0;
     width: 70%;
     height: 100%;
-    background: radial-gradient(ellipse at right, rgba(55, 152, 228, 0.3) 0%, transparent 70%);
+    background: radial-gradient(ellipse at right, rgba(0, 175, 240, 0.3) 0%, transparent 70%);
 }
 
 .dw-mega-featured-image svg {
     width: 100px;
     height: 100px;
-    stroke: rgba(55, 152, 228, 0.4);
+    stroke: rgba(0, 175, 240, 0.4);
     stroke-width: 1;
     fill: none;
     position: relative;
@@ -398,23 +650,23 @@ img {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     font-weight: 500;
-    color: #3798E4;
+    color: #00AFF0;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: 8px;
 }
 
 .dw-mega-featured-title {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     font-weight: 700;
-    color: #253B50;
+    color: #000864;
     margin: 0 0 8px;
     line-height: 1.3;
 }
 
 .dw-mega-featured-desc {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     color: #64748b;
     margin: 0 0 20px;
@@ -426,11 +678,11 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 13px;
     font-weight: 600;
     color: #ffffff;
-    background: linear-gradient(135deg, #3798E4 0%, #0284c7 100%);
+    background: linear-gradient(135deg, #00AFF0 0%, #0284c7 100%);
     padding: 12px 20px;
     border-radius: 8px;
     text-decoration: none;
@@ -440,7 +692,7 @@ img {
 
 .dw-mega-featured-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(55, 152, 228, 0.35);
+    box-shadow: 0 6px 20px rgba(0, 175, 240, 0.35);
 }
 
 .dw-mega-featured-cta svg {
@@ -461,10 +713,10 @@ img {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 13px;
     font-weight: 600;
-    color: #3798E4;
+    color: #00AFF0;
     padding: 16px;
     margin-top: auto;
     text-decoration: none;
@@ -499,16 +751,16 @@ img {
 
 /* Header CTA Button */
 .dw-header-cta {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     font-weight: 600;
-    background: linear-gradient(135deg, #3798E4 0%, #0284c7 100%);
+    background: linear-gradient(135deg, #00AFF0 0%, #0284c7 100%);
     color: #ffffff !important;
     padding: 12px 28px;
     border-radius: 10px;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 15px rgba(55, 152, 228, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 175, 240, 0.3);
     position: relative;
     overflow: hidden;
 }
@@ -530,7 +782,7 @@ img {
 
 .dw-header-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(55, 152, 228, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 175, 240, 0.4);
 }
 
 /* Mobile Menu Toggle */
@@ -547,7 +799,7 @@ img {
 .dw-menu-toggle span {
     width: 24px;
     height: 2px;
-    background: #253B50;
+    background: #000864;
     transition: all 0.3s ease;
 }
 
@@ -603,7 +855,7 @@ img {
 }
 
 .dw-hero-label {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
@@ -619,7 +871,7 @@ img {
     content: '';
     width: 24px;
     height: 2px;
-    background: #3798E4;
+    background: #00AFF0;
 }
 
 .dw-hero-panel--blue .dw-hero-label::before {
@@ -627,7 +879,7 @@ img {
 }
 
 .dw-hero-title {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: clamp(36px, 4vw, 56px);
     font-weight: 700;
     color: #ffffff;
@@ -637,7 +889,7 @@ img {
 }
 
 .dw-hero-subtitle {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 20px;
     color: rgba(255,255,255,0.9);
     margin: 0 0 36px 0;
@@ -647,7 +899,7 @@ img {
 
 /* ===== BUTTONS ===== */
 .dw-btn {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     font-weight: 600;
     padding: 16px 32px;
@@ -662,15 +914,15 @@ img {
 }
 
 .dw-btn-primary {
-    background: #3798E4;
+    background: #00AFF0;
     color: #ffffff !important;
-    box-shadow: 0 4px 14px rgba(55, 152, 228, 0.35);
+    box-shadow: 0 4px 14px rgba(0, 175, 240, 0.35);
 }
 
 .dw-btn-primary:hover {
     background: #2563eb;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(55, 152, 228, 0.45);
+    box-shadow: 0 6px 20px rgba(0, 175, 240, 0.45);
 }
 
 .dw-btn-ghost {
@@ -688,18 +940,18 @@ img {
 
 .dw-btn-outline {
     background: transparent;
-    color: #3798E4 !important;
-    border: 2px solid #3798E4;
+    color: #00AFF0 !important;
+    border: 2px solid #00AFF0;
 }
 
 .dw-btn-outline:hover {
-    background: #3798E4;
+    background: #00AFF0;
     color: #ffffff !important;
 }
 
 .dw-btn-white {
     background: #ffffff;
-    color: #3798E4 !important;
+    color: #00AFF0 !important;
     box-shadow: 0 4px 14px rgba(0,0,0,0.15);
 }
 
@@ -722,12 +974,12 @@ img {
 }
 
 .dw-section--dark {
-    background: linear-gradient(135deg, #253B50 0%, #1e3a5f 100%);
+    background: linear-gradient(135deg, #000864 0%, #1e3a5f 100%);
     color: #ffffff;
 }
 
 .dw-section--blue {
-    background: linear-gradient(135deg, #3798E4 0%, #0ea5e9 50%, #0284c7 100%);
+    background: linear-gradient(135deg, #00AFF0 0%, #0ea5e9 50%, #0284c7 100%);
     color: #ffffff;
     position: relative;
 }
@@ -760,12 +1012,12 @@ img {
 }
 
 .dw-section-label {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #3798E4;
+    color: #00AFF0;
     margin-bottom: 12px;
 }
 
@@ -775,10 +1027,10 @@ img {
 }
 
 .dw-section-title {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: clamp(32px, 3.5vw, 44px);
     font-weight: 700;
-    color: #253B50;
+    color: #000864;
     margin: 0 0 16px 0;
     line-height: 1.15;
 }
@@ -789,7 +1041,7 @@ img {
 }
 
 .dw-section-subtitle {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     color: #64748b;
     line-height: 1.6;
@@ -842,7 +1094,7 @@ img {
 .dw-card-icon {
     width: 64px;
     height: 64px;
-    background: linear-gradient(135deg, #3798E4 0%, #0ea5e9 100%);
+    background: linear-gradient(135deg, #00AFF0 0%, #0ea5e9 100%);
     border-radius: 16px;
     display: flex;
     align-items: center;
@@ -856,15 +1108,15 @@ img {
 }
 
 .dw-card-title {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 20px;
     font-weight: 600;
-    color: #253B50;
+    color: #000864;
     margin: 0 0 12px 0;
 }
 
 .dw-card-text {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     color: #64748b;
     line-height: 1.6;
@@ -880,16 +1132,16 @@ img {
 }
 
 .dw-stat-number {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: clamp(40px, 5vw, 56px);
     font-weight: 700;
-    color: #3798E4;
+    color: #00AFF0;
     margin: 0 0 8px 0;
     line-height: 1;
 }
 
 .dw-stat-label {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     color: rgba(255,255,255,0.8);
     margin: 0;
@@ -919,15 +1171,15 @@ img {
 }
 
 .dw-industry-title {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 20px;
     font-weight: 600;
-    color: #253B50;
+    color: #000864;
     margin: 0 0 8px 0;
 }
 
 .dw-industry-desc {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     color: #64748b;
     margin: 0 0 16px 0;
@@ -935,10 +1187,10 @@ img {
 }
 
 .dw-industry-link {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     font-weight: 600;
-    color: #3798E4;
+    color: #00AFF0;
 }
 
 /* ===== FEATURE LIST ===== */
@@ -949,7 +1201,7 @@ img {
 }
 
 .dw-feature-list li {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 17px;
     color: #475569;
     padding: 12px 0 12px 36px;
@@ -964,7 +1216,7 @@ img {
     top: 12px;
     width: 24px;
     height: 24px;
-    background: #3798E4;
+    background: #00AFF0;
     color: #ffffff;
     border-radius: 50%;
     display: flex;
@@ -980,7 +1232,7 @@ img {
 }
 
 .dw-logos-label {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     font-weight: 500;
     color: #64748b;
@@ -1034,9 +1286,9 @@ img {
 }
 
 .dw-testimonial-quote {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: clamp(20px, 2.5vw, 28px);
-    color: #253B50;
+    color: #000864;
     line-height: 1.6;
     margin: 0 0 32px 0;
     font-style: italic;
@@ -1061,15 +1313,15 @@ img {
 }
 
 .dw-testimonial-name {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     font-weight: 600;
-    color: #253B50;
+    color: #000864;
     margin: 0 0 4px 0;
 }
 
 .dw-testimonial-role {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     color: #64748b;
     margin: 0;
@@ -1084,15 +1336,15 @@ img {
 }
 
 .dw-pain-card h3 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 20px;
     font-weight: 600;
-    color: #253B50;
+    color: #000864;
     margin: 0 0 12px 0;
 }
 
 .dw-pain-card p {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     color: #64748b;
     margin: 0;
@@ -1112,7 +1364,7 @@ img {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: #3798E4;
+    background: #00AFF0;
 }
 
 .dw-timeline-item {
@@ -1127,29 +1379,29 @@ img {
     top: 4px;
     width: 12px;
     height: 12px;
-    background: #3798E4;
+    background: #00AFF0;
     border-radius: 50%;
     border: 3px solid #ffffff;
 }
 
 .dw-timeline-year {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     font-weight: 600;
-    color: #3798E4;
+    color: #00AFF0;
     margin-bottom: 8px;
 }
 
 .dw-timeline-title {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     font-weight: 600;
-    color: #253B50;
+    color: #000864;
     margin-bottom: 8px;
 }
 
 .dw-timeline-text {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     color: #64748b;
     line-height: 1.6;
@@ -1184,7 +1436,7 @@ img {
 
 /* ===== FOOTER ===== */
 .dw-footer {
-    background: #253B50;
+    background: #000864;
     color: #ffffff;
     padding: 80px 0 0 0;
 }
@@ -1208,7 +1460,7 @@ img {
 }
 
 .dw-footer-logo {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 28px;
     font-weight: 700;
     color: #ffffff;
@@ -1216,11 +1468,11 @@ img {
 }
 
 .dw-footer-logo span {
-    color: #3798E4;
+    color: #00AFF0;
 }
 
 .dw-footer-tagline {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     color: rgba(255,255,255,0.7);
     line-height: 1.6;
@@ -1228,7 +1480,7 @@ img {
 }
 
 .dw-footer-stock {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 13px;
     color: rgba(255,255,255,0.5);
     text-transform: uppercase;
@@ -1236,11 +1488,11 @@ img {
 }
 
 .dw-footer-stock strong {
-    color: #3798E4;
+    color: #00AFF0;
 }
 
 .dw-footer-column h4 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     font-weight: 600;
     color: #ffffff;
@@ -1260,7 +1512,7 @@ img {
 }
 
 .dw-footer-links a {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     color: rgba(255,255,255,0.7);
     text-decoration: none;
@@ -1268,11 +1520,11 @@ img {
 }
 
 .dw-footer-links a:hover {
-    color: #3798E4;
+    color: #00AFF0;
 }
 
 .dw-footer-contact p {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     color: rgba(255,255,255,0.7);
     line-height: 1.6;
@@ -1280,7 +1532,7 @@ img {
 }
 
 .dw-footer-contact a {
-    color: #3798E4;
+    color: #00AFF0;
     text-decoration: none;
 }
 
@@ -1301,12 +1553,12 @@ img {
     color: #ffffff;
     text-decoration: none;
     transition: all 0.2s ease;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-weight: 600;
 }
 
 .dw-footer-social a:hover {
-    background: #3798E4;
+    background: #00AFF0;
 }
 
 .dw-footer-bottom {
@@ -1317,7 +1569,7 @@ img {
 }
 
 .dw-footer-copyright {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     color: rgba(255,255,255,0.5);
     margin: 0;
@@ -1329,7 +1581,7 @@ img {
 }
 
 .dw-footer-legal a {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     color: rgba(255,255,255,0.5);
     text-decoration: none;
@@ -1337,12 +1589,12 @@ img {
 }
 
 .dw-footer-legal a:hover {
-    color: #3798E4;
+    color: #00AFF0;
 }
 
 /* ===== BLOG POST ARTICLE ===== */
 .blog-hero {
-    background: linear-gradient(135deg, #0f1419 0%, #1a2e40 40%, #253B50 100%);
+    background: linear-gradient(135deg, #0f1419 0%, #000432 40%, #000864 100%);
     padding: 160px 24px 60px;
     position: relative;
     overflow: hidden;
@@ -1365,7 +1617,7 @@ img {
     align-items: center;
     gap: 6px;
     color: rgba(255,255,255,0.6);
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     font-weight: 500;
     text-decoration: none;
@@ -1373,7 +1625,7 @@ img {
     transition: color 0.3s ease;
 }
 .blog-back-link:hover {
-    color: #3798E4;
+    color: #00AFF0;
 }
 .blog-back-link svg {
     width: 16px;
@@ -1393,7 +1645,7 @@ img {
     margin-bottom: 20px;
 }
 .blog-hero h1 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: clamp(28px, 4.5vw, 42px);
     font-weight: 700;
     color: #fff;
@@ -1401,7 +1653,7 @@ img {
     margin-bottom: 20px;
 }
 .blog-meta {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     color: rgba(255,255,255,0.5);
     display: flex;
@@ -1422,32 +1674,32 @@ img {
     padding: 64px 24px 80px;
 }
 .blog-body h2 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 28px;
     font-weight: 600;
-    color: #253B50;
+    color: #000864;
     margin-top: 56px;
     margin-bottom: 20px;
     line-height: 1.3;
 }
 .blog-body h3 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 22px;
     font-weight: 600;
-    color: #253B50;
+    color: #000864;
     margin-top: 40px;
     margin-bottom: 16px;
     line-height: 1.35;
 }
 .blog-body p {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     line-height: 1.8;
     color: #333333;
     margin-bottom: 24px;
 }
 .blog-body ul, .blog-body ol {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     line-height: 1.8;
     color: #333333;
@@ -1458,25 +1710,25 @@ img {
     margin-bottom: 8px;
 }
 .blog-body strong {
-    color: #253B50;
+    color: #000864;
     font-weight: 600;
 }
 
 /* Blog Pull Quotes */
 .blog-pullquote {
-    border-left: 4px solid #3798E4;
+    border-left: 4px solid #00AFF0;
     padding: 8px 0 8px 24px;
     margin: 40px 0;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 20px;
     font-style: italic;
-    color: #253B50;
+    color: #000864;
     line-height: 1.6;
 }
 
 /* Blog Data Callout Cards */
 .blog-data-card {
-    background: linear-gradient(135deg, #1a2e40 0%, #253B50 100%);
+    background: linear-gradient(135deg, #000432 0%, #000864 100%);
     border-radius: 12px;
     padding: 40px;
     margin: 40px 0;
@@ -1499,7 +1751,7 @@ img {
     font-family: 'JetBrains Mono', monospace;
     font-size: clamp(32px, 5vw, 48px);
     font-weight: 500;
-    color: #3798E4;
+    color: #00AFF0;
     line-height: 1.2;
     margin-bottom: 8px;
 }
@@ -1509,7 +1761,7 @@ img {
     margin: 4px 0;
 }
 .blog-data-label {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     color: rgba(255,255,255,0.7);
     line-height: 1.5;
@@ -1526,7 +1778,7 @@ img {
 /* Blog Highlight Boxes */
 .blog-highlight {
     background: #EBF5FF;
-    border-left: 4px solid #3798E4;
+    border-left: 4px solid #00AFF0;
     border-radius: 0 8px 8px 0;
     padding: 20px 24px;
     margin: 32px 0;
@@ -1534,21 +1786,21 @@ img {
 .blog-highlight p {
     font-size: 16px;
     line-height: 1.7;
-    color: #253B50;
+    color: #000864;
     margin-bottom: 0;
 }
 .blog-highlight p + p {
     margin-top: 12px;
 }
 .blog-highlight strong {
-    color: #1a2e40;
+    color: #000432;
 }
 
 /* Blog Divider */
 .blog-divider {
     width: 60px;
     height: 3px;
-    background: #3798E4;
+    background: #00AFF0;
     border: none;
     margin: 56px 0;
     border-radius: 2px;
@@ -1565,7 +1817,7 @@ img {
     height: auto;
 }
 .diagram-caption {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     color: #999;
     margin-top: 12px;
@@ -1582,10 +1834,10 @@ img {
     margin: 0 auto;
 }
 .blog-related h2 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 28px;
     font-weight: 600;
-    color: #253B50;
+    color: #000864;
     text-align: center;
     margin-bottom: 48px;
 }
@@ -1607,7 +1859,7 @@ img {
 .blog-related-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 32px rgba(37, 59, 80, 0.12);
-    border-color: rgba(55, 152, 228, 0.2);
+    border-color: rgba(0, 175, 240, 0.2);
 }
 .blog-related-card-category {
     font-family: 'JetBrains Mono', monospace;
@@ -1615,23 +1867,23 @@ img {
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #3798E4;
+    color: #00AFF0;
     margin-bottom: 12px;
 }
 .blog-related-card h3 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     font-weight: 600;
-    color: #253B50;
+    color: #000864;
     line-height: 1.4;
     margin-bottom: 16px;
     flex-grow: 1;
 }
 .blog-related-card-link {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     font-weight: 600;
-    color: #3798E4;
+    color: #00AFF0;
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -1648,7 +1900,7 @@ img {
 
 /* Blog CTA Section */
 .blog-cta {
-    background: linear-gradient(135deg, #0f1419 0%, #1a2e40 40%, #253B50 100%);
+    background: linear-gradient(135deg, #0f1419 0%, #000432 40%, #000864 100%);
     padding: 80px 24px;
     text-align: center;
     position: relative;
@@ -1668,7 +1920,7 @@ img {
     z-index: 1;
 }
 .blog-cta h2 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: clamp(24px, 4vw, 36px);
     font-weight: 700;
     color: #fff;
@@ -1676,7 +1928,7 @@ img {
     line-height: 1.25;
 }
 .blog-cta p {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     color: rgba(255,255,255,0.75);
     line-height: 1.7;
@@ -1686,9 +1938,9 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: #3798E4;
+    background: #00AFF0;
     color: #fff;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     font-weight: 600;
     padding: 16px 36px;
@@ -1699,7 +1951,7 @@ img {
 .blog-cta-btn:hover {
     background: #2b7bc4;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(55, 152, 228, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 175, 240, 0.3);
 }
 .blog-cta-btn svg {
     width: 18px;
@@ -1776,7 +2028,7 @@ img {
 
 /* Blog Hub Hero */
 .blog-hub-hero {
-    background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+    background: linear-gradient(135deg, #000432 0%, #000864 50%, #001080 100%);
     padding: 160px 0 100px;
     position: relative;
     overflow: hidden;
@@ -1799,8 +2051,8 @@ img {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(ellipse at 70% 30%, rgba(55, 152, 228, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 30% 80%, rgba(55, 152, 228, 0.08) 0%, transparent 40%);
+    background: radial-gradient(ellipse at 70% 30%, rgba(0, 175, 240, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 80%, rgba(0, 175, 240, 0.08) 0%, transparent 40%);
     pointer-events: none;
 }
 .blog-hero-illustration {
@@ -1832,11 +2084,11 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(55, 152, 228, 0.1);
-    border: 1px solid rgba(55, 152, 228, 0.3);
+    background: rgba(0, 175, 240, 0.1);
+    border: 1px solid rgba(0, 175, 240, 0.3);
     padding: 10px 20px;
     border-radius: 50px;
-    color: #3798E4;
+    color: #00AFF0;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     font-weight: 500;
@@ -1848,12 +2100,12 @@ img {
     content: '';
     width: 8px;
     height: 8px;
-    background: #3798E4;
+    background: #00AFF0;
     border-radius: 50%;
     animation: pulse-dot 2s ease-in-out infinite;
 }
 .blog-hub-hero h1 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: clamp(40px, 5vw, 56px);
     font-weight: 700;
     color: #fff;
@@ -1862,7 +2114,7 @@ img {
     letter-spacing: -0.03em;
 }
 .blog-hero-subtitle {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 20px;
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.6;
@@ -1878,14 +2130,14 @@ img {
     text-align: center;
 }
 .blog-hero-stat-number {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 28px;
     font-weight: 700;
-    color: #3798E4;
+    color: #00AFF0;
     margin-bottom: 4px;
 }
 .blog-hero-stat-label {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     color: rgba(255, 255, 255, 0.6);
 }
@@ -1904,7 +2156,7 @@ img {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     font-weight: 500;
-    color: #3798E4;
+    color: #00AFF0;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     margin-bottom: 32px;
@@ -1921,12 +2173,12 @@ img {
     transition: all 0.4s ease;
 }
 .blog-hub-featured-card:hover {
-    box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
-    border-color: #3798E4;
+    box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
+    border-color: #00AFF0;
     transform: translateY(-4px);
 }
 .blog-hub-featured-card-image {
-    background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+    background: linear-gradient(135deg, #000432 0%, #000864 50%, #001080 100%);
     min-height: 360px;
     display: flex;
     align-items: center;
@@ -1944,7 +2196,7 @@ img {
 .blog-hub-featured-card-image svg {
     width: 120px;
     height: 120px;
-    stroke: rgba(55, 152, 228, 0.3);
+    stroke: rgba(0, 175, 240, 0.3);
     fill: none;
     stroke-width: 1;
 }
@@ -1965,22 +2217,22 @@ img {
     display: inline-block;
 }
 .blog-hub-featured-card-content h3 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 28px;
     font-weight: 700;
-    color: #253B50;
+    color: #000864;
     line-height: 1.25;
     margin: 0 0 16px 0;
 }
 .blog-hub-featured-card-content p {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     color: #666666;
     line-height: 1.7;
     margin: 0 0 20px 0;
 }
 .blog-hub-featured-meta {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     color: #999;
     margin-bottom: 24px;
@@ -1989,10 +2241,10 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     font-weight: 600;
-    color: #3798E4;
+    color: #00AFF0;
     text-decoration: none;
     transition: gap 0.3s ease;
 }
@@ -2015,10 +2267,10 @@ img {
     margin-bottom: 48px;
 }
 .articles-header h2 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 40px;
     font-weight: 700;
-    color: #253B50;
+    color: #000864;
     margin: 8px 0 0 0;
     letter-spacing: -0.02em;
 }
@@ -2037,7 +2289,7 @@ img {
 }
 .blog-hub-filter-tab {
     padding: 12px 24px;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     font-weight: 500;
     color: #666666;
@@ -2049,13 +2301,13 @@ img {
     white-space: nowrap;
 }
 .blog-hub-filter-tab:hover {
-    color: #253B50;
+    color: #000864;
     background: #F5F7FA;
 }
 .blog-hub-filter-tab.active {
-    background: #3798E4;
+    background: #00AFF0;
     color: #ffffff;
-    box-shadow: 0 2px 8px rgba(55, 152, 228, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 175, 240, 0.3);
 }
 .articles-grid {
     display: grid;
@@ -2081,8 +2333,8 @@ img {
 }
 .article-card:hover {
     transform: translateY(-4px);
-    border-color: #3798E4;
-    box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+    border-color: #00AFF0;
+    box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
 }
 .article-card.hidden {
     display: none;
@@ -2141,20 +2393,20 @@ img {
     margin-bottom: 12px;
 }
 .badge--boi { background: rgba(220, 38, 38, 0.1); color: #DC2626; }
-.badge--production { background: rgba(55, 152, 228, 0.1); color: #3798E4; }
-.badge--cost { background: rgba(5, 150, 105, 0.1); color: #059669; }
-.badge--smart { background: rgba(124, 58, 237, 0.1); color: #7C3AED; }
-.badge--industry { background: rgba(217, 119, 6, 0.1); color: #D97706; }
+.badge--production { background: rgba(0, 175, 240, 0.1); color: #00AFF0; }
+.badge--cost { background: rgba(5, 150, 105, 0.1); color: #02D28C; }
+.badge--smart { background: rgba(124, 58, 237, 0.1); color: #644CE6; }
+.badge--industry { background: rgba(217, 119, 6, 0.1); color: #FFD700; }
 .article-card-body h3 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     font-weight: 600;
-    color: #253B50;
+    color: #000864;
     line-height: 1.35;
     margin: 0 0 12px 0;
 }
 .article-card-excerpt {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     color: #666666;
     line-height: 1.6;
@@ -2174,15 +2426,15 @@ img {
     margin-top: auto;
 }
 .article-read-time {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 13px;
     color: #999;
 }
 .article-read-link {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 13px;
     font-weight: 600;
-    color: #3798E4;
+    color: #00AFF0;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -2208,10 +2460,10 @@ img {
     margin-bottom: 56px;
 }
 .library-header h2 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 40px;
     font-weight: 700;
-    color: #253B50;
+    color: #000864;
     margin: 8px 0 0 0;
     letter-spacing: -0.02em;
 }
@@ -2240,15 +2492,15 @@ img {
     border-radius: 2px;
 }
 .library-group-indicator--boi { background: #DC2626; }
-.library-group-indicator--production { background: #3798E4; }
-.library-group-indicator--cost { background: #059669; }
-.library-group-indicator--smart { background: #7C3AED; }
-.library-group-indicator--industry { background: #D97706; }
+.library-group-indicator--production { background: #00AFF0; }
+.library-group-indicator--cost { background: #02D28C; }
+.library-group-indicator--smart { background: #644CE6; }
+.library-group-indicator--industry { background: #FFD700; }
 .library-group-header h3 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     font-weight: 600;
-    color: #253B50;
+    color: #000864;
     margin: 0;
 }
 .library-item {
@@ -2268,7 +2520,7 @@ img {
     padding-left: 8px;
 }
 .library-item-title {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     font-weight: 500;
     color: #333333;
@@ -2277,7 +2529,7 @@ img {
     margin-right: 16px;
 }
 .library-item:hover .library-item-title {
-    color: #3798E4;
+    color: #00AFF0;
 }
 .library-item-meta {
     display: flex;
@@ -2286,14 +2538,14 @@ img {
     flex-shrink: 0;
 }
 .library-item-time {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 13px;
     color: #999;
     white-space: nowrap;
 }
 .library-item-arrow {
     font-size: 16px;
-    color: #3798E4;
+    color: #00AFF0;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -2304,7 +2556,7 @@ img {
 /* Blog Hub CTA Section */
 .blog-hub-cta {
     padding: 120px 0;
-    background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+    background: linear-gradient(135deg, #000432 0%, #000864 50%, #001080 100%);
     position: relative;
     overflow: hidden;
     text-align: center;
@@ -2323,7 +2575,7 @@ img {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(ellipse at 50% 50%, rgba(55, 152, 228, 0.1) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 50% 50%, rgba(0, 175, 240, 0.1) 0%, transparent 60%);
     pointer-events: none;
 }
 .blog-hub-cta-inner {
@@ -2334,7 +2586,7 @@ img {
     z-index: 1;
 }
 .blog-hub-cta h2 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: clamp(32px, 4vw, 44px);
     font-weight: 700;
     color: #fff;
@@ -2343,7 +2595,7 @@ img {
     letter-spacing: -0.02em;
 }
 .blog-hub-cta p {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.6;
@@ -2357,10 +2609,10 @@ img {
 }
 .blog-hub-btn-white {
     background: #fff;
-    color: #253B50;
+    color: #000864;
     padding: 16px 36px;
     border-radius: 12px;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-weight: 600;
     font-size: 16px;
     text-decoration: none;
@@ -2377,7 +2629,7 @@ img {
     padding: 16px 36px;
     border: 2px solid rgba(255, 255, 255, 0.4);
     border-radius: 12px;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-weight: 600;
     font-size: 16px;
     text-decoration: none;
@@ -2474,7 +2726,7 @@ img {
 
 /* Industry Hero (shared across automotive, electronics, metal-plastics) */
 .auto-hero, .elec-hero, .metal-hero {
-    background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+    background: linear-gradient(135deg, #000432 0%, #000864 50%, #001080 100%);
     padding: 140px 0 100px;
     position: relative;
     overflow: hidden;
@@ -2498,8 +2750,8 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(55, 152, 228, 0.2);
-    border: 1px solid rgba(55, 152, 228, 0.3);
+    background: rgba(0, 175, 240, 0.2);
+    border: 1px solid rgba(0, 175, 240, 0.3);
     padding: 8px 20px;
     border-radius: 50px;
     color: #7EC8F2;
@@ -2508,7 +2760,7 @@ img {
     margin-bottom: 24px;
 }
 .auto-hero h1, .elec-hero h1, .metal-hero h1 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 52px;
     font-weight: 700;
     color: #fff;
@@ -2516,10 +2768,10 @@ img {
     line-height: 1.15;
 }
 .auto-hero h1 span, .elec-hero h1 span, .metal-hero h1 span {
-    color: #3798E4;
+    color: #00AFF0;
 }
 .auto-hero-subtitle, .elec-hero-subtitle, .metal-hero-subtitle {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 20px;
     color: rgba(255,255,255,0.85);
     max-width: 700px;
@@ -2535,10 +2787,10 @@ img {
     text-align: center;
 }
 .auto-hero-stat-value, .elec-hero-stat-value, .metal-hero-stat-value {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 42px;
     font-weight: 700;
-    color: #3798E4;
+    color: #00AFF0;
 }
 .auto-hero-stat-label, .elec-hero-stat-label, .metal-hero-stat-label {
     font-size: 14px;
@@ -2558,9 +2810,9 @@ img {
     text-align: center;
 }
 .context-inner h2 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 36px;
-    color: #253B50;
+    color: #000864;
     margin-bottom: 24px;
 }
 .context-inner p {
@@ -2569,7 +2821,7 @@ img {
     line-height: 1.8;
 }
 .context-inner p strong {
-    color: #253B50;
+    color: #000864;
 }
 
 /* Industry Challenges / Stakes Cards */
@@ -2587,9 +2839,9 @@ img {
     margin-bottom: 60px;
 }
 .stakes-header h2, .challenges-header h2 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 36px;
-    color: #253B50;
+    color: #000864;
     margin-bottom: 16px;
 }
 .stakes-header p, .challenges-header p {
@@ -2627,13 +2879,13 @@ img {
     fill: none;
 }
 .stake-card:hover .stake-icon, .challenge-card:hover .challenge-icon {
-    background: linear-gradient(135deg, #3798E4, #2d7bc4);
+    background: linear-gradient(135deg, #00AFF0, #2d7bc4);
 }
 .stake-card:hover .stake-icon svg, .challenge-card:hover .challenge-icon svg {
     stroke: #fff;
 }
 .stake-card h3, .challenge-card h3 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 22px;
     color: #991b1b;
     margin-bottom: 16px;
@@ -2659,9 +2911,9 @@ img {
     margin-bottom: 60px;
 }
 .solutions-header h2 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 36px;
-    color: #253B50;
+    color: #000864;
     margin-bottom: 16px;
 }
 .solutions-header p {
@@ -2681,14 +2933,14 @@ img {
     transition: all 0.3s ease;
 }
 .solution-card:hover {
-    border-color: #3798E4;
-    box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+    border-color: #00AFF0;
+    box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
     transform: translateY(-4px);
 }
 .solution-icon {
     width: 64px;
     height: 64px;
-    background: linear-gradient(135deg, rgba(55, 152, 228, 0.15), rgba(55, 152, 228, 0.05));
+    background: linear-gradient(135deg, rgba(0, 175, 240, 0.15), rgba(0, 175, 240, 0.05));
     border-radius: 16px;
     display: flex;
     align-items: center;
@@ -2699,20 +2951,20 @@ img {
 .solution-icon svg {
     width: 28px;
     height: 28px;
-    stroke: #3798E4;
+    stroke: #00AFF0;
     stroke-width: 1.5;
     fill: none;
 }
 .solution-card:hover .solution-icon {
-    background: linear-gradient(135deg, #3798E4, #2d7bc4);
+    background: linear-gradient(135deg, #00AFF0, #2d7bc4);
 }
 .solution-card:hover .solution-icon svg {
     stroke: #fff;
 }
 .solution-card h3 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 22px;
-    color: #253B50;
+    color: #000864;
     margin-bottom: 12px;
 }
 .solution-card > p {
@@ -2736,7 +2988,7 @@ img {
 .solution-feature svg {
     width: 18px;
     height: 18px;
-    color: #3798E4;
+    color: #00AFF0;
     flex-shrink: 0;
 }
 
@@ -2752,9 +3004,9 @@ img {
     text-align: center;
 }
 .oem-inner h3, .equipment-inner h3, .processes-inner h3 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 24px;
-    color: #253B50;
+    color: #000864;
     margin-bottom: 40px;
 }
 .oem-logos, .equipment-logos, .processes-logos {
@@ -2768,7 +3020,7 @@ img {
     border: 1px solid #e2e8f0;
     border-radius: 12px;
     padding: 20px 32px;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     font-weight: 600;
     color: #475569;
@@ -2789,9 +3041,9 @@ img {
     margin-bottom: 60px;
 }
 .products-header h2 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 36px;
-    color: #253B50;
+    color: #000864;
     margin-bottom: 16px;
 }
 .products-grid {
@@ -2808,14 +3060,14 @@ img {
     transition: all 0.3s ease;
 }
 .product-card:hover {
-    border-color: #3798E4;
+    border-color: #00AFF0;
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+    box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
 }
 .product-card-icon {
     width: 56px;
     height: 56px;
-    background: linear-gradient(135deg, rgba(55, 152, 228, 0.1), rgba(55, 152, 228, 0.05));
+    background: linear-gradient(135deg, rgba(0, 175, 240, 0.1), rgba(0, 175, 240, 0.05));
     border-radius: 14px;
     display: flex;
     align-items: center;
@@ -2826,20 +3078,20 @@ img {
 .product-card-icon svg {
     width: 28px;
     height: 28px;
-    stroke: #3798E4;
+    stroke: #00AFF0;
     stroke-width: 1.5;
     fill: none;
 }
 .product-card:hover .product-card-icon {
-    background: linear-gradient(135deg, #3798E4, #2d7bc4);
+    background: linear-gradient(135deg, #00AFF0, #2d7bc4);
 }
 .product-card:hover .product-card-icon svg {
     stroke: #fff;
 }
 .product-card h3 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 20px;
-    color: #253B50;
+    color: #000864;
     margin-bottom: 12px;
 }
 .product-card p {
@@ -2852,8 +3104,8 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    color: #3798E4;
-    font-family: 'Lexend', sans-serif;
+    color: #00AFF0;
+    font-family: 'Noto Sans', sans-serif;
     font-weight: 600;
     font-size: 14px;
 }
@@ -2884,7 +3136,7 @@ img {
 /* ===== SHARED CTA SECTION ===== */
 .cta-section {
     padding: 100px 0;
-    background: linear-gradient(135deg, #3798E4 0%, #2d7bc4 100%);
+    background: linear-gradient(135deg, #00AFF0 0%, #2d7bc4 100%);
     text-align: center;
 }
 .cta-inner {
@@ -2893,7 +3145,7 @@ img {
     padding: 0 24px;
 }
 .cta-section h2 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 40px;
     color: #fff;
     margin-bottom: 16px;
@@ -2910,10 +3162,10 @@ img {
 }
 .cta-btn-primary {
     background: #fff;
-    color: #3798E4;
+    color: #00AFF0;
     padding: 16px 32px;
     border-radius: 8px;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-weight: 600;
     font-size: 16px;
     text-decoration: none;
@@ -2929,7 +3181,7 @@ img {
     padding: 16px 32px;
     border: 2px solid rgba(255,255,255,0.4);
     border-radius: 8px;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-weight: 600;
     font-size: 16px;
     text-decoration: none;
@@ -2945,6 +3197,12 @@ img {
     .dw-header-inner {
         padding: 0 24px;
         height: 70px;
+    }
+    .dw-logo-img--desktop {
+        display: none;
+    }
+    .dw-logo-img--mobile {
+        display: block;
     }
     .dw-nav {
         display: none;
@@ -2975,7 +3233,7 @@ img {
         padding: 16px 24px;
         font-size: 16px;
         font-weight: 500;
-        color: #253B50;
+        color: #000864;
         width: 100%;
     }
     .dw-nav-link::after {
@@ -3029,7 +3287,7 @@ img {
         gap: 12px;
     }
     .dw-mega-item:hover {
-        background: rgba(55, 152, 228, 0.06);
+        background: rgba(0, 175, 240, 0.06);
     }
     .dw-mega-icon {
         width: 32px;
@@ -3153,7 +3411,7 @@ img {
 
 /* Event Hero */
 .event-hero {
-    background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #253B50 100%);
+    background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #000864 100%);
     padding: 140px 24px 80px;
     position: relative;
     overflow: hidden;
@@ -3186,7 +3444,7 @@ img {
     align-items: center;
     gap: 6px;
     color: rgba(255,255,255,0.6);
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     font-weight: 500;
     text-decoration: none;
@@ -3217,7 +3475,7 @@ img {
     margin-bottom: 20px;
 }
 .event-hero h1 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: clamp(28px, 4.5vw, 44px);
     font-weight: 700;
     color: #fff;
@@ -3261,14 +3519,14 @@ img {
     fill: none;
 }
 .event-fact-value {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     font-weight: 600;
     color: #fff;
     margin-bottom: 4px;
 }
 .event-fact-label {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 13px;
     color: rgba(255,255,255,0.6);
 }
@@ -3281,7 +3539,7 @@ img {
     color: #fff;
     text-decoration: none;
     border-radius: 12px;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -3325,16 +3583,16 @@ img {
     text-align: center;
 }
 .event-section-title {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 36px;
     font-weight: 700;
-    color: #253B50;
+    color: #000864;
     text-align: center;
     margin-bottom: 16px;
     line-height: 1.25;
 }
 .event-section-subtitle {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     color: #64748b;
     text-align: center;
@@ -3349,14 +3607,14 @@ img {
     margin: 0 auto;
 }
 .event-problem-body p {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     line-height: 1.8;
     color: #333;
     margin-bottom: 24px;
 }
 .event-problem-body strong {
-    color: #253B50;
+    color: #000864;
     font-weight: 600;
 }
 
@@ -3396,15 +3654,15 @@ img {
     fill: none;
 }
 .event-outcome-card h3 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     font-weight: 600;
-    color: #253B50;
+    color: #000864;
     margin-bottom: 8px;
     line-height: 1.3;
 }
 .event-outcome-card p {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     color: #64748b;
     line-height: 1.6;
@@ -3434,14 +3692,14 @@ img {
     padding-top: 2px;
 }
 .event-agenda-content h3 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     font-weight: 600;
-    color: #253B50;
+    color: #000864;
     margin-bottom: 6px;
 }
 .event-agenda-content p {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     color: #64748b;
     line-height: 1.6;
@@ -3482,10 +3740,10 @@ img {
     padding: 32px 28px;
 }
 .event-persona-role {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 20px;
     font-weight: 600;
-    color: #253B50;
+    color: #000864;
     margin-bottom: 8px;
 }
 .event-persona-size {
@@ -3502,14 +3760,14 @@ img {
     margin-bottom: 16px;
 }
 .event-persona-desc {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     color: #64748b;
     line-height: 1.6;
     margin-bottom: 16px;
 }
 .event-persona-quote {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     font-style: italic;
     color: #94a3b8;
@@ -3523,14 +3781,14 @@ img {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 32px;
-    background: linear-gradient(135deg, #1a2e40 0%, #253B50 100%);
+    background: linear-gradient(135deg, #000432 0%, #000864 100%);
     border-radius: 16px;
     padding: 48px 32px;
     text-align: center;
     margin-bottom: 40px;
 }
 .event-stat-value {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 42px;
     font-weight: 700;
     color: var(--event-color, #22C55E);
@@ -3538,12 +3796,12 @@ img {
     margin-bottom: 8px;
 }
 .event-stat-label {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     color: rgba(255,255,255,0.7);
 }
 .event-proof-text {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     color: #64748b;
     line-height: 1.8;
@@ -3585,14 +3843,14 @@ img {
     fill: none;
 }
 .event-logistics-label {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     font-weight: 600;
-    color: #253B50;
+    color: #000864;
     margin-bottom: 4px;
 }
 .event-logistics-value {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     color: #64748b;
     line-height: 1.5;
@@ -3601,7 +3859,7 @@ img {
 /* Registration CTA Section */
 .event-register-cta {
     padding: 100px 24px;
-    background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #253B50 100%);
+    background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #000864 100%);
     position: relative;
     overflow: hidden;
     text-align: center;
@@ -3622,14 +3880,14 @@ img {
     z-index: 1;
 }
 .event-register-cta h2 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: clamp(28px, 4vw, 40px);
     font-weight: 700;
     color: #fff;
     margin-bottom: 16px;
 }
 .event-register-meta {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     color: rgba(255,255,255,0.85);
     margin-bottom: 36px;
@@ -3643,7 +3901,7 @@ img {
     color: #fff;
     text-decoration: none;
     border-radius: 12px;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -3664,7 +3922,7 @@ img {
 .event-register-secondary {
     display: block;
     color: rgba(255,255,255,0.6);
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -3695,8 +3953,8 @@ img {
     width: fit-content;
 }
 .event-type-badge.seminar {
-    background: rgba(55, 152, 228, 0.12);
-    color: #3798E4;
+    background: rgba(0, 175, 240, 0.12);
+    color: #00AFF0;
 }
 .event-type-badge.workshop {
     background: rgba(34, 197, 94, 0.12);
@@ -3720,14 +3978,14 @@ img {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     color: #64748b;
 }
 .event-meta-item svg {
     width: 16px;
     height: 16px;
-    stroke: #3798E4;
+    stroke: #00AFF0;
     fill: none;
     flex-shrink: 0;
 }
@@ -3739,14 +3997,14 @@ img {
     transition: all 0.3s ease;
 }
 .upcoming-card:hover {
-    border-color: #3798E4;
-    box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+    border-color: #00AFF0;
+    box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
     transform: translateY(-4px);
 }
 .upcoming-card-border {
     height: 4px;
 }
-.upcoming-card-border.seminar { background: #3798E4; }
+.upcoming-card-border.seminar { background: #00AFF0; }
 .upcoming-card-border.workshop { background: #22C55E; }
 .upcoming-card-border.factory-visit { background: #F59E0B; }
 .upcoming-card-border.trade-show { background: #8B5CF6; }
@@ -3757,10 +4015,10 @@ img {
     margin-bottom: 16px;
 }
 .upcoming-card-body h3 {
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 20px;
     font-weight: 600;
-    color: #253B50;
+    color: #000864;
     line-height: 1.35;
     margin-bottom: 16px;
 }
@@ -3777,8 +4035,8 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    color: #3798E4;
-    font-family: 'Source Sans 3', sans-serif;
+    color: #00AFF0;
+    font-family: 'Noto Sans', sans-serif;
     font-weight: 600;
     font-size: 14px;
     text-decoration: none;
@@ -3803,7 +4061,7 @@ img {
     color: var(--event-color, #22C55E);
     font-weight: 600;
     text-decoration: none;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     transition: opacity 0.3s ease;
 }

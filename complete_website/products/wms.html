@@ -6,11 +6,12 @@
     <title>WMS: sFLS - Smart Warehouse Management | DigiWin Thailand</title>
     <meta name="description" content="Warehouse Management System for manufacturing. Location intelligence, barcode/RFID tracking, FIFO automation, and wave picking optimization.">
     <link rel="stylesheet" href="../styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../assets/digiwin-d-mark.svg">
     <style>
         /* WMS Page Specific Styles */
         .wms-hero {
-            background: linear-gradient(135deg, #1a2d3d 0%, #253B50 50%, #2d4a5e 100%);
+            background: linear-gradient(135deg, #1a2d3d 0%, #000864 50%, #001080 100%);
             padding: 140px 0 100px;
             position: relative;
             overflow: hidden;
@@ -37,8 +38,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(55, 152, 228, 0.15);
-            border: 1px solid rgba(55, 152, 228, 0.3);
+            background: rgba(0, 175, 240, 0.15);
+            border: 1px solid rgba(0, 175, 240, 0.3);
             padding: 8px 20px;
             border-radius: 50px;
             color: #7fc4fd;
@@ -58,10 +59,10 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         .wms-hero-stat-number {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 32px;
             font-weight: 800;
-            color: #3798E4;
+            color: #00AFF0;
         }
         .wms-hero-stat-label {
             font-family: 'JetBrains Mono', monospace;
@@ -94,8 +95,8 @@
         }
         .wms-mockup-cell {
             aspect-ratio: 1;
-            background: rgba(55, 152, 228, 0.08);
-            border: 1px solid rgba(55, 152, 228, 0.15);
+            background: rgba(0, 175, 240, 0.08);
+            border: 1px solid rgba(0, 175, 240, 0.15);
             border-radius: 4px;
             display: flex;
             align-items: center;
@@ -105,9 +106,9 @@
             color: rgba(255, 255, 255, 0.3);
         }
         .wms-mockup-cell.occupied {
-            background: rgba(55, 152, 228, 0.25);
-            border-color: rgba(55, 152, 228, 0.4);
-            color: #3798E4;
+            background: rgba(0, 175, 240, 0.25);
+            border-color: rgba(0, 175, 240, 0.4);
+            color: #00AFF0;
         }
         .wms-mockup-cell.active {
             background: rgba(16, 185, 129, 0.3);
@@ -126,10 +127,10 @@
             text-align: center;
         }
         .wms-mockup-stat-value {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             font-weight: 700;
-            color: #3798E4;
+            color: #00AFF0;
         }
         .wms-mockup-stat-value.green { color: #10b981; }
         .wms-mockup-stat-label {
@@ -146,7 +147,7 @@
             .wms-hero-stats { justify-content: center; }
         }
         .wms-hero h1 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 48px;
             font-weight: 700;
             color: #ffffff;
@@ -154,7 +155,7 @@
             line-height: 1.15;
         }
         .wms-hero-subtitle {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 20px;
             color: rgba(255, 255, 255, 0.85);
             max-width: 700px;
@@ -183,14 +184,14 @@
             margin-bottom: 48px;
         }
         .section-title {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 36px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 16px;
         }
         .section-subtitle {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
             color: #64748b;
             max-width: 600px;
@@ -226,14 +227,14 @@
             fill: none;
         }
         .problem-title {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 12px;
         }
         .problem-desc {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
             color: #64748b;
             line-height: 1.6;
@@ -263,9 +264,9 @@
             transition: all 0.3s ease;
         }
         .capability-box:hover {
-            border-color: #3798E4;
+            border-color: #00AFF0;
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+            box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
         }
         .capability-box-header {
             display: flex;
@@ -276,7 +277,7 @@
         .capability-box-icon {
             width: 64px;
             height: 64px;
-            background: linear-gradient(135deg, #3798E4 0%, #2d7bc4 100%);
+            background: linear-gradient(135deg, #00AFF0 0%, #2d7bc4 100%);
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -294,21 +295,21 @@
             flex: 1;
         }
         .capability-box-title {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 22px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 4px;
         }
         .capability-box-tagline {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
             color: #64748b;
         }
         .capability-box-desc {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
-            color: #253B50;
+            color: #000864;
             line-height: 1.7;
             margin-bottom: 20px;
         }
@@ -318,9 +319,9 @@
             margin: 0;
         }
         .capability-features li {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
-            color: #253B50;
+            color: #000864;
             padding: 10px 0;
             border-bottom: 1px solid #f0f4f8;
             display: flex;
@@ -357,7 +358,7 @@
         .metric-icon {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, #3798E4 0%, #2d7bc4 100%);
+            background: linear-gradient(135deg, #00AFF0 0%, #2d7bc4 100%);
             border-radius: 14px;
             display: flex;
             align-items: center;
@@ -372,14 +373,14 @@
             fill: none;
         }
         .metric-title {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 8px;
         }
         .metric-desc {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
             color: #64748b;
             line-height: 1.5;
@@ -413,18 +414,18 @@
             transition: all 0.3s ease;
         }
         .integration-node:hover {
-            border-color: #3798E4;
+            border-color: #00AFF0;
             transform: scale(1.05);
         }
         .integration-node.active {
-            border-color: #3798E4;
+            border-color: #00AFF0;
             background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
-            box-shadow: 0 8px 24px rgba(55, 152, 228, 0.15);
+            box-shadow: 0 8px 24px rgba(0, 175, 240, 0.15);
         }
         .integration-node-icon {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            background: linear-gradient(135deg, #00AFF0, #2d7bc4);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -439,14 +440,14 @@
             fill: none;
         }
         .integration-node-name {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
         }
         .integration-arrow {
             font-size: 20px;
-            color: #3798E4;
+            color: #00AFF0;
             padding: 0 12px;
         }
         .integration-message {
@@ -459,9 +460,9 @@
             margin: 0 auto;
         }
         .integration-message p {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
-            color: #253B50;
+            color: #000864;
             line-height: 1.8;
             margin: 0;
         }
@@ -480,22 +481,22 @@
             background: #ffffff;
             border: 1px solid #e8eef3;
             border-radius: 8px;
-            color: #3798E4;
-            font-family: 'Lexend', sans-serif;
+            color: #00AFF0;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
         }
         .integration-link:hover {
-            border-color: #3798E4;
+            border-color: #00AFF0;
             background: #f0f7ff;
         }
 
         /* CTA Section */
         .wms-cta {
             padding: 100px 0;
-            background: linear-gradient(135deg, #3798E4 0%, #2d7bc4 100%);
+            background: linear-gradient(135deg, #00AFF0 0%, #2d7bc4 100%);
             position: relative;
             overflow: hidden;
         }
@@ -518,14 +519,14 @@
             z-index: 1;
         }
         .wms-cta-title {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
             color: #ffffff;
             margin-bottom: 16px;
         }
         .wms-cta-subtitle {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
             color: rgba(255, 255, 255, 0.9);
             margin-bottom: 36px;
@@ -538,10 +539,10 @@
         }
         .btn-white {
             background: #ffffff;
-            color: #3798E4;
+            color: #00AFF0;
             padding: 16px 32px;
             border-radius: 8px;
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             font-weight: 600;
             text-decoration: none;
@@ -557,7 +558,7 @@
             padding: 16px 32px;
             border-radius: 8px;
             border: 2px solid rgba(255, 255, 255, 0.5);
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             font-weight: 600;
             text-decoration: none;
@@ -623,19 +624,8 @@
     <header class="dw-header">
         <div class="dw-header-inner">
             <a href="../index.html" class="dw-logo">
-                <div class="dw-logo-mark">
-                    <!-- DigiWin Logo Mark - Stylized D -->
-                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 8h20c8.837 0 16 7.163 16 16s-7.163 16-16 16H8V8z" fill="#3798E4"/>
-                        <path d="M14 14h12c6.627 0 12 5.373 12 12s-5.373 12-12 12H14V14z" fill="#ffffff"/>
-                        <path d="M14 18h8c5.523 0 10 4.477 10 10s-4.477 10-10 10h-8V18z" fill="#3798E4"/>
-                        <path d="M14 24h4c3.314 0 6 2.686 6 6s-2.686 6-6 6h-4V24z" fill="#ffffff"/>
-                    </svg>
-                </div>
-                <div class="dw-logo-wordmark">
-                    <span class="dw-logo-text-en">Digi<span>Win</span></span>
-                    <span class="dw-logo-text-zh">鼎新數智</span>
-                </div>
+                <img src="../assets/digiwin-logo-en.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--desktop" width="160" height="40">
+                <img src="../assets/digiwin-d-mark.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--mobile" width="32" height="32">
             </a>
 
             <nav class="dw-nav">
@@ -844,7 +834,7 @@
                             <!-- Featured: Partner Program -->
                             <div class="dw-mega-featured">
                                 <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(55,152,228,0.3)"/></svg>
+                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(0,175,240,0.3)"/></svg>
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">For ERP Implementers</span>
@@ -891,7 +881,7 @@
                             <!-- Featured: Latest Insight -->
                             <div class="dw-mega-featured">
                                 <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(55,152,228,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
+                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(0,175,240,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">Latest Insight</span>
@@ -926,8 +916,10 @@
     </header>
 
 
-    <!-- Hero Section -->
-    <section class="wms-hero">
+    <!-- Hero Section — "The Organized Grid": D OUTLINE TOP-fall at 0.12, structure descending from above -->
+    <section class="wms-hero" style="position: relative; overflow: hidden;">
+        <!-- Brand: Super D outline, TOP-fall — warehouse structure descending like organized shelves -->
+        <div class="dw-d-bg dw-d-bg--top dw-d-parallax" style="opacity: 0.12;"></div>
         <div class="wms-hero-inner">
             <div class="wms-hero-grid">
                 <div class="wms-hero-content">
@@ -1026,9 +1018,11 @@
         </div>
     </section>
 
-    <!-- Capabilities Section -->
-    <section class="capabilities-section" id="capabilities">
-        <div class="capabilities-inner">
+    <!-- Capabilities Section — wave-section: goods flowing through the warehouse grid -->
+    <section class="capabilities-section" id="capabilities" style="position: relative; overflow: hidden;">
+        <!-- Brand: Wave section — goods flowing through organized warehouse aisles -->
+        <div class="dw-wave-section" style="opacity: 0.06;"></div>
+        <div class="capabilities-inner" style="position: relative; z-index: 2;">
             <div class="section-header">
                 <h2 class="section-title">sFLS: Smart Factory Logistics System</h2>
                 <p class="section-subtitle">Warehouse management designed for manufacturing</p>
@@ -1114,9 +1108,11 @@
         </div>
     </section>
 
-    <!-- Metrics Section -->
-    <section class="metrics-section">
-        <div class="problems-inner">
+    <!-- Metrics Section — D corner-br: precision in the bottom-right, like a barcode scan point -->
+    <section class="metrics-section" style="position: relative; overflow: hidden;">
+        <!-- Brand: D corner bottom-right — precision tracking, the barcode scan moment -->
+        <div class="dw-d-bg dw-d-bg--corner-br dw-d-bg--subtle"></div>
+        <div class="problems-inner" style="position: relative; z-index: 2;">
             <div class="section-header">
                 <h2 class="section-title">What WMS Delivers</h2>
                 <p class="section-subtitle">Measurable improvements across your warehouse operation</p>
@@ -1155,9 +1151,11 @@
         </div>
     </section>
 
-    <!-- Integration Section -->
-    <section class="integration-section">
-        <div class="integration-inner">
+    <!-- Integration Section — wave-fade: inventory data flowing between connected systems -->
+    <section class="integration-section" style="position: relative; overflow: hidden;">
+        <!-- Brand: Wave fade — sparse inventory data points connecting to other systems -->
+        <div class="dw-wave-fade" style="opacity: 0.06;"></div>
+        <div class="integration-inner" style="position: relative; z-index: 2;">
             <div class="section-header">
                 <h2 class="section-title">Connected to Everything</h2>
                 <p class="section-subtitle">WMS is the inventory truth for your entire operation</p>
@@ -1205,9 +1203,13 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="wms-cta">
-        <div class="wms-cta-inner">
+    <!-- CTA Section — D LEFT + wave-flow: structured order driving toward action -->
+    <section class="wms-cta" style="position: relative; overflow: hidden;">
+        <!-- Brand: D LEFT — structured warehouse organization anchored on the left -->
+        <div class="dw-d-bg dw-d-bg--left dw-d-bg--medium"></div>
+        <!-- Brand: Wave flow — goods in motion toward the action point -->
+        <div class="dw-wave-flow" style="height: 170px; opacity: 0.32; z-index: 1;"></div>
+        <div class="wms-cta-inner" style="position: relative; z-index: 3;">
             <h2 class="wms-cta-title">Ready to End the Warehouse Chaos?</h2>
             <p class="wms-cta-subtitle">Fill out the form and our team will reach out to discuss your specific warehouse challenges.</p>
             <div class="wms-cta-buttons">
@@ -1221,7 +1223,9 @@
         <div class="dw-footer-inner">
             <div class="dw-footer-grid">
                 <div class="dw-footer-brand">
-                    <div class="dw-footer-logo">Digi<span>Win</span></div>
+                    <div class="dw-footer-logo">
+                        <img src="../assets/digiwin-logo-en-white.svg" alt="DigiWin" width="140" height="35">
+                    </div>
                     <p class="dw-footer-tagline"><span class="dw-years">44</span> years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
                     <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
                 </div>

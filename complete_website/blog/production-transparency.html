@@ -6,7 +6,8 @@
     <title>From Paper Reports to Production Transparency: A Practical Guide - DigiWin Thailand</title>
     <meta name="description" content="Most Thai factories still rely on paper forms for production reporting. By the time management sees the data, it's already history. Here's how to move from paper to real-time production transparency.">
     <link rel="stylesheet" href="../styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../assets/digiwin-d-mark.svg">
     <style>
         .blog-category-badge { background: #10B981; }
     </style>
@@ -15,19 +16,8 @@
     <header class="dw-header">
         <div class="dw-header-inner">
             <a href="../index.html" class="dw-logo">
-                <div class="dw-logo-mark">
-                    <!-- DigiWin Logo Mark - Stylized D -->
-                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 8h20c8.837 0 16 7.163 16 16s-7.163 16-16 16H8V8z" fill="#3798E4"/>
-                        <path d="M14 14h12c6.627 0 12 5.373 12 12s-5.373 12-12 12H14V14z" fill="#ffffff"/>
-                        <path d="M14 18h8c5.523 0 10 4.477 10 10s-4.477 10-10 10h-8V18z" fill="#3798E4"/>
-                        <path d="M14 24h4c3.314 0 6 2.686 6 6s-2.686 6-6 6h-4V24z" fill="#ffffff"/>
-                    </svg>
-                </div>
-                <div class="dw-logo-wordmark">
-                    <span class="dw-logo-text-en">Digi<span>Win</span></span>
-                    <span class="dw-logo-text-zh">鼎新數智</span>
-                </div>
+                <img src="../assets/digiwin-logo-en.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--desktop" width="160" height="40">
+                <img src="../assets/digiwin-d-mark.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--mobile" width="32" height="32">
             </a>
 
             <nav class="dw-nav">
@@ -236,7 +226,7 @@
                             <!-- Featured: Partner Program -->
                             <div class="dw-mega-featured">
                                 <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(55,152,228,0.3)"/></svg>
+                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(0,175,240,0.3)"/></svg>
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">For ERP Implementers</span>
@@ -283,7 +273,7 @@
                             <!-- Featured: Latest Insight -->
                             <div class="dw-mega-featured">
                                 <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(55,152,228,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
+                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(0,175,240,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">Latest Insight</span>
@@ -319,8 +309,9 @@
 
 
     <!-- Hero -->
-    <section class="blog-hero">
-        <div class="blog-hero-inner">
+    <section class="blog-hero" style="position: relative; overflow: hidden;">
+        <div class="dw-d-bg dw-d-bg--left" style="opacity: 0.05;"></div>
+        <div class="blog-hero-inner" style="position: relative; z-index: 2;">
             <a href="../blog.html" class="blog-back-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                 Back to Insights
@@ -350,54 +341,6 @@
         <p class="fade-in">
             Production transparency does not mean more reports. It means closing the gap between what is happening and what you can see. It means knowing, in real time, the status of every work center, every production order, every piece of equipment — not as estimates, not as end-of-shift summaries, but as live data that updates while production is running.
         </p>
-
-        <!-- Diagram: 3-Layer Production Transparency Stack -->
-        <div class="article-diagram fade-in">
-            <svg viewBox="0 0 720 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <text x="360" y="22" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#253B50">Production Transparency: Three-Layer Architecture</text>
-
-                <!-- Layer 3 (top): Real-Time Dashboard -->
-                <rect x="140" y="40" width="440" height="60" rx="10" stroke="#3798E4" stroke-width="2" fill="rgba(55,152,228,0.06)"/>
-                <text x="360" y="65" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#3798E4">Real-Time Dashboard</text>
-                <text x="360" y="85" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#666">OEE · WIP status · Quality alerts · Delivery tracking</text>
-
-                <!-- Connection arrows -->
-                <path d="M360 100 L360 120" stroke="#3798E4" stroke-width="1.5"/>
-                <polygon points="355,120 360,128 365,120" fill="#3798E4"/>
-
-                <!-- Layer 2 (middle): Data Collection Layer -->
-                <rect x="140" y="130" width="440" height="60" rx="10" stroke="#3798E4" stroke-width="1.5" fill="rgba(55,152,228,0.04)"/>
-                <text x="360" y="155" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#253B50">Data Collection Layer</text>
-                <text x="360" y="175" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#666">Barcode scan · Machine signals · Operator input · Auto-timing</text>
-
-                <!-- Connection arrows -->
-                <path d="M360 190 L360 210" stroke="#3798E4" stroke-width="1.5"/>
-                <polygon points="355,210 360,218 365,210" fill="#3798E4"/>
-
-                <!-- Layer 1 (bottom): Shop Floor Devices -->
-                <rect x="140" y="220" width="440" height="50" rx="10" stroke="#253B50" stroke-width="1.2" fill="rgba(37,59,80,0.04)"/>
-
-                <!-- Device icons -->
-                <rect x="175" y="232" width="36" height="28" rx="4" stroke="#253B50" stroke-width="1"/>
-                <text x="193" y="250" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="8" fill="#666">CNC</text>
-                <rect x="240" y="232" width="36" height="28" rx="4" stroke="#253B50" stroke-width="1"/>
-                <text x="258" y="250" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="8" fill="#666">PLC</text>
-                <rect x="305" y="232" width="36" height="28" rx="4" stroke="#253B50" stroke-width="1"/>
-                <text x="323" y="250" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="8" fill="#666">Scale</text>
-                <rect x="370" y="232" width="40" height="28" rx="4" stroke="#253B50" stroke-width="1"/>
-                <text x="390" y="250" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="8" fill="#666">Tablet</text>
-                <rect x="440" y="232" width="36" height="28" rx="4" stroke="#253B50" stroke-width="1"/>
-                <text x="458" y="250" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="8" fill="#666">RFID</text>
-                <rect x="505" y="232" width="46" height="28" rx="4" stroke="#253B50" stroke-width="1"/>
-                <text x="528" y="250" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="8" fill="#666">Scanner</text>
-
-                <!-- Side labels -->
-                <text x="110" y="75" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#3798E4">LAYER 3</text>
-                <text x="110" y="165" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#3798E4">LAYER 2</text>
-                <text x="110" y="250" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10" fill="#253B50">LAYER 1</text>
-            </svg>
-            <p class="diagram-caption">Production transparency is built in layers — shop floor devices feed a data collection layer that powers real-time dashboards.</p>
-        </div>
 
         <hr class="blog-divider fade-in">
 
@@ -604,8 +547,9 @@
     </article>
 
     <!-- Related Articles -->
-    <section class="blog-related">
-        <div class="blog-related-inner">
+    <section class="blog-related" style="position: relative; overflow: hidden;">
+        <div class="dw-wave-fade" style="opacity: 0.08;"></div>
+        <div class="blog-related-inner" style="position: relative; z-index: 2;">
             <h2 class="fade-in">Related Articles</h2>
             <div class="blog-related-grid">
                 <a href="../blog/boi-compliance-jin-hai.html" class="blog-related-card fade-in">
@@ -653,7 +597,9 @@
         <div class="dw-footer-inner">
             <div class="dw-footer-grid">
                 <div class="dw-footer-brand">
-                    <div class="dw-footer-logo">Digi<span>Win</span></div>
+                    <div class="dw-footer-logo">
+                        <img src="../assets/digiwin-logo-en-white.svg" alt="DigiWin" width="140" height="35">
+                    </div>
                     <p class="dw-footer-tagline"><span class="dw-years">44</span> years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
                     <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
                 </div>

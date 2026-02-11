@@ -6,28 +6,18 @@
     <title>Dual Units: Why Your ERP Should Show Both Kilograms AND Pieces - DigiWin Thailand</title>
     <meta name="description" content="When your sales team thinks in pieces but production measures in kilograms, your ERP should handle both simultaneously — not force you to choose one.">
     <link rel="stylesheet" href="../styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../assets/digiwin-d-mark.svg">
     <style>
-        .blog-category-badge { background: #059669; }
+        .blog-category-badge { background: #02D28C; }
     </style>
 </head>
 <body>
     <header class="dw-header">
         <div class="dw-header-inner">
             <a href="../index.html" class="dw-logo">
-                <div class="dw-logo-mark">
-                    <!-- DigiWin Logo Mark - Stylized D -->
-                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 8h20c8.837 0 16 7.163 16 16s-7.163 16-16 16H8V8z" fill="#3798E4"/>
-                        <path d="M14 14h12c6.627 0 12 5.373 12 12s-5.373 12-12 12H14V14z" fill="#ffffff"/>
-                        <path d="M14 18h8c5.523 0 10 4.477 10 10s-4.477 10-10 10h-8V18z" fill="#3798E4"/>
-                        <path d="M14 24h4c3.314 0 6 2.686 6 6s-2.686 6-6 6h-4V24z" fill="#ffffff"/>
-                    </svg>
-                </div>
-                <div class="dw-logo-wordmark">
-                    <span class="dw-logo-text-en">Digi<span>Win</span></span>
-                    <span class="dw-logo-text-zh">鼎新數智</span>
-                </div>
+                <img src="../assets/digiwin-logo-en.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--desktop" width="160" height="40">
+                <img src="../assets/digiwin-d-mark.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--mobile" width="32" height="32">
             </a>
 
             <nav class="dw-nav">
@@ -236,7 +226,7 @@
                             <!-- Featured: Partner Program -->
                             <div class="dw-mega-featured">
                                 <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(55,152,228,0.3)"/></svg>
+                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(0,175,240,0.3)"/></svg>
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">For ERP Implementers</span>
@@ -283,7 +273,7 @@
                             <!-- Featured: Latest Insight -->
                             <div class="dw-mega-featured">
                                 <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(55,152,228,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
+                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(0,175,240,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">Latest Insight</span>
@@ -319,8 +309,9 @@
 
 
     <!-- Hero -->
-    <section class="blog-hero">
-        <div class="blog-hero-inner">
+    <section class="blog-hero" style="position: relative; overflow: hidden;">
+        <div class="dw-d-bg dw-d-bg--corner-br" style="opacity: 0.06;"></div>
+        <div class="blog-hero-inner" style="position: relative; z-index: 2;">
             <a href="../blog.html" class="blog-back-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                 Back to Insights
@@ -346,51 +337,6 @@
         <p class="fade-in">
             For many manufacturers, the ERP forces a choice: pick one primary unit, and convert everything else manually. This creates friction, errors, and wasted time at every handoff point. Sales enters an order for 500 pieces. Warehouse needs to know that's 125 kg. Production needs 3 rolls of raw material. Purchasing needs 2 pallets. Every conversion is manual — and every manual conversion is an error waiting to happen.
         </p>
-
-        <!-- Diagram: Unit Conversion Flow -->
-        <div class="article-diagram fade-in">
-            <svg viewBox="0 0 720 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <text x="360" y="22" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#253B50">One Product, Multiple Units — Tracked Simultaneously</text>
-
-                <!-- Purchase stage -->
-                <rect x="30" y="60" width="140" height="70" rx="10" stroke="#3798E4" stroke-width="1.5" fill="rgba(55,152,228,0.06)"/>
-                <text x="100" y="85" text-anchor="middle" font-family="Lexend, sans-serif" font-size="13" font-weight="600" fill="#3798E4">Purchase</text>
-                <text x="100" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="500" fill="#253B50">500 kg</text>
-                <text x="100" y="148" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#999">Supplier ships by weight</text>
-
-                <!-- Arrow 1 -->
-                <path d="M170 95 L230 95" stroke="#3798E4" stroke-width="1.5"/>
-                <polygon points="230,90 242,95 230,100" fill="#3798E4"/>
-                <text x="206" y="85" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="10" fill="#3798E4">auto</text>
-
-                <!-- Production stage -->
-                <rect x="245" y="60" width="140" height="70" rx="10" stroke="#3798E4" stroke-width="1.5" fill="rgba(55,152,228,0.06)"/>
-                <text x="315" y="85" text-anchor="middle" font-family="Lexend, sans-serif" font-size="13" font-weight="600" fill="#3798E4">Production</text>
-                <text x="315" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="500" fill="#253B50">120 sheets</text>
-                <text x="315" y="148" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#999">Floor consumes by unit</text>
-
-                <!-- Arrow 2 -->
-                <path d="M385 95 L445 95" stroke="#3798E4" stroke-width="1.5"/>
-                <polygon points="445,90 457,95 445,100" fill="#3798E4"/>
-                <text x="421" y="85" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="10" fill="#3798E4">auto</text>
-
-                <!-- Sales stage -->
-                <rect x="460" y="60" width="140" height="70" rx="10" stroke="#3798E4" stroke-width="1.5" fill="rgba(55,152,228,0.06)"/>
-                <text x="530" y="85" text-anchor="middle" font-family="Lexend, sans-serif" font-size="13" font-weight="600" fill="#3798E4">Sales</text>
-                <text x="530" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="500" fill="#253B50">24 rolls</text>
-                <text x="530" y="148" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#999">Customer orders by pack</text>
-
-                <!-- Inventory bottom bar -->
-                <rect x="120" y="175" width="480" height="36" rx="8" stroke="#059669" stroke-width="1.2" fill="rgba(5,150,105,0.06)"/>
-                <text x="360" y="198" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#059669">Inventory shows all units simultaneously: 500 kg = 120 sheets = 24 rolls</text>
-
-                <!-- Dashed lines connecting to inventory bar -->
-                <line x1="100" y1="130" x2="200" y2="175" stroke="#059669" stroke-width="0.8" stroke-dasharray="3 3"/>
-                <line x1="315" y1="130" x2="360" y2="175" stroke="#059669" stroke-width="0.8" stroke-dasharray="3 3"/>
-                <line x1="530" y1="130" x2="520" y2="175" stroke="#059669" stroke-width="0.8" stroke-dasharray="3 3"/>
-            </svg>
-            <p class="diagram-caption">Dual-unit tracking eliminates manual conversions — each department sees the unit they work with, while inventory stays synchronized.</p>
-        </div>
 
         <hr class="blog-divider fade-in">
 
@@ -493,8 +439,9 @@
     </article>
 
     <!-- Related Articles -->
-    <section class="blog-related">
-        <div class="blog-related-inner">
+    <section class="blog-related" style="position: relative; overflow: hidden;">
+        <div class="dw-wave-fade" style="opacity: 0.08;"></div>
+        <div class="blog-related-inner" style="position: relative; z-index: 2;">
             <h2 class="fade-in">Related Articles</h2>
             <div class="blog-related-grid">
                 <a href="../blog/co-product-cost-accounting.html" class="blog-related-card fade-in">
@@ -542,7 +489,9 @@
         <div class="dw-footer-inner">
             <div class="dw-footer-grid">
                 <div class="dw-footer-brand">
-                    <div class="dw-footer-logo">Digi<span>Win</span></div>
+                    <div class="dw-footer-logo">
+                        <img src="../assets/digiwin-logo-en-white.svg" alt="DigiWin" width="140" height="35">
+                    </div>
                     <p class="dw-footer-tagline"><span class="dw-years">44</span> years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
                     <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
                 </div>

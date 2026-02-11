@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Partner Program - DigiWin Thailand</title>
     <link rel="stylesheet" href="{{basePath}}styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="{{basePath}}assets/digiwin-d-mark.svg">
     <style>
         /* Hero Section */
         .partner-hero {
-            background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+            background: linear-gradient(135deg, #000432 0%, #000864 50%, #001080 100%);
             padding: 140px 24px 100px;
             position: relative;
             overflow: hidden;
@@ -59,8 +60,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(55, 152, 228, 0.2);
-            border: 1px solid rgba(55, 152, 228, 0.3);
+            background: rgba(0, 175, 240, 0.2);
+            border: 1px solid rgba(0, 175, 240, 0.3);
             padding: 8px 16px;
             border-radius: 50px;
             font-size: 14px;
@@ -68,7 +69,7 @@
             margin-bottom: 24px;
         }
         .partner-hero h1 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: clamp(36px, 5vw, 56px);
             font-weight: 700;
             color: #fff;
@@ -77,7 +78,7 @@
             max-width: 800px;
         }
         .partner-hero h1 span {
-            color: #3798E4;
+            color: #00AFF0;
         }
         .partner-hero-subtitle {
             font-size: 20px;
@@ -101,7 +102,7 @@
             color: #fff;
             padding: 16px 32px;
             border-radius: 12px;
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
             font-weight: 600;
             text-decoration: none;
@@ -125,10 +126,10 @@
             text-align: center;
         }
         .partner-stat-value {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 42px;
             font-weight: 700;
-            color: #3798E4;
+            color: #00AFF0;
             line-height: 1;
             margin-bottom: 8px;
         }
@@ -152,10 +153,10 @@
             margin-bottom: 60px;
         }
         .reality-header h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 16px;
         }
         .reality-header p {
@@ -193,7 +194,7 @@
             fill: none;
         }
         .reality-card h3 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 20px;
             font-weight: 600;
             color: #7f1d1d;
@@ -223,10 +224,10 @@
             margin-bottom: 60px;
         }
         .transform-header h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 16px;
         }
         .transform-header p {
@@ -273,10 +274,10 @@
             color: #166534;
         }
         .model-box h3 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 24px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 24px;
         }
         .model-list {
@@ -316,7 +317,7 @@
         .transform-arrow svg {
             width: 48px;
             height: 48px;
-            stroke: #3798E4;
+            stroke: #00AFF0;
         }
 
         /* Benefits Grid */
@@ -333,14 +334,14 @@
             transition: all 0.3s ease;
         }
         .benefit-card:hover {
-            border-color: #3798E4;
-            box-shadow: 0 8px 32px rgba(55, 152, 228, 0.12);
+            border-color: #00AFF0;
+            box-shadow: 0 8px 32px rgba(0, 175, 240, 0.12);
             transform: translateY(-4px);
         }
         .benefit-icon {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            background: linear-gradient(135deg, #00AFF0, #2d7bc4);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -354,10 +355,10 @@
             fill: none;
         }
         .benefit-card h3 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 20px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 12px;
         }
         .benefit-card p {
@@ -380,10 +381,10 @@
             margin-bottom: 60px;
         }
         .offerings-header h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 16px;
         }
         .offerings-header p {
@@ -409,14 +410,14 @@
             transition: all 0.3s ease;
         }
         .offering-card:hover {
-            border-color: #3798E4;
-            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.15);
+            border-color: #00AFF0;
+            box-shadow: 0 12px 40px rgba(0, 175, 240, 0.15);
             transform: translateY(-4px);
         }
         .offering-icon {
             width: 72px;
             height: 72px;
-            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            background: linear-gradient(135deg, #00AFF0, #2d7bc4);
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -430,10 +431,10 @@
             fill: none;
         }
         .offering-content h3 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 22px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 12px;
         }
         .offering-content p {
@@ -445,7 +446,7 @@
         .offering-link {
             font-size: 15px;
             font-weight: 600;
-            color: #3798E4;
+            color: #00AFF0;
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -462,7 +463,7 @@
 
         /* Benefits List */
         .benefits-box {
-            background: linear-gradient(135deg, #253B50 0%, #1a2e40 100%);
+            background: linear-gradient(135deg, #000864 0%, #000432 100%);
             border-radius: 20px;
             padding: 48px;
             position: relative;
@@ -480,7 +481,7 @@
             z-index: 1;
         }
         .benefits-box h3 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 28px;
             font-weight: 600;
             color: #fff;
@@ -524,10 +525,10 @@
             margin-bottom: 60px;
         }
         .journey-header h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 16px;
         }
         .journey-header p {
@@ -549,7 +550,7 @@
             left: 12.5%;
             right: 12.5%;
             height: 3px;
-            background: linear-gradient(90deg, #3798E4, #10b981);
+            background: linear-gradient(90deg, #00AFF0, #10b981);
             border-radius: 2px;
             z-index: 0;
         }
@@ -561,25 +562,25 @@
         .journey-number {
             width: 96px;
             height: 96px;
-            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            background: linear-gradient(135deg, #00AFF0, #2d7bc4);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 24px;
-            box-shadow: 0 8px 24px rgba(55, 152, 228, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 175, 240, 0.3);
         }
         .journey-number span {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 32px;
             font-weight: 700;
             color: #fff;
         }
         .journey-step h3 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 12px;
         }
         .journey-step p {
@@ -591,7 +592,7 @@
         /* CTA Section */
         .partner-cta {
             padding: 100px 24px;
-            background: linear-gradient(135deg, #3798E4 0%, #2d7bc4 50%, #1e5a8a 100%);
+            background: linear-gradient(135deg, #00AFF0 0%, #2d7bc4 50%, #1e5a8a 100%);
             position: relative;
             overflow: hidden;
         }
@@ -610,7 +611,7 @@
             z-index: 1;
         }
         .partner-cta h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
             color: #fff;
@@ -687,29 +688,32 @@
 {{header}}
 
     <!-- Hero Section -->
-    <section class="partner-hero">
+    <section class="partner-hero" style="position: relative; overflow: hidden;">
+        <!-- Brand: Two D's facing each other = partnership, two forces meeting -->
+        <div class="dw-d-bg dw-d-bg--left dw-d-parallax" style="opacity: 0.14;"></div>
+        <div class="dw-d-bg dw-d-parallax" style="opacity: 0.10;"></div>
         <!-- Background Illustration: Simple abstract shapes supporting the message -->
         <div class="partner-hero-bg">
             <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
                 <defs>
                     <linearGradient id="bar-fade" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#3798E4" stop-opacity="0.15"/>
-                        <stop offset="100%" stop-color="#3798E4" stop-opacity="0"/>
+                        <stop offset="0%" stop-color="#00AFF0" stop-opacity="0.15"/>
+                        <stop offset="100%" stop-color="#00AFF0" stop-opacity="0"/>
                     </linearGradient>
                 </defs>
 
                 <!-- Right side: Stacking layers (representing compounding value) -->
                 <g transform="translate(850, 200)" opacity="0.12">
                     <!-- Simple stacking rectangles - no labels, just shapes -->
-                    <rect x="0" y="280" width="280" height="40" rx="6" fill="#3798E4"/>
-                    <rect x="0" y="230" width="280" height="40" rx="6" fill="#3798E4"/>
-                    <rect x="0" y="180" width="280" height="40" rx="6" fill="#3798E4"/>
-                    <rect x="0" y="130" width="280" height="40" rx="6" fill="#3798E4"/>
-                    <rect x="0" y="80" width="280" height="40" rx="6" fill="#3798E4"/>
+                    <rect x="0" y="280" width="280" height="40" rx="6" fill="#00AFF0"/>
+                    <rect x="0" y="230" width="280" height="40" rx="6" fill="#00AFF0"/>
+                    <rect x="0" y="180" width="280" height="40" rx="6" fill="#00AFF0"/>
+                    <rect x="0" y="130" width="280" height="40" rx="6" fill="#00AFF0"/>
+                    <rect x="0" y="80" width="280" height="40" rx="6" fill="#00AFF0"/>
 
                     <!-- Upward arrow suggesting growth -->
-                    <path d="M320 300 L320 60" stroke="#3798E4" stroke-width="3" opacity="0.6"/>
-                    <path d="M310 80 L320 55 L330 80" fill="none" stroke="#3798E4" stroke-width="3" opacity="0.6"/>
+                    <path d="M320 300 L320 60" stroke="#00AFF0" stroke-width="3" opacity="0.6"/>
+                    <path d="M310 80 L320 55 L330 80" fill="none" stroke="#00AFF0" stroke-width="3" opacity="0.6"/>
                 </g>
 
                 <!-- Subtle grid pattern in background -->
@@ -725,15 +729,15 @@
 
                 <!-- Abstract connection nodes suggesting architecture/structure -->
                 <g opacity="0.08">
-                    <circle cx="950" cy="150" r="8" fill="#3798E4"/>
-                    <circle cx="1050" cy="200" r="6" fill="#3798E4"/>
-                    <circle cx="1000" cy="350" r="10" fill="#3798E4"/>
-                    <circle cx="1100" cy="450" r="5" fill="#3798E4"/>
+                    <circle cx="950" cy="150" r="8" fill="#00AFF0"/>
+                    <circle cx="1050" cy="200" r="6" fill="#00AFF0"/>
+                    <circle cx="1000" cy="350" r="10" fill="#00AFF0"/>
+                    <circle cx="1100" cy="450" r="5" fill="#00AFF0"/>
 
                     <!-- Connection lines -->
-                    <line x1="950" y1="150" x2="1050" y2="200" stroke="#3798E4" stroke-width="1"/>
-                    <line x1="1050" y1="200" x2="1000" y2="350" stroke="#3798E4" stroke-width="1"/>
-                    <line x1="1000" y1="350" x2="1100" y2="450" stroke="#3798E4" stroke-width="1"/>
+                    <line x1="950" y1="150" x2="1050" y2="200" stroke="#00AFF0" stroke-width="1"/>
+                    <line x1="1050" y1="200" x2="1000" y2="350" stroke="#00AFF0" stroke-width="1"/>
+                    <line x1="1000" y1="350" x2="1100" y2="450" stroke="#00AFF0" stroke-width="1"/>
                 </g>
             </svg>
         </div>
@@ -771,8 +775,10 @@
     </section>
 
     <!-- Reality Check: Revenue Model Pain -->
-    <section class="reality-section">
-        <div class="reality-inner">
+    <section class="reality-section" style="position: relative; overflow: hidden;">
+        <!-- Brand: Sparse particle fade between hero and content — subtle transition texture -->
+        <div class="dw-wave-fade" style="opacity: 0.06;"></div>
+        <div class="reality-inner" style="position: relative; z-index: 2;">
             <div class="reality-header">
                 <h2>The Revenue Model Pain</h2>
                 <p>You know these patterns. We've heard them from every SI we've talked to. The profit squeeze is structural, not circumstantial.</p>
@@ -840,8 +846,10 @@
     </section>
 
     <!-- The Alternative Model -->
-    <section class="transform-section">
-        <div class="transform-inner">
+    <section class="transform-section" style="position: relative; overflow: hidden;">
+        <!-- Brand: Revenue flowing — horizontal wave represents money/value in motion -->
+        <div class="dw-wave-flow" style="opacity: 0.08;"></div>
+        <div class="transform-inner" style="position: relative; z-index: 2;">
             <div class="transform-header">
                 <h2>"You Keep the Meat, We Drink the Soup"</h2>
                 <p>Unlike global vendors who use partners as low-margin resellers, we operate on a Strategic Concession model.</p>
@@ -1032,8 +1040,10 @@
     </section>
 
     <!-- Partner Tier Path -->
-    <section class="journey-section" style="background: #fff; padding-top: 60px;">
-        <div class="journey-inner">
+    <section class="journey-section" style="background: #fff; padding-top: 60px; position: relative; overflow: hidden;">
+        <!-- Brand: Abstract circles = different tier levels, varied sizes representing progression -->
+        <div class="dw-wave-circles" style="opacity: 0.06;"></div>
+        <div class="journey-inner" style="position: relative; z-index: 2;">
             <div class="journey-header">
                 <h2>Structured Ascension Path</h2>
                 <p>You don't guess how to grow. Clear metrics define progression from entry to autonomy.</p>
@@ -1059,36 +1069,41 @@
     </section>
 
     <!-- Market Timing Section -->
-    <section style="background: #F5F7FA; padding: 80px 0;">
-        <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+    <section style="background: #F5F7FA; padding: 80px 0; position: relative; overflow: hidden;">
+        <!-- Brand: Vertical wave on right — time flowing downward, urgency -->
+        <div class="dw-wave-vertical dw-wave-vertical--right" style="opacity: 0.05;"></div>
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2;">
             <div style="text-align: center; margin-bottom: 48px;">
-                <p style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: #3798E4; margin-bottom: 12px;">Why Now</p>
-                <h2 style="font-family: 'Lexend', sans-serif; font-size: 36px; font-weight: 700; color: #253B50; margin-bottom: 16px;">The Thai Market Window Is Open</h2>
-                <p style="font-family: 'Source Sans 3', sans-serif; font-size: 18px; color: #666; max-width: 700px; margin: 0 auto;">Three converging forces are creating a rare opportunity for ERP partners in Thailand.</p>
+                <p style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: #00AFF0; margin-bottom: 12px;">Why Now</p>
+                <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 36px; font-weight: 700; color: #000864; margin-bottom: 16px;">The Thai Market Window Is Open</h2>
+                <p style="font-family: 'Noto Sans', sans-serif; font-size: 18px; color: #666; max-width: 700px; margin: 0 auto;">Three converging forces are creating a rare opportunity for ERP partners in Thailand.</p>
             </div>
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
                 <div style="background: #fff; border-radius: 16px; padding: 32px; border: 1px solid #e8eef3;">
                     <div style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: #DC2626; margin-bottom: 12px;">2027</div>
-                    <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 600; color: #253B50; margin-bottom: 8px;">SAP ECC End-of-Life</h3>
-                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: #666; line-height: 1.6;">SAP ECC reaches end of maintenance in 2027. Thai manufacturers on SAP must migrate — and S/4HANA is prohibitively expensive for SMEs. This creates a migration window for alternative ERP providers.</p>
+                    <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin-bottom: 8px;">SAP ECC End-of-Life</h3>
+                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; color: #666; line-height: 1.6;">SAP ECC reaches end of maintenance in 2027. Thai manufacturers on SAP must migrate — and S/4HANA is prohibitively expensive for SMEs. This creates a migration window for alternative ERP providers.</p>
                 </div>
                 <div style="background: #fff; border-radius: 16px; padding: 32px; border: 1px solid #e8eef3;">
                     <div style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: #F59E0B; margin-bottom: 12px;">~20</div>
-                    <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 600; color: #253B50; margin-bottom: 8px;">Competitors Scaling Fast</h3>
-                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: #666; line-height: 1.6;">Kingdee and Yonyou each now have ~20 people in Thailand and growing. The window to establish market position is narrowing. First movers in the partner channel capture territory advantages.</p>
+                    <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin-bottom: 8px;">Competitors Scaling Fast</h3>
+                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; color: #666; line-height: 1.6;">Kingdee and Yonyou each now have ~20 people in Thailand and growing. The window to establish market position is narrowing. First movers in the partner channel capture territory advantages.</p>
                 </div>
                 <div style="background: #fff; border-radius: 16px; padding: 32px; border: 1px solid #e8eef3;">
                     <div style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: #22C55E; margin-bottom: 12px;">8,000</div>
-                    <h3 style="font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 600; color: #253B50; margin-bottom: 8px;">Target Factories Identified</h3>
-                    <p style="font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: #666; line-height: 1.6;">From Thailand's manufacturing base, we've identified 8,000 genuine targets. Only 113 are properly qualified so far — leaving 7,000+ untouched opportunities for partners to pursue.</p>
+                    <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin-bottom: 8px;">Target Factories Identified</h3>
+                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; color: #666; line-height: 1.6;">From Thailand's manufacturing base, we've identified 8,000 genuine targets. Only 113 are properly qualified so far — leaving 7,000+ untouched opportunities for partners to pursue.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="partner-cta">
-        <div class="partner-cta-inner">
+    <section class="partner-cta" style="position: relative; overflow: hidden;">
+        <!-- Brand: Gradient D centered behind CTA text + bold wave for energy -->
+        <div class="dw-d-bg dw-d-bg--center dw-d-bg--gradient dw-d-glow" style="opacity: 0.12;"></div>
+        <div class="dw-wave-flow dw-d-bg--bold" style="height: 160px; opacity: 0.3; z-index: 1;"></div>
+        <div class="partner-cta-inner" style="position: relative; z-index: 3;">
             <h2>Ready to Discuss Your Territory?</h2>
             <p>This is not a "sales call." It's a business consultation about <em>your</em> margins and <em>your</em> market. Let's see if the fit is real.</p>
             <div class="partner-cta-buttons">

@@ -12,9 +12,25 @@ DigiWin Thailand website redesign project (digiwin.co.th). This is a **documenta
 ## Project Structure
 
 ```
-DigiWin_Website_PRD_v1.2.md          # Layer 1: Strategy, architecture, design system
-DigiWin_Persuasion_Playbook_v1.0.md  # Layer 2: Voice, emotional arcs, objection scripts
-ContentSpec_Home_1.0.md              # Layer 3: Production blueprint (per page)
+docs/
+  strategy/                          # Layer 1 + 2: Strategy documents
+    DigiWin_Website_PRD_v1.2.md      #   Architecture, design system, page requirements
+    DigiWin_Persuasion_Playbook_v1.0.md  #   Voice, emotional arcs, objection scripts
+    DigiWin_Design_System.md         #   Colors, typography, spacing
+    DigiWin_Company_Research_2025.md  #   Market intelligence
+  content-specs/                     # Layer 3: Production blueprints (per page)
+    ContentSpec_Home_1.0.md          #   32 specs total
+    ContentSpec_Home_Divi5_2.0.md    #   Divi 5 module mappings
+    ...
+  build/                             # Build workflow + tracking
+    Divi5_Build_Tracker.md           #   Page-by-page status board
+    Divi5_Build_Workflow.md          #   6-step repeatable process
+    SITE_NAVIGATION.md               #   Link map
+    PageBrief_*.md                   #   Header/Footer/Home briefs
+  guides/                            # Process guides
+    NotebookLM_*.md                  #   Content extraction workflows
+complete_website/                    # HTML website (source of truth for CloneWebX)
+CLAUDE.md                            # This file (must stay in root)
 ```
 
 ## Three-Layer Documentation Model
@@ -55,22 +71,37 @@ ContentSpec_Home_1.0.md              # Layer 3: Production blueprint (per page)
 
 ## Design System
 
-**Colors:**
-- Primary Blue: #3798E4 (CTAs, links)
-- Dark Navy: #253B50 (footer, hero overlays)
-- Light Gray: #F5F7FA (alternating sections)
+**Colors (Official Brand Kit — aligned Feb 2026):**
+- Primary Blue (Smart Blue): #00AFF0 (CTAs, links, accents) — CSS var: `--dw-blue`
+- Dark Navy: #000864 (footer, hero overlays, dark sections) — CSS var: `--dw-navy`
+- Navy Deep: #000432 (gradient dark end) — CSS var: `--dw-navy-deep`
+- Navy Mid: #001080 (gradient mid) — CSS var: `--dw-navy-mid`
+- Royal Blue: #003CC8 (secondary blue, headings on dark) — CSS var: `--dw-royal`
+- Cyan Accent: #00E6FF (particle wave highlights, tech accents) — CSS var: `--dw-cyan`
+- Light Gray: #F5F7FA (alternating sections) — CSS var: `--dw-gray-light`
 - Text: #333333 (dark), #666666 (light)
+- Accent Colors: Purple #644CE6, Green #02D28C, Coral #FF6E82, Yellow #FFD700, Red #DC2626
+- Color ratio: 60% Smart Blue / 30% navy+royal+cyan / 10% accent colors
+- All colors defined as CSS custom properties (`--dw-*`) in `:root` of styles.css
 
-**Typography:**
-- Headings: Lexend (weights 300-800)
-- Body: Source Sans 3 (weights 300-700)
+**Typography (Official Brand Kit — Noto Sans):**
+- Headings: Noto Sans (weights 500-700)
+- Body: Noto Sans (weight 400)
 - Labels/Badges: JetBrains Mono (monospace, uppercase, 0.1em letter-spacing)
-- Chinese fallback: Noto Sans TC
+- Chinese: Noto Sans SC (Simplified Chinese per brand kit)
+
+**Brand Graphic System:**
+- Super D (超级符号): D mark from logo used as background device — cropped, bleeding off edges, never centered
+- Particle Wave (数据洋流): Dot-matrix pattern representing data flow — animated drift + breathe
+- Photography: 3 categories — Brand (abstract particles), Technology (blue-cast factory), Humanistic (warm people)
+- SVG assets in `complete_website/assets/digiwin-*.svg`
 
 **Animation Timing:**
 - Scroll fade-in: 0.4s ease (not 0.6s—users shouldn't wait)
 - Hover transitions: 0.3s-0.4s ease
 - Stagger delay: 0.07s between elements
+- Particle wave drift: 30s loop, translateX
+- Super D draw: 1.2s stroke-dasharray on scroll
 
 ## Key Constraints
 
@@ -101,9 +132,9 @@ ContentSpec_Home_1.0.md              # Layer 3: Production blueprint (per page)
 
 **Source-of-Truth Check Before Every Change:**
 - Before modifying any page's content, tone, or structure, ALWAYS re-read the relevant source documents:
-  1. `DigiWin_Website_PRD_v1.2.md` — for architecture, design system, page requirements
-  2. `DigiWin_Persuasion_Playbook_v1.0.md` — for voice, emotional arcs, objection scripts
-  3. The page's `ContentSpec_*.md` (if one exists) — for exact approved copy and layout
+  1. `docs/strategy/DigiWin_Website_PRD_v1.2.md` — for architecture, design system, page requirements
+  2. `docs/strategy/DigiWin_Persuasion_Playbook_v1.0.md` — for voice, emotional arcs, objection scripts
+  3. The page's `docs/content-specs/ContentSpec_*.md` (if one exists) — for exact approved copy and layout
 - If the user's request contradicts any of these documents, **warn them explicitly** before proceeding. Do NOT silently override the source documents.
 - Example: If user says "make the CTA say 'Book a Demo'" but the PRD says no demos, respond with a warning and suggest an alternative.
 - Rationale: Blindly editing what sounds right in the moment causes cumulative drift that is harder to fix than the original build.
@@ -166,8 +197,8 @@ ContentSpec_Home_1.0.md              # Layer 3: Production blueprint (per page)
 ## Reference Documents
 
 Before generating or modifying any page or Content Spec, always reference:
-1. `DigiWin_Website_PRD_v1.2.md` — architecture, design system, page-specific requirements
-2. `DigiWin_Persuasion_Playbook_v1.0.md` — voice calibration, emotional arcs, objection scripts
-3. Relevant `ContentSpec_*.md` — approved copy, layout, and module mapping for that page
+1. `docs/strategy/DigiWin_Website_PRD_v1.2.md` — architecture, design system, page-specific requirements
+2. `docs/strategy/DigiWin_Persuasion_Playbook_v1.0.md` — voice calibration, emotional arcs, objection scripts
+3. Relevant `docs/content-specs/ContentSpec_*.md` — approved copy, layout, and module mapping for that page
 
 These are the source of truth. If a user request conflicts with them, warn first — don't edit blindly.

@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Solution Stack - DigiWin Partner Program</title>
     <link rel="stylesheet" href="{{basePath}}styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="{{basePath}}assets/digiwin-d-mark.svg">
     <style>
         /* Hero Section */
         .stack-hero {
-            background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+            background: linear-gradient(135deg, #000432 0%, #000864 50%, #001080 100%);
             padding: 140px 24px 100px;
             position: relative;
             overflow: hidden;
@@ -41,10 +42,10 @@
             transition: color 0.2s;
         }
         .stack-breadcrumb a:hover {
-            color: #3798E4;
+            color: #00AFF0;
         }
         .stack-hero h1 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: clamp(36px, 5vw, 52px);
             font-weight: 700;
             color: #fff;
@@ -52,7 +53,7 @@
             margin-bottom: 24px;
         }
         .stack-hero h1 span {
-            color: #3798E4;
+            color: #00AFF0;
         }
         .stack-hero-subtitle {
             font-size: 20px;
@@ -72,10 +73,10 @@
             text-align: center;
         }
         .stack-stat-value {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 48px;
             font-weight: 700;
-            color: #3798E4;
+            color: #00AFF0;
             line-height: 1;
             margin-bottom: 8px;
         }
@@ -99,10 +100,10 @@
             margin-bottom: 60px;
         }
         .products-header h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 16px;
         }
         .products-header p {
@@ -123,8 +124,8 @@
             transition: all 0.3s ease;
         }
         .product-card:hover {
-            border-color: #3798E4;
-            box-shadow: 0 12px 48px rgba(55, 152, 228, 0.12);
+            border-color: #00AFF0;
+            box-shadow: 0 12px 48px rgba(0, 175, 240, 0.12);
         }
         .product-card:nth-child(even) {
             direction: rtl;
@@ -140,7 +141,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            background: linear-gradient(135deg, #00AFF0, #2d7bc4);
             color: #fff;
             padding: 8px 16px;
             border-radius: 50px;
@@ -150,10 +151,10 @@
             margin-bottom: 20px;
         }
         .product-card h3 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 28px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 16px;
         }
         .product-card .description {
@@ -180,7 +181,7 @@
         .product-features li svg {
             width: 20px;
             height: 20px;
-            stroke: #3798E4;
+            stroke: #00AFF0;
             flex-shrink: 0;
             margin-top: 2px;
         }
@@ -194,7 +195,7 @@
             gap: 8px;
             font-size: 15px;
             font-weight: 600;
-            color: #3798E4;
+            color: #00AFF0;
             text-decoration: none;
             margin-top: auto;
         }
@@ -213,10 +214,10 @@
             padding: 32px;
         }
         .metrics-title {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 24px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -236,13 +237,13 @@
             color: #64748b;
         }
         .metric-value {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
         }
         .metric-value.highlight {
-            color: #3798E4;
+            color: #00AFF0;
         }
 
         /* Land and Expand Lifecycle */
@@ -262,17 +263,17 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 12px;
             font-weight: 500;
-            color: #3798E4;
+            color: #00AFF0;
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 16px;
             display: block;
         }
         .lifecycle-header h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 16px;
         }
         .lifecycle-header p {
@@ -299,9 +300,9 @@
         }
         .lifecycle-phase:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 175, 240, 0.15);
         }
-        .lifecycle-phase.phase-1 { border-color: #3798E4; }
+        .lifecycle-phase.phase-1 { border-color: #00AFF0; }
         .lifecycle-phase.phase-2 { border-color: #10b981; }
         .lifecycle-phase.phase-3 { border-color: #f59e0b; }
         .lifecycle-phase.phase-4 { border-color: #8b5cf6; }
@@ -312,21 +313,21 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
             font-weight: 700;
             color: #fff;
             margin: 0 auto 16px;
         }
-        .phase-1 .phase-number { background: #3798E4; }
+        .phase-1 .phase-number { background: #00AFF0; }
         .phase-2 .phase-number { background: #10b981; }
         .phase-3 .phase-number { background: #f59e0b; }
         .phase-4 .phase-number { background: #8b5cf6; }
         .lifecycle-phase h3 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 20px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 8px;
         }
         .phase-products {
@@ -366,7 +367,7 @@
             text-align: center;
             margin-top: 48px;
             padding: 24px;
-            background: linear-gradient(135deg, #253B50 0%, #1a2e40 100%);
+            background: linear-gradient(135deg, #000864 0%, #000432 100%);
             border-radius: 16px;
         }
         .lifecycle-proof p {
@@ -399,10 +400,10 @@
             display: block;
         }
         .reverse-cut-header h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 16px;
         }
         .reverse-cut-header p {
@@ -438,10 +439,10 @@
             display: inline-block;
         }
         .reverse-cut-phase h3 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 22px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
         }
         .reverse-cut-phase p {
             font-size: 15px;
@@ -450,7 +451,7 @@
             margin-bottom: 20px;
         }
         .client-experience {
-            background: #253B50;
+            background: #000864;
             border-radius: 12px;
             padding: 16px;
         }
@@ -471,12 +472,12 @@
             line-height: 1.5;
         }
         .reverse-cut-comparison {
-            background: linear-gradient(135deg, #253B50 0%, #1a2e40 100%);
+            background: linear-gradient(135deg, #000864 0%, #000432 100%);
             border-radius: 20px;
             padding: 40px;
         }
         .reverse-cut-comparison h4 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 20px;
             font-weight: 600;
             color: #fff;
@@ -503,7 +504,7 @@
             margin-bottom: 8px;
         }
         .comparison-row.header span {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 12px;
             font-weight: 600;
             color: rgba(255,255,255,0.6);
@@ -524,7 +525,7 @@
             opacity: 0.8;
         }
         .comparison-row span.new {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-weight: 600;
             color: #4ade80;
         }
@@ -553,10 +554,10 @@
             display: block;
         }
         .competitive-header h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 16px;
         }
         .competitive-header p {
@@ -592,10 +593,10 @@
             display: inline-block;
         }
         .competitive-card h3 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 20px;
         }
         .competitive-points {
@@ -612,7 +613,7 @@
             border-bottom: none;
         }
         .comp-point strong {
-            color: #253B50;
+            color: #000864;
             display: block;
             margin-bottom: 4px;
         }
@@ -624,10 +625,10 @@
             border-radius: 12px;
         }
         .use-when strong {
-            color: #059669;
+            color: #02D28C;
         }
         .ace-card {
-            background: linear-gradient(135deg, #253B50 0%, #1a2e40 100%);
+            background: linear-gradient(135deg, #000864 0%, #000432 100%);
             border-radius: 24px;
             padding: 48px;
             text-align: center;
@@ -662,13 +663,13 @@
             z-index: 1;
         }
         .ace-quote strong {
-            color: #3798E4;
+            color: #00AFF0;
         }
 
         /* CTA Section */
         .stack-cta {
             padding: 100px 24px;
-            background: linear-gradient(135deg, #3798E4 0%, #2d7bc4 50%, #1e5a8a 100%);
+            background: linear-gradient(135deg, #00AFF0 0%, #2d7bc4 50%, #1e5a8a 100%);
             position: relative;
             overflow: hidden;
         }
@@ -687,7 +688,7 @@
             z-index: 1;
         }
         .stack-cta h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
             color: #fff;
@@ -770,7 +771,9 @@
 {{header}}
 
     <!-- Hero Section -->
-    <section class="stack-hero">
+    <section class="stack-hero" style="position: relative; overflow: hidden;">
+        <!-- Brand: Outline D centered — the core technology platform, layered behind content -->
+        <div class="dw-d-bg dw-d-bg--center dw-d-parallax" style="opacity: 0.08;"></div>
         <div class="stack-hero-inner">
             <div class="stack-breadcrumb">
                 <a href="{{basePath}}partner-program.html">Partner Program</a>
@@ -796,9 +799,11 @@
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="products-section">
-        <div class="products-inner">
+    <!-- Products Section (Solution Stack) -->
+    <section class="products-section" style="position: relative; overflow: hidden;">
+        <!-- Brand: Vertical wave on left — data streams flowing vertically through the technology stack -->
+        <div class="dw-wave-vertical dw-wave-vertical--left" style="opacity: 0.08;"></div>
+        <div class="products-inner" style="position: relative; z-index: 2;">
             <div class="products-header">
                 <h2>Your Product Portfolio as Revenue Engines</h2>
                 <p>Each product isn't just software—it's a business model with specific revenue characteristics and cross-sell paths.</p>
@@ -995,8 +1000,10 @@
     </section>
 
     <!-- Land and Expand Lifecycle -->
-    <section class="lifecycle-section">
-        <div class="lifecycle-inner">
+    <section class="lifecycle-section" style="position: relative; overflow: hidden;">
+        <!-- Brand: Horizontal wave flow — expansion in motion, lifecycle progression -->
+        <div class="dw-wave-flow" style="opacity: 0.06;"></div>
+        <div class="lifecycle-inner" style="position: relative; z-index: 2;">
             <div class="lifecycle-header">
                 <span class="lifecycle-label">CUSTOMER LIFECYCLE MANAGEMENT</span>
                 <h2>The "Land and Expand" Strategy</h2>
@@ -1048,8 +1055,10 @@
     </section>
 
     <!-- Reverse Cut Strategy -->
-    <section class="reverse-cut-section">
-        <div class="reverse-cut-inner">
+    <section class="reverse-cut-section" style="position: relative; overflow: hidden;">
+        <!-- Brand: Abstract circles — infiltration points, strategic entry nodes -->
+        <div class="dw-wave-circles" style="opacity: 0.05;"></div>
+        <div class="reverse-cut-inner" style="position: relative; z-index: 2;">
             <div class="reverse-cut-header">
                 <span class="reverse-cut-label">THE REVERSE CUT STRATEGY</span>
                 <h2>How to Win SAP & Oracle Accounts</h2>
@@ -1128,8 +1137,11 @@
     </section>
 
     <!-- Competitive Positioning -->
-    <section class="competitive-section">
-        <div class="competitive-inner">
+    <section class="competitive-section" style="position: relative; overflow: hidden;">
+        <!-- Brand: D in top-left corner + subtle wave section — technology layers stacking from above -->
+        <div class="dw-d-bg dw-d-bg--corner-tl" style="opacity: 0.10;"></div>
+        <div class="dw-wave-section" style="opacity: 0.04;"></div>
+        <div class="competitive-inner" style="position: relative; z-index: 2;">
             <div class="competitive-header">
                 <span class="competitive-label">COMPETITIVE POSITIONING</span>
                 <h2>Your Talking Points for Sales Conversations</h2>
@@ -1201,8 +1213,11 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="stack-cta">
-        <div class="stack-cta-inner">
+    <section class="stack-cta" style="position: relative; overflow: hidden;">
+        <!-- Brand: Particle D left-anchor + wave — technology depth meets forward momentum -->
+        <div class="dw-d-bg dw-d-bg--left dw-d-bg--particle" style="opacity: 0.14;"></div>
+        <div class="dw-wave-flow" style="height: 160px; opacity: 0.3; z-index: 1;"></div>
+        <div class="stack-cta-inner" style="position: relative; z-index: 3;">
             <h2>Now See the Actual Economics</h2>
             <p>You've seen the arsenal. Now see the math—margins, recurring revenue, and 5-year projections for your business.</p>
             <div class="stack-cta-buttons">

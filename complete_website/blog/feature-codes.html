@@ -6,28 +6,18 @@
     <title>Feature Codes: How to Turn 27 SKUs Into 1 Product - DigiWin Thailand</title>
     <meta name="description" content="Learn how product feature codes reduce SKU explosion by 90%+ — managing size, color, and variant combinations under a single item code instead of dozens.">
     <link rel="stylesheet" href="../styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../assets/digiwin-d-mark.svg">
     <style>
-        .blog-category-badge { background: #3798E4; }
+        .blog-category-badge { background: #00AFF0; }
     </style>
 </head>
 <body>
     <header class="dw-header">
         <div class="dw-header-inner">
             <a href="../index.html" class="dw-logo">
-                <div class="dw-logo-mark">
-                    <!-- DigiWin Logo Mark - Stylized D -->
-                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 8h20c8.837 0 16 7.163 16 16s-7.163 16-16 16H8V8z" fill="#3798E4"/>
-                        <path d="M14 14h12c6.627 0 12 5.373 12 12s-5.373 12-12 12H14V14z" fill="#ffffff"/>
-                        <path d="M14 18h8c5.523 0 10 4.477 10 10s-4.477 10-10 10h-8V18z" fill="#3798E4"/>
-                        <path d="M14 24h4c3.314 0 6 2.686 6 6s-2.686 6-6 6h-4V24z" fill="#ffffff"/>
-                    </svg>
-                </div>
-                <div class="dw-logo-wordmark">
-                    <span class="dw-logo-text-en">Digi<span>Win</span></span>
-                    <span class="dw-logo-text-zh">鼎新數智</span>
-                </div>
+                <img src="../assets/digiwin-logo-en.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--desktop" width="160" height="40">
+                <img src="../assets/digiwin-d-mark.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--mobile" width="32" height="32">
             </a>
 
             <nav class="dw-nav">
@@ -236,7 +226,7 @@
                             <!-- Featured: Partner Program -->
                             <div class="dw-mega-featured">
                                 <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(55,152,228,0.3)"/></svg>
+                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(0,175,240,0.3)"/></svg>
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">For ERP Implementers</span>
@@ -283,7 +273,7 @@
                             <!-- Featured: Latest Insight -->
                             <div class="dw-mega-featured">
                                 <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(55,152,228,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
+                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(0,175,240,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">Latest Insight</span>
@@ -319,8 +309,9 @@
 
 
     <!-- Hero -->
-    <section class="blog-hero">
-        <div class="blog-hero-inner">
+    <section class="blog-hero" style="position: relative; overflow: hidden;">
+        <div class="dw-d-bg dw-d-bg--corner-br" style="opacity: 0.06;"></div>
+        <div class="blog-hero-inner" style="position: relative; z-index: 2;">
             <a href="../blog.html" class="blog-back-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                 Back to Insights
@@ -346,82 +337,6 @@
         <p class="fade-in">
             This is not a theoretical problem. It is a pattern that repeats across every manufacturing sector that deals with configurable products. Electronics (brand/version/source), apparel (size/color/fabric), solar panels (electrical properties), machinery (dimensions/capacity). The result is an ERP system choked with nearly identical item masters, a warehouse team managing dozens of picking locations for functionally identical products, and a purchasing department juggling hundreds of reorder points that should be consolidated under a single material plan.
         </p>
-
-        <!-- Diagram: SKU Explosion vs Feature Codes -->
-        <div class="article-diagram fade-in">
-            <svg viewBox="0 0 720 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Left side: 27 SKU grid -->
-                <text x="140" y="24" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#253B50">Traditional Approach</text>
-                <!-- 3x9 grid of mini boxes representing 27 SKUs -->
-                <g opacity="0.7">
-                    <rect x="20" y="40" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="62" y="40" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="104" y="40" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="146" y="40" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="188" y="40" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="230" y="40" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="20" y="74" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="62" y="74" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="104" y="74" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="146" y="74" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="188" y="74" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="230" y="74" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="20" y="108" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="62" y="108" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="104" y="108" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="146" y="108" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="188" y="108" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="230" y="108" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="20" y="142" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="62" y="142" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="104" y="142" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="146" y="142" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="188" y="142" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="230" y="142" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="62" y="176" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="104" y="176" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                    <rect x="146" y="176" width="36" height="28" rx="3" stroke="#253B50" stroke-width="1"/>
-                </g>
-                <text x="140" y="230" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="500" fill="#253B50">27 separate SKUs</text>
-                <text x="140" y="250" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#999">27 BOMs · 27 reorder points</text>
-
-                <!-- Arrow -->
-                <path d="M290 120 L410 120" stroke="#3798E4" stroke-width="2" stroke-dasharray="6 4"/>
-                <polygon points="410,114 424,120 410,126" fill="#3798E4"/>
-                <text x="357" y="108" text-anchor="middle" font-family="Lexend, sans-serif" font-size="12" font-weight="500" fill="#3798E4">Feature Codes</text>
-
-                <!-- Right side: 1 item + 3 feature dimensions -->
-                <text x="570" y="24" text-anchor="middle" font-family="Lexend, sans-serif" font-size="14" font-weight="600" fill="#3798E4">Feature Code Approach</text>
-                <!-- Central product box -->
-                <rect x="510" y="55" width="120" height="50" rx="8" stroke="#3798E4" stroke-width="2" fill="rgba(55,152,228,0.06)"/>
-                <text x="570" y="77" text-anchor="middle" font-family="Lexend, sans-serif" font-size="13" font-weight="600" fill="#253B50">1 Item Code</text>
-                <text x="570" y="95" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">1 BOM · 1 plan</text>
-
-                <!-- Feature dimension branches -->
-                <line x1="570" y1="105" x2="480" y2="150" stroke="#3798E4" stroke-width="1.2"/>
-                <line x1="570" y1="105" x2="570" y2="150" stroke="#3798E4" stroke-width="1.2"/>
-                <line x1="570" y1="105" x2="660" y2="150" stroke="#3798E4" stroke-width="1.2"/>
-
-                <!-- Size dimension -->
-                <rect x="440" y="150" width="80" height="36" rx="6" stroke="#3798E4" stroke-width="1.2" fill="rgba(55,152,228,0.06)"/>
-                <text x="480" y="173" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#3798E4">SIZE</text>
-                <text x="480" y="204" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">S · M · L</text>
-
-                <!-- Color dimension -->
-                <rect x="530" y="150" width="80" height="36" rx="6" stroke="#3798E4" stroke-width="1.2" fill="rgba(55,152,228,0.06)"/>
-                <text x="570" y="173" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#3798E4">COLOR</text>
-                <text x="570" y="204" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">Red · Blue · White</text>
-
-                <!-- Style dimension -->
-                <rect x="620" y="150" width="80" height="36" rx="6" stroke="#3798E4" stroke-width="1.2" fill="rgba(55,152,228,0.06)"/>
-                <text x="660" y="173" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#3798E4">STYLE</text>
-                <text x="660" y="204" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#666">V · Round · Polo</text>
-
-                <text x="570" y="240" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="500" fill="#3798E4">3 × 3 × 3 = 27 variants</text>
-                <text x="570" y="260" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="#999">All managed under 1 item code</text>
-            </svg>
-            <p class="diagram-caption">Feature codes compress 27 SKUs into 1 item code with 3 feature dimensions — same product flexibility, 96% fewer master records.</p>
-        </div>
 
         <hr class="blog-divider fade-in">
 
@@ -583,8 +498,9 @@
     </article>
 
     <!-- Related Articles -->
-    <section class="blog-related">
-        <div class="blog-related-inner">
+    <section class="blog-related" style="position: relative; overflow: hidden;">
+        <div class="dw-wave-circles" style="opacity: 0.04;"></div>
+        <div class="blog-related-inner" style="position: relative; z-index: 2;">
             <h2 class="fade-in">Related Articles</h2>
             <div class="blog-related-grid">
                 <a href="../blog/lrp-vs-mrp.html" class="blog-related-card fade-in">
@@ -632,7 +548,9 @@
         <div class="dw-footer-inner">
             <div class="dw-footer-grid">
                 <div class="dw-footer-brand">
-                    <div class="dw-footer-logo">Digi<span>Win</span></div>
+                    <div class="dw-footer-logo">
+                        <img src="../assets/digiwin-logo-en-white.svg" alt="DigiWin" width="140" height="35">
+                    </div>
                     <p class="dw-footer-tagline"><span class="dw-years">44</span> years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
                     <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
                 </div>

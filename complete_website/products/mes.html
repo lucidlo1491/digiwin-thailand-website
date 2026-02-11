@@ -6,11 +6,12 @@
     <title>MES: sMES & SFT - Real-Time Production Visibility | DigiWin Thailand</title>
     <meta name="description" content="Manufacturing Execution System for real-time shop floor visibility. Track work orders, monitor OEE, capture quality data, and maintain complete traceability.">
     <link rel="stylesheet" href="../styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../assets/digiwin-d-mark.svg">
     <style>
         /* MES Page Specific Styles */
         .mes-hero {
-            background: linear-gradient(135deg, #1a2d3d 0%, #253B50 50%, #2d4a5e 100%);
+            background: linear-gradient(135deg, #1a2d3d 0%, #000864 50%, #001080 100%);
             padding: 140px 0 100px;
             position: relative;
             overflow: hidden;
@@ -37,8 +38,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(55, 152, 228, 0.15);
-            border: 1px solid rgba(55, 152, 228, 0.3);
+            background: rgba(0, 175, 240, 0.15);
+            border: 1px solid rgba(0, 175, 240, 0.3);
             padding: 8px 20px;
             border-radius: 50px;
             color: #7fc4fd;
@@ -58,10 +59,10 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         .mes-hero-stat-number {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 32px;
             font-weight: 800;
-            color: #3798E4;
+            color: #00AFF0;
         }
         .mes-hero-stat-label {
             font-family: 'JetBrains Mono', monospace;
@@ -122,10 +123,10 @@
             text-align: center;
         }
         .mockup-status-value {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 20px;
             font-weight: 700;
-            color: #3798E4;
+            color: #00AFF0;
         }
         .mockup-status-value.green { color: #10b981; }
         .mockup-status-value.yellow { color: #f59e0b; }
@@ -147,7 +148,7 @@
         }
         .mockup-bar {
             flex: 1;
-            background: #3798E4;
+            background: #00AFF0;
             border-radius: 3px 3px 0 0;
             opacity: 0.7;
         }
@@ -168,7 +169,7 @@
             }
         }
         .mes-hero h1 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 48px;
             font-weight: 700;
             color: #ffffff;
@@ -176,7 +177,7 @@
             line-height: 1.15;
         }
         .mes-hero-subtitle {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 20px;
             color: rgba(255, 255, 255, 0.85);
             max-width: 700px;
@@ -205,14 +206,14 @@
             margin-bottom: 48px;
         }
         .section-title {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 36px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 16px;
         }
         .section-subtitle {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
             color: #64748b;
             max-width: 600px;
@@ -247,7 +248,7 @@
             background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
         }
         .beforeafter-label {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
             font-weight: 700;
             text-transform: uppercase;
@@ -270,14 +271,14 @@
             border-bottom: none;
         }
         .beforeafter-item-title {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 6px;
         }
         .beforeafter-item-desc {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
             color: #64748b;
             line-height: 1.5;
@@ -287,7 +288,7 @@
             align-items: center;
             justify-content: center;
             font-size: 32px;
-            color: #3798E4;
+            color: #00AFF0;
             padding-top: 150px;
         }
 
@@ -314,12 +315,12 @@
             transition: all 0.3s ease;
         }
         .product-box:hover {
-            border-color: #3798E4;
-            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+            border-color: #00AFF0;
+            box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
         }
         .product-box-header {
             padding: 32px 32px 24px;
-            background: linear-gradient(135deg, #253B50 0%, #1a2d3d 100%);
+            background: linear-gradient(135deg, #000864 0%, #1a2d3d 100%);
             border-bottom: none;
             position: relative;
         }
@@ -330,7 +331,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #3798E4, #7ec8f2);
+            background: linear-gradient(90deg, #00AFF0, #7ec8f2);
         }
         .product-box-title {
             color: #ffffff;
@@ -340,9 +341,9 @@
         }
         .product-box-badge {
             display: inline-block;
-            background: #3798E4;
+            background: #00AFF0;
             color: #ffffff;
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 12px;
             font-weight: 600;
             padding: 4px 12px;
@@ -352,20 +353,20 @@
             letter-spacing: 0.5px;
         }
         .product-box-badge.full {
-            background: linear-gradient(135deg, #253B50, #3d5a73);
+            background: linear-gradient(135deg, #000864, #3d5a73);
         }
         .product-box-badge.light {
-            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            background: linear-gradient(135deg, #00AFF0, #2d7bc4);
         }
         .product-box-title {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 28px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 8px;
         }
         .product-box-tagline {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             color: #64748b;
         }
@@ -373,9 +374,9 @@
             padding: 32px;
         }
         .product-box-desc {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
-            color: #253B50;
+            color: #000864;
             line-height: 1.7;
             margin-bottom: 24px;
         }
@@ -385,9 +386,9 @@
             margin: 0 0 24px 0;
         }
         .product-features li {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
-            color: #253B50;
+            color: #000864;
             padding: 10px 0;
             border-bottom: 1px solid #f0f4f8;
             display: flex;
@@ -410,16 +411,16 @@
             margin-top: 24px;
         }
         .product-best-for-label {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 13px;
             font-weight: 600;
-            color: #3798E4;
+            color: #00AFF0;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 8px;
         }
         .product-best-for-text {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
             color: #64748b;
             line-height: 1.5;
@@ -444,14 +445,14 @@
             transition: all 0.3s ease;
         }
         .capability-card:hover {
-            border-color: #3798E4;
+            border-color: #00AFF0;
             transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(55, 152, 228, 0.1);
+            box-shadow: 0 8px 24px rgba(0, 175, 240, 0.1);
         }
         .capability-icon {
             width: 64px;
             height: 64px;
-            background: linear-gradient(135deg, rgba(55, 152, 228, 0.1), rgba(55, 152, 228, 0.05));
+            background: linear-gradient(135deg, rgba(0, 175, 240, 0.1), rgba(0, 175, 240, 0.05));
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -461,19 +462,19 @@
         .capability-icon svg {
             width: 28px;
             height: 28px;
-            stroke: #3798E4;
+            stroke: #00AFF0;
             stroke-width: 1.5;
             fill: none;
         }
         .capability-title {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 8px;
         }
         .capability-desc {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
             color: #64748b;
             line-height: 1.5;
@@ -507,18 +508,18 @@
             transition: all 0.3s ease;
         }
         .integration-node:hover {
-            border-color: #3798E4;
+            border-color: #00AFF0;
             transform: scale(1.05);
         }
         .integration-node.active {
-            border-color: #3798E4;
+            border-color: #00AFF0;
             background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
-            box-shadow: 0 8px 24px rgba(55, 152, 228, 0.15);
+            box-shadow: 0 8px 24px rgba(0, 175, 240, 0.15);
         }
         .integration-node-icon {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            background: linear-gradient(135deg, #00AFF0, #2d7bc4);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -536,7 +537,7 @@
         /* Results Section */
         .results-section {
             padding: 80px 0;
-            background: linear-gradient(135deg, #253B50 0%, #1a2d3d 100%);
+            background: linear-gradient(135deg, #000864 0%, #1a2d3d 100%);
         }
         .results-inner {
             max-width: 1100px;
@@ -550,13 +551,13 @@
         .results-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
-            color: #3798E4;
+            color: #00AFF0;
             text-transform: uppercase;
             letter-spacing: 0.15em;
             margin-bottom: 16px;
         }
         .results-title {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 36px;
             font-weight: 700;
             color: #ffffff;
@@ -574,14 +575,14 @@
             text-align: center;
         }
         .result-value {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 42px;
             font-weight: 800;
-            color: #3798E4;
+            color: #00AFF0;
             line-height: 1;
         }
         .result-label {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
             color: rgba(255, 255, 255, 0.8);
             margin-top: 12px;
@@ -600,14 +601,14 @@
             }
         }
         .integration-node-name {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
         }
         .integration-arrow {
             font-size: 20px;
-            color: #3798E4;
+            color: #00AFF0;
             padding: 0 12px;
         }
         .integration-message {
@@ -620,9 +621,9 @@
             margin: 0 auto;
         }
         .integration-message p {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
-            color: #253B50;
+            color: #000864;
             line-height: 1.8;
             margin: 0;
         }
@@ -641,22 +642,22 @@
             background: #ffffff;
             border: 1px solid #e8eef3;
             border-radius: 8px;
-            color: #3798E4;
-            font-family: 'Lexend', sans-serif;
+            color: #00AFF0;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
         }
         .integration-link:hover {
-            border-color: #3798E4;
+            border-color: #00AFF0;
             background: #f0f7ff;
         }
 
         /* CTA Section */
         .mes-cta {
             padding: 100px 0;
-            background: linear-gradient(135deg, #3798E4 0%, #2d7bc4 100%);
+            background: linear-gradient(135deg, #00AFF0 0%, #2d7bc4 100%);
             position: relative;
             overflow: hidden;
         }
@@ -679,14 +680,14 @@
             z-index: 1;
         }
         .mes-cta-title {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
             color: #ffffff;
             margin-bottom: 16px;
         }
         .mes-cta-subtitle {
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
             color: rgba(255, 255, 255, 0.9);
             margin-bottom: 36px;
@@ -699,10 +700,10 @@
         }
         .btn-white {
             background: #ffffff;
-            color: #3798E4;
+            color: #00AFF0;
             padding: 16px 32px;
             border-radius: 8px;
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             font-weight: 600;
             text-decoration: none;
@@ -718,7 +719,7 @@
             padding: 16px 32px;
             border-radius: 8px;
             border: 2px solid rgba(255, 255, 255, 0.5);
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             font-weight: 600;
             text-decoration: none;
@@ -788,19 +789,8 @@
     <header class="dw-header">
         <div class="dw-header-inner">
             <a href="../index.html" class="dw-logo">
-                <div class="dw-logo-mark">
-                    <!-- DigiWin Logo Mark - Stylized D -->
-                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 8h20c8.837 0 16 7.163 16 16s-7.163 16-16 16H8V8z" fill="#3798E4"/>
-                        <path d="M14 14h12c6.627 0 12 5.373 12 12s-5.373 12-12 12H14V14z" fill="#ffffff"/>
-                        <path d="M14 18h8c5.523 0 10 4.477 10 10s-4.477 10-10 10h-8V18z" fill="#3798E4"/>
-                        <path d="M14 24h4c3.314 0 6 2.686 6 6s-2.686 6-6 6h-4V24z" fill="#ffffff"/>
-                    </svg>
-                </div>
-                <div class="dw-logo-wordmark">
-                    <span class="dw-logo-text-en">Digi<span>Win</span></span>
-                    <span class="dw-logo-text-zh">鼎新數智</span>
-                </div>
+                <img src="../assets/digiwin-logo-en.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--desktop" width="160" height="40">
+                <img src="../assets/digiwin-d-mark.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--mobile" width="32" height="32">
             </a>
 
             <nav class="dw-nav">
@@ -1009,7 +999,7 @@
                             <!-- Featured: Partner Program -->
                             <div class="dw-mega-featured">
                                 <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(55,152,228,0.3)"/></svg>
+                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(0,175,240,0.3)"/></svg>
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">For ERP Implementers</span>
@@ -1056,7 +1046,7 @@
                             <!-- Featured: Latest Insight -->
                             <div class="dw-mega-featured">
                                 <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(55,152,228,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
+                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(0,175,240,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">Latest Insight</span>
@@ -1091,8 +1081,10 @@
     </header>
 
 
-    <!-- Hero Section -->
-    <section class="mes-hero">
+    <!-- Hero Section — "The Factory Pulse": D PARTICLE BOTTOM-rise at 0.15, data rising from shop floor -->
+    <section class="mes-hero" style="position: relative; overflow: hidden;">
+        <!-- Brand: Super D particle, BOTTOM-rise — data rising from the shop floor like a pulse -->
+        <div class="dw-d-bg dw-d-bg--bottom dw-d-bg--particle dw-d-parallax" style="opacity: 0.15;"></div>
         <div class="mes-hero-inner">
             <div class="mes-hero-grid">
                 <div class="mes-hero-content">
@@ -1278,9 +1270,11 @@
         </div>
     </section>
 
-    <!-- Capabilities Section -->
-    <section class="capabilities-section">
-        <div class="products-inner">
+    <!-- Capabilities Section — wave-vertical right: vertical data flow along production lines -->
+    <section class="capabilities-section" style="position: relative; overflow: hidden;">
+        <!-- Brand: Wave vertical right — data streaming vertically like production line flow -->
+        <div class="dw-wave-vertical dw-wave-vertical--right" style="opacity: 0.08;"></div>
+        <div class="products-inner" style="position: relative; z-index: 2;">
             <div class="section-header">
                 <h2 class="section-title">What You Can See—Right Now</h2>
                 <p class="section-subtitle">Real-time visibility into every aspect of production</p>
@@ -1347,9 +1341,11 @@
         </div>
     </section>
 
-    <!-- Integration Section -->
-    <section class="integration-section">
-        <div class="integration-inner">
+    <!-- Integration Section — wave-fade: sparse dots bridging planning to execution -->
+    <section class="integration-section" style="position: relative; overflow: hidden;">
+        <!-- Brand: Wave fade — sparse data points representing the bridge between systems -->
+        <div class="dw-wave-fade" style="opacity: 0.06;"></div>
+        <div class="integration-inner" style="position: relative; z-index: 2;">
             <div class="section-header">
                 <h2 class="section-title">Connected to Everything</h2>
                 <p class="section-subtitle">MES is the bridge between planning and execution</p>
@@ -1397,9 +1393,11 @@
         </div>
     </section>
 
-    <!-- Results Section -->
-    <section class="results-section">
-        <div class="results-inner">
+    <!-- Results Section — wave-circles: scattered quality checkpoints across the shop floor -->
+    <section class="results-section" style="position: relative; overflow: hidden;">
+        <!-- Brand: Wave circles — quality measurement nodes scattered across operations -->
+        <div class="dw-wave-circles" style="opacity: 0.07;"></div>
+        <div class="results-inner" style="position: relative; z-index: 2;">
             <div class="results-header">
                 <p class="results-label">Measured Impact</p>
                 <h2 class="results-title">What Our Customers Achieve</h2>
@@ -1425,9 +1423,13 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="mes-cta">
-        <div class="mes-cta-inner">
+    <!-- CTA Section — D RIGHT (standard) BOLD + dense wave: maximum shop floor energy -->
+    <section class="mes-cta" style="position: relative; overflow: hidden;">
+        <!-- Brand: D standard right, BOLD — strong pulse at the conversion point -->
+        <div class="dw-d-bg dw-d-bg--bold dw-d-glow"></div>
+        <!-- Brand: Dense wave flow — shop floor energy concentrated at CTA -->
+        <div class="dw-wave-flow" style="height: 200px; opacity: 0.38; z-index: 1;"></div>
+        <div class="mes-cta-inner" style="position: relative; z-index: 3;">
             <h2 class="mes-cta-title">Ready to See Your Shop Floor Clearly?</h2>
             <p class="mes-cta-subtitle">Fill out the form and our team will reach out to discuss your specific production visibility challenges.</p>
             <div class="mes-cta-buttons">
@@ -1441,7 +1443,9 @@
         <div class="dw-footer-inner">
             <div class="dw-footer-grid">
                 <div class="dw-footer-brand">
-                    <div class="dw-footer-logo">Digi<span>Win</span></div>
+                    <div class="dw-footer-logo">
+                        <img src="../assets/digiwin-logo-en-white.svg" alt="DigiWin" width="140" height="35">
+                    </div>
                     <p class="dw-footer-tagline"><span class="dw-years">44</span> years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
                     <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
                 </div>

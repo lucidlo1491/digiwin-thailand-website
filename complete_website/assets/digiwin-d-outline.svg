@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 504" width="500" height="504" fill="none">
+  <!-- DigiWin Super D - Outline variant (stroke-only, for dark hero backgrounds) -->
+  <!-- Scaled from d-mark (16.73×16.89) by ~30x for background use -->
+  <!-- Arc shape -->
+  <path stroke="#FFFFFF" stroke-width="2" fill="none" d="M 0 504 C 0 453.8 40.7 413.3 90.7 413.3 L 247 413.3 C 336.1 413.3 408.5 341.1 408.5 252 C 408.5 162.9 336.1 90.7 247 90.7 L 90.7 90.7 C 40.7 90.7 0 50 0 0 L 247 0 C 386.2 0 499 112.8 499 252 C 499 391.2 386.2 504 247 504 Z"/>
+  <!-- Circle/dot -->
+  <path stroke="#FFFFFF" stroke-width="2" fill="none" d="M 26.7 252 C 26.7 216.1 55.9 186.9 91.8 186.9 C 127.6 186.9 156.8 216.1 156.8 252 C 156.8 287.8 127.6 317 91.8 317 C 55.9 317 26.7 287.8 26.7 252"/>
+</svg>

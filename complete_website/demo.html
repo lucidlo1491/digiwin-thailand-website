@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get in Touch - DigiWin Thailand</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="assets/digiwin-d-mark.svg">
     <style>
         /* Demo Hero */
         .demo-hero {
-            background: linear-gradient(135deg, #1a2e40 0%, #253B50 50%, #2d4a5e 100%);
+            background: linear-gradient(135deg, #000432 0%, #000864 50%, #001080 100%);
             padding: 140px 24px 80px;
             position: relative;
             overflow: hidden;
@@ -29,13 +30,13 @@
             z-index: 1;
         }
         .demo-hero h1 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: clamp(32px, 5vw, 48px);
             font-weight: 700;
             color: #fff;
             margin-bottom: 20px;
         }
-        .demo-hero h1 span { color: #3798E4; }
+        .demo-hero h1 span { color: #00AFF0; }
         .demo-hero-subtitle {
             font-size: 18px;
             color: rgba(255,255,255,0.85);
@@ -53,10 +54,10 @@
             text-align: center;
         }
         .demo-trust-value {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 24px;
             font-weight: 700;
-            color: #3798E4;
+            color: #00AFF0;
             display: block;
         }
         .demo-trust-label {
@@ -87,10 +88,10 @@
             margin-bottom: 32px;
         }
         .demo-form-header h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 28px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 8px;
         }
         .demo-form-header p {
@@ -103,7 +104,7 @@
         .form-label {
             display: block;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 8px;
             font-size: 14px;
         }
@@ -113,13 +114,13 @@
             border: 1px solid #e2e8f0;
             border-radius: 12px;
             font-size: 16px;
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             transition: all 0.2s;
         }
         .form-input:focus {
             outline: none;
-            border-color: #3798E4;
-            box-shadow: 0 0 0 3px rgba(55, 152, 228, 0.1);
+            border-color: #00AFF0;
+            box-shadow: 0 0 0 3px rgba(0, 175, 240, 0.1);
         }
         .form-textarea {
             resize: vertical;
@@ -141,19 +142,19 @@
             transition: all 0.2s;
         }
         .form-checkbox-label:hover {
-            border-color: #3798E4;
+            border-color: #00AFF0;
             background: #f8fafc;
         }
         .form-checkbox-label input {
             width: 20px;
             height: 20px;
-            accent-color: #3798E4;
+            accent-color: #00AFF0;
         }
         .checkbox-content h4 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 2px;
         }
         .checkbox-content p {
@@ -164,11 +165,11 @@
         .form-submit {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            background: linear-gradient(135deg, #00AFF0, #2d7bc4);
             color: #fff;
             border: none;
             border-radius: 12px;
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
@@ -176,7 +177,7 @@
         }
         .form-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(55, 152, 228, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 175, 240, 0.3);
         }
         .form-alternative {
             margin-top: 24px;
@@ -190,7 +191,7 @@
             margin-bottom: 4px;
         }
         .form-alternative a {
-            color: #3798E4;
+            color: #00AFF0;
             font-weight: 600;
             text-decoration: none;
         }
@@ -200,10 +201,10 @@
             padding: 0 0 80px;
         }
         .demo-why h3 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 20px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 24px;
         }
         .why-points {
@@ -228,13 +229,13 @@
         .why-icon svg {
             width: 24px;
             height: 24px;
-            stroke: #3798E4;
+            stroke: #00AFF0;
         }
         .why-content h4 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 4px;
         }
         .why-content p {
@@ -244,7 +245,7 @@
             margin: 0;
         }
         .demo-proof {
-            background: linear-gradient(135deg, #253B50, #1a2e40);
+            background: linear-gradient(135deg, #000864, #000432);
             border-radius: 20px;
             padding: 32px;
             margin-top: 40px;
@@ -271,10 +272,10 @@
             border-radius: 12px;
         }
         .proof-stat-value {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 24px;
             font-weight: 700;
-            color: #3798E4;
+            color: #00AFF0;
             display: block;
         }
         .proof-stat-label {
@@ -296,10 +297,10 @@
             margin-bottom: 48px;
         }
         .demo-expect-header h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 36px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 12px;
         }
         .demo-expect-header p {
@@ -326,22 +327,22 @@
         .step-number {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            background: linear-gradient(135deg, #00AFF0, #2d7bc4);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 20px;
             font-weight: 700;
             color: #fff;
             margin: 0 auto 20px;
         }
         .expect-step h3 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 12px;
         }
         .expect-step p {
@@ -381,19 +382,8 @@
     <header class="dw-header">
         <div class="dw-header-inner">
             <a href="index.html" class="dw-logo">
-                <div class="dw-logo-mark">
-                    <!-- DigiWin Logo Mark - Stylized D -->
-                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 8h20c8.837 0 16 7.163 16 16s-7.163 16-16 16H8V8z" fill="#3798E4"/>
-                        <path d="M14 14h12c6.627 0 12 5.373 12 12s-5.373 12-12 12H14V14z" fill="#ffffff"/>
-                        <path d="M14 18h8c5.523 0 10 4.477 10 10s-4.477 10-10 10h-8V18z" fill="#3798E4"/>
-                        <path d="M14 24h4c3.314 0 6 2.686 6 6s-2.686 6-6 6h-4V24z" fill="#ffffff"/>
-                    </svg>
-                </div>
-                <div class="dw-logo-wordmark">
-                    <span class="dw-logo-text-en">Digi<span>Win</span></span>
-                    <span class="dw-logo-text-zh">鼎新數智</span>
-                </div>
+                <img src="assets/digiwin-logo-en.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--desktop" width="160" height="40">
+                <img src="assets/digiwin-d-mark.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--mobile" width="32" height="32">
             </a>
 
             <nav class="dw-nav">
@@ -602,7 +592,7 @@
                             <!-- Featured: Partner Program -->
                             <div class="dw-mega-featured">
                                 <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(55,152,228,0.3)"/></svg>
+                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(0,175,240,0.3)"/></svg>
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">For ERP Implementers</span>
@@ -649,7 +639,7 @@
                             <!-- Featured: Latest Insight -->
                             <div class="dw-mega-featured">
                                 <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(55,152,228,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
+                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(0,175,240,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">Latest Insight</span>
@@ -685,7 +675,9 @@
 
 
     <!-- Hero -->
-    <section class="demo-hero">
+    <section class="demo-hero" style="position: relative; overflow: hidden;">
+        <!-- Brand: Super D OUTLINE LEFT — welcoming, open gesture inviting conversation -->
+        <div class="dw-d-bg dw-d-bg--left" style="opacity: 0.08;"></div>
         <div class="demo-hero-inner">
             <h1>Let's Talk About <span>Your Factory</span></h1>
             <p class="demo-hero-subtitle">Whether you're a factory owner seeking solutions or a distributor exploring partnership—we'll listen first, then show you what's relevant.</p>
@@ -711,8 +703,10 @@
     </section>
 
     <!-- Form Section -->
-    <section class="demo-form-section">
-        <div class="demo-form-inner">
+    <section class="demo-form-section" style="position: relative; overflow: hidden;">
+        <!-- Brand: Wave circles — very subtle, the form is the star, dots add depth without distraction -->
+        <div class="dw-wave-circles" style="opacity: 0.03;"></div>
+        <div class="demo-form-inner" style="position: relative; z-index: 2;">
             <div class="demo-form-container">
                 <div class="demo-form-header">
                     <h2>Request a Demo</h2>
@@ -840,8 +834,10 @@
     </section>
 
     <!-- What to Expect -->
-    <section class="demo-expect">
-        <div class="demo-expect-inner">
+    <section class="demo-expect" style="position: relative; overflow: hidden;">
+        <!-- Brand: Super D corner-br — grounding the closing section, subtle brand presence -->
+        <div class="dw-d-bg dw-d-bg--corner-br" style="opacity: 0.06;"></div>
+        <div class="demo-expect-inner" style="position: relative; z-index: 2;">
             <div class="demo-expect-header">
                 <h2>What to Expect</h2>
                 <p>No pressure. No obligation. Just a conversation about what's possible.</p>
@@ -870,7 +866,9 @@
         <div class="dw-footer-inner">
             <div class="dw-footer-grid">
                 <div class="dw-footer-brand">
-                    <div class="dw-footer-logo">Digi<span>Win</span></div>
+                    <div class="dw-footer-logo">
+                        <img src="assets/digiwin-logo-en-white.svg" alt="DigiWin" width="140" height="35">
+                    </div>
                     <p class="dw-footer-tagline"><span class="dw-years">44</span> years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
                     <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
                 </div>

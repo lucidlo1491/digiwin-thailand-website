@@ -5,25 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metal & Plastics Processing - DigiWin Thailand</title>
     <link rel="stylesheet" href="../styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="../assets/digiwin-d-mark.svg">
 </head>
 <body>
     <header class="dw-header">
         <div class="dw-header-inner">
             <a href="../index.html" class="dw-logo">
-                <div class="dw-logo-mark">
-                    <!-- DigiWin Logo Mark - Stylized D -->
-                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 8h20c8.837 0 16 7.163 16 16s-7.163 16-16 16H8V8z" fill="#3798E4"/>
-                        <path d="M14 14h12c6.627 0 12 5.373 12 12s-5.373 12-12 12H14V14z" fill="#ffffff"/>
-                        <path d="M14 18h8c5.523 0 10 4.477 10 10s-4.477 10-10 10h-8V18z" fill="#3798E4"/>
-                        <path d="M14 24h4c3.314 0 6 2.686 6 6s-2.686 6-6 6h-4V24z" fill="#ffffff"/>
-                    </svg>
-                </div>
-                <div class="dw-logo-wordmark">
-                    <span class="dw-logo-text-en">Digi<span>Win</span></span>
-                    <span class="dw-logo-text-zh">鼎新數智</span>
-                </div>
+                <img src="../assets/digiwin-logo-en.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--desktop" width="160" height="40">
+                <img src="../assets/digiwin-d-mark.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--mobile" width="32" height="32">
             </a>
 
             <nav class="dw-nav">
@@ -232,7 +222,7 @@
                             <!-- Featured: Partner Program -->
                             <div class="dw-mega-featured">
                                 <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(55,152,228,0.3)"/></svg>
+                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(0,175,240,0.3)"/></svg>
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">For ERP Implementers</span>
@@ -279,7 +269,7 @@
                             <!-- Featured: Latest Insight -->
                             <div class="dw-mega-featured">
                                 <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(55,152,228,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
+                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(0,175,240,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">Latest Insight</span>
@@ -315,8 +305,9 @@
 
 
     <!-- Hero Section -->
-    <section class="metal-hero">
-        <div class="metal-hero-inner">
+    <section class="metal-hero" style="position: relative; overflow: hidden;">
+        <div class="dw-d-bg dw-d-bg--bottom dw-d-bg--particle" style="opacity: 0.15;"></div>
+        <div class="metal-hero-inner" style="position: relative; z-index: 2;">
             <div class="metal-hero-badge">
                 <span>Metal & Plastics Processing</span>
             </div>
@@ -348,8 +339,9 @@
     </section>
 
     <!-- Challenges Section -->
-    <section class="challenges-section">
-        <div class="challenges-inner">
+    <section class="challenges-section" style="position: relative; overflow: hidden;">
+        <div class="dw-wave-section" style="opacity: 0.06;"></div>
+        <div class="challenges-inner" style="position: relative; z-index: 2;">
             <div class="challenges-header">
                 <h2>The Process Manufacturing Challenge</h2>
                 <p>Hidden losses that erode your margins</p>
@@ -473,8 +465,8 @@
                     </div>
                 </div>
 
-                <div class="solution-card" style="border: 2px solid rgba(55,152,228,0.3); background: linear-gradient(135deg, rgba(55,152,228,0.03), rgba(255,255,255,1));">
-                    <div class="solution-icon" style="background: linear-gradient(135deg, rgba(55,152,228,0.2), rgba(55,152,228,0.1));">
+                <div class="solution-card" style="border: 2px solid rgba(0,175,240,0.3); background: linear-gradient(135deg, rgba(0,175,240,0.03), rgba(255,255,255,1));">
+                    <div class="solution-icon" style="background: linear-gradient(135deg, rgba(0,175,240,0.2), rgba(0,175,240,0.1));">
                         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
                     </div>
                     <h3>BOI Compliance</h3>
@@ -499,8 +491,9 @@
     </section>
 
     <!-- Processes Section -->
-    <section class="processes-section">
-        <div class="processes-inner">
+    <section class="processes-section" style="position: relative; overflow: hidden;">
+        <div class="dw-d-bg dw-d-bg--corner-tl" style="opacity: 0.08;"></div>
+        <div class="processes-inner" style="position: relative; z-index: 2;">
             <h3>Process Types We Support</h3>
             <div class="processes-logos">
                 <div class="process-logo">Stamping</div>
@@ -551,8 +544,10 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-inner">
+    <section class="cta-section" style="position: relative; overflow: hidden;">
+        <div class="dw-d-bg dw-d-bg--left dw-d-bg--gradient" style="opacity: 0.12;"></div>
+        <div class="dw-wave-flow" style="opacity: 0.10;"></div>
+        <div class="cta-inner" style="position: relative; z-index: 2;">
             <h2>Improve Yield, Reduce Scrap</h2>
             <p>See how DigiWin helps process manufacturers</p>
             <div class="cta-buttons">
@@ -566,7 +561,9 @@
         <div class="dw-footer-inner">
             <div class="dw-footer-grid">
                 <div class="dw-footer-brand">
-                    <div class="dw-footer-logo">Digi<span>Win</span></div>
+                    <div class="dw-footer-logo">
+                        <img src="../assets/digiwin-logo-en-white.svg" alt="DigiWin" width="140" height="35">
+                    </div>
                     <p class="dw-footer-tagline"><span class="dw-years">44</span> years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
                     <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
                 </div>

@@ -13,9 +13,9 @@ const geojson = JSON.parse(fs.readFileSync('./ne_countries_110m.geojson', 'utf8'
 
 // Countries we need (by ISO A3 code)
 const COUNTRIES = {
-  'CHN': { name: 'China', fill: 'rgba(55,152,228,0.15)', stroke: 'rgba(55,152,228,0.4)', strokeWidth: 1.2 },
-  'TWN': { name: 'Taiwan', fill: 'rgba(55,152,228,0.18)', stroke: 'rgba(55,152,228,0.5)', strokeWidth: 1.5 },
-  'THA': { name: 'Thailand', fill: 'rgba(239,68,68,0.15)', stroke: 'rgba(239,68,68,0.5)', strokeWidth: 1.5 },
+  'CHN': { name: 'China', fill: 'rgba(0,175,240,0.15)', stroke: 'rgba(0,175,240,0.4)', strokeWidth: 1.2 },
+  'TWN': { name: 'Taiwan', fill: 'rgba(0,175,240,0.18)', stroke: 'rgba(0,175,240,0.5)', strokeWidth: 1.5 },
+  'THA': { name: 'Thailand', fill: 'rgba(245,158,11,0.15)', stroke: 'rgba(245,158,11,0.5)', strokeWidth: 1.5 },
   'VNM': { name: 'Vietnam', fill: 'rgba(100,116,139,0.2)', stroke: 'rgba(100,116,139,0.4)', strokeWidth: 1 },
   'MYS': { name: 'Malaysia', fill: 'rgba(100,116,139,0.15)', stroke: 'rgba(100,116,139,0.35)', strokeWidth: 1 },
   'MMR': { name: 'Myanmar', fill: 'rgba(100,116,139,0.08)', stroke: 'rgba(100,116,139,0.2)', strokeWidth: 0.5 },
@@ -174,7 +174,7 @@ const CITIES = [
 // Country label positions
 const COUNTRY_LABELS = [
   { name: 'China', lng: 100, lat: 37, size: 28, color: 'rgba(255,255,255,0.5)', weight: 500 },
-  { name: 'Thailand', lng: 100, lat: 16, size: 14, color: 'rgba(239,68,68,0.6)', weight: 500 },
+  { name: 'Thailand', lng: 100, lat: 16, size: 14, color: 'rgba(245,158,11,0.7)', weight: 500 },
   { name: 'Vietnam', lng: 107.5, lat: 16.5, size: 14, color: 'rgba(255,255,255,0.4)', weight: 500 },
   { name: 'Malaysia', lng: 102, lat: 5, size: 14, color: 'rgba(255,255,255,0.4)', weight: 500 },
 ];
@@ -203,17 +203,17 @@ for (const city of CITIES) {
   console.log(`                    <!-- ${city.name} -->`);
 
   if (city.type === 'hq') {
-    console.log(`                    <circle cx="${x}" cy="${y}" r="10" fill="#3798E4" filter="url(#glow)"/>`);
-    console.log(`                    <text x="${(parseFloat(x) + 16).toFixed(1)}" y="${(parseFloat(y) - 4).toFixed(1)}" fill="#fff" font-size="16" font-weight="600" font-family="Lexend">${city.name}</text>`);
-    console.log(`                    <text x="${(parseFloat(x) + 16).toFixed(1)}" y="${(parseFloat(y) + 14).toFixed(1)}" fill="rgba(55,152,228,0.8)" font-size="12" font-family="JetBrains Mono">${city.sublabel}</text>`);
+    console.log(`                    <circle cx="${x}" cy="${y}" r="10" fill="#00AFF0" filter="url(#glow)"/>`);
+    console.log(`                    <text x="${(parseFloat(x) + 16).toFixed(1)}" y="${(parseFloat(y) - 4).toFixed(1)}" fill="#fff" font-size="16" font-weight="600" font-family="Noto Sans">${city.name}</text>`);
+    console.log(`                    <text x="${(parseFloat(x) + 16).toFixed(1)}" y="${(parseFloat(y) + 14).toFixed(1)}" fill="rgba(0,175,240,0.8)" font-size="12" font-family="JetBrains Mono">${city.sublabel}</text>`);
   } else if (city.type === 'featured') {
-    console.log(`                    <circle cx="${x}" cy="${y}" r="14" fill="#ef4444" filter="url(#glow)"/>`);
-    console.log(`                    <circle cx="${x}" cy="${y}" r="22" fill="none" stroke="#ef4444" stroke-width="2" stroke-opacity="0.5">`);
+    console.log(`                    <circle cx="${x}" cy="${y}" r="14" fill="#F59E0B" filter="url(#glow)"/>`);
+    console.log(`                    <circle cx="${x}" cy="${y}" r="22" fill="none" stroke="#F59E0B" stroke-width="2" stroke-opacity="0.5">`);
     console.log(`                        <animate attributeName="r" values="22;30;22" dur="2s" repeatCount="indefinite"/>`);
     console.log(`                        <animate attributeName="stroke-opacity" values="0.5;0.15;0.5" dur="2s" repeatCount="indefinite"/>`);
     console.log(`                    </circle>`);
-    console.log(`                    <text x="${x}" y="${(parseFloat(y) + 32).toFixed(1)}" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" font-family="Lexend">${city.name}</text>`);
-    console.log(`                    <text x="${x}" y="${(parseFloat(y) + 48).toFixed(1)}" text-anchor="middle" fill="rgba(239,68,68,0.9)" font-size="13" font-family="JetBrains Mono">${city.sublabel}</text>`);
+    console.log(`                    <text x="${x}" y="${(parseFloat(y) + 32).toFixed(1)}" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" font-family="Noto Sans">${city.name}</text>`);
+    console.log(`                    <text x="${x}" y="${(parseFloat(y) + 48).toFixed(1)}" text-anchor="middle" fill="rgba(245,158,11,0.9)" font-size="13" font-family="JetBrains Mono">${city.sublabel}</text>`);
   } else {
     console.log(`                    <circle cx="${x}" cy="${y}" r="4" fill="#f97316"/>`);
     console.log(`                    <text x="${(parseFloat(x) + 10).toFixed(1)}" y="${(parseFloat(y) - 2).toFixed(1)}" fill="rgba(255,255,255,0.7)" font-size="13" font-family="JetBrains Mono">${city.name}</text>`);
@@ -226,7 +226,7 @@ console.log('                    <!-- Country Labels -->');
 for (const label of COUNTRY_LABELS) {
   const x = projectLng(label.lng).toFixed(1);
   const y = projectLat(label.lat).toFixed(1);
-  console.log(`                    <text x="${x}" y="${y}" fill="${label.color}" font-size="${label.size}" font-family="Lexend" font-weight="${label.weight}">${label.name}</text>`);
+  console.log(`                    <text x="${x}" y="${y}" fill="${label.color}" font-size="${label.size}" font-family="Noto Sans" font-weight="${label.weight}">${label.name}</text>`);
 }
 
 // Print viewBox info

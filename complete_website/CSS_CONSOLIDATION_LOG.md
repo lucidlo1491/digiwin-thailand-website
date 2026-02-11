@@ -13,9 +13,9 @@
 - 8 blog posts stripped to badge-color-only inline CSS:
   - shop-floor-scheduling.html (#7C3AED)
   - dual-units.html (#059669)
-  - amrp-capacity-planning.html (#3798E4)
+  - amrp-capacity-planning.html (#00AFF0)
   - boi-compliance-jin-hai.html (#DC2626)
-  - feature-codes.html (#3798E4)
+  - feature-codes.html (#00AFF0)
   - five-pain-points.html (#D97706)
   - production-transparency.html (#10B981)
   - sap-ecc-end-of-life.html (#D97706)
@@ -38,7 +38,7 @@
 **What was extracted:**
 - `.cta-section` (padding, gradient background, text-align)
 - `.cta-inner` (max-width, margin, padding)
-- `.cta-section h2` (Lexend, 40px, white)
+- `.cta-section h2` (Noto Sans, 40px, white)
 - `.cta-section p` (20px, white 0.9 opacity)
 - `.cta-buttons` (flex, gap, center)
 - `.cta-btn-primary` + `:hover` (white bg, blue text, lift effect)

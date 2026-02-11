@@ -168,9 +168,117 @@
         return observer;
     }
 
+    // ==========================================
+    // Particle Wave: Scroll Reveal
+    // ==========================================
+    /**
+     * Reveals SVG particle dots (circles) when they enter the viewport.
+     * Each dot scales from 0→1 with a staggered delay based on position.
+     *
+     * @param {string} selector — CSS selector for the SVG container
+     */
+    function initParticleReveal(selector) {
+        var containers = document.querySelectorAll(selector);
+        if (!containers.length) return null;
+
+        // Check reduced motion preference
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            containers.forEach(function(el) { el.classList.add('is-visible'); });
+            return null;
+        }
+
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    var circles = entry.target.querySelectorAll('circle');
+                    circles.forEach(function(circle, i) {
+                        circle.style.transitionDelay = (i * 0.02) + 's';
+                    });
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+
+        containers.forEach(function(el) { observer.observe(el); });
+        return observer;
+    }
+
+    // ==========================================
+    // Super D: Parallax Scroll
+    // ==========================================
+    /**
+     * Moves the Super D background element at a slower rate than content scroll,
+     * creating a depth/parallax effect. Uses transform for GPU acceleration.
+     *
+     * @param {string} selector — CSS selector for the D background element
+     * @param {number} [speed=0.3] — scroll speed multiplier (0 = fixed, 1 = normal scroll)
+     */
+    function initDParallax(selector, speed) {
+        var elements = document.querySelectorAll(selector);
+        if (!elements.length) return;
+
+        // Check reduced motion preference
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        var scrollSpeed = typeof speed === 'number' ? speed : 0.3;
+        var ticking = false;
+
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(function() {
+                    var scrollY = window.scrollY;
+                    elements.forEach(function(el) {
+                        var rect = el.parentElement.getBoundingClientRect();
+                        // Only animate when parent section is near viewport
+                        if (rect.bottom > -200 && rect.top < window.innerHeight + 200) {
+                            var offset = scrollY * scrollSpeed;
+                            el.style.transform = 'translateY(calc(-50% + ' + offset + 'px))';
+                        }
+                    });
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+
+    // ==========================================
+    // Super D: Stroke Draw on Scroll
+    // ==========================================
+    /**
+     * Triggers the stroke-dasharray "drawing" animation when the D enters viewport.
+     *
+     * @param {string} selector — CSS selector for the SVG container with .dw-d-draw
+     */
+    function initDDraw(selector) {
+        var elements = document.querySelectorAll(selector);
+        if (!elements.length) return null;
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            elements.forEach(function(el) { el.classList.add('is-visible'); });
+            return null;
+        }
+
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        elements.forEach(function(el) { observer.observe(el); });
+        return observer;
+    }
+
     // Expose for page-specific use
     window.DigiWinUI = {
-        initScrollAnimation: initScrollAnimation
+        initScrollAnimation: initScrollAnimation,
+        initParticleReveal: initParticleReveal,
+        initDParallax: initDParallax,
+        initDDraw: initDDraw
     };
 
 })();

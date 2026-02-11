@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News & Events - DigiWin Thailand</title>
     <link rel="stylesheet" href="{{basePath}}styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="{{basePath}}assets/digiwin-d-mark.svg">
     <style>
         /* ===== Hero Section ===== */
         .news-hero {
-            background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #253B50 100%);
+            background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #000864 100%);
             padding: 140px 24px 100px;
             position: relative;
             overflow: hidden;
@@ -27,7 +28,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at 30% 50%, rgba(55,152,228,0.08), transparent 70%);
+            background: radial-gradient(ellipse at 30% 50%, rgba(0,175,240,0.08), transparent 70%);
             pointer-events: none;
         }
         .news-hero-illustration {
@@ -58,8 +59,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(55, 152, 228, 0.2);
-            border: 1px solid rgba(55, 152, 228, 0.3);
+            background: rgba(0, 175, 240, 0.2);
+            border: 1px solid rgba(0, 175, 240, 0.3);
             padding: 8px 20px;
             border-radius: 50px;
             font-family: 'JetBrains Mono', monospace;
@@ -71,7 +72,7 @@
             margin-bottom: 24px;
         }
         .news-hero h1 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: clamp(32px, 5vw, 52px);
             font-weight: 700;
             color: #fff;
@@ -82,7 +83,7 @@
             margin-right: auto;
         }
         .news-hero h1 span {
-            color: #3798E4;
+            color: #00AFF0;
         }
         .news-hero-subtitle {
             font-size: 18px;
@@ -104,10 +105,10 @@
             text-align: center;
         }
         .news-hero-stat-value {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 42px;
             font-weight: 700;
-            color: #3798E4;
+            color: #00AFF0;
             line-height: 1;
             margin-bottom: 8px;
         }
@@ -130,7 +131,7 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 12px;
             font-weight: 500;
-            color: #3798E4;
+            color: #00AFF0;
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 24px;
@@ -147,11 +148,11 @@
             transition: all 0.3s ease;
         }
         .featured-card:hover {
-            border-color: #3798E4;
-            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+            border-color: #00AFF0;
+            box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
         }
         .featured-image {
-            background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #253B50 100%);
+            background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #000864 100%);
             min-height: 380px;
             display: flex;
             flex-direction: column;
@@ -175,7 +176,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 50% 40%, rgba(55,152,228,0.1), transparent 60%);
+            background: radial-gradient(circle at 50% 40%, rgba(0,175,240,0.1), transparent 60%);
             pointer-events: none;
         }
         .date-poster {
@@ -187,13 +188,13 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 16px;
             font-weight: 500;
-            color: #3798E4;
+            color: #00AFF0;
             letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 4px;
         }
         .date-poster-day {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 80px;
             font-weight: 700;
             color: #fff;
@@ -211,7 +212,7 @@
         .date-poster-divider {
             width: 48px;
             height: 2px;
-            background: linear-gradient(90deg, transparent, #3798E4, transparent);
+            background: linear-gradient(90deg, transparent, #00AFF0, transparent);
             margin: 0 auto 20px;
         }
         .date-poster-meta {
@@ -233,7 +234,7 @@
         .date-poster-meta-item svg {
             width: 15px;
             height: 15px;
-            stroke: #3798E4;
+            stroke: #00AFF0;
             fill: none;
             flex-shrink: 0;
         }
@@ -275,8 +276,8 @@
             width: fit-content;
         }
         .event-type-badge.seminar {
-            background: rgba(55, 152, 228, 0.12);
-            color: #3798E4;
+            background: rgba(0, 175, 240, 0.12);
+            color: #00AFF0;
         }
         .event-type-badge.workshop {
             background: rgba(34, 197, 94, 0.12);
@@ -291,10 +292,10 @@
             color: #8B5CF6;
         }
         .featured-content h3 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 28px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             line-height: 1.3;
             margin-bottom: 16px;
         }
@@ -314,7 +315,7 @@
         .event-meta-item svg {
             width: 16px;
             height: 16px;
-            stroke: #3798E4;
+            stroke: #00AFF0;
             fill: none;
             flex-shrink: 0;
         }
@@ -329,11 +330,11 @@
             align-items: center;
             gap: 8px;
             padding: 14px 32px;
-            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            background: linear-gradient(135deg, #00AFF0, #2d7bc4);
             color: #fff;
             text-decoration: none;
             border-radius: 12px;
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
             font-weight: 600;
             transition: all 0.3s ease;
@@ -341,7 +342,7 @@
         }
         .event-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(55, 152, 228, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 175, 240, 0.3);
         }
 
         /* ===== Upcoming Events Grid ===== */
@@ -361,17 +362,17 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 12px;
             font-weight: 500;
-            color: #3798E4;
+            color: #00AFF0;
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 16px;
             display: block;
         }
         .upcoming-header h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 0;
         }
         .upcoming-grid {
@@ -387,14 +388,14 @@
             transition: all 0.3s ease;
         }
         .upcoming-card:hover {
-            border-color: #3798E4;
-            box-shadow: 0 12px 40px rgba(55, 152, 228, 0.12);
+            border-color: #00AFF0;
+            box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
             transform: translateY(-4px);
         }
         .upcoming-card-border {
             height: 4px;
         }
-        .upcoming-card-border.seminar { background: #3798E4; }
+        .upcoming-card-border.seminar { background: #00AFF0; }
         .upcoming-card-border.workshop { background: #22C55E; }
         .upcoming-card-border.factory-visit { background: #F59E0B; }
         .upcoming-card-border.trade-show { background: #8B5CF6; }
@@ -405,10 +406,10 @@
             margin-bottom: 16px;
         }
         .upcoming-card-body h3 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 20px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             line-height: 1.35;
             margin-bottom: 16px;
         }
@@ -425,7 +426,7 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            color: #3798E4;
+            color: #00AFF0;
             font-weight: 600;
             font-size: 14px;
             text-decoration: none;
@@ -449,10 +450,10 @@
             margin-bottom: 64px;
         }
         .series-header h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 16px;
         }
         .series-header p {
@@ -475,7 +476,7 @@
             left: 12.5%;
             right: 12.5%;
             height: 3px;
-            background: linear-gradient(90deg, #3798E4, #22C55E, #F59E0B, #8B5CF6);
+            background: linear-gradient(90deg, #00AFF0, #22C55E, #F59E0B, #8B5CF6);
             border-radius: 2px;
             z-index: 0;
         }
@@ -493,13 +494,13 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 22px;
             font-weight: 700;
             color: #fff;
             position: relative;
         }
-        .series-step:nth-child(1) .series-step-number { background: linear-gradient(135deg, #3798E4, #2d7bc4); }
+        .series-step:nth-child(1) .series-step-number { background: linear-gradient(135deg, #00AFF0, #2d7bc4); }
         .series-step:nth-child(2) .series-step-number { background: linear-gradient(135deg, #22C55E, #16a34a); }
         .series-step:nth-child(3) .series-step-number { background: linear-gradient(135deg, #F59E0B, #d97706); }
         .series-step:nth-child(4) .series-step-number { background: linear-gradient(135deg, #8B5CF6, #7c3aed); }
@@ -510,7 +511,7 @@
             border-radius: 50%;
             border: 2px solid rgba(255,255,255,0.3);
         }
-        .series-step:nth-child(1) .series-step-number::after { border-color: rgba(55, 152, 228, 0.3); }
+        .series-step:nth-child(1) .series-step-number::after { border-color: rgba(0, 175, 240, 0.3); }
         .series-step:nth-child(2) .series-step-number::after { border-color: rgba(34, 197, 94, 0.3); }
         .series-step:nth-child(3) .series-step-number::after { border-color: rgba(245, 158, 11, 0.3); }
         .series-step:nth-child(4) .series-step-number::after { border-color: rgba(139, 92, 246, 0.3); }
@@ -525,10 +526,10 @@
             display: block;
         }
         .series-step h4 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 12px;
             line-height: 1.3;
         }
@@ -552,10 +553,10 @@
             margin-bottom: 40px;
         }
         .past-header h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 0;
         }
         .filter-bar {
@@ -575,7 +576,7 @@
             flex: 1;
             padding: 12px 16px;
             text-align: center;
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
             font-weight: 600;
             color: #64748b;
@@ -587,13 +588,13 @@
             white-space: nowrap;
         }
         .filter-tab:hover {
-            color: #253B50;
+            color: #000864;
             background: #f8fafc;
         }
         .filter-tab.active {
-            background: #3798E4;
+            background: #00AFF0;
             color: #fff;
-            box-shadow: 0 2px 8px rgba(55, 152, 228, 0.25);
+            box-shadow: 0 2px 8px rgba(0, 175, 240, 0.25);
         }
         .past-grid {
             display: grid;
@@ -608,18 +609,18 @@
             transition: all 0.3s ease;
         }
         .past-card:hover {
-            border-color: #3798E4;
-            box-shadow: 0 8px 32px rgba(55, 152, 228, 0.1);
+            border-color: #00AFF0;
+            box-shadow: 0 8px 32px rgba(0, 175, 240, 0.1);
             transform: translateY(-4px);
         }
         .past-card .event-type-badge {
             margin-bottom: 12px;
         }
         .past-card h4 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 17px;
             font-weight: 600;
-            color: #253B50;
+            color: #000864;
             margin-bottom: 8px;
             line-height: 1.4;
         }
@@ -636,7 +637,7 @@
         /* ===== CTA Section ===== */
         .news-cta {
             padding: 100px 24px;
-            background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #253B50 100%);
+            background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #000864 100%);
             position: relative;
             overflow: hidden;
         }
@@ -657,7 +658,7 @@
             z-index: 1;
         }
         .news-cta h2 {
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
             font-weight: 700;
             color: #fff;
@@ -683,7 +684,7 @@
             border-radius: 12px;
             color: #fff;
             font-size: 16px;
-            font-family: 'Source Sans 3', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             outline: none;
             transition: all 0.3s ease;
         }
@@ -691,17 +692,17 @@
             color: rgba(255,255,255,0.5);
         }
         .subscribe-input:focus {
-            border-color: #3798E4;
+            border-color: #00AFF0;
             background: rgba(255,255,255,0.15);
-            box-shadow: 0 0 0 3px rgba(55, 152, 228, 0.2);
+            box-shadow: 0 0 0 3px rgba(0, 175, 240, 0.2);
         }
         .subscribe-btn {
             padding: 16px 32px;
-            background: linear-gradient(135deg, #3798E4, #2d7bc4);
+            background: linear-gradient(135deg, #00AFF0, #2d7bc4);
             color: #fff;
             border: none;
             border-radius: 12px;
-            font-family: 'Lexend', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
             font-weight: 600;
             cursor: pointer;
@@ -710,7 +711,7 @@
         }
         .subscribe-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(55, 152, 228, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 175, 240, 0.3);
         }
         .cta-secondary-link {
             display: inline-flex;
@@ -722,7 +723,7 @@
             transition: all 0.3s ease;
         }
         .cta-secondary-link:hover {
-            color: #3798E4;
+            color: #00AFF0;
             gap: 10px;
         }
 
@@ -834,52 +835,54 @@
 {{header}}
 
     <!-- Hero Section -->
-    <section class="news-hero">
+    <section class="news-hero" style="position: relative; overflow: hidden;">
+        <!-- Brand: Super D OUTLINE corner-tl — news masthead accent, editorial framing -->
+        <div class="dw-d-bg dw-d-bg--corner-tl" style="opacity: 0.10;"></div>
         <div class="news-hero-illustration">
             <svg viewBox="0 0 560 480" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <!-- Calendar grid -->
-                <rect x="320" y="60" width="200" height="180" rx="12" stroke="#3798E4" stroke-width="1.2"/>
-                <line x1="320" y1="100" x2="520" y2="100" stroke="#3798E4" stroke-width="0.8"/>
-                <line x1="370" y1="100" x2="370" y2="240" stroke="#3798E4" stroke-width="0.5" stroke-dasharray="4 4"/>
-                <line x1="420" y1="100" x2="420" y2="240" stroke="#3798E4" stroke-width="0.5" stroke-dasharray="4 4"/>
-                <line x1="470" y1="100" x2="470" y2="240" stroke="#3798E4" stroke-width="0.5" stroke-dasharray="4 4"/>
-                <line x1="320" y1="140" x2="520" y2="140" stroke="#3798E4" stroke-width="0.5" stroke-dasharray="4 4"/>
-                <line x1="320" y1="180" x2="520" y2="180" stroke="#3798E4" stroke-width="0.5" stroke-dasharray="4 4"/>
-                <line x1="320" y1="220" x2="520" y2="220" stroke="#3798E4" stroke-width="0.5" stroke-dasharray="4 4"/>
+                <rect x="320" y="60" width="200" height="180" rx="12" stroke="#00AFF0" stroke-width="1.2"/>
+                <line x1="320" y1="100" x2="520" y2="100" stroke="#00AFF0" stroke-width="0.8"/>
+                <line x1="370" y1="100" x2="370" y2="240" stroke="#00AFF0" stroke-width="0.5" stroke-dasharray="4 4"/>
+                <line x1="420" y1="100" x2="420" y2="240" stroke="#00AFF0" stroke-width="0.5" stroke-dasharray="4 4"/>
+                <line x1="470" y1="100" x2="470" y2="240" stroke="#00AFF0" stroke-width="0.5" stroke-dasharray="4 4"/>
+                <line x1="320" y1="140" x2="520" y2="140" stroke="#00AFF0" stroke-width="0.5" stroke-dasharray="4 4"/>
+                <line x1="320" y1="180" x2="520" y2="180" stroke="#00AFF0" stroke-width="0.5" stroke-dasharray="4 4"/>
+                <line x1="320" y1="220" x2="520" y2="220" stroke="#00AFF0" stroke-width="0.5" stroke-dasharray="4 4"/>
                 <!-- Calendar pins -->
-                <line x1="380" y1="45" x2="380" y2="75" stroke="#3798E4" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="460" y1="45" x2="460" y2="75" stroke="#3798E4" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="380" y1="45" x2="380" y2="75" stroke="#00AFF0" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="460" y1="45" x2="460" y2="75" stroke="#00AFF0" stroke-width="1.5" stroke-linecap="round"/>
                 <!-- Highlighted date cell -->
-                <rect x="371" y="141" width="48" height="38" rx="4" fill="#3798E4" fill-opacity="0.15"/>
+                <rect x="371" y="141" width="48" height="38" rx="4" fill="#00AFF0" fill-opacity="0.15"/>
                 <!-- Connection nodes -->
-                <circle cx="200" cy="160" r="6" stroke="#3798E4" stroke-width="1.2"/>
-                <circle cx="280" cy="120" r="4" stroke="#3798E4" stroke-width="1"/>
-                <circle cx="260" cy="220" r="5" stroke="#3798E4" stroke-width="1"/>
-                <circle cx="160" cy="280" r="4" stroke="#3798E4" stroke-width="1"/>
-                <circle cx="300" cy="300" r="6" stroke="#3798E4" stroke-width="1.2"/>
-                <circle cx="400" cy="320" r="5" stroke="#3798E4" stroke-width="1"/>
+                <circle cx="200" cy="160" r="6" stroke="#00AFF0" stroke-width="1.2"/>
+                <circle cx="280" cy="120" r="4" stroke="#00AFF0" stroke-width="1"/>
+                <circle cx="260" cy="220" r="5" stroke="#00AFF0" stroke-width="1"/>
+                <circle cx="160" cy="280" r="4" stroke="#00AFF0" stroke-width="1"/>
+                <circle cx="300" cy="300" r="6" stroke="#00AFF0" stroke-width="1.2"/>
+                <circle cx="400" cy="320" r="5" stroke="#00AFF0" stroke-width="1"/>
                 <!-- Connection lines -->
-                <line x1="206" y1="158" x2="276" y2="122" stroke="#3798E4" stroke-width="0.8" stroke-dasharray="6 4"/>
-                <line x1="198" y1="166" x2="262" y2="216" stroke="#3798E4" stroke-width="0.8" stroke-dasharray="6 4"/>
-                <line x1="264" y1="224" x2="296" y2="296" stroke="#3798E4" stroke-width="0.8" stroke-dasharray="6 4"/>
-                <line x1="306" y1="300" x2="396" y2="320" stroke="#3798E4" stroke-width="0.8" stroke-dasharray="6 4"/>
-                <line x1="164" y1="278" x2="294" y2="302" stroke="#3798E4" stroke-width="0.8" stroke-dasharray="6 4"/>
+                <line x1="206" y1="158" x2="276" y2="122" stroke="#00AFF0" stroke-width="0.8" stroke-dasharray="6 4"/>
+                <line x1="198" y1="166" x2="262" y2="216" stroke="#00AFF0" stroke-width="0.8" stroke-dasharray="6 4"/>
+                <line x1="264" y1="224" x2="296" y2="296" stroke="#00AFF0" stroke-width="0.8" stroke-dasharray="6 4"/>
+                <line x1="306" y1="300" x2="396" y2="320" stroke="#00AFF0" stroke-width="0.8" stroke-dasharray="6 4"/>
+                <line x1="164" y1="278" x2="294" y2="302" stroke="#00AFF0" stroke-width="0.8" stroke-dasharray="6 4"/>
                 <!-- Clock arc -->
-                <circle cx="140" cy="380" r="40" stroke="#3798E4" stroke-width="1" stroke-dasharray="8 4"/>
-                <line x1="140" y1="380" x2="140" y2="352" stroke="#3798E4" stroke-width="1.2" stroke-linecap="round"/>
-                <line x1="140" y1="380" x2="160" y2="390" stroke="#3798E4" stroke-width="1.2" stroke-linecap="round"/>
+                <circle cx="140" cy="380" r="40" stroke="#00AFF0" stroke-width="1" stroke-dasharray="8 4"/>
+                <line x1="140" y1="380" x2="140" y2="352" stroke="#00AFF0" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="140" y1="380" x2="160" y2="390" stroke="#00AFF0" stroke-width="1.2" stroke-linecap="round"/>
                 <!-- Small tick marks on clock -->
-                <line x1="140" y1="342" x2="140" y2="346" stroke="#3798E4" stroke-width="0.8"/>
-                <line x1="178" y1="380" x2="174" y2="380" stroke="#3798E4" stroke-width="0.8"/>
-                <line x1="140" y1="418" x2="140" y2="414" stroke="#3798E4" stroke-width="0.8"/>
-                <line x1="102" y1="380" x2="106" y2="380" stroke="#3798E4" stroke-width="0.8"/>
+                <line x1="140" y1="342" x2="140" y2="346" stroke="#00AFF0" stroke-width="0.8"/>
+                <line x1="178" y1="380" x2="174" y2="380" stroke="#00AFF0" stroke-width="0.8"/>
+                <line x1="140" y1="418" x2="140" y2="414" stroke="#00AFF0" stroke-width="0.8"/>
+                <line x1="102" y1="380" x2="106" y2="380" stroke="#00AFF0" stroke-width="0.8"/>
                 <!-- Scattered dots for texture -->
-                <circle cx="450" cy="380" r="2" fill="#3798E4" fill-opacity="0.3"/>
-                <circle cx="480" cy="400" r="1.5" fill="#3798E4" fill-opacity="0.2"/>
-                <circle cx="350" cy="420" r="2" fill="#3798E4" fill-opacity="0.25"/>
-                <circle cx="240" cy="350" r="1.5" fill="#3798E4" fill-opacity="0.2"/>
-                <circle cx="100" cy="100" r="2" fill="#3798E4" fill-opacity="0.2"/>
-                <circle cx="140" cy="140" r="1.5" fill="#3798E4" fill-opacity="0.15"/>
+                <circle cx="450" cy="380" r="2" fill="#00AFF0" fill-opacity="0.3"/>
+                <circle cx="480" cy="400" r="1.5" fill="#00AFF0" fill-opacity="0.2"/>
+                <circle cx="350" cy="420" r="2" fill="#00AFF0" fill-opacity="0.25"/>
+                <circle cx="240" cy="350" r="1.5" fill="#00AFF0" fill-opacity="0.2"/>
+                <circle cx="100" cy="100" r="2" fill="#00AFF0" fill-opacity="0.2"/>
+                <circle cx="140" cy="140" r="1.5" fill="#00AFF0" fill-opacity="0.15"/>
             </svg>
         </div>
         <div class="news-hero-inner">
@@ -907,8 +910,10 @@
     </section>
 
     <!-- Featured Event Section -->
-    <section class="featured-section fade-in-section">
-        <div class="featured-inner">
+    <section class="featured-section fade-in-section" style="position: relative; overflow: hidden;">
+        <!-- Brand: Wave circles — subtle animated circles behind featured article -->
+        <div class="dw-wave-circles" style="opacity: 0.04;"></div>
+        <div class="featured-inner" style="position: relative; z-index: 2;">
             <span class="featured-label">Featured Event</span>
             <div class="featured-card">
                 <div class="featured-image">
@@ -1088,8 +1093,10 @@
     </section>
 
     <!-- Past Events Archive -->
-    <section class="past-section">
-        <div class="past-inner">
+    <section class="past-section" style="position: relative; overflow: hidden;">
+        <!-- Brand: Super D corner-br — anchoring the archive, grounding past events -->
+        <div class="dw-d-bg dw-d-bg--corner-br" style="opacity: 0.06;"></div>
+        <div class="past-inner" style="position: relative; z-index: 2;">
             <div class="past-header fade-in-section">
                 <span class="section-label">Past Events</span>
                 <h2>What We've Done</h2>
@@ -1128,8 +1135,12 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="news-cta">
-        <div class="news-cta-inner fade-in-section">
+    <section class="news-cta" style="position: relative; overflow: hidden;">
+        <!-- Brand: Super D LEFT — directional energy pulling toward subscription action -->
+        <div class="dw-d-bg dw-d-bg--left" style="opacity: 0.12;"></div>
+        <!-- Brand: Particle wave flow — dynamic "pulse" energy matching the news theme -->
+        <div class="dw-wave-flow" style="height: 160px; opacity: 0.3; z-index: 1;"></div>
+        <div class="news-cta-inner fade-in-section" style="position: relative; z-index: 3;">
             <h2>Don't Miss the Next Event</h2>
             <p>Join 500+ Thai manufacturing professionals who stay informed about industry trends, compliance updates, and technology opportunities.</p>
             <form class="subscribe-form" onsubmit="event.preventDefault();">

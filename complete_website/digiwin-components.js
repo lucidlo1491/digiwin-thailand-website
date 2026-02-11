@@ -281,4 +281,11 @@
         initDDraw: initDDraw
     };
 
+    // ==========================================
+    // Auto-init: animate .fade-in elements on every page
+    // ==========================================
+    if (document.querySelectorAll('.fade-in').length) {
+        initScrollAnimation('.fade-in', { mode: 'class' });
+    }
+
 })();

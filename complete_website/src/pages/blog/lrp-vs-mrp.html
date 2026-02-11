@@ -460,16 +460,7 @@
             transform: translateX(3px);
         }
 
-        /* ===== Scroll Animations ===== */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* Scroll animations: .fade-in handled by shared styles.css */
 
         /* ===== Responsive ===== */
         @media (max-width: 768px) {
@@ -518,13 +509,13 @@
     <section class="article-hero" style="position: relative; overflow: hidden;">
         <div class="dw-d-bg dw-d-bg--left" style="opacity: 0.05;"></div>
         <div class="article-hero-inner" style="position: relative; z-index: 2;">
-            <a href="{{basePath}}blog.html" class="article-back fade-up">
+            <a href="{{basePath}}blog.html" class="article-back fade-in">
                 <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                 Back to Insights
             </a>
-            <div class="article-category fade-up">Production Planning</div>
-            <h1 class="fade-up">LRP vs MRP: Why Your Production Planning Takes Hours Instead of Minutes</h1>
-            <div class="article-meta fade-up">
+            <div class="article-category fade-in">Production Planning</div>
+            <h1 class="fade-in">LRP vs MRP: Why Your Production Planning Takes Hours Instead of Minutes</h1>
+            <div class="article-meta fade-in">
                 <span>6 min read</span>
                 <span class="article-meta-divider"></span>
                 <span>February 2026</span>
@@ -535,33 +526,33 @@
     <!-- ===== Article Body ===== -->
     <article class="article-body">
 
-        <p class="article-lead fade-up">Every production planner knows the frustration: you kick off an MRP run at 6 PM, and by the time it finishes hours later, two rush orders have already changed everything. The plan was outdated before it was even printed.</p>
+        <p class="article-lead fade-in">Every production planner knows the frustration: you kick off an MRP run at 6 PM, and by the time it finishes hours later, two rush orders have already changed everything. The plan was outdated before it was even printed.</p>
 
-        <p class="fade-up">This is not an edge case. It is the daily reality for thousands of Thai factories running traditional MRP. And it raises a question that most ERP vendors prefer to avoid: <strong>why does production planning still take so long?</strong></p>
+        <p class="fade-in">This is not an edge case. It is the daily reality for thousands of Thai factories running traditional MRP. And it raises a question that most ERP vendors prefer to avoid: <strong>why does production planning still take so long?</strong></p>
 
         <!-- Section: The MRP Problem -->
-        <h2 class="fade-up">The MRP Problem Nobody Talks About</h2>
+        <h2 class="fade-in">The MRP Problem Nobody Talks About</h2>
 
-        <p class="fade-up">MRP &mdash; Material Requirements Planning &mdash; was designed in the 1970s for a world of batch processing and overnight mainframe runs. The core logic is straightforward: take the master production schedule, explode the BOM (Bill of Materials) for every item, check inventory, and calculate what needs to be purchased or produced.</p>
+        <p class="fade-in">MRP &mdash; Material Requirements Planning &mdash; was designed in the 1970s for a world of batch processing and overnight mainframe runs. The core logic is straightforward: take the master production schedule, explode the BOM (Bill of Materials) for every item, check inventory, and calculate what needs to be purchased or produced.</p>
 
-        <p class="fade-up">The problem is scale. MRP recalculates <strong>everything</strong> &mdash; every active item, every level of the BOM, every open purchase order, every work order in progress. For a typical Thai factory with thousands of active items and multi-level BOMs, this process takes hours. Some factories report MRP runs of 4 to 8 hours for a single cycle.</p>
+        <p class="fade-in">The problem is scale. MRP recalculates <strong>everything</strong> &mdash; every active item, every level of the BOM, every open purchase order, every work order in progress. For a typical Thai factory with thousands of active items and multi-level BOMs, this process takes hours. Some factories report MRP runs of 4 to 8 hours for a single cycle.</p>
 
-        <p class="fade-up">During those hours, the shop floor keeps moving. New orders arrive. Customers call asking about delivery dates. Material shipments are delayed. But the planner cannot answer any of these questions until the MRP run completes &mdash; and by then, the inputs have already changed.</p>
+        <p class="fade-in">During those hours, the shop floor keeps moving. New orders arrive. Customers call asking about delivery dates. Material shipments are delayed. But the planner cannot answer any of these questions until the MRP run completes &mdash; and by then, the inputs have already changed.</p>
 
-        <div class="article-pullquote fade-up">
+        <div class="article-pullquote fade-in">
             <p>An MRP run that takes 4 hours to complete is already 4 hours out of date. You are making decisions today based on a picture from yesterday.</p>
         </div>
 
-        <p class="fade-up">This is the planning-versus-reality disconnect. The longer the planning cycle, the wider the gap between what the system recommends and what the factory actually needs. Planners compensate by padding safety stock, over-ordering materials, or simply relying on gut feel &mdash; none of which is a real solution.</p>
+        <p class="fade-in">This is the planning-versus-reality disconnect. The longer the planning cycle, the wider the gap between what the system recommends and what the factory actually needs. Planners compensate by padding safety stock, over-ordering materials, or simply relying on gut feel &mdash; none of which is a real solution.</p>
 
         <!-- Section: What If You Could Plan Per Order? -->
-        <h2 class="fade-up">What If You Could Plan Per Order?</h2>
+        <h2 class="fade-in">What If You Could Plan Per Order?</h2>
 
-        <p class="fade-up">LRP &mdash; Lot Requirements Planning &mdash; flips the approach entirely. Instead of recalculating the entire factory from top to bottom, LRP calculates material requirements for <strong>a specific production order</strong>.</p>
+        <p class="fade-in">LRP &mdash; Lot Requirements Planning &mdash; flips the approach entirely. Instead of recalculating the entire factory from top to bottom, LRP calculates material requirements for <strong>a specific production order</strong>.</p>
 
-        <p class="fade-up">The logic is targeted: given this one order, what materials are needed? What is already in stock? What is allocated to other orders? What needs to be purchased, and when? LRP answers these questions in <strong>under a minute</strong>, because it is only looking at one order's worth of data &mdash; not the entire factory.</p>
+        <p class="fade-in">The logic is targeted: given this one order, what materials are needed? What is already in stock? What is allocated to other orders? What needs to be purchased, and when? LRP answers these questions in <strong>under a minute</strong>, because it is only looking at one order's worth of data &mdash; not the entire factory.</p>
 
-        <div class="article-data-callout fade-up">
+        <div class="article-data-callout fade-in">
             <div class="article-data-callout-item">
                 <span class="article-data-callout-label">Traditional MRP</span>
                 <span class="article-data-callout-value">Hours</span>
@@ -575,14 +566,14 @@
             </div>
         </div>
 
-        <p class="fade-up">This changes the nature of production planning from a batch activity to a real-time conversation. The planner is no longer waiting for a nightly run. They are getting actionable answers <strong>right now</strong>, for the order that matters right now.</p>
+        <p class="fade-in">This changes the nature of production planning from a batch activity to a real-time conversation. The planner is no longer waiting for a nightly run. They are getting actionable answers <strong>right now</strong>, for the order that matters right now.</p>
 
         <!-- Section: How LRP Works in Practice -->
-        <h2 class="fade-up">How LRP Works in Practice</h2>
+        <h2 class="fade-in">How LRP Works in Practice</h2>
 
-        <p class="fade-up">Picture a typical scenario. It is 10 AM on a Tuesday. A customer calls with a rush order for 500 units of a product that requires 12 different materials and 3 production stages.</p>
+        <p class="fade-in">Picture a typical scenario. It is 10 AM on a Tuesday. A customer calls with a rush order for 500 units of a product that requires 12 different materials and 3 production stages.</p>
 
-        <div class="article-scenario fade-up">
+        <div class="article-scenario fade-in">
             <div class="article-scenario-title">What the planner does next</div>
             <ol>
                 <li>Enters the order into the system</li>
@@ -594,41 +585,41 @@
             </ol>
         </div>
 
-        <p class="fade-up">No waiting for a full MRP cycle. No opening a spreadsheet to manually check stock levels. No calling the warehouse to ask what is actually on the shelf. The system gives the planner a complete picture for that specific order, immediately.</p>
+        <p class="fade-in">No waiting for a full MRP cycle. No opening a spreadsheet to manually check stock levels. No calling the warehouse to ask what is actually on the shelf. The system gives the planner a complete picture for that specific order, immediately.</p>
 
-        <div class="article-highlight fade-up">
+        <div class="article-highlight fade-in">
             <p><strong>LRP does not replace MRP &mdash; it complements it.</strong> Run MRP nightly for the big picture: aggregate demand, long-range purchasing schedules, capacity loading. Use LRP throughout the day for real-time, order-level decisions. Together, they give planners both strategic visibility and tactical speed.</p>
         </div>
 
         <!-- Section: Why This Matters for Thai Manufacturers -->
-        <h2 class="fade-up">Why This Matters for Thai Manufacturers</h2>
+        <h2 class="fade-in">Why This Matters for Thai Manufacturers</h2>
 
-        <p class="fade-up">Thai manufacturers often operate in a different rhythm than their Western counterparts. Orders tend to be smaller, more frequent, and more varied. A factory might receive 20 to 30 new orders per day from different customers, each with different product configurations, quantities, and delivery requirements.</p>
+        <p class="fade-in">Thai manufacturers often operate in a different rhythm than their Western counterparts. Orders tend to be smaller, more frequent, and more varied. A factory might receive 20 to 30 new orders per day from different customers, each with different product configurations, quantities, and delivery requirements.</p>
 
-        <p class="fade-up">In this environment, the question that matters most is deceptively simple: <strong>"When your customer calls about delivery, can you answer in 10 seconds?"</strong></p>
+        <p class="fade-in">In this environment, the question that matters most is deceptively simple: <strong>"When your customer calls about delivery, can you answer in 10 seconds?"</strong></p>
 
-        <p class="fade-up">With traditional MRP alone, the honest answer is usually no. The planner needs to wait for the next run, or make an educated guess based on experience and a rough check of stock levels. Both options carry risk &mdash; promise too early and you miss the date; promise too late and you lose the order to a competitor.</p>
+        <p class="fade-in">With traditional MRP alone, the honest answer is usually no. The planner needs to wait for the next run, or make an educated guess based on experience and a rough check of stock levels. Both options carry risk &mdash; promise too early and you miss the date; promise too late and you lose the order to a competitor.</p>
 
-        <p class="fade-up">LRP makes the 10-second answer possible. The planner can run a quick requirements check while the customer is still on the phone, and give a confident delivery commitment backed by real data &mdash; not guesswork.</p>
+        <p class="fade-in">LRP makes the 10-second answer possible. The planner can run a quick requirements check while the customer is still on the phone, and give a confident delivery commitment backed by real data &mdash; not guesswork.</p>
 
-        <p class="fade-up">For factories that compete on responsiveness &mdash; and in Thailand, that is most factories &mdash; this is not a nice-to-have feature. It is the difference between winning and losing orders.</p>
+        <p class="fade-in">For factories that compete on responsiveness &mdash; and in Thailand, that is most factories &mdash; this is not a nice-to-have feature. It is the difference between winning and losing orders.</p>
 
         <!-- Section: The Competitive Reality -->
-        <h2 class="fade-up">The Competitive Reality</h2>
+        <h2 class="fade-in">The Competitive Reality</h2>
 
-        <p class="fade-up">Most ERP systems on the market still only offer traditional MRP. The planning cycle is a batch process: collect data, run the engine, distribute the results, repeat tomorrow. If you need faster planning, the typical answer is to bolt on a separate APS (Advanced Planning and Scheduling) system.</p>
+        <p class="fade-in">Most ERP systems on the market still only offer traditional MRP. The planning cycle is a batch process: collect data, run the engine, distribute the results, repeat tomorrow. If you need faster planning, the typical answer is to bolt on a separate APS (Advanced Planning and Scheduling) system.</p>
 
-        <p class="fade-up">The problem with that approach is cost and complexity. A standalone APS system can cost as much as the ERP itself. It requires its own implementation, its own data integration, its own training. You end up maintaining two systems to solve a problem that should have been solved by one.</p>
+        <p class="fade-in">The problem with that approach is cost and complexity. A standalone APS system can cost as much as the ERP itself. It requires its own implementation, its own data integration, its own training. You end up maintaining two systems to solve a problem that should have been solved by one.</p>
 
-        <p class="fade-up">DigiWin takes a different approach. LRP is built directly into the ERP, alongside AMRP (Advanced Material Requirements Planning) &mdash; a capacity-aware planning engine that considers machine availability, workforce constraints, and production sequencing. No separate purchase. No separate integration. It is part of the standard manufacturing planning toolkit.</p>
+        <p class="fade-in">DigiWin takes a different approach. LRP is built directly into the ERP, alongside AMRP (Advanced Material Requirements Planning) &mdash; a capacity-aware planning engine that considers machine availability, workforce constraints, and production sequencing. No separate purchase. No separate integration. It is part of the standard manufacturing planning toolkit.</p>
 
-        <div class="article-pullquote fade-up">
+        <div class="article-pullquote fade-in">
             <p>You should not need to buy a second system just to plan production accurately. Planning speed and planning intelligence should be built into the ERP from the start.</p>
         </div>
 
-        <p class="fade-up">The result is a planning environment where nightly MRP handles the big picture, LRP handles the minute-by-minute order questions, and AMRP ensures that plans are feasible given actual capacity &mdash; all from a single system, with a single data source, and no reconciliation gaps between tools.</p>
+        <p class="fade-in">The result is a planning environment where nightly MRP handles the big picture, LRP handles the minute-by-minute order questions, and AMRP ensures that plans are feasible given actual capacity &mdash; all from a single system, with a single data source, and no reconciliation gaps between tools.</p>
 
-        <p class="fade-up">For Thai manufacturers dealing with frequent orders, tight delivery windows, and customers who expect immediate answers, this is not just a technical improvement. It is a competitive advantage that compounds with every order.</p>
+        <p class="fade-in">For Thai manufacturers dealing with frequent orders, tight delivery windows, and customers who expect immediate answers, this is not just a technical improvement. It is a competitive advantage that compounds with every order.</p>
 
     </article>
 
@@ -636,12 +627,12 @@
     <section class="related-section" style="position: relative; overflow: hidden;">
         <div class="dw-wave-circles" style="opacity: 0.04;"></div>
         <div class="related-inner" style="position: relative; z-index: 2;">
-            <div class="related-label fade-up">Keep Reading</div>
-            <h2 class="related-title fade-up">Related Insights</h2>
+            <div class="related-label fade-in">Keep Reading</div>
+            <h2 class="related-title fade-in">Related Insights</h2>
             <div class="related-grid">
 
                 <!-- Card 1: BOI Compliance -->
-                <a href="{{basePath}}blog/boi-compliance-jin-hai.html" class="related-card fade-up">
+                <a href="{{basePath}}blog/boi-compliance-jin-hai.html" class="related-card fade-in">
                     <div class="related-card-image">
                         <svg viewBox="0 0 64 64"><path d="M12 52V20l20-12 20 12v32" stroke-linecap="round"/><rect x="22" y="30" width="20" height="22" rx="2"/><path d="M32 30v22"/><path d="M22 40h20"/></svg>
                     </div>
@@ -656,7 +647,7 @@
                 </a>
 
                 <!-- Card 2: Co-Product Cost Accounting -->
-                <a href="{{basePath}}blog/co-product-cost-accounting.html" class="related-card fade-up">
+                <a href="{{basePath}}blog/co-product-cost-accounting.html" class="related-card fade-in">
                     <div class="related-card-image">
                         <svg viewBox="0 0 64 64"><path d="M8 52V28l12-8v32"/><path d="M24 52V20l12-8v40"/><path d="M40 52V12l12-8v48"/><path d="M8 52h48" stroke-linecap="round"/></svg>
                     </div>
@@ -671,7 +662,7 @@
                 </a>
 
                 <!-- Card 3: AMRP -->
-                <a href="{{basePath}}blog/amrp-capacity-planning.html" class="related-card fade-up">
+                <a href="{{basePath}}blog/amrp-capacity-planning.html" class="related-card fade-in">
                     <div class="related-card-image">
                         <svg viewBox="0 0 64 64"><rect x="8" y="16" width="48" height="36" rx="3"/><path d="M8 26h48"/><path d="M18 34h8M18 42h12M38 34h8M38 42h8"/><circle cx="32" cy="10" r="4"/></svg>
                     </div>
@@ -691,7 +682,7 @@
 
     <!-- ===== CTA Section ===== -->
     <section class="article-cta">
-        <div class="article-cta-inner fade-up">
+        <div class="article-cta-inner fade-in">
             <div class="article-cta-icon">
                 <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
             </div>

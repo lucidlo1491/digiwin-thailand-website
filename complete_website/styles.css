@@ -80,6 +80,19 @@ img {
     outline-offset: 2px;
 }
 
+/* Screen-reader only utility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* ===== SHARED KEYFRAMES ===== */
 @keyframes grain {
     0%, 100% { transform: translate(0, 0); }
@@ -474,7 +487,7 @@ img {
     display: flex;
     align-items: center;
     gap: 6px;
-    transition: all 0.25s ease;
+    transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
 }
@@ -951,7 +964,7 @@ img {
     padding: 16px 32px;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: all 0.3s ease;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -966,7 +979,7 @@ img {
 }
 
 .dw-btn-primary:hover {
-    background: #2563eb;
+    background: #003CC8;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 175, 240, 0.45);
 }
@@ -1046,6 +1059,25 @@ img {
 .dw-btn-outline-white:hover {
     background: rgba(255, 255, 255, 0.15);
     border-color: #ffffff;
+}
+
+/* Focus-visible states for keyboard accessibility */
+.dw-btn:focus-visible,
+.btn-white:focus-visible,
+.btn-outline-white:focus-visible,
+.dw-btn-outline-white:focus-visible {
+    outline: 3px solid #00AFF0;
+    outline-offset: 3px;
+}
+
+.dw-btn-white:focus-visible {
+    outline-color: #000864;
+}
+
+a:focus-visible {
+    outline: 3px solid #00AFF0;
+    outline-offset: 2px;
+    border-radius: 2px;
 }
 
 /* ===== SECTIONS ===== */

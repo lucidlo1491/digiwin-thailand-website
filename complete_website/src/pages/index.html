@@ -6,7 +6,9 @@
     <title>DigiWin Thailand - Manufacturing Intelligence for ASEAN Factories</title>
     <meta name="description" content="44+ years of manufacturing expertise. 50,000+ factories worldwide. ERP, MES, WMS, and AIoT solutions built specifically for manufacturing.">
     <link rel="stylesheet" href="{{basePath}}styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="icon" type="image/svg+xml" href="{{basePath}}assets/digiwin-d-mark.svg">
     <style>
         /* Homepage-specific styles - Industrial Premium Aesthetic */
@@ -380,7 +382,7 @@
             align-items: center;
             gap: 80px;
             width: max-content;
-            animation: dw-scroll 90s linear infinite;
+            animation: dw-scroll 35s linear infinite;
         }
 
         .dw-clients-track:hover {
@@ -3314,8 +3316,8 @@
         });
 
         // Scroll animations
-        DigiWinUI.initScrollAnimation('.dw-value-prop, .dw-check-card, .dw-trust-card, .dw-client-logo', {
-            stagger: 70, distance: 20, duration: 400
+        DigiWinUI.initScrollAnimation('.dw-value-prop, .dw-check-card, .dw-trust-card', {
+            stagger: 30, distance: 16, duration: 200
         });
 
         // Brand graphic animations

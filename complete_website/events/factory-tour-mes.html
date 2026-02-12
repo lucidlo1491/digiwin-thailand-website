@@ -6,7 +6,9 @@
     <title>Live Factory Tour: See DigiWin MES in Action - DigiWin Thailand</title>
     <meta name="description" content="Walk the shop floor of a real factory running DigiWin MES. See how production data flows from machines to management dashboards in real time.">
     <link rel="stylesheet" href="../styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="icon" type="image/svg+xml" href="../assets/digiwin-d-mark.svg">
     <style>
         :root { --event-color: #F59E0B; }
@@ -809,8 +811,7 @@
     <script>
     (function() {
         DigiWinUI.initScrollAnimation('.fade-in', {
-            mode: 'class', className: 'visible', stagger: 70,
-            threshold: 0.1, rootMargin: '0px 0px -40px 0px'
+            mode: 'class', className: 'visible'
         });
     })();
     </script>

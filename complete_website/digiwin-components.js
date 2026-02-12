@@ -120,11 +120,11 @@
         var opts = {
             mode: 'style',
             className: 'visible',
-            stagger: 70,
-            duration: 400,
-            distance: 20,
+            stagger: 30,
+            duration: 200,
+            distance: 16,
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -30px 0px'
         };
         if (options) {
             for (var key in options) {
@@ -143,19 +143,27 @@
             });
         }
 
+        // Track stagger per batch of elements entering together
+        var batchIndex = 0;
+        var batchTimeout = null;
+
         var observer = new IntersectionObserver(function(entries) {
+            // Reset batch counter for each new observer callback (= one scroll frame)
+            var localIdx = 0;
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
-                    var all = Array.from(document.querySelectorAll(selector));
-                    var idx = all.indexOf(entry.target);
-                    setTimeout(function() {
-                        if (opts.mode === 'class') {
-                            entry.target.classList.add(opts.className);
-                        } else {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                        }
-                    }, idx * opts.stagger);
+                    var delay = localIdx * opts.stagger;
+                    (function(el, d) {
+                        setTimeout(function() {
+                            if (opts.mode === 'class') {
+                                el.classList.add(opts.className);
+                            } else {
+                                el.style.opacity = '1';
+                                el.style.transform = 'translateY(0)';
+                            }
+                        }, d);
+                    })(entry.target, delay);
+                    localIdx++;
                     observer.unobserve(entry.target);
                 }
             });

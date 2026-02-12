@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Industries - DigiWin Thailand</title>
     <link rel="stylesheet" href="{{basePath}}styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="icon" type="image/svg+xml" href="{{basePath}}assets/digiwin-d-mark.svg">
     <style>
         :root {
@@ -899,18 +901,18 @@
     (function() {
         // Industry cards
         DigiWinUI.initScrollAnimation('.industry-card', {
-            mode: 'class', className: 'visible', stagger: 70,
+            mode: 'class', className: 'visible',
             threshold: 0.15, rootMargin: '0px 0px -60px 0px'
         });
 
         // Challenge cards
         DigiWinUI.initScrollAnimation('.challenge-card', {
-            stagger: 70, distance: 30, duration: 600, threshold: 0.15
+            distance: 16, duration: 200, threshold: 0.15
         });
 
         // Context stats
         DigiWinUI.initScrollAnimation('.context-stat', {
-            stagger: 70, distance: 20, duration: 500, threshold: 0.2
+            distance: 16, duration: 200, threshold: 0.2
         });
     })();
     </script>

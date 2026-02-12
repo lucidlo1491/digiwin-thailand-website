@@ -1009,7 +1009,7 @@ img {
 /* Shared CTA button variants (used across products, partner, about pages) */
 .btn-white {
     background: #ffffff;
-    color: #2d7bc4;
+    color: #003CC8;
     padding: 20px 40px;
     border-radius: 14px;
     font-family: 'Noto Sans', sans-serif;
@@ -2988,7 +2988,7 @@ img {
     fill: none;
 }
 .stake-card:hover .stake-icon, .challenge-card:hover .challenge-icon {
-    background: linear-gradient(135deg, #00AFF0, #2d7bc4);
+    background: linear-gradient(135deg, #00AFF0, #003CC8);
 }
 .stake-card:hover .stake-icon svg, .challenge-card:hover .challenge-icon svg {
     stroke: #fff;
@@ -3065,7 +3065,7 @@ img {
     fill: none;
 }
 .solution-card:hover .solution-icon {
-    background: linear-gradient(135deg, #00AFF0, #2d7bc4);
+    background: linear-gradient(135deg, #00AFF0, #003CC8);
 }
 .solution-card:hover .solution-icon svg {
     stroke: #fff;
@@ -3192,7 +3192,7 @@ img {
     fill: none;
 }
 .product-card:hover .product-card-icon {
-    background: linear-gradient(135deg, #00AFF0, #2d7bc4);
+    background: linear-gradient(135deg, #00AFF0, #003CC8);
 }
 .product-card:hover .product-card-icon svg {
     stroke: #fff;
@@ -3245,7 +3245,7 @@ img {
 /* ===== SHARED CTA SECTION ===== */
 .cta-section {
     padding: 100px 0;
-    background: linear-gradient(135deg, #00AFF0 0%, #2d7bc4 100%);
+    background: linear-gradient(135deg, #00AFF0 0%, #003CC8 100%);
     text-align: center;
 }
 .cta-inner {
@@ -4651,7 +4651,7 @@ img {
 .stack-layer-erp {
     top: 280px;
     right: 60px;
-    background: linear-gradient(135deg, var(--dw-blue) 0%, #2d7bc4 100%);
+    background: linear-gradient(135deg, var(--dw-blue) 0%, #003CC8 100%);
     animation: float-layer 4s ease-in-out infinite;
     animation-delay: 0.9s;
 }
@@ -4875,7 +4875,7 @@ img {
 }
 
 .pp-card--erp::before {
-    background: linear-gradient(90deg, var(--dw-blue), #2d7bc4);
+    background: linear-gradient(90deg, var(--dw-blue), #003CC8);
 }
 
 .pp-card--mes::before {
@@ -4982,7 +4982,7 @@ img {
 }
 
 .pp-card-icon--erp {
-    background: linear-gradient(135deg, var(--dw-blue) 0%, #2d7bc4 100%);
+    background: linear-gradient(135deg, var(--dw-blue) 0%, #003CC8 100%);
 }
 
 .pp-card-icon--erp::after {
@@ -5108,7 +5108,7 @@ img {
     fill: none;
 }
 
-.pp-card--erp .pp-card-features .check { background: linear-gradient(135deg, var(--dw-blue), #2d7bc4); }
+.pp-card--erp .pp-card-features .check { background: linear-gradient(135deg, var(--dw-blue), #003CC8); }
 .pp-card--mes .pp-card-features .check { background: linear-gradient(135deg, #10b981, #02D28C); }
 .pp-card--wms .pp-card-features .check { background: linear-gradient(135deg, #f59e0b, #d97706); }
 .pp-card--aiot .pp-card-features .check { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
@@ -5351,7 +5351,7 @@ img {
 }
 
 .integration-node--erp .integration-node-icon {
-    background: linear-gradient(135deg, var(--dw-blue) 0%, #2d7bc4 100%);
+    background: linear-gradient(135deg, var(--dw-blue) 0%, #003CC8 100%);
 }
 
 .integration-node--mes {
@@ -5545,7 +5545,7 @@ img {
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, var(--dw-blue), #2d7bc4);
+    background: linear-gradient(90deg, var(--dw-blue), #003CC8);
     border-radius: 0 0 4px 4px;
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -5608,7 +5608,7 @@ img {
 /* CTA Section */
 .products-cta {
     padding: 140px 0;
-    background: linear-gradient(135deg, var(--dw-blue) 0%, #2d7bc4 50%, #2d7bc4 100%);
+    background: linear-gradient(135deg, var(--dw-blue) 0%, #003CC8 50%, #003CC8 100%);
     position: relative;
     overflow: hidden;
 }
@@ -6008,7 +6008,7 @@ img {
 /* --- Product Detail CTA (blue gradient) --- */
 .product-detail-cta {
     padding: 100px 0;
-    background: linear-gradient(135deg, #00AFF0 0%, #2d7bc4 100%);
+    background: linear-gradient(135deg, #00AFF0 0%, #003CC8 100%);
     position: relative;
     overflow: hidden;
 }

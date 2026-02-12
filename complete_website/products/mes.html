@@ -94,19 +94,6 @@
             padding: 20px;
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
         }
-        .mockup-header {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-        .mockup-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-        .mockup-dot:nth-child(1) { background: #ff5f57; }
-        .mockup-dot:nth-child(2) { background: #ffbd2e; }
-        .mockup-dot:nth-child(3) { background: #28ca42; }
         .mockup-content {
             background: rgba(0, 0, 0, 0.2);
             border-radius: 8px;
@@ -148,13 +135,6 @@
             background: rgba(255, 255, 255, 0.03);
             border-radius: 6px;
         }
-        .mockup-bar {
-            flex: 1;
-            background: #00AFF0;
-            border-radius: 3px 3px 0 0;
-            opacity: 0.7;
-        }
-        .mockup-bar.active { opacity: 1; background: #10b981; }
         @media (max-width: 1024px) {
             .mes-hero-grid {
                 grid-template-columns: 1fr;
@@ -202,24 +182,6 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
-        }
-        .section-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-        .section-title {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 36px;
-            font-weight: 700;
-            color: #000864;
-            margin-bottom: 16px;
-        }
-        .section-subtitle {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 18px;
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto;
         }
         .beforeafter-grid {
             display: grid;
@@ -433,55 +395,6 @@
             padding: 80px 0;
             background: #ffffff;
         }
-        .capabilities-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-        .capability-card {
-            text-align: center;
-            padding: 32px 24px;
-            background: #ffffff;
-            border-radius: 16px;
-            border: 1px solid #e8eef3;
-            transition: all 0.3s ease;
-        }
-        .capability-card:hover {
-            border-color: #00AFF0;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 175, 240, 0.1);
-        }
-        .capability-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, rgba(0, 175, 240, 0.1), rgba(0, 175, 240, 0.05));
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-        }
-        .capability-icon svg {
-            width: 28px;
-            height: 28px;
-            stroke: #00AFF0;
-            stroke-width: 1.5;
-            fill: none;
-        }
-        .capability-title {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            color: #000864;
-            margin-bottom: 8px;
-        }
-        .capability-desc {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 14px;
-            color: #64748b;
-            line-height: 1.5;
-        }
-
         /* Integration Section */
         .integration-section {
             padding: 80px 0;
@@ -656,82 +569,6 @@
             background: #f0f7ff;
         }
 
-        /* CTA Section */
-        .mes-cta {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #00AFF0 0%, #2d7bc4 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .mes-cta::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .mes-cta-inner {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 24px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        .mes-cta-title {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 16px;
-        }
-        .mes-cta-subtitle {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 36px;
-        }
-        .mes-cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .btn-white {
-            background: #ffffff;
-            color: #00AFF0;
-            padding: 16px 32px;
-            border-radius: 8px;
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .btn-white:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-        }
-        .btn-outline-white {
-            background: transparent;
-            color: #ffffff;
-            padding: 16px 32px;
-            border-radius: 8px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .btn-outline-white:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #ffffff;
-        }
-
         /* Responsive */
         @media (max-width: 1024px) {
             .beforeafter-grid {
@@ -748,9 +585,6 @@
                 max-width: 600px;
                 margin: 0 auto;
             }
-            .capabilities-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
             .integration-visual {
                 flex-direction: column;
             }
@@ -765,24 +599,6 @@
             }
             .mes-hero h1 {
                 font-size: 32px;
-            }
-            .capabilities-grid {
-                grid-template-columns: 1fr;
-                max-width: 320px;
-                margin: 0 auto;
-            }
-            .section-title {
-                font-size: 28px;
-            }
-            .mes-cta-title {
-                font-size: 28px;
-            }
-            .mes-cta-buttons {
-                flex-direction: column;
-            }
-            .btn-white, .btn-outline-white {
-                width: 100%;
-                text-align: center;
             }
         }
     </style>
@@ -1453,15 +1269,15 @@
     </section>
 
     <!-- CTA Section — D RIGHT (standard) BOLD + dense wave: maximum shop floor energy -->
-    <section class="mes-cta" style="position: relative; overflow: hidden;">
+    <section class="product-detail-cta" style="position: relative; overflow: hidden;">
         <!-- Brand: D standard right, BOLD — strong pulse at the conversion point -->
         <div class="dw-d-bg dw-d-bg--bold dw-d-glow"></div>
         <!-- Brand: Dense wave flow — shop floor energy concentrated at CTA -->
         <div class="dw-wave-flow" style="height: 200px; opacity: 0.38; z-index: 1;"></div>
-        <div class="mes-cta-inner" style="position: relative; z-index: 3;">
-            <h2 class="mes-cta-title">Ready to See Your Shop Floor Clearly?</h2>
-            <p class="mes-cta-subtitle">Fill out the form and our team will reach out to discuss your specific production visibility challenges.</p>
-            <div class="mes-cta-buttons">
+        <div class="product-detail-cta-inner" style="position: relative; z-index: 3;">
+            <h2 class="product-detail-cta-title">Ready to See Your Shop Floor Clearly?</h2>
+            <p class="product-detail-cta-subtitle">Fill out the form and our team will reach out to discuss your specific production visibility challenges.</p>
+            <div class="product-detail-cta-buttons">
                 <a href="../demo.html" class="btn-white">Get in Touch</a>
                 <a href="../industries.html" class="btn-outline-white">View by Industry</a>
             </div>

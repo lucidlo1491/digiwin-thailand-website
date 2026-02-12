@@ -170,48 +170,11 @@
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
         }
 
-        .mockup-header {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
-        .mockup-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .mockup-dot:nth-child(1) { background: #ff5f57; }
-        .mockup-dot:nth-child(2) { background: #ffbd2e; }
-        .mockup-dot:nth-child(3) { background: #28ca42; }
-
         .mockup-content {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 8px;
             padding: 20px;
             min-height: 280px;
-        }
-
-        .mockup-nav {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .mockup-nav-item {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .mockup-nav-item.active {
-            color: var(--blue);
         }
 
         .mockup-grid {
@@ -225,14 +188,6 @@
             background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             padding: 16px;
-        }
-
-        .mockup-card-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 9px;
-            color: rgba(255, 255, 255, 0.4);
-            text-transform: uppercase;
-            margin-bottom: 8px;
         }
 
         .mockup-card-value {
@@ -253,13 +208,6 @@
             display: flex;
             align-items: flex-end;
             gap: 8px;
-        }
-
-        .mockup-bar {
-            flex: 1;
-            background: var(--blue);
-            border-radius: 4px 4px 0 0;
-            opacity: 0.6;
         }
 
         /* Pain Points Section - Moved UP */
@@ -589,12 +537,6 @@
             background: var(--white);
         }
 
-        .capabilities-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
         .capabilities-header {
             text-align: center;
             margin-bottom: 64px;
@@ -616,61 +558,6 @@
             font-weight: 700;
             color: var(--navy);
             margin: 0;
-        }
-
-        .capabilities-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-
-        .capability-card {
-            background: var(--white);
-            border: 1px solid #e8eef3;
-            border-radius: 20px;
-            padding: 32px 28px;
-            text-align: center;
-            transition: all 0.4s ease;
-        }
-
-        .capability-card:hover {
-            border-color: var(--blue);
-            box-shadow: 0 12px 40px rgba(0, 175, 240, 0.1);
-            transform: translateY(-6px);
-        }
-
-        .capability-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, rgba(0, 175, 240, 0.1), rgba(0, 175, 240, 0.05));
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-        }
-
-        .capability-icon svg {
-            width: 32px;
-            height: 32px;
-            stroke: var(--blue);
-            stroke-width: 1.5;
-            fill: none;
-        }
-
-        .capability-title {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 10px;
-        }
-
-        .capability-desc {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 14px;
-            color: #64748b;
-            line-height: 1.6;
         }
 
         /* Integration Section */
@@ -885,42 +772,6 @@
             flex-wrap: wrap;
         }
 
-        .btn-white {
-            background: var(--white);
-            color: #2d7bc4;
-            padding: 18px 36px;
-            border-radius: 12px;
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .btn-white:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-outline-white {
-            background: transparent;
-            color: var(--white);
-            padding: 18px 36px;
-            border-radius: 12px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .btn-outline-white:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--white);
-        }
-
         /* Weapon Cards */
         .weapon-card:hover {
             border-color: #00AFF0;
@@ -958,10 +809,6 @@
                 max-width: 600px;
                 margin-left: auto;
                 margin-right: auto;
-            }
-
-            .capabilities-grid {
-                grid-template-columns: repeat(2, 1fr);
             }
 
             .integration-visual {
@@ -1005,20 +852,8 @@
                 text-align: center;
             }
 
-            .capabilities-grid {
-                grid-template-columns: 1fr;
-                max-width: 360px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
             .erp-cta-buttons {
                 flex-direction: column;
-            }
-
-            .btn-white, .btn-outline-white {
-                width: 100%;
-                text-align: center;
             }
         }
     </style>

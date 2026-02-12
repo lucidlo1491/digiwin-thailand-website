@@ -181,24 +181,6 @@
             margin: 0 auto;
             padding: 0 24px;
         }
-        .section-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-        .section-title {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 36px;
-            font-weight: 700;
-            color: #000864;
-            margin-bottom: 16px;
-        }
-        .section-subtitle {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 18px;
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto;
-        }
         .problems-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -495,82 +477,6 @@
             background: #f0f7ff;
         }
 
-        /* CTA Section */
-        .wms-cta {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #00AFF0 0%, #2d7bc4 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .wms-cta::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .wms-cta-inner {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 24px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        .wms-cta-title {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 16px;
-        }
-        .wms-cta-subtitle {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 36px;
-        }
-        .wms-cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .btn-white {
-            background: #ffffff;
-            color: #00AFF0;
-            padding: 16px 32px;
-            border-radius: 8px;
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .btn-white:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-        }
-        .btn-outline-white {
-            background: transparent;
-            color: #ffffff;
-            padding: 16px 32px;
-            border-radius: 8px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .btn-outline-white:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #ffffff;
-        }
-
         /* Responsive */
         @media (max-width: 1024px) {
             .problems-grid {
@@ -605,19 +511,6 @@
                 grid-template-columns: 1fr;
                 max-width: 280px;
                 margin: 0 auto;
-            }
-            .section-title {
-                font-size: 28px;
-            }
-            .wms-cta-title {
-                font-size: 28px;
-            }
-            .wms-cta-buttons {
-                flex-direction: column;
-            }
-            .btn-white, .btn-outline-white {
-                width: 100%;
-                text-align: center;
             }
         }
     </style>
@@ -937,15 +830,15 @@
     </section>
 
     <!-- CTA Section — D LEFT + wave-flow: structured order driving toward action -->
-    <section class="wms-cta" style="position: relative; overflow: hidden;">
+    <section class="product-detail-cta" style="position: relative; overflow: hidden;">
         <!-- Brand: D LEFT — structured warehouse organization anchored on the left -->
         <div class="dw-d-bg dw-d-bg--left dw-d-bg--medium"></div>
         <!-- Brand: Wave flow — goods in motion toward the action point -->
         <div class="dw-wave-flow" style="height: 170px; opacity: 0.32; z-index: 1;"></div>
-        <div class="wms-cta-inner" style="position: relative; z-index: 3;">
-            <h2 class="wms-cta-title">Ready to End the Warehouse Chaos?</h2>
-            <p class="wms-cta-subtitle">Fill out the form and our team will reach out to discuss your specific warehouse challenges.</p>
-            <div class="wms-cta-buttons">
+        <div class="product-detail-cta-inner" style="position: relative; z-index: 3;">
+            <h2 class="product-detail-cta-title">Ready to End the Warehouse Chaos?</h2>
+            <p class="product-detail-cta-subtitle">Fill out the form and our team will reach out to discuss your specific warehouse challenges.</p>
+            <div class="product-detail-cta-buttons">
                 <a href="{{basePath}}demo.html" class="btn-white">Get in Touch</a>
                 <a href="{{basePath}}products.html" class="btn-outline-white">View All Products</a>
             </div>

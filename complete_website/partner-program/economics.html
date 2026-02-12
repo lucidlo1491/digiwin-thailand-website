@@ -342,6 +342,7 @@
             padding: 12px 16px;
             background: #eff6ff;
             border-radius: 12px;
+            min-height: 72px;
         }
         .activity-label {
             font-size: 12px;
@@ -364,35 +365,47 @@
         .math-row {
             display: flex;
             justify-content: space-between;
+            align-items: baseline;
             padding: 8px 0;
             font-size: 14px;
             color: #64748b;
             border-bottom: 1px solid #e2e8f0;
+            gap: 12px;
         }
         .math-row:last-child { border-bottom: none; }
+        .math-row > span:first-child {
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
         .math-value {
             font-family: 'Noto Sans', sans-serif;
             font-weight: 600;
             color: #000864;
+            text-align: right;
         }
         .math-value.dim { color: #94a3b8; }
         .math-value.highlight { color: #16a34a; }
         .math-total {
             display: flex;
             justify-content: space-between;
+            align-items: baseline;
             padding-top: 12px;
             margin-top: 8px;
             border-top: 2px solid #e2e8f0;
+            gap: 12px;
         }
         .math-total span:first-child {
             font-weight: 600;
             color: #000864;
+            flex-shrink: 0;
+            white-space: nowrap;
         }
         .math-total-value {
             font-family: 'Noto Sans', sans-serif;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: #16a34a;
+            text-align: right;
         }
         .phase-outcome {
             font-size: 14px;
@@ -1161,11 +1174,11 @@
                         <div class="phase-math">
                             <div class="math-row">
                                 <span>License Revenue</span>
-                                <span class="math-value">Strong upfront margin</span>
+                                <span class="math-value">Strong margin</span>
                             </div>
                             <div class="math-row">
                                 <span>Service Revenue</span>
-                                <span class="math-value">100% yours to keep</span>
+                                <span class="math-value">100% yours</span>
                             </div>
                             <div class="math-row">
                                 <span>Recurring (MA)</span>
@@ -1196,15 +1209,15 @@
                         <div class="phase-math">
                             <div class="math-row">
                                 <span>License Revenue</span>
-                                <span class="math-value">Growing with deal volume</span>
+                                <span class="math-value">Grows with volume</span>
                             </div>
                             <div class="math-row">
                                 <span>Service Revenue</span>
-                                <span class="math-value">100% yours — higher velocity</span>
+                                <span class="math-value">100% yours</span>
                             </div>
                             <div class="math-row">
                                 <span>Recurring (MA)</span>
-                                <span class="math-value">Annuity stream begins</span>
+                                <span class="math-value">Annuity begins</span>
                             </div>
                             <div class="math-total">
                                 <span>Year 2 Focus</span>
@@ -1231,15 +1244,15 @@
                         <div class="phase-math">
                             <div class="math-row">
                                 <span>License Revenue</span>
-                                <span class="math-value">Enterprise-tier deals</span>
+                                <span class="math-value">Enterprise deals</span>
                             </div>
                             <div class="math-row">
                                 <span>Service Revenue</span>
-                                <span class="math-value">100% yours — premium rates</span>
+                                <span class="math-value">100% yours</span>
                             </div>
                             <div class="math-row">
                                 <span>Recurring (MA)</span>
-                                <span class="math-value highlight">Compounding base</span>
+                                <span class="math-value highlight">Compounding</span>
                             </div>
                             <div class="math-total">
                                 <span>Year 3 Focus</span>

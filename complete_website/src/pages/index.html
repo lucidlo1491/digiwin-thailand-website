@@ -301,7 +301,7 @@
         .dw-hero-stat-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.75);
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
@@ -465,6 +465,28 @@
             .dw-client-logo[aria-hidden="true"] {
                 display: none;
             }
+            .dw-hero-content,
+            .dw-hero-stats,
+            .dw-hero-panel::before,
+            .factory-illustration .machine-line,
+            .factory-illustration .gear,
+            .factory-illustration .gear-reverse,
+            .factory-illustration .data-pulse,
+            .partner-illustration .chart-bar,
+            .partner-illustration .rising-line,
+            .partner-illustration .connection-dot,
+            .dw-hero-panel .dw-btn,
+            .dw-check-card,
+            .dw-trust-card,
+            .dw-value-prop,
+            .dw-value-prop-icon,
+            .dw-industry-content.active,
+            .dw-d-parallax,
+            .dw-wave-flow,
+            .dw-d-bg {
+                animation: none !important;
+                transition: none !important;
+            }
         }
 
         .dw-clients-stats {
@@ -543,7 +565,7 @@
         }
 
         .dw-checks-section--partner .dw-checks-label {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.75);
         }
 
         .dw-checks-label::before,
@@ -597,7 +619,7 @@
         }
 
         .dw-checks-section--partner .dw-checks-subtitle {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.75);
         }
 
         .dw-checks-grid {
@@ -651,7 +673,6 @@
         }
 
         .dw-checks-section--factory .dw-check-card:hover {
-            transform: translateY(-6px);
             box-shadow: 0 20px 60px rgba(0, 175, 240, 0.12);
             border-color: #00AFF0;
         }
@@ -662,7 +683,6 @@
         }
 
         .dw-checks-section--partner .dw-check-card:hover {
-            transform: translateY(-6px);
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(255, 255, 255, 0.2);
         }
@@ -730,7 +750,7 @@
         }
 
         .dw-checks-section--partner .dw-check-desc {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.75);
         }
 
         .dw-checks-cta {
@@ -1089,7 +1109,6 @@
         }
 
         .dw-trust-card:hover {
-            transform: translateY(-4px);
             box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
         }
 
@@ -1178,7 +1197,7 @@
         .dw-trust-detail {
             font-family: 'Noto Sans', sans-serif;
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.55);
+            color: rgba(255, 255, 255, 0.75);
             line-height: 1.65;
             margin: 0;
             position: relative;
@@ -1261,7 +1280,7 @@
         .dw-stat-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
             text-transform: uppercase;
             letter-spacing: 0.12em;
         }
@@ -1510,6 +1529,8 @@
 </head>
 <body>
 {{header}}
+<a href="#home-content" class="dw-skip-link">Skip to content</a>
+<main id="home-content">
 
     <!-- Split Screen Hero -->
     <section class="dw-hero-split" style="position: relative; overflow: hidden;">
@@ -3294,6 +3315,7 @@
             </div>
         </div>
     </section>
+</main>
 {{footer}}
 
 

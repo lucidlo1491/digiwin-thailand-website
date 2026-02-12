@@ -332,7 +332,7 @@
         /* Client Logo Bar */
         .dw-clients-section {
             background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-            padding: 60px 40px;
+            padding: 60px 0;
             position: relative;
             overflow: hidden;
         }
@@ -348,18 +348,18 @@
         }
 
         .dw-clients-inner {
-            max-width: 1200px;
+            max-width: 100%;
             margin: 0 auto;
         }
 
         .dw-clients-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 48px;
         }
 
         .dw-clients-label {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.15em;
@@ -368,34 +368,71 @@
         }
 
         .dw-clients-logos {
+            overflow: hidden;
+            margin-bottom: 48px;
+            position: relative;
+            mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+        }
+
+        .dw-clients-track {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 48px;
-            flex-wrap: wrap;
-            margin-bottom: 48px;
-            padding: 0 20px;
+            gap: 80px;
+            width: max-content;
+            animation: dw-scroll 55s linear infinite;
+        }
+
+        .dw-clients-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes dw-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         .dw-client-logo {
-            height: 56px;
-            min-width: 140px;
+            height: 72px;
+            min-width: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0.5;
-            transition: opacity 0.3s ease;
-        }
-
-        .dw-client-logo:hover {
-            opacity: 1;
+            flex-shrink: 0;
         }
 
         .dw-client-logo img {
             height: 100%;
             width: auto;
-            max-width: 180px;
+            max-width: 240px;
             object-fit: contain;
+            filter: grayscale(100%) opacity(0.55);
+            transition: filter 0.4s ease;
+        }
+
+        .dw-client-logo:hover img {
+            filter: grayscale(0%) opacity(1);
+        }
+
+        /* CTR logo is white-on-transparent — invert for light background */
+        .dw-client-logo--invert img {
+            filter: grayscale(100%) opacity(0.55) invert(1);
+        }
+        .dw-client-logo--invert:hover img {
+            filter: grayscale(100%) opacity(0.85) invert(1);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .dw-clients-track {
+                animation: none;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 60px;
+                padding: 0 40px;
+            }
+            .dw-client-logo[aria-hidden="true"] {
+                display: none;
+            }
         }
 
         .dw-clients-stats {
@@ -405,6 +442,10 @@
             gap: 60px;
             padding-top: 32px;
             border-top: 1px solid #e2e8f0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 40px;
+            padding-right: 40px;
         }
 
         .dw-clients-stat {
@@ -1277,8 +1318,12 @@
             .dw-stat::after {
                 display: none;
             }
-            .dw-clients-logos {
-                gap: 32px;
+            .dw-clients-track {
+                gap: 60px;
+            }
+            .dw-client-logo {
+                height: 60px;
+                min-width: 150px;
             }
             .dw-clients-stats {
                 gap: 40px;
@@ -1294,12 +1339,12 @@
         }
 
         @media (max-width: 768px) {
-            .dw-clients-logos {
-                gap: 24px;
+            .dw-clients-track {
+                gap: 48px;
             }
             .dw-client-logo {
-                min-width: 100px;
-                height: 40px;
+                min-width: 130px;
+                height: 52px;
             }
             .dw-clients-stats {
                 flex-direction: column;
@@ -1347,12 +1392,15 @@
             .dw-clients-section {
                 padding: 40px 24px;
             }
-            .dw-clients-logos {
-                gap: 20px;
+            .dw-clients-section {
+                padding: 40px 0;
+            }
+            .dw-clients-track {
+                gap: 40px;
             }
             .dw-client-logo {
-                min-width: 80px;
-                height: 40px;
+                min-width: 110px;
+                height: 44px;
             }
             .dw-checks-section {
                 padding: 64px 24px;
@@ -2081,26 +2129,60 @@
     <section class="dw-clients-section" style="position: relative; overflow: hidden;">
         <div class="dw-clients-inner">
             <div class="dw-clients-header">
-                <p class="dw-clients-label">Trusted by 50,000+ Manufacturers Across Asia</p>
+                <p class="dw-clients-label">Trusted by Leading Manufacturers in Thailand</p>
             </div>
             <div class="dw-clients-logos">
-                <div class="dw-client-logo" title="Yulon Motor — Automotive manufacturer, AI transformation with DigiWin">
-                    <img src="logos/yulon-motor.svg" alt="Yulon Motor 裕隆汽車">
-                </div>
-                <div class="dw-client-logo" title="Daiso Taiwan — 29% revenue growth with DigiWin digital transformation">
-                    <img src="logos/daiso.svg" alt="Daiso Taiwan 大創百貨">
-                </div>
-                <div class="dw-client-logo" title="Tailin Electronics — SMT manufacturer, NT$3M annual cost savings">
-                    <img src="logos/tailin-electronics.svg" alt="Tailin Electronics 台林電通">
-                </div>
-                <div class="dw-client-logo" title="Taiwan Implant Technology — Precision medical manufacturing with MES">
-                    <img src="logos/taiwan-implant-tech.svg" alt="Taiwan Implant Technology 台灣植體科技">
-                </div>
-                <div class="dw-client-logo" title="Jiuda Bearing — Manufacturing group, BI-driven supply chain">
-                    <img src="logos/jiuda-bearing.svg" alt="Jiuda Bearing 久大軸承">
-                </div>
-                <div class="dw-client-logo" title="OCEAN COATINGS — Industrial coatings manufacturer">
-                    <img src="logos/ocean-coatings.svg" alt="OCEAN COATINGS 大洋塗料">
+                <div class="dw-clients-track">
+                    <!-- Set 1 — Official logos, CSS grayscale for monotone -->
+                    <div class="dw-client-logo" title="Cal-Comp Electronics (Thailand) — SET: CCET">
+                        <img src="logos/calcomp.png" alt="Cal-Comp Electronics (Thailand) 泰金寶科技">
+                    </div>
+                    <div class="dw-client-logo" title="TTS Plastic — Plastic injection molding">
+                        <img src="logos/tts-plastic.png" alt="TTS Plastic Co., Ltd.">
+                    </div>
+                    <div class="dw-client-logo" title="Yeong Guan Energy Technology — TWSE: 1589">
+                        <img src="logos/yeong-guan.jpg" alt="Yeong Guan Energy Technology 永冠集團">
+                    </div>
+                    <div class="dw-client-logo" title="S.T.K. Steel — Stainless steel manufacturer">
+                        <img src="logos/stk-steel.png" alt="S.T.K. Steel Co., Ltd.">
+                    </div>
+                    <div class="dw-client-logo" title="Goldensea Hi-Tech — Specialty chemicals">
+                        <img src="logos/goldensea.png" alt="Goldensea Hi-Tech 金海高科">
+                    </div>
+                    <div class="dw-client-logo" title="Chelic — Pneumatic automation, TWSE: 4555">
+                        <img src="logos/chelic.png" alt="Chelic Corporation">
+                    </div>
+                    <div class="dw-client-logo dw-client-logo--invert" title="CTR — Chung Tai Rubber, vibration damping">
+                        <img src="logos/ctr.png" alt="Chung Tai Rubber 中台橡膠">
+                    </div>
+                    <div class="dw-client-logo" title="Haidilao — HKEX: 6862 / NASDAQ: HDL">
+                        <img src="logos/haidilao.png" alt="Haidilao 海底捞火锅">
+                    </div>
+                    <!-- Set 2 (duplicate for seamless loop) -->
+                    <div class="dw-client-logo" aria-hidden="true">
+                        <img src="logos/calcomp.png" alt="">
+                    </div>
+                    <div class="dw-client-logo" aria-hidden="true">
+                        <img src="logos/tts-plastic.png" alt="">
+                    </div>
+                    <div class="dw-client-logo" aria-hidden="true">
+                        <img src="logos/yeong-guan.jpg" alt="">
+                    </div>
+                    <div class="dw-client-logo" aria-hidden="true">
+                        <img src="logos/stk-steel.png" alt="">
+                    </div>
+                    <div class="dw-client-logo" aria-hidden="true">
+                        <img src="logos/goldensea.png" alt="">
+                    </div>
+                    <div class="dw-client-logo" aria-hidden="true">
+                        <img src="logos/chelic.png" alt="">
+                    </div>
+                    <div class="dw-client-logo dw-client-logo--invert" aria-hidden="true">
+                        <img src="logos/ctr.png" alt="">
+                    </div>
+                    <div class="dw-client-logo" aria-hidden="true">
+                        <img src="logos/haidilao.png" alt="">
+                    </div>
                 </div>
             </div>
             <div class="dw-clients-stats">

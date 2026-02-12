@@ -5,309 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hands-On: Setting Up Shop Floor Data Collection with eMES - DigiWin Thailand</title>
     <meta name="description" content="Full-day hands-on workshop configuring real eMES modules, connecting shop floor devices, and seeing live OEE data flow from machine to dashboard.">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="{{basePath}}styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="../assets/digiwin-d-mark.svg">
+    <link rel="icon" type="image/svg+xml" href="{{basePath}}assets/digiwin-d-mark.svg">
     <style>
         :root { --event-color: #22C55E; }
     </style>
 </head>
 <body>
-    <header class="dw-header">
-        <div class="dw-header-inner">
-            <a href="../index.html" class="dw-logo">
-                <img src="../assets/digiwin-logo-en.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--desktop" width="160" height="40">
-                <img src="../assets/digiwin-d-mark.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--mobile" width="32" height="32">
-                <span class="dw-logo-since">Since 1982</span>
-            </a>
-
-            <nav class="dw-nav">
-                <div class="dw-nav-item">
-                    <a href="../index.html" class="dw-nav-link">Home</a>
-                </div>
-
-                <div class="dw-nav-item" data-dropdown>
-                    <span class="dw-nav-link">
-                        Products
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                    </span>
-                    <div class="dw-mega-menu">
-                        <div class="dw-mega-inner">
-                            <!-- Column 1: Core Systems -->
-                            <div class="dw-mega-column">
-                                <div class="dw-mega-column-title">Core Systems</div>
-                                <a href="../products/erp.html" class="dw-mega-item">
-                                    <div class="dw-mega-icon">
-                                        <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3z"/><path d="M3 9h18M9 21V9"/></svg>
-                                    </div>
-                                    <div class="dw-mega-info">
-                                        <p class="dw-mega-title">ERP: T100 & iGP</p>
-                                        <p class="dw-mega-desc">Finance, supply chain, and operations</p>
-                                    </div>
-                                </a>
-                                <a href="../products/mes.html" class="dw-mega-item">
-                                    <div class="dw-mega-icon">
-                                        <svg viewBox="0 0 24 24"><path d="M2 20h20M6 20V10l4-6h4l4 6v10"/><path d="M6 14h12"/></svg>
-                                    </div>
-                                    <div class="dw-mega-info">
-                                        <p class="dw-mega-title">MES: sMES & SFT</p>
-                                        <p class="dw-mega-desc">Production tracking and quality</p>
-                                    </div>
-                                </a>
-                                <a href="../products/wms.html" class="dw-mega-item">
-                                    <div class="dw-mega-icon">
-                                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg>
-                                    </div>
-                                    <div class="dw-mega-info">
-                                        <p class="dw-mega-title">WMS: sFLS</p>
-                                        <p class="dw-mega-desc">Warehouse and inventory</p>
-                                    </div>
-                                </a>
-                                <a href="../products/aiot.html" class="dw-mega-item">
-                                    <div class="dw-mega-icon">
-                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
-                                    </div>
-                                    <div class="dw-mega-info">
-                                        <p class="dw-mega-title">AIoT & Smart Factory</p>
-                                        <p class="dw-mega-desc">Machine connectivity and analytics</p>
-                                    </div>
-                                </a>
-                                <a href="../products.html" class="dw-mega-viewall">
-                                    View All Products
-                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                </a>
-                            </div>
-                            <!-- Featured: Manufacturing Suite -->
-                            <div class="dw-mega-featured">
-                                <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><path d="M20 90V50l20-20h40l20 20v40" stroke-linecap="round"/><path d="M35 90V65h20v25M65 90V55h20v35"/><circle cx="60" cy="25" r="8"/><path d="M60 33v12"/></svg>
-                                </div>
-                                <div class="dw-mega-featured-content">
-                                    <span class="dw-mega-featured-label">Complete Stack</span>
-                                    <h3 class="dw-mega-featured-title">Manufacturing & Distribution</h3>
-                                    <p class="dw-mega-featured-desc">Tailor-made ERP for manufacturing and distribution companies in Thailand and ASEAN.</p>
-                                    <a href="../products.html" class="dw-mega-featured-cta">
-                                        Explore Solutions
-                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dw-nav-item" data-dropdown>
-                    <span class="dw-nav-link">
-                        Industries
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                    </span>
-                    <div class="dw-mega-menu">
-                        <div class="dw-mega-inner">
-                            <!-- Column 1: Manufacturing Sectors -->
-                            <div class="dw-mega-column">
-                                <div class="dw-mega-column-title">Manufacturing Sectors</div>
-                                <a href="../industries/automotive.html" class="dw-mega-item">
-                                    <div class="dw-mega-icon">
-                                        <svg viewBox="0 0 24 24"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-6l2-4h12l2 4v6h-2M5 17h10"/></svg>
-                                    </div>
-                                    <div class="dw-mega-info">
-                                        <p class="dw-mega-title">Automotive Parts</p>
-                                        <p class="dw-mega-desc">JIT delivery and OEM traceability</p>
-                                    </div>
-                                </a>
-                                <a href="../industries/electronics.html" class="dw-mega-item">
-                                    <div class="dw-mega-icon">
-                                        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3"/></svg>
-                                    </div>
-                                    <div class="dw-mega-info">
-                                        <p class="dw-mega-title">Electronics Assembly</p>
-                                        <p class="dw-mega-desc">SMT integration and MSD tracking</p>
-                                    </div>
-                                </a>
-                                <a href="../industries/metal-plastics.html" class="dw-mega-item">
-                                    <div class="dw-mega-icon">
-                                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                                    </div>
-                                    <div class="dw-mega-info">
-                                        <p class="dw-mega-title">Metal & Plastics</p>
-                                        <p class="dw-mega-desc">Yield optimization and scrap reduction</p>
-                                    </div>
-                                </a>
-                                <a href="../industries.html" class="dw-mega-viewall">
-                                    View All Industries
-                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                </a>
-                            </div>
-                            <!-- Featured: Industry Expertise -->
-                            <div class="dw-mega-featured">
-                                <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><path d="M20 100V60l15-25h50l15 25v40" stroke-linecap="round"/><rect x="35" y="70" width="20" height="30" rx="2"/><rect x="65" y="60" width="20" height="40" rx="2"/><path d="M45 40h30M60 25v15"/><circle cx="60" cy="20" r="5"/></svg>
-                                </div>
-                                <div class="dw-mega-featured-content">
-                                    <span class="dw-mega-featured-label">50,000+ Factories</span>
-                                    <h3 class="dw-mega-featured-title">Industry-Specific Solutions</h3>
-                                    <p class="dw-mega-featured-desc">Pre-configured templates and best practices for your specific manufacturing sector.</p>
-                                    <a href="../industries.html" class="dw-mega-featured-cta">
-                                        Find Your Industry
-                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dw-nav-item" data-dropdown>
-                    <span class="dw-nav-link">
-                        Partners
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                    </span>
-                    <div class="dw-mega-menu">
-                        <div class="dw-mega-inner">
-                            <!-- Column 1: Why Partner -->
-                            <div class="dw-mega-column">
-                                <div class="dw-mega-column-title">Why Partner</div>
-                                <a href="../partner-program/business-model.html" class="dw-mega-item">
-                                    <div class="dw-mega-icon">
-                                        <svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
-                                    </div>
-                                    <div class="dw-mega-info">
-                                        <p class="dw-mega-title">The Evolving Business Model</p>
-                                    </div>
-                                </a>
-                                <a href="../partner-program/economics.html" class="dw-mega-item">
-                                    <div class="dw-mega-icon">
-                                        <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                                    </div>
-                                    <div class="dw-mega-info">
-                                        <p class="dw-mega-title">Partner Economics</p>
-                                    </div>
-                                </a>
-                                <a href="../partner-program/solutions.html" class="dw-mega-item">
-                                    <div class="dw-mega-icon">
-                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
-                                    </div>
-                                    <div class="dw-mega-info">
-                                        <p class="dw-mega-title">Solution Stack</p>
-                                    </div>
-                                </a>
-                                <a href="../partner-program.html" class="dw-mega-viewall">
-                                    Partner Overview
-                                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                </a>
-                            </div>
-                            <!-- Column 2: Getting Started -->
-                            <div class="dw-mega-column">
-                                <div class="dw-mega-column-title">Getting Started</div>
-                                <a href="../partner-program.html" class="dw-mega-item">
-                                    <div class="dw-mega-icon">
-                                        <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
-                                    </div>
-                                    <div class="dw-mega-info">
-                                        <p class="dw-mega-title">Become a Partner</p>
-                                    </div>
-                                </a>
-                                <a href="../demo.html" class="dw-mega-item">
-                                    <div class="dw-mega-icon">
-                                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                                    </div>
-                                    <div class="dw-mega-info">
-                                        <p class="dw-mega-title">Schedule a Conversation</p>
-                                    </div>
-                                </a>
-                                <a href="../about.html" class="dw-mega-item">
-                                    <div class="dw-mega-icon">
-                                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-                                    </div>
-                                    <div class="dw-mega-info">
-                                        <p class="dw-mega-title">About DigiWin</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- Featured: Partner Program -->
-                            <div class="dw-mega-featured">
-                                <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(0,175,240,0.3)"/></svg>
-                                </div>
-                                <div class="dw-mega-featured-content">
-                                    <span class="dw-mega-featured-label">For ERP Implementers</span>
-                                    <h3 class="dw-mega-featured-title">Grow Beyond the Man-Day Model</h3>
-                                    <p class="dw-mega-featured-desc">30-40% license margins. 100% service fees. Recurring revenue that compounds.</p>
-                                    <a href="../partner-program.html" class="dw-mega-featured-cta">
-                                        Become a Partner
-                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dw-nav-item" data-dropdown>
-                    <span class="dw-nav-link">
-                        Resources
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                    </span>
-                    <div class="dw-mega-menu">
-                        <div class="dw-mega-inner">
-                            <div class="dw-mega-column">
-                                <div class="dw-mega-column-title">Learn & Connect</div>
-                                <a href="../news.html" class="dw-mega-item">
-                                    <div class="dw-mega-icon">
-                                        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                                    </div>
-                                    <div class="dw-mega-info">
-                                        <p class="dw-mega-title">News & Events</p>
-                                        <p class="dw-mega-desc">Seminars, workshops, and factory visits</p>
-                                    </div>
-                                </a>
-                                <a href="../blog.html" class="dw-mega-item">
-                                    <div class="dw-mega-icon">
-                                        <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-                                    </div>
-                                    <div class="dw-mega-info">
-                                        <p class="dw-mega-title">Insights & Knowledge</p>
-                                        <p class="dw-mega-desc">Technical guides and implementation stories</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- Featured: Latest Insight -->
-                            <div class="dw-mega-featured">
-                                <div class="dw-mega-featured-image">
-                                    <svg viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(0,175,240,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
-                                </div>
-                                <div class="dw-mega-featured-content">
-                                    <span class="dw-mega-featured-label">Latest Insight</span>
-                                    <h3 class="dw-mega-featured-title">BOI Compliance: 10M THB Saved</h3>
-                                    <p class="dw-mega-featured-desc">How one factory eliminated supplementary taxes through production-order-level reconciliation.</p>
-                                    <a href="../blog/boi-compliance-jin-hai.html" class="dw-mega-featured-cta">
-                                        Read the Story
-                                        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dw-nav-item">
-                    <a href="../about.html" class="dw-nav-link">About</a>
-                </div>
-            </nav>
-
-            <a href="../demo.html" class="dw-header-cta">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;margin-right:8px;vertical-align:middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                <span style="vertical-align:middle;">Let's Talk</span>
-            </a>
-
-            <button class="dw-menu-toggle" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
-
+{{header}}
 
     <!-- Section 1: Hero -->
     <section class="event-hero" style="position: relative; overflow: hidden;">
@@ -316,7 +22,7 @@
         <!-- Brand: Dense particle ocean — data workshop = immersion in data -->
         <div class="dw-wave-flow" style="height: 220px; opacity: 0.45; z-index: 1;"></div>
         <div class="event-hero-inner" style="position: relative; z-index: 2;">
-            <a href="../news.html" class="event-back-link">
+            <a href="{{basePath}}news.html" class="event-back-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                 Back to News & Events
             </a>
@@ -355,7 +61,7 @@
                 </div>
             </div>
 
-            <a href="../demo.html" class="event-hero-cta">
+            <a href="{{basePath}}demo.html" class="event-hero-cta">
                 Reserve Your Spot
                 <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
@@ -631,11 +337,11 @@
         <div class="event-register-inner" style="position: relative; z-index: 2;">
             <h2 class="fade-in">Reserve Your Spot</h2>
             <p class="event-register-meta fade-in">Thursday, April 24, 2026 &middot; Bangkok &middot; Limited to 25 participants</p>
-            <a href="../demo.html" class="event-register-btn fade-in">
+            <a href="{{basePath}}demo.html" class="event-register-btn fade-in">
                 Reserve Your Spot
                 <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
-            <a href="../demo.html" class="event-register-secondary fade-in">Can't make this date? Register your interest and we'll notify you of the next session.</a>
+            <a href="{{basePath}}demo.html" class="event-register-secondary fade-in">Can't make this date? Register your interest and we'll notify you of the next session.</a>
         </div>
     </section>
 
@@ -708,84 +414,7 @@
 
     <!-- Footer -->
 
-    <!-- Footer -->
-    <footer class="dw-footer">
-        <div class="dw-footer-inner">
-            <div class="dw-footer-grid">
-                <div class="dw-footer-brand">
-                    <div class="dw-footer-logo">
-                        <img src="../assets/digiwin-logo-en-white.svg" alt="DigiWin" width="140" height="35">
-                    </div>
-                    <p class="dw-footer-tagline"><span class="dw-years">44</span> years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
-                    <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
-                </div>
-
-                <div class="dw-footer-column">
-                    <h4>Products</h4>
-                    <ul class="dw-footer-links">
-                        <li><a href="../products.html">All Products</a></li>
-                        <li><a href="../products/erp.html">ERP: T100 & iGP</a></li>
-                        <li><a href="../products/mes.html">MES: sMES & SFT</a></li>
-                        <li><a href="../products/wms.html">WMS: sFLS</a></li>
-                        <li><a href="../products/aiot.html">AIoT & Smart Factory</a></li>
-                    </ul>
-                </div>
-
-                <div class="dw-footer-column">
-                    <h4>Industries</h4>
-                    <ul class="dw-footer-links">
-                        <li><a href="../industries.html">All Industries</a></li>
-                        <li><a href="../industries/automotive.html">Automotive Parts</a></li>
-                        <li><a href="../industries/electronics.html">Electronics Assembly</a></li>
-                        <li><a href="../industries/metal-plastics.html">Metal & Plastics</a></li>
-                    </ul>
-                    <h4 style="margin-top: 24px;">Partners</h4>
-                    <ul class="dw-footer-links">
-                        <li><a href="../partner-program.html">Partner Program</a></li>
-                        <li><a href="../partner-program/economics.html">Partner Economics</a></li>
-                    </ul>
-                    <h4 style="margin-top: 24px;">Resources</h4>
-                    <ul class="dw-footer-links">
-                        <li><a href="../news.html">News & Events</a></li>
-                        <li><a href="../blog.html">Insights & Knowledge</a></li>
-                    </ul>
-                </div>
-
-                <div class="dw-footer-column">
-                    <h4>Contact</h4>
-                    <div class="dw-footer-contact">
-                        <p>
-                            <strong>DigiWin Thailand</strong><br>
-                            No. 2/117-118, Bangna Complex Office Tower,<br>
-                            22nd Floor, Theparat Road,<br>
-                            Bangna, Bangkok 10260
-                        </p>
-                        <p>
-                            <a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a>
-                        </p>
-                    </div>
-                    <div class="dw-footer-social">
-                        <a href="#" title="LinkedIn">in</a>
-                        <a href="#" title="Facebook">f</a>
-                        <a href="#" title="LINE">L</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dw-footer-bottom">
-                <p class="dw-footer-copyright">© 2026 DigiWin Thailand. All rights reserved.</p>
-                <div class="dw-footer-legal">
-                    <a href="../privacy-policy.html">Privacy Policy</a>
-                    <a href="../terms.html">Terms of Service</a>
-                    <a href="../about.html">About Us</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <script src="../digiwin-components.js"></script>
-    <script src="../digiwin-dynamic.js"></script>
-    <script src="../particle-ocean.js"></script>
-
+{{footer}}
 
     <script>
     (function() {

@@ -1200,7 +1200,7 @@
 
 
     <script>
-    (function() {
+    document.addEventListener('DOMContentLoaded', function() {
         // Product cards
         DigiWinUI.initScrollAnimation('.pp-card', {
             mode: 'class', className: 'visible', stagger: 120,
@@ -1220,7 +1220,7 @@
         }, { threshold: 0.3 });
         var diagram = document.querySelector('.integration-diagram');
         if (diagram) diagramObserver.observe(diagram);
-    })();
+    });
     </script>
 </body>
 </html>

@@ -957,7 +957,7 @@
 
 
     <script>
-    (function() {
+    document.addEventListener('DOMContentLoaded', function() {
         // Industry cards
         DigiWinUI.initScrollAnimation('.industry-card', {
             mode: 'class', className: 'visible',
@@ -973,7 +973,7 @@
         DigiWinUI.initScrollAnimation('.context-stat', {
             distance: 16, duration: 200, threshold: 0.2
         });
-    })();
+    });
     </script>
 </body>
 </html>

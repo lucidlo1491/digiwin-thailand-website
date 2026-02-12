@@ -3381,7 +3381,7 @@
 
 
     <script>
-    (function() {
+    document.addEventListener('DOMContentLoaded', function() {
         // Industry tabs
         var industryTabs = document.querySelectorAll('.dw-industry-tab');
         var industryContents = document.querySelectorAll('.dw-industry-content');
@@ -3411,7 +3411,7 @@
             });
         }, { threshold: 0.5 });
         document.querySelectorAll('.dw-clients-stat').forEach(function(el) { statsObserver.observe(el); });
-    })();
+    });
     </script>
 </body>
 </html>

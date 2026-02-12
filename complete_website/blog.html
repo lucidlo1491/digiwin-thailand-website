@@ -861,7 +861,7 @@
 
 
     <script>
-    (function() {
+    document.addEventListener('DOMContentLoaded', function() {
         // Filter tabs
         var filterTabs = document.querySelectorAll('.blog-hub-filter-tab');
         var articleCards = document.querySelectorAll('.article-card');
@@ -897,7 +897,7 @@
         DigiWinUI.initScrollAnimation('.blog-hub-cta-inner', {
             stagger: 0, distance: 16, duration: 200, threshold: 0.2
         });
-    })();
+    });
     </script>
 </body>
 </html>

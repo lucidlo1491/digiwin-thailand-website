@@ -259,6 +259,8 @@
             border-radius: 20px;
             overflow: hidden;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
         .year-phase:hover {
             box-shadow: 0 12px 40px rgba(0,0,0,0.08);
@@ -298,6 +300,9 @@
         }
         .phase-body {
             padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         .phase-reality {
             font-size: 14px;
@@ -354,6 +359,7 @@
             border-radius: 12px;
             padding: 16px;
             margin-bottom: 16px;
+            margin-top: auto;
         }
         .math-row {
             display: flex;
@@ -854,15 +860,9 @@
                     </div>
                     <div class="phase-body">
                         <p class="phase-reality"><strong>Reality:</strong> Don't expect profit in Q1-Q2. Your focus is training your core team and closing first "Pilot" deals with DigiWin's heavy assistance.</p>
-                        <div class="phase-timeline">
-                            <div class="timeline-row">
-                                <span class="timeline-q">Q1-Q2</span>
-                                <span class="timeline-act">2 Senior Consultants undergo certification</span>
-                            </div>
-                            <div class="timeline-row">
-                                <span class="timeline-q">Q3-Q4</span>
-                                <span class="timeline-act">Close 2 Workflow iGP projects</span>
-                            </div>
+                        <div class="phase-activity">
+                            <span class="activity-label">Milestones:</span>
+                            <span class="activity-value">Certify 2 consultants, close 2 Workflow iGP pilots</span>
                         </div>
                         <div class="phase-math">
                             <div class="math-row">

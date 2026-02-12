@@ -11,6 +11,7 @@
  *   3. No low-contrast text — color: rgba(255,255,255,X) where X < 0.75
  *   4. prefers-reduced-motion present if page has inline @keyframes
  *   5. Form inputs have associated <label for="id">
+ *   6. Inline scripts using DigiWinUI are wrapped in DOMContentLoaded
  *
  * Also checks shared styles.css for contrast issues.
  *
@@ -191,6 +192,27 @@ function checkFormLabels(html) {
         issues.join('; '));
 }
 
+// ── Check 6: Scroll animation safety ─────────────────────────────
+//    Inline scripts using DigiWinUI must be inside DOMContentLoaded
+//    because digiwin-components.js loads with defer.
+
+function checkScrollAnimSafety(html) {
+    const issues = [];
+    // Match inline <script> blocks (no src attribute)
+    const scriptRe = /<script(?![^>]*\bsrc\b)[^>]*>([\s\S]*?)<\/script>/gi;
+    let m;
+    while ((m = scriptRe.exec(html)) !== null) {
+        const body = m[1];
+        if (!/DigiWinUI/i.test(body)) continue;
+        // Check that DigiWinUI usage is inside a DOMContentLoaded listener
+        if (!/DOMContentLoaded/.test(body)) {
+            issues.push('Inline <script> uses DigiWinUI without DOMContentLoaded wrapper — will fail because digiwin-components.js is deferred');
+        }
+    }
+    return result('scroll-anim-safety', 'Scroll animation init safety', issues.length === 0,
+        issues.join('; '));
+}
+
 // ── Shared CSS check ───────────────────────────────────────────────
 
 function auditSharedCSS() {
@@ -208,7 +230,8 @@ function auditPage(filePath) {
         checkMainLandmark(html),
         checkContrast(html),
         checkReducedMotion(html),
-        checkFormLabels(html)
+        checkFormLabels(html),
+        checkScrollAnimSafety(html)
     ];
 }
 

@@ -34,10 +34,7 @@
             }
         }
 
-        @keyframes fade-in {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        /* fade-in: use shared @keyframes fadeIn from styles.css */
 
         @keyframes draw-line {
             from { stroke-dashoffset: 1000; }
@@ -280,7 +277,7 @@
             margin-top: 48px;
             padding-top: 32px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            animation: fade-in 1s ease-out 0.5s both;
+            animation: fadeIn 1s ease-out 0.5s both;
         }
 
         .dw-hero-stat {
@@ -974,7 +971,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             align-items: center;
-            animation: fade-in 0.5s ease-out;
+            animation: fadeIn 0.5s ease-out;
         }
 
         .dw-industry-image {
@@ -2225,68 +2222,68 @@
                 <div class="dw-clients-track">
                     <!-- Set 1 — Logo mark left, company name right -->
                     <div class="dw-client-logo">
-                        <div class="dw-client-logo-img"><img src="logos/calcomp.png" alt="Cal-Comp Electronics"></div>
+                        <div class="dw-client-logo-img"><img src="logos/calcomp.png" alt="Cal-Comp Electronics" loading="lazy"></div>
                         <span class="dw-client-name">Cal-Comp Electronics<small>SET: CCET</small></span>
                     </div>
                     <div class="dw-client-logo">
-                        <div class="dw-client-logo-img"><img src="logos/tts-plastic.png" alt="TTS Plastic"></div>
+                        <div class="dw-client-logo-img"><img src="logos/tts-plastic.png" alt="TTS Plastic" loading="lazy"></div>
                         <span class="dw-client-name">TTS Plastic<small>Injection Molding</small></span>
                     </div>
                     <div class="dw-client-logo">
-                        <div class="dw-client-logo-img"><img src="logos/yeong-guan.jpg" alt="Yeong Guan Energy"></div>
+                        <div class="dw-client-logo-img"><img src="logos/yeong-guan.jpg" alt="Yeong Guan Energy" loading="lazy"></div>
                         <span class="dw-client-name">Yeong Guan Energy<small>TWSE: 1589</small></span>
                     </div>
                     <div class="dw-client-logo">
-                        <div class="dw-client-logo-img"><img src="logos/stk-steel.png" alt="S.T.K. Steel"></div>
+                        <div class="dw-client-logo-img"><img src="logos/stk-steel.png" alt="S.T.K. Steel" loading="lazy"></div>
                         <span class="dw-client-name">S.T.K. Steel<small>Stainless Steel</small></span>
                     </div>
                     <div class="dw-client-logo">
-                        <div class="dw-client-logo-img"><img src="logos/goldensea.png" alt="Goldensea Hi-Tech"></div>
+                        <div class="dw-client-logo-img"><img src="logos/goldensea.png" alt="Goldensea Hi-Tech" loading="lazy"></div>
                         <span class="dw-client-name">Goldensea Hi-Tech<small>Specialty Chemicals</small></span>
                     </div>
                     <div class="dw-client-logo">
-                        <div class="dw-client-logo-img"><img src="logos/chelic.png" alt="Chelic"></div>
+                        <div class="dw-client-logo-img"><img src="logos/chelic.png" alt="Chelic" loading="lazy"></div>
                         <span class="dw-client-name">Chelic Corporation<small>TWSE: 4555</small></span>
                     </div>
                     <div class="dw-client-logo dw-client-logo--invert">
-                        <div class="dw-client-logo-img"><img src="logos/ctr.png" alt="Chung Tai Rubber"></div>
+                        <div class="dw-client-logo-img"><img src="logos/ctr.png" alt="Chung Tai Rubber" loading="lazy"></div>
                         <span class="dw-client-name">Chung Tai Rubber<small>Vibration Control</small></span>
                     </div>
                     <div class="dw-client-logo">
-                        <div class="dw-client-logo-img"><img src="logos/haidilao.png" alt="Haidilao"></div>
+                        <div class="dw-client-logo-img"><img src="logos/haidilao.png" alt="Haidilao" loading="lazy"></div>
                         <span class="dw-client-name">Haidilao International<small>HKEX: 6862</small></span>
                     </div>
                     <!-- Set 2 (duplicate for seamless loop) -->
                     <div class="dw-client-logo" aria-hidden="true">
-                        <div class="dw-client-logo-img"><img src="logos/calcomp.png" alt=""></div>
+                        <div class="dw-client-logo-img"><img src="logos/calcomp.png" alt="" loading="lazy"></div>
                         <span class="dw-client-name">Cal-Comp Electronics<small>SET: CCET</small></span>
                     </div>
                     <div class="dw-client-logo" aria-hidden="true">
-                        <div class="dw-client-logo-img"><img src="logos/tts-plastic.png" alt=""></div>
+                        <div class="dw-client-logo-img"><img src="logos/tts-plastic.png" alt="" loading="lazy"></div>
                         <span class="dw-client-name">TTS Plastic<small>Injection Molding</small></span>
                     </div>
                     <div class="dw-client-logo" aria-hidden="true">
-                        <div class="dw-client-logo-img"><img src="logos/yeong-guan.jpg" alt=""></div>
+                        <div class="dw-client-logo-img"><img src="logos/yeong-guan.jpg" alt="" loading="lazy"></div>
                         <span class="dw-client-name">Yeong Guan Energy<small>TWSE: 1589</small></span>
                     </div>
                     <div class="dw-client-logo" aria-hidden="true">
-                        <div class="dw-client-logo-img"><img src="logos/stk-steel.png" alt=""></div>
+                        <div class="dw-client-logo-img"><img src="logos/stk-steel.png" alt="" loading="lazy"></div>
                         <span class="dw-client-name">S.T.K. Steel<small>Stainless Steel</small></span>
                     </div>
                     <div class="dw-client-logo" aria-hidden="true">
-                        <div class="dw-client-logo-img"><img src="logos/goldensea.png" alt=""></div>
+                        <div class="dw-client-logo-img"><img src="logos/goldensea.png" alt="" loading="lazy"></div>
                         <span class="dw-client-name">Goldensea Hi-Tech<small>Specialty Chemicals</small></span>
                     </div>
                     <div class="dw-client-logo" aria-hidden="true">
-                        <div class="dw-client-logo-img"><img src="logos/chelic.png" alt=""></div>
+                        <div class="dw-client-logo-img"><img src="logos/chelic.png" alt="" loading="lazy"></div>
                         <span class="dw-client-name">Chelic Corporation<small>TWSE: 4555</small></span>
                     </div>
                     <div class="dw-client-logo dw-client-logo--invert" aria-hidden="true">
-                        <div class="dw-client-logo-img"><img src="logos/ctr.png" alt=""></div>
+                        <div class="dw-client-logo-img"><img src="logos/ctr.png" alt="" loading="lazy"></div>
                         <span class="dw-client-name">Chung Tai Rubber<small>Vibration Control</small></span>
                     </div>
                     <div class="dw-client-logo" aria-hidden="true">
-                        <div class="dw-client-logo-img"><img src="logos/haidilao.png" alt=""></div>
+                        <div class="dw-client-logo-img"><img src="logos/haidilao.png" alt="" loading="lazy"></div>
                         <span class="dw-client-name">Haidilao International<small>HKEX: 6862</small></span>
                     </div>
                 </div>
@@ -3666,9 +3663,9 @@
             </div>
         </div>
     </footer>
-    <script src="digiwin-components.js"></script>
-    <script src="digiwin-dynamic.js"></script>
-    <script src="particle-ocean.js"></script>
+    <script src="digiwin-components.js" defer></script>
+    <script src="digiwin-dynamic.js" defer></script>
+    <script src="particle-ocean.js" defer></script>
 
 
 

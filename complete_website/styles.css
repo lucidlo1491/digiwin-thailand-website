@@ -59,6 +59,27 @@ img {
     height: auto;
 }
 
+/* ===== SKIP LINK (Accessibility) ===== */
+.dw-skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 10000;
+    padding: 12px 24px;
+    background: var(--dw-navy);
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 0 0 8px 8px;
+    text-decoration: none;
+    transition: top 0.2s ease;
+}
+.dw-skip-link:focus {
+    top: 0;
+    outline: 3px solid var(--dw-blue);
+    outline-offset: 2px;
+}
+
 /* ===== SHARED KEYFRAMES ===== */
 @keyframes grain {
     0%, 100% { transform: translate(0, 0); }
@@ -5827,5 +5848,241 @@ img {
         width: 100%;
         text-align: center;
         justify-content: center;
+    }
+}
+
+/* ============================================
+   PRODUCT DETAIL PAGES — Shared Components
+   Used by: erp.html, mes.html, wms.html, aiot.html
+   ============================================ */
+
+/* --- Section Headers --- */
+.section-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.section-title {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--dw-navy);
+    margin-bottom: 16px;
+}
+
+.section-subtitle {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 18px;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- Mockup Window Chrome --- */
+.mockup-header {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.mockup-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.mockup-dot:nth-child(1) { background: #ff5f57; }
+.mockup-dot:nth-child(2) { background: #ffbd2e; }
+.mockup-dot:nth-child(3) { background: #28ca42; }
+
+.mockup-nav {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mockup-nav-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.mockup-nav-item.active {
+    color: var(--dw-blue);
+}
+
+.mockup-card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.mockup-bar {
+    flex: 1;
+    background: var(--dw-blue);
+    border-radius: 4px 4px 0 0;
+    opacity: 0.6;
+}
+
+.mockup-bar.active {
+    opacity: 1;
+    background: #10b981;
+}
+
+/* --- Capability Cards (4-column grid) --- */
+.capabilities-section {
+    padding: 80px 0;
+    background: #F5F7FA;
+}
+
+.capabilities-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.capability-card {
+    text-align: center;
+    padding: 32px 24px;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e8eef3;
+    transition: all 0.3s ease;
+}
+
+.capability-card:hover {
+    border-color: var(--dw-blue);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 175, 240, 0.1);
+}
+
+.capability-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, rgba(0, 175, 240, 0.1), rgba(0, 175, 240, 0.05));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+}
+
+.capability-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: var(--dw-blue);
+    stroke-width: 1.5;
+    fill: none;
+}
+
+.capability-title {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dw-navy);
+    margin-bottom: 8px;
+}
+
+.capability-desc {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+/* --- Product Detail CTA (blue gradient) --- */
+.product-detail-cta {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #00AFF0 0%, #2d7bc4 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.product-detail-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.product-detail-cta-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.product-detail-cta-title {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+
+.product-detail-cta-subtitle {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 36px;
+}
+
+.product-detail-cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* --- Product Detail Responsive --- */
+@media (max-width: 1024px) {
+    .capabilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .section-title {
+        font-size: 28px;
+    }
+
+    .capabilities-grid {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .product-detail-cta-title {
+        font-size: 28px;
+    }
+
+    .product-detail-cta-buttons {
+        flex-direction: column;
+    }
+
+    .product-detail-cta-buttons .btn-white,
+    .product-detail-cta-buttons .btn-outline-white {
+        width: 100%;
+        text-align: center;
     }
 }

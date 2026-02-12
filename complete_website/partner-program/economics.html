@@ -35,11 +35,11 @@
             align-items: center;
             gap: 8px;
             font-size: 14px;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
             margin-bottom: 24px;
         }
         .econ-breadcrumb a {
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
             text-decoration: none;
             transition: color 0.2s;
         }
@@ -84,9 +84,9 @@
         }
         .proof-label {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 500;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.8);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -140,8 +140,8 @@
             transition: all 0.3s ease;
         }
         .revenue-stream:hover {
-            transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            border-color: #cbd5e1;
         }
         .stream-header {
             background: linear-gradient(135deg, #000864 0%, #000432 100%);
@@ -400,7 +400,7 @@
         .journey-summary {
             background: linear-gradient(135deg, #000864 0%, #000432 100%);
             border-radius: 20px;
-            padding: 48px;
+            padding: 48px 48px 80px;
             text-align: center;
         }
         .journey-summary h4 {
@@ -443,7 +443,6 @@
             bottom: -32px;
             font-size: 13px;
             color: rgba(255,255,255,0.7);
-            white-space: nowrap;
         }
 
         /* Protection Section */
@@ -483,7 +482,6 @@
             transition: all 0.3s ease;
         }
         .protection-card:hover {
-            transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(0,0,0,0.08);
             border-color: #00AFF0;
         }
@@ -538,7 +536,7 @@
         /* CTA Section */
         .econ-cta {
             padding: 100px 24px;
-            background: linear-gradient(135deg, #00AFF0 0%, #2d7bc4 50%, #1e5a8a 100%);
+            background: linear-gradient(135deg, #00AFF0 0%, #003CC8 50%, #001080 100%);
             position: relative;
             overflow: hidden;
         }
@@ -622,9 +620,24 @@
                 height: 150px;
             }
         }
+        @media (prefers-reduced-motion: reduce) {
+            .revenue-stream,
+            .year-phase,
+            .protection-card {
+                transition: none;
+            }
+            .dw-d-parallax,
+            .dw-wave-flow,
+            .dw-wave-flow--top,
+            .dw-wave-vertical {
+                animation: none !important;
+                transform: none !important;
+            }
+        }
     </style>
 </head>
 <body>
+<a href="#econ-content" class="dw-skip-link">Skip to content</a>
     <header class="dw-header">
         <div class="dw-header-inner">
             <a href="../index.html" class="dw-logo">
@@ -922,6 +935,7 @@
 
 
     <!-- Hero Section -->
+    <main id="econ-content">
     <section class="econ-hero" style="position: relative; overflow: hidden;">
         <!-- Brand: Particle-filled D rising from bottom — wealth building from the ground up -->
         <div class="dw-d-bg dw-d-bg--bottom dw-d-bg--particle dw-d-parallax" style="opacity: 0.16;"></div>
@@ -1367,6 +1381,7 @@
             </div>
         </div>
     </section>
+    </main>
     <!-- Footer -->
     <footer class="dw-footer">
         <div class="dw-footer-ocean" aria-hidden="true"></div>

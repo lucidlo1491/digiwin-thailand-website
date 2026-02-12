@@ -134,17 +134,9 @@ img {
 }
 
 /* Particle Wave: Flow (hero backgrounds, CTA sections) */
-.dw-wave-flow {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 200%;
-    height: 400px;
-    background: url('assets/digiwin-wave-flow.svg') repeat-x bottom left;
-    background-size: 50% 100%;
-    animation: dw-wave-drift 30s linear infinite;
-    pointer-events: none;
-    z-index: 1;
+.dw-wave-flow,
+.dw-wave-flow--top {
+    display: none;
 }
 
 /* Particle Wave: Fade (section transitions) */
@@ -1462,14 +1454,15 @@ img {
     overflow: hidden;
 }
 
-/* Vortex background — static spiral dot pattern from brand kit */
-.dw-footer-vortex {
+/* Particle ocean background — static wave from brand kit generator */
+.dw-footer-ocean {
     position: absolute;
     inset: 0;
-    background: url('assets/digiwin-vortex-bg.svg') no-repeat center center;
-    background-size: cover;
+    background: url('assets/footer-ocean.png') no-repeat center bottom;
+    background-size: 100% auto;
     pointer-events: none;
     z-index: 0;
+    opacity: 0.9;
 }
 
 .dw-footer-inner {

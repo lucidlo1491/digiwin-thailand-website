@@ -1028,7 +1028,8 @@ img {
     box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
 }
 
-.btn-outline-white {
+.btn-outline-white,
+.dw-btn-outline-white {
     background: transparent;
     color: #ffffff;
     padding: 20px 40px;
@@ -1041,7 +1042,8 @@ img {
     transition: all 0.3s ease;
 }
 
-.btn-outline-white:hover {
+.btn-outline-white:hover,
+.dw-btn-outline-white:hover {
     background: rgba(255, 255, 255, 0.15);
     border-color: #ffffff;
 }

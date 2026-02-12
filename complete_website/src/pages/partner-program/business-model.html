@@ -35,11 +35,11 @@
             align-items: center;
             gap: 8px;
             font-size: 14px;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
             margin-bottom: 24px;
         }
         .crisis-breadcrumb a {
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
             text-decoration: none;
             transition: color 0.2s;
         }
@@ -345,7 +345,6 @@
         .solution-card:hover {
             border-color: #4ade80;
             box-shadow: 0 12px 40px rgba(34, 197, 94, 0.15);
-            transform: translateY(-4px);
         }
         .solution-card::before {
             content: '';
@@ -423,38 +422,37 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            width: 100%;
+            border-collapse: collapse;
         }
-        .compare-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .compare-row:last-child {
-            border-bottom: none;
-        }
-        .compare-row.header {
+        .compare-table thead {
             background: #000864;
         }
-        .compare-cell {
+        .compare-table th {
             padding: 20px 24px;
-            font-size: 15px;
-            color: #475569;
-        }
-        .compare-row.header .compare-cell {
-            font-family: 'Noto Sans', sans-serif;
             font-weight: 600;
             font-size: 16px;
             color: #fff;
+            text-align: left;
         }
-        .compare-cell:first-child {
+        .compare-table td {
+            padding: 20px 24px;
+            font-size: 15px;
+            color: #475569;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .compare-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .compare-table td:first-child {
             font-weight: 600;
             color: #000864;
         }
-        .compare-cell.bad {
+        .compare-table td.bad {
             background: #fef2f2;
             color: #991b1b;
         }
-        .compare-cell.good {
+        .compare-table td.good {
             background: #f0fdf4;
             color: #166534;
         }
@@ -462,7 +460,7 @@
         /* CTA Section */
         .crisis-cta {
             padding: 100px 24px;
-            background: linear-gradient(135deg, #00AFF0 0%, #2d7bc4 50%, #1e5a8a 100%);
+            background: linear-gradient(135deg, #00AFF0 0%, #003CC8 50%, #001080 100%);
             position: relative;
             overflow: hidden;
         }
@@ -514,13 +512,36 @@
             .math-cards, .solution-cards {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .compare-row {
-                grid-template-columns: 1fr;
+            .compare-table thead {
+                display: none;
             }
-            .compare-cell {
-                border-bottom: 1px solid #e2e8f0;
+            .compare-table tr {
+                display: block;
+                margin-bottom: 16px;
+                border: 1px solid #e2e8f0;
+                border-radius: 12px;
+                overflow: hidden;
             }
-            .compare-row.header .compare-cell:not(:first-child) {
+            .compare-table td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 12px;
+                text-align: right;
+            }
+            .compare-table td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: #000864;
+                text-align: left;
+                flex-shrink: 0;
+            }
+            .compare-table td:first-child {
+                background: #000864;
+                color: #fff;
+                font-size: 16px;
+            }
+            .compare-table td:first-child::before {
                 display: none;
             }
         }
@@ -541,11 +562,25 @@
                 font-size: 24px;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            .solution-card {
+                transition: none;
+            }
+            .dw-d-parallax,
+            .dw-wave-flow,
+            .dw-wave-vertical {
+                animation: none !important;
+                transform: none !important;
+            }
+        }
     </style>
 </head>
 <body>
+<a href="#bm-content" class="dw-skip-link">Skip to content</a>
 {{header}}
 
+    <main id="bm-content">
     <!-- Hero Section -->
     <section class="crisis-hero" style="position: relative; overflow: hidden;">
         <!-- Brand: Gradient D falling from top — structural framework descending, establishing architecture -->
@@ -823,43 +858,47 @@
             <div class="compare-header">
                 <h2>Side-by-Side Comparison</h2>
             </div>
-            <div class="compare-table">
-                <div class="compare-row header">
-                    <div class="compare-cell">Metric</div>
-                    <div class="compare-cell">Services Only</div>
-                    <div class="compare-cell">Services + Product</div>
-                </div>
-                <div class="compare-row">
-                    <div class="compare-cell">Revenue Model</div>
-                    <div class="compare-cell bad">Resets to zero each year</div>
-                    <div class="compare-cell good">Compounds annually</div>
-                </div>
-                <div class="compare-row">
-                    <div class="compare-cell">Customer Relationship</div>
-                    <div class="compare-cell bad">Project-based, ends</div>
-                    <div class="compare-cell good">Ongoing, permanent</div>
-                </div>
-                <div class="compare-row">
-                    <div class="compare-cell">Revenue Predictability</div>
-                    <div class="compare-cell bad">Feast or famine</div>
-                    <div class="compare-cell good">Predictable base + growth</div>
-                </div>
-                <div class="compare-row">
-                    <div class="compare-cell">Business Valuation</div>
-                    <div class="compare-cell bad">1-2x revenue (if any)</div>
-                    <div class="compare-cell good">5-10x recurring revenue</div>
-                </div>
-                <div class="compare-row">
-                    <div class="compare-cell">Owner Dependence</div>
-                    <div class="compare-cell bad">Business = You</div>
-                    <div class="compare-cell good">Business = Customer base</div>
-                </div>
-                <div class="compare-row">
-                    <div class="compare-cell">Growth Ceiling</div>
-                    <div class="compare-cell bad">Limited by headcount</div>
-                    <div class="compare-cell good">Limited by market size</div>
-                </div>
-            </div>
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Services Only</th>
+                        <th>Services + Product</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Revenue Model</td>
+                        <td class="bad" data-label="Services Only">Resets to zero each year</td>
+                        <td class="good" data-label="Services + Product">Compounds annually</td>
+                    </tr>
+                    <tr>
+                        <td>Customer Relationship</td>
+                        <td class="bad" data-label="Services Only">Project-based, ends</td>
+                        <td class="good" data-label="Services + Product">Ongoing, permanent</td>
+                    </tr>
+                    <tr>
+                        <td>Revenue Predictability</td>
+                        <td class="bad" data-label="Services Only">Feast or famine</td>
+                        <td class="good" data-label="Services + Product">Predictable base + growth</td>
+                    </tr>
+                    <tr>
+                        <td>Business Valuation</td>
+                        <td class="bad" data-label="Services Only">1-2x revenue (if any)</td>
+                        <td class="good" data-label="Services + Product">5-10x recurring revenue</td>
+                    </tr>
+                    <tr>
+                        <td>Owner Dependence</td>
+                        <td class="bad" data-label="Services Only">Business = You</td>
+                        <td class="good" data-label="Services + Product">Business = Customer base</td>
+                    </tr>
+                    <tr>
+                        <td>Growth Ceiling</td>
+                        <td class="bad" data-label="Services Only">Limited by headcount</td>
+                        <td class="good" data-label="Services + Product">Limited by market size</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
@@ -877,6 +916,7 @@
             </div>
         </div>
     </section>
+    </main>
 {{footer}}
 </body>
 </html>

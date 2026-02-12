@@ -355,7 +355,7 @@
                 </div>
             </div>
 
-            <a href="../demo.html" class="event-hero-cta">
+            <a href="#register" class="event-hero-cta">
                 Reserve Your Seat
                 <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
@@ -593,19 +593,47 @@
         </div>
     </section>
 
-    <!-- Section 8: Registration CTA -->
-    <section class="event-register-cta" style="position: relative; overflow: hidden;">
-        <!-- Brand: D gradient corner — subtle closing accent -->
+    <!-- Section 8: Registration Form -->
+    <section id="register" class="event-register-cta" style="position: relative; overflow: hidden;">
         <div class="dw-d-bg dw-d-bg--gradient dw-d-bg--corner dw-d-bg--corner-br" style="opacity: 0.10; width: 35%; min-height: 35vh;"></div>
         <div class="dw-wave-flow" style="height: 160px; opacity: 0.30; z-index: 1;"></div>
-        <div class="event-register-inner" style="position: relative; z-index: 2;">
+        <div class="event-register-inner" style="position: relative; z-index: 2; max-width: 640px;">
             <h2 class="fade-in">Reserve Your Seat</h2>
             <p class="event-register-meta fade-in">Thursday, April 10, 2026 &middot; Bangkok &middot; Limited to 50 participants</p>
-            <a href="../demo.html" class="event-register-btn fade-in">
-                Reserve Your Seat
-                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-            <a href="../demo.html" class="event-register-secondary fade-in">Can't make this date? Register your interest and we'll notify you of the next session.</a>
+            <form class="event-register-form fade-in" data-event="Production Transparency Seminar — April 10, 2026" onsubmit="return handleEventRegister(this)">
+                <div class="event-register-form-grid">
+                    <div class="form-field">
+                        <label for="reg-name">Full Name *</label>
+                        <input type="text" id="reg-name" name="name" required placeholder="Somchai Prasert">
+                    </div>
+                    <div class="form-field">
+                        <label for="reg-email">Work Email *</label>
+                        <input type="email" id="reg-email" name="email" required placeholder="somchai@company.co.th">
+                    </div>
+                    <div class="form-field">
+                        <label for="reg-company">Company *</label>
+                        <input type="text" id="reg-company" name="company" required placeholder="Your company name">
+                    </div>
+                    <div class="form-field">
+                        <label for="reg-role">Job Title</label>
+                        <input type="text" id="reg-role" name="role" placeholder="e.g. Production Manager">
+                    </div>
+                    <div class="form-field form-field--full">
+                        <label for="reg-phone">Phone Number</label>
+                        <input type="tel" id="reg-phone" name="phone" placeholder="+66 XX XXX XXXX">
+                    </div>
+                </div>
+                <button type="submit" class="event-register-submit">
+                    Reserve Your Seat
+                    <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+                <p class="event-register-note">Free event. We'll send confirmation and venue details to your email.</p>
+            </form>
+            <div class="event-register-success">
+                <div class="success-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <h3>You're Registered!</h3>
+                <p>We've received your registration for the Production Transparency Seminar. Check your email for confirmation and venue details.</p>
+            </div>
         </div>
     </section>
 

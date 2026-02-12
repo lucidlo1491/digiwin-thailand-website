@@ -289,3 +289,31 @@
     }
 
 })();
+
+// ==========================================
+// Event Registration Form Handler
+// ==========================================
+function handleEventRegister(form) {
+    var eventName = form.getAttribute('data-event') || 'Event';
+    var data = {
+        event: eventName,
+        name: form.querySelector('[name="name"]').value,
+        email: form.querySelector('[name="email"]').value,
+        company: form.querySelector('[name="company"]').value,
+        role: (form.querySelector('[name="role"]') || {}).value || '',
+        phone: (form.querySelector('[name="phone"]') || {}).value || '',
+        interest: (form.querySelector('[name="interest"]') || {}).value || ''
+    };
+
+    // Log to console for now — replace with actual API endpoint when ready
+    console.log('Event Registration:', JSON.stringify(data, null, 2));
+
+    // Show success state
+    form.style.display = 'none';
+    var success = form.parentElement.querySelector('.event-register-success');
+    if (success) {
+        success.classList.add('active');
+    }
+
+    return false;
+}

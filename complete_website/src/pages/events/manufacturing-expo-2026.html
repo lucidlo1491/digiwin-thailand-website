@@ -61,8 +61,8 @@
                 </div>
             </div>
 
-            <a href="{{basePath}}demo.html" class="event-hero-cta">
-                Book a 1-on-1 Demo Slot
+            <a href="#register" class="event-hero-cta">
+                Book a 1-on-1 Meeting
                 <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
         </div>
@@ -313,19 +313,55 @@
         </div>
     </section>
 
-    <!-- Section 8: Registration CTA -->
-    <section class="event-register-cta" style="position: relative; overflow: hidden;">
-        <!-- Brand: D particle right — action-oriented, bold -->
+    <!-- Section 8: Registration Form -->
+    <section id="register" class="event-register-cta" style="position: relative; overflow: hidden;">
         <div class="dw-d-bg dw-d-bg--particle" style="opacity: 0.14; width: 50%;"></div>
         <div class="dw-wave-flow" style="height: 180px; opacity: 0.35; z-index: 1;"></div>
-        <div class="event-register-inner" style="position: relative; z-index: 2;">
-            <h2 class="fade-in">Book a 1-on-1 Demo Slot</h2>
+        <div class="event-register-inner" style="position: relative; z-index: 2; max-width: 640px;">
+            <h2 class="fade-in">Book a 1-on-1 Meeting</h2>
             <p class="event-register-meta fade-in">May 20–22, 2026 &middot; BITEC Bangkok &middot; Booth A12</p>
-            <a href="{{basePath}}demo.html" class="event-register-btn fade-in">
-                Book a 1-on-1 Demo Slot
-                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-            <p class="event-register-secondary fade-in" style="margin-top: 16px; opacity: 0.85; font-size: 15px; color: rgba(255,255,255,0.8);">No booking needed — walk up to Booth A12 anytime during show hours.</p>
+            <form class="event-register-form fade-in" data-event="Manufacturing Expo 2026 — 1-on-1 Meeting at Booth A12" onsubmit="return handleEventRegister(this)">
+                <div class="event-register-form-grid">
+                    <div class="form-field">
+                        <label for="reg-name">Full Name *</label>
+                        <input type="text" id="reg-name" name="name" required placeholder="Somchai Prasert">
+                    </div>
+                    <div class="form-field">
+                        <label for="reg-email">Work Email *</label>
+                        <input type="email" id="reg-email" name="email" required placeholder="somchai@company.co.th">
+                    </div>
+                    <div class="form-field">
+                        <label for="reg-company">Company *</label>
+                        <input type="text" id="reg-company" name="company" required placeholder="Your company name">
+                    </div>
+                    <div class="form-field">
+                        <label for="reg-role">Job Title</label>
+                        <input type="text" id="reg-role" name="role" placeholder="e.g. Factory Owner">
+                    </div>
+                    <div class="form-field form-field--full">
+                        <label for="reg-interest">What are you most interested in?</label>
+                        <select id="reg-interest" name="interest">
+                            <option value="">Select a topic...</option>
+                            <option value="erp">ERP for Manufacturing</option>
+                            <option value="mes">MES / Production Tracking</option>
+                            <option value="wms">WMS / Warehouse Management</option>
+                            <option value="aiot">AIoT / Machine Connectivity</option>
+                            <option value="partner">Partner Program</option>
+                            <option value="general">General Discussion</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="event-register-submit">
+                    Book a 1-on-1 Meeting
+                    <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+                <p class="event-register-note">No booking needed to visit — walk up to Booth A12 anytime. This form reserves a dedicated time slot with our team.</p>
+            </form>
+            <div class="event-register-success">
+                <div class="success-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <h3>Meeting Booked!</h3>
+                <p>We've received your meeting request for Manufacturing Expo 2026. We'll email you with your confirmed time slot at Booth A12.</p>
+            </div>
         </div>
     </section>
 

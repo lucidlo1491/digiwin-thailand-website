@@ -135,7 +135,7 @@
         .aiot-sensor-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 9px;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.75);
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
@@ -228,7 +228,7 @@
         .aiot-hero-stat-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 10px;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.75);
             text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-top: 4px;
@@ -271,7 +271,6 @@
             transition: all 0.4s ease;
         }
         .problem-card:hover {
-            transform: translateY(-4px);
             box-shadow: 0 12px 32px rgba(185, 28, 28, 0.1);
         }
         .problem-icon {
@@ -434,7 +433,6 @@
         .capability-card:hover {
             border-color: #00AFF0;
             box-shadow: 0 12px 40px rgba(0, 175, 240, 0.15);
-            transform: translateY(-4px);
         }
         .capability-icon {
             width: 64px;
@@ -510,7 +508,7 @@
         }
         .metrics-header p {
             font-size: 18px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
         }
         .metrics-grid {
             display: grid;
@@ -749,6 +747,22 @@
             .metrics-grid { grid-template-columns: 1fr; }
             .integration-diagram { flex-direction: column; }
             .integration-arrow { transform: rotate(90deg); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .aiot-live-dot,
+            .problem-card,
+            .problem-icon,
+            .capability-card,
+            .capability-icon,
+            .integration-node,
+            .integration-link,
+            .dw-d-bg,
+            .dw-d-parallax,
+            .dw-wave-flow,
+            .dw-d-glow {
+                animation: none !important;
+                transition: none !important;
+            }
         }
     </style>
 </head>
@@ -1048,7 +1062,9 @@
         </div>
     </header>
 
+<a href="#aiot-content" class="dw-skip-link">Skip to content</a>
 
+<main id="aiot-content">
     <!-- Hero Section — "The Connected Network": D PARTICLE CENTER at 0.12, the intelligence hub -->
     <section class="aiot-hero" style="position: relative; overflow: hidden;">
         <!-- Brand: Super D particle, CENTER — the intelligence hub, everything connects to it -->
@@ -1476,6 +1492,7 @@
             </div>
         </div>
     </section>
+</main>
     <!-- Footer -->
     <footer class="dw-footer">
         <div class="dw-footer-ocean" aria-hidden="true"></div>

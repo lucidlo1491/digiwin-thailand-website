@@ -116,7 +116,7 @@
         }
         .news-hero-stat-label {
             font-size: 14px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
             line-height: 1.4;
         }
 
@@ -207,7 +207,7 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 14px;
             font-weight: 400;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.75);
             letter-spacing: 3px;
             margin-bottom: 20px;
         }
@@ -231,7 +231,7 @@
             gap: 8px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 13px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
         }
         .date-poster-meta-item svg {
             width: 15px;
@@ -392,7 +392,6 @@
         .upcoming-card:hover {
             border-color: #00AFF0;
             box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
-            transform: translateY(-4px);
         }
         .upcoming-card-border {
             height: 4px;
@@ -613,7 +612,6 @@
         .past-card:hover {
             border-color: #00AFF0;
             box-shadow: 0 8px 32px rgba(0, 175, 240, 0.1);
-            transform: translateY(-4px);
         }
         .past-card .event-type-badge {
             margin-bottom: 12px;
@@ -691,7 +689,7 @@
             transition: all 0.3s ease;
         }
         .subscribe-input::placeholder {
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.75);
         }
         .subscribe-input:focus {
             border-color: #00AFF0;
@@ -719,7 +717,7 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
             font-size: 14px;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -738,6 +736,30 @@
         .fade-in-section.is-visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* ===== Reduced Motion ===== */
+        @media (prefers-reduced-motion: reduce) {
+            .news-hero::before,
+            .featured-image::before,
+            .news-cta::before,
+            .fade-in-section,
+            .featured-card,
+            .upcoming-card,
+            .past-card,
+            .event-cta,
+            .subscribe-btn,
+            .subscribe-input,
+            .event-link,
+            .cta-secondary-link,
+            .filter-tab,
+            .dw-d-bg,
+            .dw-d-parallax,
+            .dw-wave-flow,
+            .dw-d-glow {
+                animation: none !important;
+                transition: none !important;
+            }
         }
 
         /* ===== Responsive ===== */
@@ -1129,7 +1151,9 @@
         </div>
     </header>
 
+<a href="#news-content" class="dw-skip-link">Skip to content</a>
 
+<main id="news-content">
     <!-- Hero Section -->
     <section class="news-hero" style="position: relative; overflow: hidden;">
         <!-- Brand: Super D OUTLINE corner-tl — news masthead accent, editorial framing -->
@@ -1444,6 +1468,7 @@
             <a href="demo.html" class="cta-secondary-link">Or Let's Talk Directly <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
     </section>
+</main>
 
     <!-- Footer -->
     <footer class="dw-footer">

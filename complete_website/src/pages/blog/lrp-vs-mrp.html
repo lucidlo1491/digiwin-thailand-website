@@ -47,7 +47,7 @@
             gap: 8px;
             font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
             text-decoration: none;
             margin-bottom: 32px;
             transition: color 0.3s ease;
@@ -90,7 +90,7 @@
             gap: 16px;
             font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
         }
         .article-meta-divider {
             width: 4px;
@@ -192,7 +192,7 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 13px;
             font-weight: 500;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
@@ -208,7 +208,7 @@
         }
         .article-data-callout-arrow {
             font-size: 32px;
-            color: rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.75);
         }
 
         /* Highlight box */
@@ -500,12 +500,36 @@
                 padding: 24px;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            .article-back,
+            .related-card,
+            .related-card-arrow,
+            .article-cta .cta-btn,
+            .article-cta .cta-btn svg {
+                transition: none !important;
+            }
+            .related-card:hover,
+            .article-cta .cta-btn:hover {
+                transform: none !important;
+            }
+            .article-cta .cta-btn:hover svg {
+                transform: none !important;
+            }
+            .fade-in,
+            .dw-d-bg,
+            .dw-wave-circles {
+                animation: none !important;
+                opacity: 1 !important;
+            }
+        }
     </style>
 </head>
 <body>
 {{header}}
+<a href="#lrp-mrp-content" class="dw-skip-link">Skip to content</a>
 
-<main class="dw-main">
+<main id="lrp-mrp-content" class="dw-main">
 
     <!-- ===== Article Hero ===== -->
     <section class="article-hero" style="position: relative; overflow: hidden;">

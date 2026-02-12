@@ -1585,7 +1585,7 @@ img {
 .dw-footer-stock {
     font-family: 'Noto Sans', sans-serif;
     font-size: 13px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.75);
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -1674,7 +1674,7 @@ img {
 .dw-footer-copyright {
     font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.75);
     margin: 0;
 }
 
@@ -1686,7 +1686,7 @@ img {
 .dw-footer-legal a {
     font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.75);
     text-decoration: none;
     transition: color 0.2s ease;
 }
@@ -1719,7 +1719,7 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.75);
     font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     font-weight: 500;
@@ -1758,7 +1758,7 @@ img {
 .blog-meta {
     font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.75);
     display: flex;
     align-items: center;
     gap: 12px;
@@ -1860,7 +1860,7 @@ img {
 }
 .blog-data-arrow {
     font-size: 32px;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.75);
     margin: 4px 0;
 }
 .blog-data-label {
@@ -2248,7 +2248,7 @@ img {
 .blog-hero-stat-label {
     font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.75);
 }
 
 /* Blog Hub Featured Section */
@@ -2284,7 +2284,6 @@ img {
 .blog-hub-featured-card:hover {
     box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
     border-color: #00AFF0;
-    transform: translateY(-4px);
 }
 .blog-hub-featured-card-image {
     background: linear-gradient(135deg, #000432 0%, #000864 50%, #001080 100%);
@@ -3044,7 +3043,6 @@ img {
 .solution-card:hover {
     border-color: #00AFF0;
     box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
-    transform: translateY(-4px);
 }
 .solution-icon {
     width: 64px;
@@ -3552,7 +3550,7 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.75);
     font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     font-weight: 500;
@@ -3637,7 +3635,7 @@ img {
 .event-fact-label {
     font-family: 'Noto Sans', sans-serif;
     font-size: 13px;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.75);
 }
 .event-hero-cta {
     display: inline-flex;
@@ -3836,7 +3834,6 @@ img {
     transition: all 0.3s ease;
 }
 .event-persona-card:hover {
-    transform: translateY(-4px);
     box-shadow: 0 12px 40px rgba(0,0,0,0.08);
     border-color: var(--event-color, #22C55E);
 }
@@ -4029,7 +4026,7 @@ img {
 }
 .event-register-secondary {
     display: block;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.75);
     font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     text-decoration: none;
@@ -4078,7 +4075,7 @@ img {
     box-sizing: border-box;
 }
 .event-register-form input::placeholder {
-    color: rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.5);
 }
 .event-register-form input:focus,
 .event-register-form select:focus {
@@ -4129,7 +4126,7 @@ img {
 .event-register-note {
     font-family: 'Noto Sans', sans-serif;
     font-size: 13px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.75);
     text-align: center;
     margin-top: 12px;
 }
@@ -4245,7 +4242,6 @@ img {
 .upcoming-card:hover {
     border-color: #00AFF0;
     box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
-    transform: translateY(-4px);
 }
 .upcoming-card-border {
     height: 4px;
@@ -5305,7 +5301,6 @@ img {
 }
 
 .integration-node:hover {
-    transform: scale(1.08);
     box-shadow: 0 16px 48px rgba(0, 175, 240, 0.2);
 }
 
@@ -5321,7 +5316,7 @@ img {
 }
 
 .integration-node:hover .integration-node-icon {
-    transform: scale(1.1) rotate(-5deg);
+    transform: none;
 }
 
 .integration-node-icon svg {
@@ -5346,7 +5341,6 @@ img {
 }
 
 .integration-node--erp:hover {
-    transform: translateX(-50%) scale(1.08);
     border-color: var(--dw-blue);
 }
 
@@ -5361,7 +5355,6 @@ img {
 }
 
 .integration-node--mes:hover {
-    transform: translateY(-50%) scale(1.08);
     border-color: #10b981;
 }
 
@@ -5376,7 +5369,6 @@ img {
 }
 
 .integration-node--wms:hover {
-    transform: translateX(-50%) scale(1.08);
     border-color: #f59e0b;
 }
 
@@ -5391,7 +5383,6 @@ img {
 }
 
 .integration-node--aiot:hover {
-    transform: translateY(-50%) scale(1.08);
     border-color: #8b5cf6;
 }
 
@@ -5942,7 +5933,7 @@ img {
 .mockup-nav-item {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.75);
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -5954,7 +5945,7 @@ img {
 .mockup-card-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.75);
     text-transform: uppercase;
     margin-bottom: 8px;
 }

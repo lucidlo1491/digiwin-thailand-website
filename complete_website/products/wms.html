@@ -69,7 +69,7 @@
         .wms-hero-stat-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 10px;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.75);
             text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-top: 4px;
@@ -105,7 +105,7 @@
             justify-content: center;
             font-family: 'JetBrains Mono', monospace;
             font-size: 8px;
-            color: rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.75);
         }
         .wms-mockup-cell.occupied {
             background: rgba(0, 175, 240, 0.25);
@@ -138,7 +138,7 @@
         .wms-mockup-stat-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 8px;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.75);
             text-transform: uppercase;
             margin-top: 2px;
         }
@@ -249,7 +249,6 @@
         }
         .capability-box:hover {
             border-color: #00AFF0;
-            transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
         }
         .capability-box-header {
@@ -402,7 +401,6 @@
         }
         .integration-node:hover {
             border-color: #00AFF0;
-            transform: scale(1.05);
         }
         .integration-node.active {
             border-color: #00AFF0;
@@ -514,6 +512,18 @@
                 grid-template-columns: 1fr;
                 max-width: 280px;
                 margin: 0 auto;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .capability-box,
+            .integration-node,
+            .integration-link,
+            .dw-d-bg,
+            .dw-d-parallax,
+            .dw-wave-flow,
+            .dw-d-glow {
+                animation: none !important;
+                transition: none !important;
             }
         }
     </style>
@@ -814,7 +824,9 @@
         </div>
     </header>
 
+<a href="#wms-content" class="dw-skip-link">Skip to content</a>
 
+<main id="wms-content">
     <!-- Hero Section — "The Organized Grid": D OUTLINE TOP-fall at 0.12, structure descending from above -->
     <section class="wms-hero" style="position: relative; overflow: hidden;">
         <!-- Brand: Super D outline, TOP-fall — warehouse structure descending like organized shelves -->
@@ -1141,6 +1153,7 @@
             </div>
         </div>
     </section>
+</main>
     <!-- Footer -->
     <footer class="dw-footer">
         <div class="dw-footer-ocean" aria-hidden="true"></div>

@@ -35,7 +35,7 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
             font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
             text-decoration: none;
@@ -78,7 +78,7 @@
             gap: 16px;
             font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
         }
         .article-meta-divider {
             width: 4px;
@@ -202,7 +202,7 @@
         .article-data-callout .callout-label {
             font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
         }
 
         /* Highlight Box */
@@ -450,6 +450,33 @@
             }
             .article-cta h2 {
                 font-size: 26px;
+            }
+        }
+        /* ===== Reduced Motion ===== */
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in-section {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            .article-back-link,
+            .related-card,
+            .related-card-link,
+            .article-cta-btn,
+            .article-cta-btn svg {
+                transition: none;
+            }
+            .related-card:hover,
+            .article-cta-btn:hover {
+                transform: none;
+            }
+            .article-cta-btn:hover svg {
+                transform: none;
+            }
+            .dw-d-bg,
+            .dw-wave-circles,
+            .dw-wave-fade {
+                animation: none;
             }
         }
     </style>
@@ -750,7 +777,9 @@
         </div>
     </header>
 
+<a href="#costing-content" class="dw-skip-link">Skip to content</a>
 
+<main id="costing-content">
     <!-- Article Hero -->
     <section class="article-hero" style="position: relative; overflow: hidden;">
         <div class="dw-d-bg dw-d-bg--corner-tl" style="opacity: 0.06;"></div>
@@ -919,6 +948,7 @@
             </a>
         </div>
     </section>
+</main>
 
     <!-- Footer -->
     <footer class="dw-footer">

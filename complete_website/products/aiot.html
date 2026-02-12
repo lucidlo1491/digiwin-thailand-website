@@ -629,6 +629,60 @@
             color: #64748b;
             margin-top: 4px;
         }
+        .integration-message {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px 48px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e8eef3;
+            text-align: center;
+            max-width: 800px;
+            margin: 48px auto 0;
+        }
+        .integration-message p {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 18px;
+            color: #000864;
+            line-height: 1.8;
+            margin: 0;
+        }
+        .integration-message strong {
+            color: #00AFF0;
+        }
+        .integration-links {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        .integration-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: #fff;
+            border: 1px solid #e8eef3;
+            border-radius: 12px;
+            color: #00AFF0;
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .integration-link:hover {
+            border-color: #00AFF0;
+            background: rgba(0, 175, 240, 0.05);
+            transform: translateY(-2px);
+        }
+        .integration-link svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
         .integration-arrow {
             color: #00AFF0;
             font-size: 24px;
@@ -1393,6 +1447,16 @@
                 <div class="node-title">WMS</div>
                 <div class="node-subtitle">sFLS</div>
             </a>
+        </div>
+
+        <div class="integration-message">
+            <p>Machine data flows from sensors to dashboards in real time. AIoT feeds OEE to MES, triggers maintenance in ERP, and validates inventory in WMS. <strong>One connected factory. Zero blind spots.</strong></p>
+        </div>
+
+        <div class="integration-links">
+            <a href="erp.html" class="integration-link">Explore ERP <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a href="mes.html" class="integration-link">Explore MES <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a href="wms.html" class="integration-link">Explore WMS <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
     </section>
 

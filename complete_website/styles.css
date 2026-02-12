@@ -1458,12 +1458,26 @@ img {
     background: #000864;
     color: #ffffff;
     padding: 80px 0 0 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Vortex background — static spiral dot pattern from brand kit */
+.dw-footer-vortex {
+    position: absolute;
+    inset: 0;
+    background: url('assets/digiwin-vortex-bg.svg') no-repeat center center;
+    background-size: cover;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .dw-footer-inner {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 40px;
+    position: relative;
+    z-index: 1;
 }
 
 .dw-footer-grid {

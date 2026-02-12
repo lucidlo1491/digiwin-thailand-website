@@ -10,58 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="icon" type="image/svg+xml" href="../assets/digiwin-d-mark.svg">
     <style>
-        /* Hero Section */
-        .stack-hero {
-            background: linear-gradient(135deg, #000432 0%, #000864 50%, #001080 100%);
-            padding: 140px 24px 100px;
-            position: relative;
-            overflow: hidden;
-        }
-        .stack-hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-        .stack-hero-inner {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        .stack-breadcrumb {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            color: rgba(255,255,255,0.75);
-            margin-bottom: 24px;
-        }
-        .stack-breadcrumb a {
-            color: rgba(255,255,255,0.75);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .stack-breadcrumb a:hover {
-            color: #00AFF0;
-        }
-        .stack-hero h1 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: clamp(36px, 5vw, 52px);
-            font-weight: 700;
-            color: #fff;
-            line-height: 1.15;
-            margin-bottom: 24px;
-        }
-        .stack-hero h1 span {
-            color: #00AFF0;
-        }
-        .stack-hero-subtitle {
-            font-size: 20px;
-            color: rgba(255,255,255,0.85);
-            line-height: 1.7;
-            max-width: 700px;
+        /* Page-specific hero overrides */
+        .dw-partner-hero-subtitle {
             margin-bottom: 48px;
         }
         .stack-hero-stats {
@@ -95,23 +45,6 @@
         }
         .products-inner {
             max-width: 1200px;
-            margin: 0 auto;
-        }
-        .products-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .products-header h2 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: #000864;
-            margin-bottom: 16px;
-        }
-        .products-header p {
-            font-size: 18px;
-            color: #64748b;
-            max-width: 600px;
             margin: 0 auto;
         }
         .product-card {
@@ -533,10 +466,6 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        .competitive-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
         .competitive-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 12px;
@@ -546,17 +475,6 @@
             text-transform: uppercase;
             margin-bottom: 16px;
             display: block;
-        }
-        .competitive-header h2 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: #000864;
-            margin-bottom: 16px;
-        }
-        .competitive-header p {
-            font-size: 18px;
-            color: #64748b;
         }
         .competitive-grid {
             display: grid;
@@ -659,46 +577,6 @@
             color: #00AFF0;
         }
 
-        /* CTA Section */
-        .stack-cta {
-            padding: 100px 24px;
-            background: linear-gradient(135deg, #00AFF0 0%, #003CC8 50%, #001080 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .stack-cta::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.07'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-        .stack-cta-inner {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        .stack-cta h2 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 16px;
-        }
-        .stack-cta p {
-            font-size: 18px;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 40px;
-        }
-        .stack-cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
         /* Responsive */
         @media (max-width: 1024px) {
             .product-card {
@@ -761,18 +639,12 @@
             }
         }
         @media (max-width: 640px) {
-            .stack-hero {
-                padding: 120px 20px 80px;
-            }
-            .stack-hero h1 {
-                font-size: 28px;
-            }
             .product-card {
                 padding: 32px 24px;
             }
             .lifecycle-header h2,
             .reverse-cut-header h2,
-            .competitive-header h2 {
+            .dw-partner-section-header h2 {
                 font-size: 32px;
             }
             .reverse-cut-comparison {
@@ -1104,17 +976,17 @@
 
     <main id="solutions-content">
     <!-- Hero Section -->
-    <section class="stack-hero" style="position: relative; overflow: hidden;">
+    <section class="dw-partner-hero" style="position: relative; overflow: hidden;">
         <!-- Brand: Outline D centered — the core technology platform, layered behind content -->
         <div class="dw-d-bg dw-d-bg--center dw-d-parallax" style="opacity: 0.08;"></div>
-        <div class="stack-hero-inner">
-            <div class="stack-breadcrumb">
+        <div class="dw-partner-hero-inner">
+            <div class="dw-partner-breadcrumb">
                 <a href="../partner-program.html">Partner Program</a>
                 <span>/</span>
                 <span>Solution Stack</span>
             </div>
             <h1>Stop Building Custom Code.<br><span>Start Deploying a Modular Arsenal.</span></h1>
-            <p class="stack-hero-subtitle">You're not just reselling software. You're deploying a complete Customer Lifecycle Management strategy—land with one product, expand to the full stack, lock in recurring revenue for years.</p>
+            <p class="dw-partner-hero-subtitle">You're not just reselling software. You're deploying a complete Customer Lifecycle Management strategy—land with one product, expand to the full stack, lock in recurring revenue for years.</p>
             <div class="stack-hero-stats">
                 <div class="stack-stat">
                     <div class="stack-stat-value dw-years">44</div>
@@ -1158,7 +1030,7 @@
         <!-- Brand: Vertical wave on left — data streams flowing vertically through the technology stack -->
         <div class="dw-wave-vertical dw-wave-vertical--left" style="opacity: 0.08;"></div>
         <div class="products-inner" style="position: relative; z-index: 2;">
-            <div class="products-header">
+            <div class="dw-partner-section-header">
                 <h2>Your Product Portfolio as Revenue Engines</h2>
                 <p>Each product isn't just software—it's a business model with specific revenue characteristics and cross-sell paths.</p>
             </div>
@@ -1497,7 +1369,7 @@
         <!-- Brand: D in top-left corner — technology layers stacking from above -->
         <div class="dw-d-bg dw-d-bg--corner-tl" style="opacity: 0.10;"></div>
         <div class="competitive-inner" style="position: relative; z-index: 2;">
-            <div class="competitive-header">
+            <div class="dw-partner-section-header">
                 <span class="competitive-label">COMPETITIVE POSITIONING</span>
                 <h2>Your Talking Points for Sales Conversations</h2>
                 <p>How to position DigiWin against the competition in any sales conversation.</p>
@@ -1568,14 +1440,14 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="stack-cta" style="position: relative; overflow: hidden;">
+    <section class="dw-partner-cta" style="position: relative; overflow: hidden;">
         <!-- Brand: Particle D left-anchor + wave — technology depth meets forward momentum -->
         <div class="dw-d-bg dw-d-bg--left dw-d-bg--particle" style="opacity: 0.14;"></div>
         <div class="dw-wave-flow" style="height: 160px; opacity: 0.3; z-index: 1;"></div>
-        <div class="stack-cta-inner" style="position: relative; z-index: 3;">
+        <div class="dw-partner-cta-inner" style="position: relative; z-index: 3;">
             <h2>Now See the Actual Economics</h2>
             <p>You've seen the arsenal. Now see the math—margins, recurring revenue, and 5-year projections for your business.</p>
-            <div class="stack-cta-buttons">
+            <div class="dw-partner-cta-buttons">
                 <a href="economics.html" class="dw-btn dw-btn-white">See Partner Economics →</a>
                 <a href="../demo.html" class="dw-btn dw-btn-outline-white">Schedule Discovery Call</a>
             </div>

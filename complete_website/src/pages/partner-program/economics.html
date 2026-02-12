@@ -10,60 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="icon" type="image/svg+xml" href="{{basePath}}assets/digiwin-d-mark.svg">
     <style>
-        /* Hero Section */
-        .econ-hero {
-            background: linear-gradient(135deg, #000432 0%, #000864 50%, #001080 100%);
-            padding: 140px 24px 100px;
-            position: relative;
-            overflow: hidden;
-        }
-        .econ-hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-        .econ-hero-inner {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        .econ-breadcrumb {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            color: rgba(255,255,255,0.75);
-            margin-bottom: 24px;
-        }
-        .econ-breadcrumb a {
-            color: rgba(255,255,255,0.75);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .econ-breadcrumb a:hover {
-            color: #00AFF0;
-        }
-        .econ-hero h1 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: clamp(36px, 5vw, 52px);
-            font-weight: 700;
-            color: #fff;
-            line-height: 1.15;
-            margin-bottom: 24px;
-        }
-        .econ-hero h1 span {
-            color: #4ade80;
-        }
-        .econ-hero-subtitle {
-            font-size: 20px;
-            color: rgba(255,255,255,0.85);
-            line-height: 1.7;
-            max-width: 700px;
-            margin-bottom: 48px;
-        }
+        /* Hero overrides (base in styles.css .dw-partner-hero) */
         .econ-hero-proof {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -104,29 +51,8 @@
             text-align: center;
             margin-bottom: 60px;
         }
-        .section-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 500;
-            color: #00AFF0;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            display: block;
-        }
-        .revenue-model-header h2 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: #000864;
-            margin-bottom: 16px;
-        }
-        .revenue-model-header p {
-            font-size: 18px;
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        /* section-label → .dw-partner-label in styles.css */
+        /* revenue-model-header → .dw-partner-section-header in styles.css */
         .revenue-streams {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -232,21 +158,7 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        .journey-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .journey-header h2 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: #000864;
-            margin-bottom: 16px;
-        }
-        .journey-header p {
-            font-size: 18px;
-            color: #64748b;
-        }
+        /* journey-header → .dw-partner-section-header in styles.css */
         .journey-years {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -473,21 +385,7 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        .protection-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .protection-header h2 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: #000864;
-            margin-bottom: 16px;
-        }
-        .protection-header p {
-            font-size: 18px;
-            color: #64748b;
-        }
+        /* protection-header → .dw-partner-section-header in styles.css */
         .protection-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -552,45 +450,7 @@
             text-align: center;
         }
 
-        /* CTA Section */
-        .econ-cta {
-            padding: 100px 24px;
-            background: linear-gradient(135deg, #00AFF0 0%, #003CC8 50%, #001080 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .econ-cta::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.07'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-        .econ-cta-inner {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        .econ-cta h2 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 16px;
-        }
-        .econ-cta p {
-            font-size: 18px;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 40px;
-        }
-        .econ-cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+        /* CTA → .dw-partner-cta in styles.css */
 
         /* Responsive */
         @media (max-width: 1024px) {
@@ -614,12 +474,7 @@
             }
         }
         @media (max-width: 640px) {
-            .econ-hero {
-                padding: 120px 20px 80px;
-            }
-            .econ-hero h1 {
-                font-size: 28px;
-            }
+            /* Hero responsive → styles.css .dw-partner-hero */
             .econ-hero-proof {
                 grid-template-columns: 1fr 1fr;
                 gap: 16px;
@@ -630,9 +485,7 @@
             .margin-grid {
                 grid-template-columns: 1fr;
             }
-            .journey-header h2,
-            .revenue-model-header h2,
-            .protection-header h2 {
+            .dw-partner-section-header h2 {
                 font-size: 32px;
             }
             .summary-bars {
@@ -661,17 +514,17 @@
 
     <!-- Hero Section -->
     <main id="econ-content">
-    <section class="econ-hero" style="position: relative; overflow: hidden;">
+    <section class="dw-partner-hero" style="position: relative; overflow: hidden;">
         <!-- Brand: Particle-filled D rising from bottom — wealth building from the ground up -->
         <div class="dw-d-bg dw-d-bg--bottom dw-d-bg--particle dw-d-parallax" style="opacity: 0.16;"></div>
-        <div class="econ-hero-inner">
-            <div class="econ-breadcrumb">
+        <div class="dw-partner-hero-inner">
+            <div class="dw-partner-breadcrumb">
                 <a href="{{basePath}}partner-program.html">Partner Program</a>
                 <span>/</span>
                 <span>Partner Economics</span>
             </div>
-            <h1>See the Actual Economics—<span>Not a Sales Pitch</span></h1>
-            <p class="econ-hero-subtitle">Realistic numbers in Thai Baht. Conservative scenarios. No hype. Here's exactly how the partner model works financially—from Year 1 survival to Year 3 asset building.</p>
+            <h1>See the Actual Economics—<span class="accent-green">Not a Sales Pitch</span></h1>
+            <p class="dw-partner-hero-subtitle" style="margin-bottom: 48px;">Realistic numbers in Thai Baht. Conservative scenarios. No hype. Here's exactly how the partner model works financially—from Year 1 survival to Year 3 asset building.</p>
             <div class="econ-hero-proof">
                 <div class="proof-item">
                     <span class="proof-value">30-40%</span>
@@ -722,8 +575,8 @@
         <!-- Brand: Top-flipped wave — money flowing in from above into the revenue streams -->
         <div class="dw-wave-flow--top" style="opacity: 0.10;"></div>
         <div class="revenue-model-inner" style="position: relative; z-index: 2;">
-            <div class="revenue-model-header">
-                <span class="section-label">THE 4 REVENUE STREAMS</span>
+            <div class="dw-partner-section-header">
+                <span class="dw-partner-label">THE 4 REVENUE STREAMS</span>
                 <h2>How Partner Revenue Actually Works</h2>
                 <p>Unlike SaaS vendors that trickle revenue over years, our model provides substantial upfront margin plus recurring income.</p>
             </div>
@@ -857,8 +710,8 @@
     </svg>
 </div>
         <div class="journey-inner" style="position: relative; z-index: 2;">
-            <div class="journey-header">
-                <span class="section-label">REALISTIC YEAR 1-2-3 SCENARIOS</span>
+            <div class="dw-partner-section-header">
+                <span class="dw-partner-label">REALISTIC YEAR 1-2-3 SCENARIOS</span>
                 <h2>The 3-Year Partner Journey</h2>
                 <p>Conservative estimates. No hype. Here's what typical progression looks like for a partner starting with SME products.</p>
             </div>
@@ -996,8 +849,8 @@
         <!-- Brand: Vertical wave on right — financial streams flowing, protective barrier imagery -->
         <div class="dw-wave-vertical dw-wave-vertical--right" style="opacity: 0.05;"></div>
         <div class="protection-inner" style="position: relative; z-index: 2;">
-            <div class="protection-header">
-                <span class="section-label">RISK MITIGATION</span>
+            <div class="dw-partner-section-header">
+                <span class="dw-partner-label">RISK MITIGATION</span>
                 <h2>Your Protection Structure</h2>
                 <p>Partnership isn't just about revenue—it's about protecting your investment and reducing risk.</p>
             </div>
@@ -1087,14 +940,14 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="econ-cta" style="position: relative; overflow: hidden;">
+    <section class="dw-partner-cta" style="position: relative; overflow: hidden;">
         <!-- Brand: Gradient D right with bold presence + wave — financial momentum, confidence -->
         <div class="dw-d-bg dw-d-bg--gradient dw-d-bg--bold dw-d-glow" style="opacity: 0.18;"></div>
         <div class="dw-wave-flow" style="height: 160px; opacity: 0.3; z-index: 1;"></div>
-        <div class="econ-cta-inner" style="position: relative; z-index: 3;">
+        <div class="dw-partner-cta-inner" style="position: relative; z-index: 3;">
             <h2>Ready to Run the Numbers for Your Firm?</h2>
             <p>Let's discuss your territory, your targets, and build a 3-year projection specific to your business. No obligation—just spreadsheet reality.</p>
-            <div class="econ-cta-buttons">
+            <div class="dw-partner-cta-buttons">
                 <a href="{{basePath}}demo.html" class="dw-btn dw-btn-white">Schedule Discovery Call</a>
                 <a href="{{basePath}}partner-program.html" class="dw-btn dw-btn-outline-white">Back to Partner Overview</a>
             </div>

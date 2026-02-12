@@ -10,57 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="icon" type="image/svg+xml" href="{{basePath}}assets/digiwin-d-mark.svg">
     <style>
-        /* Hero Section */
-        .crisis-hero {
-            background: linear-gradient(135deg, #000432 0%, #000864 50%, #001080 100%);
-            padding: 140px 24px 100px;
-            position: relative;
-            overflow: hidden;
-        }
-        .crisis-hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-        .crisis-hero-inner {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        .crisis-breadcrumb {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            color: rgba(255,255,255,0.75);
-            margin-bottom: 24px;
-        }
-        .crisis-breadcrumb a {
-            color: rgba(255,255,255,0.75);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .crisis-breadcrumb a:hover {
-            color: #00AFF0;
-        }
-        .crisis-hero h1 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: clamp(36px, 5vw, 52px);
-            font-weight: 700;
-            color: #fff;
-            line-height: 1.15;
-            margin-bottom: 24px;
-        }
-        .crisis-hero-subtitle {
-            font-size: 20px;
-            color: rgba(255,255,255,0.85);
-            line-height: 1.7;
-            max-width: 700px;
-        }
-
         /* Pattern Section */
         .pattern-section {
             padding: 100px 24px;
@@ -69,21 +18,6 @@
         .pattern-inner {
             max-width: 1000px;
             margin: 0 auto;
-        }
-        .pattern-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .pattern-header h2 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: #000864;
-            margin-bottom: 16px;
-        }
-        .pattern-header p {
-            font-size: 18px;
-            color: #64748b;
         }
         .pattern-cycle {
             display: grid;
@@ -166,23 +100,6 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        .math-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .math-header h2 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: #000864;
-            margin-bottom: 16px;
-        }
-        .math-header p {
-            font-size: 18px;
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto;
-        }
         .math-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -256,17 +173,6 @@
             max-width: 900px;
             margin: 0 auto;
         }
-        .insight-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-        .insight-header h2 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: #000864;
-            margin-bottom: 16px;
-        }
         .insight-box {
             background: linear-gradient(135deg, #000864 0%, #000432 100%);
             border-radius: 24px;
@@ -309,23 +215,6 @@
         }
         .solution-inner {
             max-width: 1200px;
-            margin: 0 auto;
-        }
-        .solution-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .solution-header h2 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: #000864;
-            margin-bottom: 16px;
-        }
-        .solution-header p {
-            font-size: 18px;
-            color: #64748b;
-            max-width: 600px;
             margin: 0 auto;
         }
         .solution-cards {
@@ -406,17 +295,6 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-        .compare-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .compare-header h2 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: #000864;
-            margin-bottom: 16px;
-        }
         .compare-table {
             background: #fff;
             border-radius: 20px;
@@ -455,49 +333,6 @@
         .compare-table td.good {
             background: #f0fdf4;
             color: #166534;
-        }
-
-        /* CTA Section */
-        .crisis-cta {
-            padding: 100px 24px;
-            background: linear-gradient(135deg, #00AFF0 0%, #003CC8 50%, #001080 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .crisis-cta::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.07'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-        .crisis-cta-inner {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        .crisis-cta h2 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 16px;
-        }
-        .crisis-cta p {
-            font-size: 18px;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .crisis-cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
         }
 
         /* Responsive */
@@ -546,12 +381,6 @@
             }
         }
         @media (max-width: 640px) {
-            .crisis-hero {
-                padding: 120px 20px 80px;
-            }
-            .crisis-hero h1 {
-                font-size: 32px;
-            }
             .pattern-cycle, .math-cards, .solution-cards {
                 grid-template-columns: 1fr;
             }
@@ -582,24 +411,24 @@
 
     <main id="bm-content">
     <!-- Hero Section -->
-    <section class="crisis-hero" style="position: relative; overflow: hidden;">
+    <section class="dw-partner-hero" style="position: relative; overflow: hidden;">
         <!-- Brand: Gradient D falling from top — structural framework descending, establishing architecture -->
         <div class="dw-d-bg dw-d-bg--top dw-d-bg--gradient dw-d-parallax" style="opacity: 0.14;"></div>
-        <div class="crisis-hero-inner">
-            <div class="crisis-breadcrumb">
+        <div class="dw-partner-hero-inner">
+            <div class="dw-partner-breadcrumb">
                 <a href="{{basePath}}partner-program.html">Partner Program</a>
                 <span>/</span>
                 <span>Business Model Crisis</span>
             </div>
             <h1>The Problem Isn't Your Team—It's Your Business Model</h1>
-            <p class="crisis-hero-subtitle">You're tired of Monday Morning Escalations and watching senior consultants act as data babysitters. The Man-Day Trap is capping your growth. You deliver Tier-1 capabilities at Tier-3 prices. This page names the problem—so you can escape it.</p>
+            <p class="dw-partner-hero-subtitle">You're tired of Monday Morning Escalations and watching senior consultants act as data babysitters. The Man-Day Trap is capping your growth. You deliver Tier-1 capabilities at Tier-3 prices. This page names the problem—so you can escape it.</p>
         </div>
     </section>
 
     <!-- The Pattern Section -->
     <section class="pattern-section" style="position: relative; overflow: hidden;">
         <div class="pattern-inner" style="position: relative; z-index: 2;">
-            <div class="pattern-header">
+            <div class="dw-partner-section-header">
                 <h2>You Know This Pattern</h2>
                 <p>Every SI lives the same cycle. It feels productive. But it's a trap.</p>
             </div>
@@ -668,7 +497,7 @@
         <!-- Brand: Sparse dot fade — data points scattered like evidence fragments -->
         <div class="dw-wave-fade" style="opacity: 0.05;"></div>
         <div class="math-inner" style="position: relative; z-index: 2;">
-            <div class="math-header">
+            <div class="dw-partner-section-header">
                 <h2>The Industry Evidence</h2>
                 <p>This isn't anecdote. Here's the documented math of why the model is broken.</p>
             </div>
@@ -750,7 +579,7 @@
         <!-- Brand: Vertical wave on left — diverging paths, choices flowing downward -->
         <div class="dw-wave-vertical dw-wave-vertical--left" style="opacity: 0.06;"></div>
         <div class="insight-inner" style="position: relative; z-index: 2;">
-            <div class="insight-header">
+            <div class="dw-partner-section-header" style="margin-bottom: 48px;">
                 <h2>Three Possible Futures</h2>
                 <p style="color: #64748b; font-size: 18px; margin-top: 16px;">You have three paths. Only one leads to sustainable growth.</p>
             </div>
@@ -811,7 +640,7 @@
     <!-- Solution Section -->
     <section class="solution-section" style="position: relative; overflow: hidden;">
         <div class="solution-inner">
-            <div class="solution-header">
+            <div class="dw-partner-section-header">
                 <h2>There's Another Way</h2>
                 <p>Add a product line to your services business and change the fundamental economics.</p>
             </div>
@@ -855,7 +684,7 @@
         <!-- Brand: D anchoring bottom-right corner — structural foundation for comparison -->
         <div class="dw-d-bg dw-d-bg--corner-br" style="opacity: 0.08;"></div>
         <div class="compare-inner" style="position: relative; z-index: 2;">
-            <div class="compare-header">
+            <div class="dw-partner-section-header">
                 <h2>Side-by-Side Comparison</h2>
             </div>
             <table class="compare-table">
@@ -903,14 +732,14 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="crisis-cta" style="position: relative; overflow: hidden;">
+    <section class="dw-partner-cta" style="position: relative; overflow: hidden;">
         <!-- Brand: D left-anchor + standard wave flow — architecture meets momentum -->
         <div class="dw-d-bg dw-d-bg--left" style="opacity: 0.10;"></div>
         <div class="dw-wave-flow" style="height: 160px; opacity: 0.3; z-index: 1;"></div>
-        <div class="crisis-cta-inner" style="position: relative; z-index: 3;">
+        <div class="dw-partner-cta-inner" style="position: relative; z-index: 3;">
             <h2>See How the Economics Actually Work</h2>
             <p>You've seen the problem. Now see the math of the solution—what you keep, what compounds, and why 100% of service fees stay with you.</p>
-            <div class="crisis-cta-buttons">
+            <div class="dw-partner-cta-buttons">
                 <a href="economics.html" class="dw-btn dw-btn-white">See Partner Economics</a>
                 <a href="solutions.html" class="dw-btn dw-btn-outline-white">Evaluate the Weapon First</a>
             </div>

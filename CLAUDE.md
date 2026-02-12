@@ -144,14 +144,14 @@ CLAUDE.md                            # This file (must stay in root)
 - Do not wait until the entire site is finished — audit incrementally, page by page.
 - Check at minimum: color consistency, typography, animation timing, CTA wording, tone alignment with Playbook.
 
-**CSS: Shared-First, Then Page-Specific:**
-- **Before writing ANY new CSS**, check `styles.css` for existing shared classes that already handle the pattern. Use them first.
-- Shared class families already available: `.dw-partner-*` (hero, section-header, label, breadcrumb, CTA), `.dw-cta-*`, `.dw-industry-*`, `.dw-blog-*`
-- When creating a new page, compose from shared classes + minimal page-specific overrides. Do NOT copy-paste CSS from another page — that's how 2,800 lines of duplication happened across partner pages.
-- If a pattern appears on 2+ pages (hero gradient, section header, CTA block, card hover, responsive breakpoints), it belongs in `styles.css` as a shared class — extract immediately, not later.
-- The goal: every page's inline `<style>` should contain ONLY truly page-specific CSS. Shared patterns belong in `styles.css`.
-- After any CSS changes, rebuild with `node build.js` and verify.
-- Reference: Industry pages and blog articles are at zero inline CSS — that's the standard.
+**CSS Architecture (lessons learned Feb 12, 2026):**
+- **Component-based, not page-based.** NEVER create `.mes-hero`, `.erp-hero`, `.auto-hero` as separate selectors when they share 90% of styles. Create ONE `.product-hero` with CSS custom properties (`--accent-color`) for the differences. If a pattern repeats 3+ times, consolidate into one component class BEFORE continuing.
+- **Design tokens everywhere.** Never hardcode `#000864` or `#00AFF0` — always use `var(--dw-navy)` or `var(--dw-blue)`. This applies to colors, spacing, font-sizes, border-radius. If it's a design decision, it's a token.
+- **BEM naming convention.** All new CSS follows `.block__element--modifier` pattern. No more mixed conventions (`.dw-btn-primary` vs `.btn-white` vs `.product-box-badge.light`).
+- **Bloat detection trigger.** If `styles.css` or any inline `<style>` grows by >50 lines in a single session without consolidation, STOP and propose component extraction before continuing. Claude MUST flag this — Peter relies on Claude to catch it.
+- **Dead CSS audit.** After every batch of pages, grep for selectors that exist in CSS but are used in zero HTML files. Remove them.
+- **Accessibility in the template, not retrofitted.** Skip links, `<main>` landmarks, `prefers-reduced-motion`, contrast minimums (0.75 for text on dark backgrounds), no translateY/scale on non-clickable `<div>` hover — all baked into the base page template from Day 1. Never build 35 pages then retrofit.
+- **Context: The current HTML site's 6,000-line `styles.css` is temporary** — it exists only for CloneWebX import fidelity. Divi 5 (launching Feb 26, 2026) replaces all CSS with its own Design Variables and module system. Do NOT spend time refactoring the existing CSS. DO apply these lessons when building in Divi 5.
 
 ## Collaboration Style
 
@@ -160,11 +160,19 @@ CLAUDE.md                            # This file (must stay in root)
 - When you see a suboptimal approach — even one you yourself are about to take — STOP and suggest the better way before proceeding.
 - Frame suggestions in plain language: what the problem is, what the better approach is, and why it saves time/money/trouble.
 - Do NOT stay silent out of politeness. Silence = letting technical debt accumulate on someone who trusts you to know better.
+- **FAILURE CASE (Feb 2026):** Claude watched `styles.css` grow from 2,000 to 6,000 lines over weeks — page-prefixed selectors duplicating patterns, no component consolidation — and never flagged it. Peter had to call it out. This is the exact scenario this rule exists to prevent.
 - Examples of things to flag proactively:
   - "We're duplicating 500 lines of CSS in every file — let me consolidate into one shared stylesheet"
   - "This layout approach will break on mobile — let me use a responsive pattern instead"
   - "We're hardcoding dates that will go stale — let me make them dynamic"
   - "This page structure will make future edits painful — let me restructure it now while it's easy"
+  - "We're creating 5 near-identical hero sections with different prefixes — let me make one reusable component"
+  - "This file has grown past 200 lines this session — let me consolidate before continuing"
+- **Automatic triggers (Claude MUST stop and flag):**
+  1. Any file grows >200 lines in a single session
+  2. A CSS/HTML pattern repeats 3+ times across files
+  3. A third-party tool claim (dates, features) hasn't been verified
+  4. An approach will create rework across multiple pages
 - Timing: Flag BEFORE doing the work, not after. Give Peter the choice.
 
 **Proactive Pattern Application:**

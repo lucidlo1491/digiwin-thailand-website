@@ -109,6 +109,20 @@ img {
     z-index: 1;
 }
 
+/* Section-level themed background illustration — add inside any section with position:relative; overflow:hidden */
+.dw-section-scene {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+.dw-section-scene svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.10;
+}
+
 /* ===== BRAND GRAPHIC SYSTEM — Super D + Particle Wave ===== */
 
 /* Keyframes: Particle Wave */

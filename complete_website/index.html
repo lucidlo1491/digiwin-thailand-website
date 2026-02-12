@@ -615,32 +615,15 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .dw-check-card + .dw-check-card:not(:nth-child(n)) ,
+        /* Vertical spacing for full-width cards 04/05 below the 3-card grid */
         .dw-checks-grid + .dw-check-card {
             margin-top: 32px;
         }
-
-        .dw-check-card + .dw-check-card {
+        .dw-checks-container > .dw-check-card + .dw-check-card {
             margin-top: 32px;
         }
 
-        .dw-checks-grid + .dw-check-card {
-            margin-top: 32px;
-        }
-
-        /* Section-level background illustration — factory data chaos */
-        .dw-checks-scene {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-        .dw-checks-scene svg {
-            width: 100%;
-            height: 100%;
-            opacity: 0.10;
-        }
+        /* Section-level background — uses shared .dw-section-scene from styles.css */
 
         /* Per-card background illustrations */
         .dw-check-bg {
@@ -2328,7 +2311,7 @@
         <!-- Brand: D outline bleeding from left — the "problem portal" you look through -->
         <div class="dw-d-bg dw-d-bg--left dw-d-parallax" style="opacity: 0.10; width: 50%; left: -20%;"></div>
         <!-- Section-level background: factory production flow with broken data connections -->
-        <div class="dw-checks-scene">
+        <div class="dw-section-scene">
             <svg viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
                 <!-- Production line conveyors — horizontal flow paths -->
                 <line x1="0" y1="180" x2="420" y2="180" stroke="#000864" stroke-width="1.5"/>
@@ -2573,6 +2556,45 @@
 
     <!-- Distributor Path - Understanding Checks -->
     <section class="dw-checks-section dw-checks-section--partner" style="position: relative; overflow: hidden;">
+        <!-- Section bg: Revenue ceiling — man-day trap visualization (light strokes on dark bg) -->
+        <div class="dw-section-scene">
+            <svg viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                <!-- Revenue bars hitting ceiling -->
+                <rect x="150" y="550" width="50" height="250" rx="3" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.15"/>
+                <rect x="240" y="450" width="50" height="350" rx="3" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.18"/>
+                <rect x="330" y="370" width="50" height="430" rx="3" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.2"/>
+                <rect x="420" y="320" width="50" height="480" rx="3" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.22"/>
+                <rect x="510" y="300" width="50" height="500" rx="3" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.22"/>
+                <rect x="600" y="290" width="50" height="510" rx="3" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.2"/>
+                <rect x="690" y="285" width="50" height="515" rx="3" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.18"/>
+                <!-- Revenue ceiling line -->
+                <line x1="100" y1="270" x2="800" y2="270" stroke="#00AFF0" stroke-width="2.5" stroke-dasharray="12 8" opacity="0.3"/>
+                <text x="810" y="278" font-family="'Noto Sans',sans-serif" font-size="16" font-weight="700" fill="#ffffff" opacity="0.1">CAP</text>
+                <!-- Man-day clock -->
+                <circle cx="1050" cy="350" r="90" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.12"/>
+                <line x1="1050" y1="350" x2="1050" y2="280" stroke="#ffffff" stroke-width="2.5" opacity="0.15" stroke-linecap="round"/>
+                <line x1="1050" y1="350" x2="1100" y2="370" stroke="#ffffff" stroke-width="2" opacity="0.12" stroke-linecap="round"/>
+                <circle cx="1050" cy="350" r="4" fill="#ffffff" opacity="0.2"/>
+                <line x1="1050" y1="262" x2="1050" y2="270" stroke="#ffffff" stroke-width="1.5" opacity="0.15"/>
+                <line x1="1050" y1="430" x2="1050" y2="438" stroke="#ffffff" stroke-width="1.5" opacity="0.15"/>
+                <line x1="962" y1="350" x2="970" y2="350" stroke="#ffffff" stroke-width="1.5" opacity="0.15"/>
+                <line x1="1130" y1="350" x2="1138" y2="350" stroke="#ffffff" stroke-width="1.5" opacity="0.15"/>
+                <!-- Headcount = Revenue -->
+                <text x="900" y="580" font-family="'Noto Sans',sans-serif" font-size="20" font-weight="800" fill="#ffffff" opacity="0.05">HEADCOUNT = REVENUE</text>
+                <!-- Shrinking margin lines -->
+                <line x1="1250" y1="200" x2="1250" y2="700" stroke="#ffffff" stroke-width="1" opacity="0.08"/>
+                <line x1="1300" y1="280" x2="1300" y2="620" stroke="#ffffff" stroke-width="1" opacity="0.08"/>
+                <line x1="1350" y1="350" x2="1350" y2="550" stroke="#ffffff" stroke-width="1" opacity="0.08"/>
+                <!-- Squeeze arrows -->
+                <path d="M1240 400 L1250 390 L1260 400" stroke="#00AFF0" stroke-width="1.5" fill="none" opacity="0.2"/>
+                <path d="M1240 500 L1250 510 L1260 500" stroke="#00AFF0" stroke-width="1.5" fill="none" opacity="0.2"/>
+                <!-- Data dots -->
+                <circle cx="180" cy="300" r="3" fill="#ffffff" opacity="0.1"/>
+                <circle cx="500" cy="200" r="4" fill="#ffffff" opacity="0.08"/>
+                <circle cx="750" cy="400" r="3" fill="#00AFF0" opacity="0.15"/>
+                <circle cx="1200" cy="650" r="3.5" fill="#ffffff" opacity="0.08"/>
+            </svg>
+        </div>
         <div class="dw-checks-container">
             <div class="dw-checks-header">
                 <p class="dw-checks-label">For ERP Implementers</p>
@@ -3413,6 +3435,43 @@
 
     <!-- Trust Anchors - 4 Credibility Statements -->
     <section class="dw-section dw-trust-section" style="background: #ffffff; position: relative; overflow: hidden;">
+        <!-- Section bg: Trust anchors — shield, stock ticker, timeline, globe -->
+        <div class="dw-section-scene">
+            <svg viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                <!-- Shield outline -->
+                <path d="M250 180 L250 380 Q250 480 350 530 Q450 480 450 380 L450 180 L350 140Z" stroke="#000864" stroke-width="2" fill="none" opacity="0.15"/>
+                <path d="M320 300 L345 325 L400 270" stroke="#00AFF0" stroke-width="2.5" fill="none" opacity="0.2"/>
+                <!-- Stock ticker line -->
+                <path d="M600 400 L650 380 L700 420 L750 350 L800 370 L850 300 L900 320 L950 280 L1000 300 L1050 260 L1100 280" stroke="#000864" stroke-width="1.5" fill="none" opacity="0.15"/>
+                <text x="1110" y="285" font-family="'Noto Sans',sans-serif" font-size="12" font-weight="700" fill="#000864" opacity="0.1">300378</text>
+                <!-- Certificate seal -->
+                <circle cx="1250" cy="200" r="45" stroke="#000864" stroke-width="2" fill="none" opacity="0.12"/>
+                <circle cx="1250" cy="200" r="35" stroke="#000864" stroke-width="1" fill="none" opacity="0.08"/>
+                <text x="1250" y="205" font-family="'Noto Sans',sans-serif" font-size="10" font-weight="700" fill="#000864" opacity="0.1" text-anchor="middle">ISO</text>
+                <!-- Timeline ruler -->
+                <line x1="100" y1="750" x2="1300" y2="750" stroke="#000864" stroke-width="1.5" opacity="0.12"/>
+                <line x1="100" y1="740" x2="100" y2="760" stroke="#000864" stroke-width="1.5" opacity="0.12"/>
+                <line x1="400" y1="740" x2="400" y2="760" stroke="#000864" stroke-width="1.5" opacity="0.12"/>
+                <line x1="700" y1="740" x2="700" y2="760" stroke="#000864" stroke-width="1.5" opacity="0.12"/>
+                <line x1="1000" y1="740" x2="1000" y2="760" stroke="#000864" stroke-width="1.5" opacity="0.12"/>
+                <line x1="1300" y1="740" x2="1300" y2="760" stroke="#000864" stroke-width="1.5" opacity="0.12"/>
+                <text x="100" y="780" font-family="'Noto Sans',sans-serif" font-size="11" fill="#000864" opacity="0.08" text-anchor="middle">1982</text>
+                <text x="700" y="780" font-family="'Noto Sans',sans-serif" font-size="11" fill="#000864" opacity="0.08" text-anchor="middle">2006</text>
+                <text x="1300" y="780" font-family="'Noto Sans',sans-serif" font-size="11" fill="#000864" opacity="0.08" text-anchor="middle">2026</text>
+                <!-- Globe -->
+                <circle cx="800" cy="150" r="60" stroke="#000864" stroke-width="1.5" fill="none" opacity="0.1"/>
+                <ellipse cx="800" cy="150" rx="30" ry="60" stroke="#000864" stroke-width="1" fill="none" opacity="0.07"/>
+                <line x1="740" y1="150" x2="860" y2="150" stroke="#000864" stroke-width="1" opacity="0.07"/>
+                <!-- Globe pins -->
+                <circle cx="780" cy="135" r="3" fill="#00AFF0" opacity="0.2"/>
+                <circle cx="820" cy="160" r="3" fill="#00AFF0" opacity="0.15"/>
+                <circle cx="790" cy="170" r="2.5" fill="#00AFF0" opacity="0.12"/>
+                <!-- Accent dots -->
+                <circle cx="500" cy="500" r="3" fill="#000864" opacity="0.1"/>
+                <circle cx="1100" cy="600" r="4" fill="#000864" opacity="0.07"/>
+                <circle cx="150" cy="550" r="3" fill="#000864" opacity="0.08"/>
+            </svg>
+        </div>
         <div class="dw-container" style="position: relative; z-index: 2;">
             <div class="dw-section-header">
                 <p class="dw-section-label">Why Trust DigiWin</p>

@@ -577,23 +577,31 @@
     <section class="dw-section" style="padding: 60px 0; background: #f8fafc;">
       <div style="max-width: 800px; margin: 0 auto; padding: 0 24px;">
         <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 28px; font-weight: 700; color: #000864; margin-bottom: 32px;">Frequently Asked Questions</h2>
-        <div style="display: flex; flex-direction: column; gap: 24px;">
-          <div>
-            <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin-bottom: 8px;">What are BOI supplementary taxes?</h3>
-            <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333;">BOI supplementary taxes are penalties imposed by Thailand's Board of Investment when a manufacturer's actual material usage does not match BOI-approved ratios. During annual BOI audits, the board compares what was imported under duty-free privileges against what was actually produced. Every kilogram of bonded material must map to a finished product. When the numbers do not reconcile — meaning there is a gap between imported bonded materials and documented production output — the manufacturer pays supplementary taxes on the discrepancy.</p>
-          </div>
-          <div>
-            <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin-bottom: 8px;">How can manufacturers reduce BOI tax penalties?</h3>
-            <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333;">Manufacturers can reduce or eliminate BOI tax penalties through production-order-level material reconciliation. Instead of relying on theoretical BOM calculations that estimate what should have been consumed, the ERP system tracks actual material issuance and consumption for every individual production order. This captures waste, substitutions, and yield variances at the source, producing an auditable trail that shows the BOI board exactly where every kilogram of bonded material went — from import declaration through production to finished goods.</p>
-          </div>
-          <div>
-            <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin-bottom: 8px;">What is production-order-level reconciliation?</h3>
-            <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333;">Production-order-level reconciliation means tracking material usage per production order against BOI-approved ratios, rather than relying on aggregate or theoretical calculations. When a production order is opened, the system creates a material consumption record specific to that order. As materials are issued from the warehouse, each issuance is linked to the order. When the order closes, actual consumption is compared against the BOM standard and the variance is captured. This per-order granularity allows BOI reports to trace every gram of bonded material from import to production to finished goods.</p>
-          </div>
-          <div>
-            <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin-bottom: 8px;">How much can BOI compliance optimization save?</h3>
-            <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333;">The savings can be substantial. In the case of Jin Hai, a DigiWin customer manufacturing in Thailand, their annual BOI supplementary tax liability dropped from over 10 million THB per year to just 150,000 THB in 2024, and then to zero in 2025. The DigiWin T100 implementation cost was a fraction of the 10 million THB annual savings, meaning the system paid for itself in avoided taxes alone within the first year — not counting reduced compliance labor, eliminated audit risk, and protection of the BOI certificate.</p>
-          </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+            <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What are BOI supplementary taxes?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+            <div style="padding: 0 20px 16px 20px; background: white;">
+              <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">BOI supplementary taxes are penalties imposed by Thailand's Board of Investment when a manufacturer's actual material usage does not match BOI-approved ratios. During annual BOI audits, the board compares what was imported under duty-free privileges against what was actually produced. Every kilogram of bonded material must map to a finished product. When the numbers do not reconcile — meaning there is a gap between imported bonded materials and documented production output — the manufacturer pays supplementary taxes on the discrepancy.</p>
+            </div>
+          </details>
+          <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+            <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How can manufacturers reduce BOI tax penalties?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+            <div style="padding: 0 20px 16px 20px; background: white;">
+              <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">Manufacturers can reduce or eliminate BOI tax penalties through production-order-level material reconciliation. Instead of relying on theoretical BOM calculations that estimate what should have been consumed, the ERP system tracks actual material issuance and consumption for every individual production order. This captures waste, substitutions, and yield variances at the source, producing an auditable trail that shows the BOI board exactly where every kilogram of bonded material went — from import declaration through production to finished goods.</p>
+            </div>
+          </details>
+          <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+            <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What is production-order-level reconciliation?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+            <div style="padding: 0 20px 16px 20px; background: white;">
+              <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">Production-order-level reconciliation means tracking material usage per production order against BOI-approved ratios, rather than relying on aggregate or theoretical calculations. When a production order is opened, the system creates a material consumption record specific to that order. As materials are issued from the warehouse, each issuance is linked to the order. When the order closes, actual consumption is compared against the BOM standard and the variance is captured. This per-order granularity allows BOI reports to trace every gram of bonded material from import to production to finished goods.</p>
+            </div>
+          </details>
+          <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+            <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How much can BOI compliance optimization save?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+            <div style="padding: 0 20px 16px 20px; background: white;">
+              <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">The savings can be substantial. In the case of Jin Hai, a DigiWin customer manufacturing in Thailand, their annual BOI supplementary tax liability dropped from over 10 million THB per year to just 150,000 THB in 2024, and then to zero in 2025. The DigiWin T100 implementation cost was a fraction of the 10 million THB annual savings, meaning the system paid for itself in avoided taxes alone within the first year — not counting reduced compliance labor, eliminated audit risk, and protection of the BOI certificate.</p>
+            </div>
+          </details>
         </div>
       </div>
     </section>

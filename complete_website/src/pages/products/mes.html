@@ -1076,27 +1076,37 @@
 <section class="dw-section" style="padding: 60px 0; background: #f8fafc;">
   <div style="max-width: 800px; margin: 0 auto; padding: 0 24px;">
     <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 28px; font-weight: 700; color: #000864; margin-bottom: 32px; text-align: center;">Frequently Asked Questions</h2>
-    <div style="display: flex; flex-direction: column; gap: 24px;">
-      <div>
-        <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin-bottom: 8px;">What is a Manufacturing Execution System (MES)?</h3>
-        <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333;">A Manufacturing Execution System (MES) is software that tracks, monitors, and controls production on the factory floor in real time. It bridges the gap between ERP planning and actual shop floor execution — showing you what's happening on every machine and workstation right now, not what happened yesterday.</p>
-      </div>
-      <div>
-        <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin-bottom: 8px;">What is the difference between sMES and SFT?</h3>
-        <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333;">sMES is DigiWin's full-featured MES for comprehensive production management — work order tracking, quality control, material traceability, and OEE analytics. SFT (Shop Floor Tracker) is a lightweight entry point that can be deployed in 2–4 weeks, focusing on basic production reporting and machine status monitoring. Many factories start with SFT and expand to sMES as they mature.</p>
-      </div>
-      <div>
-        <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin-bottom: 8px;">Do I need ERP before implementing MES?</h3>
-        <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333;">No. DigiWin MES can operate standalone or integrate with any existing ERP. In fact, many manufacturers start with MES first (especially SFT at ~1M THB) to get immediate shop floor visibility, then add ERP later. This "Reverse Cut" approach lets you see ROI faster than a full ERP replacement.</p>
-      </div>
-      <div>
-        <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin-bottom: 8px;">What OEE improvement can I expect with DigiWin MES?</h3>
-        <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333;">DigiWin MES customers report an average 23% improvement in Overall Equipment Effectiveness (OEE), a 40% reduction in unplanned downtime, and 90% faster traceability queries. Results vary by factory, but the visibility alone — knowing machine status, production progress, and quality metrics in real time — typically drives immediate behavioral improvements on the shop floor.</p>
-      </div>
-      <div>
-        <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin-bottom: 8px;">How does DigiWin MES connect to machines on the shop floor?</h3>
-        <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333;">DigiWin MES connects to shop floor equipment through DigiWin's AIoT platform, which supports 50+ industrial protocols including OPC-UA, Modbus, MQTT, and direct CNC/PLC connections. For machines without digital interfaces, barcode scanning and tablet-based operator input provide the data bridge.</p>
-      </div>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What is a Manufacturing Execution System (MES)?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <div style="padding: 0 20px 16px 20px; background: white;">
+          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">A Manufacturing Execution System (MES) is software that tracks, monitors, and controls production on the factory floor in real time. It bridges the gap between ERP planning and actual shop floor execution — showing you what's happening on every machine and workstation right now, not what happened yesterday.</p>
+        </div>
+      </details>
+      <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What is the difference between sMES and SFT?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <div style="padding: 0 20px 16px 20px; background: white;">
+          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">sMES is DigiWin's full-featured MES for comprehensive production management — work order tracking, quality control, material traceability, and OEE analytics. SFT (Shop Floor Tracker) is a lightweight entry point that can be deployed in 2–4 weeks, focusing on basic production reporting and machine status monitoring. Many factories start with SFT and expand to sMES as they mature.</p>
+        </div>
+      </details>
+      <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">Do I need ERP before implementing MES?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <div style="padding: 0 20px 16px 20px; background: white;">
+          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">No. DigiWin MES can operate standalone or integrate with any existing ERP. In fact, many manufacturers start with MES first (especially SFT at ~1M THB) to get immediate shop floor visibility, then add ERP later. This "Reverse Cut" approach lets you see ROI faster than a full ERP replacement.</p>
+        </div>
+      </details>
+      <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What OEE improvement can I expect with DigiWin MES?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <div style="padding: 0 20px 16px 20px; background: white;">
+          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">DigiWin MES customers report an average 23% improvement in Overall Equipment Effectiveness (OEE), a 40% reduction in unplanned downtime, and 90% faster traceability queries. Results vary by factory, but the visibility alone — knowing machine status, production progress, and quality metrics in real time — typically drives immediate behavioral improvements on the shop floor.</p>
+        </div>
+      </details>
+      <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How does DigiWin MES connect to machines on the shop floor?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <div style="padding: 0 20px 16px 20px; background: white;">
+          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">DigiWin MES connects to shop floor equipment through DigiWin's AIoT platform, which supports 50+ industrial protocols including OPC-UA, Modbus, MQTT, and direct CNC/PLC connections. For machines without digital interfaces, barcode scanning and tablet-based operator input provide the data bridge.</p>
+        </div>
+      </details>
     </div>
   </div>
 </section>

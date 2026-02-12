@@ -96,7 +96,7 @@
         }
         .hero-stat-label {
             font-size: 14px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
         }
 
         /* Timeline Section - Compact Horizontal */
@@ -142,7 +142,7 @@
         }
         .timeline-header p {
             font-size: 16px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
             max-width: 550px;
             margin: 0 auto;
         }
@@ -165,11 +165,11 @@
         }
         .timeline-scroll-container::before {
             left: 0;
-            background: linear-gradient(90deg, #1f3547 0%, transparent 100%);
+            background: linear-gradient(90deg, #000432 0%, transparent 100%);
         }
         .timeline-scroll-container::after {
             right: 0;
-            background: linear-gradient(-90deg, #1f3547 0%, transparent 100%);
+            background: linear-gradient(-90deg, #000432 0%, transparent 100%);
         }
         .timeline-rail-wrapper {
             overflow-x: auto;
@@ -284,7 +284,7 @@
         }
         .milestone-desc {
             font-size: 12px;
-            color: rgba(255,255,255,0.55);
+            color: rgba(255,255,255,0.75);
             line-height: 1.5;
         }
         .milestone-badge {
@@ -586,7 +586,7 @@
             align-items: center;
             gap: 8px;
             font-size: 12px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
         }
         .legend-dot {
             width: 10px;
@@ -690,7 +690,7 @@
         }
         .asean-stop-country {
             font-size: 13px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
             margin-top: 4px;
         }
         .asean-arrow {
@@ -716,7 +716,7 @@
         }
         .presence-stat-label {
             font-size: 13px;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
             margin-top: 4px;
         }
 
@@ -856,7 +856,7 @@
         }
         .stat-description {
             font-size: 15px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
             line-height: 1.4;
         }
 
@@ -1041,7 +1041,6 @@
         .why-card:hover {
             border-color: #00AFF0;
             box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
-            transform: translateY(-4px);
         }
         .why-icon {
             width: 64px;
@@ -1129,7 +1128,7 @@
         }
         .global-header p {
             font-size: 18px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
         }
         .section-label-light {
             font-family: 'JetBrains Mono', monospace;
@@ -1177,7 +1176,7 @@
         }
         .asean-event {
             font-size: 13px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
         }
         .asean-arrow {
             font-size: 24px;
@@ -1215,7 +1214,7 @@
         }
         .global-stat-label {
             font-size: 15px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
         }
         .regions-grid {
             display: grid;
@@ -1243,7 +1242,7 @@
         }
         .region-card p {
             font-size: 14px;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
             margin: 0;
         }
 
@@ -1456,7 +1455,6 @@
         .award-card:hover {
             border-color: #00AFF0;
             box-shadow: 0 8px 32px rgba(0, 175, 240, 0.12);
-            transform: translateY(-4px);
         }
         .award-icon {
             width: 56px;
@@ -1526,7 +1524,7 @@
         }
         .cert-label {
             font-size: 12px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
         }
 
         @media (max-width: 1024px) {
@@ -1656,7 +1654,7 @@
         .corridor-info span {
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
         }
         .corridor-step.featured .corridor-info span {
             color: rgba(245,158,11,0.9);
@@ -1749,6 +1747,27 @@
             }
             .region-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        /* Accessibility: Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .hero-scroll-cta svg,
+            .milestone-card,
+            .region-block,
+            .belief-card,
+            .why-card,
+            .award-card,
+            .contact-cta,
+            .asean-year,
+            .region-cities span.more,
+            .region-cities span.less,
+            .dw-d-parallax,
+            .dw-wave-flow,
+            .dw-wave-fade,
+            .dw-d-bg {
+                animation: none !important;
+                transition: none !important;
             }
         }
     </style>
@@ -2049,6 +2068,8 @@
         </div>
     </header>
 
+<a href="#about-content" class="dw-skip-link">Skip to content</a>
+<main id="about-content">
 
     <!-- Hero Section -->
     <section class="about-hero" style="position: relative; overflow: hidden;">
@@ -3086,6 +3107,7 @@
             </div>
         </div>
     </section>
+</main>
     <!-- Footer -->
     <footer class="dw-footer">
         <div class="dw-footer-ocean" aria-hidden="true"></div>

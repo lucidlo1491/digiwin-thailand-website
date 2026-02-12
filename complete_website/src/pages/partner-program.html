@@ -137,7 +137,7 @@
         }
         .partner-stat-label {
             font-size: 14px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
             line-height: 1.4;
         }
 
@@ -338,12 +338,11 @@
         .benefit-card:hover {
             border-color: #00AFF0;
             box-shadow: 0 8px 32px rgba(0, 175, 240, 0.12);
-            transform: translateY(-4px);
         }
         .benefit-icon {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, #00AFF0, #2d7bc4);
+            background: linear-gradient(135deg, #00AFF0, #003CC8);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -419,7 +418,7 @@
         .offering-icon {
             width: 72px;
             height: 72px;
-            background: linear-gradient(135deg, #00AFF0, #2d7bc4);
+            background: linear-gradient(135deg, #00AFF0, #003CC8);
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -564,7 +563,7 @@
         .journey-number {
             width: 96px;
             height: 96px;
-            background: linear-gradient(135deg, #00AFF0, #2d7bc4);
+            background: linear-gradient(135deg, #00AFF0, #003CC8);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -594,7 +593,7 @@
         /* CTA Section */
         .partner-cta {
             padding: 100px 24px;
-            background: linear-gradient(135deg, #00AFF0 0%, #2d7bc4 50%, #1e5a8a 100%);
+            background: linear-gradient(135deg, #00AFF0 0%, #003CC8 50%, #001080 100%);
             position: relative;
             overflow: hidden;
         }
@@ -684,10 +683,102 @@
                 flex-direction: column;
             }
         }
+
+        /* Market Timing Section */
+        .market-timing {
+            background: #F5F7FA;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .market-timing-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+        .market-timing-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .market-timing-header .dw-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #00AFF0;
+            margin-bottom: 12px;
+        }
+        .market-timing-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #000864;
+            margin-bottom: 16px;
+        }
+        .market-timing-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .market-timing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .market-timing-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid #e8eef3;
+        }
+        .market-timing-stat {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .market-timing-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #000864;
+            margin-bottom: 8px;
+        }
+        .market-timing-card p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+        @media (max-width: 640px) {
+            .market-timing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .benefit-card,
+            .offering-card,
+            .partner-hero-ctas .dw-btn-secondary,
+            .partner-hero-ctas .btn-secondary-light,
+            .offering-link svg {
+                transition: none !important;
+            }
+            .dw-d-parallax,
+            .dw-wave-flow,
+            .dw-wave-fade,
+            .dw-wave-vertical {
+                animation: none !important;
+            }
+        }
     </style>
 </head>
 <body>
 {{header}}
+    <a href="#partner-content" class="dw-skip-link">Skip to content</a>
+    <main id="partner-content">
 
     <!-- Hero Section -->
     <section class="partner-hero" style="position: relative; overflow: hidden;">
@@ -1121,30 +1212,30 @@
     </section>
 
     <!-- Market Timing Section -->
-    <section style="background: #F5F7FA; padding: 80px 0; position: relative; overflow: hidden;">
+    <section class="market-timing">
         <!-- Brand: Vertical wave on right — time flowing downward, urgency -->
         <div class="dw-wave-vertical dw-wave-vertical--right" style="opacity: 0.05;"></div>
-        <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2;">
-            <div style="text-align: center; margin-bottom: 48px;">
-                <p style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: #00AFF0; margin-bottom: 12px;">Why Now</p>
-                <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 36px; font-weight: 700; color: #000864; margin-bottom: 16px;">The Thai Market Window Is Open</h2>
-                <p style="font-family: 'Noto Sans', sans-serif; font-size: 18px; color: #666; max-width: 700px; margin: 0 auto;">Three converging forces are creating a rare opportunity for ERP partners in Thailand.</p>
+        <div class="market-timing-inner">
+            <div class="market-timing-header">
+                <p class="dw-label">Why Now</p>
+                <h2>The Thai Market Window Is Open</h2>
+                <p>Three converging forces are creating a rare opportunity for ERP partners in Thailand.</p>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
-                <div style="background: #fff; border-radius: 16px; padding: 32px; border: 1px solid #e8eef3;">
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: #DC2626; margin-bottom: 12px;">2027</div>
-                    <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin-bottom: 8px;">Legacy ERP End-of-Life</h3>
-                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; color: #666; line-height: 1.6;">Legacy enterprise ERP systems are reaching end of maintenance. Thai manufacturers on aging platforms must migrate — and the upgrade path from incumbent vendors is often prohibitively expensive for SMEs. This creates a migration window for manufacturing-focused alternatives.</p>
+            <div class="market-timing-grid">
+                <div class="market-timing-card">
+                    <div class="market-timing-stat" style="color: #DC2626;">2027</div>
+                    <h3>Legacy ERP End-of-Life</h3>
+                    <p>Legacy enterprise ERP systems are reaching end of maintenance. Thai manufacturers on aging platforms must migrate — and the upgrade path from incumbent vendors is often prohibitively expensive for SMEs. This creates a migration window for manufacturing-focused alternatives.</p>
                 </div>
-                <div style="background: #fff; border-radius: 16px; padding: 32px; border: 1px solid #e8eef3;">
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: #F59E0B; margin-bottom: 12px;">~20</div>
-                    <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin-bottom: 8px;">Competitors Scaling Fast</h3>
-                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; color: #666; line-height: 1.6;">Chinese ERP vendors each now have ~20 people in Thailand and growing. The window to establish market position is narrowing. First movers in the partner channel capture territory advantages.</p>
+                <div class="market-timing-card">
+                    <div class="market-timing-stat" style="color: #F59E0B;">~20</div>
+                    <h3>Competitors Scaling Fast</h3>
+                    <p>Chinese ERP vendors each now have ~20 people in Thailand and growing. The window to establish market position is narrowing. First movers in the partner channel capture territory advantages.</p>
                 </div>
-                <div style="background: #fff; border-radius: 16px; padding: 32px; border: 1px solid #e8eef3;">
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: #22C55E; margin-bottom: 12px;">8,000</div>
-                    <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin-bottom: 8px;">Target Factories Identified</h3>
-                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; color: #666; line-height: 1.6;">From Thailand's manufacturing base, we've identified 8,000 genuine targets. Only 113 are properly qualified so far — leaving 7,000+ untouched opportunities for partners to pursue.</p>
+                <div class="market-timing-card">
+                    <div class="market-timing-stat" style="color: #22C55E;">8,000</div>
+                    <h3>Target Factories Identified</h3>
+                    <p>From Thailand's manufacturing base, we've identified 8,000 genuine targets. Only 113 are properly qualified so far — leaving 7,000+ untouched opportunities for partners to pursue.</p>
                 </div>
             </div>
         </div>
@@ -1162,11 +1253,12 @@
                 <a href="{{basePath}}demo.html" class="dw-btn dw-btn-white">Schedule Partner Strategy Session</a>
                 <a href="{{basePath}}partner-program/economics.html" class="dw-btn dw-btn-outline-white">See the Math First</a>
             </div>
-            <p style="margin-top: 32px; font-size: 14px; color: rgba(255,255,255,0.7);">
+            <p style="margin-top: 32px; font-size: 14px; color: rgba(255,255,255,0.75);">
                 <strong>Not ready to talk?</strong> Download the Partner Readiness Checklist—a self-assessment tool to privately evaluate if your team is ready.
             </p>
         </div>
     </section>
+    </main>
 {{footer}}
 </body>
 </html>

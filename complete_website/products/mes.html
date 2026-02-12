@@ -69,7 +69,7 @@
         .mes-hero-stat-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 10px;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.75);
             text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-top: 4px;
@@ -122,7 +122,7 @@
         .mockup-status-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 9px;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.75);
             text-transform: uppercase;
             margin-top: 4px;
         }
@@ -301,7 +301,7 @@
             color: #ffffff;
         }
         .product-box-tagline {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.75);
         }
         .product-box-badge {
             display: inline-block;
@@ -427,7 +427,6 @@
         }
         .integration-node:hover {
             border-color: #00AFF0;
-            transform: scale(1.05);
         }
         .integration-node.active {
             border-color: #00AFF0;
@@ -602,6 +601,18 @@
             }
             .mes-hero h1 {
                 font-size: 32px;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .product-box,
+            .integration-node,
+            .integration-link,
+            .dw-d-bg,
+            .dw-d-parallax,
+            .dw-wave-flow,
+            .dw-d-glow {
+                animation: none !important;
+                transition: none !important;
             }
         }
     </style>
@@ -902,7 +913,9 @@
         </div>
     </header>
 
+<a href="#mes-content" class="dw-skip-link">Skip to content</a>
 
+    <main id="mes-content">
     <!-- Hero Section — "The Factory Pulse": D PARTICLE BOTTOM-rise at 0.15, data rising from shop floor -->
     <section class="mes-hero" style="position: relative; overflow: hidden;">
         <!-- Brand: Super D particle, BOTTOM-rise — data rising from the shop floor like a pulse -->
@@ -1286,6 +1299,7 @@
             </div>
         </div>
     </section>
+    </main>
     <!-- Footer -->
     <footer class="dw-footer">
         <div class="dw-footer-ocean" aria-hidden="true"></div>

@@ -48,7 +48,7 @@
 
 > **Updated Feb 10, 2026:** Hero stat aligned with undersell strategy (30-40%). The detailed tier breakdown later on the page reveals higher actual margins (Silver 50-62%, Golden 62-70%) — this is intentional. Hero understates; body content delivers the "exceed expectations" moment.
 | 2 | 100% | Service Revenue |
-| 3 | 12% | Fixed MA Cost to You |
+| 3 | Fixed | Predictable MA Cost |
 | 4 | 6mo | Lead Lock Protection |
 
 ---
@@ -105,16 +105,16 @@ Each card has: dark header (`linear-gradient(135deg, #000864, #1a2e40)`) with ic
 | Element | Content |
 |---------|---------|
 | **Tag** | "The Annuity Stream" |
-| **Description** | DigiWin charges you a fixed **12% of SSP** annually (starting Year 2) for Tier 2 support—core bug fixes, patches, and R&D. You provide Tier 1 support and **set your own client rate**. |
+| **Description** | You pay DigiWin a **fixed annual fee** (starting Year 2) for Tier 2 support—core bug fixes, patches, and R&D. You provide Tier 1 support and **set your own client rate**. |
 
 | Line Item | Value |
 |-----------|-------|
-| Your Cost to DigiWin | 12% of SSP |
-| You Charge the Client | Your call (e.g. 18-20%) (highlighted green) |
+| Your Cost to DigiWin | Fixed annual fee |
+| You Charge the Client | You set the rate (highlighted green) |
 
-> **VP-confirmed model (Oct 10, 2025):** No profit-sharing. DigiWin charges distributor a fixed 12%. How much the distributor charges the client is their business. The "75/25 split" from earlier contract drafts was explicitly rejected by VP.
+> **VP-confirmed model (Oct 10, 2025):** No profit-sharing. DigiWin charges distributor a fixed fee. How much the distributor charges the client is their business. The "75/25 split" from earlier contract drafts was explicitly rejected by VP. **Specific percentages are for 1-on-1 deal discussions only — not public display.**
 
-| **Note** | *No profit-sharing. You pay us 12%, charge clients what the market bears. As install base grows, MA becomes your most predictable revenue stream.* |
+| **Note** | *No profit-sharing. Your cost is fixed and predictable. You set your own client rate and keep the markup. As install base grows, MA becomes your most predictable revenue stream.* |
 
 #### Stream 4: Upsell & Cross-Sell
 

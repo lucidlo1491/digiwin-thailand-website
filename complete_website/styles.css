@@ -457,7 +457,7 @@ img {
 .dw-nav {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
 }
 
 .dw-nav-item {
@@ -466,11 +466,11 @@ img {
 
 .dw-nav-link {
     font-family: 'Noto Sans', sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
     color: #000864;
     text-decoration: none;
-    padding: 28px 20px;
+    padding: 20px 24px;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -566,7 +566,7 @@ img {
 
 .dw-mega-column-title {
     font-family: 'Noto Sans', sans-serif;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     color: #94a3b8;
     text-transform: uppercase;
@@ -631,7 +631,7 @@ img {
 
 .dw-mega-title {
     font-family: 'Noto Sans', sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
     color: #000864;
     margin: 0;
@@ -640,7 +640,7 @@ img {
 
 .dw-mega-desc {
     font-family: 'Noto Sans', sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     color: #94a3b8;
     margin: 2px 0 0;
     line-height: 1.3;
@@ -725,7 +725,7 @@ img {
     align-items: center;
     gap: 8px;
     font-family: 'Noto Sans', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     color: #ffffff;
     background: linear-gradient(135deg, #00AFF0 0%, #0284c7 100%);
@@ -760,7 +760,7 @@ img {
     align-items: center;
     gap: 8px;
     font-family: 'Noto Sans', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     color: #00AFF0;
     padding: 16px;
@@ -798,7 +798,7 @@ img {
 /* Header CTA Button */
 .dw-header-cta {
     font-family: 'Noto Sans', sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     background: linear-gradient(135deg, #00AFF0 0%, #0284c7 100%);
     color: #ffffff !important;

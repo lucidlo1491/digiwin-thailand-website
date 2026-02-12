@@ -4549,7 +4549,7 @@ img {
 .products-hero-stat-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.75);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-top: 6px;
@@ -5554,7 +5554,6 @@ img {
 .why-card:hover {
     background: #ffffff;
     box-shadow: 0 24px 64px rgba(0, 175, 240, 0.12);
-    transform: translateY(-8px);
     border-color: rgba(0, 175, 240, 0.1);
 }
 
@@ -5853,6 +5852,40 @@ img {
     }
 }
 
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .products-hero-content,
+    .hero-stack-visual,
+    .products-hero::before,
+    .products-hero-badge::before,
+    .stack-layer,
+    .stack-layer::before,
+    .data-particle,
+    .ecosystem-node,
+    .ecosystem-line,
+    .ecosystem-ring,
+    .data-flow-line,
+    .data-flow-dot,
+    .integration-hub::before,
+    .integration-hub::after,
+    .pp-card,
+    .why-card,
+    .why-card-icon,
+    .pp-card-icon,
+    .products-cta-glow,
+    .dw-d-parallax,
+    .dw-wave-flow,
+    .dw-d-bg {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .pp-card.visible {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 /* ============================================
    PRODUCT DETAIL PAGES — Shared Components
    Used by: erp.html, mes.html, wms.html, aiot.html
@@ -6086,5 +6119,154 @@ img {
     .product-detail-cta-buttons .btn-outline-white {
         width: 100%;
         text-align: center;
+    }
+}
+
+/* ============================================
+   PARTNER PROGRAM — Shared Components
+   Used by: partner-program.html, economics.html,
+   business-model.html, solutions.html
+   ============================================ */
+
+/* --- Partner Hero --- */
+.dw-partner-hero {
+    background: linear-gradient(135deg, #000432 0%, #000864 50%, #001080 100%);
+    padding: 140px 24px 100px;
+    position: relative;
+    overflow: hidden;
+}
+.dw-partner-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+}
+.dw-partner-hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+.dw-partner-hero-inner--wide {
+    max-width: 1200px;
+}
+.dw-partner-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 24px;
+}
+.dw-partner-breadcrumb a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.dw-partner-breadcrumb a:hover {
+    color: #00AFF0;
+}
+.dw-partner-hero h1 {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: clamp(36px, 5vw, 52px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 24px;
+}
+.dw-partner-hero h1 span { color: #00AFF0; }
+.dw-partner-hero h1 span.accent-green { color: #4ade80; }
+.dw-partner-hero-subtitle {
+    font-size: 20px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+    max-width: 700px;
+}
+
+/* --- Partner Section Header --- */
+.dw-partner-section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.dw-partner-section-header h2 {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #000864;
+    margin-bottom: 16px;
+}
+.dw-partner-section-header p {
+    font-size: 18px;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- Partner Section Label (JetBrains Mono uppercase) --- */
+.dw-partner-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: #00AFF0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 12px;
+}
+
+/* --- Partner CTA Section --- */
+.dw-partner-cta {
+    padding: 100px 24px;
+    background: linear-gradient(135deg, #00AFF0 0%, #003CC8 50%, #001080 100%);
+    position: relative;
+    overflow: hidden;
+}
+.dw-partner-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.07'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+}
+.dw-partner-cta-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+.dw-partner-cta h2 {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 16px;
+}
+.dw-partner-cta p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.dw-partner-cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* --- Partner Responsive --- */
+@media (max-width: 640px) {
+    .dw-partner-hero {
+        padding: 120px 20px 80px;
+    }
+    .dw-partner-hero h1 {
+        font-size: 32px;
+    }
+    .dw-partner-cta h2 {
+        font-size: 28px;
     }
 }

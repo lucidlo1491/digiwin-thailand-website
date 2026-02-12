@@ -4,7 +4,7 @@
 **PRD Reference:** Section 2.3 — Partner Economics
 **Playbook Reference:** Sections 2.3 (Track B Voice), 3.5 (Economics Page Arc), 7.4 (Partner Economics Notes)
 **Status:** v1.0 — Reverse-engineered from HTML build
-**Last Updated:** February 10, 2026
+**Last Updated:** February 12, 2026
 
 ---
 
@@ -48,7 +48,7 @@
 
 > **Updated Feb 10, 2026:** Hero stat aligned with undersell strategy (30-40%). The detailed tier breakdown later on the page reveals higher actual margins (Silver 50-62%, Golden 62-70%) — this is intentional. Hero understates; body content delivers the "exceed expectations" moment.
 | 2 | 100% | Service Revenue |
-| 3 | 75% | MA Split (9% of SSP) |
+| 3 | 12% | Fixed MA Cost to You |
 | 4 | 6mo | Lead Lock Protection |
 
 ---
@@ -105,14 +105,16 @@ Each card has: dark header (`linear-gradient(135deg, #000864, #1a2e40)`) with ic
 | Element | Content |
 |---------|---------|
 | **Tag** | "The Annuity Stream" |
-| **Description** | Annual Maintenance (MA) is **12% of SSP**, charged yearly starting Year 2. You provide Tier 1 support; DigiWin handles Tier 2 (core bugs, R&D). |
+| **Description** | DigiWin charges you a fixed **12% of SSP** annually (starting Year 2) for Tier 2 support—core bug fixes, patches, and R&D. You provide Tier 1 support and **set your own client rate**. |
 
-| Split | Share |
-|-------|-------|
-| Partner Keeps (Tier 1) | 75% (9% of SSP) (highlighted green) |
-| DigiWin Takes (Tier 2) | 25% (3% of SSP) |
+| Line Item | Value |
+|-----------|-------|
+| Your Cost to DigiWin | 12% of SSP |
+| You Charge the Client | Your call (e.g. 18-20%) (highlighted green) |
 
-| **Note** | *As install base grows, MA covers your basic operating costs—rent, junior staff, admin.* |
+> **VP-confirmed model (Oct 10, 2025):** No profit-sharing. DigiWin charges distributor a fixed 12%. How much the distributor charges the client is their business. The "75/25 split" from earlier contract drafts was explicitly rejected by VP.
+
+| **Note** | *No profit-sharing. You pay us 12%, charge clients what the market bears. As install base grows, MA becomes your most predictable revenue stream.* |
 
 #### Stream 4: Upsell & Cross-Sell
 
@@ -328,7 +330,7 @@ Each card has: dark header (`linear-gradient(135deg, #000864, #1a2e40)`) with ic
 
 2. **License Margin Range — HARMONIZED (Feb 10, 2026):** All public-facing pages now use **30-40%** as the headline margin range (undersell strategy, confirmed by Peter). Actual margins from Price Sheet V2.0: Silver 50-62%, Golden 62-70%. The specific tier breakdowns on this Economics page can show higher numbers since visitors are deeper in the funnel — but hero/overview stats across all pages should say "30-40%". Homepage hero uses qualitative "Industry-Leading Margins" instead of a specific number.
 
-3. **MA Split Detail:** The page specifies MA = 12% of SSP, with 75/25 split (partner keeps 9%, DigiWin takes 3%). This is very specific and should be confirmed with HQ. The Partner Hub page states "9% Annual Maintenance Share" which aligns.
+3. **MA Model — CORRECTED (Feb 12, 2026):** The page previously showed a "75/25 split (9% partner / 3% DigiWin)" which was based on an early contract proposal that VP explicitly rejected in the Oct 10, 2025 meeting (經銷商合約會議逐字稿 Part 2). The VP's actual model: DigiWin charges the distributor a **fixed 12% of SSP** for Tier 2 support. The distributor sets their own client rate and keeps the markup. **No profit-sharing.** Source: Google Doc `19oyQH1kLLrwqfkfsmOTf3dybPeT1HGZCBGF3xeNVZwI`. NOTE: The Partner Hub page may still reference "9% Annual Maintenance Share" — check and correct if so.
 
 4. **CTA Link — `demo.html`:** Primary CTA links to `demo.html`. Same concern as Partner Hub — filename "demo" contradicts no-demo principle.
 

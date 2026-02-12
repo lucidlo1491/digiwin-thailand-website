@@ -144,12 +144,14 @@ CLAUDE.md                            # This file (must stay in root)
 - Do not wait until the entire site is finished — audit incrementally, page by page.
 - Check at minimum: color consistency, typography, animation timing, CTA wording, tone alignment with Playbook.
 
-**CSS Extraction On Every Page Touch:**
-- When creating or modifying any page, check its inline `<style>` block for CSS that duplicates patterns already in `styles.css` or that could be shared with other pages.
-- If duplicated or shareable CSS exists, extract it to `styles.css` as part of the current task — do not defer it.
-- The goal: every page should contain ONLY page-specific CSS inline. Shared patterns (hero badges, card components, section layouts, @keyframes, responsive breakpoints) belong in `styles.css`.
-- After extraction, rebuild with `node build.js` and verify the page still renders correctly.
-- Reference: Industry pages and blog articles are already at zero inline CSS — use them as the standard to work toward.
+**CSS: Shared-First, Then Page-Specific:**
+- **Before writing ANY new CSS**, check `styles.css` for existing shared classes that already handle the pattern. Use them first.
+- Shared class families already available: `.dw-partner-*` (hero, section-header, label, breadcrumb, CTA), `.dw-cta-*`, `.dw-industry-*`, `.dw-blog-*`
+- When creating a new page, compose from shared classes + minimal page-specific overrides. Do NOT copy-paste CSS from another page — that's how 2,800 lines of duplication happened across partner pages.
+- If a pattern appears on 2+ pages (hero gradient, section header, CTA block, card hover, responsive breakpoints), it belongs in `styles.css` as a shared class — extract immediately, not later.
+- The goal: every page's inline `<style>` should contain ONLY truly page-specific CSS. Shared patterns belong in `styles.css`.
+- After any CSS changes, rebuild with `node build.js` and verify.
+- Reference: Industry pages and blog articles are at zero inline CSS — that's the standard.
 
 ## Collaboration Style
 

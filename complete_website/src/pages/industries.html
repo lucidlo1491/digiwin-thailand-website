@@ -129,7 +129,7 @@
         .industries-hero-stat-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.75);
             text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-top: 6px;
@@ -202,7 +202,6 @@
             background: var(--white);
             border-color: rgba(0, 175, 240, 0.2);
             box-shadow: 0 12px 40px rgba(0, 175, 240, 0.1);
-            transform: translateY(-4px);
         }
         .context-stat-value {
             font-family: 'Noto Sans', sans-serif;
@@ -360,7 +359,7 @@
         .industry-card-stat-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
             margin-top: 8px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -457,7 +456,6 @@
         .challenge-card:hover {
             border-color: #00AFF0;
             box-shadow: 0 8px 30px rgba(0, 175, 240, 0.12);
-            transform: translateY(-4px);
         }
         .challenge-icon {
             width: 64px;
@@ -517,7 +515,7 @@
         }
         .approach-header p {
             font-size: 18px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
         }
         .approach-steps {
             display: grid;
@@ -549,7 +547,7 @@
         }
         .approach-step p {
             font-size: 15px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
             line-height: 1.6;
         }
 
@@ -561,6 +559,27 @@
             .industry-card:nth-child(even) { direction: ltr; }
             .challenges-grid { grid-template-columns: repeat(2, 1fr); }
             .approach-steps { grid-template-columns: 1fr; gap: 40px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .industries-hero-inner,
+            .industries-hero::before,
+            .industries-hero-badge::before,
+            .context-stat,
+            .industry-card,
+            .industry-card-link,
+            .challenge-card,
+            .challenge-icon,
+            .dw-d-parallax,
+            .dw-wave-flow,
+            .dw-wave-fade,
+            .dw-d-bg {
+                animation: none !important;
+                transition: none !important;
+            }
+            .industry-card.visible {
+                opacity: 1;
+                transform: none;
+            }
         }
         @media (max-width: 640px) {
             .industries-hero { padding: 120px 0 80px; }
@@ -579,6 +598,8 @@
 </head>
 <body>
 {{header}}
+<a href="#industries-content" class="dw-skip-link">Skip to content</a>
+<main id="industries-content">
 
     <!-- Hero Section -->
     <section class="industries-hero" style="position: relative; overflow: hidden;">
@@ -894,6 +915,7 @@
             </div>
         </div>
     </section>
+</main>
 {{footer}}
 
 

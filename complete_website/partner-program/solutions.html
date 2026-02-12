@@ -35,11 +35,11 @@
             align-items: center;
             gap: 8px;
             font-size: 14px;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
             margin-bottom: 24px;
         }
         .stack-breadcrumb a {
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
             text-decoration: none;
             transition: color 0.2s;
         }
@@ -143,7 +143,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, #00AFF0, #2d7bc4);
+            background: linear-gradient(135deg, #00AFF0, #003CC8);
             color: #fff;
             padding: 8px 16px;
             border-radius: 50px;
@@ -301,7 +301,6 @@
             transition: all 0.3s ease;
         }
         .lifecycle-phase:hover {
-            transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(0, 175, 240, 0.15);
         }
         .lifecycle-phase.phase-1 { border-color: #00AFF0; }
@@ -489,45 +488,38 @@
         .comparison-table {
             max-width: 700px;
             margin: 0 auto;
+            width: 100%;
+            border-collapse: collapse;
         }
-        .comparison-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 16px;
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .comparison-row:last-child {
-            border-bottom: none;
-        }
-        .comparison-row.header {
-            border-bottom: 2px solid rgba(255,255,255,0.2);
-            padding-bottom: 20px;
-            margin-bottom: 8px;
-        }
-        .comparison-row.header span {
-            font-family: 'Noto Sans', sans-serif;
+        .comparison-table th {
             font-size: 12px;
             font-weight: 600;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.75);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            padding: 0 0 20px;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            text-align: left;
         }
-        .comparison-row span {
+        .comparison-table td {
+            padding: 16px 8px 16px 0;
             font-size: 15px;
             color: rgba(255,255,255,0.9);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .comparison-row span:first-child {
+        .comparison-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .comparison-table td:first-child {
             font-weight: 600;
             color: #fff;
         }
-        .comparison-row span.old {
+        .comparison-table td.old {
             color: #f87171;
             text-decoration: line-through;
             opacity: 0.8;
         }
-        .comparison-row span.new {
-            font-family: 'Noto Sans', sans-serif;
+        .comparison-table td.new {
             font-weight: 600;
             color: #4ade80;
         }
@@ -580,7 +572,6 @@
             transition: all 0.3s ease;
         }
         .competitive-card:hover {
-            transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(0,0,0,0.08);
         }
         .competitor-tag {
@@ -671,7 +662,7 @@
         /* CTA Section */
         .stack-cta {
             padding: 100px 24px;
-            background: linear-gradient(135deg, #00AFF0 0%, #2d7bc4 50%, #1e5a8a 100%);
+            background: linear-gradient(135deg, #00AFF0 0%, #003CC8 50%, #001080 100%);
             position: relative;
             overflow: hidden;
         }
@@ -729,10 +720,37 @@
             .reverse-cut-grid {
                 grid-template-columns: 1fr;
             }
-            .comparison-row {
-                grid-template-columns: 1fr;
-                gap: 8px;
-                text-align: center;
+            .comparison-table thead {
+                display: none;
+            }
+            .comparison-table tr {
+                display: block;
+                margin-bottom: 16px;
+                padding-bottom: 16px;
+                border-bottom: 1px solid rgba(255,255,255,0.15);
+            }
+            .comparison-table td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 12px;
+                border-bottom: none;
+                padding: 8px 0;
+            }
+            .comparison-table td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: rgba(255,255,255,0.75);
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                flex-shrink: 0;
+            }
+            .comparison-table td:first-child {
+                font-size: 16px;
+            }
+            .comparison-table td:first-child::before {
+                display: none;
             }
             .competitive-grid {
                 grid-template-columns: 1fr;
@@ -767,9 +785,27 @@
                 font-size: 16px;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            .product-card,
+            .lifecycle-phase,
+            .competitive-card {
+                transition: none;
+            }
+            .product-link svg {
+                transition: none;
+            }
+            .dw-d-parallax,
+            .dw-wave-flow,
+            .dw-wave-vertical {
+                animation: none !important;
+                transform: none !important;
+            }
+        }
     </style>
 </head>
 <body>
+<a href="#solutions-content" class="dw-skip-link">Skip to content</a>
     <header class="dw-header">
         <div class="dw-header-inner">
             <a href="../index.html" class="dw-logo">
@@ -1066,6 +1102,7 @@
     </header>
 
 
+    <main id="solutions-content">
     <!-- Hero Section -->
     <section class="stack-hero" style="position: relative; overflow: hidden;">
         <!-- Brand: Outline D centered — the core technology platform, layered behind content -->
@@ -1420,33 +1457,37 @@
 
             <div class="reverse-cut-comparison">
                 <h4>Why It Works: Lower Risk Threshold</h4>
-                <div class="comparison-table">
-                    <div class="comparison-row header">
-                        <span>Metric</span>
-                        <span>Full ERP Replacement</span>
-                        <span>eMES Entry (Reverse Cut)</span>
-                    </div>
-                    <div class="comparison-row">
-                        <span>Budget</span>
-                        <span class="old">5M+ THB</span>
-                        <span class="new">~1M THB</span>
-                    </div>
-                    <div class="comparison-row">
-                        <span>Timeline</span>
-                        <span class="old">9-18 months</span>
-                        <span class="new">3-6 months</span>
-                    </div>
-                    <div class="comparison-row">
-                        <span>Disruption</span>
-                        <span class="old">High (rip-and-replace)</span>
-                        <span class="new">Low (overlay)</span>
-                    </div>
-                    <div class="comparison-row">
-                        <span>Client Risk</span>
-                        <span class="old">High</span>
-                        <span class="new">Low</span>
-                    </div>
-                </div>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Full ERP Replacement</th>
+                            <th>eMES Entry (Reverse Cut)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Budget</td>
+                            <td class="old" data-label="Full ERP">5M+ THB</td>
+                            <td class="new" data-label="Reverse Cut">~1M THB</td>
+                        </tr>
+                        <tr>
+                            <td>Timeline</td>
+                            <td class="old" data-label="Full ERP">9-18 months</td>
+                            <td class="new" data-label="Reverse Cut">3-6 months</td>
+                        </tr>
+                        <tr>
+                            <td>Disruption</td>
+                            <td class="old" data-label="Full ERP">High (rip-and-replace)</td>
+                            <td class="new" data-label="Reverse Cut">Low (overlay)</td>
+                        </tr>
+                        <tr>
+                            <td>Client Risk</td>
+                            <td class="old" data-label="Full ERP">High</td>
+                            <td class="new" data-label="Reverse Cut">Low</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
@@ -1540,6 +1581,7 @@
             </div>
         </div>
     </section>
+    </main>
     <!-- Footer -->
     <footer class="dw-footer">
         <div class="dw-footer-ocean" aria-hidden="true"></div>

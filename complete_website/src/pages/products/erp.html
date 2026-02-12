@@ -151,7 +151,7 @@
         .erp-hero-stat-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 10px;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.75);
             text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-top: 4px;
@@ -273,7 +273,6 @@
         .pain-card:hover {
             border-color: var(--blue);
             box-shadow: 0 12px 48px rgba(0, 175, 240, 0.12);
-            transform: translateY(-4px);
         }
 
         .pain-card:hover .pain-card-icon {
@@ -408,7 +407,6 @@
         .product-card:hover {
             border-color: var(--blue);
             box-shadow: 0 20px 60px rgba(0, 175, 240, 0.15);
-            transform: translateY(-8px);
         }
 
         .product-card-header {
@@ -453,7 +451,7 @@
         .product-card-tagline {
             font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.75);
         }
 
         .product-card-body {
@@ -779,7 +777,6 @@
         .weapon-card:hover {
             border-color: #00AFF0;
             box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
-            transform: translateY(-4px);
         }
 
         /* Responsive */
@@ -845,6 +842,25 @@
             }
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            .erp-hero-content,
+            .erp-hero::before,
+            .erp-hero-badge::before,
+            .erp-dashboard-mockup,
+            .pain-card,
+            .pain-card-icon,
+            .product-card,
+            .weapon-card,
+            .challenge-icon,
+            .integration-link,
+            .dw-d-parallax,
+            .dw-wave-flow,
+            .dw-wave-fade,
+            .dw-d-bg {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
         @media (max-width: 640px) {
             .erp-hero {
                 padding: 120px 0 80px;
@@ -868,6 +884,8 @@
 </head>
 <body>
 {{header}}
+<a href="#erp-content" class="dw-skip-link">Skip to content</a>
+<main id="erp-content">
 
     <!-- Hero Section — "The Business Brain": D GRADIENT CENTER at 0.10, the brain that encompasses everything -->
     <section class="erp-hero" style="position: relative; overflow: hidden;">
@@ -1329,10 +1347,10 @@
                 <div style="text-align: center;">
                     <div style="display: inline-block; background: rgba(0,175,240,0.15); border-radius: 20px; padding: 40px;">
                         <div style="font-family: 'JetBrains Mono', monospace; font-size: 56px; font-weight: 700; color: #00AFF0;">10M+</div>
-                        <div style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: rgba(255,255,255,0.7); margin-top: 8px;">THB/year saved</div>
+                        <div style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: rgba(255,255,255,0.75); margin-top: 8px;">THB/year saved</div>
                         <div style="width: 40px; height: 2px; background: #00AFF0; margin: 16px auto;"></div>
                         <div style="font-family: 'JetBrains Mono', monospace; font-size: 56px; font-weight: 700; color: #22C55E;">Zero</div>
-                        <div style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: rgba(255,255,255,0.7); margin-top: 8px;">supplementary taxes in 2025</div>
+                        <div style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: rgba(255,255,255,0.75); margin-top: 8px;">supplementary taxes in 2025</div>
                     </div>
                 </div>
             </div>
@@ -1407,6 +1425,7 @@
             </div>
         </div>
     </section>
+</main>
 {{footer}}
 </body>
 </html>

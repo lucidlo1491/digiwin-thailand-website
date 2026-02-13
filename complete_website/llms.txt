@@ -1,0 +1,71 @@
+# DigiWin Thailand (digiwin.co.th)
+
+> Manufacturing ERP, MES, WMS, and AIoT solutions for Thai factories.
+> 44 years of manufacturing intelligence. 50,000+ clients across 80+ countries. 100+ Thai implementations.
+> Publicly listed: TWSE 300378 (Taiwan) and SSE (Shenzhen).
+
+## Main Pages
+
+- [Homepage](/index.html): Manufacturing ERP, MES, WMS, and AIoT solutions for Thai factories. 44 years, 50,000+ clients, 100+ Thai implementations.
+- [Products Overview](/products.html): Four integrated manufacturing software products — ERP, MES, WMS, AIoT — one connected ecosystem.
+- [Industries Overview](/industries.html): Specialized manufacturing solutions for automotive, electronics, and metal & plastics industries in Thailand.
+- [Partner Program](/partner-program.html): ERP consulting firms: transition from man-hours to recurring software revenue. Territory protection, training, demand generation.
+- [Blog](/blog.html): Manufacturing insights, ERP best practices, industry analysis, and digital transformation guidance for Thai factories.
+- [News & Events](/news.html): Latest news, press releases, and upcoming events from DigiWin Thailand.
+
+## Products
+
+- [ERP (Enterprise Resource Planning)](/products/erp.html): Manufacturing ERP with BOI compliance, Thai RD certification, real-time production costing, multi-factory consolidation.
+- [MES (Manufacturing Execution System)](/products/mes.html): Real-time shop floor visibility — OEE tracking, production scheduling, quality management, paperless operations.
+- [WMS (Warehouse Management System)](/products/wms.html): Smart warehouse operations — barcode/RFID tracking, pick-pack-ship, inventory accuracy, logistics optimization.
+- [AIoT (AI + IoT Platform)](/products/aiot.html): Machine connectivity and AI analytics — equipment monitoring, predictive maintenance, energy management, protocol support.
+
+## Industries
+
+- [Automotive Manufacturing](/industries/automotive.html): Solutions for OEM tier suppliers — IATF 16949, JIS/JIT delivery, lot traceability, OEM system integration.
+- [Electronics Manufacturing](/industries/electronics.html): High-mix low-volume production — SMT traceability, moisture control, BOI compliance, rapid changeover support.
+- [Metal & Plastics Manufacturing](/industries/metal-plastics.html): Process manufacturing — yield optimization, scrap reduction, die/mold management, co-product costing.
+
+## Partner Program
+
+- [Partner Business Model](/partner-program/business-model.html): The shift from hourly consulting to product-based recurring revenue. Before/after economics for ERP consultancies.
+- [Partner Economics](/partner-program/economics.html): Revenue streams, margin structure, 3-year partner journey, protection guarantees. License, service, and MA revenue breakdown.
+- [Partner Solutions Portfolio](/partner-program/solutions.html): Product portfolio for partners — land and expand strategy, competitive positioning against SAP and Oracle.
+
+## Company
+
+- [About DigiWin](/about.html): 44 years of manufacturing software. Founded 1982 in Taiwan, publicly listed (TWSE: 300378), 50,000+ clients across 80+ countries.
+- [Contact Us](/demo.html): Get in touch with DigiWin Thailand. Office: Bangna Complex, 22F, Bangkok. Discuss your manufacturing software needs.
+- [Case Studies](/case-studies.html): Real implementation stories from Thai manufacturers — automotive, electronics, metal & plastics, food processing.
+
+## Blog
+
+- [5 Pain Points Thai Manufacturers Face](/blog/five-pain-points.html): Common ERP implementation challenges and how to avoid them.
+- [BOI Compliance Guide](/blog/boi-compliance-jin-hai.html): How BOI-promoted factories in Thailand maintain compliance with manufacturing software.
+- [SAP ECC End of Life](/blog/sap-ecc-end-of-life.html): What Thai manufacturers running SAP ECC need to know about the 2027 deadline and migration options.
+- [Shop Floor Scheduling](/blog/shop-floor-scheduling.html): Moving from Excel-based scheduling to real-time production planning on the shop floor.
+- [Production Transparency](/blog/production-transparency.html): Why real-time production visibility matters and how MES delivers it.
+- [AMRP Capacity Planning](/blog/amrp-capacity-planning.html): Advanced Material Requirements Planning for multi-factory Thai manufacturers.
+- [LRP vs MRP](/blog/lrp-vs-mrp.html): Long Range Planning vs Material Requirements Planning — when to use which approach.
+- [Co-Product Cost Accounting](/blog/co-product-cost-accounting.html): Managing co-product and by-product costing in process manufacturing.
+- [Dual Unit Management](/blog/dual-units.html): Handling dual units of measure in manufacturing ERP systems.
+- [Feature Codes in ERP](/blog/feature-codes.html): Using feature codes for configurable products and variant management in manufacturing.
+
+## Events
+
+- [BOI Compliance Workshop](/events/boi-compliance-workshop.html): Hands-on workshop for BOI-promoted factories on maintaining compliance.
+- [Factory Tour: MES in Action](/events/factory-tour-mes.html): See MES running on a real Thai factory shop floor.
+- [Manufacturing Expo 2026](/events/manufacturing-expo-2026.html): DigiWin at Manufacturing Expo Thailand 2026 — booth info and schedule.
+- [Production Transparency Seminar](/events/production-transparency-seminar.html): Seminar on achieving real-time production visibility in Thai factories.
+- [Shop Floor Data Workshop](/events/shop-floor-data-workshop.html): Workshop on collecting and using shop floor data for manufacturing improvement.
+
+## Legal
+
+- [Privacy Policy](/privacy-policy.html): DigiWin Thailand data privacy policy and PDPA compliance.
+- [Terms of Service](/terms.html): DigiWin Thailand terms of service and usage conditions.
+
+## Optional
+
+Markdown versions of each page are available by appending .md to any URL:
+- /products/erp.html → /products/erp.html.md
+- /about.html → /about.html.md

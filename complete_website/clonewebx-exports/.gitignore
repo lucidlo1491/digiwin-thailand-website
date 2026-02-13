@@ -1,0 +1,4 @@
+# CloneWebX export JSONs are large (500KB-1MB each) — don't commit
+*.json
+# But DO commit the manifest (tracks latest versions)
+!manifest.json

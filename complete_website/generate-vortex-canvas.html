@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DigiWin 数据洋流 — Data Ocean Generator</title>
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#0a0a1a;font-family:'Noto Sans',system-ui,sans-serif;color:#fff;display:flex;height:100vh;overflow:hidden}
+
+/* ── Canvas area ─────────────────────────── */
+#canvasWrap{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  background:repeating-conic-gradient(#111 0% 25%, #0d0d1a 0% 50%) 50%/20px 20px;
+  padding:24px;position:relative;
+}
+canvas{border-radius:8px;max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 4px 30px rgba(0,0,0,0.5)}
+
+/* ── Side panel ──────────────────────────── */
+#panel{
+  width:320px;min-width:320px;background:#000432;
+  border-left:1px solid rgba(0,175,240,0.15);
+  display:flex;flex-direction:column;overflow:hidden;
+}
+#panelHead{
+  padding:16px 18px 12px;border-bottom:1px solid rgba(0,175,240,0.12);flex-shrink:0;
+}
+#panelHead h2{font-size:15px;font-weight:700;color:#00E6FF;margin:0 0 2px}
+#panelHead .sub{font-size:10px;color:#5577aa;line-height:1.4}
+#panelBody{
+  overflow-y:auto;padding:14px 18px;flex:1;
+  scrollbar-width:thin;scrollbar-color:rgba(0,175,240,0.3) transparent;
+}
+#panelBody::-webkit-scrollbar{width:5px}
+#panelBody::-webkit-scrollbar-thumb{background:rgba(0,175,240,0.3);border-radius:3px}
+
+/* ── Presets ──────────────────────────────── */
+.presets{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:16px}
+.preset-btn{
+  padding:5px 10px;border:1px solid rgba(0,175,240,0.25);border-radius:14px;
+  font-size:10px;font-weight:600;cursor:pointer;transition:all 0.2s;
+  background:rgba(0,8,100,0.5);color:#88bbdd;
+}
+.preset-btn:hover{background:rgba(0,175,240,0.2);color:#00E6FF;border-color:#00AFF0}
+.preset-btn.active{background:#00AFF0;color:#000864;border-color:#00AFF0}
+
+/* ── Section labels ──────────────────────── */
+.section-label{
+  font-size:9px;color:#00AFF0;text-transform:uppercase;letter-spacing:0.12em;font-weight:700;
+  border-bottom:1px solid rgba(0,175,240,0.1);padding-bottom:4px;margin:16px 0 10px;
+}
+.section-label:first-child{margin-top:0}
+.section-hint{font-size:10px;color:#446;margin:-6px 0 10px;line-height:1.3}
+
+/* ── Controls ────────────────────────────── */
+.ctrl{margin-bottom:10px}
+.ctrl label{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#99aabb;margin-bottom:3px}
+.ctrl label .name{font-weight:500}
+.ctrl input[type=range]{
+  -webkit-appearance:none;width:100%;height:4px;border-radius:2px;background:#001040;outline:none;
+}
+.ctrl input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:14px;height:14px;border-radius:50%;
+  background:#00AFF0;cursor:pointer;border:2px solid #000864;
+}
+.val{
+  width:52px;padding:2px 5px;border:1px solid transparent;border-radius:3px;
+  background:transparent;color:#00AFF0;font-weight:600;font-size:11px;
+  font-variant-numeric:tabular-nums;text-align:right;
+  font-family:'Noto Sans',system-ui,sans-serif;transition:border-color 0.2s,background 0.2s;
+}
+.val:hover{border-color:rgba(0,175,240,0.3)}
+.val:focus{border-color:#00AFF0;background:rgba(0,8,100,0.6);outline:none}
+.val::-webkit-inner-spin-button,.val::-webkit-outer-spin-button{opacity:0;width:0}
+.val:focus::-webkit-inner-spin-button{opacity:1;width:auto}
+
+/* ── Color swatches ──────────────────────── */
+.color-row{display:flex;align-items:center;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.color-row>label{font-size:11px;color:#99aabb;min-width:44px;font-weight:500}
+.swatches{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+.swatch{
+  width:24px;height:24px;border-radius:5px;cursor:pointer;border:2px solid transparent;
+  transition:border-color 0.2s,transform 0.15s;
+}
+.swatch:hover{transform:scale(1.15)}
+.swatch.active{border-color:#00E6FF}
+.swatch-transparent{background:repeating-conic-gradient(#444 0% 25%, #222 0% 50%) 50%/8px 8px}
+
+/* ── Checkbox ─────────────────────────────── */
+.chk{display:flex;align-items:center;gap:8px;font-size:11px;color:#99aabb;margin:8px 0 4px;cursor:pointer}
+.chk input{accent-color:#00AFF0;width:14px;height:14px}
+
+/* ── Action buttons ──────────────────────── */
+.panel-actions{
+  padding:12px 18px 16px;border-top:1px solid rgba(0,175,240,0.12);flex-shrink:0;
+  display:flex;flex-direction:column;gap:6px;
+}
+.btn{
+  display:block;width:100%;padding:10px;border:none;border-radius:6px;
+  font-size:12px;font-weight:600;cursor:pointer;transition:background 0.2s;text-align:center;
+}
+.btn-primary{background:#00AFF0;color:#000864}
+.btn-primary:hover{background:#00C8FF}
+.btn-secondary{background:rgba(0,175,240,0.12);color:#00AFF0;border:1px solid rgba(0,175,240,0.25)}
+.btn-secondary:hover{background:rgba(0,175,240,0.22)}
+.btn-row{display:flex;gap:5px}
+.btn-row .btn{flex:1}
+#info{font-size:10px;color:#446;text-align:center;margin-top:4px}
+
+/* ── Toast ────────────────────────────────── */
+#toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  background:#00AFF0;color:#000864;padding:8px 20px;border-radius:8px;
+  font-size:12px;font-weight:600;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:20;
+}
+#toast.show{opacity:1}
+
+/* ── Focus states ─────────────────────────── */
+.btn:focus-visible,.preset-btn:focus-visible{outline:2px solid #00E6FF;outline-offset:2px}
+input[type=range]:focus-visible{outline:2px solid #00E6FF;outline-offset:3px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div id="canvasWrap">
+  <canvas id="c" width="2800" height="1000"></canvas>
+</div>
+
+<div id="panel">
+  <div id="panelHead">
+    <h2>数据洋流 Data Ocean</h2>
+    <div class="sub">Brand kit pp.61-68 · Adjust wave flow · Download PNG</div>
+  </div>
+
+  <div id="panelBody">
+
+    <!-- Presets matching brand kit contexts -->
+    <div class="section-label">Presets (Brand Kit Reference)</div>
+    <div class="presets" id="presetBar">
+      <button class="preset-btn active" data-preset="brandkit">Brand Kit p.63</button>
+      <button class="preset-btn" data-preset="hero">Website Hero</button>
+      <button class="preset-btn" data-preset="stats">Stats Section</button>
+      <button class="preset-btn" data-preset="cta">CTA Section</button>
+      <button class="preset-btn" data-preset="footer">Footer</button>
+      <button class="preset-btn" data-preset="light">Light Section</button>
+      <button class="preset-btn" data-preset="subtle">Subtle BG</button>
+    </div>
+
+    <!-- Background -->
+    <div class="section-label">Background</div>
+    <div class="color-row">
+      <label>Color</label>
+      <div class="swatches" id="bgSwatches">
+        <div class="swatch active" data-color="#000864" style="background:#000864" title="Navy #000864"></div>
+        <div class="swatch" data-color="#000432" style="background:#000432" title="Deep Navy #000432"></div>
+        <div class="swatch" data-color="#F5F7FA" style="background:#F5F7FA" title="Light Gray #F5F7FA"></div>
+        <div class="swatch" data-color="#FFFFFF" style="background:#FFFFFF" title="White #FFFFFF"></div>
+        <div class="swatch swatch-transparent" data-color="transparent" title="Transparent"></div>
+      </div>
+    </div>
+
+    <!-- Wave Flow — the core controls -->
+    <div class="section-label">Wave Flow</div>
+    <p class="section-hint">Controls where the wave band sits and how wide it spreads. Brand kit shows ~35% of canvas height.</p>
+
+    <div class="ctrl">
+      <label><span class="name">Wave center (Y)</span> <input type="number" class="val" id="vCenterY" value="0.65" min="0.20" max="0.90" step="0.02"></label>
+      <input type="range" id="sCenterY" min="0.20" max="0.90" value="0.65" step="0.02">
+    </div>
+    <div class="ctrl">
+      <label><span class="name">Band height</span> <input type="number" class="val" id="vBandH" value="0.35" min="0.10" max="1.00" step="0.02"></label>
+      <input type="range" id="sBandH" min="0.10" max="1.00" value="0.35" step="0.02">
+    </div>
+    <div class="ctrl">
+      <label><span class="name">Wave amplitude</span> <input type="number" class="val" id="vAmp" value="80" min="10" max="200" step="5"></label>
+      <input type="range" id="sAmp" min="10" max="200" value="80" step="5">
+    </div>
+    <div class="ctrl">
+      <label><span class="name">Wave phase</span> <input type="number" class="val" id="vPhase" value="1.4" min="0" max="6.28" step="0.1"></label>
+      <input type="range" id="sPhase" min="0" max="6.28" value="1.4" step="0.1">
+    </div>
+    <div class="ctrl">
+      <label><span class="name">Diagonal sweep</span> <input type="number" class="val" id="vSweep" value="0.25" min="-0.3" max="0.6" step="0.02"></label>
+      <input type="range" id="sSweep" min="-0.3" max="0.6" value="0.25" step="0.02">
+    </div>
+
+    <!-- Dot Grid -->
+    <div class="section-label">Dot Grid</div>
+    <p class="section-hint">Brand kit uses ~120 cols, sparse rows. Lower = more elegant.</p>
+
+    <div class="ctrl">
+      <label><span class="name">Columns</span> <input type="number" class="val" id="vCols" value="120" min="30" max="300" step="5"></label>
+      <input type="range" id="sCols" min="30" max="300" value="120" step="5">
+    </div>
+    <div class="ctrl">
+      <label><span class="name">Rows</span> <input type="number" class="val" id="vRows" value="50" min="10" max="150" step="5"></label>
+      <input type="range" id="sRows" min="10" max="150" value="50" step="5">
+    </div>
+
+    <!-- Dot Appearance -->
+    <div class="section-label">Dot Appearance</div>
+    <div class="ctrl">
+      <label><span class="name">Front size</span> <input type="number" class="val" id="vFrontR" value="3.0" min="0.5" max="10" step="0.5"></label>
+      <input type="range" id="sFrontR" min="0.5" max="10" value="3.0" step="0.5">
+    </div>
+    <div class="ctrl">
+      <label><span class="name">Back size</span> <input type="number" class="val" id="vBackR" value="0.5" min="0.2" max="3" step="0.1"></label>
+      <input type="range" id="sBackR" min="0.2" max="3" value="0.5" step="0.1">
+    </div>
+    <div class="ctrl">
+      <label><span class="name">Front opacity</span> <input type="number" class="val" id="vFrontA" value="0.55" min="0.05" max="1.0" step="0.05"></label>
+      <input type="range" id="sFrontA" min="0.05" max="1.0" value="0.55" step="0.05">
+    </div>
+    <div class="ctrl">
+      <label><span class="name">Back opacity</span> <input type="number" class="val" id="vBackA" value="0.04" min="0.01" max="0.20" step="0.01"></label>
+      <input type="range" id="sBackA" min="0.01" max="0.20" value="0.04" step="0.01">
+    </div>
+    <div class="ctrl">
+      <label><span class="name">Glow size</span> <input type="number" class="val" id="vGlow" value="1.8" min="0" max="4" step="0.2"></label>
+      <input type="range" id="sGlow" min="0" max="4" value="1.8" step="0.2">
+    </div>
+
+    <!-- Super D overlay -->
+    <div class="section-label">Super D (超级符号)</div>
+    <div class="ctrl">
+      <label><span class="name">Opacity</span> <input type="number" class="val" id="vDAlpha" value="0" min="0" max="0.25" step="0.01"></label>
+      <input type="range" id="sDAlpha" min="0" max="0.25" value="0" step="0.01">
+    </div>
+    <div class="ctrl">
+      <label><span class="name">X position</span> <input type="number" class="val" id="vDX" value="0.15" min="-0.1" max="1.1" step="0.01"></label>
+      <input type="range" id="sDX" min="-0.1" max="1.1" value="0.15" step="0.01">
+    </div>
+    <div class="ctrl">
+      <label><span class="name">Size</span> <input type="number" class="val" id="vDSize" value="0.55" min="0.2" max="0.8" step="0.01"></label>
+      <input type="range" id="sDSize" min="0.2" max="0.8" value="0.55" step="0.01">
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="panel-actions">
+    <button class="btn btn-primary" id="bExport">Download PNG (2800 × 1000)</button>
+    <div class="btn-row">
+      <button class="btn btn-secondary" id="bExportSm">1400×500</button>
+      <button class="btn btn-secondary" id="bExportFt">2800×600</button>
+      <button class="btn btn-secondary" id="bRegen">Regenerate</button>
+    </div>
+    <div id="info">Loading…</div>
+  </div>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function() {
+  'use strict';
+
+  var PI2 = Math.PI * 2;
+  var W = 2800, H = 1000;
+
+  // ── Brand colors ──────────────────────────────────────────
+  var BLUE = [0, 175, 240];   // #00AFF0 Smart Blue
+  var CYAN = [0, 230, 255];   // #00E6FF Cyan accent
+
+  // ── Parameters ────────────────────────────────────────────
+  var P = {
+    bg: '#000864',
+    // Wave flow position & shape
+    centerY: 0.65,    // vertical center of the wave band (0=top, 1=bottom)
+    bandH: 0.35,      // height of the wave band (% of canvas)
+    amp: 80,          // wave amplitude in px
+    phase: 1.4,       // wave phase offset
+    sweep: 0.25,      // diagonal sweep
+    // Dot grid
+    cols: 120, rows: 50,
+    // Dot appearance
+    frontR: 3.0, backR: 0.5,
+    frontA: 0.55, backA: 0.04,
+    glow: 1.8,        // glow multiplier around bright dots
+    // Super D
+    dAlpha: 0, dX: 0.15, dSize: 0.55
+  };
+
+  // ── Presets ────────────────────────────────────────────────
+  var PRESETS = {
+    // Brand kit p.63 — the reference particle ocean
+    brandkit: {
+      bg:'#000864', centerY:0.65, bandH:0.35, amp:80, phase:1.4, sweep:0.25,
+      cols:120, rows:50, frontR:3.0, backR:0.5, frontA:0.55, backA:0.04, glow:1.8,
+      dAlpha:0, dX:0.15, dSize:0.55
+    },
+    // Website hero — wave sits at bottom, dramatic
+    hero: {
+      bg:'#000432', centerY:0.72, bandH:0.40, amp:100, phase:0.5, sweep:0.30,
+      cols:140, rows:55, frontR:3.5, backR:0.6, frontA:0.60, backA:0.05, glow:2.0,
+      dAlpha:0.08, dX:0.08, dSize:0.65
+    },
+    // Stats / social proof section — bold, medium band
+    stats: {
+      bg:'#000864', centerY:0.55, bandH:0.45, amp:90, phase:1.0, sweep:0.28,
+      cols:130, rows:55, frontR:3.0, backR:0.5, frontA:0.50, backA:0.05, glow:1.8,
+      dAlpha:0, dX:0.15, dSize:0.55
+    },
+    // CTA section — wave lower, moderate
+    cta: {
+      bg:'#000864', centerY:0.70, bandH:0.30, amp:70, phase:1.8, sweep:0.22,
+      cols:110, rows:45, frontR:2.5, backR:0.5, frontA:0.45, backA:0.04, glow:1.5,
+      dAlpha:0.06, dX:0.85, dSize:0.50
+    },
+    // Footer — subtle, lower third
+    footer: {
+      bg:'#000864', centerY:0.75, bandH:0.28, amp:60, phase:1.2, sweep:0.20,
+      cols:100, rows:40, frontR:2.2, backR:0.5, frontA:0.35, backA:0.03, glow:1.2,
+      dAlpha:0.05, dX:0.88, dSize:0.45
+    },
+    // Light section — subtle blue on gray
+    light: {
+      bg:'#F5F7FA', centerY:0.65, bandH:0.35, amp:70, phase:0.8, sweep:0.22,
+      cols:100, rows:40, frontR:2.0, backR:0.4, frontA:0.28, backA:0.03, glow:1.0,
+      dAlpha:0.03, dX:0.85, dSize:0.45
+    },
+    // Very subtle background — barely visible
+    subtle: {
+      bg:'#000864', centerY:0.65, bandH:0.30, amp:50, phase:1.0, sweep:0.18,
+      cols:80, rows:35, frontR:2.0, backR:0.4, frontA:0.25, backA:0.02, glow:1.0,
+      dAlpha:0, dX:0.15, dSize:0.55
+    }
+  };
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function isLightBg() {
+    if (P.bg === 'transparent') return false;
+    var hex = P.bg.replace('#','');
+    var r = parseInt(hex.substr(0,2),16)||0;
+    var g = parseInt(hex.substr(2,2),16)||0;
+    var b = parseInt(hex.substr(4,2),16)||0;
+    return (r*0.299 + g*0.587 + b*0.114) > 128;
+  }
+
+  // ── Core renderer ─────────────────────────────────────────
+  //
+  // Key difference from old version: the wave occupies a BAND
+  // of the canvas (controlled by centerY + bandH), NOT the
+  // entire height. Dots outside the band are culled. Dots near
+  // the band edges fade out smoothly. This matches the brand
+  // kit's concentrated flow with clear negative space.
+
+  function render() {
+    var t0 = performance.now();
+    var canvas = document.getElementById('c');
+    var ctx = canvas.getContext('2d');
+
+    // Background
+    if (P.bg === 'transparent') {
+      ctx.clearRect(0, 0, W, H);
+      var sz = 20;
+      for (var gy = 0; gy < H; gy += sz) {
+        for (var gx = 0; gx < W; gx += sz) {
+          ctx.fillStyle = ((gx/sz + gy/sz) % 2 === 0) ? '#1a1a2e' : '#16162a';
+          ctx.fillRect(gx, gy, sz, sz);
+        }
+      }
+    } else {
+      ctx.fillStyle = P.bg;
+      ctx.fillRect(0, 0, W, H);
+    }
+
+    // Super D background (if enabled)
+    if (P.dAlpha > 0) drawSuperD(ctx);
+
+    // Draw wave band
+    var dotCount = drawWaveBand(ctx);
+
+    var ms = (performance.now() - t0).toFixed(0);
+    document.getElementById('info').textContent =
+      dotCount.toLocaleString() + ' dots · ' + P.cols + '×' + P.rows + ' · ' + ms + 'ms';
+  }
+
+  function drawWaveBand(ctx) {
+    var cols = P.cols, rows = P.rows, t = P.phase;
+    var light = isLightBg();
+    var cMain = light ? [80, 140, 200] : BLUE;
+    var cAlt  = light ? [50, 110, 180] : CYAN;
+    var altRatio = 0.15;
+
+    // Wave band boundaries
+    var bandCenter = H * P.centerY;
+    var bandHalf = H * P.bandH * 0.5;
+    var bandTop = bandCenter - bandHalf;
+    var bandBot = bandCenter + bandHalf;
+    var bandSpan = bandBot - bandTop;
+
+    // Perspective: ground at band bottom, horizon at band top
+    var ground = bandBot + 20;
+    var horizon = bandTop;
+    var totalSpan = ground - horizon;
+
+    var dotCount = 0;
+
+    for (var row = rows - 1; row >= 0; row--) {
+      var depth = row / (rows - 1);
+      var mappedDepth = Math.pow(depth, 0.55);
+      var baseY = ground - mappedDepth * totalSpan;
+
+      var dotR = lerp(P.frontR, P.backR, depth);
+      var dotA = lerp(P.frontA, P.backA, depth);
+      var colSpacing = lerp(W / (cols - 4), W / (cols + 15), depth);
+      var rowShift = depth * W * P.sweep;
+      var waveScale = (1 - depth * 0.75);
+      var amp1 = P.amp * waveScale;
+      var amp2 = P.amp * 0.25 * waveScale;
+
+      for (var col = 0; col < cols; col++) {
+        var screenX = col * colSpacing - rowShift + colSpacing * 0.5;
+        if (screenX < -30 || screenX > W + 30) continue;
+
+        var worldX = col * 24, worldZ = row * 18;
+        var wave = amp1 * Math.sin(worldX * 0.0055 + worldZ * 0.010 + t * 0.9);
+        wave += amp2 * Math.sin(worldX * 0.011 - worldZ * 0.007 + t * 0.55 + 1.8);
+        var screenY = baseY - wave;
+
+        // Soft edge fade: dots near band edges fade out smoothly
+        var edgeDist;
+        if (screenY < bandTop) {
+          edgeDist = (bandTop - screenY) / (bandHalf * 0.4);
+        } else if (screenY > bandBot) {
+          edgeDist = (screenY - bandBot) / (bandHalf * 0.4);
+        } else {
+          edgeDist = 0;
+        }
+        if (edgeDist > 1) continue; // fully outside soft edge
+
+        var edgeFade = 1 - edgeDist * edgeDist; // quadratic falloff
+        var finalA = dotA * edgeFade;
+        if (finalA < 0.005) continue;
+
+        // Color selection (deterministic)
+        var hash = (col * 7 + row * 13) % 100;
+        var c = hash < (altRatio * 100) ? cAlt : cMain;
+
+        // Glow (soft halo around brighter dots)
+        if (P.glow > 0 && dotR > 1.5 && finalA > 0.1) {
+          ctx.beginPath();
+          ctx.arc(screenX, screenY, dotR * P.glow, 0, PI2);
+          ctx.fillStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (finalA * 0.06).toFixed(4) + ')';
+          ctx.fill();
+        }
+
+        // Core dot
+        ctx.beginPath();
+        ctx.arc(screenX, screenY, dotR, 0, PI2);
+        ctx.fillStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + finalA.toFixed(4) + ')';
+        ctx.fill();
+        dotCount++;
+      }
+    }
+    return dotCount;
+  }
+
+  // ── Super D ───────────────────────────────────────────────
+  function drawSuperD(ctx) {
+    var alpha = P.dAlpha;
+    if (alpha <= 0) return;
+    var cx = W * P.dX, cy = H * 0.50;
+    var size = H * P.dSize * 2;
+    var s = size / 504;
+    var mirror = P.dX >= 0.5;
+    function tx(x) { return mirror ? (cx * 2 - x * s - (cx - 250*s)) : ((cx - 250*s) + x * s); }
+    function ty(y) { return (cy - 252*s) + y * s; }
+
+    ctx.save();
+    ctx.beginPath();
+    // D band path
+    ctx.moveTo(tx(0), ty(504));
+    ctx.bezierCurveTo(tx(0), ty(453.8), tx(40.7), ty(413.3), tx(90.7), ty(413.3));
+    ctx.lineTo(tx(247), ty(413.3));
+    ctx.bezierCurveTo(tx(336.1), ty(413.3), tx(408.5), ty(341.1), tx(408.5), ty(252));
+    ctx.bezierCurveTo(tx(408.5), ty(162.9), tx(336.1), ty(90.7), tx(247), ty(90.7));
+    ctx.lineTo(tx(90.7), ty(90.7));
+    ctx.bezierCurveTo(tx(40.7), ty(90.7), tx(0), ty(50), tx(0), ty(0));
+    ctx.lineTo(tx(247), ty(0));
+    ctx.bezierCurveTo(tx(386.2), ty(0), tx(499), ty(112.8), tx(499), ty(252));
+    ctx.bezierCurveTo(tx(499), ty(391.2), tx(386.2), ty(504), tx(247), ty(504));
+    ctx.closePath();
+
+    var light = isLightBg();
+    var grad = ctx.createRadialGradient(cx, cy, 50*s, cx, cy, 260*s);
+    if (light) {
+      grad.addColorStop(0, 'rgba(0,60,200,' + (alpha*0.8) + ')');
+      grad.addColorStop(1, 'rgba(0,175,240,' + (alpha*0.5) + ')');
+    } else {
+      grad.addColorStop(0, 'rgba(0,8,100,' + alpha + ')');
+      grad.addColorStop(1, 'rgba(0,80,220,' + (alpha*0.6) + ')');
+    }
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    // Inner dot
+    var dcx = tx(91.8), dcy = ty(252), dr = 65 * s;
+    ctx.beginPath();
+    ctx.arc(dcx, dcy, dr, 0, PI2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  // ── Download ──────────────────────────────────────────────
+  function toast(msg) {
+    var el = document.getElementById('toast');
+    el.textContent = msg; el.classList.add('show');
+    setTimeout(function(){ el.classList.remove('show'); }, 2200);
+  }
+
+  function doDownload(w, h) {
+    toast('Rendering ' + w + '×' + h + '…');
+    var src = document.getElementById('c');
+    var needsClean = (P.bg === 'transparent');
+    if (needsClean) {
+      var ctx = src.getContext('2d');
+      ctx.clearRect(0, 0, W, H);
+      if (P.dAlpha > 0) drawSuperD(ctx);
+      drawWaveBand(ctx);
+    }
+    setTimeout(function() {
+      var a = document.createElement('a');
+      a.download = 'digiwin-data-ocean-' + w + 'x' + h + '.png';
+      if (w === W && h === H) {
+        a.href = src.toDataURL('image/png');
+      } else {
+        var tmp = document.createElement('canvas');
+        tmp.width = w; tmp.height = h;
+        tmp.getContext('2d').drawImage(src, 0, 0, w, h);
+        a.href = tmp.toDataURL('image/png');
+      }
+      a.click();
+      if (needsClean) render();
+      setTimeout(function(){ toast('Saved!'); }, 200);
+    }, 50);
+  }
+
+  // ── Slider/input sync ─────────────────────────────────────
+  var sliders = [
+    { id:'sCenterY', key:'centerY', valId:'vCenterY', parse:parseFloat },
+    { id:'sBandH',   key:'bandH',   valId:'vBandH',   parse:parseFloat },
+    { id:'sAmp',     key:'amp',     valId:'vAmp',     parse:parseInt },
+    { id:'sPhase',   key:'phase',   valId:'vPhase',   parse:parseFloat },
+    { id:'sSweep',   key:'sweep',   valId:'vSweep',   parse:parseFloat },
+    { id:'sCols',    key:'cols',    valId:'vCols',    parse:parseInt },
+    { id:'sRows',    key:'rows',    valId:'vRows',    parse:parseInt },
+    { id:'sFrontR',  key:'frontR',  valId:'vFrontR',  parse:parseFloat },
+    { id:'sBackR',   key:'backR',   valId:'vBackR',   parse:parseFloat },
+    { id:'sFrontA',  key:'frontA',  valId:'vFrontA',  parse:parseFloat },
+    { id:'sBackA',   key:'backA',   valId:'vBackA',   parse:parseFloat },
+    { id:'sGlow',    key:'glow',    valId:'vGlow',    parse:parseFloat },
+    { id:'sDAlpha',  key:'dAlpha',  valId:'vDAlpha',  parse:parseFloat },
+    { id:'sDX',      key:'dX',      valId:'vDX',      parse:parseFloat },
+    { id:'sDSize',   key:'dSize',   valId:'vDSize',   parse:parseFloat }
+  ];
+
+  function clearPresetActive() {
+    var btns = document.querySelectorAll('.preset-btn');
+    for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
+  }
+
+  var rebuildTimer = null;
+  sliders.forEach(function(s) {
+    var range = document.getElementById(s.id);
+    var num = document.getElementById(s.valId);
+    range.addEventListener('input', function(e) {
+      var v = s.parse(e.target.value);
+      P[s.key] = v; num.value = v;
+      clearPresetActive();
+      clearTimeout(rebuildTimer);
+      rebuildTimer = setTimeout(render, 60);
+    });
+    num.addEventListener('input', function(e) {
+      var v = s.parse(e.target.value);
+      if (isNaN(v)) return;
+      P[s.key] = v; range.value = v;
+      clearPresetActive();
+      clearTimeout(rebuildTimer);
+      rebuildTimer = setTimeout(render, 120);
+    });
+    num.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        var v = s.parse(e.target.value);
+        if (isNaN(v)) return;
+        P[s.key] = v; range.value = v;
+        clearTimeout(rebuildTimer); render();
+      }
+    });
+  });
+
+  // ── Background swatches ───────────────────────────────────
+  function updateSwatchActive(color) {
+    var sw = document.querySelectorAll('#bgSwatches .swatch');
+    for (var i = 0; i < sw.length; i++) {
+      sw[i].classList.toggle('active', sw[i].getAttribute('data-color').toLowerCase() === color.toLowerCase());
+    }
+  }
+
+  document.querySelectorAll('#bgSwatches .swatch').forEach(function(el) {
+    el.addEventListener('click', function() {
+      P.bg = el.getAttribute('data-color');
+      updateSwatchActive(P.bg);
+      clearPresetActive(); render();
+    });
+  });
+
+  // ── Preset buttons ────────────────────────────────────────
+  function applyPreset(name) {
+    var preset = PRESETS[name];
+    if (!preset) return;
+    for (var key in preset) P[key] = preset[key];
+    sliders.forEach(function(s) {
+      var range = document.getElementById(s.id);
+      var num = document.getElementById(s.valId);
+      if (range) range.value = P[s.key];
+      if (num) num.value = P[s.key];
+    });
+    updateSwatchActive(P.bg);
+    var btns = document.querySelectorAll('.preset-btn');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].classList.toggle('active', btns[i].getAttribute('data-preset') === name);
+    }
+    render();
+  }
+
+  document.querySelectorAll('.preset-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() { applyPreset(this.getAttribute('data-preset')); });
+  });
+
+  // ── Action buttons ────────────────────────────────────────
+  document.getElementById('bExport').addEventListener('click', function(){ doDownload(2800, 1000); });
+  document.getElementById('bExportSm').addEventListener('click', function(){ doDownload(1400, 500); });
+  document.getElementById('bExportFt').addEventListener('click', function(){ doDownload(2800, 600); });
+  document.getElementById('bRegen').addEventListener('click', function(){ render(); });
+
+  // ── Init ──────────────────────────────────────────────────
+  render();
+
+})();
+</script>
+</body>
+</html>

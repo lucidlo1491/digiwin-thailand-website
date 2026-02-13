@@ -3,8 +3,8 @@
 **Batch:** Batch 2
 **PRD Reference:** Section 3.2 — MES: sMES & SFT
 **Playbook Reference:** Section 3.2 (Leaf Page Arc — Track A), Section 2.2 (Track A voice), Section 4.1 (Factory Owner Objections), Section 6 (CTA hierarchy)
-**Status:** v1.0 — Reverse-engineered from HTML build
-**Last Updated:** February 10, 2026
+**Status:** v1.2 — Intelligence integrated: 3-tier comparison, any-ERP proof, named reports, official stats
+**Last Updated:** February 13, 2026
 
 ---
 
@@ -33,7 +33,7 @@
 | **Headline** | `Stop Guessing. Start Seeing.` |
 | **Subtitle** | `Real-time visibility into every workstation, every work order, every minute. Know exactly what's happening on your shop floor—as it happens.` |
 | **Primary CTA** | `Let's Talk` → `{{basePath}}demo.html` (white button) |
-| **Secondary CTA** | `Compare sMES vs SFT` → `#compare` (outline white, anchor link) |
+| **Secondary CTA** | `Find Your Fit` → `#compare` (outline white, anchor link) |
 
 ### Hero Stats
 
@@ -91,19 +91,59 @@ MES-specific mockup with:
 
 | Element | Content |
 |---------|---------|
-| **Section title** | `Two Solutions, One Mission` |
-| **Section subtitle** | `Choose the level of visibility that matches your needs` |
+| **Section title** | `Three Paths to Shop Floor Visibility` |
+| **Section subtitle** | `Choose the level that matches your needs and budget. Start anywhere — upgrade anytime.` |
 
-### Product Cards
+### Product Selection Pyramid (Visual)
 
-| Element | sMES | SFT |
-|---------|------|-----|
-| **Badge** | `Full MES` | `Lightweight` |
-| **Name** | `sMES` | `SFT` |
-| **Tagline** | Complete manufacturing execution with routing enforcement | Shop floor tracking without MES complexity |
-| **Description** | Full MES capability including work order management, routing enforcement, quality data collection, and real-time performance dashboards. | Lightweight tracking for factories that want visibility without full MES complexity. Barcode-based, fast to implement, easy to use. |
-| **Features** | Work order dispatch and real-time tracking, Routing enforcement with operation validation, Quality data collection with SPC integration, Real-time OEE calculation per machine/line, Full lot and serial traceability, Mobile workstation interface | Production quantity reporting, Labor time tracking by operation, Downtime reason recording, Basic lot traceability, Simple barcode scanning interface, Rapid deployment (days, not months) |
-| **Best For** | Complex manufacturing with multiple operations, automotive/electronics with traceability requirements, process control needs | Factories starting their digitization journey, simpler operations, rapid visibility improvement without disruption |
+**Layout:** Inverted pyramid/funnel graphic above the cards, showing the 3 tiers with budget indicator:
+- Top (widest): sMES — Full | High investment
+- Middle: SFT — Mid-tier | Mid investment
+- Bottom (narrowest): AIoT Cloud — Entry | Low investment
+
+**Style:** Navy gradient bg (#000864), tiers in ascending opacity. Arrow indicator: "Start here, grow up."
+
+### Product Cards (3-Column Grid)
+
+| Element | sMES | SFT | AIoT Cloud |
+|---------|------|-----|------------|
+| **Badge** | `Full MES` | `Mid-Tier` | `Entry Level` |
+| **Name** | `sMES` | `SFT` | `AIoT Cloud` |
+| **Tagline** | Complete manufacturing execution with routing enforcement | Shop floor tracking without MES complexity | Production visibility on a subscription |
+| **Description** | Full MES capability including work order management, routing enforcement, quality data collection, and real-time performance dashboards. | Lightweight tracking for factories that want visibility without full MES complexity. Barcode-based, fast to implement, easy to use. | Cloud-based production monitoring with mobile apps. See equipment data and production status with minimal IT infrastructure. |
+| **Control Points** | Production status, sub-con, lot tracking, material checking, QC, machine maintenance | Production status, sub-con, lot tracking, factory plant info | Production status, equipment data |
+| **Features** | Work order dispatch and real-time tracking, Routing enforcement with operation validation, Quality data collection with SPC integration, Real-time OEE calculation per machine/line, Full lot and serial traceability, Mobile workstation interface | Production quantity reporting, Labor time tracking by operation, Downtime reason recording, Basic lot traceability, Simple barcode scanning interface, Rapid deployment (days, not months) | Real-time equipment monitoring, Production status dashboard, Mobile app access, Subscription pricing (no upfront), Cloud deployment (no servers) |
+| **Best For** | Complex manufacturing with multiple operations, automotive/electronics with traceability requirements, factories with government grants or existing ERP | Factories already using SCADA, fast-growing companies, rapid visibility improvement without disruption | Low initial investment, simple equipment monitoring, factories testing digitization before committing |
+| **Built-in Reports** | OEE Analysis, Yield Rate, NG Reasons, Production Daily Report, Machine Utilization, KPI Tracking (10 total) | Visual Management Kanban, Production Dashboard, Process Status Board, OEE Analysis, Defect Reasons Analysis (6 dashboards) | Basic production reports, equipment alerts |
+
+### Any-ERP Compatibility Callout (Below sMES Card)
+
+**Purpose:** Supports the "Reverse Cut" strategy — enter with MES alongside any existing ERP.
+
+| Element | Specification |
+|---------|---------------|
+| **Layout** | Callout box with plug/connector icon |
+| **Background** | Light blue-tinted (#f0f9ff), 1px border #00AFF0, 12px radius |
+| **Icon** | Plug connector (SVG, #00AFF0) |
+| **Title** | `Already Have an ERP?` |
+| **Body** | `sMES connects to any ERP system through standard web services. See your shop floor clearly without changing your existing ERP. When you're ready to upgrade, we're here.` |
+
+**Source:** Official site QAD integration diagram proves sMES works with non-DigiWin ERPs.
+
+### Operator Day-in-the-Life (Visual Strip)
+
+**Purpose:** Makes MES tangible for production managers who think in workflows, not system architecture.
+
+| Element | Specification |
+|---------|---------------|
+| **Layout** | Horizontal step strip below the 3-column comparison |
+| **Background** | White (#fff), thin top border #e2e8f0 |
+| **Style** | 9 connected step circles with labels, left-to-right flow. Active steps highlighted in #00AFF0. |
+
+**Workflow Steps:**
+`Clock In` → `Material Check` → `First QC` → `Start Production` → `In-Process QC` → `Complete Operation` → `Stock In` → `Report` → `Clock Out`
+
+**Caption:** *"Every step captured. Every scan recorded. Every minute accounted for."*
 
 ---
 
@@ -178,14 +218,31 @@ MES-specific mockup with:
 | **Section label** | `Measured Impact` |
 | **Section title** | `What Our Customers Achieve` |
 
-### Result Cards
+### Result Cards — sMES Row
+
+| # | Value | Label | Attribution |
+|---|-------|-------|-------------|
+| 1 | `-45%` | Production Cycle Time | Industry statistics (official site) |
+| 2 | `-70%` | Quality Failures | Industry statistics (official site) |
+| 3 | `+26%` | Efficiency Increase | Industry statistics (official site) |
+
+### Result Cards — SFT Row
+
+| # | Value | Label | Attribution |
+|---|-------|-------|-------------|
+| 1 | `92%` | Production Transparency | Typical results (official site) |
+| 2 | `86%` | Order Delivery Speed | Typical results (official site) |
+| 3 | `2-4 Weeks` | Implementation Time | DigiWin verified |
+
+### Shared Result
 
 | # | Value | Label |
 |---|-------|-------|
-| 1 | `+23%` | Average OEE Improvement |
-| 2 | `-40%` | Reduction in Unplanned Downtime |
-| 3 | `90%` | Faster Traceability Queries |
-| 4 | `2-4` | Week SFT Implementation |
+| 1 | `76%` | Customer Satisfaction Improvement (SFT users) |
+
+**Design:** Two horizontal rows of stat cards, each labeled with the product name (sMES / SFT). Row divider with product badge. This dual-row format reinforces the product segmentation from Section 3.
+
+**Attribution note:** sMES stats are cited as "industry statistics" on the official DigiWin site. SFT stats have no attribution on the official site — we use "typical results" qualifier. Previous v1.1 soft claims (+23% OEE, -40% downtime) have been replaced as they were unsourced.
 
 ---
 
@@ -221,7 +278,14 @@ MES-specific mockup with:
 
 1. **PRD ALIGNMENT — GOOD**: Headline "Stop Guessing. Start Seeing." matches PRD Section 3.2 exactly. Before/After visual matches PRD requirement.
 2. **PRD ALIGNMENT — EXCEEDS**: Page has 7 sections vs PRD's 3. Additions: Capabilities grid, Integration, Results metrics. These follow Playbook proof escalation pattern.
-3. **STATS — SOFT CLAIMS**: "+23% Average OEE Improvement", "-40% Reduction in Unplanned Downtime", "90% Faster Traceability Queries" — these are presented as customer outcomes but are not sourced or verified. Should be cross-checked against actual client data or flagged as aspirational targets.
+3. **STATS — RESOLVED v1.2**: Previous soft claims (+23% OEE, -40% downtime, 90% traceability) replaced with official site stats. sMES: -45% cycle time, -70% quality failures, +26% efficiency (attributed to "industry statistics"). SFT: 92% transparency, 86% delivery speed (attributed as "typical results").
 4. **CTA COMPLIANCE**: "Let's Talk" and "Get in Touch" — fully compliant. No "demo" language.
 5. **PRD NOTE**: PRD says CTA should be "See MES in Action" — the built page uses "Get in Touch" instead. Both are acceptable under PRD CTA rules, but "Get in Touch" is more compliant with the business constraint (no demos).
 6. **INLINE CSS**: ~789 lines of inline CSS. Before/After section, product boxes, and results section styles could potentially be extracted.
+7. **THREE-TIER COMPARISON — INTEGRATED v1.2**: Section 3 expanded from 2-column to 3-column. AIoT Cloud added as entry tier. Selection pyramid visual specified. Hero CTA updated to "Find Your Fit."
+8. **ANY-ERP COMPATIBILITY — INTEGRATED v1.2**: Callout box spec added below sMES card. Supports "Reverse Cut" strategy without naming specific competitor ERPs.
+9. **NAMED REPORTS — INTEGRATED v1.2**: 10 sMES reports and 6 SFT dashboards now listed in product card "Built-in Reports" row.
+10. **OFFICIAL SITE STATS — INTEGRATED v1.2**: Section 6 restructured with product-specific stat rows. Soft claims replaced. Attribution noted.
+11. **SFT MANAGEMENT KANBANS — INTEGRATED v1.2**: 6 named dashboards included in SFT product card.
+12. **5M FRAMEWORK**: Not integrated — reserved as optional organizing principle for Divi 5 build. Thai factory managers will recognize it but it doesn't warrant a separate section.
+13. **[NEW v1.2] OPERATOR WORKFLOW**: Day-in-the-life visual strip added below comparison section. 9-step flow from Clock In to Clock Out.

@@ -3,8 +3,8 @@
 **Batch:** 2
 **PRD Reference:** Section 5.2
 **Playbook Reference:** Section 7.6 (Due Diligence Page), Section 4 (Objection Handling)
-**Status:** v1.2 — Horizontal scroll rail timeline, English map labels, BOI outcomes
-**Last Updated:** February 9, 2026
+**Status:** v1.3 — Official site stats integrated: R&D 1,600+, Common Wealth market share, employee 5,500+, 43 branches
+**Last Updated:** February 13, 2026
 
 ---
 
@@ -42,7 +42,7 @@
 |------|-------|-------|
 | 1 | 1982 | Founded in Taiwan |
 | 2 | 50K+ | Manufacturing Clients |
-| 3 | 1,300+ | R&D Engineers |
+| 3 | 1,600+ | R&D Engineers |
 | 4 | 300378 | Shenzhen Stock Exchange |
 
 **Design:** 2x2 grid of frosted glass cards (rgba white bg, 1px white border, 16px radius)
@@ -68,7 +68,7 @@
 | **Paragraph 1** | DigiWin exists to help manufacturers see clearly, act decisively, and grow confidently. For over four decades, we've been singularly focused on one thing: making factory operations visible, predictable, and profitable. |
 | **Paragraph 2** | We don't serve banks, retailers, or hospitals. We serve the shop floor—the engineers tracking BOMs, the planners scheduling production runs, the operators monitoring OEE in real time. This focus isn't a marketing position. It's our DNA. |
 | **Paragraph 3** | Every line of code we write, every consultant we train, every implementation we deliver is designed for one outcome: helping manufacturers compete and win. |
-| **Paragraph 4** | Today, we're transforming from a software vendor into an AI infrastructure provider. With 168 AI Agents already deployed and 68 operational SOPs being rebuilt with intelligent automation, DigiWin is pioneering the Zhuge Platform — where AI doesn't just report on your factory, it helps run it. |
+| **Paragraph 4** | Today, we're transforming from a software vendor into an AI infrastructure provider. With 1,600+ R&D engineers and 1,800+ consultants, we've deployed 168 AI Agents and rebuilt 68 operational SOPs with intelligent automation. DigiWin is pioneering the Zhuge Platform — where AI doesn't just report on your factory, it helps run it. |
 
 ### Etymology Block
 
@@ -194,6 +194,26 @@
 | 5 | 300378 | Shenzhen Stock Exchange Listed | White (#FFFFFF) |
 
 **Critical:** Stats 3 and 4 are Thai-specific numbers that address the "Will they understand the Thai market?" objection. Do not replace with Taiwan-only stats.
+
+### Market Leadership Callout (NEW v1.3 — Common Wealth Magazine Stats)
+
+**Purpose:** Third-party market validation from Taiwan's leading business magazine. These stats prove dominance, not just presence.
+
+| Element | Specification |
+|---------|---------------|
+| **Layout** | 3-column stat cards inline with Section 4 OR as a sub-section below stats banner |
+| **Background** | Same dark gradient as stats banner |
+| **Source line** | `Source: Common Wealth Magazine, 2023` (JetBrains Mono, 11px, white 0.4) |
+
+| # | Value | Label | Context |
+|---|-------|-------|---------|
+| 1 | `80%` | Top 2,000 Manufacturers Use DigiWin | Taiwan's largest manufacturers trust us |
+| 2 | `54%` | Manufacturing Solutions Market Share | More than half the market |
+| 3 | `77%` | IPO Companies Choose DigiWin | 2,349 IPO companies surveyed, 84% among manufacturing subset |
+
+**Attribution:** Common Wealth (天下雜誌) is Taiwan's equivalent of Fortune/Bloomberg Businessweek. These numbers are Taiwan-specific — present with `"In Taiwan's manufacturing sector"` qualifier to avoid implying global/Thailand figures.
+
+**Design:** Each stat card has a small Common Wealth logo placeholder or magazine icon. Numbers in 48px Noto Sans 700, #00AFF0. Labels in 14px Noto Sans 400, white 0.7.
 
 ---
 
@@ -332,7 +352,7 @@ Active production environments running on our systems today:
 |---------|---------|
 | **Label** | ACROSS ASIA-PACIFIC (JetBrains Mono, green) |
 | **Headline** | Regional Presence |
-| **Subhead** | Dual headquarters in Taiwan and Shanghai, with 40+ offices across China and ASEAN. |
+| **Subhead** | Dual headquarters in Taiwan and Shanghai, with 43 offices across China and ASEAN. |
 
 ### SVG Map
 - **Aspect ratio:** ~4:3 landscape (wider than tall)
@@ -346,7 +366,7 @@ Active production environments running on our systems today:
 - Legend: HQ (blue), Thailand (red), Branch (white)
 
 ### Region Cards (2x2 grid)
-1. **China** — HQ + 33 branches, Shanghai HQ, expandable city list
+1. **China** — HQ + 33+ branches, Shanghai HQ, expandable city list
 2. **Taiwan** — HQ + 5 branches, Taipei HQ
 3. **Thailand** — Featured (red border), Bangkok, "You Are Here" badge
 4. **ASEAN** — Vietnam (2008), Malaysia (2013), Indonesia (2024)
@@ -357,10 +377,12 @@ Horizontal: 2008 Vietnam → 2013 Malaysia → 2019 Thailand (highlighted) → 2
 ### Presence Stats
 | Stat | Label |
 |------|-------|
-| 35+ | China Branches |
+| 33+ | China Branches |
 | 6 | Taiwan Branches |
-| 5,500+ | Employees |
+| 5,500+ | Employees Worldwide |
 | 4 | ASEAN Countries |
+
+**Source:** Official About Us page (Feb 2026). Employee count confirmed at 5,500+ (not the outdated 4,000+ from homepage). Branch total = 43 (33 China + 6 Taiwan + 4 ASEAN).
 
 ---
 
@@ -476,7 +498,18 @@ Dark bar (#000864 → #1a2e40), centered flex layout:
 3. ~~**Thai implementations count:**~~ CONFIRMED — 100+ is correct.
 4. **Leadership section:** No photos/bios from Peter. Researching online for public info.
 5. **Office/team photo:** Not available at this time. Using placeholder visuals.
+6. **[NEW v1.3] Common Wealth stats qualifier:** Stats are Taiwan-specific (80% top 2000, 54% market share, 77% IPO). Presented with "In Taiwan's manufacturing sector" qualifier. Peter to confirm this framing is acceptable for Thai audience.
 
 ---
 
-*v1.2 — ContentSpec updated: horizontal scroll rail timeline (was 4-row grid), English map labels, BOI outcomes, section ordering.*
+## Change Log
+
+**v1.3 (Feb 13, 2026) — Official site intelligence integrated:**
+- Hero stats: R&D Engineers updated from 1,300+ → 1,600+ (official About Us page)
+- Mission paragraph 4: Added team scale (1,600+ R&D, 1,800+ consultants)
+- NEW: Market Leadership Callout section — Common Wealth Magazine 2023 stats (80%, 54%, 77%) with Taiwan qualifier and attribution
+- Regional Presence: Subhead updated to "43 offices" (was "40+"), branch total sourced, employee count confirmed at 5,500+
+- Presence Stats: Source attribution added
+
+**v1.2 (Feb 9, 2026):** Horizontal scroll rail timeline, English map labels, BOI outcomes, section ordering.
+**v1.1 (Feb 8, 2026):** Initial intelligence pass.

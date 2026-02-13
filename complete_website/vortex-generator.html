@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DigiWin Vortex Generator</title>
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#000;overflow:hidden;font-family:'Noto Sans',system-ui,sans-serif;color:#fff}
+canvas{display:block}
+
+#panel{
+  position:fixed;top:20px;right:20px;width:300px;
+  background:rgba(0,4,50,0.92);backdrop-filter:blur(12px);
+  border:1px solid rgba(0,175,240,0.2);border-radius:12px;
+  padding:24px;z-index:10;max-height:calc(100vh - 40px);overflow-y:auto;
+}
+#panel h2{font-size:16px;font-weight:600;margin-bottom:4px;color:#00E6FF}
+#panel .sub{font-size:11px;color:#6688aa;margin-bottom:20px}
+.ctrl{margin-bottom:14px}
+.ctrl label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;color:#aac}
+.ctrl .val{color:#00AFF0;font-weight:600;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{
+  -webkit-appearance:none;width:100%;height:4px;border-radius:2px;
+  background:#001040;outline:none;
+}
+.ctrl input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:14px;height:14px;border-radius:50%;
+  background:#00AFF0;cursor:pointer;border:2px solid #000864;
+}
+.btn{
+  display:block;width:100%;padding:10px;margin-top:8px;border:none;border-radius:6px;
+  font-size:13px;font-weight:600;cursor:pointer;transition:background 0.2s;
+}
+.btn-primary{background:#00AFF0;color:#000864}
+.btn-primary:hover{background:#00C8FF}
+.btn-secondary{background:rgba(0,175,240,0.15);color:#00AFF0;border:1px solid rgba(0,175,240,0.3)}
+.btn-secondary:hover{background:rgba(0,175,240,0.25)}
+#info{font-size:11px;color:#556;margin-top:12px;text-align:center;line-height:1.5}
+.sep{border:none;border-top:1px solid rgba(0,175,240,0.15);margin:16px 0}
+.chk{display:flex;align-items:center;gap:8px;font-size:12px;color:#aac;margin-bottom:10px;cursor:pointer}
+.chk input{accent-color:#00AFF0}
+
+#toast{
+  position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
+  background:#00AFF0;color:#000864;padding:10px 24px;border-radius:8px;
+  font-size:13px;font-weight:600;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:20;
+}
+#toast.show{opacity:1}
+</style>
+</head>
+<body>
+
+<div id="panel">
+  <h2>DigiWin Vortex</h2>
+  <p class="sub">3D particle funnel generator &middot; Drag to rotate &middot; Scroll to zoom</p>
+
+  <div class="ctrl">
+    <label>Spiral Arms <span class="val" id="vArms">6</span></label>
+    <input type="range" id="sArms" min="3" max="12" value="6" step="1">
+  </div>
+  <div class="ctrl">
+    <label>Dots / arm <span class="val" id="vDots">4000</span></label>
+    <input type="range" id="sDots" min="500" max="8000" value="4000" step="500">
+  </div>
+  <div class="ctrl">
+    <label>Spin turns <span class="val" id="vSpin">3.5</span></label>
+    <input type="range" id="sSpin" min="1.0" max="6.0" value="3.5" step="0.1">
+  </div>
+  <div class="ctrl">
+    <label>Funnel depth <span class="val" id="vDepth">500</span></label>
+    <input type="range" id="sDepth" min="100" max="1000" value="500" step="10">
+  </div>
+  <div class="ctrl">
+    <label>Radius <span class="val" id="vRadius">700</span></label>
+    <input type="range" id="sRadius" min="200" max="1200" value="700" step="10">
+  </div>
+  <div class="ctrl">
+    <label>Scatter <span class="val" id="vScatter">0.12</span></label>
+    <input type="range" id="sScatter" min="0.0" max="0.35" value="0.12" step="0.01">
+  </div>
+  <div class="ctrl">
+    <label>Dot size <span class="val" id="vSize">4.5</span></label>
+    <input type="range" id="sSize" min="1.0" max="10.0" value="4.5" step="0.5">
+  </div>
+
+  <hr class="sep">
+
+  <label class="chk"><input type="checkbox" id="cRotate" checked> Auto-rotate</label>
+
+  <button class="btn btn-secondary" id="bReset">Reset Camera</button>
+
+  <hr class="sep">
+
+  <button class="btn btn-primary" id="bExport">Download PNG (2800 &times; 1400)</button>
+  <button class="btn btn-secondary" id="bExportSm" style="margin-top:6px">Download PNG (1400 &times; 700)</button>
+
+  <div id="info">Loading&hellip;</div>
+</div>
+
+<div id="toast"></div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+/* ── Constants ──────────────────────────────────────────────── */
+const BG = new THREE.Color(0x000864);
+const CYAN = new THREE.Color(0x00E6FF);
+const BLUE = new THREE.Color(0x00AFF0);
+
+/* ── Scene ──────────────────────────────────────────────────── */
+const scene = new THREE.Scene();
+scene.background = BG;
+
+const camera = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, 1, 8000);
+camera.position.set(250, 450, 750);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(innerWidth, innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+document.body.appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.set(0, -120, 0);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.4;
+controls.update();
+
+/* ── Dot texture ────────────────────────────────────────────── */
+function makeDotTex() {
+  const s = 64, c = document.createElement('canvas');
+  c.width = c.height = s;
+  const ctx = c.getContext('2d'), h = s / 2;
+  const g = ctx.createRadialGradient(h, h, 0, h, h, h);
+  g.addColorStop(0.0, 'rgba(255,255,255,1.0)');
+  g.addColorStop(0.55,'rgba(255,255,255,1.0)');
+  g.addColorStop(0.8, 'rgba(255,255,255,0.4)');
+  g.addColorStop(1.0, 'rgba(255,255,255,0.0)');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, s, s);
+  return new THREE.CanvasTexture(c);
+}
+const dotTex = makeDotTex();
+
+/* ── Shader material (per-vertex size + color) ──────────────── */
+const vertSrc = `
+  attribute float size;
+  uniform float uScale;
+  varying vec3 vColor;
+  void main() {
+    vColor = color;
+    vec4 mv = modelViewMatrix * vec4(position, 1.0);
+    gl_PointSize = max(size * (uScale / -mv.z), 1.0);
+    gl_Position = projectionMatrix * mv;
+  }
+`;
+const fragSrc = `
+  precision highp float;
+  uniform sampler2D uTex;
+  varying vec3 vColor;
+  void main() {
+    vec4 t = texture2D(uTex, gl_PointCoord);
+    gl_FragColor = vec4(vColor, 1.0) * t;
+    if (gl_FragColor.a < 0.01) discard;
+  }
+`;
+
+function makeMaterial(scaleHeight) {
+  return new THREE.ShaderMaterial({
+    uniforms: {
+      uTex:   { value: dotTex },
+      uScale: { value: scaleHeight * 0.45 }
+    },
+    vertexShader: vertSrc,
+    fragmentShader: fragSrc,
+    vertexColors: true,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+    transparent: true
+  });
+}
+
+let mat = makeMaterial(innerHeight);
+
+/* ── Parameters ─────────────────────────────────────────────── */
+const P = {
+  arms: 6, dotsPerArm: 4000, spin: 3.5,
+  depth: 500, radius: 700, scatter: 0.12, size: 4.5
+};
+
+/* ── Build vortex ───────────────────────────────────────────── */
+let points = null;
+const tmpC = new THREE.Color();
+
+function build() {
+  if (points) { scene.remove(points); points.geometry.dispose(); }
+
+  const { arms, dotsPerArm, spin, depth, radius, scatter, size } = P;
+  const ambient = 600;
+  const total = arms * dotsPerArm + ambient;
+
+  const pos = new Float32Array(total * 3);
+  const col = new Float32Array(total * 3);
+  const sz  = new Float32Array(total);
+  let idx = 0;
+
+  // ── Spiral arms on funnel surface ──
+  for (let a = 0; a < arms; a++) {
+    const aOff = (a / arms) * Math.PI * 2;
+    const spinV = 1.0 + 0.08 * Math.sin(a * 2.3 + 0.7);
+    const radV  = 1.0 + 0.06 * Math.cos(a * 1.7 + 0.3);
+
+    for (let i = 0; i < dotsPerArm; i++) {
+      const t = i / (dotsPerArm - 1); // 0 = outer, 1 = center
+
+      // Funnel surface: radius shrinks, depth increases
+      const r = radius * Math.pow(1 - t, 0.6) * radV;
+      const theta = aOff + Math.pow(t, 1.15) * spin * Math.PI * 2 * spinV;
+      const y = -depth * Math.pow(t, 2.2);
+
+      // Scatter perpendicular to arm path
+      const sc = r * scatter * (1 - t * 0.4);
+      const x = r * Math.cos(theta) + (Math.random() - 0.5) * sc;
+      const z = r * Math.sin(theta) + (Math.random() - 0.5) * sc;
+      const yy = y + (Math.random() - 0.5) * sc * 0.12;
+
+      pos[idx*3]   = x;
+      pos[idx*3+1] = yy;
+      pos[idx*3+2] = z;
+
+      // Color: cyan outer → bluer inner
+      tmpC.lerpColors(CYAN, BLUE, t * 0.35 + Math.random() * 0.08);
+      col[idx*3]   = tmpC.r;
+      col[idx*3+1] = tmpC.g;
+      col[idx*3+2] = tmpC.b;
+
+      // Size: grows then shrinks along arm
+      let sf = t < 0.3
+        ? 0.4 + (t / 0.3) * 0.6
+        : 1.0 - ((t - 0.3) / 0.7) * 0.55;
+      sz[idx] = size * sf * (0.7 + Math.random() * 0.6);
+
+      idx++;
+    }
+  }
+
+  // ── Ambient scatter ──
+  for (let i = 0; i < ambient; i++) {
+    const r2 = radius * (0.3 + Math.random() * 0.85);
+    const th = Math.random() * Math.PI * 2;
+    pos[idx*3]   = r2 * Math.cos(th) + (Math.random()-0.5) * 80;
+    pos[idx*3+1] = -Math.random() * depth * 0.25;
+    pos[idx*3+2] = r2 * Math.sin(th) + (Math.random()-0.5) * 80;
+    tmpC.lerpColors(CYAN, BLUE, Math.random());
+    col[idx*3]   = tmpC.r;
+    col[idx*3+1] = tmpC.g;
+    col[idx*3+2] = tmpC.b;
+    sz[idx] = size * 0.2 * (0.4 + Math.random());
+    idx++;
+  }
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  geo.setAttribute('color',    new THREE.BufferAttribute(col, 3));
+  geo.setAttribute('size',     new THREE.BufferAttribute(sz, 1));
+
+  points = new THREE.Points(geo, mat);
+  scene.add(points);
+
+  document.getElementById('info').textContent =
+    `${idx.toLocaleString()} particles · ${arms} arms · spin ${spin}`;
+}
+
+build();
+
+/* ── Animation ──────────────────────────────────────────────── */
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
+}
+animate();
+
+/* ── Resize ─────────────────────────────────────────────────── */
+window.addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+  mat.uniforms.uScale.value = innerHeight * 0.45;
+});
+
+/* ── Export PNG ──────────────────────────────────────────────── */
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2500);
+}
+
+function exportPNG(w, h) {
+  toast('Rendering ' + w + '×' + h + '…');
+
+  // Temporarily update scale for export resolution
+  mat.uniforms.uScale.value = h * 0.45;
+
+  const expRenderer = new THREE.WebGLRenderer({
+    antialias: true,
+    preserveDrawingBuffer: true
+  });
+  expRenderer.setSize(w, h);
+  expRenderer.setPixelRatio(1);
+  expRenderer.setClearColor(BG);
+
+  const expCam = camera.clone();
+  expCam.aspect = w / h;
+  expCam.updateProjectionMatrix();
+
+  expRenderer.render(scene, expCam);
+
+  const a = document.createElement('a');
+  a.download = 'digiwin-vortex-bg-' + w + 'x' + h + '.png';
+  a.href = expRenderer.domElement.toDataURL('image/png');
+  a.click();
+
+  expRenderer.dispose();
+
+  // Restore screen scale
+  mat.uniforms.uScale.value = innerHeight * 0.45;
+
+  setTimeout(() => toast('Saved!'), 300);
+}
+
+/* ── UI Controls ────────────────────────────────────────────── */
+const sliders = [
+  { id: 'sArms',    key: 'arms',       valId: 'vArms',    parse: parseInt },
+  { id: 'sDots',    key: 'dotsPerArm', valId: 'vDots',    parse: parseInt },
+  { id: 'sSpin',    key: 'spin',       valId: 'vSpin',    parse: parseFloat },
+  { id: 'sDepth',   key: 'depth',      valId: 'vDepth',   parse: parseInt },
+  { id: 'sRadius',  key: 'radius',     valId: 'vRadius',  parse: parseInt },
+  { id: 'sScatter', key: 'scatter',    valId: 'vScatter', parse: parseFloat },
+  { id: 'sSize',    key: 'size',       valId: 'vSize',    parse: parseFloat },
+];
+
+let rebuildTimer = null;
+sliders.forEach(s => {
+  document.getElementById(s.id).addEventListener('input', e => {
+    const v = s.parse(e.target.value);
+    P[s.key] = v;
+    document.getElementById(s.valId).textContent = v;
+    clearTimeout(rebuildTimer);
+    rebuildTimer = setTimeout(build, 80);
+  });
+});
+
+document.getElementById('cRotate').addEventListener('change', e => {
+  controls.autoRotate = e.target.checked;
+});
+
+document.getElementById('bReset').addEventListener('click', () => {
+  camera.position.set(250, 450, 750);
+  controls.target.set(0, -120, 0);
+  controls.update();
+});
+
+document.getElementById('bExport').addEventListener('click', () => exportPNG(2800, 1400));
+document.getElementById('bExportSm').addEventListener('click', () => exportPNG(1400, 700));
+
+</script>
+</body>
+</html>

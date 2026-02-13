@@ -151,7 +151,7 @@
 
         /* Partner Panel - Dynamic Blue */
         .dw-hero-panel--partner {
-            background: linear-gradient(165deg, #0369a1 0%, #003CC8 40%, #003CC8 100%);
+            background: linear-gradient(165deg, #00AFF0 0%, #003CC8 40%, #003CC8 100%);
             position: relative;
         }
 
@@ -379,7 +379,7 @@
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.15em;
-            color: #64748b;
+            color: #5b6b80;
             margin: 0;
         }
 
@@ -453,7 +453,7 @@
             display: block;
             font-size: 16px;
             font-weight: 400;
-            color: #94a3b8;
+            color: #5b6b80;
             letter-spacing: 0.06em;
             text-transform: uppercase;
             margin-top: 4px;
@@ -495,6 +495,7 @@
             .dw-hero-panel .dw-btn,
             .dw-check-card,
             .dw-trust-card,
+            .dw-result-card,
             .dw-value-prop,
             .dw-value-prop-icon,
             .dw-industry-content.active,
@@ -535,7 +536,7 @@
         .dw-clients-stat-label {
             font-family: 'Noto Sans', sans-serif;
             font-size: 13px;
-            color: #64748b;
+            color: #5b6b80;
             display: block;
             margin-top: 4px;
         }
@@ -578,7 +579,7 @@
         }
 
         .dw-checks-section--factory .dw-checks-label {
-            color: #00AFF0;
+            color: #0369a1;
         }
 
         .dw-checks-section--partner .dw-checks-label {
@@ -632,7 +633,7 @@
         }
 
         .dw-checks-section--factory .dw-checks-subtitle {
-            color: #64748b;
+            color: #5b6b80;
         }
 
         .dw-checks-section--partner .dw-checks-subtitle {
@@ -714,7 +715,7 @@
         }
 
         .dw-checks-section--factory .dw-check-number {
-            color: #00AFF0;
+            color: #0369a1;
         }
 
         .dw-checks-section--partner .dw-check-number {
@@ -763,7 +764,7 @@
         }
 
         .dw-checks-section--factory .dw-check-desc {
-            color: #64748b;
+            color: #5b6b80;
         }
 
         .dw-checks-section--partner .dw-check-desc {
@@ -853,7 +854,7 @@
         .dw-value-prop-icon svg {
             width: 36px;
             height: 36px;
-            color: #00AFF0;
+            color: #0369a1;
         }
 
         .dw-value-prop-title {
@@ -867,7 +868,7 @@
         .dw-value-prop-desc {
             font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
-            color: #64748b;
+            color: #5b6b80;
             line-height: 1.6;
             margin: 0;
             text-align: left;
@@ -878,7 +879,7 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
             font-weight: 500;
-            color: #00AFF0;
+            color: #0369a1;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             margin-bottom: 4px;
@@ -902,7 +903,7 @@
 
         .dw-prop-features li {
             font-size: 13px;
-            color: #64748b;
+            color: #5b6b80;
             padding: 4px 0;
             padding-left: 12px;
             position: relative;
@@ -929,7 +930,7 @@
             display: block;
             font-size: 13px;
             font-weight: 500;
-            color: #00AFF0;
+            color: #0369a1;
             padding-top: 10px;
             border-top: 1px solid #e2e8f0;
             margin-top: 4px;
@@ -950,7 +951,7 @@
             font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
             font-weight: 500;
-            color: #64748b;
+            color: #5b6b80;
             padding: 14px 28px;
             border-radius: 12px 12px 0 0;
             border: none;
@@ -961,7 +962,7 @@
         }
 
         .dw-industry-tab:hover {
-            color: #00AFF0;
+            color: #0369a1;
             background: rgba(0, 175, 240, 0.08);
         }
 
@@ -1042,7 +1043,7 @@
         .dw-industry-info p {
             font-family: 'Noto Sans', sans-serif;
             font-size: 17px;
-            color: #64748b;
+            color: #5b6b80;
             line-height: 1.75;
             margin: 0 0 28px 0;
         }
@@ -1179,7 +1180,7 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
             font-weight: 600;
-            color: #00AFF0;
+            color: #0369a1;
             background: rgba(0, 175, 240, 0.15);
             border: 1px solid rgba(0, 175, 240, 0.25);
             padding: 5px 12px;
@@ -1221,6 +1222,83 @@
             z-index: 2;
         }
 
+        /* Proven Results Teaser */
+        .dw-results-section {
+            padding: 80px 40px;
+            background: var(--dw-gray-light, #F5F7FA);
+            position: relative;
+        }
+
+        .dw-results-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            max-width: 900px;
+            margin: 48px auto 0;
+        }
+
+        .dw-result-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 36px 32px;
+            border: 1px solid #e2e8f0;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .dw-result-card:hover {
+            box-shadow: 0 8px 32px rgba(0,8,100,0.08);
+            transform: translateY(-2px);
+        }
+
+        .dw-result-company {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--dw-blue, #00AFF0);
+            margin-bottom: 12px;
+        }
+
+        .dw-result-metric {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dw-navy, #000864);
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .dw-result-detail {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            color: #5b6b80;
+            line-height: 1.5;
+        }
+
+        .dw-results-cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .dw-results-cta a {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dw-blue, #00AFF0);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .dw-results-cta a:hover {
+            color: var(--dw-royal, #003CC8);
+        }
+
+        @media (max-width: 768px) {
+            .dw-results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Stats Section Enhancement */
         .dw-stats-section {
             background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #000864 100%);
@@ -1257,11 +1335,22 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 48px;
             text-align: center;
             position: relative;
             z-index: 1;
+        }
+
+        .dw-stat-source {
+            grid-column: 1 / -1;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: rgba(255,255,255,0.75);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            text-align: center;
+            margin-top: -16px;
         }
 
         .dw-stat {
@@ -1288,7 +1377,7 @@
             font-family: 'Noto Sans', sans-serif;
             font-size: clamp(48px, 6vw, 72px);
             font-weight: 800;
-            color: #00AFF0;
+            color: #0369a1;
             line-height: 1;
             margin-bottom: 16px;
             letter-spacing: -0.03em;
@@ -1412,7 +1501,7 @@
             }
             .dw-stats-inner {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 40px;
+                gap: 40px 32px;
             }
             .dw-stat::after {
                 display: none;
@@ -1607,12 +1696,12 @@
                     <defs>
                         <!-- Ghost/Transparent effect for "invisible" elements -->
                         <linearGradient id="ghost-fade" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style="stop-color:#00AFF0;stop-opacity:0.4"/>
-                            <stop offset="100%" style="stop-color:#00AFF0;stop-opacity:0.05"/>
+                            <stop offset="0%" style="stop-color: #0369a1;stop-opacity:0.4"/>
+                            <stop offset="100%" style="stop-color: #0369a1;stop-opacity:0.05"/>
                         </linearGradient>
                         <linearGradient id="reality-solid" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style="stop-color:#00AFF0;stop-opacity:0.7"/>
-                            <stop offset="100%" style="stop-color:#00AFF0;stop-opacity:0.4"/>
+                            <stop offset="0%" style="stop-color: #0369a1;stop-opacity:0.7"/>
+                            <stop offset="100%" style="stop-color: #0369a1;stop-opacity:0.4"/>
                         </linearGradient>
                         <filter id="ghost-blur">
                             <feGaussianBlur stdDeviation="2" result="blur"/>
@@ -3211,9 +3300,18 @@
                 <div class="dw-stat-label">Thai Implementations</div>
             </div>
             <div class="dw-stat">
+                <div class="dw-stat-value">80%</div>
+                <div class="dw-stat-label">of Taiwan's Top 2,000 Manufacturers</div>
+            </div>
+            <div class="dw-stat">
+                <div class="dw-stat-value">54%</div>
+                <div class="dw-stat-label">Solutions Market Share</div>
+            </div>
+            <div class="dw-stat">
                 <div class="dw-stat-value">300378</div>
                 <div class="dw-stat-label">Shenzhen Stock Exchange</div>
             </div>
+            <div class="dw-stat-source">Common Wealth Magazine, 2023</div>
         </div>
     </section>
 
@@ -3355,8 +3453,34 @@
                     <div class="dw-trust-badge">BOI Ready</div>
                     <h3 class="dw-trust-title">BOI Compliance</h3>
                     <p class="dw-trust-headline">Production-order-level material reconciliation that passes BOI audits — the capability no competitor can match.</p>
-                    <p class="dw-trust-detail">One factory saved 10M+ THB/year in supplementary taxes. Our system tracks actual material consumption per production order, not theoretical BOM calculations. <a href="{{basePath}}blog/boi-compliance-jin-hai.html" style="color: #00AFF0;">Read the full story →</a></p>
+                    <p class="dw-trust-detail">One factory saved 10M+ THB/year in supplementary taxes. Our system tracks actual material consumption per production order, not theoretical BOM calculations. <a href="{{basePath}}blog/boi-compliance-jin-hai.html" style="color: #0369a1;">Read the full story →</a></p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proven Results Teaser -->
+    <section class="dw-section dw-results-section">
+        <div class="dw-container" style="position: relative; z-index: 2;">
+            <div class="dw-section-header">
+                <p class="dw-section-label">Proven Results</p>
+                <h2 class="dw-section-title">Real Outcomes from Thai Factories</h2>
+                <p class="dw-section-subtitle">These aren't projections. These are results our clients achieved after going live.</p>
+            </div>
+            <div class="dw-results-grid">
+                <div class="dw-result-card">
+                    <div class="dw-result-company">Thai Alpha Polymer</div>
+                    <div class="dw-result-metric">Month-end closing: 60 days to 15 days</div>
+                    <div class="dw-result-detail">Stock accuracy reached 95% with Workflow ERP + WMS integration across their PET plastic roll operations.</div>
+                </div>
+                <div class="dw-result-card">
+                    <div class="dw-result-company">Ginfong Precision Metal Stamping</div>
+                    <div class="dw-result-metric">Revenue growth of 200%, margins from 23% to 34%</div>
+                    <div class="dw-result-detail">Gross profit improved from 23% to 34% with ERP + SFT — even during the COVID period when competitors contracted.</div>
+                </div>
+            </div>
+            <div class="dw-results-cta">
+                <a href="{{basePath}}case-studies.html">See all case studies &#8594;</a>
             </div>
         </div>
     </section>
@@ -3396,7 +3520,7 @@
         });
 
         // Scroll animations
-        DigiWinUI.initScrollAnimation('.dw-value-prop, .dw-check-card, .dw-trust-card', {
+        DigiWinUI.initScrollAnimation('.dw-value-prop, .dw-check-card, .dw-trust-card, .dw-result-card', {
             stagger: 30, distance: 16, duration: 200
         });
 

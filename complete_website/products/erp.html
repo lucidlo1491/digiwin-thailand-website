@@ -16,11 +16,11 @@
             --navy: #000864;
             --navy-deep: #0f1419;
             --navy-mid: #1a2632;
-            --blue: #00AFF0;
+            --blue: #0369a1;
             --blue-light: #7ec8f2;
             --gray-light: #F5F7FA;
             --white: #ffffff;
-            --green: #10b981;
+            --green: #047857;
             --red: #dc2626;
         }
 
@@ -250,7 +250,7 @@
         .pain-subtitle {
             font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
-            color: #64748b;
+            color: #5b6b80;
             max-width: 600px;
             margin: 0 auto;
         }
@@ -335,7 +335,7 @@
         .pain-card-desc {
             font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
-            color: #64748b;
+            color: #5b6b80;
             line-height: 1.65;
         }
 
@@ -386,7 +386,7 @@
         .products-subtitle {
             font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
-            color: #64748b;
+            color: #5b6b80;
             max-width: 550px;
             margin: 0 auto;
         }
@@ -526,7 +526,7 @@
         .product-best-for-text {
             font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
-            color: #64748b;
+            color: #5b6b80;
             line-height: 1.6;
         }
 
@@ -597,7 +597,7 @@
         .integration-subtitle {
             font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
-            color: #64748b;
+            color: #5b6b80;
         }
 
         .integration-visual {
@@ -779,6 +779,335 @@
             box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
         }
 
+        /* Use-case navigation pills */
+        .erp-use-case-pills {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .erp-use-case-pill {
+            display: inline-block;
+            padding: 10px 22px;
+            background: var(--white);
+            border: 1px solid #e8eef3;
+            border-radius: 8px;
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--navy);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .erp-use-case-pill:hover,
+        .erp-use-case-pill:focus {
+            background: var(--blue);
+            color: var(--white);
+            border-color: var(--blue);
+        }
+
+        /* ERPII Ecosystem Accordion */
+        .erp-erpii-accordion {
+            margin-top: 24px;
+            border: 1px solid #e8eef3;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .erp-erpii-accordion summary {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--blue);
+            padding: 16px 24px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--gray-light);
+            transition: background 0.2s ease;
+        }
+
+        .erp-erpii-accordion summary::-webkit-details-marker { display: none; }
+
+        .erp-erpii-accordion summary .accordion-icon {
+            font-size: 18px;
+            color: var(--blue);
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+
+        .erp-erpii-accordion[open] summary .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .erp-erpii-accordion .erpii-content {
+            padding: 24px;
+            background: var(--white);
+        }
+
+        .erp-erpii-accordion .erpii-title {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 0 0 8px 0;
+        }
+
+        .erp-erpii-accordion .erpii-subtitle {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            color: #5b6b80;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+        }
+
+        .erpii-modules-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .erpii-module-card {
+            background: var(--gray-light);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .erpii-module-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, rgba(0, 175, 240, 0.12), rgba(0, 175, 240, 0.04));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+        }
+
+        .erpii-module-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--blue);
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .erpii-module-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 4px;
+        }
+
+        .erpii-module-name {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .erpii-module-desc {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 12px;
+            color: #5b6b80;
+            line-height: 1.4;
+        }
+
+        /* Proven In tag */
+        .erp-proven-in {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 13px;
+            font-style: italic;
+            color: #666;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #f0f4f8;
+            line-height: 1.5;
+        }
+
+        /* Trust callout box */
+        .erp-trust-callout {
+            margin-top: 24px;
+            background: #f0f9ff;
+            border: 1px solid var(--blue);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .erp-trust-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, rgba(0, 175, 240, 0.15), rgba(0, 175, 240, 0.05));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .erp-trust-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--blue);
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .erp-trust-title {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 0 0 6px 0;
+        }
+
+        .erp-trust-body {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            color: #5b6b80;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* BOI 2026 enforcement alert */
+        .boi-enforcement-alert {
+            margin-top: 32px;
+            background: #FFFBEB;
+            border-left: 4px solid #FFD700;
+            border-radius: 0 12px 12px 0;
+            padding: 32px;
+        }
+
+        .boi-enforcement-header {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .boi-enforcement-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .boi-enforcement-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .boi-enforcement-title {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #92400e;
+            margin: 0;
+        }
+
+        .boi-enforcement-body {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 15px;
+            color: #78350f;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+        }
+
+        .boi-enforcement-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            display: grid;
+            gap: 12px;
+        }
+
+        .boi-enforcement-list li {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            color: #78350f;
+            line-height: 1.5;
+            padding: 12px 16px;
+            background: rgba(255, 215, 0, 0.08);
+            border-radius: 8px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .boi-enforcement-list li strong {
+            color: #92400e;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .boi-enforcement-list .boi-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: #b45309;
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background: rgba(180, 83, 9, 0.1);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+        }
+
+        .boi-enforcement-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #b45309;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .boi-enforcement-cta:hover {
+            color: #92400e;
+        }
+
+        .boi-enforcement-cta svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .boi-enforcement-source {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 12px;
+            color: #a16207;
+            margin-top: 16px;
+            font-style: italic;
+        }
+
+        /* Smooth scroll for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .erp-hero-inner {
@@ -832,6 +1161,14 @@
             .boi-callout-grid > div:first-child {
                 text-align: center;
             }
+
+            .erpii-modules-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .erp-trust-callout {
+                flex-direction: column;
+            }
         }
 
         @media (max-width: 768px) {
@@ -839,6 +1176,21 @@
                 grid-template-columns: 1fr !important;
                 padding: 32px !important;
                 gap: 32px !important;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .erpii-modules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .erp-use-case-pills {
+                gap: 8px;
+            }
+
+            .erp-use-case-pill {
+                font-size: 12px;
+                padding: 8px 16px;
             }
         }
 
@@ -853,6 +1205,9 @@
             .weapon-card,
             .challenge-icon,
             .integration-link,
+            .erp-use-case-pill,
+            .erp-erpii-accordion summary,
+            .boi-enforcement-cta,
             .dw-d-parallax,
             .dw-wave-flow,
             .dw-wave-fade,
@@ -1028,7 +1383,7 @@
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">Complete Stack</span>
-                                    <h3 class="dw-mega-featured-title">Manufacturing & Distribution</h3>
+                                    <p class="dw-mega-featured-title">Manufacturing & Distribution</p>
                                     <p class="dw-mega-featured-desc">Tailor-made ERP for manufacturing and distribution companies in Thailand and ASEAN.</p>
                                     <a href="../products.html" class="dw-mega-featured-cta">
                                         Explore Solutions
@@ -1089,7 +1444,7 @@
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">50,000+ Factories</span>
-                                    <h3 class="dw-mega-featured-title">Industry-Specific Solutions</h3>
+                                    <p class="dw-mega-featured-title">Industry-Specific Solutions</p>
                                     <p class="dw-mega-featured-desc">Pre-configured templates and best practices for your specific manufacturing sector.</p>
                                     <a href="../industries.html" class="dw-mega-featured-cta">
                                         Find Your Industry
@@ -1175,7 +1530,7 @@
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">For ERP Implementers</span>
-                                    <h3 class="dw-mega-featured-title">Grow Beyond the Man-Day Model</h3>
+                                    <p class="dw-mega-featured-title">Grow Beyond the Man-Day Model</p>
                                     <p class="dw-mega-featured-desc">30-40% license margins. 100% service fees. Recurring revenue that compounds.</p>
                                     <a href="../partner-program.html" class="dw-mega-featured-cta">
                                         Become a Partner
@@ -1196,6 +1551,15 @@
                         <div class="dw-mega-inner">
                             <div class="dw-mega-column">
                                 <div class="dw-mega-column-title">Learn & Connect</div>
+                                <a href="../case-studies.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Case Studies</p>
+                                        <p class="dw-mega-desc">Real factory results from Thai manufacturers</p>
+                                    </div>
+                                </a>
                                 <a href="../news.html" class="dw-mega-item">
                                     <div class="dw-mega-icon">
                                         <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
@@ -1222,7 +1586,7 @@
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">Latest Insight</span>
-                                    <h3 class="dw-mega-featured-title">BOI Compliance: 10M THB Saved</h3>
+                                    <p class="dw-mega-featured-title">BOI Compliance: 10M THB Saved</p>
                                     <p class="dw-mega-featured-desc">How one factory eliminated supplementary taxes through production-order-level reconciliation.</p>
                                     <a href="../blog/boi-compliance-jin-hai.html" class="dw-mega-featured-cta">
                                         Read the Story
@@ -1355,7 +1719,7 @@
 <section class="dw-section" style="padding: 40px 0 0; text-align: center;">
   <div style="max-width: 800px; margin: 0 auto; padding: 0 24px;">
     <p style="font-family: 'Noto Sans', sans-serif; font-size: 17px; line-height: 1.7; color: #333;">
-      <strong>DigiWin ERP</strong> is a manufacturing-specific Enterprise Resource Planning system built for factories in Thailand and Southeast Asia. Available in two editions — <strong>T100</strong> for enterprise-scale multi-site operations (200+ employees) and <strong>iGP</strong> for growing single-site manufacturers (20–200 employees) — it provides real-time financial control, BOM management, MRP/LRP planning, quality management, and complete production traceability. With 44 years of manufacturing focus and 50,000+ factory clients worldwide, DigiWin ERP is the most widely deployed manufacturing ERP in the ASEAN Chinese-enterprise segment.
+      <strong>DigiWin ERP</strong> is a manufacturing-specific Enterprise Resource Planning system born from 44 years of serving factories across Taiwan, China, and Southeast Asia — regions where manufacturing isn't just an industry, it's the backbone of the economy. Available in two editions — <strong>T100</strong> for enterprise-scale multi-site operations (200+ employees) and <strong>iGP</strong> for growing single-site manufacturers (20–200 employees) — it provides real-time financial control, BOM management, MRP/LRP planning, quality management, and complete production traceability. Backed by 50,000+ factory clients and 1,600+ R&amp;D engineers, DigiWin is the most widely deployed manufacturing ERP in Greater China and the ASEAN Chinese-enterprise segment — now expanding to serve Thai manufacturers directly.
     </p>
   </div>
 </section>
@@ -1450,9 +1814,18 @@
                 <p class="products-subtitle">Manufacturing-first design that grows with your business. Start where you are, scale when ready.</p>
             </div>
 
+            <!-- Use-Case Navigation Pills -->
+            <nav class="erp-use-case-pills" aria-label="ERP use cases">
+                <a href="#igp-card" class="erp-use-case-pill">Warehouse ERP</a>
+                <a href="#t100-card" class="erp-use-case-pill">Smart Factory</a>
+                <a href="#igp-card" class="erp-use-case-pill">Cloud ERP</a>
+                <a href="#capabilities" class="erp-use-case-pill">Financial</a>
+                <a href="#t100-card" class="erp-use-case-pill">Custom Solutions</a>
+            </nav>
+
             <div class="products-comparison">
                 <!-- T100 -->
-                <div class="product-card">
+                <div class="product-card" id="t100-card">
                     <div class="product-card-header">
                         <span class="product-card-badge">Enterprise Scale</span>
                         <h3 class="product-card-name">T100</h3>
@@ -1472,11 +1845,22 @@
                             <div class="product-best-for-label">Best For</div>
                             <div class="product-best-for-text">200+ employees, multi-site, complex supply chains, group companies needing consolidation</div>
                         </div>
+
+                        <!-- Your Data Belongs to You — Trust Callout -->
+                        <div class="erp-trust-callout">
+                            <div class="erp-trust-icon">
+                                <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M12 3a4 4 0 0 0-4 4v4h8V7a4 4 0 0 0-4-4z"/><path d="M8 7v4M16 7v4"/><circle cx="12" cy="16" r="1"/><path d="M12 17v2"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="erp-trust-title">Your Data Belongs to You</h4>
+                                <p class="erp-trust-body">Full source code transfer included. Your system, your data, your independence — no vendor lock-in, ever. Plus: 3-month go-live target and 24/7 e-Service & e-Learning support.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- iGP -->
-                <div class="product-card">
+                <div class="product-card" id="igp-card">
                     <div class="product-card-header">
                         <span class="product-card-badge">Growth Stage</span>
                         <h3 class="product-card-name">iGP</h3>
@@ -1496,6 +1880,68 @@
                             <div class="product-best-for-label">Best For</div>
                             <div class="product-best-for-text">50-200 employees, single site, straightforward operations, moving beyond spreadsheets</div>
                         </div>
+
+                        <!-- Proven In verticals tag -->
+                        <p class="erp-proven-in">Proven across auto parts, food processing, electronics, machinery, fasteners, rubber & plastics, textiles, and 12+ more manufacturing verticals.</p>
+
+                        <!-- ERPII Ecosystem Accordion -->
+                        <details class="erp-erpii-accordion">
+                            <summary>iGP is more than ERP <span class="accordion-icon" aria-hidden="true">+</span></summary>
+                            <div class="erpii-content">
+                                <h4 class="erpii-title">Start with ERP. Expand into Everything.</h4>
+                                <p class="erpii-subtitle">iGP is a complete ERPII platform. Start with financials and production, then add modules as you grow — no system change required.</p>
+                                <div class="erpii-modules-grid">
+                                    <div class="erpii-module-card">
+                                        <div class="erpii-module-icon">
+                                            <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                                        </div>
+                                        <div class="erpii-module-label">BI / KPI</div>
+                                        <div class="erpii-module-name">Business Intelligence</div>
+                                        <div class="erpii-module-desc">Executive dashboards and balanced scorecard</div>
+                                    </div>
+                                    <div class="erpii-module-card">
+                                        <div class="erpii-module-icon">
+                                            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M14 14l7 7M3 8V3h5M10 10L3 3"/></svg>
+                                        </div>
+                                        <div class="erpii-module-label">SCM</div>
+                                        <div class="erpii-module-name">Supply Chain</div>
+                                        <div class="erpii-module-desc">End-to-end visibility from supplier to customer</div>
+                                    </div>
+                                    <div class="erpii-module-card">
+                                        <div class="erpii-module-icon">
+                                            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                        </div>
+                                        <div class="erpii-module-label">PLM</div>
+                                        <div class="erpii-module-name">Product Lifecycle</div>
+                                        <div class="erpii-module-desc">BOM, process, and drawings integration</div>
+                                    </div>
+                                    <div class="erpii-module-card">
+                                        <div class="erpii-module-icon">
+                                            <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 2v4M16 2v4"/></svg>
+                                        </div>
+                                        <div class="erpii-module-label">APS</div>
+                                        <div class="erpii-module-name">Advanced Planning</div>
+                                        <div class="erpii-module-desc">Finite capacity scheduling and optimization</div>
+                                    </div>
+                                    <div class="erpii-module-card">
+                                        <div class="erpii-module-icon">
+                                            <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8v8M10 8v8M14 8v8M18 8v8"/></svg>
+                                        </div>
+                                        <div class="erpii-module-label">MES / SFT</div>
+                                        <div class="erpii-module-name"><a href="mes.html" style="color: inherit; text-decoration: underline; text-decoration-color: var(--blue); text-underline-offset: 2px;">Shop Floor</a></div>
+                                        <div class="erpii-module-desc">Real-time production tracking and execution</div>
+                                    </div>
+                                    <div class="erpii-module-card">
+                                        <div class="erpii-module-icon">
+                                            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                        </div>
+                                        <div class="erpii-module-label">CRM</div>
+                                        <div class="erpii-module-name">Customer Management</div>
+                                        <div class="erpii-module-desc">Quotation to order to relationship</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
                     </div>
                 </div>
             </div>
@@ -1503,7 +1949,7 @@
     </section>
 
     <!-- Core Capabilities — wave-section: data flowing through ERP feature modules -->
-    <section class="capabilities-section" style="position: relative; overflow: hidden;">
+    <section class="capabilities-section" id="capabilities" style="position: relative; overflow: hidden;">
         <div class="dw-section-scene">
             <svg aria-hidden="true" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
                 <circle cx="700" cy="450" r="70" stroke="#000864" stroke-width="2" fill="none" opacity="0.12"/>
@@ -1598,7 +2044,7 @@
     <section style="background: #F5F7FA; padding: 100px 0; position: relative; overflow: hidden;">
         <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
             <div style="text-align: center; margin-bottom: 60px;">
-                <p style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: #00AFF0; margin-bottom: 12px;">What Sets DigiWin Apart</p>
+                <p style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: #0369a1; margin-bottom: 12px;">What Sets DigiWin Apart</p>
                 <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 40px; font-weight: 700; color: #000864; margin-bottom: 16px;">7 Technical Advantages No Competitor Can Match</h2>
                 <p style="font-family: 'Noto Sans', sans-serif; font-size: 18px; color: #666; max-width: 700px; margin: 0 auto;">These aren't minor features — they're fundamental architectural capabilities that address real Thai manufacturing challenges.</p>
             </div>
@@ -1613,11 +2059,11 @@
                         </div>
                         <div>
                             <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin: 0;">Advanced Material Requirements Planning</h3>
-                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #00AFF0; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">AMRP</p>
+                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #0369a1; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">AMRP</p>
                         </div>
                     </div>
                     <p style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">Capacity planning built directly into the ERP. Schedule production based on actual machine capacity, material availability, and labor constraints — all calculated in one system.</p>
-                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #00AFF0; font-weight: 500;">Many enterprise ERP systems require a separate APS purchase for this capability.</p>
+                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #0369a1; font-weight: 500;">Many enterprise ERP systems require a separate APS purchase for this capability.</p>
                 </div>
 
                 <!-- 2. Co-Product Accounting -->
@@ -1628,11 +2074,11 @@
                         </div>
                         <div>
                             <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin: 0;">Co-Product Accounting</h3>
-                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #00AFF0; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">Multi-Output Work Orders</p>
+                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #0369a1; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">Multi-Output Work Orders</p>
                         </div>
                     </div>
                     <p style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">One work order produces multiple outputs with accurate cost allocation per product. Essential for plastics injection, food processing, and chemical manufacturing.</p>
-                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #00AFF0; font-weight: 500;">Most competing ERP systems cannot handle native co-product work orders.</p>
+                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #0369a1; font-weight: 500;">Most competing ERP systems cannot handle native co-product work orders.</p>
                 </div>
 
                 <!-- 3. LRP -->
@@ -1643,11 +2089,11 @@
                         </div>
                         <div>
                             <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin: 0;">Lot Requirements Planning</h3>
-                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #00AFF0; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">LRP</p>
+                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #0369a1; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">LRP</p>
                         </div>
                     </div>
                     <p style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">Calculate material requirements for a specific production order in under one minute. No waiting hours for a full MRP run to answer "can we accept this order?"</p>
-                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #00AFF0; font-weight: 500;">Traditional MRP systems take hours. LRP gives answers in minutes.</p>
+                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #0369a1; font-weight: 500;">Traditional MRP systems take hours. LRP gives answers in minutes.</p>
                 </div>
 
                 <!-- 4. Dual Unit Tracking -->
@@ -1658,11 +2104,11 @@
                         </div>
                         <div>
                             <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin: 0;">Dual Unit Tracking</h3>
-                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #00AFF0; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">Simultaneous UOM Display</p>
+                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #0369a1; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">Simultaneous UOM Display</p>
                         </div>
                     </div>
                     <p style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">Display and track both weight (kg) and quantity (pieces) simultaneously across all transactions. No conversions, no rounding errors, no confusion.</p>
-                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #00AFF0; font-weight: 500;">Most mid-market ERP systems can only display one unit of measure at a time.</p>
+                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #0369a1; font-weight: 500;">Most mid-market ERP systems can only display one unit of measure at a time.</p>
                 </div>
 
                 <!-- 5. Shop Floor Mini-Scheduling -->
@@ -1673,11 +2119,11 @@
                         </div>
                         <div>
                             <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin: 0;">Shop Floor Mini-Scheduling</h3>
-                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #00AFF0; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">Real-Time Floor Adjustments</p>
+                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #0369a1; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">Real-Time Floor Adjustments</p>
                         </div>
                     </div>
                     <p style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">Floor supervisors adjust production schedules in real-time, and changes are immediately visible to planning. Bridge the gap between the plan and reality.</p>
-                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #00AFF0; font-weight: 500;">No competitor offers this level of bidirectional floor-to-planning visibility.</p>
+                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #0369a1; font-weight: 500;">No competitor offers this level of bidirectional floor-to-planning visibility.</p>
                 </div>
 
                 <!-- 6. Feature Codes -->
@@ -1688,11 +2134,11 @@
                         </div>
                         <div>
                             <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin: 0;">Feature Codes</h3>
-                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #00AFF0; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">Multi-Dimension Variants</p>
+                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #0369a1; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">Multi-Dimension Variants</p>
                         </div>
                     </div>
                     <p style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">Manage product variants across up to 3 dimensions (color, size, grade) under a single item code. Turn 27 SKUs into 1 manageable product with full traceability.</p>
-                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #00AFF0; font-weight: 500;">Reduces item master complexity by 90%+ for variant-heavy manufacturers.</p>
+                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #0369a1; font-weight: 500;">Reduces item master complexity by 90%+ for variant-heavy manufacturers.</p>
                 </div>
 
                 <!-- 7. BOI Reconciliation -->
@@ -1703,11 +2149,11 @@
                         </div>
                         <div>
                             <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin: 0;">BOI Reconciliation</h3>
-                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #00AFF0; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">Production-Order-Level Tracking</p>
+                            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #0369a1; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">Production-Order-Level Tracking</p>
                         </div>
                     </div>
                     <p style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">Track actual material consumption at the production order level — not theoretical BOM calculations. Generate BOI-ready reports that match what the Board of Investment audits.</p>
-                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #00AFF0; font-weight: 500;">No competitor offers production-order-level BOI material reconciliation.</p>
+                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #0369a1; font-weight: 500;">No competitor offers production-order-level BOI material reconciliation.</p>
                 </div>
 
             </div>
@@ -1725,10 +2171,45 @@
                         <div style="font-family: 'JetBrains Mono', monospace; font-size: 56px; font-weight: 700; color: #00AFF0;">10M+</div>
                         <div style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: rgba(255,255,255,0.75); margin-top: 8px;">THB/year saved</div>
                         <div style="width: 40px; height: 2px; background: #00AFF0; margin: 16px auto;"></div>
-                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 56px; font-weight: 700; color: #22C55E;">Zero</div>
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 56px; font-weight: 700; color: #15803d;">Zero</div>
                         <div style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: rgba(255,255,255,0.75); margin-top: 8px;">supplementary taxes in 2025</div>
                     </div>
                 </div>
+            </div>
+
+            <!-- BOI 2026 Enforcement Alert -->
+            <div class="boi-enforcement-alert">
+                <div class="boi-enforcement-header">
+                    <div class="boi-enforcement-icon">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" fill="#FFD700" stroke="#b45309" stroke-width="1.5"/>
+                            <line x1="12" y1="9" x2="12" y2="13" stroke="#92400e" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="12" cy="17" r="1" fill="#92400e"/>
+                        </svg>
+                    </div>
+                    <h3 class="boi-enforcement-title">BOI 2026: Enforcement Is Getting Serious</h3>
+                </div>
+                <p class="boi-enforcement-body">The Board of Investment is cracking down on four areas that directly affect your factory:</p>
+                <ol class="boi-enforcement-list">
+                    <li>
+                        <span class="boi-num">1</span>
+                        <div><strong>Double bookkeeping detection</strong> Separate systems for BOI vs non-BOI transactions are being flagged. Single integrated system eliminates the risk.</div>
+                    </li>
+                    <li>
+                        <span class="boi-num">2</span>
+                        <div><strong>Inventory mismatch audits</strong> Physical vs system stock discrepancies trigger investigations. WMS barcode scanning + cycle counting delivers 95%+ accuracy.</div>
+                    </li>
+                    <li>
+                        <span class="boi-num">3</span>
+                        <div><strong>BOI/non-BOI transaction filing</strong> Incorrect categorization leads to privilege revocation. Production-order-level tracking separates BOI from non-BOI automatically.</div>
+                    </li>
+                    <li>
+                        <span class="boi-num">4</span>
+                        <div><strong>Tariff recovery actions</strong> Retroactive duty collection on non-compliant imports. Full audit trail from receiving to shipping — BOI-ready reports on demand.</div>
+                    </li>
+                </ol>
+                <a href="../blog/boi-compliance-jin-hai.html" class="boi-enforcement-cta">See how DigiWin ERP handles BOI compliance <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                <p class="boi-enforcement-source">Based on BOI enforcement trends confirmed at DigiWin's January 28, 2026 compliance webinar</p>
             </div>
         </div>
     </section>
@@ -1791,31 +2272,31 @@
     <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 28px; font-weight: 700; color: #000864; margin-bottom: 32px; text-align: center;">Frequently Asked Questions</h2>
     <div style="display: flex; flex-direction: column; gap: 12px;">
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What is the difference between T100 and iGP?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What is the difference between T100 and iGP?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
           <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">T100 is DigiWin's enterprise-tier ERP designed for manufacturers with 200+ employees, multiple sites, and complex multi-company structures. iGP (also known as Workflow ERP) is the growth-tier ERP for single-site manufacturers with 20–200 employees, offering modular purchasing and faster 3–6 month deployments. Both share the same manufacturing DNA and can scale — many customers start with iGP and upgrade to T100 as they grow.</p>
         </div>
       </details>
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">Is DigiWin ERP certified for Thai tax and BOI compliance?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">Is DigiWin ERP certified for Thai tax and BOI compliance?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
           <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">Yes. DigiWin ERP is certified by the Thai Revenue Department and includes built-in withholding tax workflows, VAT handling, and BOI compliance features. Our production-order-level reconciliation has helped manufacturers eliminate supplementary tax penalties entirely — one customer saved over 10 million THB per year.</p>
         </div>
       </details>
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How long does a DigiWin ERP implementation take?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How long does a DigiWin ERP implementation take?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
           <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">iGP implementations typically take 3–6 months. T100 enterprise implementations take 6–9 months, which is significantly faster than comparable enterprise ERPs (12–18 months) thanks to DigiWin's pre-built manufacturing templates and 44 years of process knowledge.</p>
         </div>
       </details>
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How does DigiWin ERP compare to SAP, Oracle, or Infor for manufacturing?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How does DigiWin ERP compare to SAP, Oracle, or Infor for manufacturing?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
           <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">DigiWin ERP delivers approximately 90% of Tier-1 ERP capability at roughly 70% of the cost. Unlike horizontal ERPs that serve banks, retailers, and hospitals, DigiWin is built exclusively for manufacturing — with native support for BOM management, shop floor scheduling, quality control, and production costing that other ERPs require expensive customization to achieve.</p>
         </div>
       </details>
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">Does DigiWin ERP integrate with MES, WMS, and AIoT?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">Does DigiWin ERP integrate with MES, WMS, and AIoT?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
           <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">Yes. All DigiWin products — ERP, MES (sMES), WMS (sFLS), and AIoT — are built on the same platform with one shared database. This means zero integration tax: production data flows from shop floor machines through MES into ERP financials automatically, with no middleware or manual reconciliation required.</p>
         </div>
@@ -1886,7 +2367,7 @@
                 </div>
 
                 <div class="dw-footer-column">
-                    <h4>Products</h4>
+                    <p class="dw-footer-heading">Products</p>
                     <ul class="dw-footer-links">
                         <li><a href="../products.html">All Products</a></li>
                         <li><a href="../products/erp.html">ERP: T100 & iGP</a></li>
@@ -1897,27 +2378,28 @@
                 </div>
 
                 <div class="dw-footer-column">
-                    <h4>Industries</h4>
+                    <p class="dw-footer-heading">Industries</p>
                     <ul class="dw-footer-links">
                         <li><a href="../industries.html">All Industries</a></li>
                         <li><a href="../industries/automotive.html">Automotive Parts</a></li>
                         <li><a href="../industries/electronics.html">Electronics Assembly</a></li>
                         <li><a href="../industries/metal-plastics.html">Metal & Plastics</a></li>
                     </ul>
-                    <h4 style="margin-top: 24px;">Partners</h4>
+                    <p class="dw-footer-heading" style="margin-top: 24px;">Partners</p>
                     <ul class="dw-footer-links">
                         <li><a href="../partner-program.html">Partner Program</a></li>
                         <li><a href="../partner-program/economics.html">Partner Economics</a></li>
                     </ul>
-                    <h4 style="margin-top: 24px;">Resources</h4>
+                    <p class="dw-footer-heading" style="margin-top: 24px;">Resources</p>
                     <ul class="dw-footer-links">
+                        <li><a href="../case-studies.html">Case Studies</a></li>
                         <li><a href="../news.html">News & Events</a></li>
                         <li><a href="../blog.html">Insights & Knowledge</a></li>
                     </ul>
                 </div>
 
                 <div class="dw-footer-column">
-                    <h4>Contact</h4>
+                    <p class="dw-footer-heading">Contact</p>
                     <div class="dw-footer-contact">
                         <p>
                             <strong>DigiWin Thailand</strong><br>

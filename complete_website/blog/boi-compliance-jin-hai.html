@@ -13,6 +13,77 @@
     <link rel="canonical" href="https://www.digiwin.co.th/blog/boi-compliance-jin-hai.html">
     <style>
         .blog-category-badge { background: #DC2626; }
+        /* Warning highlight variant — amber accent for enforcement urgency */
+        .blog-highlight--warning {
+            background: #FFFBEB;
+            border-left-color: var(--dw-yellow, #FFD700);
+        }
+        .blog-highlight--warning p {
+            color: var(--dw-navy, #000864);
+        }
+        .blog-highlight--warning strong {
+            color: var(--dw-navy-deep, #000432);
+        }
+        .blog-enforcement-list {
+            list-style: none;
+            padding: 0;
+            margin: 24px 0 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .blog-enforcement-list li {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .blog-enforcement-number {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: var(--dw-yellow, #FFD700);
+            color: var(--dw-navy-deep, #000432);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .blog-enforcement-content h3 {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--dw-navy, #000864);
+            margin: 0 0 4px 0;
+        }
+        .blog-enforcement-content p {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #333;
+            margin: 0;
+        }
+        /* Source attribution block */
+        .blog-source {
+            margin: 24px 0 40px 0;
+            padding: 16px 20px;
+            background: var(--dw-gray-light, #F5F7FA);
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+        .blog-source p {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #666;
+            margin: 0;
+        }
+        .blog-source strong {
+            color: var(--dw-navy, #000864);
+            font-weight: 600;
+        }
     </style>
     <!-- Open Graph -->
     <meta property="og:title" content="How One Factory Saved 10M THB/Year in BOI Supplementary Taxes - DigiWin Thailand">
@@ -34,7 +105,7 @@
       "headline": "How One Factory Saved 10M THB/Year in BOI Supplementary Taxes",
       "description": "A Thai BOI-certified manufacturer was paying over 10 million baht per year in supplementary taxes. Through production-order-level material reconciliation, they eliminated that cost entirely.",
       "datePublished": "2026-02-10",
-      "dateModified": "2026-02-10",
+      "dateModified": "2026-02-13",
       "author": {
         "@type": "Organization",
         "name": "DigiWin Thailand",
@@ -101,6 +172,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "The savings can be substantial. In the case of Jin Hai, a DigiWin customer manufacturing in Thailand, their annual BOI supplementary tax liability dropped from over 10 million THB per year to just 150,000 THB in 2024, and then to zero in 2025. The DigiWin T100 implementation cost was a fraction of the 10 million THB annual savings, meaning the system paid for itself in avoided taxes alone within the first year — not counting reduced compliance labor, eliminated audit risk, and protection of the BOI certificate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the BOI enforcement focus areas for 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Based on enforcement trends confirmed at DigiWin's January 2026 BOI compliance webinar, Thai manufacturers face heightened scrutiny in four areas: (1) Double bookkeeping detection — investigators look for companies maintaining separate books for BOI and non-BOI transactions; (2) Inventory mismatch audits — discrepancies between physical stock counts and system records trigger deeper investigations; (3) BOI/non-BOI transaction filing — incorrect categorization of materials and production between promoted and non-promoted activities can lead to privilege revocation; (4) Tariff recovery actions — retroactive duty collection on imports incorrectly claimed under BOI duty exemptions, potentially reaching back years."
           }
         }
       ]
@@ -179,7 +258,7 @@
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">Complete Stack</span>
-                                    <h3 class="dw-mega-featured-title">Manufacturing & Distribution</h3>
+                                    <p class="dw-mega-featured-title">Manufacturing & Distribution</p>
                                     <p class="dw-mega-featured-desc">Tailor-made ERP for manufacturing and distribution companies in Thailand and ASEAN.</p>
                                     <a href="../products.html" class="dw-mega-featured-cta">
                                         Explore Solutions
@@ -240,7 +319,7 @@
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">50,000+ Factories</span>
-                                    <h3 class="dw-mega-featured-title">Industry-Specific Solutions</h3>
+                                    <p class="dw-mega-featured-title">Industry-Specific Solutions</p>
                                     <p class="dw-mega-featured-desc">Pre-configured templates and best practices for your specific manufacturing sector.</p>
                                     <a href="../industries.html" class="dw-mega-featured-cta">
                                         Find Your Industry
@@ -326,7 +405,7 @@
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">For ERP Implementers</span>
-                                    <h3 class="dw-mega-featured-title">Grow Beyond the Man-Day Model</h3>
+                                    <p class="dw-mega-featured-title">Grow Beyond the Man-Day Model</p>
                                     <p class="dw-mega-featured-desc">30-40% license margins. 100% service fees. Recurring revenue that compounds.</p>
                                     <a href="../partner-program.html" class="dw-mega-featured-cta">
                                         Become a Partner
@@ -347,6 +426,15 @@
                         <div class="dw-mega-inner">
                             <div class="dw-mega-column">
                                 <div class="dw-mega-column-title">Learn & Connect</div>
+                                <a href="../case-studies.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Case Studies</p>
+                                        <p class="dw-mega-desc">Real factory results from Thai manufacturers</p>
+                                    </div>
+                                </a>
                                 <a href="../news.html" class="dw-mega-item">
                                     <div class="dw-mega-icon">
                                         <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
@@ -373,7 +461,7 @@
                                 </div>
                                 <div class="dw-mega-featured-content">
                                     <span class="dw-mega-featured-label">Latest Insight</span>
-                                    <h3 class="dw-mega-featured-title">BOI Compliance: 10M THB Saved</h3>
+                                    <p class="dw-mega-featured-title">BOI Compliance: 10M THB Saved</p>
                                     <p class="dw-mega-featured-desc">How one factory eliminated supplementary taxes through production-order-level reconciliation.</p>
                                     <a href="../blog/boi-compliance-jin-hai.html" class="dw-mega-featured-cta">
                                         Read the Story
@@ -527,7 +615,7 @@
                 <div class="blog-data-arrow">&darr;</div>
                 <div class="blog-data-number">150K THB (2024)</div>
                 <div class="blog-data-arrow">&darr;</div>
-                <div class="blog-data-number" style="color: #4ade80;">Zero (2025)</div>
+                <div class="blog-data-number" style="color: #15803d;">Zero (2025)</div>
                 <div class="blog-data-label" style="margin-top: 16px;">Annual supplementary tax liability — Jin Hai Factory</div>
             </div>
         </div>
@@ -567,6 +655,56 @@
             The gap between theoretical BOM consumption and actual production consumption exists in every factory. The question is whether your system captures it or hides it. If it hides it, you are one audit away from a significant tax liability — or worse, a BOI revocation notice.
         </p>
 
+        <hr class="blog-divider fade-in">
+
+        <!-- Section: 2026 Enforcement -->
+        <h2 class="fade-in">2026: BOI Enforcement Gets Teeth</h2>
+
+        <p class="fade-in">
+            The urgency is no longer theoretical. Based on enforcement trends confirmed at DigiWin's January 28, 2026 BOI compliance webinar, Thai manufacturers face heightened scrutiny in four key areas:
+        </p>
+
+        <div class="blog-highlight blog-highlight--warning fade-in">
+            <ol class="blog-enforcement-list">
+                <li>
+                    <span class="blog-enforcement-number">1</span>
+                    <div class="blog-enforcement-content">
+                        <h3>Double Bookkeeping Detection</h3>
+                        <p>BOI investigators are specifically looking for companies maintaining separate books for BOI and non-BOI transactions. ERP systems that cannot properly segregate BOI-privileged vs standard transactions are a red flag. If your compliance team is running a parallel set of records outside the system, that practice itself now draws investigator attention.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="blog-enforcement-number">2</span>
+                    <div class="blog-enforcement-content">
+                        <h3>Inventory Mismatch Audits</h3>
+                        <p>Physical stock counts vs system records. Discrepancies between what is on the floor and what is in your system trigger deeper investigations. This is exactly the gap that manual reconciliation creates — and exactly the gap that real-time WMS integration eliminates.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="blog-enforcement-number">3</span>
+                    <div class="blog-enforcement-content">
+                        <h3>BOI / Non-BOI Transaction Filing</h3>
+                        <p>Incorrect categorization of raw materials, production, and sales between BOI-promoted and non-promoted activities. Getting this wrong can lead to privilege revocation — losing your tax benefits entirely. The board is no longer treating misclassification as an honest mistake.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="blog-enforcement-number">4</span>
+                    <div class="blog-enforcement-content">
+                        <h3>Tariff Recovery Actions</h3>
+                        <p>Retroactive duty collection on imports that were incorrectly claimed under BOI duty exemptions. Companies are being asked to repay years of import duties if records do not match. The financial exposure is not limited to the current year — it reaches back to the original import declarations.</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="blog-source fade-in">
+            <p><strong>Source:</strong> Insights from DigiWin's BOI compliance team — Xu Zhihao (Senior Consultant), Lin Haibo (Implementation Director), and Lin Jianyi (Compliance Specialist) — presenters at DigiWin's January 2026 BOI compliance webinar series.</p>
+        </div>
+
+        <p class="fade-in">
+            Each of these four enforcement areas points to the same root cause: systems that cannot produce auditable, granular records of bonded material movement from import to production to finished goods. If your ERP handles BOI compliance through manual workarounds, spreadsheets, or theoretical BOM calculations, the window for fixing that gap is closing.
+        </p>
+
         <div class="blog-highlight fade-in">
             <p><strong>Coming soon:</strong> DigiWin is developing a standalone BOI compliance module — a web-based solution designed to work with any existing ERP system. If replacing your ERP is not feasible right now, this module can layer on top of your current system to provide the production-order-level reconciliation the BOI board requires. Contact our team to learn more about early access.</p>
         </div>
@@ -579,27 +717,33 @@
         <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 28px; font-weight: 700; color: #000864; margin-bottom: 32px;">Frequently Asked Questions</h2>
         <div style="display: flex; flex-direction: column; gap: 12px;">
           <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-            <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What are BOI supplementary taxes?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+            <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What are BOI supplementary taxes?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
             <div style="padding: 0 20px 16px 20px; background: white;">
               <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">BOI supplementary taxes are penalties imposed by Thailand's Board of Investment when a manufacturer's actual material usage does not match BOI-approved ratios. During annual BOI audits, the board compares what was imported under duty-free privileges against what was actually produced. Every kilogram of bonded material must map to a finished product. When the numbers do not reconcile — meaning there is a gap between imported bonded materials and documented production output — the manufacturer pays supplementary taxes on the discrepancy.</p>
             </div>
           </details>
           <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-            <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How can manufacturers reduce BOI tax penalties?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+            <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How can manufacturers reduce BOI tax penalties?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
             <div style="padding: 0 20px 16px 20px; background: white;">
               <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">Manufacturers can reduce or eliminate BOI tax penalties through production-order-level material reconciliation. Instead of relying on theoretical BOM calculations that estimate what should have been consumed, the ERP system tracks actual material issuance and consumption for every individual production order. This captures waste, substitutions, and yield variances at the source, producing an auditable trail that shows the BOI board exactly where every kilogram of bonded material went — from import declaration through production to finished goods.</p>
             </div>
           </details>
           <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-            <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What is production-order-level reconciliation?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+            <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What is production-order-level reconciliation?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
             <div style="padding: 0 20px 16px 20px; background: white;">
               <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">Production-order-level reconciliation means tracking material usage per production order against BOI-approved ratios, rather than relying on aggregate or theoretical calculations. When a production order is opened, the system creates a material consumption record specific to that order. As materials are issued from the warehouse, each issuance is linked to the order. When the order closes, actual consumption is compared against the BOM standard and the variance is captured. This per-order granularity allows BOI reports to trace every gram of bonded material from import to production to finished goods.</p>
             </div>
           </details>
           <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-            <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How much can BOI compliance optimization save?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+            <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How much can BOI compliance optimization save?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
             <div style="padding: 0 20px 16px 20px; background: white;">
               <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">The savings can be substantial. In the case of Jin Hai, a DigiWin customer manufacturing in Thailand, their annual BOI supplementary tax liability dropped from over 10 million THB per year to just 150,000 THB in 2024, and then to zero in 2025. The DigiWin T100 implementation cost was a fraction of the 10 million THB annual savings, meaning the system paid for itself in avoided taxes alone within the first year — not counting reduced compliance labor, eliminated audit risk, and protection of the BOI certificate.</p>
+            </div>
+          </details>
+          <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+            <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What are the BOI enforcement focus areas for 2026?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+            <div style="padding: 0 20px 16px 20px; background: white;">
+              <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">Based on enforcement trends confirmed at DigiWin's January 2026 BOI compliance webinar, Thai manufacturers face heightened scrutiny in four areas: (1) Double bookkeeping detection — investigators look for companies maintaining separate books for BOI and non-BOI transactions; (2) Inventory mismatch audits — discrepancies between physical stock counts and system records trigger deeper investigations; (3) BOI/non-BOI transaction filing — incorrect categorization of materials and production between promoted and non-promoted activities can lead to privilege revocation; (4) Tariff recovery actions — retroactive duty collection on imports incorrectly claimed under BOI duty exemptions, potentially reaching back years.</p>
             </div>
           </details>
         </div>
@@ -684,7 +828,7 @@
                 </div>
 
                 <div class="dw-footer-column">
-                    <h4>Products</h4>
+                    <p class="dw-footer-heading">Products</p>
                     <ul class="dw-footer-links">
                         <li><a href="../products.html">All Products</a></li>
                         <li><a href="../products/erp.html">ERP: T100 & iGP</a></li>
@@ -695,27 +839,28 @@
                 </div>
 
                 <div class="dw-footer-column">
-                    <h4>Industries</h4>
+                    <p class="dw-footer-heading">Industries</p>
                     <ul class="dw-footer-links">
                         <li><a href="../industries.html">All Industries</a></li>
                         <li><a href="../industries/automotive.html">Automotive Parts</a></li>
                         <li><a href="../industries/electronics.html">Electronics Assembly</a></li>
                         <li><a href="../industries/metal-plastics.html">Metal & Plastics</a></li>
                     </ul>
-                    <h4 style="margin-top: 24px;">Partners</h4>
+                    <p class="dw-footer-heading" style="margin-top: 24px;">Partners</p>
                     <ul class="dw-footer-links">
                         <li><a href="../partner-program.html">Partner Program</a></li>
                         <li><a href="../partner-program/economics.html">Partner Economics</a></li>
                     </ul>
-                    <h4 style="margin-top: 24px;">Resources</h4>
+                    <p class="dw-footer-heading" style="margin-top: 24px;">Resources</p>
                     <ul class="dw-footer-links">
+                        <li><a href="../case-studies.html">Case Studies</a></li>
                         <li><a href="../news.html">News & Events</a></li>
                         <li><a href="../blog.html">Insights & Knowledge</a></li>
                     </ul>
                 </div>
 
                 <div class="dw-footer-column">
-                    <h4>Contact</h4>
+                    <p class="dw-footer-heading">Contact</p>
                     <div class="dw-footer-contact">
                         <p>
                             <strong>DigiWin Thailand</strong><br>

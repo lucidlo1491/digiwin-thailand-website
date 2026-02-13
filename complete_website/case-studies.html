@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies - Real Factory Results | DigiWin Thailand</title>
+    <meta name="description" content="Thai manufacturers share measurable results from DigiWin implementations. 75% faster month-end closing, 95% stock accuracy, +200% revenue growth. 5 detailed case studies.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="icon" type="image/svg+xml" href="assets/digiwin-d-mark.svg">
+    <link rel="canonical" href="https://www.digiwin.co.th/case-studies.html">
+
+    <meta property="og:title" content="Case Studies - Real Factory Results | DigiWin Thailand">
+    <meta property="og:description" content="Thai manufacturers share measurable results from DigiWin implementations. 75% faster closing, 95% stock accuracy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.digiwin.co.th/case-studies.html">
+    <meta property="og:site_name" content="DigiWin Thailand">
+
+    <style>
+        /* ===== HERO ===== */
+        .cs-hero {
+            background: linear-gradient(165deg, var(--dw-navy-deep, #000432) 0%, var(--dw-navy, #000864) 40%, var(--dw-navy-mid, #001080) 100%);
+            padding: 140px 24px 80px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .cs-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .cs-hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .cs-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 175, 240, 0.15);
+            border: 1px solid rgba(0, 175, 240, 0.3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: var(--dw-cyan, #00E6FF);
+            font-size: 11px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .cs-hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--dw-blue, #00AFF0);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        .cs-hero h1 {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.25rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.15;
+            margin: 0 0 20px;
+        }
+        .cs-hero-subtitle {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            max-width: 640px;
+            margin: 0 auto 40px;
+        }
+        .cs-hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .cs-hero-stat-value {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dw-blue, #00AFF0);
+        }
+        .cs-hero-stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.85);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 4px;
+        }
+
+        /* ===== FILTER + GRID ===== */
+        .cs-grid-section {
+            background: #fff;
+            padding: 80px 24px 100px;
+        }
+        .cs-grid-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .cs-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
+        .cs-filter-btn {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 14px 20px;
+            min-height: 44px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            background: var(--dw-gray-light, #F5F7FA);
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .cs-filter-btn:hover {
+            border-color: var(--dw-blue, #00AFF0);
+            color: var(--dw-blue, #00AFF0);
+        }
+        .cs-filter-btn.active {
+            background: #006dac;
+            color: #fff;
+            border-color: #006dac;
+        }
+        .cs-card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .cs-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .cs-card:hover {
+            border-color: var(--dw-blue, #00AFF0);
+            box-shadow: 0 8px 30px rgba(0, 175, 240, 0.12);
+            transform: translateY(-2px);
+        }
+        .cs-card-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 4px 12px;
+            border-radius: 4px;
+            background: rgba(0, 175, 240, 0.1);
+            color: var(--dw-blue, #00AFF0);
+            margin-bottom: 16px;
+        }
+        .cs-card-company {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dw-navy, #000864);
+            margin: 0 0 8px;
+        }
+        .cs-card-summary {
+            font-size: 0.875rem;
+            color: #666;
+            line-height: 1.5;
+            margin: 0 0 20px;
+        }
+        .cs-card-metric {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dw-blue, #00AFF0);
+            margin: 0 0 4px;
+        }
+        .cs-card-metric-label {
+            font-size: 0.8125rem;
+            color: #666;
+            margin: 0 0 16px;
+        }
+        .cs-card-products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+        .cs-card-product-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 4px 10px;
+            border-radius: 4px;
+            background: var(--dw-gray-light, #F5F7FA);
+            color: #555;
+        }
+        .cs-card-link {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--dw-blue, #00AFF0);
+            text-decoration: none;
+        }
+        .cs-card-link::after {
+            content: ' →';
+        }
+
+        /* ===== DETAILED CASE STUDIES ===== */
+        .cs-detail-section {
+            padding: 80px 24px;
+        }
+        .cs-detail-section:nth-child(odd) {
+            background: var(--dw-gray-light, #F5F7FA);
+        }
+        .cs-detail-section:nth-child(even) {
+            background: #fff;
+        }
+        .cs-detail-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .cs-detail-header {
+            margin-bottom: 40px;
+        }
+        .cs-detail-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 6px 16px;
+            border-radius: 6px;
+            background: rgba(0, 175, 240, 0.1);
+            color: var(--dw-blue, #00AFF0);
+            margin-bottom: 16px;
+        }
+        .cs-detail-company {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            font-weight: 800;
+            color: var(--dw-navy, #000864);
+            margin: 0 0 8px;
+        }
+        .cs-detail-location {
+            font-size: 0.9375rem;
+            color: #666;
+            margin: 0 0 8px;
+        }
+        .cs-detail-products-used {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .cs-detail-product-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 6px 14px;
+            border-radius: 6px;
+            background: var(--dw-navy, #000864);
+            color: #fff;
+        }
+        .cs-detail-metric-hero {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .cs-detail-metric-value {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--dw-blue, #00AFF0);
+            line-height: 1;
+        }
+        .cs-detail-metric-desc {
+            font-size: 1.125rem;
+            color: #333;
+            font-weight: 600;
+        }
+        .cs-detail h3 {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dw-navy, #000864);
+            margin: 40px 0 16px;
+        }
+        .cs-detail p {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.7;
+            margin: 0 0 16px;
+        }
+
+        /* Results table */
+        .cs-results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0 32px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .cs-results-table thead th {
+            background: var(--dw-navy, #000864);
+            color: #fff;
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 14px 20px;
+            text-align: left;
+        }
+        .cs-results-table tbody td {
+            padding: 14px 20px;
+            font-size: 0.9375rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .cs-results-table tbody tr:nth-child(even) {
+            background: var(--dw-gray-light, #F5F7FA);
+        }
+        .cs-results-table .cs-change-positive {
+            color: var(--dw-green, #02D28C);
+            font-weight: 700;
+        }
+
+        /* Callout box */
+        .cs-callout {
+            background: #f0f9ff;
+            border: 1px solid rgba(0, 175, 240, 0.25);
+            border-left: 4px solid var(--dw-blue, #00AFF0);
+            border-radius: 0 12px 12px 0;
+            padding: 24px 28px;
+            margin: 24px 0;
+        }
+        .cs-callout-title {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: var(--dw-navy, #000864);
+            margin: 0 0 8px;
+        }
+        .cs-callout p {
+            font-size: 0.9375rem;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Vendor criteria list */
+        .cs-criteria-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .cs-criteria-list li {
+            font-size: 0.875rem;
+            color: #333;
+            padding: 8px 12px;
+            background: var(--dw-gray-light, #F5F7FA);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cs-criteria-list li::before {
+            content: '✓';
+            color: var(--dw-green, #02D28C);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* Named user quotes */
+        .cs-quote {
+            border-left: 3px solid var(--dw-blue, #00AFF0);
+            padding: 16px 24px;
+            margin: 20px 0;
+            background: rgba(0, 175, 240, 0.04);
+            border-radius: 0 8px 8px 0;
+        }
+        .cs-quote p {
+            font-style: italic;
+            color: #333;
+            margin: 0 0 8px;
+        }
+        .cs-quote cite {
+            font-style: normal;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--dw-blue, #00AFF0);
+        }
+
+        /* Video link */
+        .cs-video-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 24px;
+            background: var(--dw-gray-light, #F5F7FA);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            margin: 16px 0;
+        }
+        .cs-video-link:hover {
+            border-color: var(--dw-blue, #00AFF0);
+            background: #f0f9ff;
+        }
+        .cs-video-icon {
+            width: 40px;
+            height: 40px;
+            background: #DC2626;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .cs-video-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff;
+        }
+        .cs-video-text {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* ===== LISTED CASES ===== */
+        .cs-listed-section {
+            background: var(--dw-gray-light, #F5F7FA);
+            padding: 80px 24px;
+        }
+        .cs-listed-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .cs-section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #047857;
+            margin-bottom: 12px;
+        }
+        .cs-section-title {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 800;
+            color: var(--dw-navy, #000864);
+            margin: 0 0 8px;
+        }
+        .cs-section-subtitle {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            margin: 0 0 40px;
+            max-width: 600px;
+        }
+        .cs-listed-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .cs-listed-card {
+            background: #fff;
+            border: 1px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 20px;
+            opacity: 0.85;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.3s ease;
+        }
+        .cs-listed-card:hover {
+            opacity: 1;
+            border-color: var(--dw-blue, #00AFF0);
+            border-style: solid;
+        }
+        .cs-listed-card-company {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dw-navy, #000864);
+            margin: 0 0 6px;
+        }
+        .cs-listed-card-industry {
+            font-size: 0.8125rem;
+            color: #666;
+            margin: 0 0 12px;
+        }
+        .cs-listed-card-link {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--dw-blue, #00AFF0);
+            text-decoration: none;
+        }
+        .cs-listed-card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Company Identity Block (detail sections: logo left, info right) */
+        .cs-company-identity {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 12px;
+        }
+        .cs-company-logo {
+            width: 140px;
+            height: 90px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            padding: 6px 10px;
+        }
+        .cs-company-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .cs-company-info-block .cs-detail-company {
+            margin-bottom: 4px;
+        }
+        .cs-company-desc {
+            font-size: 0.875rem;
+            color: #666;
+            margin: 0;
+            line-height: 1.4;
+        }
+        /* Listed card logo */
+        .cs-listed-logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            padding: 4px;
+        }
+        .cs-listed-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .cs-listed-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Industry placeholder cards */
+        .cs-placeholder-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .cs-placeholder-card {
+            background: #f8faff;
+            border: 1px dashed #c4dff6;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .cs-placeholder-card:hover {
+            border-color: var(--dw-blue, #00AFF0);
+            border-style: solid;
+            background: #f0f7ff;
+        }
+        .cs-placeholder-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 12px;
+            background: rgba(0, 175, 240, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cs-placeholder-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--dw-blue, #00AFF0);
+            fill: none;
+            stroke-width: 1.5;
+        }
+        .cs-placeholder-text {
+            font-size: 0.8125rem;
+            color: #555;
+            line-height: 1.5;
+            margin: 0 0 12px;
+        }
+        .cs-placeholder-cta {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--dw-blue, #00AFF0);
+            text-decoration: none;
+        }
+        .cs-placeholder-cta:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== CROSS-CUTTING INSIGHTS ===== */
+        .cs-insights-section {
+            background: linear-gradient(135deg, var(--dw-navy-deep, #000432) 0%, var(--dw-navy, #000864) 50%, var(--dw-navy-mid, #001080) 100%);
+            padding: 80px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cs-insights-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .cs-insights-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        .cs-insights-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+        .cs-insight-stat-value {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--dw-blue, #00AFF0);
+        }
+        .cs-insight-stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 6px;
+        }
+        .cs-insights-quote {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 24px 32px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+        }
+        .cs-insights-quote p {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin: 0;
+        }
+        .cs-insights-quote strong {
+            color: #fff;
+        }
+
+        /* ===== CTA ===== */
+        .cs-cta-section {
+            background: linear-gradient(135deg, var(--dw-blue, #00AFF0) 0%, var(--dw-royal, #003CC8) 50%, var(--dw-navy-mid, #001080) 100%);
+            padding: 100px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cs-cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .cs-cta-inner {
+            max-width: 640px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .cs-cta-title {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 800;
+            color: #fff;
+            margin: 0 0 16px;
+        }
+        .cs-cta-subtitle {
+            font-size: 1.0625rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            margin: 0 0 32px;
+        }
+        .cs-cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Focus-visible states */
+        .cs-filter-btn:focus-visible {
+            outline: 3px solid var(--dw-blue, #00AFF0);
+            outline-offset: 2px;
+        }
+        .cs-card:focus-visible {
+            outline: 3px solid var(--dw-blue, #00AFF0);
+            outline-offset: 3px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .cs-card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .cs-listed-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .cs-placeholder-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .cs-criteria-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 640px) {
+            .cs-hero {
+                padding: 120px 20px 60px;
+            }
+            .cs-hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .cs-company-identity {
+                gap: 16px;
+            }
+            .cs-company-logo {
+                width: 90px;
+                height: 60px;
+                padding: 4px 6px;
+            }
+            .cs-listed-logo {
+                width: 52px;
+                height: 52px;
+                padding: 3px;
+            }
+            .cs-card-grid {
+                grid-template-columns: 1fr;
+            }
+            .cs-listed-grid {
+                grid-template-columns: 1fr;
+            }
+            .cs-placeholder-grid {
+                grid-template-columns: 1fr;
+            }
+            .cs-insights-stats {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .cs-detail-metric-hero {
+                flex-direction: column;
+                gap: 4px;
+            }
+            .cs-results-table {
+                font-size: 0.8125rem;
+            }
+            .cs-results-table thead th,
+            .cs-results-table tbody td {
+                padding: 10px 12px;
+            }
+        }
+
+        /* Scroll animation setup */
+        .cs-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .cs-animate.dw-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .cs-hero-badge::before { animation: none; }
+            .cs-animate { opacity: 1; transform: none; transition: none; }
+        }
+    </style>
+</head>
+<body>
+    <header class="dw-header">
+        <div class="dw-header-inner">
+            <a href="index.html" class="dw-logo">
+                <img src="assets/digiwin-logo-en.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--desktop" width="160" height="40">
+                <img src="assets/digiwin-d-mark.svg" alt="DigiWin" class="dw-logo-img dw-logo-img--mobile" width="32" height="32">
+                <span class="dw-logo-since">Since 1982</span>
+            </a>
+
+            <nav class="dw-nav">
+                <div class="dw-nav-item">
+                    <a href="index.html" class="dw-nav-link">Home</a>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Products
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Core Systems -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Core Systems</div>
+                                <a href="products/erp.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 3h18v18H3V3z"/><path d="M3 9h18M9 21V9"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">ERP: T100 & iGP</p>
+                                        <p class="dw-mega-desc">Finance, supply chain, and operations</p>
+                                    </div>
+                                </a>
+                                <a href="products/mes.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 20h20M6 20V10l4-6h4l4 6v10"/><path d="M6 14h12"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">MES: sMES & SFT</p>
+                                        <p class="dw-mega-desc">Production tracking and quality</p>
+                                    </div>
+                                </a>
+                                <a href="products/wms.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">WMS: sFLS</p>
+                                        <p class="dw-mega-desc">Warehouse and inventory</p>
+                                    </div>
+                                </a>
+                                <a href="products/aiot.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">AIoT & Smart Factory</p>
+                                        <p class="dw-mega-desc">Machine connectivity and analytics</p>
+                                    </div>
+                                </a>
+                                <a href="products.html" class="dw-mega-viewall">
+                                    View All Products
+                                    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Featured: Manufacturing Suite -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg aria-hidden="true" viewBox="0 0 120 120"><path d="M20 90V50l20-20h40l20 20v40" stroke-linecap="round"/><path d="M35 90V65h20v25M65 90V55h20v35"/><circle cx="60" cy="25" r="8"/><path d="M60 33v12"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">Complete Stack</span>
+                                    <p class="dw-mega-featured-title">Manufacturing & Distribution</p>
+                                    <p class="dw-mega-featured-desc">Tailor-made ERP for manufacturing and distribution companies in Thailand and ASEAN.</p>
+                                    <a href="products.html" class="dw-mega-featured-cta">
+                                        Explore Solutions
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Industries
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Manufacturing Sectors -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Manufacturing Sectors</div>
+                                <a href="industries/automotive.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-6l2-4h12l2 4v6h-2M5 17h10"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Automotive Parts</p>
+                                        <p class="dw-mega-desc">JIT delivery and OEM traceability</p>
+                                    </div>
+                                </a>
+                                <a href="industries/electronics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Electronics Assembly</p>
+                                        <p class="dw-mega-desc">SMT integration and MSD tracking</p>
+                                    </div>
+                                </a>
+                                <a href="industries/metal-plastics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Metal & Plastics</p>
+                                        <p class="dw-mega-desc">Yield optimization and scrap reduction</p>
+                                    </div>
+                                </a>
+                                <a href="industries.html" class="dw-mega-viewall">
+                                    View All Industries
+                                    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Featured: Industry Expertise -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg aria-hidden="true" viewBox="0 0 120 120"><path d="M20 100V60l15-25h50l15 25v40" stroke-linecap="round"/><rect x="35" y="70" width="20" height="30" rx="2"/><rect x="65" y="60" width="20" height="40" rx="2"/><path d="M45 40h30M60 25v15"/><circle cx="60" cy="20" r="5"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">50,000+ Factories</span>
+                                    <p class="dw-mega-featured-title">Industry-Specific Solutions</p>
+                                    <p class="dw-mega-featured-desc">Pre-configured templates and best practices for your specific manufacturing sector.</p>
+                                    <a href="industries.html" class="dw-mega-featured-cta">
+                                        Find Your Industry
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Partners
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <!-- Column 1: Why Partner -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Why Partner</div>
+                                <a href="partner-program/business-model.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">The Evolving Business Model</p>
+                                    </div>
+                                </a>
+                                <a href="partner-program/economics.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Partner Economics</p>
+                                    </div>
+                                </a>
+                                <a href="partner-program/solutions.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Solution Stack</p>
+                                    </div>
+                                </a>
+                                <a href="partner-program.html" class="dw-mega-viewall">
+                                    Partner Overview
+                                    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                            <!-- Column 2: Getting Started -->
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Getting Started</div>
+                                <a href="partner-program.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Become a Partner</p>
+                                    </div>
+                                </a>
+                                <a href="demo.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Let's Talk</p>
+                                    </div>
+                                </a>
+                                <a href="about.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">About DigiWin</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Featured: Partner Program -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg aria-hidden="true" viewBox="0 0 120 120"><circle cx="40" cy="50" r="15" stroke-width="2"/><circle cx="80" cy="50" r="15" stroke-width="2"/><path d="M55 50h10" stroke-width="3"/><path d="M40 70v20M80 70v20" stroke-width="2"/><path d="M30 90h20M70 90h20" stroke-width="2"/><path d="M60 25l-8 15h16l-8-15z" fill="rgba(0,175,240,0.3)"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">For ERP Implementers</span>
+                                    <p class="dw-mega-featured-title">Grow Beyond the Man-Day Model</p>
+                                    <p class="dw-mega-featured-desc">30-40% license margins. 100% service fees. Recurring revenue that compounds.</p>
+                                    <a href="partner-program.html" class="dw-mega-featured-cta">
+                                        Become a Partner
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item" data-dropdown>
+                    <span class="dw-nav-link">
+                        Resources
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                    <div class="dw-mega-menu">
+                        <div class="dw-mega-inner">
+                            <div class="dw-mega-column">
+                                <div class="dw-mega-column-title">Learn & Connect</div>
+                                <a href="case-studies.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Case Studies</p>
+                                        <p class="dw-mega-desc">Real factory results from Thai manufacturers</p>
+                                    </div>
+                                </a>
+                                <a href="news.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">News & Events</p>
+                                        <p class="dw-mega-desc">Seminars, workshops, and factory visits</p>
+                                    </div>
+                                </a>
+                                <a href="blog.html" class="dw-mega-item">
+                                    <div class="dw-mega-icon">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                                    </div>
+                                    <div class="dw-mega-info">
+                                        <p class="dw-mega-title">Insights & Knowledge</p>
+                                        <p class="dw-mega-desc">Technical guides and implementation stories</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Featured: Latest Insight -->
+                            <div class="dw-mega-featured">
+                                <div class="dw-mega-featured-image">
+                                    <svg aria-hidden="true" viewBox="0 0 120 120"><path d="M30 90V40l30-20 30 20v50" stroke-linecap="round"/><rect x="45" y="55" width="30" height="35" rx="2"/><path d="M60 55v35"/><path d="M45 70h30"/><circle cx="60" cy="30" r="10" fill="rgba(0,175,240,0.3)"/><path d="M57 30l3 3 5-5" stroke-width="2"/></svg>
+                                </div>
+                                <div class="dw-mega-featured-content">
+                                    <span class="dw-mega-featured-label">Latest Insight</span>
+                                    <p class="dw-mega-featured-title">BOI Compliance: 10M THB Saved</p>
+                                    <p class="dw-mega-featured-desc">How one factory eliminated supplementary taxes through production-order-level reconciliation.</p>
+                                    <a href="blog/boi-compliance-jin-hai.html" class="dw-mega-featured-cta">
+                                        Read the Story
+                                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dw-nav-item">
+                    <a href="about.html" class="dw-nav-link">About</a>
+                </div>
+            </nav>
+
+            <a href="demo.html" class="dw-header-cta">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;margin-right:8px;vertical-align:middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span style="vertical-align:middle;">Let's Talk</span>
+            </a>
+
+            <button class="dw-menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+<a href="#main-content" class="dw-skip-link">Skip to content</a>
+<main id="main-content">
+
+    <!-- ===== SECTION 1: HERO ===== -->
+    <section class="cs-hero dw-grain-overlay" aria-label="Case Studies Hero">
+        <div class="cs-hero-inner">
+            <div class="cs-hero-badge" aria-hidden="true">Case Studies</div>
+            <h1>Real Factories. Real Results.</h1>
+            <p class="cs-hero-subtitle">Thai manufacturers share how DigiWin transformed their operations — with measurable outcomes, not marketing promises.</p>
+            <div class="cs-hero-stats" role="list" aria-label="Key statistics">
+                <div role="listitem">
+                    <div class="cs-hero-stat-value">5</div>
+                    <div class="cs-hero-stat-label">Detailed Case Studies</div>
+                </div>
+                <div role="listitem">
+                    <div class="cs-hero-stat-value">3</div>
+                    <div class="cs-hero-stat-label">Industries</div>
+                </div>
+                <div role="listitem">
+                    <div class="cs-hero-stat-value">75%</div>
+                    <div class="cs-hero-stat-label">Avg. Closing Time Cut</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 2: FILTER + GRID ===== -->
+    <section class="cs-grid-section" aria-label="Case Study Overview">
+        <div class="cs-grid-inner">
+
+            <!-- Filter Tabs -->
+            <div class="cs-filters" role="group" aria-label="Filter by industry">
+                <button class="cs-filter-btn active" aria-pressed="true" data-filter="all">All</button>
+                <button class="cs-filter-btn" aria-pressed="false" data-filter="plastics-packaging">Plastics &amp; Packaging</button>
+                <button class="cs-filter-btn" aria-pressed="false" data-filter="metal-precision">Metal &amp; Precision</button>
+                <button class="cs-filter-btn" aria-pressed="false" data-filter="electronics">Electronics</button>
+                <button class="cs-filter-btn" aria-pressed="false" data-filter="fasteners">Fasteners &amp; Components</button>
+            </div>
+
+            <!-- Card Grid -->
+            <div class="cs-card-grid">
+
+                <!-- Card 1: Ginfong -->
+                <a href="#case-ginfong" class="cs-card cs-animate" data-industry="metal-precision" aria-label="Ginfong Precision case study">
+                    <div class="cs-card-badge">Metal Stamping</div>
+                    <h2 class="cs-card-company">Ginfong Precision</h2>
+                    <p class="cs-card-summary">Metal stamping manufacturer that grew revenue 200% through COVID with cost visibility.</p>
+                    <div class="cs-card-metric">+200%</div>
+                    <div class="cs-card-metric-label">Revenue Growth</div>
+                    <div class="cs-card-products">
+                        <span class="cs-card-product-tag">ERP</span>
+                        <span class="cs-card-product-tag">SFT</span>
+                    </div>
+                    <span class="cs-card-link">Read Case Study</span>
+                </a>
+
+                <!-- Card 2: Thai Alpha Polymer -->
+                <a href="#case-thai-alpha" class="cs-card cs-animate" data-industry="plastics-packaging" aria-label="Thai Alpha Polymer case study">
+                    <div class="cs-card-badge">Plastics Manufacturing</div>
+                    <h2 class="cs-card-company">Thai Alpha Polymer</h2>
+                    <p class="cs-card-summary">PET plastic manufacturer that slashed month-end closing from 60 to 15 days.</p>
+                    <div class="cs-card-metric">60→15</div>
+                    <div class="cs-card-metric-label">Days to Close</div>
+                    <div class="cs-card-products">
+                        <span class="cs-card-product-tag">iGP ERP</span>
+                        <span class="cs-card-product-tag">WMS</span>
+                    </div>
+                    <span class="cs-card-link">Read Case Study</span>
+                </a>
+
+                <!-- Card 3: Thai Hosheng -->
+                <a href="#case-thai-hosheng" class="cs-card cs-animate" data-industry="plastics-packaging" aria-label="Thai Hosheng Packing case study">
+                    <div class="cs-card-badge">Packaging</div>
+                    <h2 class="cs-card-company">Thai Hosheng Packing</h2>
+                    <p class="cs-card-summary">Packaging manufacturer with the most dramatic closing reduction — 90 days down to 15.</p>
+                    <div class="cs-card-metric">90→15</div>
+                    <div class="cs-card-metric-label">Days to Close</div>
+                    <div class="cs-card-products">
+                        <span class="cs-card-product-tag">iGP ERP</span>
+                        <span class="cs-card-product-tag">WMS</span>
+                        <span class="cs-card-product-tag">SFT</span>
+                    </div>
+                    <span class="cs-card-link">Read Case Study</span>
+                </a>
+
+                <!-- Card 4: MUFU -->
+                <a href="#case-mufu" class="cs-card cs-animate" data-industry="electronics" aria-label="MUFU Technologies case study">
+                    <div class="cs-card-badge">Manufacturing</div>
+                    <h2 class="cs-card-company">MUFU Technologies</h2>
+                    <p class="cs-card-summary">Manufacturing company that unified all departments into one automated system.</p>
+                    <div class="cs-card-metric" style="font-size: 1.5rem;">Unified Ops</div>
+                    <div class="cs-card-metric-label">Full Automation Achieved</div>
+                    <div class="cs-card-products">
+                        <span class="cs-card-product-tag">iGP ERP</span>
+                    </div>
+                    <span class="cs-card-link">Read Case Study</span>
+                </a>
+
+                <!-- Card 5: Taiyo -->
+                <a href="#case-taiyo" class="cs-card cs-animate" data-industry="fasteners" aria-label="Taiyo Fastener Thailand case study">
+                    <div class="cs-card-badge">Fasteners</div>
+                    <h2 class="cs-card-company">Taiyo Fastener Thailand</h2>
+                    <p class="cs-card-summary">Japanese-standard fastener manufacturer that unified fragmented legacy systems.</p>
+                    <div class="cs-card-metric" style="font-size: 1.5rem;">Systems Unified</div>
+                    <div class="cs-card-metric-label">Multiple Systems → One Platform</div>
+                    <div class="cs-card-products">
+                        <span class="cs-card-product-tag">ERP</span>
+                        <span class="cs-card-product-tag">WMS</span>
+                    </div>
+                    <span class="cs-card-link">Read Case Study</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 3: DETAILED CASE STUDIES ===== -->
+
+    <!-- Case Study 1: Ginfong Precision -->
+    <section class="cs-detail-section" id="case-ginfong" aria-label="Ginfong Precision case study detail">
+        <div class="cs-detail-inner">
+            <div class="cs-detail-header cs-animate">
+                <div class="cs-detail-badge">Metal Stamping</div>
+                <div class="cs-company-identity">
+                    <div class="cs-company-logo">
+                        <img src="logos/case-studies/kingfont.png" alt="Ginfong Precision logo" loading="lazy">
+                    </div>
+                    <div class="cs-company-info-block">
+                        <h2 class="cs-detail-company">Ginfong Precision <span style="font-weight: 400; font-size: 0.6em; color: #666;">(金峰精密)</span></h2>
+                        <p class="cs-company-desc">Metal stamping manufacturer · Thailand</p>
+                    </div>
+                </div>
+                <div class="cs-detail-products-used">
+                    <span class="cs-detail-product-tag">ERP</span>
+                    <span class="cs-detail-product-tag">SFT</span>
+                </div>
+                <div class="cs-detail-metric-hero">
+                    <span class="cs-detail-metric-value">+200%</span>
+                    <span class="cs-detail-metric-desc">Revenue Growth</span>
+                </div>
+            </div>
+
+            <h3>The Challenge</h3>
+            <p>Metal stamping manufacturer struggling with cost visibility and production tracking. Manual processes couldn't keep pace with growing order volumes. No real-time view of actual production costs vs. quoted costs.</p>
+
+            <h3>The Solution</h3>
+            <p>Deployed DigiWin ERP for financial control and cost tracking, plus SFT (Shop Floor Tracking) for real-time production data collection. The combination gave management live visibility into actual costs at each production stage.</p>
+
+            <h3>Results</h3>
+            <table class="cs-results-table cs-animate" aria-label="Ginfong results">
+                <thead>
+                    <tr>
+                        <th scope="col">Metric</th>
+                        <th scope="col">Before</th>
+                        <th scope="col">After</th>
+                        <th scope="col">Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gross profit margin</td>
+                        <td>23%</td>
+                        <td>34%</td>
+                        <td class="cs-change-positive">+11 percentage points</td>
+                    </tr>
+                    <tr>
+                        <td>Revenue</td>
+                        <td>Baseline</td>
+                        <td>+200%</td>
+                        <td class="cs-change-positive">Grew through COVID</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Why It Matters</h3>
+            <p>Ginfong didn't just survive COVID — they grew revenue by 200% while competitors contracted. The gross profit improvement from 23% to 34% proves DigiWin's cost visibility directly translates to better pricing decisions and waste reduction.</p>
+
+            <!-- Video Link -->
+            <a href="https://www.youtube.com/watch?v=p5vn_llRe5M" target="_blank" rel="noopener noreferrer" class="cs-video-link">
+                <div class="cs-video-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="10,8 16,12 10,16"/></svg>
+                </div>
+                <div>
+                    <div class="cs-video-text">Watch Ginfong's Story on YouTube</div>
+                    <div style="font-size: 0.75rem; color: #666;">Opens in new tab</div>
+                </div>
+            </a>
+
+            <!-- Vendor Selection Criteria Callout -->
+            <div class="cs-callout cs-animate">
+                <div class="cs-callout-title">What Ginfong Looked For in an ERP Partner</div>
+                <p>Ginfong evaluated vendors on 7 criteria — does your checklist look similar?</p>
+                <ul class="cs-criteria-list">
+                    <li>After-sales service quality</li>
+                    <li>Thai tax compliance</li>
+                    <li>Market share and reputation</li>
+                    <li>Industry-specific experience</li>
+                    <li>Brand longevity</li>
+                    <li>Price-to-value ratio</li>
+                    <li>Multilingual support</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study 2: Thai Alpha Polymer -->
+    <section class="cs-detail-section" id="case-thai-alpha" aria-label="Thai Alpha Polymer case study detail">
+        <div class="cs-detail-inner">
+            <div class="cs-detail-header cs-animate">
+                <div class="cs-detail-badge">Plastics Manufacturing</div>
+                <div class="cs-company-identity">
+                    <div class="cs-company-logo">
+                        <img src="logos/official-site/carousel/thai-alpha-polymer.png" alt="Thai Alpha Polymer logo" loading="lazy">
+                    </div>
+                    <div class="cs-company-info-block">
+                        <h2 class="cs-detail-company">Thai Alpha Polymer</h2>
+                        <p class="cs-company-desc">PET plastic roll manufacturer · Thailand</p>
+                    </div>
+                </div>
+                <div class="cs-detail-products-used">
+                    <span class="cs-detail-product-tag">Workflow ERP (iGP)</span>
+                    <span class="cs-detail-product-tag">WMS (sFLS)</span>
+                </div>
+                <div class="cs-detail-metric-hero">
+                    <span class="cs-detail-metric-value">60→15</span>
+                    <span class="cs-detail-metric-desc">Days to Close</span>
+                </div>
+            </div>
+
+            <h3>The Challenge</h3>
+            <p>PET plastic roll manufacturer with inventory accuracy problems and painfully slow month-end closing. Physical counts never matched system records. Finance team spent weeks reconciling.</p>
+
+            <h3>The Solution</h3>
+            <p>Deployed DigiWin Workflow ERP for financial management and WMS (sFLS) for barcode-driven warehouse operations. Every material movement now captured at source via scanning.</p>
+
+            <h3>Results</h3>
+            <table class="cs-results-table cs-animate" aria-label="Thai Alpha Polymer results">
+                <thead>
+                    <tr>
+                        <th scope="col">Metric</th>
+                        <th scope="col">Before</th>
+                        <th scope="col">After</th>
+                        <th scope="col">Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Stock accuracy</td>
+                        <td>Unknown</td>
+                        <td>95%</td>
+                        <td class="cs-change-positive">Barcode-driven accuracy</td>
+                    </tr>
+                    <tr>
+                        <td>Monthly closing</td>
+                        <td>60 days</td>
+                        <td>15 days</td>
+                        <td class="cs-change-positive">75% faster</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Named Users -->
+            <h3>From the Team</h3>
+            <blockquote class="cs-quote cs-animate">
+                <p>"The closing process used to take our entire team two months. Now we're done in two weeks."</p>
+                <cite>— Khun Noo, Accounting Department</cite>
+            </blockquote>
+            <blockquote class="cs-quote cs-animate">
+                <p>"Every scan updates the system instantly. We finally trust our inventory numbers."</p>
+                <cite>— Khun Ae, Warehouse</cite>
+            </blockquote>
+
+            <!-- Referral Callout -->
+            <div class="cs-callout cs-animate">
+                <div class="cs-callout-title">Recommended by a Fellow Manufacturer</div>
+                <p>Thai Alpha chose DigiWin based on a recommendation from Thai Hosheng — a fellow manufacturer already running on our system. The strongest form of social proof is when a customer stakes their own reputation on your work.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study 3: Thai Hosheng Packing -->
+    <section class="cs-detail-section" id="case-thai-hosheng" aria-label="Thai Hosheng Packing case study detail">
+        <div class="cs-detail-inner">
+            <div class="cs-detail-header cs-animate">
+                <div class="cs-detail-badge">Packaging</div>
+                <div class="cs-company-identity">
+                    <div class="cs-company-logo">
+                        <img src="logos/official-site/carousel/thai-ho-sheng.png" alt="Thai Hosheng Packing logo" loading="lazy">
+                    </div>
+                    <div class="cs-company-info-block">
+                        <h2 class="cs-detail-company">Thai Hosheng Packing</h2>
+                        <p class="cs-company-desc">Packaging manufacturer · Thailand</p>
+                    </div>
+                </div>
+                <div class="cs-detail-products-used">
+                    <span class="cs-detail-product-tag">Workflow ERP (iGP)</span>
+                    <span class="cs-detail-product-tag">WMS (sFLS)</span>
+                    <span class="cs-detail-product-tag">SFT</span>
+                </div>
+                <div class="cs-detail-metric-hero">
+                    <span class="cs-detail-metric-value">90→15</span>
+                    <span class="cs-detail-metric-desc">Days to Close</span>
+                </div>
+            </div>
+
+            <h3>The Challenge</h3>
+            <p>Packaging manufacturer with the worst closing time in our case study portfolio — 90 days. Combined with low stock accuracy and unreliable on-time delivery. The business was growing but operations couldn't keep up.</p>
+
+            <h3>The Solution</h3>
+            <p>Full DigiWin stack deployment: Workflow ERP for financials, WMS for warehouse accuracy, and SFT for shop floor tracking. Three systems working as one integrated operation.</p>
+
+            <h3>Results</h3>
+            <table class="cs-results-table cs-animate" aria-label="Thai Hosheng results">
+                <thead>
+                    <tr>
+                        <th scope="col">Metric</th>
+                        <th scope="col">Before</th>
+                        <th scope="col">After</th>
+                        <th scope="col">Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monthly closing</td>
+                        <td>90 days</td>
+                        <td>15 days</td>
+                        <td class="cs-change-positive">83% faster</td>
+                    </tr>
+                    <tr>
+                        <td>Stock accuracy</td>
+                        <td>Unknown</td>
+                        <td>90%</td>
+                        <td class="cs-change-positive">System-matched inventory</td>
+                    </tr>
+                    <tr>
+                        <td>On-time delivery</td>
+                        <td>Unknown</td>
+                        <td>80%</td>
+                        <td class="cs-change-positive">Measurable OTD tracking</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Why It Matters</h3>
+            <p>Thai Hosheng is the most comprehensive deployment in our case study portfolio — ERP + WMS + SFT together. The 90-to-15-day closing improvement is the most dramatic transformation. They also referred Thai Alpha to DigiWin, proving satisfaction strong enough to stake their own reputation on.</p>
+        </div>
+    </section>
+
+    <!-- Case Study 4: MUFU Technologies -->
+    <section class="cs-detail-section" id="case-mufu" aria-label="MUFU Technologies case study detail">
+        <div class="cs-detail-inner">
+            <div class="cs-detail-header cs-animate">
+                <div class="cs-detail-badge">Manufacturing</div>
+                <div class="cs-company-identity">
+                    <div class="cs-company-logo">
+                        <img src="logos/official-site/carousel/mufu.png" alt="MUFU Technologies logo" loading="lazy">
+                    </div>
+                    <div class="cs-company-info-block">
+                        <h2 class="cs-detail-company">MUFU Technologies</h2>
+                        <p class="cs-company-desc">Manufacturing technology · Taiwan</p>
+                    </div>
+                </div>
+                <div class="cs-detail-products-used">
+                    <span class="cs-detail-product-tag">Workflow ERP (iGP)</span>
+                </div>
+                <div class="cs-detail-metric-hero">
+                    <span class="cs-detail-metric-value" style="font-size: 2rem;">Full Automation</span>
+                </div>
+            </div>
+
+            <h3>The Challenge</h3>
+            <p>Manufacturing company with manual, disconnected processes across departments. Information silos meant no single view of operations. Each department had its own spreadsheets, its own version of the truth.</p>
+
+            <h3>The Solution</h3>
+            <p>Deployed DigiWin Workflow ERP to unify all departments — purchasing, production, inventory, and finance — into a single system. One source of truth, one workflow, one set of numbers.</p>
+
+            <h3>Results</h3>
+            <ul style="padding-left: 0; list-style: none;">
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; color: #333; display: flex; align-items: center; gap: 10px;">
+                    <span style="color: var(--dw-green, #02D28C); font-weight: 700; font-size: 1.125rem;">&#10003;</span>
+                    Full automation of cross-department workflows
+                </li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; color: #333; display: flex; align-items: center; gap: 10px;">
+                    <span style="color: var(--dw-green, #02D28C); font-weight: 700; font-size: 1.125rem;">&#10003;</span>
+                    Eliminated manual data re-entry between departments
+                </li>
+                <li style="padding: 10px 0; color: #333; display: flex; align-items: center; gap: 10px;">
+                    <span style="color: var(--dw-green, #02D28C); font-weight: 700; font-size: 1.125rem;">&#10003;</span>
+                    Single source of truth for all operational data
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Case Study 5: Taiyo Fastener Thailand -->
+    <section class="cs-detail-section" id="case-taiyo" aria-label="Taiyo Fastener Thailand case study detail">
+        <div class="cs-detail-inner">
+            <div class="cs-detail-header cs-animate">
+                <div class="cs-detail-badge">Fasteners</div>
+                <div class="cs-company-identity">
+                    <div class="cs-company-logo">
+                        <img src="logos/case-studies/taiyo-fastener.jpg" alt="Taiyo Fastener Thailand logo" loading="lazy">
+                    </div>
+                    <div class="cs-company-info-block">
+                        <h2 class="cs-detail-company">Taiyo Fastener Thailand</h2>
+                        <p class="cs-company-desc">Japanese-standard fastener manufacturer · Bangpoo Industrial Estate, Samut Prakan</p>
+                        <p class="cs-company-desc" style="font-size: 0.8125rem; color: #888; margin-top: 2px;">Subsidiary of Taiyoseiko Corporation, Japan</p>
+                    </div>
+                </div>
+                <div class="cs-detail-products-used">
+                    <span class="cs-detail-product-tag">ERP</span>
+                    <span class="cs-detail-product-tag">WMS (sFLS)</span>
+                </div>
+                <div class="cs-detail-metric-hero">
+                    <span class="cs-detail-metric-value" style="font-size: 2rem;">Systems Unified</span>
+                </div>
+            </div>
+
+            <h3>The Challenge</h3>
+            <p>Japanese fastener manufacturer operating in Thailand with multiple disconnected systems. Material tracking errors caused production delays and customer delivery issues.</p>
+
+            <h3>The Solution</h3>
+            <p>Deployed DigiWin ERP and WMS to replace fragmented systems with a single unified platform. Barcode-driven warehouse operations eliminated manual material tracking.</p>
+
+            <h3>Results</h3>
+            <ul style="padding-left: 0; list-style: none;">
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; color: #333; display: flex; align-items: center; gap: 10px;">
+                    <span style="color: var(--dw-green, #02D28C); font-weight: 700; font-size: 1.125rem;">&#10003;</span>
+                    Unified multiple legacy systems into one platform
+                </li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; color: #333; display: flex; align-items: center; gap: 10px;">
+                    <span style="color: var(--dw-green, #02D28C); font-weight: 700; font-size: 1.125rem;">&#10003;</span>
+                    Reduced material tracking errors
+                </li>
+                <li style="padding: 10px 0; color: #333; display: flex; align-items: center; gap: 10px;">
+                    <span style="color: var(--dw-green, #02D28C); font-weight: 700; font-size: 1.125rem;">&#10003;</span>
+                    Improved production scheduling accuracy
+                </li>
+            </ul>
+
+            <!-- Japanese Quality Callout -->
+            <div class="cs-callout cs-animate">
+                <div class="cs-callout-title">Japanese Quality Standards, Thai Operations</div>
+                <p>When a Japanese manufacturer with the world's strictest quality standards chose DigiWin for their Thailand operation, it wasn't because we were the cheapest option. Taiyo Fastener (a subsidiary of Japan's Taiyoseiko Corporation) needed a system that could meet Japanese-grade traceability and accuracy requirements — in a Thai manufacturing environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 4: LISTED CASE STUDIES ===== -->
+    <section class="cs-listed-section" aria-label="Additional case studies">
+        <div class="cs-listed-inner">
+            <div class="cs-section-label">More Success Stories</div>
+            <h2 class="cs-section-title">Growing Every Quarter</h2>
+            <p class="cs-section-subtitle">Our Thailand case study library continues to expand. Contact us for references in your specific industry.</p>
+
+            <!-- Named minimal cards -->
+            <div class="cs-listed-grid">
+                <div class="cs-listed-card cs-animate">
+                    <div class="cs-listed-logo">
+                        <img src="logos/case-studies/dimet-siam.png" alt="DIMET (SIAM) logo" loading="lazy">
+                    </div>
+                    <div class="cs-listed-info">
+                        <div class="cs-listed-card-company">DIMET (SIAM)</div>
+                        <div class="cs-listed-card-industry">Manufacturing · Thailand</div>
+                        <a href="demo.html" class="cs-listed-card-link">Ask Us About This Case →</a>
+                    </div>
+                </div>
+                <div class="cs-listed-card cs-animate">
+                    <div class="cs-listed-logo">
+                        <img src="logos/case-studies/lotuspack.jpg" alt="Lotus Pack logo" loading="lazy">
+                    </div>
+                    <div class="cs-listed-info">
+                        <div class="cs-listed-card-company">Lotus Pack</div>
+                        <div class="cs-listed-card-industry">Packaging · Workflow ERP</div>
+                        <a href="demo.html" class="cs-listed-card-link">Ask Us About This Case →</a>
+                    </div>
+                </div>
+                <div class="cs-listed-card cs-animate">
+                    <div class="cs-listed-logo">
+                        <img src="logos/case-studies/mrken.png" alt="Mr. Ken logo" loading="lazy">
+                    </div>
+                    <div class="cs-listed-info">
+                        <div class="cs-listed-card-company">Mr. Ken</div>
+                        <div class="cs-listed-card-industry">Ceiling fans · Thailand</div>
+                        <a href="demo.html" class="cs-listed-card-link">Ask Us About This Case →</a>
+                    </div>
+                </div>
+                <div class="cs-listed-card cs-animate">
+                    <div class="cs-listed-logo">
+                        <img src="logos/case-studies/hoochin.png" alt="Hoo Chin Electronics logo" loading="lazy">
+                    </div>
+                    <div class="cs-listed-info">
+                        <div class="cs-listed-card-company">Hoo Chin Electronics</div>
+                        <div class="cs-listed-card-industry">Electronics · Thailand · 和慶電子</div>
+                        <a href="demo.html" class="cs-listed-card-link">Ask Us About This Case →</a>
+                    </div>
+                </div>
+                <div class="cs-listed-card cs-animate">
+                    <div class="cs-listed-logo">
+                        <img src="logos/case-studies/srangsern.png" alt="SRANG SERN logo" loading="lazy">
+                    </div>
+                    <div class="cs-listed-info">
+                        <div class="cs-listed-card-company">SRANG SERN</div>
+                        <div class="cs-listed-card-industry">Rubber machinery · Thailand · 上昇</div>
+                        <a href="demo.html" class="cs-listed-card-link">Ask Us About This Case →</a>
+                    </div>
+                </div>
+                <div class="cs-listed-card cs-animate">
+                    <div class="cs-listed-logo">
+                        <img src="logos/case-studies/depoen.jpg" alt="De Poen Pneumatic logo" loading="lazy">
+                    </div>
+                    <div class="cs-listed-info">
+                        <div class="cs-listed-card-company">De Poen Pneumatic</div>
+                        <div class="cs-listed-card-industry">Pneumatic tools · Taiwan · TWSE: 1570</div>
+                        <a href="demo.html" class="cs-listed-card-link">Ask Us About This Case →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Industry Placeholder Cards -->
+            <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 1.125rem; font-weight: 700; color: var(--dw-navy, #000864); margin: 40px 0 20px;">Looking for Your Industry?</h3>
+            <div class="cs-placeholder-grid">
+                <div class="cs-placeholder-card cs-animate">
+                    <div class="cs-placeholder-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    </div>
+                    <p class="cs-placeholder-text">Looking for automotive references? We have them.</p>
+                    <a href="demo.html" class="cs-placeholder-cta">Contact for References →</a>
+                </div>
+                <div class="cs-placeholder-card cs-animate">
+                    <div class="cs-placeholder-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                    </div>
+                    <p class="cs-placeholder-text">Electronics manufacturers — ask about our Thai implementations.</p>
+                    <a href="demo.html" class="cs-placeholder-cta">Contact for References →</a>
+                </div>
+                <div class="cs-placeholder-card cs-animate">
+                    <div class="cs-placeholder-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <p class="cs-placeholder-text">Food-grade compliance? We've done it.</p>
+                    <a href="demo.html" class="cs-placeholder-cta">Contact for References →</a>
+                </div>
+                <div class="cs-placeholder-card cs-animate">
+                    <div class="cs-placeholder-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <p class="cs-placeholder-text">Textile manufacturers — ask about production tracking results.</p>
+                    <a href="demo.html" class="cs-placeholder-cta">Contact for References →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 5: CROSS-CUTTING INSIGHTS ===== -->
+    <section class="cs-insights-section dw-grain-overlay" aria-label="Cross-cutting insights">
+        <div class="cs-insights-inner">
+            <div class="cs-insights-stats">
+                <div class="cs-animate">
+                    <div class="cs-insight-stat-value">75%</div>
+                    <div class="cs-insight-stat-label">Faster Month-End Closing</div>
+                </div>
+                <div class="cs-animate">
+                    <div class="cs-insight-stat-value">90-95%</div>
+                    <div class="cs-insight-stat-label">Stock Accuracy Achieved</div>
+                </div>
+                <div class="cs-animate">
+                    <div class="cs-insight-stat-value">+11pp</div>
+                    <div class="cs-insight-stat-label">Gross Profit Improvement</div>
+                </div>
+            </div>
+            <div class="cs-insights-quote cs-animate">
+                <p><strong>The pattern is clear:</strong> DigiWin's Thai customers consistently report two transformations — dramatically faster financial closing (from months to weeks) and stock accuracy that finally matches reality. These aren't aspirational targets. They're measured outcomes from factories operating in Thailand today.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 6: CTA ===== -->
+    <section class="cs-cta-section" aria-label="Call to action">
+        <div class="cs-cta-inner">
+            <h2 class="cs-cta-title">Want Results Like These?</h2>
+            <p class="cs-cta-subtitle">Every factory is different. Tell us about yours and we'll share relevant case studies from your industry.</p>
+            <div class="cs-cta-buttons">
+                <a href="demo.html" class="btn-white">Let's Talk</a>
+                <a href="products.html" class="btn-outline-white">Explore Products</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+    <!-- Footer -->
+    <footer class="dw-footer">
+        <div class="dw-footer-ocean" aria-hidden="true"></div>
+        <div class="dw-footer-inner">
+            <div class="dw-footer-grid">
+                <div class="dw-footer-brand">
+                    <div class="dw-footer-logo">
+                        <img src="assets/digiwin-logo-en-white.svg" alt="DigiWin" width="140" height="35">
+                    </div>
+                    <p class="dw-footer-tagline"><span class="dw-years">44</span> years of manufacturing intelligence. Helping factories see clearly, act decisively, and grow confidently.</p>
+                    <p class="dw-footer-stock">Shenzhen Stock Exchange: <strong>300378</strong></p>
+                </div>
+
+                <div class="dw-footer-column">
+                    <p class="dw-footer-heading">Products</p>
+                    <ul class="dw-footer-links">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="products/erp.html">ERP: T100 & iGP</a></li>
+                        <li><a href="products/mes.html">MES: sMES & SFT</a></li>
+                        <li><a href="products/wms.html">WMS: sFLS</a></li>
+                        <li><a href="products/aiot.html">AIoT & Smart Factory</a></li>
+                    </ul>
+                </div>
+
+                <div class="dw-footer-column">
+                    <p class="dw-footer-heading">Industries</p>
+                    <ul class="dw-footer-links">
+                        <li><a href="industries.html">All Industries</a></li>
+                        <li><a href="industries/automotive.html">Automotive Parts</a></li>
+                        <li><a href="industries/electronics.html">Electronics Assembly</a></li>
+                        <li><a href="industries/metal-plastics.html">Metal & Plastics</a></li>
+                    </ul>
+                    <p class="dw-footer-heading" style="margin-top: 24px;">Partners</p>
+                    <ul class="dw-footer-links">
+                        <li><a href="partner-program.html">Partner Program</a></li>
+                        <li><a href="partner-program/economics.html">Partner Economics</a></li>
+                    </ul>
+                    <p class="dw-footer-heading" style="margin-top: 24px;">Resources</p>
+                    <ul class="dw-footer-links">
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="news.html">News & Events</a></li>
+                        <li><a href="blog.html">Insights & Knowledge</a></li>
+                    </ul>
+                </div>
+
+                <div class="dw-footer-column">
+                    <p class="dw-footer-heading">Contact</p>
+                    <div class="dw-footer-contact">
+                        <p>
+                            <strong>DigiWin Thailand</strong><br>
+                            No. 2/117-118, Bangna Complex Office Tower,<br>
+                            22nd Floor, Theparat Road,<br>
+                            Bangna, Bangkok 10260
+                        </p>
+                        <p>
+                            <a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a>
+                        </p>
+                    </div>
+                    <div class="dw-footer-social">
+                        <a href="#" title="LinkedIn">in</a>
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="LINE">L</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dw-footer-bottom">
+                <p class="dw-footer-copyright">© 2026 DigiWin Thailand. All rights reserved.</p>
+                <div class="dw-footer-legal">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="about.html">About Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="digiwin-components.js" defer></script>
+    <script src="digiwin-dynamic.js" defer></script>
+    <script src="particle-ocean.js" defer></script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    'use strict';
+
+    // Filter functionality
+    var filterBtns = document.querySelectorAll('.cs-filter-btn');
+    var cards = document.querySelectorAll('.cs-card');
+
+    filterBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var filter = this.getAttribute('data-filter');
+
+            // Update active state
+            filterBtns.forEach(function(b) {
+                b.classList.remove('active');
+                b.setAttribute('aria-pressed', 'false');
+            });
+            this.classList.add('active');
+            this.setAttribute('aria-pressed', 'true');
+
+            // Filter cards
+            cards.forEach(function(card) {
+                if (filter === 'all' || card.getAttribute('data-industry') === filter) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('.cs-card').forEach(function(card) {
+        card.addEventListener('click', function(e) {
+            var href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                var target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+
+    // Scroll animations using DigiWinUI if available, otherwise standalone
+    if (window.DigiWinUI && window.DigiWinUI.initScrollAnimation) {
+        window.DigiWinUI.initScrollAnimation('.cs-animate', { threshold: 0.15 });
+    } else {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('dw-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.cs-animate').forEach(function(el) {
+            observer.observe(el);
+        });
+    }
+});
+</script>
+
+</body>
+</html>

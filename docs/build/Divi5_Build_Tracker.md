@@ -1,6 +1,6 @@
 # Divi 5 Build Tracker
 
-**Last Updated:** February 10, 2026
+**Last Updated:** February 12, 2026
 
 Track every page through the 6-step workflow: Prep → Build → Audit → Review → Iterate → Publish
 
@@ -63,12 +63,12 @@ Track every page through the 6-step workflow: Prep → Build → Audit → Revie
 
 | Page | Step 1: Spec | Step 2: Build | Step 3: Audit | Step 4: Review | Step 5: Iterate | Step 6: Publish |
 |------|-------------|---------------|---------------|----------------|-----------------|-----------------|
-| Partner Program (hub) | `---` | `---` | `---` | `---` | `---` | `---` |
-| Partner Business Model | `---` | `---` | `---` | `---` | `---` | `---` |
-| Partner Economics | `---` | `---` | `---` | `---` | `---` | `---` |
-| Partner Solutions | `---` | `---` | `---` | `---` | `---` | `---` |
+| Partner Program (hub) | `DONE` | `---` | `---` | `---` | `---` | `---` |
+| Partner Business Model | `DONE` | `---` | `---` | `---` | `---` | `---` |
+| Partner Economics | `DONE` | `---` | `---` | `---` | `---` | `---` |
+| Partner Solutions | `DONE` | `---` | `---` | `---` | `---` | `---` |
 
-**ContentSpecs to upgrade:** `ContentSpec_PartnerProgram_1.0.md`, `ContentSpec_PartnerBusinessModel_1.0.md`, `ContentSpec_PartnerEconomics_1.0.md`, `ContentSpec_PartnerSolutions_1.0.md`
+**Divi 5 Specs:** `ContentSpec_PartnerProgram_Divi5_2.0.md`, `ContentSpec_PartnerBusinessModel_Divi5_2.0.md`, `ContentSpec_PartnerEconomics_Divi5_2.0.md`, `ContentSpec_PartnerSolutions_Divi5_2.0.md`
 
 ---
 
@@ -171,6 +171,13 @@ Legal pages are simple Text module layouts — no spec upgrade needed.
 | Section Header | `---` | Homepage |
 | Product Card | `---` | Homepage |
 | Stats Row | `---` | Homepage |
+| Partner Hero (dark gradient + dot pattern) | `---` | Partner Hub |
+| Partner Breadcrumb | `---` | Partner Economics |
+| Partner Hero Stats Bar | `---` | Partner Hub |
+| Partner CTA Banner (blue gradient) | `---` | Partner Hub |
+| Partner Card Hover (translateY + shadow) | `---` | Partner Hub |
+| Partner Dark Box (navy gradient + pattern) | `---` | Partner Hub |
+| Partner Pill Badge (mono, colored) | `---` | Partner Hub |
 
 ---
 
@@ -179,8 +186,8 @@ Legal pages are simple Text module layouts — no spec upgrade needed.
 | Metric | Count |
 |--------|-------|
 | Total pages | 31 |
-| Specs ready (Divi 5) | 1 |
-| Specs to upgrade | 14 |
+| Specs ready (Divi 5) | 5 |
+| Specs to upgrade | 10 |
 | Specs not needed | 16 |
 | Pages built | 2 (Header + Footer) |
 | Pages published | 0 |

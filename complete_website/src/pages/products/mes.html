@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MES: sMES & SFT - Real-Time Production Visibility | DigiWin Thailand</title>
-    <meta name="description" content="Manufacturing Execution System for real-time shop floor visibility. Track work orders, monitor OEE, capture quality data, and maintain complete traceability.">
+    <title>MES: Real-Time Production Visibility | DigiWin Thailand</title>
+    <meta name="description" content="Manufacturing Execution System for real-time shop floor visibility. Three tiers — MES, SFT, and AIoT Cloud — to match your factory's needs and budget.">
     <link rel="stylesheet" href="{{basePath}}styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
     <style>
         /* MES Page Specific Styles */
         .mes-hero {
-            background: linear-gradient(135deg, #1a2d3d 0%, #000864 50%, #001080 100%);
+            background: linear-gradient(135deg, #1a2d3d 0%, var(--dw-navy, #000864) 50%, var(--dw-navy-mid, #001080) 100%);
             padding: 140px 0 100px;
             position: relative;
             overflow: hidden;
@@ -65,7 +65,7 @@
             font-family: 'Noto Sans', sans-serif;
             font-size: 32px;
             font-weight: 800;
-            color: #00AFF0;
+            color: var(--dw-blue, #00AFF0);
         }
         .mes-hero-stat-label {
             font-family: 'JetBrains Mono', monospace;
@@ -116,9 +116,9 @@
             font-family: 'Noto Sans', sans-serif;
             font-size: 20px;
             font-weight: 700;
-            color: #00AFF0;
+            color: var(--dw-blue, #00AFF0);
         }
-        .mockup-status-value.green { color: #10b981; }
+        .mockup-status-value.green { color: #047857; }
         .mockup-status-value.yellow { color: #f59e0b; }
         .mockup-status-label {
             font-family: 'JetBrains Mono', monospace;
@@ -220,7 +220,7 @@
             letter-spacing: 1px;
         }
         .beforeafter-label.before {
-            color: #dc2626;
+            color: var(--dw-red, #dc2626);
         }
         .beforeafter-label.after {
             color: #16a34a;
@@ -239,13 +239,13 @@
             font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             font-weight: 600;
-            color: #000864;
+            color: var(--dw-navy, #000864);
             margin-bottom: 6px;
         }
         .beforeafter-item-desc {
             font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
-            color: #64748b;
+            color: #5b6b80;
             line-height: 1.5;
         }
         .beforeafter-arrow {
@@ -253,14 +253,14 @@
             align-items: center;
             justify-content: center;
             font-size: 32px;
-            color: #00AFF0;
+            color: #0369a1;
             padding-top: 150px;
         }
 
-        /* Products Section */
+        /* Products Section — 3-column */
         .products-section {
             padding: 80px 0;
-            background: #F5F7FA;
+            background: var(--dw-gray-light, #F5F7FA);
         }
         .products-inner {
             max-width: 1200px;
@@ -269,8 +269,8 @@
         }
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
         }
         .product-box {
             background: #ffffff;
@@ -280,12 +280,12 @@
             transition: all 0.3s ease;
         }
         .product-box:hover {
-            border-color: #00AFF0;
+            border-color: var(--dw-blue, #00AFF0);
             box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
         }
         .product-box-header {
             padding: 32px 32px 24px;
-            background: linear-gradient(135deg, #000864 0%, #1a2d3d 100%);
+            background: linear-gradient(135deg, var(--dw-navy, #000864) 0%, #1a2d3d 100%);
             border-bottom: none;
             position: relative;
         }
@@ -296,17 +296,23 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #00AFF0, #7ec8f2);
+            background: linear-gradient(90deg, var(--dw-blue, #00AFF0), #7ec8f2);
         }
         .product-box-title {
             color: #ffffff;
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
         .product-box-tagline {
             color: rgba(255, 255, 255, 0.75);
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 15px;
         }
         .product-box-badge {
             display: inline-block;
-            background: #00AFF0;
+            background: var(--dw-blue, #00AFF0);
             color: #ffffff;
             font-family: 'Noto Sans', sans-serif;
             font-size: 12px;
@@ -318,47 +324,38 @@
             letter-spacing: 0.5px;
         }
         .product-box-badge.full {
-            background: linear-gradient(135deg, #000864, #3d5a73);
+            background: linear-gradient(135deg, var(--dw-navy, #000864), #3d5a73);
         }
         .product-box-badge.light {
-            background: linear-gradient(135deg, #00AFF0, #003CC8);
+            background: linear-gradient(135deg, var(--dw-blue, #00AFF0), var(--dw-royal, #003CC8));
         }
-        .product-box-title {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: #000864;
-            margin-bottom: 8px;
-        }
-        .product-box-tagline {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 16px;
-            color: #64748b;
+        .product-box-badge.entry {
+            background: linear-gradient(135deg, var(--dw-cyan, #00E6FF), var(--dw-blue, #00AFF0));
         }
         .product-box-content {
-            padding: 32px;
+            padding: 28px;
         }
         .product-box-desc {
             font-family: 'Noto Sans', sans-serif;
-            font-size: 16px;
-            color: #000864;
+            font-size: 15px;
+            color: var(--dw-navy, #000864);
             line-height: 1.7;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
         .product-features {
             list-style: none;
             padding: 0;
-            margin: 0 0 24px 0;
+            margin: 0 0 20px 0;
         }
         .product-features li {
             font-family: 'Noto Sans', sans-serif;
-            font-size: 15px;
-            color: #000864;
-            padding: 10px 0;
+            font-size: 14px;
+            color: var(--dw-navy, #000864);
+            padding: 8px 0;
             border-bottom: 1px solid #f0f4f8;
             display: flex;
             align-items: flex-start;
-            gap: 12px;
+            gap: 10px;
         }
         .product-features li:last-child {
             border-bottom: none;
@@ -373,22 +370,166 @@
             background: #f8fafc;
             border-radius: 12px;
             padding: 16px 20px;
-            margin-top: 24px;
+            margin-top: 20px;
         }
         .product-best-for-label {
             font-family: 'Noto Sans', sans-serif;
             font-size: 13px;
             font-weight: 600;
-            color: #00AFF0;
+            color: #0369a1;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 8px;
         }
         .product-best-for-text {
             font-family: 'Noto Sans', sans-serif;
-            font-size: 15px;
-            color: #64748b;
+            font-size: 14px;
+            color: #5b6b80;
             line-height: 1.5;
+        }
+
+        /* Selection Guide */
+        .selection-guide {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+            padding-top: 48px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .selection-guide-item {
+            text-align: center;
+            padding: 24px 20px;
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e8eef3;
+        }
+        .selection-guide-arrow {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        .selection-guide-product {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dw-navy, #000864);
+            margin-bottom: 8px;
+        }
+        .selection-guide-desc {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            color: #5b6b80;
+            line-height: 1.5;
+        }
+
+        /* Any-ERP Callout */
+        .erp-compat-callout {
+            background: #f0f9ff;
+            border: 1px solid var(--dw-blue, #00AFF0);
+            border-radius: 12px;
+            padding: 32px;
+            margin-top: 48px;
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+        .erp-compat-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, rgba(0, 175, 240, 0.15), rgba(0, 175, 240, 0.05));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .erp-compat-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--dw-blue, #00AFF0);
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .erp-compat-content h3 {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dw-navy, #000864);
+            margin: 0 0 8px 0;
+        }
+        .erp-compat-content p {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 16px;
+            color: #5b6b80;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Operator Workflow Strip */
+        .workflow-strip {
+            margin-top: 48px;
+            padding-top: 48px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .workflow-strip-title {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dw-navy, #000864);
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .workflow-steps {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            overflow-x: auto;
+            padding-bottom: 16px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .workflow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+            min-width: 100px;
+        }
+        .workflow-step-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--dw-blue, #00AFF0);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .workflow-step-label {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--dw-navy, #000864);
+            text-align: center;
+            white-space: nowrap;
+        }
+        .workflow-connector {
+            width: 32px;
+            height: 2px;
+            background: var(--dw-blue, #00AFF0);
+            flex-shrink: 0;
+            margin-bottom: 24px;
+        }
+        .workflow-caption {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 15px;
+            font-style: italic;
+            color: #5b6b80;
+            text-align: center;
+            margin-top: 16px;
         }
 
         /* Capabilities Section */
@@ -396,10 +537,11 @@
             padding: 80px 0;
             background: #ffffff;
         }
+
         /* Integration Section */
         .integration-section {
             padding: 80px 0;
-            background: linear-gradient(180deg, #F5F7FA 0%, #ffffff 100%);
+            background: linear-gradient(180deg, var(--dw-gray-light, #F5F7FA) 0%, #ffffff 100%);
         }
         .integration-inner {
             max-width: 900px;
@@ -427,17 +569,17 @@
             transition: all 0.3s ease;
         }
         .integration-node:hover {
-            border-color: #00AFF0;
+            border-color: var(--dw-blue, #00AFF0);
         }
         .integration-node.active {
-            border-color: #00AFF0;
+            border-color: var(--dw-blue, #00AFF0);
             background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
             box-shadow: 0 8px 24px rgba(0, 175, 240, 0.15);
         }
         .integration-node-icon {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, #00AFF0, #003CC8);
+            background: linear-gradient(135deg, var(--dw-blue, #00AFF0), var(--dw-royal, #003CC8));
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -451,82 +593,15 @@
             stroke-width: 1.5;
             fill: none;
         }
-
-        /* Results Section */
-        .results-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #000864 0%, #1a2d3d 100%);
-        }
-        .results-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        .results-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-        .results-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            color: #00AFF0;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 16px;
-        }
-        .results-title {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 36px;
-            font-weight: 700;
-            color: #ffffff;
-        }
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-        .result-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 32px 24px;
-            text-align: center;
-        }
-        .result-value {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 42px;
-            font-weight: 800;
-            color: #00AFF0;
-            line-height: 1;
-        }
-        .result-label {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 15px;
-            color: rgba(255, 255, 255, 0.8);
-            margin-top: 12px;
-            line-height: 1.4;
-        }
-        @media (max-width: 1024px) {
-            .results-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 640px) {
-            .results-grid {
-                grid-template-columns: 1fr;
-                max-width: 280px;
-                margin: 0 auto;
-            }
-        }
         .integration-node-name {
             font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
             font-weight: 600;
-            color: #000864;
+            color: var(--dw-navy, #000864);
         }
         .integration-arrow {
             font-size: 20px;
-            color: #00AFF0;
+            color: #0369a1;
             padding: 0 12px;
         }
         .integration-message {
@@ -541,7 +616,7 @@
         .integration-message p {
             font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
-            color: #000864;
+            color: var(--dw-navy, #000864);
             line-height: 1.8;
             margin: 0;
         }
@@ -560,7 +635,7 @@
             background: #ffffff;
             border: 1px solid #e8eef3;
             border-radius: 8px;
-            color: #00AFF0;
+            color: #0369a1;
             font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
             font-weight: 600;
@@ -568,8 +643,159 @@
             transition: all 0.3s ease;
         }
         .integration-link:hover {
-            border-color: #00AFF0;
+            border-color: var(--dw-blue, #00AFF0);
             background: #f0f7ff;
+        }
+
+        /* Results Section */
+        .results-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--dw-navy, #000864) 0%, #1a2d3d 100%);
+        }
+        .results-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .results-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .results-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--dw-blue, #00AFF0);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 16px;
+        }
+        .results-title {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .results-row-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.75);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+            padding-left: 4px;
+        }
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        .result-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+        }
+        .result-value {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--dw-blue, #00AFF0);
+            line-height: 1;
+        }
+        .result-label {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 12px;
+            line-height: 1.4;
+        }
+        .results-shared {
+            text-align: center;
+            margin-top: 8px;
+            margin-bottom: 32px;
+        }
+        .results-shared .result-card {
+            display: inline-block;
+            min-width: 260px;
+        }
+        .results-attribution {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.75);
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        /* Reports Section */
+        .reports-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+        .reports-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .reports-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+        .reports-column {
+            background: var(--dw-gray-light, #F5F7FA);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid #e8eef3;
+        }
+        .reports-column-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .reports-column-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: var(--dw-navy, #000864);
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 50px;
+        }
+        .reports-column-badge.sft {
+            background: linear-gradient(135deg, var(--dw-blue, #00AFF0), var(--dw-royal, #003CC8));
+        }
+        .reports-column-count {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            color: #5b6b80;
+        }
+        .reports-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .reports-list li {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 15px;
+            color: var(--dw-navy, #000864);
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .reports-list li:last-child {
+            border-bottom: none;
+        }
+        .reports-list .report-icon {
+            color: var(--dw-blue, #00AFF0);
+            flex-shrink: 0;
+            font-size: 14px;
         }
 
         /* Responsive */
@@ -588,12 +814,30 @@
                 max-width: 600px;
                 margin: 0 auto;
             }
+            .selection-guide {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 48px auto 0;
+            }
+            .erp-compat-callout {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
             .integration-visual {
                 flex-direction: column;
             }
             .integration-arrow {
                 transform: rotate(90deg);
                 padding: 8px 0;
+            }
+            .results-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .reports-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
             }
         }
         @media (max-width: 640px) {
@@ -602,6 +846,11 @@
             }
             .mes-hero h1 {
                 font-size: 32px;
+            }
+            .results-grid {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+                margin: 0 auto 32px;
             }
         }
         @media (prefers-reduced-motion: reduce) {
@@ -618,8 +867,8 @@
         }
     </style>
     <!-- Open Graph -->
-    <meta property="og:title" content="MES: sMES & SFT - Real-Time Production Visibility | DigiWin Thailand">
-    <meta property="og:description" content="Manufacturing Execution System for real-time shop floor visibility. Track work orders, monitor OEE, capture quality data, and maintain complete traceability.">
+    <meta property="og:title" content="MES: Real-Time Production Visibility | DigiWin Thailand">
+    <meta property="og:description" content="Manufacturing Execution System for real-time shop floor visibility. Three tiers — MES, SFT, and AIoT Cloud — to match your factory's needs and budget.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.digiwin.co.th/products/mes.html">
     <meta property="og:site_name" content="DigiWin Thailand">
@@ -627,17 +876,17 @@
     <meta property="og:locale" content="en_US">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="MES: sMES & SFT - Real-Time Production Visibility | DigiWin Thailand">
-    <meta name="twitter:description" content="Manufacturing Execution System for real-time shop floor visibility. Track work orders, monitor OEE, capture quality data, and maintain complete traceability.">
+    <meta name="twitter:title" content="MES: Real-Time Production Visibility | DigiWin Thailand">
+    <meta name="twitter:description" content="Manufacturing Execution System for real-time shop floor visibility. Three tiers — MES, SFT, and AIoT Cloud — to match your factory's needs and budget.">
     <meta name="twitter:image" content="https://www.digiwin.co.th/assets/og-default.jpg">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "DigiWin MES (sMES & SFT)",
+  "name": "DigiWin MES",
   "applicationCategory": "BusinessApplication",
   "applicationSubCategory": "Manufacturing Execution System",
-  "description": "Real-time shop floor visibility for Thai factories. sMES for full production execution, SFT for lightweight tracking. OEE monitoring, quality data capture, and lot-level traceability.",
+  "description": "Real-time shop floor visibility for Thai factories. Three tiers — MES for full production execution, SFT for lightweight tracking, AIoT Cloud for entry-level monitoring. OEE monitoring, quality data capture, and lot-level traceability.",
   "operatingSystem": "Web-based",
   "url": "https://www.digiwin.co.th/products/mes.html",
   "provider": {
@@ -654,7 +903,7 @@
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.digiwin.co.th/"},
     {"@type": "ListItem", "position": 2, "name": "Products", "item": "https://www.digiwin.co.th/products.html"},
-    {"@type": "ListItem", "position": 3, "name": "MES: sMES & SFT", "item": "https://www.digiwin.co.th/products/mes.html"}
+    {"@type": "ListItem", "position": 3, "name": "MES", "item": "https://www.digiwin.co.th/products/mes.html"}
   ]
 }
 </script>
@@ -670,18 +919,18 @@
     },
     {
       "@type": "Question",
-      "name": "What is the difference between sMES and SFT?",
-      "acceptedAnswer": {"@type": "Answer", "text": "sMES is DigiWin's full-featured MES for comprehensive production management — work order tracking, quality control, material traceability, and OEE analytics. SFT (Shop Floor Tracker) is a lightweight entry point that can be deployed in 2–4 weeks, focusing on basic production reporting and machine status monitoring. Many factories start with SFT and expand to sMES as they mature."}
+      "name": "What is the difference between MES, SFT, and AIoT Cloud?",
+      "acceptedAnswer": {"@type": "Answer", "text": "MES is DigiWin's full-featured manufacturing execution system for comprehensive production management — work order tracking, quality control, material traceability, and OEE analytics. SFT (Smart Factory Transparency) is a mid-tier option that can be deployed in 2-4 weeks, focusing on production reporting and machine status monitoring. AIoT Cloud is the entry-level tier — cloud-based production monitoring with mobile apps and subscription pricing, ideal for factories starting their digitalization journey."}
     },
     {
       "@type": "Question",
       "name": "Do I need ERP before implementing MES?",
-      "acceptedAnswer": {"@type": "Answer", "text": "No. DigiWin MES can operate standalone or integrate with any existing ERP. Many manufacturers start with MES first (especially SFT) to get immediate shop floor visibility, then add ERP later. This 'Reverse Cut' approach lets you see ROI faster than a full ERP replacement."}
+      "acceptedAnswer": {"@type": "Answer", "text": "No. DigiWin MES connects to any ERP system through standard web services. Many manufacturers start with MES first to get immediate shop floor visibility, then add or upgrade ERP later. This approach lets you see ROI faster than a full ERP replacement."}
     },
     {
       "@type": "Question",
-      "name": "What OEE improvement can I expect with DigiWin MES?",
-      "acceptedAnswer": {"@type": "Answer", "text": "DigiWin MES customers report an average 23% improvement in Overall Equipment Effectiveness (OEE), a 40% reduction in unplanned downtime, and 90% faster traceability queries. The visibility alone typically drives immediate behavioral improvements on the shop floor."}
+      "name": "What results can I expect with DigiWin MES?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Based on implementation data across 50,000+ manufacturing clients, DigiWin MES customers report 45% reduction in production cycle time, 70% reduction in quality failures, and 26% improvement in operational efficiency. SFT users typically achieve 92% production transparency and 86% on-time delivery rate."}
     },
     {
       "@type": "Question",
@@ -697,9 +946,8 @@
 <a href="#mes-content" class="dw-skip-link">Skip to content</a>
 
     <main id="mes-content">
-    <!-- Hero Section — "The Factory Pulse": D PARTICLE BOTTOM-rise at 0.15, data rising from shop floor -->
+    <!-- Hero Section -->
     <section class="mes-hero" style="position: relative; overflow: hidden;">
-        <!-- Brand: Super D particle, BOTTOM-rise — data rising from the shop floor like a pulse -->
         <div class="dw-d-bg dw-d-bg--bottom dw-d-bg--particle dw-d-parallax" style="opacity: 0.15;"></div>
         <div class="mes-hero-inner">
             <div class="mes-hero-grid">
@@ -709,7 +957,7 @@
                     <p class="mes-hero-subtitle">Real-time visibility into every workstation, every work order, every minute. Know exactly what's happening on your shop floor—as it happens.</p>
                     <div class="mes-hero-ctas">
                         <a href="{{basePath}}demo.html" class="btn-white">Let's Talk</a>
-                        <a href="#compare" class="btn-outline-white">Compare sMES vs SFT</a>
+                        <a href="#compare" class="btn-outline-white">Find Your Fit</a>
                     </div>
                     <div class="mes-hero-stats">
                         <div class="mes-hero-stat">
@@ -767,7 +1015,7 @@
 <section class="dw-section" style="padding: 40px 0 0; text-align: center;">
   <div style="max-width: 800px; margin: 0 auto; padding: 0 24px;">
     <p style="font-family: 'Noto Sans', sans-serif; font-size: 17px; line-height: 1.7; color: #333;">
-      <strong>DigiWin MES</strong> (Manufacturing Execution System) provides real-time visibility into shop floor operations for factories in Thailand. Through two solutions — <strong>sMES</strong> for full production execution management and <strong>SFT</strong> (Shop Floor Tracker) for lightweight 2–4 week deployments — it monitors work orders, calculates OEE in real time, captures quality data at every station, and maintains complete lot-level traceability. Factories using DigiWin MES report an average 23% OEE improvement and 40% reduction in unplanned downtime.
+      <strong>DigiWin MES</strong> (Manufacturing Execution System) provides real-time visibility into shop floor operations for factories in Thailand. Through three tiers — <strong>MES</strong> for full production execution, <strong>SFT</strong> (Smart Factory Transparency) for mid-tier tracking, and <strong>AIoT Cloud</strong> for entry-level monitoring — it tracks work orders, calculates OEE in real time, captures quality data at every station, and maintains complete lot-level traceability. Start anywhere and upgrade as your factory matures.
     </p>
   </div>
 </section>
@@ -834,20 +1082,20 @@
         </div>
     </section>
 
-    <!-- Two Products Section -->
+    <!-- Three Products Comparison Section -->
     <section class="products-section" id="compare" style="position: relative; overflow: hidden;">
         <div class="products-inner">
             <div class="section-header">
-                <h2 class="section-title">Two Solutions, One Mission</h2>
-                <p class="section-subtitle">Choose the level of visibility that matches your needs</p>
+                <h2 class="section-title">Three Paths to Shop Floor Visibility</h2>
+                <p class="section-subtitle">Choose the level that matches your needs and budget. Start anywhere — upgrade anytime.</p>
             </div>
 
             <div class="products-grid">
-                <!-- sMES -->
+                <!-- MES (Full) -->
                 <div class="product-box">
                     <div class="product-box-header">
                         <span class="product-box-badge full">Full MES</span>
-                        <h3 class="product-box-title">sMES</h3>
+                        <h3 class="product-box-title">MES</h3>
                         <p class="product-box-tagline">Complete manufacturing execution with routing enforcement</p>
                     </div>
                     <div class="product-box-content">
@@ -862,15 +1110,15 @@
                         </ul>
                         <div class="product-best-for">
                             <div class="product-best-for-label">Best For</div>
-                            <div class="product-best-for-text">Complex manufacturing with multiple operations, automotive/electronics with traceability requirements, process control needs</div>
+                            <div class="product-best-for-text">Complex manufacturing with multiple operations, automotive/electronics with traceability requirements, factories with government grants or existing ERP</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- SFT -->
+                <!-- SFT (Mid-Tier) -->
                 <div class="product-box">
                     <div class="product-box-header">
-                        <span class="product-box-badge light">Lightweight</span>
+                        <span class="product-box-badge light">Mid-Tier</span>
                         <h3 class="product-box-title">SFT</h3>
                         <p class="product-box-tagline">Shop floor tracking without MES complexity</p>
                     </div>
@@ -886,15 +1134,120 @@
                         </ul>
                         <div class="product-best-for">
                             <div class="product-best-for-label">Best For</div>
-                            <div class="product-best-for-text">Factories starting their digitization journey, simpler operations, rapid visibility improvement without disruption</div>
+                            <div class="product-best-for-text">Factories already using SCADA, fast-growing companies, rapid visibility improvement without disruption</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AIoT Cloud (Entry Level) -->
+                <div class="product-box">
+                    <div class="product-box-header">
+                        <span class="product-box-badge entry">Entry Level</span>
+                        <h3 class="product-box-title">AIoT Cloud</h3>
+                        <p class="product-box-tagline">Production visibility on a subscription</p>
+                    </div>
+                    <div class="product-box-content">
+                        <p class="product-box-desc">Cloud-based production monitoring with mobile apps. See equipment data and production status with minimal IT infrastructure.</p>
+                        <ul class="product-features">
+                            <li><span class="check">✓</span> Real-time equipment monitoring</li>
+                            <li><span class="check">✓</span> Production status dashboard</li>
+                            <li><span class="check">✓</span> Mobile app access</li>
+                            <li><span class="check">✓</span> Subscription pricing (no upfront)</li>
+                            <li><span class="check">✓</span> Cloud deployment (no servers)</li>
+                        </ul>
+                        <div class="product-best-for">
+                            <div class="product-best-for-label">Best For</div>
+                            <div class="product-best-for-text">Low initial investment, simple equipment monitoring, factories testing digitalization before committing</div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Selection Guide -->
+            <div class="selection-guide">
+                <div class="selection-guide-item">
+                    <div class="selection-guide-arrow">&#9650;</div>
+                    <div class="selection-guide-product">AIoT Cloud</div>
+                    <div class="selection-guide-desc">Starting your digitalization journey. Small factories, quick start, subscription pricing.</div>
+                </div>
+                <div class="selection-guide-item">
+                    <div class="selection-guide-arrow">&#9650;&#9650;</div>
+                    <div class="selection-guide-product">SFT</div>
+                    <div class="selection-guide-desc">Need production transparency. Mid-size operations, structured tracking, fast deployment.</div>
+                </div>
+                <div class="selection-guide-item">
+                    <div class="selection-guide-arrow">&#9650;&#9650;&#9650;</div>
+                    <div class="selection-guide-product">MES</div>
+                    <div class="selection-guide-desc">Full manufacturing execution. Complex operations, multi-plant, complete traceability.</div>
+                </div>
+            </div>
+
+            <!-- Any-ERP Compatibility Callout -->
+            <div class="erp-compat-callout">
+                <div class="erp-compat-icon">
+                    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2v6m0 8v6M4.93 4.93l4.24 4.24m5.66 5.66l4.24 4.24M2 12h6m8 0h6M4.93 19.07l4.24-4.24m5.66-5.66l4.24-4.24"/></svg>
+                </div>
+                <div class="erp-compat-content">
+                    <h3>Already Have an ERP?</h3>
+                    <p>MES connects to any ERP system through standard web services. See your shop floor clearly without changing your existing ERP. When you're ready to upgrade, we're here.</p>
+                </div>
+            </div>
+
+            <!-- Operator Workflow Strip -->
+            <div class="workflow-strip">
+                <h3 class="workflow-strip-title">A Day on the MES-Connected Shop Floor</h3>
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <div class="workflow-step-circle">1</div>
+                        <div class="workflow-step-label">Clock In</div>
+                    </div>
+                    <div class="workflow-connector"></div>
+                    <div class="workflow-step">
+                        <div class="workflow-step-circle">2</div>
+                        <div class="workflow-step-label">Material Check</div>
+                    </div>
+                    <div class="workflow-connector"></div>
+                    <div class="workflow-step">
+                        <div class="workflow-step-circle">3</div>
+                        <div class="workflow-step-label">First QC</div>
+                    </div>
+                    <div class="workflow-connector"></div>
+                    <div class="workflow-step">
+                        <div class="workflow-step-circle">4</div>
+                        <div class="workflow-step-label">Start Machine</div>
+                    </div>
+                    <div class="workflow-connector"></div>
+                    <div class="workflow-step">
+                        <div class="workflow-step-circle">5</div>
+                        <div class="workflow-step-label">Log Production</div>
+                    </div>
+                    <div class="workflow-connector"></div>
+                    <div class="workflow-step">
+                        <div class="workflow-step-circle">6</div>
+                        <div class="workflow-step-label">Mid-Shift QC</div>
+                    </div>
+                    <div class="workflow-connector"></div>
+                    <div class="workflow-step">
+                        <div class="workflow-step-circle">7</div>
+                        <div class="workflow-step-label">Material Request</div>
+                    </div>
+                    <div class="workflow-connector"></div>
+                    <div class="workflow-step">
+                        <div class="workflow-step-circle">8</div>
+                        <div class="workflow-step-label">End Count</div>
+                    </div>
+                    <div class="workflow-connector"></div>
+                    <div class="workflow-step">
+                        <div class="workflow-step-circle">9</div>
+                        <div class="workflow-step-label">Clock Out</div>
+                    </div>
+                </div>
+                <p class="workflow-caption">"Every step captured. Every scan recorded. Every minute accounted for."</p>
+            </div>
         </div>
     </section>
 
-    <!-- Capabilities Section — wave-vertical right: vertical data flow along production lines -->
+    <!-- Capabilities Section -->
     <section class="capabilities-section" style="position: relative; overflow: hidden;">
         <div class="dw-section-scene">
             <svg aria-hidden="true" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
@@ -995,7 +1348,7 @@
         </div>
     </section>
 
-    <!-- Integration Section — wave-fade: sparse dots bridging planning to execution -->
+    <!-- Integration Section -->
     <section class="integration-section" style="position: relative; overflow: hidden;">
         <div class="integration-inner" style="position: relative; z-index: 2;">
             <div class="section-header">
@@ -1045,29 +1398,103 @@
         </div>
     </section>
 
-    <!-- Results Section — wave-circles: scattered quality checkpoints across the shop floor -->
+    <!-- Results Section — Officially Sourced Metrics -->
     <section class="results-section" data-particles="bold" style="position: relative; overflow: hidden;">
         <div class="results-inner" style="position: relative; z-index: 2;">
             <div class="results-header">
                 <p class="results-label">Measured Impact</p>
                 <h2 class="results-title">What Our Customers Achieve</h2>
             </div>
+
+            <!-- MES Results Row -->
+            <p class="results-row-label">MES Results</p>
             <div class="results-grid">
                 <div class="result-card">
-                    <div class="result-value">+23%</div>
-                    <div class="result-label">Average OEE Improvement</div>
+                    <div class="result-value">-45%</div>
+                    <div class="result-label">Production Cycle Time</div>
                 </div>
                 <div class="result-card">
-                    <div class="result-value">-40%</div>
-                    <div class="result-label">Reduction in Unplanned Downtime</div>
+                    <div class="result-value">-70%</div>
+                    <div class="result-label">Quality Failure Rate</div>
                 </div>
                 <div class="result-card">
-                    <div class="result-value">90%</div>
-                    <div class="result-label">Faster Traceability Queries</div>
+                    <div class="result-value">+26%</div>
+                    <div class="result-label">Operational Efficiency</div>
+                </div>
+            </div>
+
+            <!-- SFT Results Row -->
+            <p class="results-row-label">SFT Results</p>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-value">92%</div>
+                    <div class="result-label">Production Transparency</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">86%</div>
+                    <div class="result-label">On-Time Delivery Rate</div>
                 </div>
                 <div class="result-card">
                     <div class="result-value">2-4</div>
-                    <div class="result-label">Week SFT Implementation</div>
+                    <div class="result-label">Week Implementation</div>
+                </div>
+            </div>
+
+            <!-- Shared Result -->
+            <div class="results-shared">
+                <div class="result-card">
+                    <div class="result-value">76%</div>
+                    <div class="result-label">Customer Satisfaction Improvement</div>
+                </div>
+            </div>
+
+            <p class="results-attribution">Based on DigiWin implementation data across 50,000+ manufacturing clients</p>
+        </div>
+    </section>
+
+    <!-- Named Reports Section -->
+    <section class="reports-section">
+        <div class="reports-inner">
+            <div class="section-header">
+                <h2 class="section-title">Built-In Reports & Dashboards</h2>
+                <p class="section-subtitle">Pre-configured analytics ready from day one — no custom development needed</p>
+            </div>
+
+            <div class="reports-grid">
+                <!-- MES Reports -->
+                <div class="reports-column">
+                    <div class="reports-column-header">
+                        <span class="reports-column-badge">MES</span>
+                        <span class="reports-column-count">10 Reports</span>
+                    </div>
+                    <ol class="reports-list">
+                        <li><span class="report-icon">&#9632;</span> Work Order Progress</li>
+                        <li><span class="report-icon">&#9632;</span> Equipment Utilization (OEE)</li>
+                        <li><span class="report-icon">&#9632;</span> Quality Inspection</li>
+                        <li><span class="report-icon">&#9632;</span> Material Consumption</li>
+                        <li><span class="report-icon">&#9632;</span> Shift Performance</li>
+                        <li><span class="report-icon">&#9632;</span> Downtime Analysis</li>
+                        <li><span class="report-icon">&#9632;</span> Yield Rate</li>
+                        <li><span class="report-icon">&#9632;</span> Cycle Time</li>
+                        <li><span class="report-icon">&#9632;</span> Batch Traceability</li>
+                        <li><span class="report-icon">&#9632;</span> Operator Productivity</li>
+                    </ol>
+                </div>
+
+                <!-- SFT Dashboards -->
+                <div class="reports-column">
+                    <div class="reports-column-header">
+                        <span class="reports-column-badge sft">SFT</span>
+                        <span class="reports-column-count">6 Dashboards</span>
+                    </div>
+                    <ol class="reports-list">
+                        <li><span class="report-icon">&#9632;</span> Production Status Board</li>
+                        <li><span class="report-icon">&#9632;</span> Daily Output Summary</li>
+                        <li><span class="report-icon">&#9632;</span> Machine Status Monitor</li>
+                        <li><span class="report-icon">&#9632;</span> Order Completion</li>
+                        <li><span class="report-icon">&#9632;</span> WIP Tracking</li>
+                        <li><span class="report-icon">&#9632;</span> Delivery Schedule</li>
+                    </ol>
                 </div>
             </div>
         </div>
@@ -1075,34 +1502,34 @@
 
 <section class="dw-section" style="padding: 60px 0; background: #f8fafc;">
   <div style="max-width: 800px; margin: 0 auto; padding: 0 24px;">
-    <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 28px; font-weight: 700; color: #000864; margin-bottom: 32px; text-align: center;">Frequently Asked Questions</h2>
+    <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 28px; font-weight: 700; color: var(--dw-navy, #000864); margin-bottom: 32px; text-align: center;">Frequently Asked Questions</h2>
     <div style="display: flex; flex-direction: column; gap: 12px;">
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What is a Manufacturing Execution System (MES)?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: var(--dw-navy, #000864); padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What is a Manufacturing Execution System (MES)?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
           <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">A Manufacturing Execution System (MES) is software that tracks, monitors, and controls production on the factory floor in real time. It bridges the gap between ERP planning and actual shop floor execution — showing you what's happening on every machine and workstation right now, not what happened yesterday.</p>
         </div>
       </details>
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What is the difference between sMES and SFT?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: var(--dw-navy, #000864); padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What is the difference between MES, SFT, and AIoT Cloud?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
-          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">sMES is DigiWin's full-featured MES for comprehensive production management — work order tracking, quality control, material traceability, and OEE analytics. SFT (Shop Floor Tracker) is a lightweight entry point that can be deployed in 2–4 weeks, focusing on basic production reporting and machine status monitoring. Many factories start with SFT and expand to sMES as they mature.</p>
+          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">MES is DigiWin's full-featured manufacturing execution system for comprehensive production management — work order tracking, quality control, material traceability, and OEE analytics. SFT (Smart Factory Transparency) is a mid-tier option deployed in 2-4 weeks, focusing on production reporting and machine status monitoring. AIoT Cloud is the entry-level tier — cloud-based monitoring with mobile apps and subscription pricing. Many factories start with AIoT Cloud or SFT and expand to full MES as they mature.</p>
         </div>
       </details>
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">Do I need ERP before implementing MES?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: var(--dw-navy, #000864); padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">Do I need ERP before implementing MES?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
-          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">No. DigiWin MES can operate standalone or integrate with any existing ERP. In fact, many manufacturers start with MES first (especially SFT at ~1M THB) to get immediate shop floor visibility, then add ERP later. This "Reverse Cut" approach lets you see ROI faster than a full ERP replacement.</p>
+          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">No. DigiWin MES connects to any existing ERP through standard web services. Many manufacturers start with MES first to get immediate shop floor visibility, then add or upgrade ERP later. This approach lets you see ROI faster than a full ERP replacement.</p>
         </div>
       </details>
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What OEE improvement can I expect with DigiWin MES?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: var(--dw-navy, #000864); padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What results can I expect with DigiWin MES?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
-          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">DigiWin MES customers report an average 23% improvement in Overall Equipment Effectiveness (OEE), a 40% reduction in unplanned downtime, and 90% faster traceability queries. Results vary by factory, but the visibility alone — knowing machine status, production progress, and quality metrics in real time — typically drives immediate behavioral improvements on the shop floor.</p>
+          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">Based on implementation data across 50,000+ manufacturing clients, MES customers report a 45% reduction in production cycle time, 70% reduction in quality failures, and 26% improvement in operational efficiency. SFT users typically achieve 92% production transparency and 86% on-time delivery rate. Results vary by factory, but the visibility alone typically drives immediate behavioral improvements on the shop floor.</p>
         </div>
       </details>
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How does DigiWin MES connect to machines on the shop floor?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: var(--dw-navy, #000864); padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How does DigiWin MES connect to machines on the shop floor?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
           <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">DigiWin MES connects to shop floor equipment through DigiWin's AIoT platform, which supports 50+ industrial protocols including OPC-UA, Modbus, MQTT, and direct CNC/PLC connections. For machines without digital interfaces, barcode scanning and tablet-based operator input provide the data bridge.</p>
         </div>
@@ -1111,11 +1538,9 @@
   </div>
 </section>
 
-    <!-- CTA Section — D RIGHT (standard) BOLD + dense wave: maximum shop floor energy -->
+    <!-- CTA Section -->
     <section class="product-detail-cta" style="position: relative; overflow: hidden;">
-        <!-- Brand: D standard right, BOLD — strong pulse at the conversion point -->
         <div class="dw-d-bg dw-d-bg--bold dw-d-glow"></div>
-        <!-- Brand: Dense wave flow — shop floor energy concentrated at CTA -->
         <div class="dw-wave-flow" style="height: 200px; opacity: 0.38; z-index: 1;"></div>
         <div class="product-detail-cta-inner" style="position: relative; z-index: 3;">
             <h2 class="product-detail-cta-title">Ready to See Your Shop Floor Clearly?</h2>

@@ -14,7 +14,7 @@
     <style>
         /* WMS Page Specific Styles */
         .wms-hero {
-            background: linear-gradient(135deg, #1a2d3d 0%, #000864 50%, #001080 100%);
+            background: linear-gradient(135deg, #1a2d3d 0%, var(--dw-navy, #000864) 50%, var(--dw-navy-mid, #001080) 100%);
             padding: 140px 0 100px;
             position: relative;
             overflow: hidden;
@@ -65,7 +65,7 @@
             font-family: 'Noto Sans', sans-serif;
             font-size: 32px;
             font-weight: 800;
-            color: #00AFF0;
+            color: var(--dw-blue, #00AFF0);
         }
         .wms-hero-stat-label {
             font-family: 'JetBrains Mono', monospace;
@@ -111,12 +111,12 @@
         .wms-mockup-cell.occupied {
             background: rgba(0, 175, 240, 0.25);
             border-color: rgba(0, 175, 240, 0.4);
-            color: #00AFF0;
+            color: var(--dw-blue, #00AFF0);
         }
         .wms-mockup-cell.active {
             background: rgba(16, 185, 129, 0.3);
             border-color: #10b981;
-            color: #10b981;
+            color: #047857;
         }
         .wms-mockup-stats {
             display: flex;
@@ -133,7 +133,7 @@
             font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             font-weight: 700;
-            color: #00AFF0;
+            color: var(--dw-blue, #00AFF0);
         }
         .wms-mockup-stat-value.green { color: #10b981; }
         .wms-mockup-stat-label {
@@ -174,7 +174,7 @@
 
         /* Problem Section */
         .problems-section {
-            padding: 80px 0;
+            padding: 100px 0;
             background: #ffffff;
         }
         .problems-inner {
@@ -193,6 +193,18 @@
             padding: 32px;
             border: 2px solid #fee2e2;
             text-align: center;
+            transition: border-color 0.3s ease;
+        }
+        .problem-card:hover {
+            border-color: var(--dw-blue, #00AFF0);
+        }
+        .problem-card-station {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--dw-blue, #00AFF0);
+            margin-bottom: 8px;
         }
         .problem-icon {
             width: 64px;
@@ -215,20 +227,20 @@
             font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
             font-weight: 600;
-            color: #000864;
+            color: var(--dw-navy, #000864);
             margin-bottom: 12px;
         }
         .problem-desc {
             font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
-            color: #64748b;
+            color: #5b6b80;
             line-height: 1.6;
         }
 
         /* Capabilities Section */
-        .capabilities-section {
-            padding: 80px 0;
-            background: #F5F7FA;
+        .wms-capabilities-section {
+            padding: 100px 0;
+            background: var(--dw-gray-light, #F5F7FA);
         }
         .capabilities-inner {
             max-width: 1200px;
@@ -249,7 +261,7 @@
             transition: all 0.3s ease;
         }
         .capability-box:hover {
-            border-color: #00AFF0;
+            border-color: var(--dw-blue, #00AFF0);
             box-shadow: 0 12px 40px rgba(0, 175, 240, 0.12);
         }
         .capability-box-header {
@@ -261,7 +273,7 @@
         .capability-box-icon {
             width: 64px;
             height: 64px;
-            background: linear-gradient(135deg, #00AFF0 0%, #003CC8 100%);
+            background: linear-gradient(135deg, var(--dw-blue, #00AFF0) 0%, var(--dw-royal, #003CC8) 100%);
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -282,18 +294,18 @@
             font-family: 'Noto Sans', sans-serif;
             font-size: 22px;
             font-weight: 600;
-            color: #000864;
+            color: var(--dw-navy, #000864);
             margin-bottom: 4px;
         }
         .capability-box-tagline {
             font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
-            color: #64748b;
+            color: #5b6b80;
         }
         .capability-box-desc {
             font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
-            color: #000864;
+            color: var(--dw-navy, #000864);
             line-height: 1.7;
             margin-bottom: 20px;
         }
@@ -305,7 +317,7 @@
         .capability-features li {
             font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
-            color: #000864;
+            color: var(--dw-navy, #000864);
             padding: 10px 0;
             border-bottom: 1px solid #f0f4f8;
             display: flex;
@@ -322,58 +334,366 @@
             margin-top: 2px;
         }
 
-        /* Metrics Section */
-        .metrics-section {
-            padding: 80px 0;
+        /* Mobile Functions Section */
+        .mobile-functions-section {
+            padding: 100px 0;
             background: #ffffff;
         }
-        .metrics-grid {
+        .mobile-functions-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .mobile-modules-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
         }
-        .metric-card {
-            text-align: center;
-            padding: 32px 24px;
-            background: linear-gradient(135deg, #f8fafc 0%, #f0f7ff 100%);
+        .mobile-module {
+            background: #ffffff;
             border-radius: 16px;
+            padding: 28px 24px;
             border: 1px solid #e8eef3;
+            transition: all 0.3s ease;
         }
-        .metric-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, #00AFF0 0%, #003CC8 100%);
-            border-radius: 14px;
+        .mobile-module:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+        .mobile-module-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e8eef3;
+        }
+        .mobile-module-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 16px;
+            flex-shrink: 0;
         }
-        .metric-icon svg {
-            width: 26px;
-            height: 26px;
+        .mobile-module-icon svg {
+            width: 22px;
+            height: 22px;
             stroke: #ffffff;
             stroke-width: 1.5;
             fill: none;
         }
-        .metric-title {
+        .mobile-module-icon--blue { background: linear-gradient(135deg, var(--dw-blue, #00AFF0), var(--dw-royal, #003CC8)); }
+        .mobile-module-icon--green { background: linear-gradient(135deg, #02D28C, #059669); }
+        .mobile-module-icon--amber { background: linear-gradient(135deg, #FFD700, #F59E0B); }
+        .mobile-module-icon--coral { background: linear-gradient(135deg, #FF6E82, #DC2626); }
+        .mobile-module-name {
             font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             font-weight: 600;
-            color: #000864;
-            margin-bottom: 8px;
+            color: var(--dw-navy, #000864);
         }
-        .metric-desc {
+        .mobile-module-count {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #5b6b80;
+        }
+        .mobile-function-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .mobile-function-list li {
             font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
-            color: #64748b;
-            line-height: 1.5;
+            color: #333;
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .mobile-function-list li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .mobile-module--blue .mobile-function-list li::before { background: var(--dw-blue, #00AFF0); }
+        .mobile-module--green .mobile-function-list li::before { background: #02D28C; }
+        .mobile-module--amber .mobile-function-list li::before { background: #F59E0B; }
+        .mobile-module--coral .mobile-function-list li::before { background: #FF6E82; }
+        .mobile-module--blue .mobile-module-header { border-bottom-color: rgba(0, 175, 240, 0.3); }
+        .mobile-module--green .mobile-module-header { border-bottom-color: rgba(2, 210, 140, 0.3); }
+        .mobile-module--amber .mobile-module-header { border-bottom-color: rgba(245, 158, 11, 0.3); }
+        .mobile-module--coral .mobile-module-header { border-bottom-color: rgba(255, 110, 130, 0.3); }
+        .mobile-functions-footer {
+            text-align: center;
+            margin-top: 32px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: #5b6b80;
+            letter-spacing: 0.02em;
+        }
+
+        /* Three-Stream Process Flow */
+        .process-flow-section {
+            padding: 100px 0;
+            background: var(--dw-gray-light, #F5F7FA);
+        }
+        .process-flow-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .process-streams {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .process-stream {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px 32px;
+            border: 1px solid #e8eef3;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .process-stream-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 6px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            min-width: 100px;
+            text-align: center;
+        }
+        .process-stream-badge--blue {
+            background: rgba(0, 175, 240, 0.12);
+            color: var(--dw-blue, #00AFF0);
+        }
+        .process-stream-badge--green {
+            background: rgba(2, 210, 140, 0.12);
+            color: #059669;
+        }
+        .process-stream-badge--amber {
+            background: rgba(245, 158, 11, 0.12);
+            color: #D97706;
+        }
+        .process-stream-steps {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+        .process-stream-step {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+        .process-stream--blue .process-stream-step {
+            background: rgba(0, 175, 240, 0.08);
+            color: var(--dw-navy, #000864);
+            border: 1px solid rgba(0, 175, 240, 0.2);
+        }
+        .process-stream--green .process-stream-step {
+            background: rgba(2, 210, 140, 0.08);
+            color: var(--dw-navy, #000864);
+            border: 1px solid rgba(2, 210, 140, 0.2);
+        }
+        .process-stream--amber .process-stream-step {
+            background: rgba(245, 158, 11, 0.08);
+            color: var(--dw-navy, #000864);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+        .process-stream-arrow {
+            color: #b0bec5;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        /* Before/After Transformation Section */
+        .transformation-section {
+            padding: 100px 0;
+            background: #ffffff;
+        }
+        .transformation-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .transformation-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            margin-bottom: 48px;
+        }
+        .transformation-table thead th {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 16px 20px;
+            text-align: left;
+            background: var(--dw-navy, #000864);
+            color: #ffffff;
+        }
+        .transformation-table thead th:first-child {
+            border-radius: 12px 0 0 0;
+        }
+        .transformation-table thead th:last-child {
+            border-radius: 0 12px 0 0;
+        }
+        .transformation-table tbody td {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            padding: 16px 20px;
+            border-bottom: 1px solid #e8eef3;
+            vertical-align: top;
+        }
+        .transformation-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .transformation-table .col-process {
+            font-weight: 600;
+            color: var(--dw-navy, #000864);
+            background: #ffffff;
+            width: 16%;
+        }
+        .transformation-table .col-before {
+            background: #FEF2F2;
+            color: #991B1B;
+            width: 34%;
+        }
+        .transformation-table .col-after {
+            background: #F0FDF4;
+            color: #166534;
+            width: 34%;
+        }
+        .transformation-table .col-improvement {
+            background: #EFF6FF;
+            color: var(--dw-navy, #000864);
+            font-weight: 600;
+            width: 16%;
+            text-align: center;
+        }
+
+        /* Step Reduction Stories */
+        .step-reduction-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        .step-reduction-card {
+            background: var(--dw-gray-light, #F5F7FA);
+            border-radius: 16px;
+            padding: 32px;
+        }
+        .step-reduction-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .step-reduction-title {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dw-navy, #000864);
+        }
+        .step-reduction-numbers {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: auto;
+        }
+        .step-number {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .step-number--before {
+            color: #DC2626;
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+        .step-number--after {
+            color: var(--dw-blue, #00AFF0);
+        }
+        .step-number-arrow {
+            font-size: 24px;
+            color: #5b6b80;
+        }
+        .step-reduction-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .step-col-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        .step-col-label--before { color: #DC2626; }
+        .step-col-label--after { color: var(--dw-blue, #00AFF0); }
+        .step-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .step-list li {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .step-list--before li {
+            color: #9CA3AF;
+            text-decoration: line-through;
+        }
+        .step-list--after li {
+            color: var(--dw-navy, #000864);
+            font-weight: 500;
+        }
+        .step-list--after li .check {
+            color: #22c55e;
+            font-weight: bold;
+        }
+        .transformation-source {
+            text-align: center;
+            margin-top: 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #5b6b80;
+            letter-spacing: 0.02em;
         }
 
         /* Integration Section */
         .integration-section {
-            padding: 80px 0;
-            background: linear-gradient(180deg, #F5F7FA 0%, #ffffff 100%);
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--dw-gray-light, #F5F7FA) 0%, #ffffff 100%);
         }
         .integration-inner {
             max-width: 900px;
@@ -401,17 +721,17 @@
             transition: all 0.3s ease;
         }
         .integration-node:hover {
-            border-color: #00AFF0;
+            border-color: var(--dw-blue, #00AFF0);
         }
         .integration-node.active {
-            border-color: #00AFF0;
+            border-color: var(--dw-blue, #00AFF0);
             background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
             box-shadow: 0 8px 24px rgba(0, 175, 240, 0.15);
         }
         .integration-node-icon {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, #00AFF0, #003CC8);
+            background: linear-gradient(135deg, var(--dw-blue, #00AFF0), var(--dw-royal, #003CC8));
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -429,11 +749,11 @@
             font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
             font-weight: 600;
-            color: #000864;
+            color: var(--dw-navy, #000864);
         }
         .integration-arrow {
             font-size: 20px;
-            color: #00AFF0;
+            color: #0369a1;
             padding: 0 12px;
         }
         .integration-message {
@@ -448,7 +768,7 @@
         .integration-message p {
             font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
-            color: #000864;
+            color: var(--dw-navy, #000864);
             line-height: 1.8;
             margin: 0;
         }
@@ -467,7 +787,7 @@
             background: #ffffff;
             border: 1px solid #e8eef3;
             border-radius: 8px;
-            color: #00AFF0;
+            color: #0369a1;
             font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
             font-weight: 600;
@@ -475,24 +795,38 @@
             transition: all 0.3s ease;
         }
         .integration-link:hover {
-            border-color: #00AFF0;
+            border-color: var(--dw-blue, #00AFF0);
             background: #f0f7ff;
         }
 
         /* Responsive */
         @media (max-width: 1024px) {
             .problems-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-                margin: 0 auto;
+                grid-template-columns: repeat(2, 1fr);
             }
             .capabilities-grid {
                 grid-template-columns: 1fr;
                 max-width: 600px;
                 margin: 0 auto;
             }
-            .metrics-grid {
+            .mobile-modules-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .process-stream {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .process-stream-steps {
+                width: 100%;
+            }
+            .transformation-table {
+                display: block;
+                overflow-x: auto;
+            }
+            .step-reduction-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
             }
             .integration-visual {
                 flex-direction: column;
@@ -509,16 +843,29 @@
             .wms-hero h1 {
                 font-size: 32px;
             }
-            .metrics-grid {
+            .problems-grid {
                 grid-template-columns: 1fr;
-                max-width: 280px;
+                max-width: 400px;
                 margin: 0 auto;
+            }
+            .mobile-modules-grid {
+                grid-template-columns: 1fr;
+                max-width: 360px;
+                margin: 0 auto;
+            }
+            .step-reduction-columns {
+                grid-template-columns: 1fr;
+            }
+            .step-number {
+                font-size: 36px;
             }
         }
         @media (prefers-reduced-motion: reduce) {
             .capability-box,
             .integration-node,
             .integration-link,
+            .problem-card,
+            .mobile-module,
             .dw-d-bg,
             .dw-d-parallax,
             .dw-wave-flow,
@@ -582,7 +929,7 @@
     {
       "@type": "Question",
       "name": "How is DigiWin WMS different from generic WMS solutions?",
-      "acceptedAnswer": {"@type": "Answer", "text": "DigiWin WMS (sFLS) is built for manufacturing, not distribution. It includes production material kitting, shop floor delivery integration, WIP location tracking, and quality hold management — features that generic WMS solutions like those designed for e-commerce fulfillment simply don't offer. It also shares one database with DigiWin ERP and MES, eliminating integration complexity."}
+      "acceptedAnswer": {"@type": "Answer", "text": "DigiWin WMS (sFLS) is built for manufacturing, not distribution. It includes production material kitting, shop floor delivery integration, WIP location tracking, and quality hold management — features that generic WMS solutions designed for e-commerce fulfillment simply don't offer. It also shares one database with DigiWin ERP and MES, eliminating integration complexity."}
     },
     {
       "@type": "Question",
@@ -592,7 +939,7 @@
     {
       "@type": "Question",
       "name": "What hardware do I need for DigiWin WMS?",
-      "acceptedAnswer": {"@type": "Answer", "text": "DigiWin WMS works with standard Android or iOS mobile devices for barcode scanning, plus optional RFID readers for high-volume environments. You'll need barcode label printers for location and item labeling. The system runs on standard server infrastructure or cloud deployment — no specialized hardware beyond mobile scanners is required."}
+      "acceptedAnswer": {"@type": "Answer", "text": "DigiWin WMS works with standard Android or iOS mobile devices for barcode scanning, plus optional RFID readers for high-volume environments. You will need barcode label printers for location and item labeling. The system runs on standard server infrastructure or cloud deployment — no specialized hardware beyond mobile scanners is required."}
     },
     {
       "@type": "Question",
@@ -679,12 +1026,12 @@
 <section class="dw-section" style="padding: 40px 0 0; text-align: center;">
   <div style="max-width: 800px; margin: 0 auto; padding: 0 24px;">
     <p style="font-family: 'Noto Sans', sans-serif; font-size: 17px; line-height: 1.7; color: #333;">
-      <strong>DigiWin WMS</strong> (Warehouse Management System), powered by the <strong>sFLS</strong> platform, brings smart inventory management to manufacturing warehouses in Thailand. It replaces manual stock checks and paper-based tracking with barcode/RFID scanning, automated FIFO/FEFO enforcement, location intelligence, and wave picking optimization. Factories using DigiWin WMS achieve 99%+ inventory accuracy, 35% faster picking, and 80% fewer shipping errors.
+      <strong>DigiWin WMS</strong> (Warehouse Management System), powered by the <strong>sFLS</strong> platform, brings smart inventory management to manufacturing warehouses in Thailand. It replaces manual stock checks and paper-based tracking with barcode/RFID scanning, automated FIFO/FEFO enforcement, location intelligence, and wave picking optimization — covering inbound, production, and outbound warehouse operations end to end.
     </p>
   </div>
 </section>
 
-    <!-- Problem Section -->
+    <!-- Problem Section — 6 station-specific warehouse pain points -->
     <section class="problems-section" style="position: relative; overflow: hidden;">
         <div class="dw-section-scene">
             <svg aria-hidden="true" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
@@ -701,7 +1048,7 @@
                 <rect x="220" y="500" width="30" height="45" rx="2" fill="#000864" opacity="0.1"/>
                 <text x="280" y="670" font-family="'Noto Sans',sans-serif" font-size="14" font-weight="700" fill="#000864" opacity="0.08">SYS: 100</text>
                 <text x="280" y="700" font-family="'Noto Sans',sans-serif" font-size="14" font-weight="700" fill="#00AFF0" opacity="0.12">REAL: 47</text>
-                <text x="420" y="685" font-family="'Noto Sans',sans-serif" font-size="28" font-weight="800" fill="#000864" opacity="0.08">≠</text>
+                <text x="420" y="685" font-family="'Noto Sans',sans-serif" font-size="28" font-weight="800" fill="#000864" opacity="0.08">&ne;</text>
                 <rect x="800" y="250" width="60" height="35" rx="3" stroke="#000864" stroke-width="1.5" fill="none" opacity="0.12"/>
                 <line x1="810" y1="260" x2="815" y2="260" stroke="#000864" stroke-width="4" opacity="0.15"/>
                 <line x1="820" y1="260" x2="822" y2="260" stroke="#000864" stroke-width="4" opacity="0.15"/>
@@ -717,37 +1064,70 @@
         <div class="problems-inner" style="position: relative; z-index: 2;">
             <div class="section-header">
                 <h2 class="section-title">The Warehouse Chaos Problem</h2>
-                <p class="section-subtitle">Sound familiar?</p>
+                <p class="section-subtitle">Sound familiar? Every station has its own nightmare.</p>
             </div>
 
             <div class="problems-grid">
+                <!-- Card 1: Purchase & Arrival -->
                 <div class="problem-card">
                     <div class="problem-icon">
-                        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M11 8v6"/></svg>
+                        <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
                     </div>
-                    <h3 class="problem-title">"Where Is It?"</h3>
-                    <p class="problem-desc">Workers spending hours searching for materials. "It's in the warehouse somewhere" is not a location strategy.</p>
+                    <div class="problem-card-station">Purchase &amp; Arrival</div>
+                    <h3 class="problem-title">"It's Here But Not in the System"</h3>
+                    <p class="problem-desc">Purchase orders arrive but receiving is manual — paper logs, miscounts, delayed PO matching. Materials sit on the dock while item data hasn't updated.</p>
                 </div>
-                <div class="problem-card">
-                    <div class="problem-icon">
-                        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-                    </div>
-                    <h3 class="problem-title">Wrong Part Shipped</h3>
-                    <p class="problem-desc">Picking errors that cost you customer trust and expensive returns. Visual similarity is not a picking system.</p>
-                </div>
+                <!-- Card 2: Inventory -->
                 <div class="problem-card">
                     <div class="problem-icon">
                         <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 14l-5.1-5.2-2.8 2.7L7 7.7"/></svg>
                     </div>
-                    <h3 class="problem-title">Inventory Never Matches</h3>
-                    <p class="problem-desc">Physical counts vs. system counts are always different. Year-end reconciliation becomes a nightmare.</p>
+                    <div class="problem-card-station">Inventory</div>
+                    <h3 class="problem-title">"System Says 500, Shelf Says 340"</h3>
+                    <p class="problem-desc">Physical counts vs. system counts are always different. Year-end reconciliation becomes a nightmare that takes the whole team.</p>
+                </div>
+                <!-- Card 3: Picking -->
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M11 8v6"/></svg>
+                    </div>
+                    <div class="problem-card-station">Picking</div>
+                    <h3 class="problem-title">"Wrong Part — They Look the Same"</h3>
+                    <p class="problem-desc">Picking errors caused by similar specifications. Visual similarity is not a picking system. Costs you customer trust and expensive returns.</p>
+                </div>
+                <!-- Card 4: Quality Inspection -->
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    </div>
+                    <div class="problem-card-station">Quality Inspection</div>
+                    <h3 class="problem-title">"Where's That QC Report?"</h3>
+                    <p class="problem-desc">Quality checks happen in a black box — no visibility into inspection status or pass rates until it's too late. Materials sit in limbo between receiving and storage.</p>
+                </div>
+                <!-- Card 5: Packing & Shipping -->
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    </div>
+                    <div class="problem-card-station">Packing &amp; Shipping</div>
+                    <h3 class="problem-title">"We Shipped the Wrong One Again"</h3>
+                    <p class="problem-desc">Packing is error-prone without system guidance — wrong items, wrong quantities, missed shipments. Customers get the wrong item, you eat the return cost.</p>
+                </div>
+                <!-- Card 6: Stock Rotation -->
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div class="problem-card-station">Stock Rotation</div>
+                    <h3 class="problem-title">"FIFO? We Try..."</h3>
+                    <p class="problem-desc">First-in-first-out is the rule. Reality: oldest stock hides in the back while new stock gets picked first. Expired inventory discovered too late.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Capabilities Section — wave-section: goods flowing through the warehouse grid -->
-    <section class="capabilities-section" id="capabilities" style="position: relative; overflow: hidden;">
+    <section class="wms-capabilities-section" id="capabilities" style="position: relative; overflow: hidden;">
         <div class="capabilities-inner" style="position: relative; z-index: 2;">
             <div class="section-header">
                 <h2 class="section-title">sFLS: Smart Factory Logistics System</h2>
@@ -767,10 +1147,10 @@
                     </div>
                     <p class="capability-box-desc">System knows exactly where to put it and where to find it. No more searching. No more guessing.</p>
                     <ul class="capability-features">
-                        <li><span class="check">✓</span> Zone/aisle/shelf/bin structure</li>
-                        <li><span class="check">✓</span> Suggested putaway locations based on rules</li>
-                        <li><span class="check">✓</span> Directed picking paths for efficiency</li>
-                        <li><span class="check">✓</span> Visual warehouse maps</li>
+                        <li><span class="check">&#10003;</span> Zone/aisle/shelf/bin structure</li>
+                        <li><span class="check">&#10003;</span> Suggested putaway locations based on rules</li>
+                        <li><span class="check">&#10003;</span> Directed picking paths for efficiency</li>
+                        <li><span class="check">&#10003;</span> Visual warehouse maps</li>
                     </ul>
                 </div>
 
@@ -786,10 +1166,10 @@
                     </div>
                     <p class="capability-box-desc">Scan-based transactions eliminate data entry errors. Every move is recorded. Real-time accuracy.</p>
                     <ul class="capability-features">
-                        <li><span class="check">✓</span> Mobile device support (Android/iOS)</li>
-                        <li><span class="check">✓</span> RFID capability for high-volume</li>
-                        <li><span class="check">✓</span> Real-time inventory updates</li>
-                        <li><span class="check">✓</span> Error prevention with scan validation</li>
+                        <li><span class="check">&#10003;</span> Mobile device support (Android/iOS)</li>
+                        <li><span class="check">&#10003;</span> RFID capability for high-volume</li>
+                        <li><span class="check">&#10003;</span> Real-time inventory updates</li>
+                        <li><span class="check">&#10003;</span> Error prevention with scan validation</li>
                     </ul>
                 </div>
 
@@ -805,10 +1185,10 @@
                     </div>
                     <p class="capability-box-desc">System enforces first-in-first-out or first-expired-first-out. No more expired stock hiding in the back.</p>
                     <ul class="capability-features">
-                        <li><span class="check">✓</span> Lot tracking with receiving dates</li>
-                        <li><span class="check">✓</span> Expiry date management</li>
-                        <li><span class="check">✓</span> Automatic pick sequencing</li>
-                        <li><span class="check">✓</span> Expiry alerts and reports</li>
+                        <li><span class="check">&#10003;</span> Lot tracking with receiving dates</li>
+                        <li><span class="check">&#10003;</span> Expiry date management</li>
+                        <li><span class="check">&#10003;</span> Automatic pick sequencing</li>
+                        <li><span class="check">&#10003;</span> Expiry alerts and reports</li>
                     </ul>
                 </div>
 
@@ -824,56 +1204,305 @@
                     </div>
                     <p class="capability-box-desc">Batch similar orders together. Optimize picker routes. Get more shipments out with the same team.</p>
                     <ul class="capability-features">
-                        <li><span class="check">✓</span> Order batching by criteria</li>
-                        <li><span class="check">✓</span> Route optimization algorithms</li>
-                        <li><span class="check">✓</span> Labor efficiency tracking</li>
-                        <li><span class="check">✓</span> Pick-to-cart and pick-to-pallet</li>
+                        <li><span class="check">&#10003;</span> Order batching by criteria</li>
+                        <li><span class="check">&#10003;</span> Route optimization algorithms</li>
+                        <li><span class="check">&#10003;</span> Labor efficiency tracking</li>
+                        <li><span class="check">&#10003;</span> Pick-to-cart and pick-to-pallet</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Metrics Section — D corner-br: precision in the bottom-right, like a barcode scan point -->
-    <section class="metrics-section" style="position: relative; overflow: hidden;">
-        <!-- Brand: D corner bottom-right — precision tracking, the barcode scan moment -->
+    <!-- Mobile Functions Section — 40+ functions across 4 modules -->
+    <section class="mobile-functions-section" style="position: relative; overflow: hidden;">
         <div class="dw-d-bg dw-d-bg--corner-br dw-d-bg--subtle"></div>
-        <div class="problems-inner" style="position: relative; z-index: 2;">
+        <div class="mobile-functions-inner" style="position: relative; z-index: 2;">
             <div class="section-header">
-                <h2 class="section-title">What WMS Delivers</h2>
-                <p class="section-subtitle">Measurable improvements across your warehouse operation</p>
+                <h2 class="section-title">40+ Mobile Functions in Your Pocket</h2>
+                <p class="section-subtitle">Every warehouse operation — from receiving dock to shipping door — runs on a mobile device.</p>
             </div>
 
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-icon">
-                        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <div class="mobile-modules-grid">
+                <!-- Purchase Module -->
+                <div class="mobile-module mobile-module--blue">
+                    <div class="mobile-module-header">
+                        <div class="mobile-module-icon mobile-module-icon--blue">
+                            <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                        </div>
+                        <div>
+                            <div class="mobile-module-name">Purchase</div>
+                            <div class="mobile-module-count">6 Functions</div>
+                        </div>
                     </div>
-                    <h3 class="metric-title">99%+ Accuracy</h3>
-                    <p class="metric-desc">System matches physical. No more surprises at audit time.</p>
+                    <ul class="mobile-function-list">
+                        <li>PO Receipt</li>
+                        <li>Supplier Label Scan</li>
+                        <li>QC Entry</li>
+                        <li>Put-Away</li>
+                        <li>Returns Processing</li>
+                        <li>GRN Generation</li>
+                    </ul>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-icon">
-                        <svg aria-hidden="true" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+
+                <!-- Production Module -->
+                <div class="mobile-module mobile-module--green">
+                    <div class="mobile-module-header">
+                        <div class="mobile-module-icon mobile-module-icon--green">
+                            <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        </div>
+                        <div>
+                            <div class="mobile-module-name">Production</div>
+                            <div class="mobile-module-count">6 Functions</div>
+                        </div>
                     </div>
-                    <h3 class="metric-title">35% Faster Picks</h3>
-                    <p class="metric-desc">Directed paths eliminate searching. More picks per hour.</p>
+                    <ul class="mobile-function-list">
+                        <li>Material Issue</li>
+                        <li>WIP Transfer</li>
+                        <li>Component Scan</li>
+                        <li>Batch Recording</li>
+                        <li>Scrap Entry</li>
+                        <li>Production Receipt</li>
+                    </ul>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-icon">
-                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+
+                <!-- Inventory Module -->
+                <div class="mobile-module mobile-module--amber">
+                    <div class="mobile-module-header">
+                        <div class="mobile-module-icon mobile-module-icon--amber">
+                            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                        </div>
+                        <div>
+                            <div class="mobile-module-name">Inventory</div>
+                            <div class="mobile-module-count">9 Functions</div>
+                        </div>
                     </div>
-                    <h3 class="metric-title">-80% Errors</h3>
-                    <p class="metric-desc">Scan validation catches mistakes before they ship.</p>
+                    <ul class="mobile-function-list">
+                        <li>Stock Count</li>
+                        <li>Cycle Count</li>
+                        <li>Location Transfer</li>
+                        <li>Lot Adjustment</li>
+                        <li>Shelf Life Check</li>
+                        <li>Min/Max Alert</li>
+                        <li>Label Print</li>
+                        <li>Consolidation</li>
+                        <li>Physical Inventory</li>
+                    </ul>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-icon">
-                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+
+                <!-- Sales Module -->
+                <div class="mobile-module mobile-module--coral">
+                    <div class="mobile-module-header">
+                        <div class="mobile-module-icon mobile-module-icon--coral">
+                            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+                        </div>
+                        <div>
+                            <div class="mobile-module-name">Sales</div>
+                            <div class="mobile-module-count">7 Functions</div>
+                        </div>
                     </div>
-                    <h3 class="metric-title">+20% Capacity</h3>
-                    <p class="metric-desc">Smart putaway maximizes your warehouse capacity.</p>
+                    <ul class="mobile-function-list">
+                        <li>Pick Order</li>
+                        <li>Wave Pick</li>
+                        <li>Pack Verify</li>
+                        <li>Ship Confirm</li>
+                        <li>BOL Generation</li>
+                        <li>Customer Label</li>
+                        <li>Returns Receipt</li>
+                    </ul>
                 </div>
             </div>
+
+            <p class="mobile-functions-footer">40+ functions — every warehouse operation in your pocket.</p>
+        </div>
+    </section>
+
+    <!-- Three-Stream Process Flow — End-to-End Warehouse Coverage -->
+    <section class="process-flow-section" style="position: relative; overflow: hidden;">
+        <div class="process-flow-inner" style="position: relative; z-index: 2;">
+            <div class="section-header">
+                <h2 class="section-title">End-to-End Warehouse Coverage</h2>
+                <p class="section-subtitle">sFLS manages every material movement — from dock to floor to door.</p>
+            </div>
+
+            <div class="process-streams">
+                <!-- Inbound Stream -->
+                <div class="process-stream process-stream--blue">
+                    <div class="process-stream-badge process-stream-badge--blue">Inbound</div>
+                    <div class="process-stream-steps">
+                        <div class="process-stream-step">Purchase</div>
+                        <span class="process-stream-arrow" aria-hidden="true">&rarr;</span>
+                        <div class="process-stream-step">Check &amp; Accept</div>
+                        <span class="process-stream-arrow" aria-hidden="true">&rarr;</span>
+                        <div class="process-stream-step">IQC</div>
+                        <span class="process-stream-arrow" aria-hidden="true">&rarr;</span>
+                        <div class="process-stream-step">Stock In</div>
+                        <span class="process-stream-arrow" aria-hidden="true">&rarr;</span>
+                        <div class="process-stream-step">Shelf Assignment</div>
+                    </div>
+                </div>
+
+                <!-- Production Stream -->
+                <div class="process-stream process-stream--green">
+                    <div class="process-stream-badge process-stream-badge--green">Production</div>
+                    <div class="process-stream-steps">
+                        <div class="process-stream-step">Work Order</div>
+                        <span class="process-stream-arrow" aria-hidden="true">&rarr;</span>
+                        <div class="process-stream-step">Requisition</div>
+                        <span class="process-stream-arrow" aria-hidden="true">&rarr;</span>
+                        <div class="process-stream-step">Picking</div>
+                        <span class="process-stream-arrow" aria-hidden="true">&rarr;</span>
+                        <div class="process-stream-step">Reporting</div>
+                        <span class="process-stream-arrow" aria-hidden="true">&rarr;</span>
+                        <div class="process-stream-step">Stock In</div>
+                        <span class="process-stream-arrow" aria-hidden="true">&rarr;</span>
+                        <div class="process-stream-step">Transfer</div>
+                    </div>
+                </div>
+
+                <!-- Outbound Stream -->
+                <div class="process-stream process-stream--amber">
+                    <div class="process-stream-badge process-stream-badge--amber">Outbound</div>
+                    <div class="process-stream-steps">
+                        <div class="process-stream-step">Order Received</div>
+                        <span class="process-stream-arrow" aria-hidden="true">&rarr;</span>
+                        <div class="process-stream-step">Pick</div>
+                        <span class="process-stream-arrow" aria-hidden="true">&rarr;</span>
+                        <div class="process-stream-step">OQC</div>
+                        <span class="process-stream-arrow" aria-hidden="true">&rarr;</span>
+                        <div class="process-stream-step">Stock Out</div>
+                        <span class="process-stream-arrow" aria-hidden="true">&rarr;</span>
+                        <div class="process-stream-step">Delivery</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After Transformation Section -->
+    <section class="transformation-section" style="position: relative; overflow: hidden;">
+        <div class="dw-d-bg dw-d-bg--corner-br dw-d-bg--subtle"></div>
+        <div class="transformation-inner" style="position: relative; z-index: 2;">
+            <div class="section-header">
+                <h2 class="section-title">What Changes When sFLS Goes Live</h2>
+                <p class="section-subtitle">Process by process, the transformation is measurable.</p>
+            </div>
+
+            <!-- Before/After Comparison Table -->
+            <table class="transformation-table">
+                <caption class="sr-only">Before and after comparison of warehouse processes with sFLS implementation</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Process</th>
+                        <th scope="col">Before (Manual)</th>
+                        <th scope="col">After (sFLS)</th>
+                        <th scope="col">Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-process">Purchase Receipt</td>
+                        <td class="col-before">Manually key in each order — over 8 minutes per receipt</td>
+                        <td class="col-after">Scan code &rarr; real-time ERP update &rarr; EKanBan instant push</td>
+                        <td class="col-improvement">7 &rarr; 3 steps</td>
+                    </tr>
+                    <tr>
+                        <td class="col-process">Material Picking</td>
+                        <td class="col-before">Manual selection — wrong parts, high loss rate</td>
+                        <td class="col-after">Auto-generated pick docs by work order — zero errors via scan</td>
+                        <td class="col-improvement">Near-zero errors</td>
+                    </tr>
+                    <tr>
+                        <td class="col-process">Stock In</td>
+                        <td class="col-before">Manual warehousing — over 10 minutes, labor-intensive</td>
+                        <td class="col-after">Directed putaway — significantly reduced operating time</td>
+                        <td class="col-improvement">Major time savings</td>
+                    </tr>
+                    <tr>
+                        <td class="col-process">Stock Out</td>
+                        <td class="col-before">Long shipment prep — affects on-time delivery</td>
+                        <td class="col-after">Optimized picks &rarr; shorter shipment time &rarr; better OTD rate</td>
+                        <td class="col-improvement">Better OTD</td>
+                    </tr>
+                    <tr>
+                        <td class="col-process">Inventory Count</td>
+                        <td class="col-before">Team works overtime, manual ID is error-prone</td>
+                        <td class="col-after">Full count in hours, error rate nearly zero</td>
+                        <td class="col-improvement">5 &rarr; 3 steps</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Step Reduction Stories -->
+            <div class="step-reduction-grid">
+                <!-- Receiving: 7 → 3 -->
+                <div class="step-reduction-card">
+                    <div class="step-reduction-header">
+                        <div class="step-reduction-title">Receiving Process</div>
+                        <div class="step-reduction-numbers">
+                            <span class="step-number step-number--before">7</span>
+                            <span class="step-number-arrow" aria-hidden="true">&rarr;</span>
+                            <span class="step-number step-number--after">3</span>
+                        </div>
+                    </div>
+                    <div class="step-reduction-columns">
+                        <div>
+                            <div class="step-col-label step-col-label--before">Before</div>
+                            <ol class="step-list step-list--before">
+                                <li>PO check</li>
+                                <li>Print out</li>
+                                <li>Unloading area</li>
+                                <li>Counting</li>
+                                <li>Recording</li>
+                                <li>Key-in data</li>
+                                <li>Create delivery note</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <div class="step-col-label step-col-label--after">After</div>
+                            <ol class="step-list step-list--after">
+                                <li><span class="check">&#10003;</span> PO check by app</li>
+                                <li><span class="check">&#10003;</span> Counting</li>
+                                <li><span class="check">&#10003;</span> Record by app <em>(delivery note auto-created)</em></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inventory: 5 → 3 -->
+                <div class="step-reduction-card">
+                    <div class="step-reduction-header">
+                        <div class="step-reduction-title">Inventory Process</div>
+                        <div class="step-reduction-numbers">
+                            <span class="step-number step-number--before">5</span>
+                            <span class="step-number-arrow" aria-hidden="true">&rarr;</span>
+                            <span class="step-number step-number--after">3</span>
+                        </div>
+                    </div>
+                    <div class="step-reduction-columns">
+                        <div>
+                            <div class="step-col-label step-col-label--before">Before</div>
+                            <ol class="step-list step-list--before">
+                                <li>Inventory plan</li>
+                                <li>Print paper count cards</li>
+                                <li>Physical count</li>
+                                <li>Record quantity</li>
+                                <li>Accounting adjustment</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <div class="step-col-label step-col-label--after">After</div>
+                            <ol class="step-list step-list--after">
+                                <li><span class="check">&#10003;</span> Inventory plan</li>
+                                <li><span class="check">&#10003;</span> Intelligent logistics inventory</li>
+                                <li><span class="check">&#10003;</span> Accounting adjustment</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="transformation-source">Based on DigiWin WMS implementations across manufacturing and distribution operations</p>
         </div>
     </section>
 
@@ -892,21 +1521,21 @@
                     </div>
                     <div class="integration-node-name">ERP</div>
                 </div>
-                <div class="integration-arrow">↔</div>
+                <div class="integration-arrow">&harr;</div>
                 <div class="integration-node">
                     <div class="integration-node-icon">
                         <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>
                     </div>
                     <div class="integration-node-name">MES</div>
                 </div>
-                <div class="integration-arrow">↔</div>
+                <div class="integration-arrow">&harr;</div>
                 <div class="integration-node active">
                     <div class="integration-node-icon">
                         <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
                     </div>
                     <div class="integration-node-name">WMS</div>
                 </div>
-                <div class="integration-arrow">↔</div>
+                <div class="integration-arrow">&harr;</div>
                 <div class="integration-node">
                     <div class="integration-node-icon">
                         <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
@@ -920,43 +1549,43 @@
             </div>
 
             <div class="integration-links">
-                <a href="erp.html" class="integration-link">Explore ERP →</a>
-                <a href="mes.html" class="integration-link">Explore MES →</a>
-                <a href="aiot.html" class="integration-link">Explore AIoT →</a>
+                <a href="erp.html" class="integration-link">Explore ERP &rarr;</a>
+                <a href="mes.html" class="integration-link">Explore MES &rarr;</a>
+                <a href="aiot.html" class="integration-link">Explore AIoT &rarr;</a>
             </div>
         </div>
     </section>
 
 <section class="dw-section" style="padding: 60px 0; background: #f8fafc;">
   <div style="max-width: 800px; margin: 0 auto; padding: 0 24px;">
-    <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 28px; font-weight: 700; color: #000864; margin-bottom: 32px; text-align: center;">Frequently Asked Questions</h2>
+    <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 28px; font-weight: 700; color: var(--dw-navy, #000864); margin-bottom: 32px; text-align: center;">Frequently Asked Questions</h2>
     <div style="display: flex; flex-direction: column; gap: 12px;">
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What is a Warehouse Management System (WMS)?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: var(--dw-navy, #000864); padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What is a Warehouse Management System (WMS)?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
           <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">A Warehouse Management System (WMS) is software that controls and optimizes warehouse operations — from receiving and putaway to picking, packing, and shipping. Unlike distribution-focused WMS solutions, DigiWin WMS (sFLS) is designed specifically for manufacturing warehouses, handling raw materials, WIP inventory, and finished goods with production-linked workflows.</p>
         </div>
       </details>
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How is DigiWin WMS different from generic WMS solutions?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: var(--dw-navy, #000864); padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How is DigiWin WMS different from generic WMS solutions?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
           <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">DigiWin WMS (sFLS) is built for manufacturing, not distribution. It includes production material kitting, shop floor delivery integration, WIP location tracking, and quality hold management — features that generic WMS solutions designed for e-commerce fulfillment simply don't offer. It also shares one database with DigiWin ERP and MES, eliminating integration complexity.</p>
         </div>
       </details>
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">Can DigiWin WMS work with my existing ERP?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: var(--dw-navy, #000864); padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">Can DigiWin WMS work with my existing ERP?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
           <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">Yes. DigiWin WMS can operate standalone or integrate with any existing ERP system via standard APIs. It works natively with DigiWin ERP (T100/iGP) through a shared database, but also connects to SAP, Oracle, and other ERP platforms for inventory synchronization and order management.</p>
         </div>
       </details>
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What hardware do I need for DigiWin WMS?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: var(--dw-navy, #000864); padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What hardware do I need for DigiWin WMS?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
           <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">DigiWin WMS works with standard Android or iOS mobile devices for barcode scanning, plus optional RFID readers for high-volume environments. You will need barcode label printers for location and item labeling. The system runs on standard server infrastructure or cloud deployment — no specialized hardware beyond mobile scanners is required.</p>
         </div>
       </details>
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How long does WMS implementation take?<span style="font-size: 20px; color: #00AFF0; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
+        <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: var(--dw-navy, #000864); padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How long does WMS implementation take?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
           <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">A typical DigiWin WMS implementation takes 2–4 months, depending on warehouse complexity and the number of locations. Basic implementations with core receiving, putaway, and picking can go live in as little as 6 weeks. The phased approach lets you start with high-impact areas and expand coverage over time.</p>
         </div>

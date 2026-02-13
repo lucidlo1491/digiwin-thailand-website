@@ -1,0 +1,268 @@
+{
+  "_meta": {
+    "purpose": "Machine-readable source of truth for all facts on the DigiWin Thailand website. fact-check.js validates all built HTML against this registry.",
+    "last_updated": "2026-02-13",
+    "rules": [
+      "Every stat, product name, client name, and acronym on the website must exist here.",
+      "If it's not in this file, it should not be on the website.",
+      "Add new entries WITH a source before using them in content."
+    ]
+  },
+
+  "product_terminology": {
+    "correct_names": {
+      "MES": "Manufacturing Execution System",
+      "SFT": "Shop Floor Tracking",
+      "sFLS": "Smart Factory Logistics System",
+      "WMS": "Warehouse Management System",
+      "ERP": "Enterprise Resource Planning",
+      "T100": "T100 ERP (enterprise-scale)",
+      "iGP": "Workflow ERP iGP (mid-size)",
+      "AIoT": "Artificial Intelligence of Things",
+      "APS": "Advanced Planning & Scheduling",
+      "OEE": "Overall Equipment Effectiveness",
+      "BOM": "Bill of Materials",
+      "MRP": "Material Requirements Planning",
+      "LRP": "Lot Requirements Planning",
+      "BOI": "Board of Investment",
+      "IATF 16949": "Automotive quality management standard",
+      "PPAP": "Production Part Approval Process"
+    },
+    "blocklist": {
+      "Smart Factory Transparency": "WRONG. SFT = Shop Floor Tracking. Fabricated Feb 13, 2026.",
+      "sMES": "NOT PUBLIC. Real internal product (discrete manufacturing MES), but website uses 'MES' generically per D31. Do not differentiate variants publicly.",
+      "eMES": "NOT PUBLIC. Real internal product (PCB manufacturing MES), still in development/learning phase with implementation team. Not ready for market. Use 'MES' generically.",
+      "iMES": "NOT PUBLIC. Real internal product (process manufacturing MES). Use 'MES' generically.",
+      "Book a Demo": "PROHIBITED. DigiWin Thailand does not offer demos. Use 'Let's Talk' or 'Get in Touch'.",
+      "Request Demo": "PROHIBITED. Same as above.",
+      "Request a Demo": "PROHIBITED. Same as above."
+    }
+  },
+
+  "company_facts": {
+    "founded": {
+      "value": "1982",
+      "source": "official-site-intelligence.md, data-crosscheck-findings.md",
+      "note": "Founded as 'Data System' in Taiwan. NOT 1980."
+    },
+    "employees": {
+      "value": "5,500+",
+      "source": "official-site-intelligence.md (About Us page)",
+      "note": "Use 5,500+ not 4,000+ (homepage was outdated)"
+    },
+    "r_and_d_engineers": {
+      "value": "1,600+",
+      "source": "official-site-intelligence.md (About Us page)",
+      "note": "Updated from 1,300+ (Feb 2026). 1,300+ was 24% of old workforce count."
+    },
+    "consultants": {
+      "value": "1,800+",
+      "source": "official-site-intelligence.md (About Us page)",
+      "note": "Implementation/consulting staff"
+    },
+    "total_clients": {
+      "value": "50,000+",
+      "source": "official-site-intelligence.md, data-crosscheck-findings.md",
+      "note": "Cumulative, Taiwan + China primarily. Not 'global' in traditional sense."
+    },
+    "offices": {
+      "value": "43",
+      "source": "official-site-intelligence.md (About Us page)",
+      "note": "Updated from 40+. Branches worldwide."
+    },
+    "thailand_implementations": {
+      "value": "100+",
+      "source": "data-crosscheck-findings.md",
+      "note": "Soft number, consistent across docs"
+    },
+    "stock_code": {
+      "value": "300378",
+      "source": "data-crosscheck-findings.md",
+      "note": "Shenzhen ChiNext, listed Jan 27, 2014. NOT 2008 (that was Taiwan delisting)."
+    },
+    "shenzhen_listing_year": {
+      "value": "2014",
+      "source": "data-crosscheck-findings.md",
+      "note": "Jan 27, 2014. 2008 was Taiwan DELISTING."
+    },
+    "thailand_entry": {
+      "value": "2019",
+      "source": "data-crosscheck-findings.md",
+      "note": "Formally registered. Market research since 2017."
+    },
+    "se_asia_entry": {
+      "value": "2008",
+      "source": "data-crosscheck-findings.md",
+      "note": "Via Vietnam"
+    },
+    "renewal_rate": {
+      "value": "95%",
+      "source": "data-crosscheck-findings.md",
+      "note": "MA-specific, single-year 2024→2025. Must include qualifier."
+    },
+    "ai_agents": {
+      "value": "168",
+      "source": "VP speech (not independently verified)",
+      "note": "Use '100+' as safer alternative per data-crosscheck-findings.md"
+    },
+    "operational_sops": {
+      "value": "68",
+      "source": "VP speech",
+      "note": "Operational SOPs"
+    },
+    "years_in_business": {
+      "value": "44",
+      "source": "2026 - 1982 = 44",
+      "note": "Dynamic: current year minus 1982"
+    }
+  },
+
+  "third_party_stats": {
+    "common_wealth_top_2000": {
+      "value": "80%",
+      "qualifier": "of Taiwan's Top 2,000 manufacturers use DigiWin solutions",
+      "source": "Common Wealth Magazine, 2023",
+      "source_doc": "official-site-intelligence.md section 3"
+    },
+    "common_wealth_market_share": {
+      "value": "54%",
+      "qualifier": "solutions market share in Taiwan's manufacturing ERP sector",
+      "source": "Common Wealth Magazine, 2023",
+      "source_doc": "official-site-intelligence.md section 3"
+    },
+    "common_wealth_ipo": {
+      "value": "77%",
+      "qualifier": "of Taiwan Stock Exchange IPO companies are DigiWin clients",
+      "source": "Common Wealth Magazine, 2023 (2,349 IPO companies)",
+      "source_doc": "official-site-intelligence.md section 3"
+    },
+    "manufacturing_ipo_adoption": {
+      "value": "84%",
+      "qualifier": "of manufacturing IPO companies",
+      "source": "Common Wealth Magazine, 2023",
+      "source_doc": "official-site-intelligence.md section 3"
+    },
+    "taiwan_market_share_vp": {
+      "value": "72-75%",
+      "qualifier": "Taiwan listed manufacturer market share",
+      "source": "VP estimate, Jan 2026",
+      "source_doc": "data-crosscheck-findings.md",
+      "note": "VP's own estimate, not third-party verified"
+    }
+  },
+
+  "product_metrics": {
+    "mes": {
+      "cycle_time_reduction": { "value": "-45%", "qualifier": "production cycle time", "source": "official DigiWin implementation data" },
+      "quality_failure_reduction": { "value": "-70%", "qualifier": "quality failure rate", "source": "official DigiWin implementation data" },
+      "efficiency_improvement": { "value": "+26%", "qualifier": "operational efficiency", "source": "official DigiWin implementation data" }
+    },
+    "sft": {
+      "production_transparency": { "value": "92%", "source": "official DigiWin implementation data" },
+      "on_time_delivery": { "value": "86%", "source": "official DigiWin implementation data" },
+      "customer_satisfaction": { "value": "76%", "qualifier": "improvement", "source": "official DigiWin implementation data" }
+    },
+    "automotive": {
+      "r_and_d_cycle": { "value": "-30%", "source": "official-site-intelligence.md section 2" },
+      "otd_improvement": { "value": "+35%", "source": "official-site-intelligence.md section 2" },
+      "inventory_reduction": { "value": "30-60%", "source": "official-site-intelligence.md section 2" },
+      "quality_traceability": { "value": "100%", "source": "official-site-intelligence.md section 2" },
+      "quality_loss_reduction": { "value": "-50%", "source": "official-site-intelligence.md section 2" },
+      "production_efficiency": { "value": "+25%", "source": "official-site-intelligence.md section 2" },
+      "cost_reduction": { "value": "15%+", "source": "official-site-intelligence.md section 2" },
+      "oee_improvement": { "value": "60%→80%+", "source": "official-site-intelligence.md section 2" }
+    }
+  },
+
+  "verified_clients": {
+    "thai_confirmed": [
+      "Thai Alpha Polymer",
+      "Thai Hosheng Packing",
+      "Hoo Chin Electronics",
+      "Taiyo Fastener Thailand",
+      "DIMET (SIAM)",
+      "Lotus Pack",
+      "Mr. Ken",
+      "SRANG SERN",
+      "MUFU Technologies"
+    ],
+    "asia_confirmed": [
+      "Ginfong Precision",
+      "De Poen Pneumatic",
+      "Zhejiang Yahu",
+      "Ningbo GREAT",
+      "Wieson Automotive"
+    ],
+    "NOT_confirmed_clients": {
+      "note": "These are OEM brands, NOT DigiWin clients. Never imply a client relationship.",
+      "names": [
+        "Toyota", "Honda", "Nissan", "Isuzu", "Denso",
+        "Mitsubishi", "Mazda", "Suzuki", "BMW", "Mercedes",
+        "Ford", "GM", "Volkswagen", "Hyundai", "Kia"
+      ]
+    }
+  },
+
+  "case_study_metrics": {
+    "ginfong": {
+      "company": "Ginfong Precision",
+      "industry": "Metal stamping",
+      "products": "ERP + SFT",
+      "gross_margin": "23% → 34%",
+      "revenue_growth": "+200%",
+      "context": "During COVID period",
+      "source": "official-site-intelligence.md section 1"
+    },
+    "thai_alpha": {
+      "company": "Thai Alpha Polymer",
+      "industry": "PET plastic rolls",
+      "products": "Workflow ERP + WMS",
+      "stock_accuracy": "95%",
+      "closing_time": "60 → 15 days",
+      "source": "official-site-intelligence.md section 1"
+    },
+    "thai_hosheng": {
+      "company": "Thai Hosheng Packing",
+      "industry": "Packaging",
+      "products": "Workflow ERP + WMS + SFT",
+      "stock_accuracy": "90%",
+      "closing_time": "90 → 15 days",
+      "otd": "80%",
+      "source": "official-site-intelligence.md section 1"
+    }
+  },
+
+  "boi_enforcement": {
+    "source": "DigiWin January 28, 2026 BOI compliance webinar",
+    "source_doc": "official-site-intelligence.md section 7",
+    "focus_areas": [
+      "Double bookkeeping detection",
+      "Inventory book-physical mismatch",
+      "BOI / non-BOI filing confusion",
+      "Tariff recovery & qualification revocation"
+    ],
+    "speakers": {
+      "xu_zhihao": { "chinese": "许智豪", "role": "General Manager" },
+      "lin_haibo": { "chinese": "林海波", "role": "General Manager" },
+      "lin_jianyi": { "chinese": "林建逸", "role": "Consultant Expert" }
+    }
+  },
+
+  "contact": {
+    "current_thai": {
+      "name": "Lawrence Ho",
+      "email": "Lawrenceho@digiwin.com",
+      "phone": "(+66) 089-491-4343"
+    },
+    "current_chinese": {
+      "name": "柴冲 (Chai Chong)",
+      "email": "chaichong@digiwin.com",
+      "phone": "(+66) 094-293-5102"
+    },
+    "office_phone": "(+66) 2136 6785-6",
+    "email": "info@digiwin.co.th",
+    "deprecated": {
+      "huifang_yang": "LEGACY contact. Use Lawrence Ho for Thai inquiries."
+    }
+  }
+}

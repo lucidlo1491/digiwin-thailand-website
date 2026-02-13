@@ -1,0 +1,6 @@
+# DigiWin Thailand - robots.txt
+User-agent: *
+Allow: /
+Disallow: /src/
+
+Sitemap: https://www.digiwin.co.th/sitemap.xml

@@ -118,6 +118,61 @@ function findHtmlFiles(dir, baseDir = dir) {
 }
 
 /**
+ * Generate sitemap.xml from built pages
+ */
+function generateSitemap(pages) {
+    const SITE_URL = 'https://www.digiwin.co.th';
+    const EXCLUDE = new Set(['brand-preview.html', 'vortex-generator.html', 'generate-vortex-canvas.html']);
+
+    // Standalone pages not in src/pages/ but still indexable
+    const STANDALONE_PAGES = ['partner-one-pager.html'];
+
+    function getPriority(relPath) {
+        if (relPath === 'index.html') return '1.0';
+        if (relPath.startsWith('products/') || relPath.startsWith('industries/') ||
+            relPath === 'products.html' || relPath === 'industries.html') return '0.9';
+        if (relPath.startsWith('partner-program') || relPath === 'demo.html' ||
+            relPath === 'partner-one-pager.html') return '0.8';
+        if (relPath === 'privacy-policy.html' || relPath === 'terms.html') return '0.3';
+        return '0.6';
+    }
+
+    function getChangefreq(relPath) {
+        if (relPath === 'index.html' || relPath === 'blog.html' || relPath === 'news.html') return 'weekly';
+        if (relPath === 'privacy-policy.html' || relPath === 'terms.html') return 'yearly';
+        return 'monthly';
+    }
+
+    // Collect all page paths
+    const allPaths = pages
+        .map(p => p.relativePath)
+        .filter(p => !EXCLUDE.has(p));
+
+    // Add standalone pages that exist on disk
+    for (const sp of STANDALONE_PAGES) {
+        if (fs.existsSync(path.join(OUTPUT_DIR, sp))) {
+            allPaths.push(sp);
+        }
+    }
+
+    // Build XML
+    let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+
+    for (const relPath of allPaths) {
+        const loc = relPath === 'index.html'
+            ? `${SITE_URL}/`
+            : `${SITE_URL}/${relPath}`;
+        xml += `  <url><loc>${loc}</loc><changefreq>${getChangefreq(relPath)}</changefreq><priority>${getPriority(relPath)}</priority></url>\n`;
+    }
+
+    xml += '</urlset>\n';
+
+    fs.writeFileSync(path.join(OUTPUT_DIR, 'sitemap.xml'), xml, 'utf8');
+    log('green', '✓', `sitemap.xml (${allPaths.length} URLs)`);
+}
+
+/**
  * Build all pages
  */
 function build() {
@@ -168,6 +223,11 @@ function build() {
 
     const elapsed = Date.now() - startTime;
     console.log('');
+
+    // Generate sitemap after successful build
+    if (errorCount === 0) {
+        generateSitemap(pages);
+    }
 
     if (errorCount === 0) {
         log('green', '✓', `Built ${successCount} pages in ${elapsed}ms`);

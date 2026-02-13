@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
     <link rel="icon" type="image/svg+xml" href="{{basePath}}assets/digiwin-d-mark.svg">
     <link rel="canonical" href="https://www.digiwin.co.th/products/erp.html">
     <style>
@@ -1259,6 +1260,14 @@
   "description": "Manufacturing-specific ERP system for Thai factories. T100 for enterprise-scale multi-site operations, iGP for growing single-site manufacturers. Financial control, BOM management, MRP planning, and production traceability.",
   "operatingSystem": "Web-based",
   "url": "https://www.digiwin.co.th/products/erp.html",
+  "featureList": "Financial management, BOM management, MRP planning, Production traceability, Multi-site operations, Thai tax & WHT compliance, BOI reporting, e-Tax integration, Inventory control, Purchase management",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "THB",
+    "description": "Contact for pricing",
+    "url": "https://www.digiwin.co.th/demo.html"
+  },
   "provider": {
     "@type": "Organization",
     "name": "DigiWin Thailand",
@@ -1290,12 +1299,12 @@
     {
       "@type": "Question",
       "name": "Is DigiWin ERP certified for Thai tax and BOI compliance?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Yes. DigiWin ERP is certified by the Thai Revenue Department and includes built-in withholding tax workflows, VAT handling, and BOI compliance features. Our production-order-level reconciliation has helped manufacturers eliminate supplementary tax penalties entirely."}
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. DigiWin ERP is certified by the Thai Revenue Department for e-Tax filing and includes built-in withholding tax (WHT) workflows, VAT handling, and BOI (Board of Investment) compliance features. The system tracks actual material consumption at the production order level so your BOI reports match what auditors expect. One customer eliminated over 10 million THB per year in supplementary tax penalties."}
     },
     {
       "@type": "Question",
       "name": "How long does a DigiWin ERP implementation take?",
-      "acceptedAnswer": {"@type": "Answer", "text": "iGP implementations typically take 3–6 months. T100 enterprise implementations take 6–9 months, significantly faster than comparable enterprise ERPs thanks to DigiWin's pre-built manufacturing templates."}
+      "acceptedAnswer": {"@type": "Answer", "text": "iGP implementations typically take 3–6 months for a single-site factory. T100 enterprise implementations take 6–9 months for multi-site operations, significantly faster than comparable enterprise ERPs (often 12–18 months). This speed comes from DigiWin's pre-built manufacturing templates refined across 50,000+ factory deployments and 44 years of process knowledge."}
     },
     {
       "@type": "Question",
@@ -1349,7 +1358,7 @@
             <div class="erp-hero-content">
                 <div class="erp-hero-badge">Core System • ERP</div>
                 <h1>Your Finance Team Deserves Better Than <span class="highlight">Month-End Surprises</span></h1>
-                <p class="erp-hero-subtitle">Real-time cost visibility. Accurate BOMs. Inventory that matches reality. ERP designed for how manufacturing actually works—not how accountants imagine it does.</p>
+                <p class="erp-hero-subtitle">Real-time cost visibility. Accurate Bills of Materials. Inventory that matches reality. ERP designed for how manufacturing actually works—not how accountants imagine it does.</p>
                 <div class="erp-hero-ctas">
                     <a href="{{basePath}}demo.html" class="btn-white">Let's Talk</a>
                     <a href="#products" class="btn-outline-white">Compare T100 vs iGP</a>
@@ -1415,8 +1424,9 @@
 
 <section class="dw-section" style="padding: 40px 0 0; text-align: center;">
   <div style="max-width: 800px; margin: 0 auto; padding: 0 24px;">
+    <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 22px; font-weight: 700; color: var(--dw-navy, #000864); margin-bottom: 12px;">What is ERP (Enterprise Resource Planning)?</h2>
     <p style="font-family: 'Noto Sans', sans-serif; font-size: 17px; line-height: 1.7; color: #333;">
-      <strong>DigiWin ERP</strong> is a manufacturing-specific Enterprise Resource Planning system born from 44 years of serving factories across Taiwan, China, and Southeast Asia — regions where manufacturing isn't just an industry, it's the backbone of the economy. Available in two editions — <strong>T100</strong> for enterprise-scale multi-site operations (200+ employees) and <strong>iGP</strong> for growing single-site manufacturers (20–200 employees) — it provides real-time financial control, BOM management, MRP/LRP planning, quality management, and complete production traceability. Backed by 50,000+ factory clients and 1,600+ R&amp;D engineers, DigiWin is the most widely deployed manufacturing ERP in Greater China and the ASEAN Chinese-enterprise segment — now expanding to serve Thai manufacturers directly.
+      <strong>DigiWin ERP</strong> is a manufacturing-specific Enterprise Resource Planning system born from 44 years of serving factories across Taiwan, China, and Southeast Asia — regions where manufacturing isn't just an industry, it's the backbone of the economy. Available in two editions — <strong>T100</strong> for enterprise-scale multi-site operations (200+ employees) and <strong>iGP</strong> for growing single-site manufacturers (20–200 employees) — it provides real-time financial control, BOM (Bill of Materials) management, MRP (Material Requirements Planning) and LRP (Lot Requirements Planning), quality management, and complete production traceability. Backed by 50,000+ factory clients and 1,500+ R&amp;D engineers, DigiWin is the most widely deployed manufacturing ERP in Greater China and Southeast Asia — now serving Thai manufacturers directly with a full local team.
     </p>
   </div>
 </section>
@@ -1461,7 +1471,7 @@
                     <div class="pain-card-solution">
                         <p class="pain-card-label solution">DigiWin Solution</p>
                         <h4 class="pain-card-solution-title">Engineering Change Control</h4>
-                        <p class="pain-card-desc">ECN workflow ensures changes are captured before production. MRP always runs against current, approved BOMs.</p>
+                        <p class="pain-card-desc">Engineering Change Notice (ECN) workflow ensures changes are captured before production. MRP always runs against current, approved BOMs.</p>
                     </div>
                 </div>
 
@@ -1533,10 +1543,10 @@
                         <ul class="product-features">
                             <li><span class="check-icon"><svg aria-hidden="true" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Multi-company consolidation</li>
                             <li><span class="check-icon"><svg aria-hidden="true" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Advanced financial reporting</li>
-                            <li><span class="check-icon"><svg aria-hidden="true" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Complex BOM with ECN</li>
+                            <li><span class="check-icon"><svg aria-hidden="true" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Complex BOM with engineering change control</li>
                             <li><span class="check-icon"><svg aria-hidden="true" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Enterprise workflow engine</li>
-                            <li><span class="check-icon"><svg aria-hidden="true" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Advanced MRP/APS</li>
-                            <li><span class="check-icon"><svg aria-hidden="true" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> BI suite included</li>
+                            <li><span class="check-icon"><svg aria-hidden="true" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Advanced MRP &amp; production scheduling</li>
+                            <li><span class="check-icon"><svg aria-hidden="true" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></span> Business intelligence dashboards included</li>
                         </ul>
                         <div class="product-best-for">
                             <div class="product-best-for-label">Best For</div>
@@ -1550,7 +1560,7 @@
                             </div>
                             <div>
                                 <h4 class="erp-trust-title">Your Data Belongs to You</h4>
-                                <p class="erp-trust-body">Full source code transfer included. Your system, your data, your independence — no vendor lock-in, ever. Plus: 3-month go-live target and 24/7 e-Service & e-Learning support.</p>
+                                <p class="erp-trust-body">Full source code transfer included. Your system, your data, your independence — no vendor lock-in, ever. Backed by 24/7 e-Service and e-Learning support.</p>
                             </div>
                         </div>
                     </div>
@@ -1575,11 +1585,11 @@
                         </ul>
                         <div class="product-best-for">
                             <div class="product-best-for-label">Best For</div>
-                            <div class="product-best-for-text">50-200 employees, single site, straightforward operations, moving beyond spreadsheets</div>
+                            <div class="product-best-for-text">20–200 employees, single site, straightforward operations, moving beyond spreadsheets</div>
                         </div>
 
                         <!-- Proven In verticals tag -->
-                        <p class="erp-proven-in">Proven across auto parts, food processing, electronics, machinery, fasteners, rubber & plastics, textiles, and 12+ more manufacturing verticals.</p>
+                        <p class="erp-proven-in">Proven across auto parts, food processing, electronics, machinery, fasteners, rubber &amp; plastics, textiles, and many more manufacturing verticals.</p>
 
                         <!-- ERPII Ecosystem Accordion -->
                         <details class="erp-erpii-accordion">
@@ -1696,14 +1706,14 @@
                         <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8v8M10 8v8M14 8v8M18 8v8"/></svg>
                     </div>
                     <h3 class="capability-title">Production Planning</h3>
-                    <p class="capability-desc">MRP/APS engine. Capacity planning. Work order dispatch. Schedule optimization.</p>
+                    <p class="capability-desc">MRP engine with advanced scheduling. Capacity planning. Work order dispatch. Schedule optimization.</p>
                 </div>
                 <div class="capability-card">
                     <div class="capability-icon">
                         <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
                     </div>
                     <h3 class="capability-title">Quality Management</h3>
-                    <p class="capability-desc">IQC/OQC/IPQC. NCR tracking. CAPA management. SPC integration ready.</p>
+                    <p class="capability-desc">Incoming, outgoing, and in-process quality checks. Non-conformance tracking. Corrective action management. SPC (Statistical Process Control) integration ready.</p>
                 </div>
                 <div class="capability-card">
                     <div class="capability-icon">
@@ -1717,7 +1727,7 @@
                         <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
                     </div>
                     <h3 class="capability-title">Sales & CRM</h3>
-                    <p class="capability-desc">Quotation to order. ATP checking. Customer credit control. Delivery scheduling.</p>
+                    <p class="capability-desc">Quotation to order. Available-to-promise checking. Customer credit control. Delivery scheduling.</p>
                 </div>
                 <div class="capability-card">
                     <div class="capability-icon">
@@ -1742,7 +1752,7 @@
         <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
             <div style="text-align: center; margin-bottom: 60px;">
                 <p style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: #0369a1; margin-bottom: 12px;">What Sets DigiWin Apart</p>
-                <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 40px; font-weight: 700; color: #000864; margin-bottom: 16px;">7 Technical Advantages No Competitor Can Match</h2>
+                <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 40px; font-weight: 700; color: #000864; margin-bottom: 16px;">7 Technical Advantages Built for Real Factories</h2>
                 <p style="font-family: 'Noto Sans', sans-serif; font-size: 18px; color: #666; max-width: 700px; margin: 0 auto;">These aren't minor features — they're fundamental architectural capabilities that address real Thai manufacturing challenges.</p>
             </div>
 
@@ -1760,7 +1770,7 @@
                         </div>
                     </div>
                     <p style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">Capacity planning built directly into the ERP. Schedule production based on actual machine capacity, material availability, and labor constraints — all calculated in one system.</p>
-                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #0369a1; font-weight: 500;">Many enterprise ERP systems require a separate APS purchase for this capability.</p>
+                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #0369a1; font-weight: 500;">Many enterprise ERP systems require a separate advanced planning system (APS) purchase for this capability.</p>
                 </div>
 
                 <!-- 2. Co-Product Accounting -->
@@ -1775,7 +1785,7 @@
                         </div>
                     </div>
                     <p style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">One work order produces multiple outputs with accurate cost allocation per product. Essential for plastics injection, food processing, and chemical manufacturing.</p>
-                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #0369a1; font-weight: 500;">Most competing ERP systems cannot handle native co-product work orders.</p>
+                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #0369a1; font-weight: 500;">Most competing ERP systems cannot handle co-product work orders without costly customization.</p>
                 </div>
 
                 <!-- 3. LRP -->
@@ -1790,7 +1800,7 @@
                         </div>
                     </div>
                     <p style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">Calculate material requirements for a specific production order in under one minute. No waiting hours for a full MRP run to answer "can we accept this order?"</p>
-                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #0369a1; font-weight: 500;">Traditional MRP systems take hours. LRP gives answers in minutes.</p>
+                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #0369a1; font-weight: 500;">Accept or decline orders with confidence — while the customer is still on the phone.</p>
                 </div>
 
                 <!-- 4. Dual Unit Tracking -->
@@ -1820,7 +1830,7 @@
                         </div>
                     </div>
                     <p style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 12px;">Floor supervisors adjust production schedules in real-time, and changes are immediately visible to planning. Bridge the gap between the plan and reality.</p>
-                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #0369a1; font-weight: 500;">No competitor offers this level of bidirectional floor-to-planning visibility.</p>
+                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 14px; color: #0369a1; font-weight: 500;">This bidirectional floor-to-planning visibility is rare in mid-market ERP.</p>
                 </div>
 
                 <!-- 6. Feature Codes -->
@@ -1845,7 +1855,7 @@
                             <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#00AFF0" stroke-width="1.5" style="width: 24px; height: 24px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4" stroke-width="2"/></svg>
                         </div>
                         <div>
-                            <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin: 0;">BOI Reconciliation</h3>
+                            <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 18px; font-weight: 600; color: #000864; margin: 0;">BOI (Board of Investment) Reconciliation</h3>
                             <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #0369a1; text-transform: uppercase; letter-spacing: 0.05em; margin: 2px 0 0;">Production-Order-Level Tracking</p>
                         </div>
                     </div>
@@ -1860,7 +1870,7 @@
                 <div>
                     <p style="font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #00AFF0; margin-bottom: 12px;">Proven Results</p>
                     <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 16px;">From 10M THB/Year to Zero in Supplementary Taxes</h3>
-                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 17px; color: rgba(255,255,255,0.85); line-height: 1.7;">When the BOI board audited one of our clients, DigiWin's production-order-level reconciliation showed exact material consumption — no gaps, no guesswork. The result: supplementary taxes dropped from over 10 million baht annually to zero.</p>
+                    <p style="font-family: 'Noto Sans', sans-serif; font-size: 17px; color: rgba(255,255,255,0.85); line-height: 1.7;">When the BOI audited one of our clients, DigiWin's production-order-level reconciliation showed exact material consumption — no gaps, no guesswork. The result: supplementary taxes dropped from over 10 million baht annually to zero.</p>
                     <a href="{{basePath}}blog/boi-compliance-jin-hai.html" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; font-family: 'Noto Sans', sans-serif; font-size: 15px; font-weight: 500; color: #00AFF0; text-decoration: none;">Read the Full Story <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
                 <div style="text-align: center;">
@@ -1890,19 +1900,19 @@
                 <ol class="boi-enforcement-list">
                     <li>
                         <span class="boi-num">1</span>
-                        <div><strong>Double bookkeeping detection</strong> Separate systems for BOI vs non-BOI transactions are being flagged. Single integrated system eliminates the risk.</div>
+                        <div><strong>Double bookkeeping detection</strong> Separate systems for BOI vs non-BOI transactions are being flagged. A single integrated system eliminates the risk.</div>
                     </li>
                     <li>
                         <span class="boi-num">2</span>
-                        <div><strong>Inventory mismatch audits</strong> Physical vs system stock discrepancies trigger investigations. WMS barcode scanning + cycle counting delivers 95%+ accuracy.</div>
+                        <div><strong>Inventory mismatch audits</strong> Physical vs. system stock discrepancies trigger investigations. WMS barcode scanning and cycle counting deliver 95%+ accuracy.</div>
                     </li>
                     <li>
                         <span class="boi-num">3</span>
-                        <div><strong>BOI/non-BOI transaction filing</strong> Incorrect categorization leads to privilege revocation. Production-order-level tracking separates BOI from non-BOI automatically.</div>
+                        <div><strong>BOI/non-BOI transaction filing</strong> Incorrect categorization can lead to privilege revocation. Production-order-level tracking separates BOI from non-BOI transactions automatically.</div>
                     </li>
                     <li>
                         <span class="boi-num">4</span>
-                        <div><strong>Tariff recovery actions</strong> Retroactive duty collection on non-compliant imports. Full audit trail from receiving to shipping — BOI-ready reports on demand.</div>
+                        <div><strong>Tariff recovery actions</strong> Non-compliant imports face retroactive duty collection. A full audit trail from receiving to shipping gives you BOI-ready reports on demand.</div>
                     </li>
                 </ol>
                 <a href="{{basePath}}blog/boi-compliance-jin-hai.html" class="boi-enforcement-cta">See how DigiWin ERP handles BOI compliance <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
@@ -1919,7 +1929,7 @@
             <div class="integration-header">
                 <p class="integration-label">Beyond the Office Door</p>
                 <h2 class="integration-title">ERP That Reaches the Floor</h2>
-                <p class="integration-subtitle">Unlike generic ERP, DigiWin connects directly to your shop floor operations.</p>
+                <p class="integration-subtitle">Most ERP systems end at the office. DigiWin connects directly to your machines, your warehouse, and your shop floor.</p>
             </div>
 
             <div class="integration-visual">
@@ -1977,25 +1987,25 @@
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
         <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">Is DigiWin ERP certified for Thai tax and BOI compliance?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
-          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">Yes. DigiWin ERP is certified by the Thai Revenue Department and includes built-in withholding tax workflows, VAT handling, and BOI compliance features. Our production-order-level reconciliation has helped manufacturers eliminate supplementary tax penalties entirely — one customer saved over 10 million THB per year.</p>
+          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">Yes. DigiWin ERP is certified by the Thai Revenue Department for e-Tax filing and includes built-in withholding tax (WHT) workflows, VAT handling, and BOI (Board of Investment) compliance features. The system tracks actual material consumption at the production order level — not theoretical BOM calculations — so your BOI reports match what auditors expect. One customer eliminated over 10 million THB per year in supplementary tax penalties after switching to DigiWin.</p>
         </div>
       </details>
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
         <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How long does a DigiWin ERP implementation take?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
-          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">iGP implementations typically take 3–6 months. T100 enterprise implementations take 6–9 months, which is significantly faster than comparable enterprise ERPs (12–18 months) thanks to DigiWin's pre-built manufacturing templates and 44 years of process knowledge.</p>
+          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">iGP implementations typically take 3–6 months for a single-site factory. T100 enterprise implementations take 6–9 months for multi-site operations, which is significantly faster than comparable enterprise ERPs (often 12–18 months). This speed comes from DigiWin's pre-built manufacturing templates refined across 50,000+ factory deployments and 44 years of process knowledge — you're not starting from scratch.</p>
         </div>
       </details>
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
         <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">How does DigiWin ERP compare to SAP, Oracle, or Infor for manufacturing?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
-          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">DigiWin ERP delivers approximately 90% of Tier-1 ERP capability at roughly 70% of the cost. Unlike horizontal ERPs that serve banks, retailers, and hospitals, DigiWin is built exclusively for manufacturing — with native support for BOM management, shop floor scheduling, quality control, and production costing that other ERPs require expensive customization to achieve.</p>
+          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">DigiWin ERP delivers approximately 90% of Tier-1 ERP capability at roughly 70% of the cost, with significantly faster implementation timelines. Unlike horizontal ERPs that serve banks, retailers, and hospitals, DigiWin is built exclusively for manufacturing — with native support for Bill of Materials (BOM) management, shop floor scheduling, quality control, and production costing. These are capabilities that other ERPs typically require expensive customization to achieve, often adding months to the project.</p>
         </div>
       </details>
       <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
         <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">Does DigiWin ERP integrate with MES, WMS, and AIoT?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
         <div style="padding: 0 20px 16px 20px; background: white;">
-          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">Yes. All DigiWin products — ERP, MES (sMES), WMS (sFLS), and AIoT — are built on the same platform with one shared database. This means zero integration tax: production data flows from shop floor machines through MES into ERP financials automatically, with no middleware or manual reconciliation required.</p>
+          <p style="font-family: 'Noto Sans', sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0;">Yes. All DigiWin products — ERP, MES (Manufacturing Execution System), WMS (Warehouse Management System), and AIoT — are built on the same platform with one shared database. This means no integration middleware or manual reconciliation: production data flows from shop floor machines through MES into ERP financials automatically. When you add a module, it connects instantly because it already shares the same data source.</p>
         </div>
       </details>
     </div>

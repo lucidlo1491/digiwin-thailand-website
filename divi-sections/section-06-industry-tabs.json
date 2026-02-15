@@ -1,0 +1,29 @@
+{
+  "data": "[et_pb_section fb_built=\"1\" _builder_version=\"4.27.0\" background_color=\"#ffffff\" custom_padding=\"100px||100px||true|false\" global_colors_info=\"{}\"]\n[et_pb_row _builder_version=\"4.27.0\" max_width=\"1200px\" custom_padding=\"0px||64px||false|false\" global_colors_info=\"{}\"]\n[et_pb_column type=\"4_4\" _builder_version=\"4.27.0\" global_colors_info=\"{}\"]\n[et_pb_text _builder_version=\"4.27.0\" text_font=\"JetBrains Mono|500|||||||\" text_text_color=\"#3798E4\" text_font_size=\"11px\" text_letter_spacing=\"3px\" text_orientation=\"center\" header_2_font=\"Lexend|700|||||||\" header_2_text_color=\"#253B50\" header_2_font_size=\"44px\" header_2_line_height=\"1.15em\" global_colors_info=\"{}\"]\n<p style=\"text-transform: uppercase; margin-bottom: 16px;\">Industry Expertise</p>\n<h2>Built for Your Industry</h2>\n[/et_pb_text]\n[et_pb_text _builder_version=\"4.27.0\" text_font=\"Source Sans 3||||||||\" text_text_color=\"#64748b\" text_font_size=\"18px\" text_line_height=\"1.6em\" text_orientation=\"center\" max_width=\"600px\" module_alignment=\"center\" global_colors_info=\"{}\"]\n<p>We don&rsquo;t just understand manufacturing&mdash;we understand YOUR manufacturing.</p>\n[/et_pb_text]\n[/et_pb_column]\n[/et_pb_row]\n[et_pb_row _builder_version=\"4.27.0\" max_width=\"1200px\" custom_padding=\"0px||0px||false|false\" global_colors_info=\"{}\"]\n[et_pb_column type=\"4_4\" _builder_version=\"4.27.0\" global_colors_info=\"{}\"]\n[et_pb_tabs _builder_version=\"4.27.0\" tab_font=\"Lexend|500|||||||\" tab_text_color=\"#64748b\" tab_font_size=\"14px\" body_font=\"Source Sans 3||||||||\" body_text_color=\"#64748b\" body_font_size=\"17px\" body_line_height=\"1.75em\" active_tab_text_color=\"#253B50\" background_color=\"#ffffff\" border_radii=\"on|24px|24px|24px|24px\" box_shadow_style=\"preset1\" box_shadow_blur=\"48px\" box_shadow_color=\"rgba(0,0,0,0.08)\" global_colors_info=\"{}\"]\n[et_pb_tab title=\"Automotive Parts\" _builder_version=\"4.27.0\" global_colors_info=\"{}\"]\n<h3 style=\"font-family: 'Lexend', sans-serif; font-size: 32px; font-weight: 700; color: #253B50; margin: 0 0 16px 0;\">Automotive Parts Manufacturing</h3>\n<p>Thailand is ASEAN&rsquo;s automotive hub. We understand what tier-1 OEMs demand: perfect traceability, JIT delivery, and EDI integration that works&mdash;every time.</p>\n<ul>\n<li>Toyota/Honda/Denso EDI integration</li>\n<li>IATF 16949 compliance support</li>\n<li>Lot-level traceability for recalls</li>\n<li>Kanban and JIT scheduling</li>\n</ul>\n<p><a href=\"/industries/automotive/\" style=\"display: inline-block; padding: 14px 28px; background: #3798E4; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: 'Lexend', sans-serif; font-weight: 600; font-size: 15px;\">Explore Automotive Solutions</a></p>\n[/et_pb_tab]\n[et_pb_tab title=\"Electronics Assembly\" _builder_version=\"4.27.0\" global_colors_info=\"{}\"]\n<h3 style=\"font-family: 'Lexend', sans-serif; font-size: 32px; font-weight: 700; color: #253B50; margin: 0 0 16px 0;\">Electronics Assembly</h3>\n<p>High-mix, low-volume. Fast product cycles. Thousands of components per board. We built our MES for exactly this complexity.</p>\n<ul>\n<li>SMT machine integration</li>\n<li>Component-level traceability</li>\n<li>MSD (moisture sensitivity) management</li>\n<li>AOI integration and defect tracking</li>\n</ul>\n<p><a href=\"/industries/electronics/\" style=\"display: inline-block; padding: 14px 28px; background: #3798E4; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: 'Lexend', sans-serif; font-weight: 600; font-size: 15px;\">Explore Electronics Solutions</a></p>\n[/et_pb_tab]\n[et_pb_tab title=\"Metal &amp; Plastics\" _builder_version=\"4.27.0\" global_colors_info=\"{}\"]\n<h3 style=\"font-family: 'Lexend', sans-serif; font-size: 32px; font-weight: 700; color: #253B50; margin: 0 0 16px 0;\">Metal &amp; Plastics Processing</h3>\n<p>Stamping, injection molding, CNC machining. Process manufacturing where yield optimization and scrap reduction drive your margins.</p>\n<ul>\n<li>Process parameter monitoring</li>\n<li>Mold/die lifecycle management</li>\n<li>Scrap analysis and reduction</li>\n<li>Cycle time optimization</li>\n</ul>\n<p><a href=\"/industries/metal-plastics/\" style=\"display: inline-block; padding: 14px 28px; background: #3798E4; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: 'Lexend', sans-serif; font-weight: 600; font-size: 15px;\">Explore Metal &amp; Plastics Solutions</a></p>\n[/et_pb_tab]\n[/et_pb_tabs]\n[/et_pb_column]\n[/et_pb_row]\n[/et_pb_section]",
+  "context": "et_builder_layouts",
+  "info": {
+    "name": "DigiWin Homepage - Section 6: Industry Tabs",
+    "description": "Tabbed industry selector with 3 tabs: Automotive Parts, Electronics Assembly, Metal & Plastics. Each tab shows industry title, description, 4 features, and CTA button. Uses native DIVI Tabs module.",
+    "divi_modules_used": [
+      "et_pb_section (white background)",
+      "et_pb_row (header row, tabs row)",
+      "et_pb_text (section label + title, subtitle)",
+      "et_pb_tabs (3 tabs with content)",
+      "et_pb_tab (individual tab content with inline HTML)"
+    ],
+    "colors": {
+      "section_bg": "#ffffff",
+      "tab_text": "#64748b",
+      "active_tab": "#253B50",
+      "title_color": "#253B50",
+      "body_color": "#64748b",
+      "cta_bg": "#3798E4"
+    },
+    "notes": [
+      "SVG illustrations from HTML version are NOT included in tabs",
+      "Tab content uses inline HTML for heading/list/CTA styling",
+      "The HTML version used a 2-column layout (image + text) per tab - DIVI Tabs are single-column, so content is text-only",
+      "Consider using Toggle or separate rows with show/hide if 2-column tab content is needed later"
+    ]
+  }
+}

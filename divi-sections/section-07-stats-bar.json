@@ -1,0 +1,25 @@
+{
+  "data": "[et_pb_section fb_built=\"1\" _builder_version=\"4.27.0\" background_color=\"#253B50\" custom_padding=\"60px||60px||true|false\" global_colors_info=\"{}\"]\n[et_pb_row column_structure=\"1_4,1_4,1_4,1_4\" _builder_version=\"4.27.0\" max_width=\"1200px\" custom_padding=\"0px||0px||false|false\" global_colors_info=\"{}\"]\n[et_pb_column type=\"1_4\" _builder_version=\"4.27.0\" global_colors_info=\"{}\"]\n[et_pb_number_counter title=\"Years Manufacturing Focus\" number=\"44\" percent_sign=\"off\" _builder_version=\"4.27.0\" title_font=\"Source Sans 3||||||||\" title_text_color=\"rgba(255,255,255,0.6)\" title_font_size=\"14px\" number_font=\"Lexend|800|||||||\" number_text_color=\"#ffffff\" number_font_size=\"48px\" number_line_height=\"1.2em\" text_orientation=\"center\" global_colors_info=\"{}\"]\n[/et_pb_number_counter]\n[/et_pb_column]\n[et_pb_column type=\"1_4\" _builder_version=\"4.27.0\" global_colors_info=\"{}\"]\n[et_pb_number_counter title=\"Factories Across Asia\" number=\"50000\" percent_sign=\"off\" _builder_version=\"4.27.0\" title_font=\"Source Sans 3||||||||\" title_text_color=\"rgba(255,255,255,0.6)\" title_font_size=\"14px\" number_font=\"Lexend|800|||||||\" number_text_color=\"#ffffff\" number_font_size=\"48px\" number_line_height=\"1.2em\" text_orientation=\"center\" global_colors_info=\"{}\"]\n[/et_pb_number_counter]\n[/et_pb_column]\n[et_pb_column type=\"1_4\" _builder_version=\"4.27.0\" global_colors_info=\"{}\"]\n[et_pb_number_counter title=\"Thai Implementations\" number=\"100\" percent_sign=\"off\" _builder_version=\"4.27.0\" title_font=\"Source Sans 3||||||||\" title_text_color=\"rgba(255,255,255,0.6)\" title_font_size=\"14px\" number_font=\"Lexend|800|||||||\" number_text_color=\"#ffffff\" number_font_size=\"48px\" number_line_height=\"1.2em\" text_orientation=\"center\" global_colors_info=\"{}\"]\n[/et_pb_number_counter]\n[/et_pb_column]\n[et_pb_column type=\"1_4\" _builder_version=\"4.27.0\" global_colors_info=\"{}\"]\n[et_pb_text _builder_version=\"4.27.0\" text_font=\"Source Sans 3||||||||\" text_text_color=\"rgba(255,255,255,0.6)\" text_font_size=\"14px\" text_orientation=\"center\" global_colors_info=\"{}\"]\n<p style=\"font-family: 'Lexend', sans-serif; font-size: 48px; font-weight: 800; color: #ffffff; line-height: 1.2; margin-bottom: 8px;\">300378</p>\n<p>Shenzhen Stock Exchange</p>\n[/et_pb_text]\n[/et_pb_column]\n[/et_pb_row]\n[/et_pb_section]",
+  "context": "et_builder_layouts",
+  "info": {
+    "name": "DigiWin Homepage - Section 7: Stats Bar",
+    "description": "Full-width dark navy stats bar with 4 key metrics: 44 Years, 50,000+ Factories, 100+ Thai Implementations, 300378 Stock Code. Number counters animate on scroll.",
+    "divi_modules_used": [
+      "et_pb_section (dark navy #253B50)",
+      "et_pb_row (1/4 x4)",
+      "et_pb_number_counter (3 animated counters)",
+      "et_pb_text (stock code - static text, not counter)"
+    ],
+    "colors": {
+      "section_bg": "#253B50",
+      "number_color": "#ffffff",
+      "label_color": "rgba(255,255,255,0.6)"
+    },
+    "notes": [
+      "Stock code 300378 uses Text module (not counter) since it's not a metric to animate",
+      "Number counters animate from 0 to target number on scroll",
+      "Compact section with 60px vertical padding",
+      "This section acts as a visual divider between content sections"
+    ]
+  }
+}

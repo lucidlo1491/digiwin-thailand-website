@@ -1,5 +1,9 @@
 # Large binary files
 Digwin Brand Guidelines.pdf
+*.geojson
+
+# Screenshots (too large for git)
+screenshots/
 
 # OS files
 .DS_Store
@@ -12,3 +16,12 @@ node_modules/
 .vscode/
 *.swp
 *.swo
+
+# Tool working directories
+.agent/
+.agents/
+.playwright-mcp/
+
+# Debug output
+complete_website/map-svg-*.txt
+complete_website/generate-vortex.js

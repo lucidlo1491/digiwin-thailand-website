@@ -1,0 +1,29 @@
+{
+  "data": "[et_pb_section fb_built=\"1\" _builder_version=\"4.27.0\" background_enable_color=\"on\" background_color=\"#253B50\" background_enable_image=\"off\" custom_padding=\"100px||100px||true|false\" global_colors_info=\"{}\"]\n[et_pb_row _builder_version=\"4.27.0\" max_width=\"800px\" custom_padding=\"0px||0px||false|false\" global_colors_info=\"{}\"]\n[et_pb_column type=\"4_4\" _builder_version=\"4.27.0\" global_colors_info=\"{}\"]\n[et_pb_text _builder_version=\"4.27.0\" header_2_font=\"Lexend|700|||||||\" header_2_text_color=\"#ffffff\" header_2_font_size=\"40px\" header_2_line_height=\"1.2em\" text_orientation=\"center\" custom_margin=\"||16px||false|false\" global_colors_info=\"{}\"]\n<h2>Let&rsquo;s Start a Conversation</h2>\n[/et_pb_text]\n[et_pb_text _builder_version=\"4.27.0\" text_font=\"Source Sans 3||||||||\" text_text_color=\"rgba(255,255,255,0.8)\" text_font_size=\"18px\" text_line_height=\"1.7em\" text_orientation=\"center\" max_width=\"600px\" module_alignment=\"center\" custom_margin=\"||40px||false|false\" global_colors_info=\"{}\"]\n<p>We&rsquo;re eager to understand your challenges and explore how we can help. No pressure, no sales pitch&mdash;just a genuine conversation about your manufacturing operations.</p>\n[/et_pb_text]\n[/et_pb_column]\n[/et_pb_row]\n[et_pb_row column_structure=\"1_2,1_2\" _builder_version=\"4.27.0\" max_width=\"500px\" custom_padding=\"0px||0px||false|false\" global_colors_info=\"{}\"]\n[et_pb_column type=\"1_2\" _builder_version=\"4.27.0\" global_colors_info=\"{}\"]\n[et_pb_button button_url=\"/contact/\" button_text=\"Talk to Our Team\" button_alignment=\"right\" _builder_version=\"4.27.0\" custom_button=\"on\" button_text_size=\"16px\" button_text_color=\"#253B50\" button_bg_color=\"#ffffff\" button_border_width=\"0px\" button_border_radius=\"8px\" button_font=\"Lexend|600|||||||\" custom_padding=\"16px|32px|16px|32px|true|true\" button_bg_color__hover_enabled=\"on|hover\" button_bg_color__hover=\"#e2e8f0\" global_colors_info=\"{}\"]\n[/et_pb_button]\n[/et_pb_column]\n[et_pb_column type=\"1_2\" _builder_version=\"4.27.0\" global_colors_info=\"{}\"]\n[et_pb_button button_url=\"/partner-program/\" button_text=\"Explore Partnership\" button_alignment=\"left\" _builder_version=\"4.27.0\" custom_button=\"on\" button_text_size=\"16px\" button_text_color=\"#ffffff\" button_bg_color=\"rgba(0,0,0,0)\" button_border_width=\"2px\" button_border_color=\"rgba(255,255,255,0.5)\" button_border_radius=\"8px\" button_font=\"Lexend|600|||||||\" custom_padding=\"14px|32px|14px|32px|true|true\" button_text_color__hover_enabled=\"on|hover\" button_text_color__hover=\"#ffffff\" button_border_color__hover_enabled=\"on|hover\" button_border_color__hover=\"#ffffff\" global_colors_info=\"{}\"]\n[/et_pb_button]\n[/et_pb_column]\n[/et_pb_row]\n[/et_pb_section]",
+  "context": "et_builder_layouts",
+  "info": {
+    "name": "DigiWin Homepage - Section 9: CTA Footer",
+    "description": "Final call-to-action section. Dark navy background with centered headline, subtitle, and two buttons: primary white 'Talk to Our Team' and ghost outline 'Explore Partnership'.",
+    "divi_modules_used": [
+      "et_pb_section (dark navy #253B50)",
+      "et_pb_row (text row, button row)",
+      "et_pb_text (heading, subtitle)",
+      "et_pb_button (primary white CTA, ghost outline CTA)"
+    ],
+    "colors": {
+      "section_bg": "#253B50",
+      "heading_color": "#ffffff",
+      "subtitle_color": "rgba(255,255,255,0.8)",
+      "primary_btn_bg": "#ffffff",
+      "primary_btn_text": "#253B50",
+      "ghost_btn_border": "rgba(255,255,255,0.5)",
+      "ghost_btn_text": "#ffffff"
+    },
+    "notes": [
+      "Contact URL set to /contact/ - update to actual form page URL after import",
+      "Welcoming tone: 'Let's Start a Conversation' not 'Book a Demo'",
+      "Two buttons side by side: solid white + ghost outline",
+      "Button row uses narrow max_width (500px) to keep buttons close together"
+    ]
+  }
+}

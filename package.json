@@ -23,5 +23,8 @@
   "dependencies": {
     "pixelmatch": "^7.1.0",
     "pngjs": "^7.0.0"
+  },
+  "devDependencies": {
+    "puppeteer": "^24.37.3"
   }
 }

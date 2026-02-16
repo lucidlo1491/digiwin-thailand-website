@@ -712,3 +712,185 @@ INSERT INTO wp_postmeta (post_id, meta_key, meta_value) VALUES (${PAGE_ID}, '${m
   if (err.stderr) console.error(err.stderr.toString().slice(0, 500));
   process.exit(1);
 }
+
+
+// ════════════════════════════════════════════════════════════════
+// 7. POST-PUSH VERIFICATION (runs automatically after MySQL push)
+// ════════════════════════════════════════════════════════════════
+// Fetches the live page and checks that what we pushed actually renders.
+// This catches: missing fonts, broken CSS, stripped content, caching issues.
+// If ANY P0 check fails, the script exits non-zero — problem caught before
+// Peter ever sees it.
+//
+// Skip with: --no-verify
+
+if (!process.argv.includes('--no-verify') && !DRY_RUN) {
+  const VERIFY_URL = `${SITE_URL}/?page_id=${PAGE_ID}`;
+  console.log(`\n▸ Post-push verification: ${VERIFY_URL}`);
+
+  let puppeteerAvailable = false;
+  let puppeteer;
+  try {
+    puppeteer = require('puppeteer');
+    puppeteerAvailable = true;
+  } catch (e) {
+    // Fall back to curl-based checks
+  }
+
+  if (puppeteerAvailable) {
+    (async () => {
+      let browser;
+      try {
+        browser = await puppeteer.launch({
+          headless: 'new',
+          args: ['--ignore-certificate-errors', '--no-sandbox'],
+          timeout: 15000
+        });
+        const page = await browser.newPage();
+        await page.setViewport({ width: 1440, height: 900 });
+        await page.goto(VERIFY_URL, { waitUntil: 'networkidle2', timeout: 20000 });
+
+        // Wait for fonts to load
+        await page.evaluate(() => document.fonts.ready);
+        await new Promise(r => setTimeout(r, 1000));
+
+        const checks = await page.evaluate(() => {
+          const results = [];
+          const fail = (id, msg) => results.push({ id, status: 'FAIL', msg });
+          const pass = (id, msg) => results.push({ id, status: 'PASS', msg });
+
+          // D1: Fonts loaded
+          const notoLoaded = [...document.fonts].filter(f =>
+            f.family.includes('Noto Sans') && f.status === 'loaded'
+          ).length;
+          const jbLoaded = [...document.fonts].filter(f =>
+            f.family.includes('JetBrains Mono') && f.status === 'loaded'
+          ).length;
+          if (notoLoaded > 0) pass('D1-noto', `Noto Sans: ${notoLoaded} subsets loaded`);
+          else fail('D1-noto', 'Noto Sans: 0 subsets loaded — font not rendering');
+          if (jbLoaded > 0) pass('D1-jb', `JetBrains Mono: ${jbLoaded} subsets loaded`);
+          else fail('D1-jb', 'JetBrains Mono: 0 subsets loaded — labels using fallback');
+
+          // W1: Google Fonts <link> in <head>
+          const fontLink = document.querySelector('link[href*="fonts.googleapis"]');
+          if (fontLink) pass('W1', 'Google Fonts <link> present in <head>');
+          else fail('W1', 'Google Fonts <link> MISSING from <head> — check mu-plugin');
+
+          // L1: No horizontal scroll
+          const overflow = document.documentElement.scrollWidth > window.innerWidth;
+          if (!overflow) pass('L1', 'No horizontal scroll at 1440px');
+          else fail('L1', `Horizontal scroll: ${document.documentElement.scrollWidth}px > ${window.innerWidth}px`);
+
+          // Content: H1 exists
+          const h1 = document.querySelector('h1');
+          if (h1 && h1.textContent.includes('Invisible')) pass('C-h1', 'H1 title present');
+          else fail('C-h1', 'H1 title missing or wrong text');
+
+          // Content: H2 exists
+          const h2 = document.querySelector('h2');
+          if (h2 && h2.textContent.includes('Man-Day')) pass('C-h2', 'H2 title present');
+          else fail('C-h2', 'H2 title missing or wrong text');
+
+          // Content: Buttons present
+          const btns = document.querySelectorAll('.hero-btn');
+          if (btns.length >= 3) pass('C-btns', `${btns.length} buttons found`);
+          else fail('C-btns', `Only ${btns.length} buttons found (expected ≥3)`);
+
+          // C3: No "demo" in CTAs
+          const demoBtn = [...document.querySelectorAll('a')].find(a =>
+            /demo/i.test(a.textContent) && /btn|button|cta/i.test(a.className)
+          );
+          if (!demoBtn) pass('C3', 'No "demo" CTAs');
+          else fail('C3', `CTA contains "demo": "${demoBtn.textContent}"`);
+
+          // L3: No ghost background images
+          const columns = document.querySelectorAll('.et_pb_column');
+          let ghostFound = false;
+          columns.forEach(col => {
+            const bg = getComputedStyle(col).backgroundImage;
+            if (bg.includes('.png') || bg.includes('.jpg')) {
+              // Check if it's an expected image or a ghost from old versions
+              if (!bg.includes('hero-factory-bg') && !bg.includes('hero-partner-bg')) {
+                ghostFound = true;
+              }
+            }
+          });
+          if (!ghostFound) pass('L3', 'No ghost background images');
+          else fail('L3', 'Unexpected background image found on column');
+
+          return results;
+        });
+
+        let failures = 0;
+        for (const c of checks) {
+          const icon = c.status === 'PASS' ? '\u2713' : '\u2717';
+          console.log(`  ${icon} [${c.id}] ${c.msg}`);
+          if (c.status === 'FAIL') failures++;
+        }
+
+        if (failures > 0) {
+          console.error(`\n\u2717 VERIFICATION FAILED: ${failures} check(s) failed.`);
+          console.error('  Fix the issues above and re-run the build.');
+          process.exit(1);
+        } else {
+          console.log(`\n\u2713 All ${checks.length} verification checks passed.`);
+        }
+
+        // Take a verification screenshot
+        const ssPath = path.join(__dirname, 'screenshots', `hero-${VERSION}-verified.png`);
+        const ssDir = path.dirname(ssPath);
+        if (!fs.existsSync(ssDir)) fs.mkdirSync(ssDir, { recursive: true });
+        await page.screenshot({ path: ssPath, fullPage: false });
+        console.log(`  Screenshot: ${ssPath}`);
+
+      } catch (err) {
+        console.error(`\u2717 Verification error: ${err.message}`);
+        console.error('  (Build was pushed successfully — verification couldn\'t run)');
+        // Don't exit 1 for verification infra errors — the push itself succeeded
+      } finally {
+        if (browser) await browser.close();
+      }
+    })();
+  } else {
+    // Fallback: curl-based sanity check (no browser needed)
+    console.log('  (puppeteer not available — running curl-based checks)');
+    try {
+      const html = execSync(
+        `curl -sk "${VERIFY_URL}" 2>/dev/null`,
+        { encoding: 'utf8', timeout: 15000 }
+      );
+
+      let failures = 0;
+      const check = (id, condition, passMsg, failMsg) => {
+        if (condition) console.log(`  \u2713 [${id}] ${passMsg}`);
+        else { console.log(`  \u2717 [${id}] ${failMsg}`); failures++; }
+      };
+
+      check('W1', html.includes('fonts.googleapis'),
+        'Google Fonts <link> found in HTML',
+        'Google Fonts <link> MISSING — check mu-plugin');
+      check('C-h1', html.includes('Invisible'),
+        'H1 title content present',
+        'H1 "Invisible" not found in HTML');
+      check('C-h2', html.includes('Man-Day'),
+        'H2 title content present',
+        'H2 "Man-Day" not found in HTML');
+      check('C3', !html.match(/class="[^"]*btn[^"]*"[^>]*>[^<]*demo/i),
+        'No "demo" CTAs',
+        'CTA contains "demo"');
+      check('CSS', html.includes('hero-subtitle') || html.includes('hero-title'),
+        'Hero CSS classes found in page',
+        'Hero CSS classes MISSING — pageLevelCSS may not have been pushed');
+
+      if (failures > 0) {
+        console.error(`\n\u2717 ${failures} check(s) failed. Install puppeteer for full verification.`);
+        process.exit(1);
+      } else {
+        console.log(`\n\u2713 All curl-based checks passed. Install puppeteer for font/layout verification.`);
+      }
+    } catch (err) {
+      console.log(`  \u2717 curl check failed: ${err.message}`);
+      console.log('  (Build was pushed — verify manually)');
+    }
+  }
+}

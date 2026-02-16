@@ -1,0 +1,508 @@
+{
+  "section": "hero",
+  "version": "v2.2",
+  "description": "Split-screen hero — Factory (left) + Partner (right) — v28 SVG via JS injection (Base64 KSES bypass), button shine. v2.2: Updated layout values for v28 (no section margin-top, 50/50 column split at 720px each).",
+
+  "breakpoints": [1440, 768, 375],
+  "viewport": { "1440": [1440, 900], "768": [768, 1024], "375": [375, 812] },
+
+  "editability": {
+    "source": "api",
+    "bannedBlocks": ["wp:divi/code"],
+    "requiredNativeModules": [
+      { "name": "Text modules (labels/subtitles)", "type": "text", "minCount": 4, "severity": "P0" }
+    ],
+    "maxCodeModules": 0,
+    "notes": "Divi 5 Code Modules and native Button/Group modules do NOT render on front-end. All raw HTML uses wp:html. Only native Text modules work reliably."
+  },
+
+  "fonts": {
+    "required": [
+      { "family": "JetBrains Mono", "weight": 600, "size": "10px", "severity": "P0" },
+      { "family": "JetBrains Mono", "weight": 400, "size": "11px", "severity": "P0" },
+      { "family": "Noto Sans", "weight": 700, "size": "52px", "severity": "P0" },
+      { "family": "Noto Sans", "weight": 400, "size": "18px", "severity": "P0" },
+      { "family": "Noto Sans", "weight": 600, "size": "16px", "severity": "P0" },
+      { "family": "Noto Sans", "weight": 800, "size": "32px", "severity": "P0" }
+    ]
+  },
+
+  "columnRatios": [
+    {
+      "name": "Factory vs Partner Panel (50/50 split)",
+      "selectors": [
+        ".et_pb_column_0:not([class*='tb_body'])",
+        ".et_pb_column_1:not([class*='tb_body'])"
+      ],
+      "tolerance": 5,
+      "severity": "P0",
+      "breakpoints": [1440]
+    }
+  ],
+
+  "ordering": [
+    {
+      "name": "Factory Panel Content Order",
+      "severity": "P0",
+      "breakpoints": [1440, 768, 375],
+      "selectors": [
+        ".et_pb_column_0:not([class*='tb_body']) .hero-title",
+        ".et_pb_column_0:not([class*='tb_body']) .hero-btn-row",
+        ".et_pb_column_0:not([class*='tb_body']) .hero-stats"
+      ],
+      "names": ["Title", "Buttons", "Stats"]
+    },
+    {
+      "name": "Partner Panel Content Order",
+      "severity": "P0",
+      "breakpoints": [1440, 768, 375],
+      "selectors": [
+        ".et_pb_column_1:not([class*='tb_body']) .hero-title",
+        ".et_pb_column_1:not([class*='tb_body']) .hero-btn-row",
+        ".et_pb_column_1:not([class*='tb_body']) .hero-stats"
+      ],
+      "names": ["Title", "Buttons", "Stats"]
+    }
+  ],
+
+  "elements": [
+    {
+      "name": "Section",
+      "wp": ".et_pb_section_0:not([class*='tb_body'])",
+      "severity": "P0",
+      "checks": {
+        "overflow": "hidden",
+        "margin-top": { "within": [80, 5] },
+        "background-color": { "colorWithin": [0, 4, 50, 10], "note": "Must be dark navy (#000432), NOT white. Divi defaults to white which bleeds through semi-transparent column gradients." }
+      }
+    },
+    {
+      "name": "Row",
+      "wp": ".et_pb_section_0:not([class*='tb_body']) .et_pb_row",
+      "severity": "P0",
+      "checks": {
+        "display": "flex",
+        "flex-direction": { "1440": "row", "768": "column", "375": "column" },
+        "min-height": { "1440": { "within": [820, 20] } }
+      }
+    },
+
+    {
+      "name": "Factory Panel",
+      "wp": ".et_pb_column_0:not([class*='tb_body'])",
+      "severity": "P0",
+      "checks": {
+        "background-image": { "contains": "linear-gradient" },
+        "display": "flex",
+        "flex-direction": "column",
+        "justify-content": "center",
+        "position": "relative",
+        "overflow": "hidden",
+        "box-sizing": "border-box",
+        "gap": { "within": [0, 1] },
+        "padding-top": { "1440": { "within": [80, 5] }, "768": { "within": [60, 5] }, "375": { "within": [48, 5] } },
+        "padding-left": { "1440": { "within": [60, 5] }, "768": { "within": [40, 5] }, "375": { "within": [24, 5] } },
+        "padding-right": { "1440": { "within": [60, 5] }, "768": { "within": [40, 5] }, "375": { "within": [24, 5] } },
+        "padding-bottom": { "1440": { "within": [80, 5] }, "768": { "within": [60, 5] }, "375": { "within": [48, 5] } },
+        "width": { "1440": { "within": [720, 25] }, "768": { "within": [768, 25] } }
+      }
+    },
+    {
+      "name": "Partner Panel",
+      "wp": ".et_pb_column_1:not([class*='tb_body'])",
+      "severity": "P0",
+      "checks": {
+        "background-image": { "contains": "linear-gradient" },
+        "display": "flex",
+        "flex-direction": "column",
+        "justify-content": "center",
+        "position": "relative",
+        "overflow": "hidden",
+        "box-sizing": "border-box",
+        "gap": { "within": [0, 1] },
+        "padding-top": { "1440": { "within": [80, 5] }, "768": { "within": [60, 5] }, "375": { "within": [48, 5] } },
+        "padding-left": { "1440": { "within": [60, 5] }, "768": { "within": [40, 5] }, "375": { "within": [24, 5] } },
+        "padding-right": { "1440": { "within": [60, 5] }, "768": { "within": [40, 5] }, "375": { "within": [24, 5] } },
+        "padding-bottom": { "1440": { "within": [80, 5] }, "768": { "within": [60, 5] }, "375": { "within": [48, 5] } }
+      }
+    },
+
+    {
+      "name": "Factory Grain Overlay",
+      "wp": ".et_pb_column_0:not([class*='tb_body']) .hero-grain",
+      "severity": "P1",
+      "checks": {
+        "position": "absolute",
+        "z-index": { "within": [1, 0] },
+        "pointer-events": "none"
+      }
+    },
+    {
+      "name": "Factory Grain ::before",
+      "wp": ".et_pb_column_0:not([class*='tb_body']) .hero-grain",
+      "pseudo": "::before",
+      "severity": "P1",
+      "checks": {
+        "position": "absolute",
+        "opacity": { "within": [0.03, 0.02] }
+      }
+    },
+    {
+      "name": "Partner Light Leak",
+      "wp": ".et_pb_column_1:not([class*='tb_body']) .hero-light-leak",
+      "severity": "P1",
+      "checks": {
+        "position": "absolute",
+        "z-index": { "within": [1, 0] },
+        "pointer-events": "none"
+      }
+    },
+
+    {
+      "name": "Factory Label (container)",
+      "wp": ".et_pb_column_0:not([class*='tb_body']) .et_pb_text_0",
+      "severity": "P0",
+      "checks": {
+        "position": "relative",
+        "z-index": { "within": [2, 0] }
+      }
+    },
+    {
+      "name": "Factory Label (text)",
+      "wp": ".et_pb_column_0:not([class*='tb_body']) .et_pb_text_0 .et_pb_text_inner p",
+      "severity": "P0",
+      "checks": {
+        "font-family": { "contains": "JetBrains Mono" },
+        "font-size": { "within": [10, 2] },
+        "font-weight": { "weightWithin": [600, 50] },
+        "text-transform": "uppercase",
+        "letter-spacing": { "within": [1, 0.5] },
+        "color": { "colorWithin": [0, 175, 240, 10] },
+        "textContent": { "contains": "Manufacturing" }
+      }
+    },
+
+    {
+      "name": "Factory Title (H1)",
+      "wp": ".et_pb_column_0:not([class*='tb_body']) .hero-title",
+      "severity": "P0",
+      "checks": {
+        "textContent": { "contains": "Invisible" },
+        "color": { "colorWithin": [255, 255, 255, 5] },
+        "font-family": { "contains": "Noto Sans" },
+        "font-size": { "1440": { "within": [50, 4] }, "768": { "within": [32, 3] }, "375": { "within": [32, 3] } },
+        "font-weight": { "weightWithin": [700, 50] },
+        "line-height": { "1440": { "within": [57, 8] } },
+        "position": "relative",
+        "z-index": { "within": [2, 0] },
+        "max-width": { "within": [520, 10] }
+      }
+    },
+    {
+      "name": "Factory Title .hl-blue",
+      "wp": ".et_pb_column_0:not([class*='tb_body']) .hero-title .hl-blue",
+      "severity": "P0",
+      "checks": {
+        "color": { "colorWithin": [0, 175, 240, 10] },
+        "textContent": { "contains": "Invisible" }
+      }
+    },
+
+    {
+      "name": "Factory Subtitle",
+      "wp": ".et_pb_column_0:not([class*='tb_body']) .et_pb_text_1 .et_pb_text_inner p",
+      "severity": "P0",
+      "checks": {
+        "font-family": { "contains": "Noto Sans" },
+        "font-size": { "within": [18, 2] },
+        "font-weight": { "weightWithin": [400, 50] },
+        "line-height": { "within": [31.5, 3] },
+        "color": { "colorWithin": [255, 255, 255, 10, 0.75, 0.1] },
+        "textContent": { "contains": "Shadow Excel" }
+      }
+    },
+
+    {
+      "name": "Partner Label (container)",
+      "wp": ".et_pb_column_1:not([class*='tb_body']) .et_pb_text_2",
+      "severity": "P0",
+      "checks": {
+        "position": "relative",
+        "z-index": { "within": [2, 0] }
+      }
+    },
+    {
+      "name": "Partner Label (text)",
+      "wp": ".et_pb_column_1:not([class*='tb_body']) .et_pb_text_2 .et_pb_text_inner p",
+      "severity": "P0",
+      "checks": {
+        "font-family": { "contains": "JetBrains Mono" },
+        "font-size": { "within": [10, 2] },
+        "font-weight": { "weightWithin": [600, 50] },
+        "text-transform": "uppercase",
+        "letter-spacing": { "within": [1, 0.5] },
+        "color": { "colorWithin": [255, 255, 255, 10, 0.9, 0.1] },
+        "textContent": { "contains": "ERP Implementers" }
+      }
+    },
+
+    {
+      "name": "Partner Title (H2)",
+      "wp": ".et_pb_column_1:not([class*='tb_body']) .hero-title",
+      "severity": "P0",
+      "checks": {
+        "textContent": { "contains": "Man-Day" },
+        "color": { "colorWithin": [255, 255, 255, 5] },
+        "font-family": { "contains": "Noto Sans" },
+        "font-size": { "1440": { "within": [50, 4] }, "768": { "within": [32, 3] }, "375": { "within": [32, 3] } },
+        "font-weight": { "weightWithin": [700, 50] },
+        "line-height": { "1440": { "within": [57, 8] } },
+        "position": "relative",
+        "z-index": { "within": [2, 0] },
+        "max-width": { "within": [520, 10] }
+      }
+    },
+    {
+      "name": "Partner Title .hl-gold",
+      "wp": ".et_pb_column_1:not([class*='tb_body']) .hero-title .hl-gold",
+      "severity": "P1",
+      "checks": {
+        "color": { "colorWithin": [254, 243, 199, 10] },
+        "textContent": { "contains": "Man-Day" }
+      }
+    },
+
+    {
+      "name": "Partner Subtitle",
+      "wp": ".et_pb_column_1:not([class*='tb_body']) .et_pb_text_3 .et_pb_text_inner p",
+      "severity": "P0",
+      "checks": {
+        "font-family": { "contains": "Noto Sans" },
+        "font-size": { "within": [18, 2] },
+        "font-weight": { "weightWithin": [400, 50] },
+        "line-height": { "within": [31.5, 3] },
+        "color": { "colorWithin": [255, 255, 255, 10, 0.75, 0.1] },
+        "textContent": { "contains": "revenue is capped" }
+      }
+    },
+
+    {
+      "name": "Factory Buttons Row",
+      "wp": ".et_pb_column_0:not([class*='tb_body']) .hero-btn-row",
+      "severity": "P0",
+      "checks": {
+        "display": "flex",
+        "gap": { "within": [12, 2] },
+        "position": "relative",
+        "z-index": { "within": [2, 0] },
+        "max-width": { "within": [520, 10] }
+      }
+    },
+    {
+      "name": "Factory Primary Button",
+      "wp": ".et_pb_column_0:not([class*='tb_body']) .hero-btn--primary",
+      "severity": "P0",
+      "checks": {
+        "textContent": { "contains": "Let" },
+        "href": { "contains": "demo" },
+        "font-family": { "contains": "Noto Sans" },
+        "font-size": { "within": [16, 2] },
+        "font-weight": { "weightWithin": [600, 50] },
+        "border-radius": { "within": [8, 2] },
+        "padding-top": { "within": [16, 3] },
+        "padding-left": { "within": [32, 3] },
+        "overflow": "hidden"
+      }
+    },
+    {
+      "name": "Factory Ghost Button",
+      "wp": ".et_pb_column_0:not([class*='tb_body']) .hero-btn--ghost",
+      "severity": "P0",
+      "checks": {
+        "textContent": { "contains": "Solutions" },
+        "href": { "contains": "products" },
+        "font-family": { "contains": "Noto Sans" },
+        "font-size": { "within": [16, 2] },
+        "border-radius": { "within": [8, 2] },
+        "color": { "colorWithin": [255, 255, 255, 5] }
+      }
+    },
+
+    {
+      "name": "Factory Stats",
+      "wp": ".et_pb_column_0:not([class*='tb_body']) .hero-stats",
+      "severity": "P0",
+      "checks": {
+        "display": "flex",
+        "gap": { "1440": { "within": [40, 5] }, "375": { "within": [24, 5] } },
+        "margin-top": { "within": [48, 5] },
+        "padding-top": { "within": [32, 5] },
+        "border-top-style": "solid",
+        "position": "relative",
+        "z-index": { "within": [2, 0] },
+        "max-width": { "within": [520, 10] }
+      }
+    },
+    {
+      "name": "Factory Stat Number",
+      "wp": ".et_pb_column_0:not([class*='tb_body']) .hero-stat-number",
+      "severity": "P0",
+      "checks": {
+        "textContent": { "contains": "44" },
+        "color": { "colorWithin": [0, 175, 240, 10] },
+        "font-family": { "contains": "Noto Sans" },
+        "font-size": { "within": [32, 3] },
+        "font-weight": { "weightWithin": [800, 50] }
+      }
+    },
+    {
+      "name": "Factory Stat Label",
+      "wp": ".et_pb_column_0:not([class*='tb_body']) .hero-stat-label",
+      "severity": "P0",
+      "checks": {
+        "font-family": { "contains": "JetBrains Mono" },
+        "font-size": { "within": [11, 2] },
+        "text-transform": "uppercase",
+        "letter-spacing": { "within": [1.1, 0.5] },
+        "color": { "colorWithin": [255, 255, 255, 10, 0.75, 0.1] }
+      }
+    },
+
+    {
+      "name": "Partner Button",
+      "wp": ".et_pb_column_1:not([class*='tb_body']) .hero-btn--primary",
+      "severity": "P0",
+      "checks": {
+        "textContent": { "contains": "Escape" },
+        "href": { "contains": "partner-program" },
+        "font-family": { "contains": "Noto Sans" },
+        "font-size": { "within": [16, 2] },
+        "font-weight": { "weightWithin": [600, 50] },
+        "border-radius": { "within": [8, 2] },
+        "overflow": "hidden"
+      }
+    },
+
+    {
+      "name": "Partner Stats",
+      "wp": ".et_pb_column_1:not([class*='tb_body']) .hero-stats",
+      "severity": "P0",
+      "checks": {
+        "display": "flex",
+        "position": "relative",
+        "z-index": { "within": [2, 0] }
+      }
+    },
+    {
+      "name": "Partner Stat Number",
+      "wp": ".et_pb_column_1:not([class*='tb_body']) .hero-stat-number--white",
+      "severity": "P0",
+      "checks": {
+        "textContent": { "contains": "30" },
+        "color": { "colorWithin": [255, 255, 255, 5] },
+        "font-family": { "contains": "Noto Sans" },
+        "font-size": { "within": [32, 3] },
+        "font-weight": { "weightWithin": [800, 50] }
+      }
+    },
+    {
+      "name": "Partner Stat Label",
+      "wp": ".et_pb_column_1:not([class*='tb_body']) .hero-stat-label",
+      "severity": "P0",
+      "checks": {
+        "font-family": { "contains": "JetBrains Mono" },
+        "font-size": { "within": [11, 2] },
+        "text-transform": "uppercase",
+        "color": { "colorWithin": [255, 255, 255, 10, 0.75, 0.1] }
+      }
+    },
+
+    {
+      "name": "Button Shine ::before",
+      "wp": ".et_pb_column_0:not([class*='tb_body']) .hero-btn--primary",
+      "pseudo": "::before",
+      "severity": "P1",
+      "checks": {
+        "position": "absolute",
+        "background-image": { "contains": "linear-gradient" }
+      }
+    }
+  ],
+
+  "screenshots": {
+    "threshold": 0.1,
+    "maxDiffPercent": 1.0,
+    "elements": [
+      {
+        "name": "Factory-Label",
+        "selector": ".et_pb_column_0:not([class*='tb_body']) .et_pb_text_0",
+        "severity": "P0",
+        "maxDiffPercent": 1.5,
+        "sizeTolerance": 3
+      },
+      {
+        "name": "Factory-Title",
+        "selector": ".et_pb_column_0:not([class*='tb_body']) .hero-title",
+        "severity": "P0",
+        "maxDiffPercent": 1.0,
+        "sizeTolerance": 5
+      },
+      {
+        "name": "Factory-Buttons",
+        "selector": ".et_pb_column_0:not([class*='tb_body']) .hero-btn-row",
+        "severity": "P0",
+        "maxDiffPercent": 1.5,
+        "sizeTolerance": 5
+      },
+      {
+        "name": "Factory-Stats",
+        "selector": ".et_pb_column_0:not([class*='tb_body']) .hero-stats",
+        "severity": "P0",
+        "maxDiffPercent": 1.0,
+        "sizeTolerance": 5
+      },
+      {
+        "name": "Partner-Label",
+        "selector": ".et_pb_column_1:not([class*='tb_body']) .et_pb_text_2",
+        "severity": "P0",
+        "maxDiffPercent": 1.5,
+        "sizeTolerance": 3
+      },
+      {
+        "name": "Partner-Title",
+        "selector": ".et_pb_column_1:not([class*='tb_body']) .hero-title",
+        "severity": "P0",
+        "maxDiffPercent": 1.0,
+        "sizeTolerance": 5
+      },
+      {
+        "name": "Partner-Button",
+        "selector": ".et_pb_column_1:not([class*='tb_body']) .hero-btn--primary",
+        "severity": "P0",
+        "maxDiffPercent": 1.5,
+        "sizeTolerance": 5
+      },
+      {
+        "name": "Partner-Stats",
+        "selector": ".et_pb_column_1:not([class*='tb_body']) .hero-stats",
+        "severity": "P0",
+        "maxDiffPercent": 1.0,
+        "sizeTolerance": 5
+      },
+      {
+        "name": "Factory-Panel-Full",
+        "selector": ".et_pb_column_0:not([class*='tb_body'])",
+        "severity": "P0",
+        "maxDiffPercent": 2.0,
+        "sizeTolerance": 10
+      },
+      {
+        "name": "Partner-Panel-Full",
+        "selector": ".et_pb_column_1:not([class*='tb_body'])",
+        "severity": "P0",
+        "maxDiffPercent": 2.0,
+        "sizeTolerance": 10
+      }
+    ]
+  }
+}

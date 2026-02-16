@@ -9,6 +9,9 @@ screenshots/
 .DS_Store
 Thumbs.db
 
+# Environment variables (API keys)
+.env
+
 # Node
 node_modules/
 

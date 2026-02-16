@@ -12,25 +12,34 @@ DigiWin Thailand website redesign project (digiwin.co.th). This is a **documenta
 ## Project Structure
 
 ```
-docs/
-  strategy/                          # Layer 1 + 2: Strategy documents
-    DigiWin_Website_PRD_v1.2.md      #   Architecture, design system, page requirements
-    DigiWin_Persuasion_Playbook_v1.0.md  #   Voice, emotional arcs, objection scripts
-    DigiWin_Design_System.md         #   Colors, typography, spacing
-    DigiWin_Company_Research_2025.md  #   Market intelligence
-  content-specs/                     # Layer 3: Production blueprints (per page)
-    ContentSpec_Home_1.0.md          #   32 specs total
-    ContentSpec_Home_Divi5_2.0.md    #   Divi 5 module mappings
-    ...
-  build/                             # Build workflow + tracking
-    Divi5_Build_Tracker.md           #   Page-by-page status board
-    Divi5_Build_Workflow.md          #   6-step repeatable process
-    SITE_NAVIGATION.md               #   Link map
-    PageBrief_*.md                   #   Header/Footer/Home briefs
-  guides/                            # Process guides
-    NotebookLM_*.md                  #   Content extraction workflows
-complete_website/                    # HTML website (source of truth for CloneWebX)
-CLAUDE.md                            # This file (must stay in root)
+digiwin_webpage_2026/
+├── .claude/                          # Claude Code config + rules (auto-loaded)
+│   └── rules/                        #   process-rules.md, design-system.md, session-protocol.md
+├── docs/
+│   ├── strategy/                     # Layer 1 + 2: Strategy documents
+│   │   ├── DigiWin_Website_PRD_v1.2.md
+│   │   ├── DigiWin_Persuasion_Playbook_v1.0.md
+│   │   ├── DigiWin_Design_System.md
+│   │   └── DigiWin_Company_Research_2025.md
+│   ├── content-specs/                # Layer 3: All specs flat (v1.0 + Divi5 v2.0)
+│   ├── build/                        # Build workflow, tracker, acceptance criteria
+│   │   └── Global_Acceptance_Criteria.md  # 35 criteria (20 P0, 14 P1, 1 P2)
+│   └── guides/                       # Process guides (NotebookLM workflows)
+├── complete_website/                 # HTML site + ALL scripts (18 JS)
+│   ├── src/pages/ + partials/        #   Source templates (edit here, not root HTML)
+│   ├── assets/, logos/, images/      #   Media assets
+│   ├── golden-refs/                  #   Visual regression baselines
+│   └── [35 HTML + 18 JS scripts]    #   Built output + build/verify tools
+├── divi5-builds/                     # Active Divi 5 exports
+│   ├── sections/                     #   Section JSON exports
+│   └── code-modules/                 #   Code module HTML/CSS
+├── archive/                          # Legacy/superseded files
+│   ├── divi4/                        #   Divi 4 JSON + shortcodes
+│   ├── divi5-hero-variants/          #   Old hero JSON iterations (v1–v6)
+│   ├── notebooklm/                   #   One-time content extractions
+│   └── css-consolidation/            #   Completed refactoring docs
+├── screenshots/                      # Visual captures
+└── CLAUDE.md                         # This file
 ```
 
 ## Three-Layer Documentation Model

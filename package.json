@@ -1,0 +1,27 @@
+{
+  "name": "digiwin_webpage_2026",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucidlo1491/digiwin-thailand-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucidlo1491/digiwin-thailand-website/issues"
+  },
+  "homepage": "https://github.com/lucidlo1491/digiwin-thailand-website#readme",
+  "description": "",
+  "dependencies": {
+    "pixelmatch": "^7.1.0",
+    "pngjs": "^7.0.0"
+  }
+}

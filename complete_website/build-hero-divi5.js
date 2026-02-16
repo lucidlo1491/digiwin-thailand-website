@@ -36,6 +36,49 @@ const MYSQL_DB = 'local';
 const SUPER_D_SVG = process.env.HERO_SUPER_D || '/wp-content/uploads/2026/02/digiwin-d-particle.svg';
 const WAVE_FLOW_SVG = process.env.HERO_WAVE_FLOW || '/wp-content/uploads/2026/02/digiwin-wave-flow.svg';
 
+// ────────────────────────────────────────────────────────────────
+// SPEC — Design tokens from ContentSpec_Home_Divi5_2.0.md
+// Every visual value in this build traces to these tokens.
+// To change a value: update the ContentSpec FIRST, then update here.
+// ────────────────────────────────────────────────────────────────
+const SPEC = {
+  // ContentSpec §3.1 "Hero Section — Dual Panel" (lines 117-133)
+  label: {
+    fontFamily: "'JetBrains Mono', monospace",
+    fontSize: '14px',           // line 119
+    fontWeight: '600',          // line 119
+    letterSpacing: '0.15em',    // line 119
+    textTransform: 'uppercase', // line 119
+    colorFactory: '#00AFF0',    // line 119 — Smart Blue on navy
+    colorPartner: 'rgba(255,255,255,0.9)', // line 119
+  },
+  title: {
+    fontFamily: "'Noto Sans', sans-serif",
+    fontSize: 'clamp(32px, 3.5vw, 52px)', // line 120
+    fontWeight: '700',          // line 120
+    lineHeight: '1.1',          // line 120
+    letterSpacing: '-0.03em',   // line 120
+    color: '#fff',              // line 120
+    marginBottom: '24px',       // line 120
+  },
+  subtitle: {
+    fontFamily: "'Noto Sans', sans-serif",
+    fontSize: '18px',           // line 121
+    fontWeight: '400',          // line 121
+    lineHeight: '1.75',         // line 121
+    color: 'rgba(255,255,255,0.75)', // line 121
+    marginBottom: '36px',       // line 121
+  },
+  cta: {
+    fontFamily: "'Noto Sans', sans-serif",
+    fontSize: '16px',           // line 123
+    fontWeight: '600',          // line 123
+    borderRadius: '8px',        // line 123
+    padding: '14px 32px',       // line 123
+    primaryBg: '#00AFF0',       // line 123 — "Let's Talk"
+    secondaryBorder: 'rgba(255,255,255,0.3)', // line 124 — "Our Solutions"
+  },
+};
 
 // ════════════════════════════════════════════════════════════════
 // 1. SVG ILLUSTRATION CONTENT
@@ -286,7 +329,7 @@ const pageLevelCSS = `
 .hero-title .hl-gold{color:#fef3c7}
 
 /* === HERO SUBTITLES === */
-.hero-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;color:rgba(255,255,255,0.75);margin:0 0 36px 0;line-height:1.75;position:relative;z-index:2;max-width:500px}
+.hero-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:rgba(255,255,255,0.75);margin:0 0 36px 0;line-height:1.75;position:relative;z-index:2;max-width:500px}
 
 /* === HERO CONTENT WRAPPER === */
 .hero-content{position:relative;z-index:2;max-width:520px;animation:slide-up 0.8s ease-out}
@@ -495,9 +538,9 @@ const blockContent = [
   // Factory Label
   textModule(
     'For Manufacturing Business Owners',
-    { color: 'rgb(0, 175, 240)', size: '10px', letterSpacing: '0.1em', weight: '600', textTransform: 'uppercase', family: 'JetBrains Mono, monospace' },
+    { color: 'rgb(0, 175, 240)', size: '14px', letterSpacing: '0.15em', weight: '600', textTransform: 'uppercase', family: 'JetBrains Mono, monospace' },
     { marginBottom: '24px', adminLabel: 'Label: For Manufacturing Business Owners' },
-    "selector{display:flex !important;flex-direction:row !important;align-items:center;gap:12px;position:relative;z-index:2;margin-bottom:24px !important;}selector p{font-family:'JetBrains Mono',monospace !important;font-size:10px !important;font-weight:600 !important;text-transform:uppercase !important;letter-spacing:0.1em !important;color:#00AFF0 !important;margin:0 !important;}selector::before{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,#00AFF0);flex-shrink:0;}"
+    "selector{display:flex !important;flex-direction:row !important;align-items:center;gap:12px;position:relative;z-index:2;margin-bottom:24px !important;}selector p{font-family:'JetBrains Mono',monospace !important;font-size:14px !important;font-weight:600 !important;text-transform:uppercase !important;letter-spacing:0.15em !important;color:#00AFF0 !important;margin:0 !important;}selector::before{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,#00AFF0);flex-shrink:0;}"
   ),
 
   // Factory H1 Title
@@ -551,9 +594,9 @@ const blockContent = [
   // Partner Label
   textModule(
     'For ERP Implementers',
-    { color: 'rgba(255, 255, 255, 0.9)', size: '10px', letterSpacing: '0.1em', weight: '600', textTransform: 'uppercase', family: 'JetBrains Mono, monospace' },
+    { color: 'rgba(255, 255, 255, 0.9)', size: '14px', letterSpacing: '0.15em', weight: '600', textTransform: 'uppercase', family: 'JetBrains Mono, monospace' },
     { marginBottom: '24px', adminLabel: 'Label: For ERP Implementers' },
-    "selector{display:flex !important;flex-direction:row !important;align-items:center;gap:12px;position:relative;z-index:2;margin-bottom:24px !important;}selector p{font-family:'JetBrains Mono',monospace !important;font-size:10px !important;font-weight:600 !important;text-transform:uppercase !important;letter-spacing:0.1em !important;color:rgba(255,255,255,0.9) !important;margin:0 !important;}selector::before{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.8));flex-shrink:0;}"
+    "selector{display:flex !important;flex-direction:row !important;align-items:center;gap:12px;position:relative;z-index:2;margin-bottom:24px !important;}selector p{font-family:'JetBrains Mono',monospace !important;font-size:14px !important;font-weight:600 !important;text-transform:uppercase !important;letter-spacing:0.15em !important;color:rgba(255,255,255,0.9) !important;margin:0 !important;}selector::before{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.8));flex-shrink:0;}"
   ),
 
   // Partner H2 Title

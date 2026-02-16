@@ -323,11 +323,12 @@ const pageLevelCSS = `
 .hero-label--partner{color:rgba(255,255,255,0.9)}
 .hero-label--partner::before{background:linear-gradient(90deg,transparent,rgba(255,255,255,0.8))}
 
-/* === DIVI TEXT MODULE FONT FIX === */
-/* Divi 5 Text Module wraps JSON family value in single quotes, making
-   "Noto Sans, sans-serif" a single unmatched font name. This forces
-   correct font-family on all Text Module paragraphs via pageLevelCSS. */
-.et_pb_text .et_pb_text_inner,.et_pb_text .et_pb_text_inner p{font-family:'Noto Sans',sans-serif !important}
+/* === DIVI TEXT MODULE OVERRIDE === */
+/* Divi 5 Text Module mangles JSON values: wraps font-family in single quotes,
+   applies default font-weight:500, strips font-family from freeForm CSS.
+   This forces ALL subtitle properties via pageLevelCSS with !important.
+   Covers: font-family, font-weight, font-size, line-height, color. */
+.et_pb_text .et_pb_text_inner,.et_pb_text .et_pb_text_inner p{font-family:'Noto Sans',sans-serif !important;font-weight:400 !important;font-size:18px !important;line-height:1.75 !important;color:rgba(255,255,255,0.75) !important}
 
 /* === HERO TITLES === */
 .hero-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,3.5vw,52px);font-weight:700;color:#fff;margin:0 0 24px 0;line-height:1.1;letter-spacing:-0.03em;position:relative;z-index:2;max-width:520px}
@@ -859,6 +860,22 @@ if (!process.argv.includes('--no-verify') && !DRY_RUN) {
           );
           if (!demoBtn) pass('C3', 'No "demo" CTAs');
           else fail('C3', `CTA contains "demo": "${demoBtn.textContent}"`);
+
+          // D2: Subtitle font properties match ContentSpec
+          const subtitleP = [...document.querySelectorAll('p')].find(p => p.textContent.includes('Shadow Excel'));
+          if (subtitleP) {
+            const cs = getComputedStyle(subtitleP);
+            const fw = cs.fontWeight;
+            const fs = cs.fontSize;
+            const ff = cs.fontFamily;
+            if (fw === '400' && fs === '18px' && ff.includes('Noto Sans')) {
+              pass('D2', `Subtitle: ${ff.split(',')[0]} ${fs}/${fw}`);
+            } else {
+              fail('D2', `Subtitle mismatch: family=${ff} size=${fs} weight=${fw} (expect Noto Sans 18px/400)`);
+            }
+          } else {
+            fail('D2', 'Subtitle paragraph not found');
+          }
 
           // L3: No ghost background images
           const columns = document.querySelectorAll('.et_pb_column');

@@ -318,10 +318,16 @@ const pageLevelCSS = `
 */
 
 /* === HERO LABELS === */
-.hero-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#00AFF0;margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.hero-label{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;color:#00AFF0;margin-bottom:24px;display:flex;align-items:center;gap:12px;position:relative;z-index:2}
 .hero-label::before{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,#00AFF0);flex-shrink:0}
 .hero-label--partner{color:rgba(255,255,255,0.9)}
 .hero-label--partner::before{background:linear-gradient(90deg,transparent,rgba(255,255,255,0.8))}
+
+/* === DIVI TEXT MODULE FONT FIX === */
+/* Divi 5 Text Module wraps JSON family value in single quotes, making
+   "Noto Sans, sans-serif" a single unmatched font name. This forces
+   correct font-family on all Text Module paragraphs via pageLevelCSS. */
+.et_pb_text .et_pb_text_inner,.et_pb_text .et_pb_text_inner p{font-family:'Noto Sans',sans-serif !important}
 
 /* === HERO TITLES === */
 .hero-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,3.5vw,52px);font-weight:700;color:#fff;margin:0 0 24px 0;line-height:1.1;letter-spacing:-0.03em;position:relative;z-index:2;max-width:520px}
@@ -535,13 +541,9 @@ const blockContent = [
   // Factory grain texture overlay — wp:html for absolute positioning without Divi wrapper
   `<!-- wp:html --><div class="hero-grain"></div><!-- /wp:html -->`,
 
-  // Factory Label
-  textModule(
-    'For Manufacturing Business Owners',
-    { color: 'rgb(0, 175, 240)', size: '14px', letterSpacing: '0.15em', weight: '600', textTransform: 'uppercase', family: 'JetBrains Mono, monospace' },
-    { marginBottom: '24px', adminLabel: 'Label: For Manufacturing Business Owners' },
-    "selector{display:flex !important;flex-direction:row !important;align-items:center;gap:12px;position:relative;z-index:2;margin-bottom:24px !important;}selector p{font-family:'JetBrains Mono',monospace !important;font-size:14px !important;font-weight:600 !important;text-transform:uppercase !important;letter-spacing:0.15em !important;color:#00AFF0 !important;margin:0 !important;}selector::before{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,#00AFF0);flex-shrink:0;}"
-  ),
+  // Factory Label — codeModule (not textModule) because Divi Text Module wraps font-family
+  // in single quotes, making 'JetBrains Mono, monospace' a single unmatched font name.
+  codeModule('<p class="hero-label hero-label--factory">For Manufacturing Business Owners</p>', 'Label: For Manufacturing Business Owners'),
 
   // Factory H1 Title
   codeModule('<h1 class="hero-title">Your True Costs Are <span class="hl-blue">Invisible.</span></h1>', 'H1: Your True Costs Are Invisible'),
@@ -591,13 +593,9 @@ const blockContent = [
   // Partner light leak effect — wp:html for absolute positioning without Divi wrapper
   `<!-- wp:html --><div class="hero-light-leak"></div><!-- /wp:html -->`,
 
-  // Partner Label
-  textModule(
-    'For ERP Implementers',
-    { color: 'rgba(255, 255, 255, 0.9)', size: '14px', letterSpacing: '0.15em', weight: '600', textTransform: 'uppercase', family: 'JetBrains Mono, monospace' },
-    { marginBottom: '24px', adminLabel: 'Label: For ERP Implementers' },
-    "selector{display:flex !important;flex-direction:row !important;align-items:center;gap:12px;position:relative;z-index:2;margin-bottom:24px !important;}selector p{font-family:'JetBrains Mono',monospace !important;font-size:14px !important;font-weight:600 !important;text-transform:uppercase !important;letter-spacing:0.15em !important;color:rgba(255,255,255,0.9) !important;margin:0 !important;}selector::before{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.8));flex-shrink:0;}"
-  ),
+  // Partner Label — codeModule (not textModule) because Divi Text Module wraps font-family
+  // in single quotes, making 'JetBrains Mono, monospace' a single unmatched font name.
+  codeModule('<p class="hero-label hero-label--partner">For ERP Implementers</p>', 'Label: For ERP Implementers'),
 
   // Partner H2 Title
   codeModule('<h2 class="hero-title">Trapped in the <span class="hl-gold">Man-Day</span> Model?</h2>', 'H2: Trapped in the Man-Day Model?'),
@@ -747,6 +745,22 @@ INSERT INTO wp_postmeta (post_id, meta_key, meta_value) VALUES (${PAGE_ID}, '${m
   const verify = mysqlQuery(`SELECT post_title, LENGTH(post_content) as content_len, post_status FROM wp_posts WHERE ID = ${PAGE_ID};`);
   console.log('\u2713 Verification:');
   console.log(verify.trim());
+
+  // 4. Flush Divi CSS cache for this page — stale cached CSS applies old module
+  // numbering (e.g., text_0 rules from a previous build where text_0 was a label,
+  // now applied to a subtitle after labels were converted to Code Modules).
+  const cacheDir = path.join(
+    '/Users/peterlo/Local Sites/digiwin-thailand/app/public/wp-content/et-cache',
+    String(PAGE_ID)
+  );
+  try {
+    if (fs.existsSync(cacheDir)) {
+      fs.rmSync(cacheDir, { recursive: true });
+      console.log(`\u2713 Divi CSS cache flushed: ${cacheDir}`);
+    }
+  } catch (cacheErr) {
+    console.log(`\u26A0 Could not flush Divi cache: ${cacheErr.message}`);
+  }
 
   console.log(`\n\u2713 Done! View at: ${SITE_URL}/?page_id=${PAGE_ID}`);
   console.log(`  VB: ${SITE_URL}/?page_id=${PAGE_ID}&et_fb=1`);

@@ -15,6 +15,14 @@
 - **After any source file edit:** Run `node build.js` to compile, then `node audit.js` to verify (6 checks × 36 pages)
 - **After any styles.css edit:** Run `node test-styles.js` to verify brand compliance (92 tests)
 
+## Divi 5 Build Protocol (MANDATORY for every build-*-divi5.js push)
+1. **BEFORE writing any CSS value:** Open the page's ContentSpec. Read the exact spec values. Never eyeball from browser DevTools or styles.css.
+2. **SPEC tokens block:** Every build script MUST have `const SPEC = {}` at the top with ContentSpec line numbers. All CSS values trace to SPEC. (D45)
+3. **Never use Divi Text Module `family` JSON property** for non-default fonts. It wraps the value in single quotes, creating unmatched font names. Use `codeModule()` or pageLevelCSS `!important` instead. (D46)
+4. **Build script auto-verifies after push.** The script MUST check ALL computed properties (fontFamily, fontSize, fontWeight, lineHeight, color) against SPEC values. Exit non-zero on mismatch. (D2=P0, D43)
+5. **Build script auto-flushes Divi CSS cache** after every MySQL push. Delete `et-cache/{PAGE_ID}/`. (D47)
+6. **All 5 steps happen automatically** — they are coded into the build script, not manual steps Claude remembers to do.
+
 ## Build & Audit Commands
 ```
 node build.js        # Compile src/pages + src/partials → root HTML (36 pages)

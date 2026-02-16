@@ -19,7 +19,7 @@ Page-specific criteria (tabs, logo grids, forms, blog layouts) belong in each pa
 | ID | Check | P | Source |
 |----|-------|---|--------|
 | D1 | **Fonts loaded:** Noto Sans (400–800) + JetBrains Mono (500–700) via mu-plugin `wp_enqueue_style()`. Verify: `document.fonts` entries show `status==='loaded'` for both families. Never use `@import` in `_et_pb_custom_css`. | P0 | PRD §Typography, D4, D42, Pipeline §mu-plugin |
-| D2 | **Font sizes match ContentSpec** — compare `getComputedStyle()` vs spec at 1440px viewport, ±1px tolerance. | P1 | ContentSpec per page |
+| D2 | **Computed styles match ContentSpec** — for EVERY text element, compare `getComputedStyle()` vs SPEC tokens at 1440px viewport. Check ALL of: `fontFamily`, `fontSize` (±1px), `fontWeight`, `lineHeight` (±1px), `color`, `letterSpacing`. Script exits non-zero on mismatch. **This is the check that catches Divi mangling** (D46). | P0 | ContentSpec per page, D45, D46 |
 | D3 | **Colors use design tokens** — `var(--dw-*)` in HTML site CSS, or Divi Design Variables in WP. No hardcoded hex in pageLevelCSS except inside `@keyframes` or SVG attributes. | P1 | PRD §Design System, D1–D3 |
 | D4 | **No hardcoded brand colors in inline styles** — all color via CSS classes in `_et_pb_custom_css`. | P1 | Pipeline §wp_kses |
 | D5 | **Spacing matches ContentSpec** — margin/padding within ±4px at 1440px. All spacing via pageLevelCSS classes, not module JSON. | P1 | ContentSpec, Pipeline §Gotcha #6, #11 |
@@ -34,6 +34,19 @@ D1 Verify: Open page → DevTools Console →
   Both must return > 0.
 Pass: Both font families show loaded entries.
 Fail: Either returns 0 → check mu-plugin is active, Google Fonts URL is correct.
+
+D2 Verify: For each text element defined in SPEC tokens block of the build script,
+  compare getComputedStyle() at 1440px against SPEC values:
+  - fontFamily: must contain expected font name (not Divi's single-quoted mangled version)
+  - fontSize: must match within ±1px
+  - fontWeight: must match exactly (400 ≠ 500 — Divi defaults to 500)
+  - lineHeight: must match within ±1px when converted to px
+  - color: must match (watch for rgba vs rgb differences)
+  - letterSpacing: must match within ±0.5px
+Pass: ALL computed values match ALL SPEC values for ALL text elements.
+Fail: ANY mismatch → fix pageLevelCSS or module type. NEVER present to Peter with wrong weights.
+  Common failure: Divi Text Module applies font-weight:500 by default.
+  Common failure: Divi Text Module wraps font-family in single quotes (D46).
 ```
 
 ---
@@ -95,7 +108,8 @@ Fail: Any animation still running → add media query guard or JS removal.
 | W7 | **No empty sections/rows in VB** — every container has at least one rendering module. Open VB Layers panel and expand all. | P0 | Pipeline §No Empty Containers |
 | W8 | **Page status = "publish"** after build push. Verify: `SELECT post_status FROM wp_posts WHERE ID = {PAGE_ID}`. | P0 | Pipeline |
 | W9 | **Content survives VB re-save** — open page in VB, make no changes, click Save. Reload front-end. All content still renders identically. | P1 | Pipeline §Editability |
-| W10 | **Divi CSS cache handled** — either flush cache after push, or use `!important` in pageLevelCSS to override cached rules. | P1 | Pipeline |
+| W10 | **Divi CSS cache flushed** after every push — delete `wp-content/et-cache/{PAGE_ID}/`. Stale cache applies old module numbering after module changes (D47). Build script must do this automatically. | P0 | Pipeline, D47 |
+| W11 | **Never use Divi Text Module `family` JSON property for non-default fonts.** Divi wraps value in single quotes, creating unmatched font names. Use `codeModule()` or pageLevelCSS `!important` override instead (D46). | P0 | D46 |
 
 ### Verify / Pass / Fail
 ```
@@ -174,14 +188,14 @@ Fail: "Unknown Module" present → convert from wp:html to wp:divi/code via dire
 
 | Category | Count | P0 | P1 | P2 |
 |----------|-------|----|----|-----|
-| D — Design System | 7 | 1 | 5 | 1 |
+| D — Design System | 7 | 2 | 4 | 1 |
 | L — Layout | 5 | 5 | 0 | 0 |
 | A — Accessibility | 5 | 5 | 0 | 0 |
-| W — WordPress/Divi 5 | 10 | 6 | 4 | 0 |
+| W — WordPress/Divi 5 | 12 | 9 | 3 | 0 |
 | C — Content | 5 | 3 | 2 | 0 |
 | R — Responsive | 1 | 0 | 1 | 0 |
 | E — Editability | 2 | 0 | 2 | 0 |
-| **Total** | **35** | **20** | **14** | **1** |
+| **Total** | **37** | **24** | **12** | **1** |
 
 **P0 = build blocker.** Script must exit non-zero. Fix before presenting to Peter.
 **P1 = production requirement.** Must be resolved before go-live.
@@ -194,7 +208,8 @@ Fail: "Unknown Module" present → convert from wp:html to wp:divi/code via dire
 | Criterion | Automated by | Manual |
 |-----------|-------------|--------|
 | D1 | verify-divi5.js (Font Gate) | — |
-| D2–D5 | verify-divi5.js (Property Coverage) | — |
+| D2 | build-hero-divi5.js (D2 check: fontFamily + fontSize + fontWeight) | — |
+| D3–D5 | verify-divi5.js (Property Coverage) | — |
 | D6–D7 | — | Code review |
 | L1 | verify-divi5.js (Playwright viewport check) | — |
 | L2 | check-links.js | — |
@@ -207,12 +222,13 @@ Fail: "Unknown Module" present → convert from wp:html to wp:divi/code via dire
 | W6–W7 | — | VB Layers panel |
 | W8 | Build script (checks post_status) | — |
 | W9, E2 | — | Manual VB re-save test |
-| W10 | — | Cache flush after push |
+| W10 | build-hero-divi5.js (auto-flush et-cache/) | — |
+| W11 | Code review (module type check) | — |
 | C1–C5 | extract-stats.js + grep | Code review |
 | R1 | verify-divi5.js (5 viewport screenshots) | — |
 | E1 | — | VB Layers panel |
 
-**Coverage: 22/35 automated, 13/35 manual** (mostly VB interaction tests that require human verification).
+**Coverage: 25/37 automated, 12/37 manual** (mostly VB interaction tests that require human verification).
 
 ---
 

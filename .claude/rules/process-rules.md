@@ -9,11 +9,43 @@
 6. **NEVER fabricate product terminology.** If an acronym expansion, product name, feature name, or company description isn't found in source docs or codebase, STOP and ask Peter. Never guess.
 7. **Subagent prompts MUST include anti-fabrication rule.** Every agent that touches content gets: "Never invent product terminology. Search codebase first. If unsure, leave unexpanded and flag."
 
+## Production Workflow
+1. Claude generates Content Spec from PRD + Playbook
+2. Peter reviews and approves Content Spec
+3. Claude builds page via Divi 5 MySQL pipeline (build-page.js)
+4. Peter reviews screenshots and approves
+5. Post-launch: Stock images replaced with custom photography
+
+## Build Order
+| Batch | Pages | Priority |
+|-------|-------|----------|
+| Global | Header & Footer | First |
+| Batch 0 | 1.0 Home | Validation test |
+| Batch 1 | 2.0 Partner Program | Highest |
+| Batch 2-6 | Remaining 17 pages | Sequential |
+
 ## Quality Gates
 - **After every page change:** visual comparison + UI/UX audit (two separate checks)
 - **Every number needs a source.** Cross-ref against `memory/data-crosscheck-findings.md`
 - **After any source file edit:** Run `node build.js` to compile, then `node audit.js` to verify (6 checks × 36 pages)
 - **After any styles.css edit:** Run `node test-styles.js` to verify brand compliance (92 tests)
+
+## Automated Audit (non-negotiable)
+Run `node complete_website/audit.js` after every build. Checks: skip-to-content link, `<main>` landmark, contrast ≥0.75, `prefers-reduced-motion`, form label associations. If the audit fails, fix BEFORE presenting work. The `/ui-ux-pro-max review` catches design/UX issues the script can't.
+
+## Ralph Loop (preferred audit-fix workflow)
+- Peter calls it "Raphael". Use `/ralph-loop` for audit-fix-verify cycles.
+- Key principle: NEVER present an audit report and ask "want me to fix it?" Find it, fix it, verify it, present the completed result.
+- Pattern: `/ralph-loop "prompt" --max-iterations N --completion-promise "TEXT"`
+
+## CSS Architecture (lessons learned Feb 2026)
+- **Component-based, not page-based.** ONE `.product-hero` with CSS custom properties, not `.mes-hero`, `.erp-hero`, `.auto-hero`.
+- **Design tokens everywhere.** Never hardcode colors — always `var(--dw-*)`.
+- **BEM naming.** `.block__element--modifier` pattern.
+- **Bloat trigger:** >50 lines growth without consolidation → STOP and propose extraction.
+- **Dead CSS audit** after every batch. Remove selectors used in zero HTML files.
+- **Accessibility in the template, not retrofitted.** Skip links, landmarks, reduced-motion, contrast — baked in from Day 1.
+- **Context:** HTML site's `styles.css` is temporary (CloneWebX fidelity). Divi 5 replaces all CSS. Apply these lessons in Divi 5 builds.
 
 ## Divi 5 Build Protocol (MANDATORY for every build-*-divi5.js push)
 1. **BEFORE writing any CSS value:** Open the page's ContentSpec. Read the exact spec values. Never eyeball from browser DevTools or styles.css.
@@ -42,8 +74,3 @@ node ci.js           # Master pipeline: runs ALL above in sequence (use --quick 
 ## File Organization
 - **Screenshots:** Always save to `/screenshots/` folder — never the project root
 - **CloneWebX exports:** Managed by `clonewebx-export.js` → `complete_website/clonewebx-exports/`
-
-## Ralph Loop Plugin
-- Peter calls it "Raphael"
-- Use for: audit-fix-verify cycles, any iterative refine-until-done task
-- Pattern: `/ralph-loop "prompt" --max-iterations N --completion-promise "TEXT"`

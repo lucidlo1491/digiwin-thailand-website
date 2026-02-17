@@ -13,8 +13,10 @@
 
 ## Colors (CSS Custom Properties)
 Primary: `--dw-blue: #00AFF0` | `--dw-navy: #000864` | `--dw-navy-deep: #000432` | `--dw-navy-mid: #001080` | `--dw-royal: #003CC8` | `--dw-cyan: #00E6FF` | `--dw-gray-light: #F5F7FA`
+Text: `#333333` (dark/body) | `#666666` (light/secondary)
 Accents: Purple `#644CE6` | Green `#02D28C` | Coral `#FF6E82` | Yellow `#FFD700` | Red `#DC2626`
 Ratio: 60% Smart Blue / 30% navy+royal+cyan / 10% accent
+All colors defined as CSS custom properties (`--dw-*`) in `:root` of styles.css
 
 ## Typography
 Headings: Noto Sans (500-700) | Body: Noto Sans (400) | Labels: JetBrains Mono (uppercase, 0.1em spacing) | Chinese: Noto Sans SC

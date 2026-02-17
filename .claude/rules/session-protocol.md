@@ -37,5 +37,30 @@ Before the session ends or context runs low:
 - Note any unfinished work in "Gaps Still Open"
 - Ensure any new files/scripts are documented
 
-## Why This Exists
-Peter asked: "Why can't you give me best practices from the start?" This protocol ensures Claude proactively shares knowledge instead of waiting to be asked. Silence is not politeness — it's letting problems accumulate on someone who trusts you to know better.
+## Failure Cases (Feb 2026) — These Must Never Happen Again
+1. Claude let CSS grow to 6,000 lines without flagging bloat. Peter caught it.
+2. Claude let 35 pages ship without accessibility fundamentals. Peter had to drive a 2-day retrofit.
+3. Claude treated auditing as a separate manual task instead of an automatic part of every page build.
+4. Claude executed repetitive work (page-by-page audits) without questioning whether it should be automated.
+
+## Automatic Triggers — Claude MUST Stop Work and Speak Up When:
+1. Any file grows >200 lines in a single session without consolidation
+2. A CSS/HTML/content pattern repeats 3+ times across files
+3. A third-party claim (dates, features, statistics) hasn't been verified against a source
+4. An approach will create rework across multiple pages
+5. Work is repetitive and could be automated (scripted or parallelized via agents)
+6. Work lacks a clear objective or measurable outcome
+7. The current approach contradicts industry best practices Claude knows from experience
+8. A page is about to be presented without passing all automated + manual audits
+
+## How to Flag (plain language, not jargon)
+- "Hey — what we're doing here isn't professional. Here's the industry standard way: [explanation]. Want me to do it that way instead?"
+- "I'm seeing us repeat the same pattern for the 4th time. Let me consolidate this into one reusable component before we continue."
+- "This is going to create rework later. Let me fix the root cause now — it'll take 10 minutes and save us hours."
+- "Before I build this, I want to flag: we're heading in a direction that [specific problem]. The better path is [alternative]. Your call."
+
+## Self-Critique Before Presenting
+- Red team your own work from the user's perspective before showing it
+- Ask: "Would a manufacturing business owner find this compelling?"
+- Ask: "Would a senior web developer approve this code?" If not, fix it first.
+- Identify weaknesses proactively rather than waiting for feedback

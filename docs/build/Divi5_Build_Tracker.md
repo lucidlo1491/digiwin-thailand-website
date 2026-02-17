@@ -82,7 +82,7 @@ Track every page through the 6-step workflow: Prep → Build → Audit → Revie
 | WMS | `---` | `---` | `---` | `---` | `---` | `---` |
 | AIoT | `---` | `---` | `---` | `---` | `---` | `---` |
 
-**ContentSpecs to upgrade:** `ContentSpec_Products_1.0.md`, `ContentSpec_ERP_1.0.md`, `ContentSpec_MES_1.0.md`, `ContentSpec_WMS_1.0.md`, `ContentSpec_AIoT_1.0.md`
+**Divi 5 Specs:** `ContentSpec_ERP_Divi5_2.0.md`, `ContentSpec_MES_Divi5_2.0.md`, `ContentSpec_WMS_Divi5_2.0.md`, `ContentSpec_AIoT_Divi5_2.0.md` (Products hub spec TBD). v1.0 originals archived in `archive/contentspecs-v1-html-phase/`.
 
 ---
 
@@ -95,7 +95,7 @@ Track every page through the 6-step workflow: Prep → Build → Audit → Revie
 | Electronics | `---` | `---` | `---` | `---` | `---` | `---` |
 | Metal & Plastics | `---` | `---` | `---` | `---` | `---` | `---` |
 
-**ContentSpecs to upgrade (light):** `ContentSpec_Industries_1.0.md`, `ContentSpec_Automotive_1.0.md`, `ContentSpec_Electronics_1.0.md`, `ContentSpec_MetalPlastics_1.0.md`
+**Divi 5 Specs:** `ContentSpec_Industries_Divi5_2.0.md`, `ContentSpec_Automotive_Divi5_2.0.md`, `ContentSpec_Electronics_Divi5_2.0.md`, `ContentSpec_MetalPlastics_Divi5_2.0.md`. v1.0 originals archived.
 
 ---
 
@@ -105,7 +105,7 @@ Track every page through the 6-step workflow: Prep → Build → Audit → Revie
 |------|-------------|---------------|---------------|----------------|-----------------|-----------------|
 | About Us | `---` | `---` | `---` | `---` | `---` | `---` |
 
-**ContentSpec to upgrade:** `ContentSpec_About_1.0.md`
+**Divi 5 Spec:** `ContentSpec_About_Divi5_2.0.md`. v1.0 original archived.
 
 ---
 
@@ -115,7 +115,7 @@ Track every page through the 6-step workflow: Prep → Build → Audit → Revie
 |------|-------------|---------------|---------------|----------------|-----------------|-----------------|
 | Demo / Contact | `---` | `---` | `---` | `---` | `---` | `---` |
 
-**ContentSpec to upgrade (light):** `ContentSpec_Demo_1.0.md`
+**Divi 5 Spec:** `ContentSpec_Demo_Divi5_2.0.md`. v1.0 original archived.
 
 ---
 
@@ -126,7 +126,7 @@ Track every page through the 6-step workflow: Prep → Build → Audit → Revie
 | Blog Hub | `---` | `---` | `---` | `---` | `---` | `---` |
 | News Hub | `---` | `---` | `---` | `---` | `---` | `---` |
 
-**ContentSpecs to upgrade (light):** `ContentSpec_Blog_1.0.md`, `ContentSpec_News_1.0.md`
+**ContentSpecs (v1.0 — no Divi 5 upgrade needed):** `ContentSpec_Blog_1.0.md`, `ContentSpec_News_1.0.md`
 
 ---
 
@@ -186,8 +186,8 @@ Legal pages are simple Text module layouts — no spec upgrade needed.
 | Metric | Count |
 |--------|-------|
 | Total pages | 31 |
-| Specs ready (Divi 5) | 5 |
-| Specs to upgrade | 10 |
+| Specs ready (Divi 5) | 16 |
+| Specs to upgrade | 0 (Products hub TBD) |
 | Specs not needed | 16 |
 | Pages built | 2 (Header + Footer) |
 | Pages published | 0 |

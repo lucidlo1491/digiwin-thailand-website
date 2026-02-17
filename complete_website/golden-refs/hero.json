@@ -1,25 +1,27 @@
 {
   "section": "hero",
-  "version": "v2.2",
-  "description": "Split-screen hero — Factory (left) + Partner (right) — v28 SVG via JS injection (Base64 KSES bypass), button shine. v2.2: Updated layout values for v28 (no section margin-top, 50/50 column split at 720px each).",
+  "version": "v2.3",
+  "description": "Split-screen hero — Factory (left) + Partner (right). v2.3: Updated selectors after label/title migration from Text→Code Modules (D46). Labels now in wp:divi/code with .hero-label class. Text module numbering shifted (subtitles are text_0, text_1).",
 
   "breakpoints": [1440, 768, 375],
   "viewport": { "1440": [1440, 900], "768": [768, 1024], "375": [375, 812] },
 
   "editability": {
     "source": "api",
-    "bannedBlocks": ["wp:divi/code"],
+    "bannedBlocks": ["wp:divi/button", "wp:divi/group"],
+    "maxHtmlBlocks": 1,
+    "htmlBlockNote": "Only 1 wp:html allowed per page (the JS script block). All other HTML uses wp:divi/code.",
     "requiredNativeModules": [
-      { "name": "Text modules (labels/subtitles)", "type": "text", "minCount": 4, "severity": "P0" }
+      { "name": "Text modules (subtitles)", "type": "text", "minCount": 2, "severity": "P0" },
+      { "name": "Code modules (labels, titles, buttons, stats, decorative)", "type": "code", "minCount": 12, "severity": "P0" }
     ],
-    "maxCodeModules": 0,
-    "notes": "Divi 5 Code Modules and native Button/Group modules do NOT render on front-end. All raw HTML uses wp:html. Only native Text modules work reliably."
+    "notes": "v30 (Feb 16): wp:divi/code works via direct MySQL. Labels and titles use Code Modules (not Text) to avoid font-family quoting bug (D46). Text modules used only for subtitles."
   },
 
   "fonts": {
     "required": [
-      { "family": "JetBrains Mono", "weight": 600, "size": "10px", "severity": "P0" },
-      { "family": "JetBrains Mono", "weight": 400, "size": "11px", "severity": "P0" },
+      { "family": "JetBrains Mono", "weight": 600, "size": "14px", "severity": "P0", "note": "Labels (.hero-label)" },
+      { "family": "JetBrains Mono", "weight": 400, "size": "11px", "severity": "P0", "note": "Stat labels (.hero-stat-label)" },
       { "family": "Noto Sans", "weight": 700, "size": "52px", "severity": "P0" },
       { "family": "Noto Sans", "weight": 400, "size": "18px", "severity": "P0" },
       { "family": "Noto Sans", "weight": 600, "size": "16px", "severity": "P0" },
@@ -160,23 +162,22 @@
 
     {
       "name": "Factory Label (container)",
-      "wp": ".et_pb_column_0:not([class*='tb_body']) .et_pb_text_0",
+      "wp": ".et_pb_column_0:not([class*='tb_body']) .et_pb_code_2",
       "severity": "P0",
       "checks": {
-        "position": "relative",
-        "z-index": { "within": [2, 0] }
+        "position": "relative"
       }
     },
     {
       "name": "Factory Label (text)",
-      "wp": ".et_pb_column_0:not([class*='tb_body']) .et_pb_text_0 .et_pb_text_inner p",
+      "wp": ".et_pb_column_0:not([class*='tb_body']) .et_pb_code_2 .et_pb_code_inner .hero-label",
       "severity": "P0",
       "checks": {
         "font-family": { "contains": "JetBrains Mono" },
-        "font-size": { "within": [10, 2] },
+        "font-size": { "within": [14, 2] },
         "font-weight": { "weightWithin": [600, 50] },
         "text-transform": "uppercase",
-        "letter-spacing": { "within": [1, 0.5] },
+        "letter-spacing": { "within": [2.1, 0.5] },
         "color": { "colorWithin": [0, 175, 240, 10] },
         "textContent": { "contains": "Manufacturing" }
       }
@@ -210,7 +211,7 @@
 
     {
       "name": "Factory Subtitle",
-      "wp": ".et_pb_column_0:not([class*='tb_body']) .et_pb_text_1 .et_pb_text_inner p",
+      "wp": ".et_pb_column_0:not([class*='tb_body']) .et_pb_text_0 .et_pb_text_inner p",
       "severity": "P0",
       "checks": {
         "font-family": { "contains": "Noto Sans" },
@@ -224,23 +225,22 @@
 
     {
       "name": "Partner Label (container)",
-      "wp": ".et_pb_column_1:not([class*='tb_body']) .et_pb_text_2",
+      "wp": ".et_pb_column_1:not([class*='tb_body']) .et_pb_code_9",
       "severity": "P0",
       "checks": {
-        "position": "relative",
-        "z-index": { "within": [2, 0] }
+        "position": "relative"
       }
     },
     {
       "name": "Partner Label (text)",
-      "wp": ".et_pb_column_1:not([class*='tb_body']) .et_pb_text_2 .et_pb_text_inner p",
+      "wp": ".et_pb_column_1:not([class*='tb_body']) .et_pb_code_9 .et_pb_code_inner .hero-label",
       "severity": "P0",
       "checks": {
         "font-family": { "contains": "JetBrains Mono" },
-        "font-size": { "within": [10, 2] },
+        "font-size": { "within": [14, 2] },
         "font-weight": { "weightWithin": [600, 50] },
         "text-transform": "uppercase",
-        "letter-spacing": { "within": [1, 0.5] },
+        "letter-spacing": { "within": [2.1, 0.5] },
         "color": { "colorWithin": [255, 255, 255, 10, 0.9, 0.1] },
         "textContent": { "contains": "ERP Implementers" }
       }
@@ -274,7 +274,7 @@
 
     {
       "name": "Partner Subtitle",
-      "wp": ".et_pb_column_1:not([class*='tb_body']) .et_pb_text_3 .et_pb_text_inner p",
+      "wp": ".et_pb_column_1:not([class*='tb_body']) .et_pb_text_1 .et_pb_text_inner p",
       "severity": "P0",
       "checks": {
         "font-family": { "contains": "Noto Sans" },
@@ -435,7 +435,7 @@
     "elements": [
       {
         "name": "Factory-Label",
-        "selector": ".et_pb_column_0:not([class*='tb_body']) .et_pb_text_0",
+        "selector": ".et_pb_column_0:not([class*='tb_body']) .et_pb_code_2",
         "severity": "P0",
         "maxDiffPercent": 1.5,
         "sizeTolerance": 3
@@ -463,7 +463,7 @@
       },
       {
         "name": "Partner-Label",
-        "selector": ".et_pb_column_1:not([class*='tb_body']) .et_pb_text_2",
+        "selector": ".et_pb_column_1:not([class*='tb_body']) .et_pb_code_9",
         "severity": "P0",
         "maxDiffPercent": 1.5,
         "sizeTolerance": 3

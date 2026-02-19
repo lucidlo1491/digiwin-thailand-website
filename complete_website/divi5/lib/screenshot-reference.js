@@ -18,6 +18,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const puppeteer = require('puppeteer');
 
 const COMPLETE_WEBSITE_DIR = path.join(__dirname, '..', '..');
@@ -99,8 +100,23 @@ const FREEZE_CSS = `
 async function capture({ pageName, htmlFile, sections = [], force = false }) {
   fs.mkdirSync(SCREENSHOTS_DIR, { recursive: true });
 
-  // Check cache — if all expected PNGs exist, skip
-  if (!force) {
+  // Content hash cache invalidation — detect if HTML source changed since last capture
+  const htmlFullPath = path.join(COMPLETE_WEBSITE_DIR, htmlFile);
+  const hashFile = path.join(SCREENSHOTS_DIR, `${pageName}-content.md5`);
+  let sourceChanged = false;
+  if (fs.existsSync(htmlFullPath)) {
+    const currentHash = crypto.createHash('md5').update(fs.readFileSync(htmlFullPath)).digest('hex');
+    if (fs.existsSync(hashFile)) {
+      const storedHash = fs.readFileSync(hashFile, 'utf8').trim();
+      if (storedHash !== currentHash) {
+        console.log(`  ⚠ HTML source changed (hash mismatch). Forcing re-capture.`);
+        sourceChanged = true;
+      }
+    }
+  }
+
+  // Check cache — if all expected PNGs exist AND source hasn't changed, skip
+  if (!force && !sourceChanged) {
     const expectedFiles = [
       path.join(SCREENSHOTS_DIR, `${pageName}-fullpage.png`),
       ...sections.map(s => path.join(SCREENSHOTS_DIR, `${pageName}-${s.name}.png`)),
@@ -119,7 +135,7 @@ async function capture({ pageName, htmlFile, sections = [], force = false }) {
   try {
     const browser = await puppeteer.launch({
       headless: 'new',
-      args: ['--no-sandbox'],
+      args: ['--no-sandbox', '--font-render-hinting=none'],
     });
 
     try {
@@ -155,8 +171,8 @@ async function capture({ pageName, htmlFile, sections = [], force = false }) {
         });
       });
 
-      // Small stabilization wait
-      await new Promise(r => setTimeout(r, 500));
+      // Stabilization wait (matched to WP screenshot timing for symmetric captures)
+      await new Promise(r => setTimeout(r, 2000));
 
       // Full-page screenshot
       const fullPath = path.join(SCREENSHOTS_DIR, `${pageName}-fullpage.png`);
@@ -184,6 +200,12 @@ async function capture({ pageName, htmlFile, sections = [], force = false }) {
     }
   } finally {
     server.close();
+  }
+
+  // Store content hash for cache invalidation
+  if (fs.existsSync(htmlFullPath)) {
+    const hash = crypto.createHash('md5').update(fs.readFileSync(htmlFullPath)).digest('hex');
+    fs.writeFileSync(hashFile, hash, 'utf8');
   }
 
   return savedPaths;

@@ -52,16 +52,76 @@ module.exports = {
   verify: {
     wpUrl: 'https://digiwin-thailand.local/?page_id=100684',
     sections: [
-      { name: 'hero',            wpSelector: '.et_pb_section_0', htmlSelector: '.dw-hero-split' },
-      { name: 'logo-bar',        wpSelector: '.et_pb_section_1', htmlSelector: '.dw-clients-section',    skipPixelDiff: true },
-      { name: 'factory-checks',  wpSelector: '.et_pb_section_2', htmlSelector: '.dw-checks-section--factory' },
-      { name: 'partner-checks',  wpSelector: '.et_pb_section_3', htmlSelector: '.dw-checks-section--partner' },
-      { name: 'product-pillars', wpSelector: '.et_pb_section_4', htmlSelector: 'section.dw-section:nth-of-type(5)' },
-      { name: 'industry-tabs',   wpSelector: '.et_pb_section_5', htmlSelector: 'section.dw-section:nth-of-type(6)' },
-      { name: 'stats-banner',    wpSelector: '.et_pb_section_6', htmlSelector: '.dw-stats-section' },
-      { name: 'trust-anchors',   wpSelector: '.et_pb_section_7', htmlSelector: '.dw-trust-section' },
-      { name: 'proven-results',  wpSelector: '.et_pb_section_8', htmlSelector: '.dw-results-section' },
-      { name: 'final-cta',       wpSelector: '.et_pb_section_9', htmlSelector: '.dw-cta-section' },
+      {
+        name: 'hero', wpSelector: '.et_pb_section_0', htmlSelector: '.dw-hero-split',
+        maxDiffPct: 8, pixelThreshold: 0.1,
+        requiredElements: [
+          { selector: '.hero-svg-illustration', label: 'Factory/Partner SVG Illustration', minOpacity: 0.01 },
+          { selector: '.hero-grain', label: 'Grain Texture Overlay', minOpacity: 0.01 },
+          { selector: '.hero-title', label: 'Hero Title' },
+          { selector: '.hero-btn-row', label: 'CTA Buttons' },
+          { selector: '.hero-stats', label: 'Stats Row' },
+        ],
+      },
+      { name: 'logo-bar', wpSelector: '.et_pb_section_1', htmlSelector: '.dw-clients-section', skipPixelDiff: true, maxDiffPct: 100 },
+      {
+        name: 'factory-checks', wpSelector: '.et_pb_section_2', htmlSelector: '.dw-checks-section--factory',
+        maxDiffPct: 10, pixelThreshold: 0.1,
+        requiredElements: [
+          { selector: '.checks-scene', label: 'Background Scene SVG', minOpacity: 0.01 },
+          { selector: '.fchecks-deco', label: 'Super D Left Decoration', minOpacity: 0.01 },
+          { selector: '.checks-card', label: 'Pain Point Cards' },
+          { selector: '.checks-title', label: 'Section Title' },
+        ],
+      },
+      {
+        name: 'partner-checks', wpSelector: '.et_pb_section_3', htmlSelector: '.dw-checks-section--partner',
+        maxDiffPct: 10, pixelThreshold: 0.1,
+        requiredElements: [
+          { selector: '.pchecks-scene', label: 'Background Scene SVG', minOpacity: 0.01 },
+          { selector: '.pchecks-card', label: 'Pain Point Cards' },
+          { selector: '.pchecks-title', label: 'Section Title' },
+        ],
+      },
+      {
+        name: 'product-pillars', wpSelector: '.et_pb_section_4', htmlSelector: 'section.dw-section:nth-of-type(5)',
+        maxDiffPct: 10, pixelThreshold: 0.1,
+        requiredElements: [
+          { selector: '.products-deco', label: 'Super D Gradient Decoration', minOpacity: 0.01 },
+          { selector: '.products-card', label: 'Product Cards' },
+          { selector: '.products-header__title', label: 'Section Title' },
+        ],
+      },
+      {
+        name: 'industry-tabs', wpSelector: '.et_pb_section_5', htmlSelector: 'section.dw-section:nth-of-type(6)',
+        maxDiffPct: 12, pixelThreshold: 0.1, note: 'tab state may differ',
+      },
+      {
+        name: 'stats-banner', wpSelector: '.et_pb_section_6', htmlSelector: '.dw-stats-section',
+        maxDiffPct: 10, pixelThreshold: 0.1, note: 'counters + grain texture',
+        requiredElements: [
+          { selector: '.stats-deco', label: 'Super D Corner Decoration', minOpacity: 0.01 },
+          { selector: '.stats-grid', label: 'Stats Grid' },
+          { selector: '.stats-number', label: 'Stat Numbers' },
+        ],
+      },
+      {
+        name: 'trust-anchors', wpSelector: '.et_pb_section_7', htmlSelector: '.dw-trust-section',
+        maxDiffPct: 10, pixelThreshold: 0.1,
+        requiredElements: [
+          { selector: '.trust-scene', label: 'Trust Scene SVG', minOpacity: 0.01 },
+          { selector: '.trust-card', label: 'Trust Cards' },
+          { selector: '.trust-title', label: 'Section Title' },
+        ],
+      },
+      {
+        name: 'proven-results', wpSelector: '.et_pb_section_8', htmlSelector: '.dw-results-section',
+        maxDiffPct: 10, pixelThreshold: 0.1,
+      },
+      {
+        name: 'final-cta', wpSelector: '.et_pb_section_9', htmlSelector: '.dw-cta-section',
+        maxDiffPct: 10, pixelThreshold: 0.1,
+      },
     ],
   },
 

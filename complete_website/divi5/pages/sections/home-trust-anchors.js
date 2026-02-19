@@ -6,6 +6,7 @@
  */
 
 const { codeModule, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../../lib/modules');
+const superD = require('../../lib/super-d');
 
 const SPEC = {
   cardBg: 'linear-gradient(135deg, #000864 0%, #1e3a5f 50%, #0f172a 100%)',
@@ -55,8 +56,41 @@ function blocks() {
     </div>
   `).join('');
 
+  // Trust section scene SVG — shield, stock ticker, timeline, globe
+  const sceneSvg = `<div class="trust-scene" aria-hidden="true">
+    <svg viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <path d="M250 180 L250 380 Q250 480 350 530 Q450 480 450 380 L450 180 L350 140Z" stroke="#000864" stroke-width="2" fill="none" opacity="0.15"/>
+      <path d="M320 300 L345 325 L400 270" stroke="#00AFF0" stroke-width="2.5" fill="none" opacity="0.2"/>
+      <path d="M600 400 L650 380 L700 420 L750 350 L800 370 L850 300 L900 320 L950 280 L1000 300 L1050 260 L1100 280" stroke="#000864" stroke-width="1.5" fill="none" opacity="0.15"/>
+      <text x="1110" y="285" font-family="'Noto Sans',sans-serif" font-size="12" font-weight="700" fill="#000864" opacity="0.1">300378</text>
+      <circle cx="1250" cy="200" r="45" stroke="#000864" stroke-width="2" fill="none" opacity="0.12"/>
+      <circle cx="1250" cy="200" r="35" stroke="#000864" stroke-width="1" fill="none" opacity="0.08"/>
+      <text x="1250" y="205" font-family="'Noto Sans',sans-serif" font-size="10" font-weight="700" fill="#000864" opacity="0.1" text-anchor="middle">ISO</text>
+      <line x1="100" y1="750" x2="1300" y2="750" stroke="#000864" stroke-width="1.5" opacity="0.12"/>
+      <line x1="100" y1="740" x2="100" y2="760" stroke="#000864" stroke-width="1.5" opacity="0.12"/>
+      <line x1="400" y1="740" x2="400" y2="760" stroke="#000864" stroke-width="1.5" opacity="0.12"/>
+      <line x1="700" y1="740" x2="700" y2="760" stroke="#000864" stroke-width="1.5" opacity="0.12"/>
+      <line x1="1000" y1="740" x2="1000" y2="760" stroke="#000864" stroke-width="1.5" opacity="0.12"/>
+      <line x1="1300" y1="740" x2="1300" y2="760" stroke="#000864" stroke-width="1.5" opacity="0.12"/>
+      <text x="100" y="780" font-family="'Noto Sans',sans-serif" font-size="11" fill="#000864" opacity="0.08" text-anchor="middle">1982</text>
+      <text x="700" y="780" font-family="'Noto Sans',sans-serif" font-size="11" fill="#000864" opacity="0.08" text-anchor="middle">2006</text>
+      <text x="1300" y="780" font-family="'Noto Sans',sans-serif" font-size="11" fill="#000864" opacity="0.08" text-anchor="middle">2026</text>
+      <circle cx="800" cy="150" r="60" stroke="#000864" stroke-width="1.5" fill="none" opacity="0.1"/>
+      <ellipse cx="800" cy="150" rx="30" ry="60" stroke="#000864" stroke-width="1" fill="none" opacity="0.07"/>
+      <line x1="740" y1="150" x2="860" y2="150" stroke="#000864" stroke-width="1" opacity="0.07"/>
+      <circle cx="780" cy="135" r="3" fill="#00AFF0" opacity="0.2"/>
+      <circle cx="820" cy="160" r="3" fill="#00AFF0" opacity="0.15"/>
+      <circle cx="790" cy="170" r="2.5" fill="#00AFF0" opacity="0.12"/>
+      <circle cx="500" cy="500" r="3" fill="#000864" opacity="0.1"/>
+      <circle cx="1100" cy="600" r="4" fill="#000864" opacity="0.07"/>
+      <circle cx="150" cy="550" r="3" fill="#000864" opacity="0.08"/>
+    </svg>
+  </div>`;
+
+  // Scene SVG is INSIDE trust-section (same Code Module) so position:absolute references .trust-section
   const html = `
     <div class="trust-section">
+    ${sceneSvg}
     <div class="trust-container">
       <div class="trust-header">
         <div class="trust-header-label">Why Trust DigiWin</div>
@@ -74,7 +108,7 @@ function blocks() {
     sectionOpen({ adminLabel: 'Trust Anchors: 5 Credibility Cards', css: 'selector{background:transparent !important;padding:0 !important;}' }),
     rowOpen({ css: 'selector{max-width:100% !important;width:100% !important;padding:0 !important;}' }),
     columnOpen({ css: 'selector{padding:0 !important;}' }),
-    codeModule(html, 'Trust Anchors: 5 Cards'),
+    codeModule(html, 'Trust Anchors: Scene SVG + 5 Cards'),
     columnClose(),
     rowClose(),
     sectionClose(),
@@ -83,8 +117,11 @@ function blocks() {
 
 function css() {
   return `
+/* === TRUST SCENE SVG (explicit dimensions for Divi Code Module) === */
+.trust-scene{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:0.20}
+.trust-scene svg{width:100%;height:100%}
 /* === TRUST ANCHORS === */
-.trust-section{background:#ffffff;padding:100px 40px}
+.trust-section{background:#ffffff;padding:100px 40px;position:relative;overflow:hidden}
 .trust-container{max-width:1200px;margin:0 auto}
 .trust-header{text-align:center;max-width:700px;margin:0 auto 60px}
 .trust-header-label{font-family:'Noto Sans',sans-serif;font-size:13px;font-weight:600;color:#00AFF0;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px}

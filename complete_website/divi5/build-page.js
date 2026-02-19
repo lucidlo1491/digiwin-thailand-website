@@ -158,9 +158,19 @@ const pageLevelCSS = cssAssembler.assemble(allCSS);
 // If page config has a pageJS function (for JS script blocks), include it
 const pageJS = typeof pageConfig.pageJS === 'function' ? pageConfig.pageJS() : '';
 
+const totalSize = blockContent.length + pageLevelCSS.length + (pageJS ? pageJS.length : 0);
 console.log(`  Content: ${blockContent.length} chars`);
 console.log(`  CSS: ${pageLevelCSS.length} chars`);
 if (pageJS) console.log(`  JS: ${pageJS.length} chars`);
+console.log(`  Total: ${(totalSize / 1024).toFixed(1)} KB`);
+
+if (totalSize > 10 * 1024 * 1024) {
+  console.error(`\n✗ Content exceeds 10MB safety limit (${(totalSize / 1024 / 1024).toFixed(1)}MB). Aborting.`);
+  process.exit(1);
+}
+if (totalSize > 1024 * 1024) {
+  console.warn(`  ⚠ Content exceeds 1MB (${(totalSize / 1024).toFixed(0)}KB) — verify this is intentional.`);
+}
 
 // ════════════════════════════════════════════════════════════════
 // STEP 4: DRY RUN OUTPUT
@@ -238,6 +248,7 @@ const wpSections = verifyConf.sections || [];
       pageName,
       wpUrl,
       sections: wpSections,
+      warmUp: true,
     });
 
     console.log(`  ✓ ${shots.length} screenshot(s) captured:`);

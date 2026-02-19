@@ -351,7 +351,11 @@ function heroCss() {
 /* === DIVI SPACING RESET === */
 .et_pb_section_0:not([class*='tb_body']) .et_pb_column{gap:0 !important}
 
-/* === SVG ILLUSTRATIONS (v28) === */
+/* === CODE MODULE WRAPPER RESET — let overlays reference the column (which has height) === */
+.et_pb_code:has(.hero-svg-illustration),.et_pb_code:has(.hero-grain),.et_pb_code:has(.hero-light-leak){position:static !important}
+.et_pb_code:has(.hero-svg-illustration) .et_pb_code_inner,.et_pb_code:has(.hero-grain) .et_pb_code_inner,.et_pb_code:has(.hero-light-leak) .et_pb_code_inner{position:static !important}
+
+/* === SVG ILLUSTRATIONS === */
 .hero-svg-illustration{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:1;opacity:0.45}
 .hero-svg-illustration svg{width:100%;height:100%;display:block}
 

@@ -7,6 +7,7 @@
 
 const { codeModule, textModule, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../../lib/modules');
 const cssLib = require('../../lib/css-assembler');
+const superD = require('../../lib/super-d');
 
 /**
  * Generate section blocks
@@ -22,6 +23,9 @@ function blocks() {
 
   output.push(rowOpen());
   output.push(columnOpen());
+
+  // Super D decoration — gradient variant, bottom-right corner
+  output.push(codeModule(superD.html('products-deco'), 'Decoration: Super D Gradient'));
 
   // Section Header + Product Cards (single Code Module with wrapper)
   output.push(codeModule(`
@@ -150,12 +154,17 @@ function css() {
   // Section header styles
   parts.push(cssLib.sectionHeaderCSS('products'));
 
+  // Super D decoration
+  parts.push(`/* Super D: gradient corner-br */\n${superD.css('products-deco', { variant: 'gradient', position: 'corner-br', opacity: 0.08 })}`);
+
   // Section wrapper
   parts.push(`
 /* Products Section Wrapper */
 .products-section {
   background: #F5F7FA;
   padding: 100px 40px;
+  position: relative;
+  overflow: hidden;
 }`);
 
   // Products grid

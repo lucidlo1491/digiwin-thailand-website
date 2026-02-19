@@ -10,6 +10,7 @@
 
 const { codeModule, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../../lib/modules');
 const cssLib = require('../../lib/css-assembler');
+const superD = require('../../lib/super-d');
 
 // ────────────────────────────────────────────────────────────────
 // SPEC — Design tokens from ContentSpec_Home_Divi5_2.0.md §3.3
@@ -305,6 +306,9 @@ function blocks() {
       css: 'selector{width:100% !important;}',
     }),
 
+    // Super D decoration — outline variant, left bleed
+    codeModule(superD.html('fchecks-deco'), 'Decoration: Super D Left'),
+
     // Content — Code Module with entire section HTML
     codeModule(getSectionHTML(), 'Factory Checks: Header + 5 Cards + CTA'),
 
@@ -316,6 +320,8 @@ function blocks() {
 
 function css() {
   return `
+/* Super D: outline left bleed */
+${superD.css('fchecks-deco', { variant: 'outline', position: 'left', opacity: 0.10 })}
 /* === THEME BUILDER FULL-BLEED OVERRIDE (section 2) === */
 .et_pb_section_2_tb_body{background:transparent !important;padding:0 !important;margin:0 !important;}
 .et_pb_row_2_tb_body{max-width:1200px !important;width:100% !important;padding:0 !important;margin:0 auto !important;}

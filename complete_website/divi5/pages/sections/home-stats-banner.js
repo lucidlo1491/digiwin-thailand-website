@@ -6,6 +6,7 @@
  */
 
 const { codeModule, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../../lib/modules');
+const superD = require('../../lib/super-d');
 
 // SPEC tokens from ContentSpec §3.7
 const SPEC = {
@@ -108,6 +109,7 @@ function blocks() {
     sectionOpen({ adminLabel: 'Stats Banner: 6 Key Numbers', css: 'selector{background:transparent !important;padding:0 !important;}' }),
     rowOpen(),
     columnOpen(),
+    codeModule(superD.html('stats-deco'), 'Decoration: Super D Corner'),
     codeModule(html, 'Stats Banner: 6 Numbers + Counter JS'),
     columnClose(),
     rowClose(),
@@ -117,6 +119,8 @@ function blocks() {
 
 function css() {
   return `
+/* Super D: outline corner-br */
+${superD.css('stats-deco', { variant: 'outline', position: 'corner-tr', opacity: 0.08, width: '25%', minHeight: '25vh' })}
 /* === STATS BANNER === */
 .stats-section{background:${SPEC.sectionBg};padding:${SPEC.sectionPadding};position:relative;overflow:hidden}
 .stats-container{position:relative;z-index:2;max-width:1200px;margin:0 auto}

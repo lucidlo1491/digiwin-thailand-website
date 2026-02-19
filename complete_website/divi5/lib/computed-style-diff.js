@@ -1,5 +1,5 @@
 /**
- * computed-style-diff.js — Computed Style Comparison Engine (Autopilot v4)
+ * computed-style-diff.js — Computed Style Comparison Engine (Autopilot v5)
  *
  * Opens HTML ref (temp server) + WP (direct), extracts computed styles
  * from matched element pairs via styleMap config, compares property-by-property.
@@ -10,7 +10,9 @@
  * - Missing selector = FAIL (not skip)
  * - Smart deep-scan when pixel diff high but computed mismatches low
  * - Single Puppeteer instance, shared readiness
- * - v4: Fixability classification (FIXABLE / STRUCTURAL) — convergence uses FIXABLE only
+ * - v5: Three-tier classification (FIXABLE / STRUCTURAL / ACCEPTABLE)
+ *   Width/height removed from defaults (layout-computed, not CSS bugs)
+ *   Pixel diff is convergence metric; style diff is diagnostic only
  *
  * Usage (standalone):
  *   node complete_website/divi5/lib/computed-style-diff.js --page home [--section hero] [--deep-scan]
@@ -25,6 +27,7 @@ const fs = require('fs');
 const path = require('path');
 const { startServer } = require('./http-server');
 const { waitForDiviReady } = require('./wait-for-divi');
+const config = require('./screenshot-config');
 
 const SCREENSHOTS_DIR = path.join(__dirname, '..', '..', '..', 'screenshots');
 
@@ -46,13 +49,19 @@ const DEFAULT_PROPERTIES = [
   'border-radius', 'border-top-left-radius', 'border-top-right-radius',
   'border-bottom-left-radius', 'border-bottom-right-radius',
   'box-shadow', 'text-shadow', 'opacity',
-  // Layout
-  'display', 'position', 'width', 'max-width', 'min-width', 'height',
+  // Layout (no width/height — those are layout-computed, not CSS bugs)
+  'display', 'position',
   'overflow', 'overflow-x', 'overflow-y', 'z-index',
   // Flexbox
   'flex-direction', 'justify-content', 'align-items', 'gap',
   // Visual effects
   'backdrop-filter', '-webkit-backdrop-filter', 'filter', 'transform',
+];
+
+// Layout-computed properties — only included in --deep-scan mode
+// These are determined by container width / text reflow, not directly set in CSS
+const LAYOUT_COMPUTED_PROPERTIES = [
+  'width', 'max-width', 'min-width', 'height', 'min-height', 'max-height',
 ];
 
 // Properties that should NEVER be overridden with !important on .et_pb_* elements
@@ -61,7 +70,7 @@ const PROTECTED_PROPERTIES = [
 ];
 
 // ═══════════════════════════════════════════════════════════
-// FIXABILITY CLASSIFICATION (v4)
+// FIXABILITY CLASSIFICATION (v5)
 // ═══════════════════════════════════════════════════════════
 
 /**
@@ -80,29 +89,74 @@ const STRUCTURAL_PATTERNS = [
 ];
 
 /**
- * Classify a mismatch as FIXABLE or STRUCTURAL.
+ * Value pairs that are ACCEPTABLE — equivalent values expressed differently.
+ * These are not bugs, just different browser/engine representations.
+ */
+const ACCEPTABLE_VALUE_PAIRS = [
+  // min-width: auto vs 0px — equivalent
+  { property: 'min-width', pairs: [['auto', '0px'], ['0px', 'auto']] },
+  { property: 'min-height', pairs: [['auto', '0px'], ['0px', 'auto']] },
+  // overflow: visible vs auto — both show content
+  { property: 'overflow', pairs: [['visible', 'auto'], ['auto', 'visible']] },
+  { property: 'overflow-x', pairs: [['visible', 'auto'], ['auto', 'visible']] },
+  { property: 'overflow-y', pairs: [['visible', 'auto'], ['auto', 'visible']] },
+  // z-index: auto vs 0 — equivalent stacking context
+  { property: 'z-index', pairs: [['auto', '0'], ['0', 'auto']] },
+];
+
+/**
+ * Classify a mismatch as FIXABLE, STRUCTURAL, or ACCEPTABLE.
  *
- * STRUCTURAL = inherent Divi wrapper difference that cannot be overridden.
  * FIXABLE = can be fixed via CSS in the builder's css() function.
+ * STRUCTURAL = inherent Divi wrapper difference that cannot be overridden.
+ * ACCEPTABLE = equivalent values expressed differently (not a real mismatch).
  *
- * @param {{label: string, property: string}} mismatch
- * @returns {'FIXABLE' | 'STRUCTURAL'}
+ * @param {{label: string, property: string, refValue: string, wpValue: string}} mismatch
+ * @returns {'FIXABLE' | 'STRUCTURAL' | 'ACCEPTABLE'}
  */
 function classifyMismatch(mismatch) {
+  // Check ACCEPTABLE value pairs first
+  for (const rule of ACCEPTABLE_VALUE_PAIRS) {
+    if (rule.property === mismatch.property) {
+      const rv = (mismatch.refValue || '').trim();
+      const wv = (mismatch.wpValue || '').trim();
+      for (const [a, b] of rule.pairs) {
+        if (rv === a && wv === b) return 'ACCEPTABLE';
+      }
+    }
+  }
+
   // Protected properties on any element
   if (PROTECTED_PROPERTIES.includes(mismatch.property)) {
     return 'STRUCTURAL';
   }
+
+  // position: static vs relative — Divi default stacking context
+  if (mismatch.property === 'position') {
+    const rv = (mismatch.refValue || '').trim();
+    const wv = (mismatch.wpValue || '').trim();
+    if ((rv === 'static' && wv === 'relative') || (rv === 'relative' && wv === 'static')) {
+      return 'STRUCTURAL';
+    }
+  }
+
+  // gap/align-items/justify-content on container elements — Divi flex defaults
+  if (/^(gap|align-items|justify-content)$/.test(mismatch.property) && /container|wrapper|grid|section/i.test(mismatch.label)) {
+    return 'STRUCTURAL';
+  }
+
   // Section BG structural patterns
   for (const pat of STRUCTURAL_PATTERNS) {
     if (pat.labelPattern.test(mismatch.label) && pat.properties.includes(mismatch.property)) {
       return 'STRUCTURAL';
     }
   }
+
   // Width/height on Section BG (content reflow from wrapper differences)
-  if (/Section BG/i.test(mismatch.label) && /^(width|height|min-width)$/.test(mismatch.property)) {
+  if (/Section BG/i.test(mismatch.label) && /^(width|height|min-width|max-width|min-height|max-height)$/.test(mismatch.property)) {
     return 'STRUCTURAL';
   }
+
   return 'FIXABLE';
 }
 
@@ -464,7 +518,7 @@ async function run({ pageName, sectionFilter, deepScan = false, properties }) {
     return { sections: [], mismatches: [], summary: '0 sections checked', jsonPath: '' };
   }
 
-  const props = properties || DEFAULT_PROPERTIES;
+  const props = properties || (deepScan ? [...DEFAULT_PROPERTIES, ...LAYOUT_COMPUTED_PROPERTIES] : DEFAULT_PROPERTIES);
 
   // Start temp server for HTML ref
   const { port, close } = await startServer();
@@ -472,8 +526,8 @@ async function run({ pageName, sectionFilter, deepScan = false, properties }) {
 
   const browser = await puppeteer.launch({
     headless: 'new',
-    protocolTimeout: 120000,
-    args: ['--ignore-certificate-errors', '--no-sandbox', '--font-render-hinting=none'],
+    protocolTimeout: config.PROTOCOL_TIMEOUT,
+    args: config.PUPPETEER_ARGS,
   });
 
   const allResults = [];
@@ -481,25 +535,14 @@ async function run({ pageName, sectionFilter, deepScan = false, properties }) {
 
   try {
     const page = await browser.newPage();
-    await page.setViewport({ width: 1440, height: 900 });
+    await page.setViewport(config.VIEWPORT);
 
     // ── Extract from HTML ref ──
     console.log(`  Loading HTML reference: ${refUrl}`);
-    await page.goto(refUrl, { waitUntil: 'networkidle2', timeout: 30000 });
-    await page.evaluate(() => document.fonts.ready);
-    await page.evaluate(async () => {
-      for (const family of ['Noto Sans', 'JetBrains Mono']) {
-        try { await document.fonts.load(`400 16px "${family}"`); } catch {}
-        try { await document.fonts.load(`700 16px "${family}"`); } catch {}
-      }
-    });
-    // Force scroll-animated elements visible
-    await page.evaluate(() => {
-      document.querySelectorAll('.dw-trust-card, .dw-check-card, .dw-result-card, .dw-value-prop').forEach(el => {
-        el.style.setProperty('opacity', '1', 'important');
-        el.style.setProperty('transform', 'none', 'important');
-      });
-    });
+    await page.goto(refUrl, { waitUntil: config.WAIT_UNTIL, timeout: 30000 });
+    await config.loadFonts(page);
+    // Force scroll-animated elements visible (from shared config)
+    await config.forceScrollElementsVisible(page);
     await new Promise(r => setTimeout(r, 1000));
 
     // Extract ref styles
@@ -517,19 +560,15 @@ async function run({ pageName, sectionFilter, deepScan = false, properties }) {
     // ── Extract from WordPress ──
     console.log(`  Loading WordPress: ${wpUrl}`);
     // Warm-up load (Divi CSS regeneration)
-    await page.goto(wpUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await page.goto(wpUrl, { waitUntil: config.WARM_UP_WAIT_UNTIL, timeout: 60000 });
     await new Promise(r => setTimeout(r, 3000));
 
     // Main load
-    await page.goto(wpUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await page.goto(wpUrl, { waitUntil: config.WAIT_UNTIL, timeout: 60000 });
     await waitForDiviReady(page, { verbose: true });
 
-    // Hide WP admin bar
-    await page.evaluate(() => {
-      const bar = document.getElementById('wpadminbar');
-      if (bar) bar.style.display = 'none';
-      document.documentElement.style.marginTop = '0px';
-    });
+    // Hide WP admin bar (from shared config)
+    await config.hideAdminBar(page);
 
     // Extract WP styles
     const wpMaps = new Map();
@@ -601,6 +640,7 @@ async function run({ pageName, sectionFilter, deepScan = false, properties }) {
 
   const fixableCount = allMismatches.filter(m => m.fixability === 'FIXABLE').length;
   const structuralCount = allMismatches.filter(m => m.fixability === 'STRUCTURAL').length;
+  const acceptableCount = allMismatches.filter(m => m.fixability === 'ACCEPTABLE').length;
 
   const output = {
     timestamp: new Date().toISOString(),
@@ -609,6 +649,7 @@ async function run({ pageName, sectionFilter, deepScan = false, properties }) {
     totalMismatches: allMismatches.length,
     fixableMismatches: fixableCount,
     structuralMismatches: structuralCount,
+    acceptableMismatches: acceptableCount,
     sections: allResults,
     mismatches: allMismatches,
     protectedProperties: PROTECTED_PROPERTIES,
@@ -618,15 +659,16 @@ async function run({ pageName, sectionFilter, deepScan = false, properties }) {
 
   // Console report
   console.log('\n╔══════════════════════════════════════════════════════════╗');
-  console.log('║         COMPUTED STYLE DIFF (v4)                        ║');
+  console.log('║         COMPUTED STYLE DIFF (v5)                        ║');
   console.log('╚══════════════════════════════════════════════════════════╝\n');
 
   for (const section of allResults) {
     const sectionMismatches = allMismatches.filter(m => m.section === section.section);
     const sFixable = sectionMismatches.filter(m => m.fixability === 'FIXABLE').length;
     const sStructural = sectionMismatches.filter(m => m.fixability === 'STRUCTURAL').length;
+    const sAcceptable = sectionMismatches.filter(m => m.fixability === 'ACCEPTABLE').length;
     const icon = sFixable === 0 ? '✓' : '✗';
-    console.log(`  ${icon} ${section.section}: ${section.matches}/${section.total} match | ${sFixable} fixable, ${sStructural} structural`);
+    console.log(`  ${icon} ${section.section}: ${section.matches}/${section.total} match | ${sFixable} fixable, ${sStructural} structural, ${sAcceptable} acceptable`);
   }
 
   // Show FIXABLE mismatches in detail
@@ -649,24 +691,26 @@ async function run({ pageName, sectionFilter, deepScan = false, properties }) {
     }
   }
 
-  // Show STRUCTURAL count as summary only
-  if (structuralCount > 0) {
-    console.log(`\n  ── STRUCTURAL (${structuralCount} — expected, not fixable) ──`);
-    const structuralBySection = {};
-    for (const m of allMismatches.filter(m => m.fixability === 'STRUCTURAL')) {
-      structuralBySection[m.section] = (structuralBySection[m.section] || 0) + 1;
+  // Show STRUCTURAL + ACCEPTABLE counts as summary only
+  if (structuralCount > 0 || acceptableCount > 0) {
+    console.log(`\n  ── Non-fixable (${structuralCount} structural + ${acceptableCount} acceptable) ──`);
+    const countBySection = {};
+    for (const m of allMismatches.filter(m => m.fixability !== 'FIXABLE')) {
+      const key = m.section;
+      if (!countBySection[key]) countBySection[key] = { structural: 0, acceptable: 0 };
+      countBySection[key][m.fixability.toLowerCase()]++;
     }
-    for (const [section, count] of Object.entries(structuralBySection)) {
-      console.log(`  [${section}] ${count} structural differences (Divi wrapper vs HTML wrapper)`);
+    for (const [section, counts] of Object.entries(countBySection)) {
+      console.log(`  [${section}] ${counts.structural} structural, ${counts.acceptable} acceptable`);
     }
   }
 
-  const summary = `${fixableCount} fixable, ${structuralCount} structural, ${allMismatches.length} total across ${allResults.length} sections`;
+  const summary = `${fixableCount} fixable, ${structuralCount} structural, ${acceptableCount} acceptable across ${allResults.length} sections`;
   console.log(`\n  Summary: ${summary}`);
-  console.log(`  Convergence metric: ${fixableCount} FIXABLE mismatches`);
+  console.log(`  Diagnostic metric: ${fixableCount} FIXABLE mismatches (pixel diff is convergence)`);
   console.log(`  JSON: ${jsonPath}`);
 
-  return { sections: allResults, mismatches: allMismatches, fixableCount, structuralCount, summary, jsonPath };
+  return { sections: allResults, mismatches: allMismatches, fixableCount, structuralCount, acceptableCount, summary, jsonPath };
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -710,8 +754,10 @@ module.exports = {
   compareValues,
   classifyMismatch,
   DEFAULT_PROPERTIES,
+  LAYOUT_COMPUTED_PROPERTIES,
   PROTECTED_PROPERTIES,
   STRUCTURAL_PATTERNS,
+  ACCEPTABLE_VALUE_PAIRS,
   FIX_RECIPES,
   // Fuzzy helpers (exported for testing)
   parseColor, colorsMatch, parseDimension, dimensionsMatch,

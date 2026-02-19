@@ -7,6 +7,8 @@
  * Screenshots are cached — skips recapture if PNGs already exist.
  * Use --force-recapture or pass { force: true } to invalidate cache.
  *
+ * v7: All constants imported from screenshot-config.js (shared config).
+ *
  * Usage (standalone):
  *   node complete_website/divi5/lib/screenshot-reference.js --page home [--force-recapture]
  *
@@ -20,23 +22,9 @@ const path = require('path');
 const crypto = require('crypto');
 const puppeteer = require('puppeteer');
 const { startServer, COMPLETE_WEBSITE_DIR } = require('./http-server');
+const config = require('./screenshot-config');
 
 const SCREENSHOTS_DIR = path.join(__dirname, '..', '..', '..', 'screenshots', 'reference');
-
-/**
- * CSS to freeze all animations and transitions for deterministic screenshots.
- */
-const FREEZE_CSS = `
-  *, *::before, *::after {
-    animation-duration: 0s !important;
-    animation-delay: 0s !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0s !important;
-    transition-delay: 0s !important;
-  }
-  .dw-clients-track { animation: none !important; }
-  .dw-particle-wave, [data-particles] canvas { display: none !important; }
-`;
 
 /**
  * Capture reference screenshots from the HTML prototype.
@@ -86,54 +74,44 @@ async function capture({ pageName, htmlFile, sections = [], force = false }) {
   try {
     const browser = await puppeteer.launch({
       headless: 'new',
-      args: ['--no-sandbox', '--font-render-hinting=none'],
+      protocolTimeout: config.PROTOCOL_TIMEOUT,
+      args: config.PUPPETEER_ARGS,
     });
 
     try {
       const page = await browser.newPage();
-      await page.setViewport({ width: 1440, height: 900 });
+      await page.setViewport(config.VIEWPORT);
 
       const url = `http://127.0.0.1:${port}/${htmlFile}`;
-      await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
+      await page.goto(url, { waitUntil: config.WAIT_UNTIL, timeout: 30000 });
 
-      // Wait for fonts
-      await page.evaluate(() => document.fonts.ready);
-      await page.evaluate(async () => {
-        // Explicit font check for key families
-        const families = ['Noto Sans', 'JetBrains Mono'];
-        for (const family of families) {
-          try { await document.fonts.load(`400 16px "${family}"`); } catch {}
-        }
-      });
+      // Wait for fonts (consistent weights: 400+700)
+      await config.loadFonts(page);
 
-      // Freeze animations
-      await page.addStyleTag({ content: FREEZE_CSS });
-      // Remove SVG <animate> elements
-      await page.evaluate(() => {
-        document.querySelectorAll('animate, animateTransform, animateMotion').forEach(el => el.remove());
-      });
+      // Freeze animations + counter finalize + SVG animate removal
+      await config.applyFreeze(page);
 
-      // Force scroll-animated elements visible (they start opacity:0, translateY:20px via JS)
-      // Only target the specific classes that DigiWinUI.initScrollAnimation applies to
-      await page.evaluate(() => {
-        document.querySelectorAll('.dw-trust-card, .dw-check-card, .dw-result-card, .dw-value-prop').forEach(el => {
-          el.style.setProperty('opacity', '1', 'important');
-          el.style.setProperty('transform', 'none', 'important');
-        });
-      });
+      // Force scroll-animated elements visible
+      await config.forceScrollElementsVisible(page);
 
-      // Stabilization wait (matched to WP screenshot timing for symmetric captures)
-      await new Promise(r => setTimeout(r, 2000));
+      // Stabilization wait (matched to WP screenshot timing)
+      await new Promise(r => setTimeout(r, config.STABILIZATION_MS));
 
       // Full-page screenshot
       const fullPath = path.join(SCREENSHOTS_DIR, `${pageName}-fullpage.png`);
       await page.screenshot({ path: fullPath, fullPage: true });
       savedPaths.push(fullPath);
 
+      // Hide fixed header before per-section screenshots
+      await config.hideHeaderHTML(page);
+
       // Per-section screenshots
       for (const section of sections) {
         if (!section.htmlSelector) continue;
         try {
+          // Clip to viewport width to prevent overflow capture (V8)
+          await config.clipToViewport(page, section.htmlSelector);
+
           const el = await page.$(section.htmlSelector);
           if (el) {
             const sectionPath = path.join(SCREENSHOTS_DIR, `${pageName}-${section.name}.png`);

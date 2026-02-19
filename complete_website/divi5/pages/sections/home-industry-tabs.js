@@ -336,15 +336,15 @@ function blocks() {
 function css() {
   return `
 /* === INDUSTRY TABS === */
-.ind-section{background:#ffffff;padding:100px 40px}
+.ind-section{background:#ffffff;padding:100px 40px;-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto;font-size:16px}
 .ind-container{max-width:1200px;margin:0 auto;padding:0 20px}
 .ind-header{text-align:center;margin-bottom:56px}
-.ind-label{font-family:'Noto Sans',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#0369a1;margin-bottom:12px}
-.ind-title{font-family:'Noto Sans',sans-serif;font-size:42px;font-weight:700;line-height:1.2;color:#000864;margin:0 0 20px 0}
+.ind-label{font-family:'Noto Sans',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#0369a1;margin-bottom:12px;line-height:1.6}
+.ind-title{font-family:'Noto Sans',sans-serif;font-size:44px;font-weight:700;line-height:1.15;color:#000864;margin:0 0 16px 0}
 .ind-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;line-height:1.6;color:#475569;margin:0;max-width:700px;margin-left:auto;margin-right:auto}
 .ind-tab-bar{display:inline-flex;background:#f1f5f9;border-radius:16px 16px 0 0;padding:6px 6px 0 6px;margin-bottom:-1px;position:relative;z-index:2}
-.ind-tab{font-family:'Noto Sans',sans-serif;font-size:14px;font-weight:500;color:#5b6b80;background:transparent;border:none;padding:14px 28px;cursor:pointer;transition:all 0.3s ease;border-radius:12px 12px 0 0;position:relative}
-.ind-tab:hover{color:#0369a1}
+.ind-tab{font-family:'Noto Sans',sans-serif;font-size:14px;font-weight:500;color:#5b6b80;background:transparent;border:none;padding:14px 28px;cursor:pointer;transition:all 0.25s ease;border-radius:12px 12px 0 0;position:relative}
+.ind-tab:hover{color:#0369a1;background:rgba(0,175,240,0.08)}
 button.ind-tab.ind-tab-active{background:#ffffff;color:#000864;font-weight:600;box-shadow:0 -2px 8px rgba(0,0,0,0.04)}
 button.ind-tab.ind-tab-active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00AFF0 0%,#003CC8 100%)}
 .ind-content-wrapper{background:#ffffff;border-radius:24px;box-shadow:0 12px 48px rgba(0,0,0,0.08);position:relative;z-index:1}

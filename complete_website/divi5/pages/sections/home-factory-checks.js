@@ -291,13 +291,13 @@ function blocks() {
     sectionOpen({
       adminLabel: 'Factory Checks — 5 Pain Points',
       padding: { top: '0px', bottom: '0px', left: '0px', right: '0px', syncVertical: 'off', syncHorizontal: 'off' },
-      css: 'selector{background:linear-gradient(165deg, #f8fafc 0%, #f1f5f9 100%) !important;padding:100px 40px !important;position:relative;overflow:hidden;}',
+      css: 'selector{background:transparent !important;padding:0 !important;}',
     }),
 
     // Row (wrapper for full-width content)
     rowOpen({
       adminLabel: 'Checks Content Row',
-      css: 'selector{max-width:1200px !important;margin:0 auto !important;padding:0 !important;}',
+      css: 'selector{max-width:100% !important;margin:0 !important;padding:0 !important;}',
     }),
 
     // Column (single column, full-width)
@@ -323,22 +323,22 @@ function css() {
 /* Super D: outline left bleed */
 ${superD.css('fchecks-deco', { variant: 'outline', position: 'left', opacity: 0.10 })}
 /* === THEME BUILDER FULL-BLEED OVERRIDE (section 2) === */
-.et_pb_section_2_tb_body{background:transparent !important;padding:0 !important;margin:0 !important;}
-.et_pb_row_2_tb_body{max-width:1200px !important;width:100% !important;padding:0 !important;margin:0 auto !important;}
+.et_pb_section_2_tb_body,.et_pb_section_2{background:transparent !important;padding:0 !important;margin:0 !important;}
+.et_pb_row_2_tb_body{max-width:100% !important;width:100% !important;padding:0 !important;margin:0 !important;}
 .et_pb_column_2_tb_body{padding:0 !important;}
 
 /* === DIVI SPACING RESET === */
 .et_pb_section_2:not([class*='tb_body']) .et_pb_column{gap:0 !important}
 
 /* === SECTION WRAPPER === */
-.checks-section{background:${SPEC.section.background};padding:${SPEC.section.padding};position:relative;overflow:hidden}
+.checks-section{background:${SPEC.section.background};padding:${SPEC.section.padding};position:relative;overflow:hidden;-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto;font-size:16px}
 
 /* === BACKGROUND SCENE SVG === */
-.checks-scene{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:0.20}
+.checks-scene{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:0.35}
 .checks-scene svg{width:100%;height:100%}
 
 /* === CARD BACKGROUND SVGs === */
-.checks-card-bg{position:absolute;top:0;right:0;width:220px;height:100%;opacity:0.10;pointer-events:none;z-index:0;transition:opacity 0.4s ease}
+.checks-card-bg{position:absolute;top:0;right:0;width:220px;height:100%;opacity:0.15;pointer-events:none;z-index:0;transition:opacity 0.4s ease}
 .checks-card:hover .checks-card-bg{opacity:0.18}
 .checks-card--full .checks-card-bg{width:400px}
 
@@ -353,15 +353,15 @@ ${superD.css('fchecks-deco', { variant: 'outline', position: 'left', opacity: 0.
 .checks-header-label::after{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,#0369a1);flex-shrink:0}
 .checks-header-label::after{transform:scaleX(-1)}
 
-.checks-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;color:#000864;line-height:1.15;letter-spacing:-0.02em;margin:0 0 20px}
+.checks-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;color:#000864;line-height:1.15;letter-spacing:-0.02em;margin:0 0 16px}
 
-.checks-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto}
+.checks-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;margin:0 300px}
 
 /* === CARDS GRID === */
 .checks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:32px}
 
 /* === CARD STYLING === */
-.checks-card{background:#fff;border:1px solid #e2e8f0;box-shadow:0 4px 24px rgba(0,0,0,0.04);border-radius:20px;padding:40px 32px;position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
+.checks-card{background:#fff;border:1px solid #e2e8f0;box-shadow:0 4px 24px rgba(0,0,0,0.04);border-radius:20px;padding:40px 32px;position:relative;overflow:hidden;transition:opacity 0.2s,transform 0.2s;line-height:1.6}
 
 .checks-card:hover{box-shadow:0 20px 60px rgba(0,175,240,0.12);border-color:#00AFF0}
 
@@ -370,7 +370,7 @@ ${superD.css('fchecks-deco', { variant: 'outline', position: 'left', opacity: 0.
 /* === CARD ELEMENTS === */
 .checks-card-number{font-family:'Noto Sans',sans-serif;font-size:64px;font-weight:800;color:#0369a1;opacity:0.15;line-height:1;margin-bottom:16px}
 
-.checks-card-title{font-family:'Noto Sans',sans-serif;font-size:20px;font-weight:700;color:#000864;margin:0 0 16px;line-height:1.3}
+.checks-card-title{font-family:'Noto Sans',sans-serif;font-size:20px;font-weight:700;color:#000864;margin:0 0 16px;line-height:1.6;position:relative;z-index:1}
 
 .checks-card-quote{font-family:'Noto Sans',sans-serif;font-size:16px;font-style:italic;color:#475569;line-height:1.7;padding-left:16px;border-left:3px solid #00AFF0;margin-bottom:16px}
 

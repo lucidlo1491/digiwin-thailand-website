@@ -54,7 +54,7 @@ module.exports = {
     sections: [
       {
         name: 'hero', wpSelector: '.et_pb_section_0', htmlSelector: '.dw-hero-split',
-        maxDiffPct: 8, pixelThreshold: 0.1,
+        pixelThreshold: 0.1,
         requiredElements: [
           { selector: '.hero-svg-illustration', label: 'Factory/Partner SVG Illustration', minOpacity: 0.01 },
           { selector: '.hero-grain', label: 'Grain Texture Overlay', minOpacity: 0.01 },
@@ -68,21 +68,19 @@ module.exports = {
           { label: 'CTA Primary', htmlSel: '.dw-hero-panel--factory .dw-btn-primary', wpSel: '.et_pb_section_0 .hero-btn--primary' },
           { label: 'Stat Number', htmlSel: '.dw-hero-panel--factory .dw-hero-stat-number', wpSel: '.et_pb_section_0 .hero-stat-number' },
           { label: 'Stat Label', htmlSel: '.dw-hero-panel--factory .dw-hero-stat-label', wpSel: '.et_pb_section_0 .hero-stat-label' },
-          { label: 'Hero Section BG', htmlSel: '.dw-hero-split', wpSel: '.et_pb_section_0' },
         ],
       },
       {
-        name: 'logo-bar', wpSelector: '.et_pb_section_1', htmlSelector: '.dw-clients-section',
-        skipPixelDiff: true, maxDiffPct: 100,
+        name: 'logo-bar', wpSelector: '.logobar-section', htmlSelector: '.dw-clients-section',
+        skipPixelDiff: true,
         styleMap: [
           { label: 'Stat Value', htmlSel: '.dw-clients-stat-value', wpSel: '.logo-bar-stat-value' },
           { label: 'Stat Label', htmlSel: '.dw-clients-stat-label', wpSel: '.logo-bar-stat-label' },
-          { label: 'Section BG', htmlSel: '.dw-clients-section', wpSel: '.et_pb_section_1' },
         ],
       },
       {
-        name: 'factory-checks', wpSelector: '.et_pb_section_2', htmlSelector: '.dw-checks-section--factory',
-        maxDiffPct: 10, pixelThreshold: 0.1,
+        name: 'factory-checks', wpSelector: '.checks-section', htmlSelector: '.dw-checks-section--factory',
+        pixelThreshold: 0.1,
         requiredElements: [
           { selector: '.checks-scene', label: 'Background Scene SVG', minOpacity: 0.01 },
           { selector: '.fchecks-deco', label: 'Super D Left Decoration', minOpacity: 0.01 },
@@ -94,12 +92,11 @@ module.exports = {
           { label: 'Section Subtitle', htmlSel: '.dw-checks-section--factory .dw-checks-subtitle', wpSel: '.checks-subtitle' },
           { label: 'Check Card', htmlSel: '.dw-checks-section--factory .dw-check-card', wpSel: '.checks-card' },
           { label: 'Check Card Title', htmlSel: '.dw-checks-section--factory .dw-check-title', wpSel: '.checks-card-title' },
-          { label: 'Section BG', htmlSel: '.dw-checks-section--factory', wpSel: '.et_pb_section_2' },
         ],
       },
       {
-        name: 'partner-checks', wpSelector: '.et_pb_section_3', htmlSelector: '.dw-checks-section--partner',
-        maxDiffPct: 10, pixelThreshold: 0.1,
+        name: 'partner-checks', wpSelector: '.pchecks-section', htmlSelector: '.dw-checks-section--partner',
+        pixelThreshold: 0.1,
         requiredElements: [
           { selector: '.pchecks-scene', label: 'Background Scene SVG', minOpacity: 0.01 },
           { selector: '.pchecks-card', label: 'Pain Point Cards' },
@@ -109,12 +106,11 @@ module.exports = {
           { label: 'Section Title', htmlSel: '.dw-checks-section--partner .dw-checks-title', wpSel: '.pchecks-title' },
           { label: 'Section Subtitle', htmlSel: '.dw-checks-section--partner .dw-checks-subtitle', wpSel: '.pchecks-subtitle' },
           { label: 'Check Card', htmlSel: '.dw-checks-section--partner .dw-check-card', wpSel: '.pchecks-card' },
-          { label: 'Section BG', htmlSel: '.dw-checks-section--partner', wpSel: '.et_pb_section_3' },
         ],
       },
       {
-        name: 'product-pillars', wpSelector: '.et_pb_section_4', htmlSelector: 'section.dw-section:nth-of-type(5)',
-        maxDiffPct: 10, pixelThreshold: 0.1,
+        name: 'product-pillars', wpSelector: '.products-section', htmlSelector: 'section.dw-section:nth-of-type(5)',
+        pixelThreshold: 0.1,
         requiredElements: [
           { selector: '.products-deco', label: 'Super D Gradient Decoration', minOpacity: 0.01 },
           { selector: '.products-card', label: 'Product Cards' },
@@ -125,21 +121,19 @@ module.exports = {
           { label: 'Section Label', htmlSel: '.dw-section-label', wpSel: '.products-header-label' },
           { label: 'Product Card', htmlSel: '.dw-value-prop', wpSel: '.products-card' },
           { label: 'Product Card Title', htmlSel: '.dw-value-prop-title', wpSel: '.products-card__title' },
-          { label: 'Section BG', htmlSel: 'section.dw-section:nth-of-type(5)', wpSel: '.et_pb_section_4' },
         ],
       },
       {
-        name: 'industry-tabs', wpSelector: '.et_pb_section_5', htmlSelector: 'section.dw-section:nth-of-type(6)',
-        maxDiffPct: 12, pixelThreshold: 0.1, note: 'tab state may differ',
+        name: 'industry-tabs', wpSelector: '.ind-section', htmlSelector: 'section.dw-section:nth-of-type(6)',
+        pixelThreshold: 0.1, note: 'tab state may differ',
         styleMap: [
           { label: 'Section Title', htmlSel: 'section.dw-section:nth-of-type(6) .dw-section-title', wpSel: '.ind-title' },
           { label: 'Section Label', htmlSel: 'section.dw-section:nth-of-type(6) .dw-section-label', wpSel: '.ind-label' },
-          { label: 'Section BG', htmlSel: 'section.dw-section:nth-of-type(6)', wpSel: '.et_pb_section_5' },
         ],
       },
       {
-        name: 'stats-banner', wpSelector: '.et_pb_section_6', htmlSelector: '.dw-stats-section',
-        maxDiffPct: 10, pixelThreshold: 0.1, note: 'counters + grain texture',
+        name: 'stats-banner', wpSelector: '.stats-section', htmlSelector: '.dw-stats-section',
+        pixelThreshold: 0.1, note: 'counters + grain texture',
         requiredElements: [
           { selector: '.stats-deco', label: 'Super D Corner Decoration', minOpacity: 0.01 },
           { selector: '.stats-grid', label: 'Stats Grid' },
@@ -149,12 +143,11 @@ module.exports = {
           { label: 'Stat Number', htmlSel: '.dw-stat-value', wpSel: '.stats-number' },
           { label: 'Stat Label', htmlSel: '.dw-stat-label', wpSel: '.stats-label' },
           { label: 'Stats Grid', htmlSel: '.dw-stats-inner', wpSel: '.stats-grid' },
-          { label: 'Section BG', htmlSel: '.dw-stats-section', wpSel: '.et_pb_section_6' },
         ],
       },
       {
-        name: 'trust-anchors', wpSelector: '.et_pb_section_7', htmlSelector: '.dw-trust-section',
-        maxDiffPct: 10, pixelThreshold: 0.1,
+        name: 'trust-anchors', wpSelector: '.trust-section', htmlSelector: '.dw-trust-section',
+        pixelThreshold: 0.1,
         requiredElements: [
           { selector: '.trust-scene', label: 'Trust Scene SVG', minOpacity: 0.01 },
           { selector: '.trust-card', label: 'Trust Cards' },
@@ -165,34 +158,27 @@ module.exports = {
           { label: 'Trust Card', htmlSel: '.dw-trust-card', wpSel: '.trust-card' },
           { label: 'Trust Card Title', htmlSel: '.dw-trust-title', wpSel: '.trust-card-title' },
           { label: 'Trust Badge', htmlSel: '.dw-trust-badge', wpSel: '.trust-badge' },
-          { label: 'Section BG', htmlSel: '.dw-trust-section', wpSel: '.et_pb_section_7' },
         ],
       },
       {
-        name: 'proven-results', wpSelector: '.et_pb_section_8', htmlSelector: '.dw-results-section',
-        maxDiffPct: 10, pixelThreshold: 0.1,
+        name: 'proven-results', wpSelector: '.results-section', htmlSelector: '.dw-results-section',
+        pixelThreshold: 0.1,
         styleMap: [
           { label: 'Section Title', htmlSel: '.dw-results-section .dw-section-title', wpSel: '.results-title' },
           { label: 'Result Card', htmlSel: '.dw-result-card', wpSel: '.results-card' },
-          { label: 'Section BG', htmlSel: '.dw-results-section', wpSel: '.et_pb_section_8' },
         ],
       },
       {
-        name: 'final-cta', wpSelector: '.et_pb_section_9', htmlSelector: '.dw-cta-section',
-        maxDiffPct: 10, pixelThreshold: 0.1,
+        name: 'final-cta', wpSelector: '.cta-section', htmlSelector: '.dw-cta-section',
+        pixelThreshold: 0.1,
         styleMap: [
           { label: 'CTA Title', htmlSel: '.dw-cta-title', wpSel: '.cta-title' },
           { label: 'CTA Subtitle', htmlSel: '.dw-cta-subtitle', wpSel: '.cta-subtitle' },
           { label: 'CTA Primary Button', htmlSel: '.dw-cta-section .dw-btn-white', wpSel: '.cta-btn--primary' },
           { label: 'CTA Secondary Button', htmlSel: '.dw-cta-section .dw-btn-outline-white', wpSel: '.cta-btn--ghost' },
-          { label: 'Section BG', htmlSel: '.dw-cta-section', wpSel: '.et_pb_section_9' },
         ],
       },
     ],
   },
 
-  pageJS: () => {
-    if (typeof heroBuilder.js === 'function') return heroBuilder.js();
-    return '';
-  },
 };

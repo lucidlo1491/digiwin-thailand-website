@@ -1,14 +1,15 @@
 /**
- * home-hero.js — Homepage Hero Section Builder
+ * home-hero.js — Homepage Hero Section Builder (Code Module Approach)
  *
- * Extracted from build-hero-divi5.js v30. Produces identical block output.
- * Uses shared lib modules instead of inline functions.
+ * ONE Code Module contains the entire hero HTML.
+ * CSS Grid handles the 2-panel split. No Divi column layout dependencies.
+ * SVGs are Base64-injected at runtime (wp_kses bypass).
+ * Scripts go in a separate wp:html block (won't execute in Code Modules).
  *
  * ContentSpec: §3.1 "Hero Section — Dual Panel" (lines 99-196)
  */
 
-const { textModule, codeModule, htmlBlock, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../../lib/modules');
-const css = require('../../lib/css-assembler');
+const { codeModule, htmlBlock, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../../lib/modules');
 
 // ────────────────────────────────────────────────────────────────
 // SPEC — Design tokens from ContentSpec_Home_Divi5_2.0.md §3.1
@@ -16,52 +17,44 @@ const css = require('../../lib/css-assembler');
 const SPEC = {
   label: {
     fontFamily: "'JetBrains Mono', monospace",
-    fontSize: '14px',           // line 119
-    fontWeight: '600',          // line 119
-    letterSpacing: '0.15em',    // line 119
-    textTransform: 'uppercase', // line 119
-    colorFactory: '#00AFF0',    // line 119
-    colorPartner: 'rgba(255,255,255,0.9)', // line 119
+    fontSize: '14px',
+    fontWeight: '600',
+    letterSpacing: '0.15em',
+    textTransform: 'uppercase',
+    colorFactory: '#00AFF0',
+    colorPartner: 'rgba(255,255,255,0.9)',
   },
   title: {
     fontFamily: "'Noto Sans', sans-serif",
-    fontSize: 'clamp(32px, 3.5vw, 52px)', // line 120
-    fontWeight: '700',          // line 120
-    lineHeight: '1.1',          // line 120
-    letterSpacing: '-0.03em',   // line 120
-    color: '#fff',              // line 120
-    marginBottom: '24px',       // line 120
+    fontSize: 'clamp(32px, 3.5vw, 52px)',
+    fontWeight: '700',
+    lineHeight: '1.1',
+    letterSpacing: '-0.03em',
+    color: '#fff',
+    marginBottom: '24px',
   },
   subtitle: {
     fontFamily: "'Noto Sans', sans-serif",
-    fontSize: '18px',           // line 121
-    fontWeight: '400',          // line 121
-    lineHeight: '1.75',         // line 121
-    color: 'rgba(255,255,255,0.75)', // line 121
-    marginBottom: '36px',       // line 121
+    fontSize: '18px',
+    fontWeight: '400',
+    lineHeight: '1.75',
+    color: 'rgba(255,255,255,0.75)',
+    marginBottom: '36px',
   },
   cta: {
     fontFamily: "'Noto Sans', sans-serif",
-    fontSize: '16px',           // line 123
-    fontWeight: '600',          // line 123
-    borderRadius: '8px',        // line 123
-    padding: '14px 32px',       // line 123
-    primaryBg: '#00AFF0',       // line 123
-    secondaryBorder: 'rgba(255,255,255,0.3)', // line 124
+    fontSize: '16px',
+    fontWeight: '600',
+    borderRadius: '8px',
+    padding: '14px 32px',
+    primaryBg: '#00AFF0',
+    secondaryBorder: 'rgba(255,255,255,0.3)',
   },
 };
 
 // ════════════════════════════════════════════════════════════════
 // SVG ILLUSTRATIONS (Base64-encoded at build time for KSES bypass)
 // ════════════════════════════════════════════════════════════════
-
-function getFactorySVGContainer() {
-  return '<div id="dw-factory-svg" class="hero-svg-illustration hero-svg-illustration--factory"></div>';
-}
-
-function getPartnerSVGContainer() {
-  return '<div id="dw-partner-svg" class="hero-svg-illustration hero-svg-illustration--partner"></div>';
-}
 
 function getFactorySVGRaw() {
   return '<svg aria-hidden="true" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">'
@@ -221,12 +214,67 @@ obs.observe(wrapper);
 }
 
 // ════════════════════════════════════════════════════════════════
-// CONTENT HTML
+// HERO HTML — Entire section in ONE Code Module
 // ════════════════════════════════════════════════════════════════
-const factoryButtonsHTML = `<div class="hero-btn-row"><a href="/demo.html" class="hero-btn hero-btn--primary">Let\u2019s Talk</a><a href="/products.html" class="hero-btn hero-btn--ghost">See Our Solutions</a></div>`;
-const factoryStatsHTML = `<div class="hero-stats"><div class="hero-stat"><div class="hero-stat-number" data-dw-years>44</div><div class="hero-stat-label">Years Manufacturing Focus</div></div><div class="hero-stat"><div class="hero-stat-number">50K+</div><div class="hero-stat-label">Factories Served</div></div><div class="hero-stat"><div class="hero-stat-number">300378</div><div class="hero-stat-label">Shenzhen Listed</div></div></div>`;
-const partnerButtonsHTML = `<div class="hero-btn-row"><a href="/partner-program.html" class="hero-btn hero-btn--primary">Escape the Trap</a></div>`;
-const partnerStatsHTML = `<div class="hero-stats"><div class="hero-stat"><div class="hero-stat-number hero-stat-number--white">30\u201340%</div><div class="hero-stat-label">License Margins</div></div><div class="hero-stat"><div class="hero-stat-number hero-stat-number--white">Yours to Keep</div><div class="hero-stat-label">Maintenance Revenue</div></div></div>`;
+
+function getHeroHTML() {
+  return `
+<div class="hero-split">
+  <!-- Factory Operators Panel -->
+  <div class="hero-panel hero-panel--factory">
+    <div id="dw-factory-svg" class="hero-svg-illustration hero-svg-illustration--factory"></div>
+    <div class="hero-grain"></div>
+    <div class="hero-content">
+      <p class="hero-label hero-label--factory">For Manufacturing Business Owners</p>
+      <h1 class="hero-title">Your True Costs Are <span class="hl-blue">Invisible.</span></h1>
+      <p class="hero-subtitle">"Shadow Excel" files have replaced your standard operating procedures. Ghost inventory means system says 100, shelf says 50. We fix this\u2014because we've spent <span data-dw-years>44</span> years doing nothing but manufacturing software.</p>
+      <div class="hero-btn-row">
+        <a href="/demo.html" class="hero-btn hero-btn--primary">Let's Talk</a>
+        <a href="/products.html" class="hero-btn hero-btn--ghost">See Our Solutions</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-number" data-dw-years>44</div>
+          <div class="hero-stat-label">Years Manufacturing Focus</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">50K+</div>
+          <div class="hero-stat-label">Factories Served</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">300378</div>
+          <div class="hero-stat-label">Shenzhen Listed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Partner Prospects Panel -->
+  <div class="hero-panel hero-panel--partner">
+    <div id="dw-partner-svg" class="hero-svg-illustration hero-svg-illustration--partner"></div>
+    <div class="hero-grain hero-grain--partner"></div>
+    <div class="hero-light-leak"></div>
+    <div class="hero-content">
+      <p class="hero-label hero-label--partner">For ERP Implementers</p>
+      <h2 class="hero-title">Trapped in the <span class="hl-gold">Man-Day</span> Model?</h2>
+      <p class="hero-subtitle">Your revenue is capped by headcount. Customization wars burn out your best consultants. We offer a way out\u2014product-based margins that compound instead of compress.</p>
+      <div class="hero-btn-row">
+        <a href="/partner-program.html" class="hero-btn hero-btn--primary">Escape the Trap</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-number hero-stat-number--white">30\u201340%</div>
+          <div class="hero-stat-label">License Margins</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number hero-stat-number--white">Yours to Keep</div>
+          <div class="hero-stat-label">Maintenance Revenue</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`;
+}
 
 // ════════════════════════════════════════════════════════════════
 // EXPORTS: blocks() and css()
@@ -234,97 +282,23 @@ const partnerStatsHTML = `<div class="hero-stats"><div class="hero-stat"><div cl
 
 function blocks() {
   return [
-    // Section
+    // Thin Divi wrapper: Section → Row → Column → Code Module
     sectionOpen({
       adminLabel: 'Hero \u2014 Split Screen',
-      css: 'selector{width:100% !important;max-width:100% !important;overflow:hidden;margin:80px 0 0 0 !important;padding:0 !important;position:relative;background-color:#000432 !important;}',
+      css: 'selector{background:transparent !important;padding:0 !important;margin:0 !important;}',
     }),
 
-    // Row
     rowOpen({
-      adminLabel: 'Hero Row \u2014 Two Panels',
-      columns: 'equal-columns_2',
-      css: 'selector{min-height:calc(100vh - 80px);width:100% !important;max-width:100% !important;position:relative;overflow:hidden;}',
-      tabletCss: 'selector{flex-direction:column;}',
+      adminLabel: 'Hero Row',
+      columns: 1,
+      css: 'selector{max-width:100% !important;width:100% !important;margin:0 !important;padding:0 !important;}',
     }),
+    columnOpen({ css: 'selector{width:100% !important;padding:0 !important;}' }),
 
-    // ──── LEFT COLUMN: Factory Panel ────
-    columnOpen({
-      adminLabel: 'Factory Panel (Left)',
-      background: {
-        color: 'rgb(15,20,25)',
-        gradient: { stops: [{ color: 'rgb(15,20,25)', position: 0 }, { color: 'rgb(26,38,50)', position: 40 }, { color: 'rgb(0,8,100)', position: 100 }], type: 'linear', direction: '165deg', enabled: true },
-        image: { url: '' },
-      },
-      spacing: {
-        desktop: { value: { padding: { top: '80px', right: '60px', bottom: '80px', left: '60px' } } },
-        tablet: { value: { padding: { top: '60px', right: '40px', bottom: '60px', left: '40px' } } },
-        phone: { value: { padding: { top: '48px', right: '24px', bottom: '48px', left: '24px' } } },
-      },
-      sizing: { flexType: '12_24' },
-      layout: { display: 'flex', flexDirection: 'column', justifyContent: 'center' },
-      css: "selector{background:linear-gradient(165deg, rgb(15,20,25) 0%, rgb(26,38,50) 40%, rgb(0,8,100) 100%) !important;background-image:linear-gradient(165deg, rgb(15,20,25) 0%, rgb(26,38,50) 40%, rgb(0,8,100) 100%) !important;position:relative;overflow:hidden;display:flex !important;flex-direction:column !important;justify-content:center !important;flex:0 0 50% !important;width:50% !important;}",
-    }),
+    // ONE Code Module with the entire hero HTML
+    codeModule(getHeroHTML(), 'Hero: Dual Panel Split Screen'),
 
-    // Factory SVG container — wp:divi/code (JS injects SVG into this div by ID at runtime)
-    codeModule(getFactorySVGContainer(), 'SVG: Factory Illustration'),
-    // Factory grain texture — converted from wp:html to wp:divi/code (Deliverable 0C test)
-    codeModule('<div class="hero-grain"></div>', 'Overlay: Factory Grain Texture'),
-
-    // Factory content modules
-    codeModule('<p class="hero-label hero-label--factory">For Manufacturing Business Owners</p>', 'Label: For Manufacturing Business Owners'),
-    codeModule('<h1 class="hero-title">Your True Costs Are <span class="hl-blue">Invisible.</span></h1>', 'H1: Your True Costs Are Invisible'),
-
-    textModule(
-      '\u201cShadow Excel\u201d files have replaced your standard operating procedures. Ghost inventory means system says 100, shelf says 50. We fix this\u2014because we\u2019ve spent 44 years doing nothing but manufacturing software.',
-      { color: 'rgba(255, 255, 255, 0.75)', size: '18px', weight: '400', family: 'Noto Sans, sans-serif', lineHeight: '1.75' },
-      { marginBottom: '36px', adminLabel: 'Subtitle: Shadow Excel...' },
-      "selector{position:relative;z-index:2;max-width:500px;margin-bottom:36px !important;}selector p{font-family:'Noto Sans',sans-serif !important;font-size:18px !important;font-weight:400 !important;line-height:1.75 !important;color:rgba(255,255,255,0.75) !important;}"
-    ),
-
-    codeModule(factoryButtonsHTML, 'Buttons: Let\u2019s Talk + Solutions'),
-    codeModule(factoryStatsHTML, 'Stats: 44yrs / 50K+ / 300378'),
-
-    columnClose(),
-
-    // ──── RIGHT COLUMN: Partner Panel ────
-    columnOpen({
-      adminLabel: 'Partner Panel (Right)',
-      background: {
-        color: 'rgb(0,60,200)',
-        gradient: { stops: [{ color: 'rgb(0,175,240)', position: 0 }, { color: 'rgb(0,60,200)', position: 40 }, { color: 'rgb(0,60,200)', position: 100 }], type: 'linear', direction: '165deg', enabled: true },
-        image: { url: '' },
-      },
-      spacing: {
-        desktop: { value: { padding: { top: '80px', right: '60px', bottom: '80px', left: '60px' } } },
-        tablet: { value: { padding: { top: '60px', right: '40px', bottom: '60px', left: '40px' } } },
-        phone: { value: { padding: { top: '48px', right: '24px', bottom: '48px', left: '24px' } } },
-      },
-      sizing: { flexType: '12_24' },
-      layout: { display: 'flex', flexDirection: 'column', justifyContent: 'center' },
-      css: "selector{background:linear-gradient(165deg, rgb(0,175,240) 0%, rgb(0,60,200) 40%, rgb(0,60,200) 100%) !important;background-image:linear-gradient(165deg, rgb(0,175,240) 0%, rgb(0,60,200) 40%, rgb(0,60,200) 100%) !important;position:relative;overflow:hidden;display:flex !important;flex-direction:column !important;justify-content:center !important;flex:0 0 50% !important;width:50% !important;}",
-    }),
-
-    // Partner decorative elements — converted from wp:html to wp:divi/code
-    codeModule(getPartnerSVGContainer(), 'SVG: Partner Illustration'),
-    codeModule('<div class="hero-grain hero-grain--partner"></div>', 'Overlay: Partner Grain Texture'),
-    codeModule('<div class="hero-light-leak"></div>', 'Overlay: Partner Light Leak'),
-
-    // Partner content modules
-    codeModule('<p class="hero-label hero-label--partner">For ERP Implementers</p>', 'Label: For ERP Implementers'),
-    codeModule('<h2 class="hero-title">Trapped in the <span class="hl-gold">Man-Day</span> Model?</h2>', 'H2: Trapped in the Man-Day Model?'),
-
-    textModule(
-      'Your revenue is capped by headcount. Customization wars burn out your best consultants. We offer a way out\u2014product-based margins that compound instead of compress.',
-      { color: 'rgba(255, 255, 255, 0.75)', size: '18px', weight: '400', family: 'Noto Sans, sans-serif', lineHeight: '1.75' },
-      { marginBottom: '36px', adminLabel: 'Subtitle: Your revenue is capped...' },
-      "selector{position:relative;z-index:2;max-width:500px;margin-bottom:36px !important;}selector p{font-family:'Noto Sans',sans-serif !important;font-size:18px !important;font-weight:400 !important;line-height:1.75 !important;color:rgba(255,255,255,0.75) !important;}"
-    ),
-
-    codeModule(partnerButtonsHTML, 'Button: Escape the Trap'),
-    codeModule(partnerStatsHTML, 'Stats: 30-40% / Yours to Keep'),
-
-    // Hero JS — MUST be wp:html (<script> doesn't execute inside wp:divi/code)
+    // Script block — wp:html because scripts don't execute in Code Modules
     htmlBlock(getHeroJS()),
 
     columnClose(),
@@ -333,68 +307,99 @@ function blocks() {
   ];
 }
 
-const SUPER_D_SVG = '/wp-content/uploads/2026/02/digiwin-d-particle.svg';
-const WAVE_FLOW_SVG = '/wp-content/uploads/2026/02/digiwin-wave-flow.svg';
-
 function heroCss() {
   return `
-/* === THEME BUILDER FULL-BLEED OVERRIDE === */
-.et_pb_section_0_tb_body{background:transparent !important;padding:0 !important;margin:0 !important;}
-.et_pb_row_0_tb_body{max-width:100% !important;width:100% !important;padding:0 !important;margin:0 !important;}
-.et_pb_column_0_tb_body{padding:0 !important;}
+/* ============================================
+   Hero Section — Code Module Approach
+   CSS Grid handles the 2-panel split.
+   No Divi column layout dependencies.
+   ============================================ */
 
-/* === FORCE OPAQUE COLUMN BACKGROUNDS === */
-.et_pb_section_0 .et_pb_column_0{background:linear-gradient(165deg, rgb(15,20,25) 0%, rgb(26,38,50) 40%, rgb(0,8,100) 100%) !important;background-image:linear-gradient(165deg, rgb(15,20,25) 0%, rgb(26,38,50) 40%, rgb(0,8,100) 100%) !important}
-.et_pb_section_0 .et_pb_column_1{background:linear-gradient(165deg, rgb(0,175,240) 0%, rgb(0,60,200) 40%, rgb(0,60,200) 100%) !important;background-image:linear-gradient(165deg, rgb(0,175,240) 0%, rgb(0,60,200) 40%, rgb(0,60,200) 100%) !important}
-.et_pb_section_0{background-color:#000432 !important}
+/* === THEME BUILDER FULL-BLEED OVERRIDES === */
+/* Theme builder wraps page content in its own section/row/column — must override all */
+.et_pb_section_0_tb_body{background:transparent !important;padding:0 !important;margin:0 !important;width:100% !important}
+.et_pb_row_0_tb_body{max-width:100% !important;width:100% !important;padding:0 !important;margin:0 !important}
+.et_pb_column_0_tb_body{padding:0 !important;width:100% !important}
+.et_pb_post_content_0_tb_body{width:100% !important;max-width:100% !important}
+/* Nested row inside theme builder */
+.et_pb_row_1_tb_body{max-width:100% !important;width:100% !important;padding:0 !important;margin:0 !important}
+.et_pb_column_1_tb_body{width:100% !important;padding:0 !important}
 
-/* === DIVI SPACING RESET === */
-.et_pb_section_0:not([class*='tb_body']) .et_pb_column{gap:0 !important}
+/* === PAGE-LEVEL DIVI WRAPPER RESETS === */
+.et_pb_section_0{background:transparent !important;padding:0 !important;margin:0 !important}
+.et_pb_section_0 .et_pb_row{max-width:100% !important;width:100% !important;padding:0 !important;margin:0 !important}
+.et_pb_section_0 .et_pb_column{width:100% !important;padding:0 !important}
+.et_pb_section_0 .et_pb_code,.et_pb_section_0 .et_pb_code_inner{position:static !important;overflow:visible !important}
 
-/* === CODE MODULE WRAPPER RESET — let overlays reference the column (which has height) === */
-.et_pb_code:has(.hero-svg-illustration),.et_pb_code:has(.hero-grain),.et_pb_code:has(.hero-light-leak){position:static !important}
-.et_pb_code:has(.hero-svg-illustration) .et_pb_code_inner,.et_pb_code:has(.hero-grain) .et_pb_code_inner,.et_pb_code:has(.hero-light-leak) .et_pb_code_inner{position:static !important}
+/* === SPLIT SCREEN GRID === */
+.hero-split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:calc(100vh - 80px);
+  margin-top:80px;
+  position:relative;
+  overflow:hidden;
+  background-color:#000432;
+  -webkit-font-smoothing:auto;
+  -moz-osx-font-smoothing:auto;
+  /* Break out of any constrained parent to full viewport width */
+  width:100vw;
+  margin-left:calc(-50vw + 50%);
+}
+
+/* === PANELS === */
+.hero-panel{
+  position:relative;
+  overflow:hidden;
+  padding:80px 60px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.hero-panel--factory{
+  background:linear-gradient(165deg, rgb(15,20,25) 0%, rgb(26,38,50) 40%, rgb(0,8,100) 100%);
+}
+.hero-panel--partner{
+  background:linear-gradient(165deg, rgb(0,175,240) 0%, rgb(0,60,200) 40%, rgb(0,60,200) 100%);
+}
 
 /* === SVG ILLUSTRATIONS === */
 .hero-svg-illustration{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:1;opacity:0.45}
 .hero-svg-illustration svg{width:100%;height:100%;display:block}
 
+/* === HERO CONTENT === */
+.hero-content{position:relative;z-index:2;max-width:520px}
+
 /* === HERO LABELS === */
-.hero-label{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;color:#00AFF0;margin-bottom:24px;display:flex;align-items:center;gap:12px;position:relative;z-index:2}
+.hero-label{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;line-height:1.6;color:#00AFF0;margin:0 0 24px;padding:0;display:flex;align-items:center;gap:12px}
 .hero-label::before{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,#00AFF0);flex-shrink:0}
 .hero-label--partner{color:rgba(255,255,255,0.9)}
 .hero-label--partner::before{background:linear-gradient(90deg,transparent,rgba(255,255,255,0.8))}
 
-/* === DIVI TEXT MODULE OVERRIDE === */
-.et_pb_text .et_pb_text_inner,.et_pb_text .et_pb_text_inner p{font-family:'Noto Sans',sans-serif !important;font-weight:400 !important;font-size:18px !important;line-height:1.75 !important;color:rgba(255,255,255,0.75) !important}
-
 /* === HERO TITLES === */
-.hero-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,3.5vw,52px);font-weight:700;color:#fff;margin:0 0 24px 0;line-height:1.1;letter-spacing:-0.03em;position:relative;z-index:2;max-width:520px}
+.hero-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,3.5vw,52px);font-weight:700;color:#fff;margin:0 0 24px;line-height:1.1;letter-spacing:-0.03em;max-width:520px}
 .hero-title .hl-blue{color:#00AFF0}
 .hero-title .hl-gold{color:#fef3c7}
 
 /* === HERO SUBTITLES === */
-.hero-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:rgba(255,255,255,0.75);margin:0 0 36px 0;line-height:1.75;position:relative;z-index:2;max-width:500px}
-
-/* === HERO CONTENT WRAPPER === */
-.hero-content{position:relative;z-index:2;max-width:520px;animation:slide-up 0.8s ease-out}
-.hero-content--delay{animation-delay:0.2s;animation-fill-mode:backwards}
+.hero-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:rgba(255,255,255,0.75);margin:0 0 36px;line-height:1.75;max-width:500px}
 
 /* === BUTTONS === */
-.hero-btn{font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;padding:16px 32px;border-radius:8px;cursor:pointer;transition:all 0.3s ease;text-decoration:none;display:inline-block;position:relative;overflow:hidden;border:none}
+.hero-btn{font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;line-height:1.6;padding:16px 32px;border-radius:8px;cursor:pointer;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);text-decoration:none;display:inline-flex !important;align-items:center;position:relative;overflow:hidden;border:none}
 .hero-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.5s}
 .hero-btn:hover::before{left:100%}
-.hero-btn--primary{background:#006dac;color:#fff;box-shadow:0 4px 14px rgba(0,175,240,0.35)}
+.hero-btn--primary{background:#006dac;color:#fff;box-shadow:0 4px 14px rgba(0,175,240,0.35);gap:8px}
 .hero-btn--primary:hover{background:#003CC8;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,175,240,0.45)}
 .hero-btn--ghost{background:rgba(255,255,255,0.15);color:#fff;border:2px solid rgba(255,255,255,0.9);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 .hero-btn--ghost:hover{background:#fff;color:#0369a1;border-color:#fff}
-.hero-btn-row{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:2;max-width:520px}
+.hero-btn-row{max-width:520px;font-size:16px}
+.hero-btn-row .hero-btn--ghost{margin-left:12px}
 
 /* === STATS === */
-.hero-stats{display:flex;gap:40px;margin-top:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.1);animation:fadeIn 1s ease-out 0.5s both;position:relative;z-index:2;max-width:520px}
+.hero-stats{display:flex;gap:40px;margin-top:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.1);max-width:520px}
 .hero-stat-number{font-family:'Noto Sans',sans-serif;font-size:32px;font-weight:800;color:#00AFF0;line-height:1;margin-bottom:8px;letter-spacing:-0.02em}
 .hero-stat-number--white{color:#fff}
-.hero-stat-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:400;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.1em}
+.hero-stat-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:400;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.1em;line-height:1.6}
 
 /* === GRAIN TEXTURE OVERLAY === */
 .hero-grain{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:1}
@@ -407,27 +412,29 @@ function heroCss() {
 
 /* === RESPONSIVE === */
 @media(max-width:1024px){
-.et_pb_section_0 .et_pb_row_0{flex-direction:column !important;min-height:auto !important;}
-.et_pb_section_0 .et_pb_column{width:100% !important;flex:none !important;min-height:70vh;}
-.hero-stats{gap:24px;flex-wrap:wrap}
-.hero-title{font-size:32px}
-.hero-subtitle{font-size:16px}
+  .hero-split{grid-template-columns:1fr;min-height:auto}
+  .hero-panel{min-height:70vh;padding:60px 40px}
+  .hero-stats{gap:24px;flex-wrap:wrap}
+  .hero-title{font-size:32px}
+  .hero-subtitle{font-size:16px}
 }
 @media(max-width:640px){
-.et_pb_section_0 .et_pb_column{padding:48px 24px !important;min-height:80vh;}
-.hero-stats{flex-direction:column;gap:24px}
-.hero-btn-row{flex-direction:column}
-.hero-btn{text-align:center}
+  .hero-panel{padding:48px 24px;min-height:80vh}
+  .hero-stats{flex-direction:column;gap:24px}
+  .hero-btn-row{flex-direction:column}
+  .hero-btn{text-align:center}
 }
 
 /* === REDUCED MOTION === */
 @media(prefers-reduced-motion:reduce){
-.hero-content,.hero-content--delay{animation:none}
-.hero-stats{animation:none}
-.hero-grain::before{animation:none}
-.hero-btn::before{transition:none}
-.hero-svg-illustration{opacity:0.25}
-}`;
+  .hero-grain::before{animation:none}
+  .hero-btn::before{transition:none}
+  .hero-svg-illustration{opacity:0.25}
+}
+
+/* === GRAIN ANIMATION KEYFRAME === */
+@keyframes grain{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-10%)}20%{transform:translate(-15%,5%)}30%{transform:translate(7%,-25%)}40%{transform:translate(-5%,25%)}50%{transform:translate(-15%,10%)}60%{transform:translate(15%,0%)}70%{transform:translate(0%,15%)}80%{transform:translate(3%,35%)}90%{transform:translate(-10%,10%)}}
+`;
 }
 
 module.exports = { blocks, css: heroCss, SPEC, getHeroJS };

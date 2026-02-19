@@ -6,7 +6,6 @@
  */
 
 const { codeModule, textModule, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../../lib/modules');
-const cssLib = require('../../lib/css-assembler');
 const superD = require('../../lib/super-d');
 
 /**
@@ -21,8 +20,8 @@ function blocks() {
     css: 'selector{background:transparent !important;padding:0 !important;}',
   }));
 
-  output.push(rowOpen());
-  output.push(columnOpen());
+  output.push(rowOpen({ css: 'selector{max-width:100% !important;margin:0 !important;padding:0 !important;}' }));
+  output.push(columnOpen({ css: 'selector{width:100% !important;}' }));
 
   // Super D decoration — gradient variant, bottom-right corner
   output.push(codeModule(superD.html('products-deco'), 'Decoration: Super D Gradient'));
@@ -151,8 +150,12 @@ function blocks() {
 function css() {
   const parts = [];
 
-  // Section header styles
-  parts.push(cssLib.sectionHeaderCSS('products'));
+  // Section header styles (NO decorative flanking lines — matches HTML original)
+  parts.push(`
+.products-header{text-align:center;max-width:800px;margin:0 auto 56px;position:relative;z-index:2}
+.products-header-label{font-family:'Noto Sans',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#0369a1;margin-bottom:12px;line-height:1.6}
+.products-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;color:#000864;line-height:1.15;letter-spacing:-0.02em;margin:0 0 16px}
+.products-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto}`);
 
   // Super D decoration
   parts.push(`/* Super D: gradient corner-br */\n${superD.css('products-deco', { variant: 'gradient', position: 'corner-br', opacity: 0.08 })}`);
@@ -164,9 +167,16 @@ function css() {
   background: #F5F7FA;
   padding: 100px 40px;
   position: relative;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  font-size: 16px;
   overflow: hidden;
+}
+.products-header,
+.products-grid {
   max-width: 1200px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }`);
 
   // Products grid
@@ -188,10 +198,12 @@ function css() {
   text-align: center;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
   border: 1px solid #f1f5f9;
-  transition: all 0.4s ease;
+  transition: all 0.2s ease;
   text-decoration: none;
   display: block;
+  line-height: 1.6;
   overflow: hidden;
+  color: #333333;
 }
 
 .products-card::before {
@@ -204,7 +216,7 @@ function css() {
   background: linear-gradient(90deg, #00AFF0, #003CC8);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.4s ease;
+  transition: transform 0.2s ease;
 }
 
 .products-card:hover {
@@ -259,9 +271,9 @@ function css() {
   font-family: 'Noto Sans', sans-serif;
   font-weight: 700;
   font-size: 20px;
-  line-height: 1.3;
+  line-height: 1.6;
   color: #000864;
-  margin: 0 0 8px 0;
+  margin: 0 0 10px 0;
 }
 
 /* Full Product Name */

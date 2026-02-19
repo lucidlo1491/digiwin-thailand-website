@@ -31,7 +31,7 @@ function blocks() {
       <div class="results-header">
         <div class="results-header-label">Proven Results</div>
         <h2 class="results-title">Real Outcomes from Thai Factories</h2>
-        <p class="results-subtitle">These aren\u2019t projections. These are results our clients achieved after going live.</p>
+        <p class="results-subtitle">These aren't projections. These are results our clients achieved after going live.</p>
       </div>
       <div class="results-grid">
         ${cardsHTML}
@@ -57,16 +57,16 @@ function blocks() {
 function css() {
   return `
 /* === PROVEN RESULTS === */
-.results-section{background:#f8fafc;padding:80px 40px}
+.results-section{background:#f8fafc;padding:80px 40px;-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto;font-size:16px}
 .results-container{max-width:1200px;margin:0 auto}
 .results-header{text-align:center;margin-bottom:48px}
 .results-header-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#00AFF0;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:12px}
 .results-header-label::before,.results-header-label::after{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,#00AFF0);flex-shrink:0}
 .results-header-label::after{transform:scaleX(-1)}
-.results-title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:clamp(32px,4vw,44px);color:#000864;letter-spacing:-0.02em;line-height:1.2;margin:0 0 20px}
+.results-title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:clamp(32px,4vw,44px);color:#000864;letter-spacing:-0.02em;line-height:1.15;margin:0 0 16px}
 .results-subtitle{font-family:'Noto Sans',sans-serif;font-weight:400;font-size:18px;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto}
 .results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;max-width:900px;margin:48px auto 0}
-.results-card{background:#fff;border-radius:16px;padding:36px 32px;border:1px solid #e2e8f0;transition:all 0.3s ease}
+.results-card{background:#fff;border-radius:16px;padding:36px 32px;border:1px solid #e2e8f0;transition:all 0.2s ease;line-height:1.6}
 .results-card:hover{box-shadow:0 8px 32px rgba(0,8,100,0.08);transform:translateY(-2px)}
 .results-company{font-family:'JetBrains Mono',monospace;font-size:11px;color:#00AFF0;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:12px}
 .results-metric{font-family:'Noto Sans',sans-serif;font-weight:600;font-size:20px;color:#000864;line-height:1.4;margin-bottom:16px}

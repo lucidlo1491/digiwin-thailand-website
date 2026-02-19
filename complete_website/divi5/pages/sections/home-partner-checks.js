@@ -5,7 +5,7 @@
  */
 
 const { codeModule, textModule, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../../lib/modules');
-const cssLib = require('../../lib/css-assembler');
+
 
 /**
  * Returns array of block markup strings for this section
@@ -17,8 +17,8 @@ function blocks() {
       css: 'selector{background:transparent !important;padding:0 !important;}',
     }),
 
-    rowOpen({ columns: 1, adminLabel: 'Partner Checks Container' }),
-    columnOpen(),
+    rowOpen({ columns: 1, adminLabel: 'Partner Checks Container', css: 'selector{max-width:100% !important;margin:0 !important;padding:0 !important;}' }),
+    columnOpen({ css: 'selector{width:100% !important;}' }),
 
     // Main content Code Module
     codeModule(`
@@ -70,7 +70,7 @@ function blocks() {
           <!-- Card 1: Man-Day Trap -->
           <div class="pchecks-card">
             <div class="pchecks-card-number">01</div>
-            <h3 class="pchecks-card-title">The Man-Day Trap</h3>
+            <h3 class="pchecks-card-title">"The Man-Day Trap"</h3>
             <blockquote class="pchecks-card-quote">
               "Your revenue is mathematically capped by your headcount. You cannot grow your top line without proportionally increasing your payroll costs."
             </blockquote>
@@ -82,7 +82,7 @@ function blocks() {
           <!-- Card 2: Customization Death Spiral -->
           <div class="pchecks-card">
             <div class="pchecks-card-number">02</div>
-            <h3 class="pchecks-card-title">Customization Death Spiral</h3>
+            <h3 class="pchecks-card-title">"Customization Death Spiral"</h3>
             <blockquote class="pchecks-card-quote">
               "You accept customization requests to win the deal, but then you become married to that code forever."
             </blockquote>
@@ -94,7 +94,7 @@ function blocks() {
           <!-- Card 3: Ghost IT Burden -->
           <div class="pchecks-card">
             <div class="pchecks-card-number">03</div>
-            <h3 class="pchecks-card-title">The Ghost IT Burden</h3>
+            <h3 class="pchecks-card-title">"The Ghost IT Burden"</h3>
             <blockquote class="pchecks-card-quote">
               "You aren't just their ERP consultant—you are their unpaid IT department, fixing Wi-Fi, printers, and user discipline issues."
             </blockquote>
@@ -131,6 +131,9 @@ function css() {
 .pchecks-section {
   position: relative;
   overflow: hidden;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  font-size: 16px;
   background: linear-gradient(165deg, #0f1419 0%, #1a2632 50%, #000864 100%);
   padding: 100px 40px;
   margin: -20px 0;
@@ -143,8 +146,6 @@ function css() {
 /* ============================================
    Section Header (Dark Theme)
    ============================================ */
-
-${cssLib.sectionHeaderCSS('pchecks', { dark: true })}
 
 .pchecks-header {
   text-align: center;
@@ -177,20 +178,21 @@ ${cssLib.sectionHeaderCSS('pchecks', { dark: true })}
 
 .pchecks-title {
   font-family: 'Noto Sans', sans-serif;
-  font-size: 48px;
+  font-size: clamp(32px, 4vw, 44px);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   color: #ffffff;
-  margin: 0 0 20px;
+  margin: 0 0 16px;
 }
 
 .pchecks-subtitle {
   font-family: 'Noto Sans', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.75);
-  margin: 0;
+  margin: 0 300px;
 }
 
 /* ============================================
@@ -202,21 +204,24 @@ ${cssLib.sectionHeaderCSS('pchecks', { dark: true })}
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
   margin-bottom: 60px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ============================================
    Pain Point Cards (Dark Theme)
    ============================================ */
 
-${cssLib.cardCSS('pchecks', { dark: true })}
-
 .pchecks-card {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 40px 32px;
-  transition: all 0.4s ease;
+  transition: all 0.2s ease;
   position: relative;
+  overflow: hidden;
+  line-height: 1.6;
 }
 
 .pchecks-card:hover {

@@ -212,6 +212,9 @@ function logoBarCss() {
 .logobar-section{
   background:${SPEC.section.background};
   padding:${SPEC.section.padding};
+  -webkit-font-smoothing:auto;
+  -moz-osx-font-smoothing:auto;
+  font-size:16px;
 }
 
 .logo-bar-marquee-wrapper{
@@ -319,10 +322,8 @@ function logoBarCss() {
 }
 
 .logo-bar-stat{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:${SPEC.stats.marginTop};
+  display:block;
+  text-align:center;
 }
 
 .logo-bar-stat-value{
@@ -339,7 +340,8 @@ function logoBarCss() {
   font-size:${SPEC.stats.labelSize};
   color:${SPEC.stats.labelColor};
   text-align:center;
-  line-height:1.4;
+  line-height:1.6;
+  margin-top:4px;
 }
 
 /* ===== RESPONSIVE ===== */

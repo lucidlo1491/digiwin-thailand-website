@@ -4,35 +4,16 @@
  * Captures full-page and per-section screenshots of the live WordPress page.
  * Used by build-page.js as a mandatory (un-skippable) verification step.
  *
- * Freezes all CSS animations/transitions before capture for deterministic results.
- * Performs a warm-up load after cache flush (Divi regenerates CSS on first load).
+ * v7: All constants imported from screenshot-config.js (shared config).
  */
 
 const puppeteer = require('puppeteer');
 const path = require('path');
 const fs = require('fs');
 const { execSync } = require('child_process');
+const config = require('./screenshot-config');
 
 const SCREENSHOTS_DIR = path.join(__dirname, '..', '..', '..', 'screenshots', 'verify');
-
-/**
- * Scroll-animated element selectors to force visible (matches screenshot-reference.js).
- * These elements start at opacity:0 / translateY:20px via DigiWinUI.initScrollAnimation.
- */
-const SCROLL_ANIMATED_SELECTORS = '.dw-trust-card, .dw-check-card, .dw-result-card, .dw-value-prop';
-
-/**
- * CSS to freeze all animations and transitions for deterministic screenshots.
- */
-const FREEZE_CSS = `
-  *, *::before, *::after {
-    animation-duration: 0s !important;
-    animation-delay: 0s !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0s !important;
-    transition-delay: 0s !important;
-  }
-`;
 
 /**
  * Normalize a page name for consistent file naming.
@@ -70,40 +51,35 @@ async function capture({ pageName, wpUrl, sections = [], warmUp = true, freeze =
 
   const browser = await puppeteer.launch({
     headless: 'new',
-    protocolTimeout: 180000, // 3 min — full-page screenshots of large pages need extra time
-    args: ['--ignore-certificate-errors', '--no-sandbox', '--font-render-hinting=none'],
+    protocolTimeout: config.PROTOCOL_TIMEOUT,
+    args: config.PUPPETEER_ARGS,
   });
 
   try {
     const page = await browser.newPage();
-    await page.setViewport({ width: 1440, height: 900 });
+    await page.setViewport(config.VIEWPORT);
 
     // Warm-up load — first load after cache flush regenerates Divi CSS
     if (warmUp) {
       console.log('  Warm-up load (Divi CSS regeneration)...');
-      await page.goto(wpUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
+      await page.goto(wpUrl, { waitUntil: config.WARM_UP_WAIT_UNTIL, timeout: 60000 });
       await new Promise(r => setTimeout(r, 5000));
     }
 
-    // Main load (or second load after warm-up)
+    // Main load
     console.log('  Main page load...');
-    await page.goto(wpUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await page.goto(wpUrl, { waitUntil: config.WAIT_UNTIL, timeout: 60000 });
 
-    // Wait for fonts + Divi hydration + stabilization
-    await page.evaluate(() => document.fonts.ready);
-    await page.evaluate(async () => {
-      // Explicit font check for key families (matches screenshot-reference.js)
-      const families = ['Noto Sans', 'JetBrains Mono'];
-      for (const family of families) {
-        try { await document.fonts.load(`400 16px "${family}"`); } catch {}
-      }
-    });
+    // Wait for fonts (consistent weights: 400+700)
+    await config.loadFonts(page);
+
+    // Wait for Divi hydration
     await page.waitForFunction(
       () => typeof window.et_animation_data !== 'undefined' || document.querySelector('.et_pb_section'),
       { timeout: 10000 }
-    ).catch(() => { /* Divi hydration var may not exist on all pages — section presence is enough */ });
+    ).catch(() => { /* Divi hydration var may not exist on all pages */ });
 
-    // Deterministic readiness: wait for all stylesheets to load + fonts ready
+    // Deterministic readiness: wait for all stylesheets + Divi page CSS
     await page.waitForFunction(() => {
       const sheets = document.querySelectorAll('link[rel="stylesheet"]');
       return Array.from(sheets).every(s => s.sheet !== null);
@@ -111,7 +87,6 @@ async function capture({ pageName, wpUrl, sections = [], warmUp = true, freeze =
       console.warn('  ⚠ Some stylesheets did not finish loading within 10s');
     });
 
-    // Wait for Divi page-level CSS (React hydration injects <style> tags)
     await page.waitForFunction(() => {
       const styles = document.querySelectorAll('style');
       return Array.from(styles).some(s => s.textContent && s.textContent.length > 100);
@@ -119,40 +94,33 @@ async function capture({ pageName, wpUrl, sections = [], warmUp = true, freeze =
       console.warn('  ⚠ Divi page-level CSS not detected within 10s — styles may be incomplete');
     });
 
-    await new Promise(r => setTimeout(r, 2000)); // stabilization (matched to reference)
+    await new Promise(r => setTimeout(r, config.STABILIZATION_MS));
 
-    // Force scroll-animated elements visible (same as screenshot-reference.js)
-    await page.evaluate((selectors) => {
-      document.querySelectorAll(selectors).forEach(el => {
-        el.style.setProperty('opacity', '1', 'important');
-        el.style.setProperty('transform', 'none', 'important');
-      });
-    }, SCROLL_ANIMATED_SELECTORS);
+    // Force scroll-animated elements visible
+    await config.forceScrollElementsVisible(page);
 
     // Freeze animations for deterministic screenshots
     if (freeze) {
-      await page.addStyleTag({ content: FREEZE_CSS });
-      await page.evaluate(() => {
-        document.querySelectorAll('animate, animateTransform, animateMotion').forEach(el => el.remove());
-      });
-      await new Promise(r => setTimeout(r, 300));
+      await config.applyFreeze(page);
     }
 
-    // Hide WP admin bar (prevents overlay in screenshots)
-    await page.evaluate(() => {
-      const bar = document.getElementById('wpadminbar');
-      if (bar) bar.style.display = 'none';
-      document.documentElement.style.marginTop = '0px';
-    });
+    // Hide WP admin bar
+    await config.hideAdminBar(page);
 
     // 2. Full-page screenshot
     const fullPath = path.join(SCREENSHOTS_DIR, `${normalized}-${timestamp}-fullpage.png`);
     await page.screenshot({ path: fullPath, fullPage: true });
     savedPaths.push(fullPath);
 
+    // Hide fixed header before per-section screenshots
+    await config.hideHeaderWP(page);
+
     // 3. Per-section screenshots
     for (const section of sections) {
       try {
+        // Clip to viewport width to prevent overflow capture (V8)
+        await config.clipToViewport(page, section.wpSelector);
+
         const el = await page.$(section.wpSelector);
         if (el) {
           const sectionPath = path.join(SCREENSHOTS_DIR, `${normalized}-${section.name}-${timestamp}.png`);

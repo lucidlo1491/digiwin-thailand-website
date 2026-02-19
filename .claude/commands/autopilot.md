@@ -1,8 +1,10 @@
-# Autopilot v2 — Visual Fidelity System (Data-First Protocol)
+# Autopilot v3 — Visual Fidelity System (Computed Style + Prescriptive Diagnosis)
 
 You are running the autopilot visual fidelity loop for page: **$ARGUMENTS**
 
-Your job: make the WordPress Divi 5 page look identical to the HTML reference site. You use **data-first diagnosis** (element presence → property checks → vision), NOT vision-first guessing.
+Your job: make the WordPress Divi 5 page look identical to the HTML reference site. You use **four-layer data-first diagnosis** (structural → computed style → pixel → vision), NOT vision-first guessing.
+
+**v3 upgrade over v2:** Computed style extraction replaces CSS guessing. Every mismatch gets a prescriptive fix recipe. Style-first convergence ensures fixes are measurable.
 
 ---
 
@@ -15,7 +17,7 @@ Your job: make the WordPress Divi 5 page look identical to the HTML reference si
    If not `200`, STOP and tell Peter to start LocalWP.
 
 2. **Load page config** from `complete_website/divi5/pages/$ARGUMENTS.js`. Extract:
-   - `pageId`, `protoFile`, `verify.wpUrl`, `verify.sections` (with selectors + `requiredElements` + `maxDiffPct`)
+   - `pageId`, `protoFile`, `verify.wpUrl`, `verify.sections` (with selectors + `requiredElements` + `maxDiffPct` + `styleMap`)
    - If page config doesn't exist, STOP.
 
 3. **Verify HTML reference file exists** at `complete_website/{protoFile}`.
@@ -29,7 +31,7 @@ Your job: make the WordPress Divi 5 page look identical to the HTML reference si
    echo $$ > /tmp/autopilot-$ARGUMENTS.lock
    ```
 
-5. **Reference freshness check** — screenshot-reference.js now auto-invalidates if HTML source changed (content hash). No manual check needed.
+5. **Reference freshness check** — screenshot-reference.js auto-invalidates if HTML source changed (content hash). No manual check needed.
 
 6. **Pre-flight asset check** — for each section, verify any referenced external URLs (images, fonts) return HTTP 200. If critical assets are missing, STOP.
 
@@ -48,59 +50,107 @@ Your job: make the WordPress Divi 5 page look identical to the HTML reference si
    ```
    This automatically: backs up → pushes to MySQL → flushes cache → screenshots (with warm-up) → runs Gates 1-3.
 
-3. **Run element presence checks** (PRIMARY STRUCTURAL GATE):
+3. **Run element presence checks** (LAYER 1 — STRUCTURAL GATE):
    ```bash
    node complete_website/divi5/lib/visual-diff.js --page $ARGUMENTS --presence-check
    ```
-   This checks every `requiredElements` entry in the page config — DOM existence, visibility, opacity, dimensions.
+   This checks every `requiredElements` entry — DOM existence, visibility, opacity, dimensions.
 
-4. **Run visual diff** (ADVISORY — does not block):
+4. **Run computed style diff** (LAYER 2 — STYLE GATE):
+   ```bash
+   node complete_website/divi5/lib/computed-style-diff.js --page $ARGUMENTS
+   ```
+   Extracts computed styles from matched element pairs (via `styleMap` in page config), compares 30+ properties with fuzzy matching. Outputs JSON + console report with fix recipes.
+
+5. **Run visual diff** (LAYER 3 — PIXEL — ADVISORY):
    ```bash
    node complete_website/divi5/lib/visual-diff.js --page $ARGUMENTS
    ```
    Generates per-section diff PNGs + three-tier verdicts (MATCH / REVIEW / FAIL).
 
-5. **Report baseline** — show Peter:
+6. **Report baseline** — show Peter:
    - Element presence results (any missing = STRUCTURAL issue, priority 1)
+   - Computed style mismatches per section (with fix recipes)
    - Visual diff verdicts per section
    - Read and display key screenshots
 
 ---
 
-## Phase 3 — Data-First Diagnosis
+## Phase 3 — Four-Layer Prescriptive Diagnosis
 
 For each section with issues (prioritized: FAIL > REVIEW > MATCH):
 
-### Priority 1: STRUCTURAL (missing elements)
-**FIRST** — Read element presence report. Any missing/invisible elements are `MISSING_ELEMENT` issues.
-- Example: SVG illustration container exists but SVG never injected → JS execution issue
-- Example: `.checks-scene` not found → section builder didn't include background SVG
+### Layer 1: STRUCTURAL (missing elements)
+**Tool:** `visual-diff.js --presence-check`
+**Catches:** Missing/invisible elements, zero-dimension containers
+**Fix in:** Builder's `blocks()` function
 
-### Priority 2: PROPERTY (CSS mismatches)
-**SECOND** — If `verify-divi5.js` produces JSON output, read it. Property mismatches are `FIXABLE_CSS` issues.
-- Example: font-family mismatch → fix in builder's `css()` function
-- Example: padding different → fix in section/row/column attrs
+### Layer 2: STYLE (computed CSS mismatches)
+**Tool:** `computed-style-diff.js --page $ARGUMENTS`
+**Catches:** Wrong font, color, spacing, background, layout
+**Fix in:** Builder's `css()` function
+**Read the JSON output:** `screenshots/style-diff-$ARGUMENTS.json`
 
-### Priority 3: COSMETIC (pixel differences)
-**THIRD** — Read visual diff report + view screenshots. Remaining differences after structural and property fixes are cosmetic.
-- View both reference and WP screenshots using Read tool
-- Diagnose specific visual differences
+### Layer 3: PIXEL (visual diffs not caught by L1-L2)
+**Tool:** `visual-diff.js --page $ARGUMENTS`
+**Catches:** Visual differences not explained by structural or style data
+**Fix in:** `css()` or `blocks()` depending on diagnosis
+
+### Layer 4: VISION (remaining after L1-L3)
+**Tool:** Claude reads screenshots using Read tool
+**Catches:** Subtle visual issues, animation/transition artifacts
+**Fix in:** Judgment call — only use after L1-L3 data is exhausted
 
 ### Issue Categories
 Categorize each issue as ONE of:
 - `MISSING_ELEMENT` — SVG/icon/decoration not in builder output. Fix: add to `blocks()`.
-- `FIXABLE_CSS` — CSS property mismatch. Fix: update builder's `css()` function.
+- `FIXABLE_CSS` — Computed style mismatch. Fix: update builder's `css()` function.
 - `DIVI_OVERRIDE_REQUIRED` — Divi default conflicts. Fix: `!important` or Code Module approach.
 - `TIMING_ARTIFACT` — Screenshot captured mid-render. Fix: retry with longer wait.
 - `KNOWN_ACCEPTABLE` — Intentionally different, documented in decisions.md. **Only valid skip category.**
 
+### Prescriptive Fix Recipes (from computed-style-diff output)
+
+```
+FONT MISMATCH →
+  1. Check font loading (document.fonts.check)
+  2. Check D46 mangling (Divi Text Module wraps font in quotes)
+  3. Fix: !important on .et_pb_text .et_pb_text_inner p { font-family: ... }
+
+COLOR MISMATCH →
+  1. Check Divi default color bleeding (section/row/column defaults)
+  2. Fix: !important on the specific .et_pb_section_N selector
+
+SPACING MISMATCH →
+  1. Check Divi default padding (4% left/right on .et_pb_row)
+  2. Check .et_pb_code_inner wrapper padding
+  3. Fix: padding:0 !important on .et_pb_row, .et_pb_code_inner
+
+BACKGROUND MISMATCH →
+  1. Check Divi inline styles (module settings override CSS)
+  2. Fix: !important on BOTH background AND background-image
+
+LAYOUT MISMATCH →
+  1. Check Divi max-width:1080px default on rows
+  2. Fix: max-width:100% !important on .et_pb_row_N
+
+OVERFLOW MISMATCH →
+  1. Check overflow:hidden clipping absolutely positioned decorations
+  2. Fix: overflow:visible !important on the section/row
+```
+
+### PROTECTED PROPERTIES — NEVER override with !important:
+`display`, `flex-direction`, `flex-wrap`, `flex-grow`, `flex-shrink`, `flex-basis`
+Overriding these on `.et_pb_*` elements WILL break Divi's layout engine.
+
 ---
 
-## Phase 4 — Fix Loop (Convergence-Based)
+## Phase 4 — Fix Loop (Style-First Convergence)
 
 ### State tracking per section:
 ```
-bestDiffPct = current diff%
+bestMismatchCount = current style mismatches
+bestDiffPct = current pixel diff%
 bestCode = snapshot of builder file before changes
 noImprovementCount = 0
 verdictHistory = [] (for oscillation detection)
@@ -108,42 +158,61 @@ verdictHistory = [] (for oscillation detection)
 
 ### Per iteration:
 
-1. **Read the section builder file** before making any changes.
+1. **Read the computed-style-diff JSON** (`screenshots/style-diff-$ARGUMENTS.json`):
+   - Identify top mismatches by category
+   - Note the fix recipes from the output
 
 2. **Fix in priority order:**
    - `MISSING_ELEMENT` first — add SVGs/decorations to `blocks()` using wrapper div + Base64 pattern
-   - `FIXABLE_CSS` second — update `css()` function
-   - `DIVI_OVERRIDE_REQUIRED` third — add `!important` or Code Module
+   - `FONT` mismatches second — most visually impactful
+   - `COLOR` mismatches third
+   - `SPACING` mismatches fourth
+   - `BACKGROUND` mismatches fifth
+   - `LAYOUT` mismatches last
 
-3. **Edit the builder file** with targeted, scoped fixes.
+3. **Read the section builder file** before making any changes.
 
-4. **FULL-PAGE rebuild** (NEVER partial — MySQL replaces entire post_content):
+4. **Edit the builder file** with targeted, scoped fixes.
+
+5. **FULL-PAGE rebuild** (NEVER partial — MySQL replaces entire post_content):
    ```bash
    node complete_website/divi5/build-page.js --page $ARGUMENTS --force
    ```
 
-5. **Re-run checks:**
-   - Element presence (if fixing MISSING_ELEMENT)
-   - Visual diff for the page
+6. **Re-run computed style diff** (FAST — no screenshots needed, direct style measurement):
+   ```bash
+   node complete_website/divi5/lib/computed-style-diff.js --page $ARGUMENTS
+   ```
+
+7. **Re-run visual diff:**
    ```bash
    node complete_website/divi5/lib/visual-diff.js --page $ARGUMENTS
    ```
 
-6. **Check improvement:**
-   - If new diff% < bestDiffPct → update bestDiffPct, save bestCode, reset noImprovementCount
-   - If new diff% >= bestDiffPct → increment noImprovementCount
-   - If diff MATCH (<3%) → section done, move to next
+8. **Check improvement (BOTH metrics must be tracked):**
+   - If new mismatchCount < bestMismatchCount → update bestMismatchCount, save bestCode, reset noImprovementCount
+   - If new diffPct < bestDiffPct → update bestDiffPct
+   - If mismatchCount = 0 AND diffPct < 3% → section DONE
+   - If neither improved → increment noImprovementCount
 
-7. **Stop conditions:**
+9. **Stop conditions:**
    - **No improvement for 2 consecutive iterations** → rollback to bestCode, move to next section
-   - **Section reaches MATCH** → done
-   - **All sections MATCH or REVIEW** → done
+   - **0 style mismatches AND MATCH pixel verdict** → done
+   - **All sections at 0 mismatches or REVIEW** → done
+
+### Smart Deep-Scan Trigger:
+If pixel diff > 10% but computed-style-diff shows < 3 mismatches, run deep-scan:
+```bash
+node complete_website/divi5/lib/computed-style-diff.js --page $ARGUMENTS --deep-scan
+```
+This checks ALL computed properties (not just the default 30+) to find hidden mismatches.
 
 ### Safeguards:
 
-- **Regression guard:** After each fix, check ALL section verdicts. If any previously-MATCH section worsened, immediately revert the change.
-- **Oscillation detection:** Hash all section verdicts after each iteration. If the same hash appears twice, halt with `NEEDS_HUMAN_REVIEW`.
+- **Regression guard:** After each fix, check ALL section verdicts + mismatch counts. If any previously-fixed section regressed, immediately revert the change.
+- **Oscillation detection:** Hash all section verdicts + mismatch counts after each iteration. If the same hash appears twice, halt with `NEEDS_HUMAN_REVIEW`.
 - **Scope isolation:** CSS fixes must only modify selectors containing the section's class prefix (e.g., `.checks-*` for factory-checks). Cross-section selectors → escalate to human.
+- **Protected properties:** NEVER override `display`, `flex-direction`, `flex-wrap`, `flex-grow`, `flex-shrink`, `flex-basis` on `.et_pb_*` elements.
 - **Never use `--section` flag** for MySQL push — always full-page builds.
 - **Always use `--force`** to bypass lock warnings during autopilot.
 
@@ -161,33 +230,39 @@ verdictHistory = [] (for oscillation detection)
    node complete_website/divi5/lib/visual-diff.js --page $ARGUMENTS --presence-check
    ```
 
-3. **Full visual diff:**
+3. **Final computed style diff:**
+   ```bash
+   node complete_website/divi5/lib/computed-style-diff.js --page $ARGUMENTS
+   ```
+
+4. **Full visual diff:**
    ```bash
    node complete_website/divi5/lib/visual-diff.js --page $ARGUMENTS
    ```
 
-4. **Read and display** the final reference vs WordPress screenshots for ALL sections.
+5. **Read and display** the final reference vs WordPress screenshots for ALL sections.
    - Use the Read tool to view each pair of PNGs
    - Describe what you see to Peter
    - **This is NON-NEGOTIABLE — Claude MUST show every screenshot**
 
-5. **Final report:**
+6. **Final report:**
    ```
    ═══════════════════════════════════════════════════════════
-   AUTOPILOT v2 COMPLETE — $ARGUMENTS
+   AUTOPILOT v3 COMPLETE — $ARGUMENTS
    ═══════════════════════════════════════════════════════════
-   Section          | Before | After  | Verdict | Elements
-   -----------------+--------+--------+---------+---------
-   hero             | 45.2%  | 2.1%   | MATCH   | 5/5 ✓
-   logo-bar         | SKIP   | SKIP   | MATCH   | —
-   factory-checks   | 22.1%  | 5.4%   | REVIEW  | 3/3 ✓
+   Section          | Pixel Before | Pixel After | Style Mismatches | Verdict | Elements
+   -----------------+--------------+-------------+------------------+---------+---------
+   hero             | 45.2%        | 2.1%        | 0                | MATCH   | 5/5 ✓
+   logo-bar         | SKIP         | SKIP        | 0                | MATCH   | —
+   factory-checks   | 22.1%        | 5.4%        | 2                | REVIEW  | 4/4 ✓
    ...
    ═══════════════════════════════════════════════════════════
+   Remaining style mismatches: [list property, ref vs wp value, fix recipe]
    Issues remaining: [list any REVIEW or FAIL sections with reason]
    Files modified: [list every file changed]
    ```
 
-6. **Remove lock file:**
+7. **Remove lock file:**
    ```bash
    rm -f /tmp/autopilot-$ARGUMENTS.lock
    ```
@@ -212,6 +287,10 @@ verdictHistory = [] (for oscillation detection)
 
 8. **Track cumulative changes.** At the end, summarize every file you modified and what changed.
 
-9. **Data-first, not vision-first.** Always read element presence + property check data BEFORE using vision to diagnose issues. Claude vision hallucination is a known failure mode — never trust visual diagnosis alone for CSS values.
+9. **Data-first, not vision-first.** Always read computed-style-diff JSON + element presence data BEFORE using vision to diagnose issues. Claude vision hallucination is a known failure mode — never trust visual diagnosis alone for CSS values.
 
 10. **SVG background rule.** NEVER apply `::before`/`::after` to `.et_pb_*` selectors (Divi owns those). Always use wrapper `<div>` inside Code Module for decorative elements.
+
+11. **Style-first convergence.** After every fix iteration, re-run `computed-style-diff.js` BEFORE `visual-diff.js`. Mismatch count is the primary convergence metric; pixel diff% is secondary.
+
+12. **Protected properties.** NEVER override `display`, `flex-direction`, `flex-wrap`, `flex-grow`, `flex-shrink`, `flex-basis` with `!important` on `.et_pb_*` elements. This WILL break Divi layout.

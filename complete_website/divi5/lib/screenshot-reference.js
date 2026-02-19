@@ -15,62 +15,13 @@
  *   const paths = await refScreenshot.capture({ pageName, htmlFile, sections, force });
  */
 
-const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const puppeteer = require('puppeteer');
+const { startServer } = require('./http-server');
 
-const COMPLETE_WEBSITE_DIR = path.join(__dirname, '..', '..');
 const SCREENSHOTS_DIR = path.join(__dirname, '..', '..', '..', 'screenshots', 'reference');
-
-/**
- * Start a simple static file server for complete_website/
- * @returns {{ server: http.Server, port: number }}
- */
-function startServer() {
-  return new Promise((resolve, reject) => {
-    const mimeTypes = {
-      '.html': 'text/html', '.css': 'text/css', '.js': 'application/javascript',
-      '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg',
-      '.gif': 'image/gif', '.woff2': 'font/woff2', '.woff': 'font/woff',
-      '.ttf': 'font/ttf', '.json': 'application/json', '.ico': 'image/x-icon',
-    };
-
-    const server = http.createServer((req, res) => {
-      let urlPath = req.url.split('?')[0];
-      if (urlPath === '/') urlPath = '/index.html';
-      const filePath = path.join(COMPLETE_WEBSITE_DIR, urlPath);
-
-      if (!fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
-        // Try index.html inside directory
-        const indexPath = path.join(filePath, 'index.html');
-        if (fs.existsSync(indexPath)) {
-          const content = fs.readFileSync(indexPath);
-          res.writeHead(200, { 'Content-Type': 'text/html' });
-          res.end(content);
-          return;
-        }
-        res.writeHead(404);
-        res.end('Not Found');
-        return;
-      }
-
-      const ext = path.extname(filePath).toLowerCase();
-      const contentType = mimeTypes[ext] || 'application/octet-stream';
-      const content = fs.readFileSync(filePath);
-      res.writeHead(200, { 'Content-Type': contentType });
-      res.end(content);
-    });
-
-    server.listen(0, '127.0.0.1', () => {
-      const port = server.address().port;
-      resolve({ server, port });
-    });
-
-    server.on('error', reject);
-  });
-}
 
 /**
  * CSS to freeze all animations and transitions for deterministic screenshots.
@@ -129,7 +80,7 @@ async function capture({ pageName, htmlFile, sections = [], force = false }) {
   }
 
   // Start temp server
-  const { server, port } = await startServer();
+  const { server, port, close } = await startServer();
   const savedPaths = [];
 
   try {
@@ -199,7 +150,7 @@ async function capture({ pageName, htmlFile, sections = [], force = false }) {
       await browser.close();
     }
   } finally {
-    server.close();
+    await close();
   }
 
   // Store content hash for cache invalidation

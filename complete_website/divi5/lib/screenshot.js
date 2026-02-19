@@ -107,7 +107,18 @@ async function capture({ pageName, wpUrl, sections = [], warmUp = true, freeze =
     await page.waitForFunction(() => {
       const sheets = document.querySelectorAll('link[rel="stylesheet"]');
       return Array.from(sheets).every(s => s.sheet !== null);
-    }, { timeout: 10000 }).catch(() => {});
+    }, { timeout: 10000 }).catch(() => {
+      console.warn('  ⚠ Some stylesheets did not finish loading within 10s');
+    });
+
+    // Wait for Divi page-level CSS (React hydration injects <style> tags)
+    await page.waitForFunction(() => {
+      const styles = document.querySelectorAll('style');
+      return Array.from(styles).some(s => s.textContent && s.textContent.length > 100);
+    }, { timeout: 10000 }).catch(() => {
+      console.warn('  ⚠ Divi page-level CSS not detected within 10s — styles may be incomplete');
+    });
+
     await new Promise(r => setTimeout(r, 2000)); // stabilization (matched to reference)
 
     // Force scroll-animated elements visible (same as screenshot-reference.js)

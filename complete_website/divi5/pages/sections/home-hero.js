@@ -285,7 +285,7 @@ function blocks() {
     // Thin Divi wrapper: Section → Row → Column → Code Module
     sectionOpen({
       adminLabel: 'Hero \u2014 Split Screen',
-      css: 'selector{background:transparent !important;padding:0 !important;margin:0 !important;}',
+      css: 'selector{background:#000432 !important;padding:0 !important;margin:0 !important;}',
     }),
 
     rowOpen({
@@ -317,7 +317,7 @@ function heroCss() {
 
 /* === THEME BUILDER FULL-BLEED OVERRIDES === */
 /* Theme builder wraps page content in its own section/row/column — must override all */
-.et_pb_section_0_tb_body{background:transparent !important;padding:0 !important;margin:0 !important;width:100% !important}
+.et_pb_section_0_tb_body{background:#000432 !important;padding:0 !important;margin:0 !important;width:100% !important}
 .et_pb_row_0_tb_body{max-width:100% !important;width:100% !important;padding:0 !important;margin:0 !important}
 .et_pb_column_0_tb_body{padding:0 !important;width:100% !important}
 .et_pb_post_content_0_tb_body{width:100% !important;max-width:100% !important}
@@ -326,7 +326,7 @@ function heroCss() {
 .et_pb_column_1_tb_body{width:100% !important;padding:0 !important}
 
 /* === PAGE-LEVEL DIVI WRAPPER RESETS === */
-.et_pb_section_0{background:transparent !important;padding:0 !important;margin:0 !important}
+.et_pb_section_0{background:#000432 !important;padding:0 !important;margin:0 !important}
 .et_pb_section_0 .et_pb_row{max-width:100% !important;width:100% !important;padding:0 !important;margin:0 !important}
 .et_pb_section_0 .et_pb_column{width:100% !important;padding:0 !important}
 .et_pb_section_0 .et_pb_code,.et_pb_section_0 .et_pb_code_inner{position:static !important;overflow:visible !important}
@@ -377,7 +377,7 @@ function heroCss() {
 .hero-label--partner::before{background:linear-gradient(90deg,transparent,rgba(255,255,255,0.8))}
 
 /* === HERO TITLES === */
-.hero-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,3.5vw,52px);font-weight:700;color:#fff;margin:0 0 24px;line-height:1.1;letter-spacing:-0.03em;max-width:520px}
+.hero-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,3.5vw,52px);font-weight:700;color:#fff;margin:0 0 24px;line-height:1.1;letter-spacing:-0.03em}
 .hero-title .hl-blue{color:#00AFF0}
 .hero-title .hl-gold{color:#fef3c7}
 
@@ -390,7 +390,7 @@ function heroCss() {
 .hero-btn:hover::before{left:100%}
 .hero-btn--primary{background:#006dac;color:#fff;box-shadow:0 4px 14px rgba(0,175,240,0.35);gap:8px}
 .hero-btn--primary:hover{background:#003CC8;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,175,240,0.45)}
-.hero-btn--ghost{background:rgba(255,255,255,0.15);color:#fff;border:2px solid rgba(255,255,255,0.9);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.hero-btn--ghost{background:rgba(255,255,255,0.15);color:#fff;border:2px solid rgba(255,255,255,0.9);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);gap:8px}
 .hero-btn--ghost:hover{background:#fff;color:#0369a1;border-color:#fff}
 .hero-btn-row{max-width:520px;font-size:16px}
 .hero-btn-row .hero-btn--ghost{margin-left:12px}
@@ -424,6 +424,9 @@ function heroCss() {
   .hero-btn-row{flex-direction:column}
   .hero-btn{text-align:center}
 }
+
+/* === ADMIN BAR COMPENSATION === */
+body.admin-bar .hero-split{margin-top:48px;min-height:calc(100vh - 80px)}
 
 /* === REDUCED MOTION === */
 @media(prefers-reduced-motion:reduce){

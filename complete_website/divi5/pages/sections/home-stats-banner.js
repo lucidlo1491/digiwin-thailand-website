@@ -192,7 +192,7 @@ ${superD.css('stats-deco', { variant: 'outline', position: 'corner-tr', opacity:
 .stats-item:not(:nth-child(3n))::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:60%;background:${SPEC.dividerColor}}
 .stats-number{font-family:'Noto Sans',sans-serif;font-weight:${SPEC.numberWeight};font-size:${SPEC.numberSize};color:${SPEC.numberColor};letter-spacing:${SPEC.numberTracking};line-height:1;margin-bottom:16px}
 .stats-label{font-family:'JetBrains Mono',monospace;font-size:${SPEC.labelSize};color:${SPEC.labelColor};text-transform:uppercase;letter-spacing:${SPEC.labelSpacing};line-height:1.6}
-.stats-source{text-align:center;font-family:'JetBrains Mono',monospace;font-size:${SPEC.sourceSize};color:${SPEC.sourceColor};margin-top:24px}
+.stats-source{text-align:center;font-family:'JetBrains Mono',monospace;font-size:${SPEC.sourceSize};color:${SPEC.sourceColor};line-height:1.6;letter-spacing:0.08em;text-transform:uppercase;margin-top:-16px}
 @media(max-width:991px){.stats-grid{grid-template-columns:repeat(2,1fr);gap:36px}.stats-item:nth-child(2n)::after{display:none}}
 @media(max-width:767px){.stats-grid{gap:28px}.stats-item{padding:0 12px}.stats-number{font-size:clamp(36px,10vw,48px)}.stats-label{font-size:10px}}
 /* === WAVE FADE TRANSITION === */

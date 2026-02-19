@@ -1,24 +1,32 @@
 /**
  * fidelity-check.js — Automated Divi ↔ HTML Fidelity Comparison
  *
- * Checks all 8 findings from the hero debugging session:
- *   F1: Font-smoothing (Divi antialiased vs HTML auto)
- *   F2: <p> padding injection (Divi adds padding-bottom: 1em)
- *   F3: Font-weight availability (HTML vs WP load different weights)
- *   F4: Line-height inheritance (must be explicit on every text element)
- *   F5: Unicode character mismatches (curly vs straight quotes/apostrophes)
- *   F6: Container display model (block vs flex)
- *   F7: Parent font-size for inline whitespace width
- *   F8: Transition timing mismatch
+ * Two-phase check:
+ *   Phase 1 (Manual): F1-F8 findings from hero debugging session
+ *     F1: Font-smoothing (Divi antialiased vs HTML auto)
+ *     F2: <p> padding injection (Divi adds padding-bottom: 1em)
+ *     F3: Font-weight availability (HTML vs WP load different weights)
+ *     F4: Line-height inheritance (must be explicit on every text element)
+ *     F5: Unicode character mismatches (curly vs straight quotes/apostrophes)
+ *     F6: Container display model (block vs flex)
+ *     F7: Parent font-size for inline whitespace width
+ *     F8: Transition timing mismatch
+ *
+ *   Phase 2 (Auto-Discovery): Finds ALL visible text-bearing elements in each
+ *     section, matches them between HTML and WP, and compares 40+ CSS properties.
+ *     Catches issues like max-width, text-align, letter-spacing that manual
+ *     styleMap entries might miss.
  *
  * Opens HTML (temp server) + WP (live) in Puppeteer, runs getComputedStyle()
  * on matched element pairs from the page config's verify.sections[].styleMap,
- * plus section-level wrapper checks.
+ * plus section-level wrapper checks, plus auto-discovered elements.
  *
  * Usage:
  *   node complete_website/divi5/lib/fidelity-check.js --page home [--section hero] [--verbose]
+ *     [--no-autodiscover]     # manual checks only (backwards compatible)
+ *     [--autodiscover-only]   # skip manual, fast diagnostic sweep
  *
- * Output: Per-section report with PASS/FAIL per finding + exact values.
+ * Output: Per-section report with PASS/FAIL per finding + auto-discovery results.
  */
 
 const puppeteer = require('puppeteer');
@@ -26,20 +34,20 @@ const path = require('path');
 const { startServer } = require('./http-server');
 const { waitForDiviReady } = require('./wait-for-divi');
 const config = require('./screenshot-config');
+const csd = require('./computed-style-diff');
 
 // ═══════════════════════════════════════════════════════════
-// FIDELITY PROPERTIES — the 8 findings we check
+// FIDELITY PROPERTIES — comprehensive list from CSD + additions
 // ═══════════════════════════════════════════════════════════
 
-/** Properties checked on EVERY element pair */
-const ELEMENT_PROPERTIES = [
-  'font-size', 'font-weight', 'font-family',
-  'line-height', 'color', 'background-color',
-  'padding-top', 'padding-right', 'padding-bottom', 'padding-left',
-  'margin-top', 'margin-right', 'margin-bottom', 'margin-left',
-  'display', 'transition',
-  '-webkit-font-smoothing',
-];
+/** Properties checked on EVERY element pair (manual + auto-discovery) */
+const ELEMENT_PROPERTIES = [...new Set([
+  ...csd.DEFAULT_PROPERTIES,          // 34 props (typography, colors, spacing, borders, layout, flexbox)
+  ...csd.LAYOUT_COMPUTED_PROPERTIES,  // max-width, width, min-width, height, etc.
+  'font-style', 'text-align',        // P1 additions not in either list
+  'transition',                       // was in old list, not in CSD defaults
+  '-webkit-font-smoothing',          // keep for F1 check
+])];
 
 /** Properties checked on CONTAINER elements (parents of inline children) */
 const CONTAINER_PROPERTIES = [
@@ -55,6 +63,17 @@ const UNICODE_CHECKS = [
   { char: '\u2018', name: 'left single quote', straight: "'" },
 ];
 
+/** Tags to discover in auto-discovery */
+const DISCOVER_TAGS = 'h1, h2, h3, h4, h5, h6, p, a, span, div, button, li, blockquote, strong, em, small';
+
+/** Divi noise class patterns to skip */
+const DIVI_NOISE_RE = /et_pb_|scene|deco|grain|particle|wave|card-bg|canvas/i;
+
+/** Layout-computed properties excluded from auto-discovery comparison.
+ *  width/height are determined by container + content reflow, not authored CSS.
+ *  Keep max-width/min-width — those ARE CSS-authored (e.g. subtitle centering bug). */
+const LAYOUT_COMPUTED_SKIP = new Set(['width', 'height', 'min-height', 'max-height']);
+
 // ═══════════════════════════════════════════════════════════
 // COMPARISON HELPERS
 // ═══════════════════════════════════════════════════════════
@@ -62,6 +81,9 @@ const UNICODE_CHECKS = [
 /**
  * Compare two CSS values with fuzzy tolerance.
  * Returns { match: boolean, note: string }
+ *
+ * This is the LOCAL compare — ±1px dims, ±5 color channels, primary font only.
+ * NOT the same as csd.compareValues() which uses ±4px and returns {reason}.
  */
 function compareValues(prop, htmlVal, wpVal) {
   if (htmlVal === wpVal) return { match: true };
@@ -71,12 +93,32 @@ function compareValues(prop, htmlVal, wpVal) {
   const w = (wpVal || '').trim();
   if (h === w) return { match: true };
 
+  // text-align: left ↔ start are equivalent (browser normalization)
+  if (prop === 'text-align') {
+    const equiv = { left: 'start', start: 'left', right: 'end', end: 'right' };
+    if (equiv[h] === w || equiv[w] === h) return { match: true, note: 'text-align equivalent' };
+  }
+
   // Font-family: compare primary font only
   if (prop === 'font-family') {
     const hPrimary = h.split(',')[0].replace(/["']/g, '').trim().toLowerCase();
     const wPrimary = w.split(',')[0].replace(/["']/g, '').trim().toLowerCase();
     if (hPrimary === wPrimary) return { match: true, note: 'primary font matches' };
     return { match: false, note: `HTML="${hPrimary}" WP="${wPrimary}"` };
+  }
+
+  // Font-weight: normalize keywords
+  if (prop === 'font-weight') {
+    const wMap = { normal: '400', bold: '700', lighter: '300', bolder: '700' };
+    const hNorm = wMap[h.toLowerCase()] || h;
+    const wNorm = wMap[w.toLowerCase()] || w;
+    if (hNorm === wNorm) return { match: true, note: 'weight equivalent' };
+  }
+
+  // Transform: normalize identity matrix to 'none'
+  if (prop === 'transform') {
+    const norm = v => (!v || v === 'none' || /^matrix\(\s*1\s*,\s*0\s*,\s*0\s*,\s*1\s*,\s*0\s*,\s*0\s*\)$/.test(v)) ? 'none' : v;
+    if (norm(h) === norm(w)) return { match: true, note: 'transform equivalent' };
   }
 
   // Numeric values: ±1px tolerance
@@ -91,13 +133,11 @@ function compareValues(prop, htmlVal, wpVal) {
 
   // Transition: compare duration + timing function separately
   if (prop === 'transition') {
-    // Extract duration from both
     const hDur = h.match(/([\d.]+)s/);
     const wDur = w.match(/([\d.]+)s/);
     if (hDur && wDur && hDur[1] !== wDur[1]) {
       return { match: false, note: `duration HTML=${hDur[1]}s WP=${wDur[1]}s` };
     }
-    // Check if timing function differs
     const hBezier = h.match(/cubic-bezier\([^)]+\)/);
     const wBezier = w.match(/cubic-bezier\([^)]+\)/);
     const hEase = hBezier ? hBezier[0] : (h.includes('ease') ? 'ease' : 'linear');
@@ -106,6 +146,26 @@ function compareValues(prop, htmlVal, wpVal) {
       return { match: false, note: `timing HTML="${hEase}" WP="${wEase}"` };
     }
     return { match: true, note: 'transition equivalent' };
+  }
+
+  // Background-image: presence check (don't compare exact SVG data URIs)
+  if (prop === 'background-image') {
+    const hHas = h !== 'none' && h !== '';
+    const wHas = w !== 'none' && w !== '';
+    if (!hHas && !wHas) return { match: true };
+    if (hHas !== wHas) return { match: false, note: hHas ? 'HTML has bg-image, WP missing' : 'WP has bg-image, HTML missing' };
+    return { match: true, note: 'both have background-image' };
+  }
+
+  // Opacity: ±0.05 tolerance
+  if (prop === 'opacity') {
+    if (!isNaN(hNum) && !isNaN(wNum) && Math.abs(hNum - wNum) < 0.05) return { match: true };
+  }
+
+  // Box-shadow / text-shadow: presence check
+  if (prop === 'box-shadow' || prop === 'text-shadow') {
+    if (h === 'none' && w === 'none') return { match: true };
+    if ((h === 'none') !== (w === 'none')) return { match: false, note: `One has shadow, other doesn't` };
   }
 
   // Color values: compare RGB components with ±5 tolerance
@@ -135,6 +195,374 @@ function parseColor(str) {
 }
 
 // ═══════════════════════════════════════════════════════════
+// AUTO-DISCOVERY ENGINE
+// ═══════════════════════════════════════════════════════════
+
+/**
+ * Normalize text for matching: trim, collapse whitespace, normalize quotes.
+ */
+function normalizeText(str) {
+  return (str || '')
+    .trim()
+    .replace(/\s+/g, ' ')
+    .replace(/\u201C|\u201D/g, '"')
+    .replace(/\u2018|\u2019/g, "'")
+    .replace(/\u2014/g, '--');
+}
+
+/**
+ * Extract visible text-bearing elements from a section wrapper.
+ * Runs inside page.evaluate() — must be self-contained (no closures over Node vars).
+ *
+ * @param {string} wrapperSelector — CSS selector for the section container
+ * @param {string[]} properties — CSS properties to extract
+ * @param {string} tagList — comma-separated tag list
+ * @param {string} noisePattern — regex source string for Divi noise classes
+ * @returns {Array<{tag, ordinal, text, className, selectorPath, styles}>}
+ */
+const AUTO_DISCOVER_FN = function(wrapperSelector, properties, tagList, noisePattern) {
+  const wrapper = document.querySelector(wrapperSelector);
+  if (!wrapper) return [];
+
+  const noiseRe = new RegExp(noisePattern, 'i');
+  const candidates = wrapper.querySelectorAll(tagList);
+  const results = [];
+  const tagCounts = {};
+
+  for (const el of candidates) {
+    // Skip elements marked as already checked by manual styleMap
+    if (el.hasAttribute('data-fidelity-manual')) continue;
+
+    // Filter 1: hidden or zero-size
+    const cs = window.getComputedStyle(el);
+    if (cs.display === 'none') continue;
+    if (el.offsetWidth === 0 && el.offsetHeight === 0) continue;
+
+    // Filter 2: aria-hidden ancestor
+    if (el.closest('[aria-hidden="true"]')) continue;
+
+    // Filter 3: inside SVG
+    if (el.closest('svg')) continue;
+
+    // Filter 4: Divi noise classes
+    if (noiseRe.test(el.className)) continue;
+
+    // Filter 5: span with no class whose text is substring of parent
+    const tag = el.tagName.toLowerCase();
+    if (tag === 'span' && !el.className) {
+      const parentText = el.parentElement ? el.parentElement.textContent.trim() : '';
+      const elText = el.textContent.trim();
+      if (elText && parentText.includes(elText) && parentText !== elText) continue;
+    }
+
+    // Filter 7 (div): require direct text node children
+    if (tag === 'div') {
+      const hasDirectText = Array.from(el.childNodes).some(
+        n => n.nodeType === 3 && n.textContent.trim().length > 0
+      );
+      if (!hasDirectText) continue;
+    }
+
+    // Filter 6: strip animation classes for style extraction
+    el.classList.remove('et_animated', 'et_had_animation', 'et_is_animating');
+
+    // Extract direct text content (not aggregated textContent)
+    const directText = Array.from(el.childNodes)
+      .filter(n => n.nodeType === 3)
+      .map(n => n.textContent)
+      .join('')
+      .trim()
+      .replace(/\s+/g, ' ')
+      .replace(/\u201C|\u201D/g, '"')
+      .replace(/\u2018|\u2019/g, "'")
+      .replace(/\u2014/g, '--')
+      .substring(0, 100);
+
+    // For non-div elements, fall back to textContent if no direct text nodes
+    const text = (tag !== 'div' && !directText)
+      ? el.textContent.trim().replace(/\s+/g, ' ').replace(/\u201C|\u201D/g, '"').replace(/\u2018|\u2019/g, "'").replace(/\u2014/g, '--').substring(0, 100)
+      : directText;
+
+    // Skip empty text elements
+    if (!text) continue;
+
+    // Track ordinal (nth occurrence of this tag in section)
+    tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+    const ordinal = tagCounts[tag];
+
+    // Build scoped selector path
+    const className = el.className ? el.className.split(/\s+/).filter(c => c).join('.') : '';
+    const selectorPath = className
+      ? `${tag}.${className}`
+      : `${tag}:nth-of-type(${ordinal})`;
+
+    // Extract computed styles
+    const freshCs = window.getComputedStyle(el);
+    const styles = {};
+    for (const p of properties) {
+      styles[p] = freshCs.getPropertyValue(p);
+    }
+
+    results.push({ tag, ordinal, text, className: el.className || '', selectorPath, styles });
+  }
+
+  return results;
+};
+
+/**
+ * Match discovered elements between HTML and WP sides.
+ * Three-tier cascade: text → tag+ordinal → unmatched.
+ *
+ * @param {Array} htmlEls — elements from HTML side
+ * @param {Array} wpEls — elements from WP side
+ * @returns {{matched: Array<{html, wp}>, unmatchedHtml: Array, unmatchedWp: Array, warnings: string[]}}
+ */
+function matchElements(htmlEls, wpEls) {
+  const matched = [];
+  const warnings = [];
+  const usedHtml = new Set();
+  const usedWp = new Set();
+
+  // Tier 1: Text content matching
+  for (let wi = 0; wi < wpEls.length; wi++) {
+    if (usedWp.has(wi)) continue;
+    const wp = wpEls[wi];
+    const wpText = wp.text;
+
+    if (wpText.length < 3) continue; // skip to Tier 2 for very short strings
+
+    for (let hi = 0; hi < htmlEls.length; hi++) {
+      if (usedHtml.has(hi)) continue;
+      const html = htmlEls[hi];
+      const htmlText = html.text;
+
+      if (htmlText === wpText) {
+        // Short strings (3-7 chars): require same tag too
+        if (wpText.length <= 7 && html.tag !== wp.tag) continue;
+
+        matched.push({ html, wp });
+        usedHtml.add(hi);
+        usedWp.add(wi);
+        break;
+      }
+    }
+  }
+
+  // Tier 2: Tag + ordinal fallback for unmatched
+  // Check ordinal count differences first
+  const htmlTagCounts = {};
+  const wpTagCounts = {};
+  for (const el of htmlEls) htmlTagCounts[el.tag] = (htmlTagCounts[el.tag] || 0) + 1;
+  for (const el of wpEls) wpTagCounts[el.tag] = (wpTagCounts[el.tag] || 0) + 1;
+
+  for (const tag of new Set([...Object.keys(htmlTagCounts), ...Object.keys(wpTagCounts)])) {
+    const hc = htmlTagCounts[tag] || 0;
+    const wc = wpTagCounts[tag] || 0;
+    if (hc !== wc) {
+      warnings.push(`<${tag}> count differs: HTML=${hc} WP=${wc}`);
+    }
+  }
+
+  for (let wi = 0; wi < wpEls.length; wi++) {
+    if (usedWp.has(wi)) continue;
+    const wp = wpEls[wi];
+
+    for (let hi = 0; hi < htmlEls.length; hi++) {
+      if (usedHtml.has(hi)) continue;
+      const html = htmlEls[hi];
+
+      if (html.tag === wp.tag && html.ordinal === wp.ordinal) {
+        matched.push({ html, wp });
+        usedHtml.add(hi);
+        usedWp.add(wi);
+        break;
+      }
+    }
+  }
+
+  // Tier 3: Unmatched
+  const unmatchedHtml = htmlEls.filter((_, i) => !usedHtml.has(i));
+  const unmatchedWp = wpEls.filter((_, i) => !usedWp.has(i));
+
+  return { matched, unmatchedHtml, unmatchedWp, warnings };
+}
+
+/**
+ * Run auto-discovery for a single section.
+ * Uses existing browser pages — no new navigation.
+ *
+ * @param {Page} htmlPage
+ * @param {Page} wpPage
+ * @param {object} section — verify config section
+ * @param {boolean} verbose
+ * @returns {{matched: number, fixable: Array, unmatched: {html: number, wp: number}, warnings: string[], totalDiscovered: {html: number, wp: number}}}
+ */
+async function runAutoDiscovery(htmlPage, wpPage, section, verbose) {
+  const result = {
+    matched: 0,
+    fixable: [],
+    unmatched: { html: 0, wp: 0 },
+    warnings: [],
+    totalDiscovered: { html: 0, wp: 0 },
+  };
+
+  const htmlSelector = section.htmlSelector;
+  const wpSelector = section.wpSelector;
+  if (!htmlSelector || !wpSelector) {
+    result.warnings.push('Missing htmlSelector or wpSelector — skipping auto-discovery');
+    return result;
+  }
+
+  // Mark styleMap elements to avoid double-counting
+  if (section.styleMap && section.styleMap.length > 0) {
+    await Promise.all([
+      htmlPage.evaluate((mappings) => {
+        for (const m of mappings) {
+          const el = document.querySelector(m.htmlSel);
+          if (el) el.setAttribute('data-fidelity-manual', '1');
+        }
+      }, section.styleMap),
+      wpPage.evaluate((mappings) => {
+        for (const m of mappings) {
+          const el = document.querySelector(m.wpSel);
+          if (el) el.setAttribute('data-fidelity-manual', '1');
+        }
+      }, section.styleMap),
+    ]);
+  }
+
+  // Discover elements on both sides
+  const propNames = ELEMENT_PROPERTIES;
+  const tagList = DISCOVER_TAGS;
+  const noisePattern = DIVI_NOISE_RE.source;
+
+  const [htmlEls, wpEls] = await Promise.all([
+    htmlPage.evaluate(AUTO_DISCOVER_FN, htmlSelector, propNames, tagList, noisePattern),
+    wpPage.evaluate(AUTO_DISCOVER_FN, wpSelector, propNames, tagList, noisePattern),
+  ]);
+
+  result.totalDiscovered.html = htmlEls.length;
+  result.totalDiscovered.wp = wpEls.length;
+
+  // Low element count warning
+  if (htmlEls.length < 3) {
+    result.warnings.push(`Auto-discovery found only ${htmlEls.length} HTML elements — coverage may be low`);
+  }
+  if (wpEls.length < 3) {
+    result.warnings.push(`Auto-discovery found only ${wpEls.length} WP elements — coverage may be low`);
+  }
+
+  if (htmlEls.length === 0 || wpEls.length === 0) {
+    result.warnings.push('Skipping auto-discovery comparison — 0 elements on one side');
+    return result;
+  }
+
+  // Match elements
+  const { matched, unmatchedHtml, unmatchedWp, warnings } = matchElements(htmlEls, wpEls);
+  result.matched = matched.length;
+  result.unmatched.html = unmatchedHtml.length;
+  result.unmatched.wp = unmatchedWp.length;
+  result.warnings.push(...warnings);
+
+  // Compare styles on matched pairs
+  for (const pair of matched) {
+    for (const prop of ELEMENT_PROPERTIES) {
+      // Skip layout-computed properties in auto-discovery (content reflow, not CSS bugs)
+      if (LAYOUT_COMPUTED_SKIP.has(prop)) continue;
+
+      const htmlVal = pair.html.styles[prop] || '';
+      const wpVal = pair.wp.styles[prop] || '';
+      const cmp = compareValues(prop, htmlVal, wpVal);
+
+      if (cmp.match) continue;
+
+      // Classify via CSD's classifyMismatch with synthesized label
+      const synthLabel = `${pair.wp.tag}[${pair.wp.ordinal}] .${pair.wp.className}`;
+      const classification = csd.classifyMismatch({
+        label: synthLabel,
+        property: prop,
+        refValue: htmlVal,
+        wpValue: wpVal,
+      });
+
+      // Only report FIXABLE
+      if (classification !== 'FIXABLE') continue;
+
+      // Additional auto-discovery noise suppression
+      // z-index: auto ↔ 0/1 — stacking context cosmetic, rarely visual
+      if (prop === 'z-index') continue;
+      // gap: normal ↔ 0px — equivalent when no gap is intended
+      if (prop === 'gap' && ((htmlVal === 'normal' && wpVal === '0px') || (htmlVal === '0px' && wpVal === 'normal'))) continue;
+      // border-*-color on elements with no visible border (border-width: 0)
+      if (/^border-.*-color$/.test(prop)) {
+        const side = prop.replace('border-', '').replace('-color', '');
+        const wpBorderWidth = pair.wp.styles[`border-${side}-width`] || '0px';
+        const htmlBorderWidth = pair.html.styles[`border-${side}-width`] || '0px';
+        if (parseFloat(wpBorderWidth) === 0 && parseFloat(htmlBorderWidth) === 0) continue;
+      }
+      // backdrop-filter / -webkit-backdrop-filter: none ↔ empty — equivalent
+      if (/backdrop-filter/.test(prop) && (htmlVal === 'none' || !htmlVal) && (wpVal === 'none' || !wpVal)) continue;
+      // filter: none ↔ empty
+      if (prop === 'filter' && (htmlVal === 'none' || !htmlVal) && (wpVal === 'none' || !wpVal)) continue;
+      // overflow variants: visible ↔ auto — both show content
+      if (/^overflow/.test(prop)) {
+        const equivOverflow = (a, b) => (a === 'visible' && b === 'auto') || (a === 'auto' && b === 'visible');
+        if (equivOverflow(htmlVal, wpVal)) continue;
+      }
+
+      // Generate fix suggestion
+      const targetClass = pair.wp.className
+        ? '.' + pair.wp.className.split(/\s+/).filter(c => c && !DIVI_NOISE_RE.test(c))[0]
+        : pair.wp.selectorPath;
+      const fixSuggestion = `Set ${prop}:${htmlVal} on ${targetClass || pair.wp.selectorPath} in builder css()`;
+
+      result.fixable.push({
+        element: `${pair.wp.tag}[${pair.wp.ordinal}]`,
+        className: pair.wp.className,
+        text: pair.wp.text.substring(0, 50),
+        property: prop,
+        htmlValue: htmlVal,
+        wpValue: wpVal,
+        note: cmp.note,
+        fix: fixSuggestion,
+      });
+    }
+  }
+
+  // Report unmatched elements as warnings
+  for (const el of unmatchedHtml) {
+    if (verbose) {
+      result.warnings.push(`MISSING_IN_WP: <${el.tag}> "${el.text.substring(0, 40)}" (${el.selectorPath})`);
+    }
+  }
+  for (const el of unmatchedWp) {
+    if (verbose) {
+      result.warnings.push(`MISSING_IN_HTML: <${el.tag}> "${el.text.substring(0, 40)}" (${el.selectorPath})`);
+    }
+  }
+
+  // Clean up data-fidelity-manual markers
+  if (section.styleMap && section.styleMap.length > 0) {
+    await Promise.all([
+      htmlPage.evaluate((mappings) => {
+        for (const m of mappings) {
+          const el = document.querySelector(m.htmlSel);
+          if (el) el.removeAttribute('data-fidelity-manual');
+        }
+      }, section.styleMap),
+      wpPage.evaluate((mappings) => {
+        for (const m of mappings) {
+          const el = document.querySelector(m.wpSel);
+          if (el) el.removeAttribute('data-fidelity-manual');
+        }
+      }, section.styleMap),
+    ]);
+  }
+
+  return result;
+}
+
+// ═══════════════════════════════════════════════════════════
 // MAIN CHECK RUNNER
 // ═══════════════════════════════════════════════════════════
 
@@ -144,10 +572,12 @@ function parseColor(str) {
  * @param {string} opts.pageName — page config name (e.g. 'home')
  * @param {string} [opts.sectionFilter] — check only this section
  * @param {boolean} [opts.verbose] — extra logging
+ * @param {boolean} [opts.noAutodiscover] — skip auto-discovery phase
+ * @param {boolean} [opts.autodiscoverOnly] — skip manual checks
  * @returns {Promise<object>} — full report
  */
 async function run(opts) {
-  const { pageName, sectionFilter, verbose } = opts;
+  const { pageName, sectionFilter, verbose, noAutodiscover, autodiscoverOnly } = opts;
 
   // Load page config
   const pageConfig = require(path.join(__dirname, '..', 'pages', `${pageName}.js`));
@@ -180,7 +610,12 @@ async function run(opts) {
     protocolTimeout: config.PROTOCOL_TIMEOUT,
   });
 
-  const report = { page: pageName, sections: [], summary: { pass: 0, fail: 0, warn: 0 } };
+  const report = {
+    page: pageName,
+    sections: [],
+    summary: { pass: 0, fail: 0, warn: 0 },
+    autoDiscovery: [],
+  };
 
   try {
     // Open both pages
@@ -224,81 +659,109 @@ async function run(opts) {
       };
 
       // ─────────────────────────────────────────────────────
-      // F1: FONT SMOOTHING on section wrapper
+      // PHASE 1: MANUAL CHECKS (F1-F8)
       // ─────────────────────────────────────────────────────
-      const f1 = await checkFontSmoothing(htmlPage, wpPage, section);
-      sectionReport.findings.push(f1);
-      logFinding(f1);
 
-      // ─────────────────────────────────────────────────────
-      // F2: <p> PADDING INJECTION
-      // ─────────────────────────────────────────────────────
-      const f2 = await checkParagraphPadding(wpPage, section);
-      sectionReport.findings.push(f2);
-      logFinding(f2);
+      if (!autodiscoverOnly) {
+        // F1: FONT SMOOTHING
+        const f1 = await checkFontSmoothing(htmlPage, wpPage, section);
+        sectionReport.findings.push(f1);
+        logFinding(f1);
 
-      // ─────────────────────────────────────────────────────
-      // F3-F4, F6-F8: ELEMENT-LEVEL STYLE COMPARISON
-      // ─────────────────────────────────────────────────────
-      if (section.styleMap && section.styleMap.length > 0) {
-        for (const mapping of section.styleMap) {
-          const elementResult = await checkElementStyles(
-            htmlPage, wpPage, mapping, section, verbose
-          );
-          sectionReport.elementChecks.push(elementResult);
+        // F2: <p> PADDING INJECTION
+        const f2 = await checkParagraphPadding(wpPage, section);
+        sectionReport.findings.push(f2);
+        logFinding(f2);
 
-          // Log mismatches
-          for (const m of elementResult.mismatches) {
-            const finding = {
-              id: `F${m.findingId}`,
-              label: `${mapping.label}: ${m.property}`,
-              status: m.severity,
-              htmlValue: m.htmlValue,
-              wpValue: m.wpValue,
-              note: m.note,
-            };
-            logFinding(finding);
+        // F3-F4, F6-F8: ELEMENT-LEVEL STYLE COMPARISON
+        if (section.styleMap && section.styleMap.length > 0) {
+          for (const mapping of section.styleMap) {
+            const elementResult = await checkElementStyles(
+              htmlPage, wpPage, mapping, section, verbose
+            );
+            sectionReport.elementChecks.push(elementResult);
+
+            for (const m of elementResult.mismatches) {
+              const finding = {
+                id: `F${m.findingId}`,
+                label: `${mapping.label}: ${m.property}`,
+                status: m.severity,
+                htmlValue: m.htmlValue,
+                wpValue: m.wpValue,
+                note: m.note,
+              };
+              logFinding(finding);
+            }
+          }
+        }
+
+        // F5: UNICODE CHARACTER CHECK
+        const f5 = await checkUnicodeCharacters(htmlPage, wpPage, section);
+        sectionReport.unicodeChecks = f5;
+        for (const uc of f5) {
+          logFinding(uc);
+        }
+
+        // F7: CONTAINER FONT-SIZE
+        const f7 = await checkContainerFontSize(htmlPage, wpPage, section);
+        if (f7.length > 0) {
+          for (const check of f7) {
+            sectionReport.findings.push(check);
+            logFinding(check);
           }
         }
       }
 
       // ─────────────────────────────────────────────────────
-      // F5: UNICODE CHARACTER CHECK
+      // PHASE 2: AUTO-DISCOVERY
       // ─────────────────────────────────────────────────────
-      const f5 = await checkUnicodeCharacters(htmlPage, wpPage, section);
-      sectionReport.unicodeChecks = f5;
-      for (const uc of f5) {
-        logFinding(uc);
-      }
 
-      // ─────────────────────────────────────────────────────
-      // F7: CONTAINER FONT-SIZE for inline whitespace
-      // ─────────────────────────────────────────────────────
-      const f7 = await checkContainerFontSize(htmlPage, wpPage, section);
-      if (f7.length > 0) {
-        for (const check of f7) {
-          sectionReport.findings.push(check);
-          logFinding(check);
+      let adResult = null;
+      if (!noAutodiscover) {
+        console.log(`\n  ── Auto-Discovery: ${section.name} ──`);
+        adResult = await runAutoDiscovery(htmlPage, wpPage, section, verbose);
+
+        console.log(`  Discovered: HTML=${adResult.totalDiscovered.html} WP=${adResult.totalDiscovered.wp} | Matched=${adResult.matched} | Fixable=${adResult.fixable.length} | Unmatched: HTML=${adResult.unmatched.html} WP=${adResult.unmatched.wp}`);
+
+        for (const w of adResult.warnings) {
+          console.log(`  ⚠ ${w}`);
         }
+
+        if (adResult.fixable.length > 0) {
+          for (const f of adResult.fixable) {
+            console.log(`  ✗ ${f.element} "${f.text}" → ${f.property}: expected "${f.htmlValue}", got "${f.wpValue}"`);
+            if (verbose) console.log(`    → ${f.fix}`);
+          }
+        }
+
+        report.autoDiscovery.push({
+          section: section.name,
+          ...adResult,
+        });
       }
 
-      // Count pass/fail/warn
+      // Count pass/fail/warn for manual checks
       const allFindings = [
         ...sectionReport.findings,
         ...sectionReport.unicodeChecks,
       ];
-      // Also count element mismatches
       for (const ec of sectionReport.elementChecks) {
         for (const m of ec.mismatches) {
           allFindings.push({ status: m.severity });
         }
-        // Count passes
         sectionReport.passCount += ec.matchCount;
       }
       for (const f of allFindings) {
         if (f.status === 'PASS') sectionReport.passCount++;
         else if (f.status === 'FAIL') sectionReport.failCount++;
         else if (f.status === 'WARN') sectionReport.warnCount++;
+      }
+
+      // Count auto-discovery fixable as FAIL
+      if (adResult) {
+        sectionReport.failCount += adResult.fixable.length;
+        sectionReport.warnCount += adResult.unmatched.html + adResult.unmatched.wp;
+        sectionReport.warnCount += adResult.warnings.length;
       }
 
       report.summary.pass += sectionReport.passCount;
@@ -316,19 +779,60 @@ async function run(opts) {
   // ═══════════════════════════════════════════════════════
   // SUMMARY
   // ═══════════════════════════════════════════════════════
+  const hasAutoDiscovery = report.autoDiscovery.length > 0;
+
   console.log(`\n${'═'.repeat(60)}`);
-  console.log(`  FIDELITY CHECK SUMMARY — ${pageName}`);
+  console.log(`  FIDELITY CHECK SUMMARY — ${pageName}${hasAutoDiscovery ? ' (auto-discovery ON)' : ''}`);
   console.log('═'.repeat(60));
 
-  for (const s of report.sections) {
-    const icon = s.failCount === 0 ? '✓' : '✗';
-    console.log(`  ${icon} ${s.name}: ${s.passCount} pass, ${s.failCount} fail, ${s.warnCount} warn`);
+  if (hasAutoDiscovery) {
+    // Table header
+    const pad = (s, n) => String(s).padEnd(n);
+    console.log(`  ${pad('Section', 20)} | ${pad('Manual', 12)} | ${pad('Auto-Discover', 15)} | ${pad('Fixable', 9)} | Unmatched`);
+    console.log(`  ${'-'.repeat(20)}-+-${'-'.repeat(12)}-+-${'-'.repeat(15)}-+-${'-'.repeat(9)}-+-${'-'.repeat(18)}`);
+
+    for (const s of report.sections) {
+      const ad = report.autoDiscovery.find(a => a.section === s.name);
+      const manualIcon = (s.failCount - (ad ? ad.fixable.length : 0)) === 0 ? '✓' : '✗';
+      const manualStr = s.elementChecks.length > 0
+        ? `${s.elementChecks.reduce((a, e) => a + e.matchCount, 0)}/${s.elementChecks.reduce((a, e) => a + e.matchCount + e.mismatches.length, 0)} ${manualIcon}`
+        : 'n/a';
+      const adStr = ad ? `${ad.matched} matched` : 'OFF';
+      const fixStr = ad && ad.fixable.length > 0 ? `${ad.fixable.length} ←` : ad ? '0' : '-';
+      const unmStr = ad ? `${ad.unmatched.html} HTML / ${ad.unmatched.wp} WP` : '-';
+
+      console.log(`  ${pad(s.name, 20)} | ${pad(manualStr, 12)} | ${pad(adStr, 15)} | ${pad(fixStr, 9)} | ${unmStr}`);
+    }
+  } else {
+    for (const s of report.sections) {
+      const icon = s.failCount === 0 ? '✓' : '✗';
+      console.log(`  ${icon} ${s.name}: ${s.passCount} pass, ${s.failCount} fail, ${s.warnCount} warn`);
+    }
   }
 
   console.log(`\n  Total: ${report.summary.pass} pass, ${report.summary.fail} fail, ${report.summary.warn} warn`);
 
-  if (report.summary.fail > 0) {
-    console.log('\n  Action items:');
+  // Show all fixable issues in detail
+  const allFixable = [];
+  if (hasAutoDiscovery) {
+    for (const ad of report.autoDiscovery) {
+      for (const f of ad.fixable) {
+        allFixable.push({ section: ad.section, ...f });
+      }
+    }
+  }
+
+  if (allFixable.length > 0) {
+    console.log('\n  FIXABLE issues (CSS fixes needed):');
+    for (const f of allFixable) {
+      console.log(`    [${f.section}] ${f.element} "${f.text}" → ${f.property}: expected "${f.htmlValue}", got "${f.wpValue}"`);
+      console.log(`      → ${f.fix}`);
+    }
+  }
+
+  // Manual action items (from F1-F8)
+  if (report.summary.fail > allFixable.length) {
+    console.log('\n  Manual check action items:');
     for (const s of report.sections) {
       for (const f of s.findings) {
         if (f.status === 'FAIL') {
@@ -364,14 +868,11 @@ async function run(opts) {
 async function checkFontSmoothing(htmlPage, wpPage, section) {
   const wpSelector = section.wpSelector;
 
-  // Check both the Divi wrapper AND the first child (Code Module content).
-  // The Code Module wrapper is where we set font-smoothing, not the .et_pb_* wrapper.
   const wpSmoothing = await wpPage.evaluate((sel) => {
     const el = document.querySelector(sel);
     if (!el) return null;
     const cs = window.getComputedStyle(el);
     if (cs.webkitFontSmoothing === 'auto') return 'auto';
-    // Check descendant content wrappers — Code Module content may be nested deep
     const descendants = el.querySelectorAll('div[class], section[class]');
     for (const d of descendants) {
       const dcs = window.getComputedStyle(d);
@@ -456,7 +957,6 @@ async function checkElementStyles(htmlPage, wpPage, mapping, section, verbose) {
       const cs = window.getComputedStyle(el);
       const result = {};
       for (const p of props) result[p] = cs.getPropertyValue(p);
-      // Also get parent info for F6/F7
       const parent = el.parentElement;
       if (parent) {
         const pcs = window.getComputedStyle(parent);
@@ -511,7 +1011,7 @@ async function checkElementStyles(htmlPage, wpPage, mapping, section, verbose) {
     }
 
     // Classify which finding this belongs to
-    let findingId = 8; // default to F8 (transition)
+    let findingId = 8;
     let severity = 'FAIL';
 
     if (prop === '-webkit-font-smoothing') {
@@ -529,7 +1029,7 @@ async function checkElementStyles(htmlPage, wpPage, mapping, section, verbose) {
     } else if (prop === 'transition') {
       findingId = 8;
     } else {
-      findingId = 0; // general style mismatch
+      findingId = 0;
     }
 
     result.mismatches.push({
@@ -575,7 +1075,6 @@ async function checkElementStyles(htmlPage, wpPage, mapping, section, verbose) {
 
 /**
  * F5: Check for Unicode character mismatches in text content.
- * Compares text content character-by-character between HTML and WP.
  */
 async function checkUnicodeCharacters(htmlPage, wpPage, section) {
   const results = [];
@@ -584,12 +1083,10 @@ async function checkUnicodeCharacters(htmlPage, wpPage, section) {
 
   if (!wpSelector || !htmlSelector) return results;
 
-  // Get all text content from both sections
   const [htmlTexts, wpTexts] = await Promise.all([
     htmlPage.evaluate((sel) => {
       const wrapper = document.querySelector(sel);
       if (!wrapper) return [];
-      // Get text from headings, paragraphs, links, blockquotes
       const textEls = wrapper.querySelectorAll('h1, h2, h3, h4, p, a, blockquote, span');
       return Array.from(textEls).slice(0, 30).map(el => ({
         tag: el.tagName,
@@ -610,16 +1107,13 @@ async function checkUnicodeCharacters(htmlPage, wpPage, section) {
     }, wpSelector),
   ]);
 
-  // Check WP texts for curly quotes that don't exist in HTML
   for (const wpText of wpTexts) {
     for (const check of UNICODE_CHECKS) {
       if (wpText.text.includes(check.char)) {
-        // Find matching HTML text (by first 20 chars)
         const prefix = wpText.text.substring(0, 20).replace(check.char, check.straight);
         const htmlMatch = htmlTexts.find(h => h.text.substring(0, 20) === prefix);
 
         if (htmlMatch && !htmlMatch.text.includes(check.char)) {
-          // HTML uses straight, WP uses curly — mismatch
           const context = wpText.text.substring(
             Math.max(0, wpText.text.indexOf(check.char) - 10),
             wpText.text.indexOf(check.char) + 15
@@ -647,7 +1141,6 @@ async function checkUnicodeCharacters(htmlPage, wpPage, section) {
 
 /**
  * F7: Check font-size on containers that hold inline children.
- * Inline whitespace width depends on parent font-size.
  */
 async function checkContainerFontSize(htmlPage, wpPage, section) {
   const results = [];
@@ -656,12 +1149,10 @@ async function checkContainerFontSize(htmlPage, wpPage, section) {
 
   if (!wpSelector || !htmlSelector) return results;
 
-  // Find containers with inline children on both sides
   const [htmlContainers, wpContainers] = await Promise.all([
     htmlPage.evaluate((sel) => {
       const wrapper = document.querySelector(sel);
       if (!wrapper) return [];
-      // Find divs that contain inline-flex or inline-block children
       const containers = [];
       wrapper.querySelectorAll('div').forEach(div => {
         const children = Array.from(div.children);
@@ -706,12 +1197,9 @@ async function checkContainerFontSize(htmlPage, wpPage, section) {
     }, wpSelector),
   ]);
 
-  // Compare font-sizes where class names suggest a match
   for (const wpC of wpContainers) {
-    // Check if font-size differs from 16px (common body default)
     const wpSize = parseFloat(wpC.fontSize);
     if (wpSize < 16) {
-      // Find matching HTML container
       const htmlMatch = htmlContainers.find(h => h.childCount === wpC.childCount);
       if (htmlMatch && htmlMatch.fontSize !== wpC.fontSize) {
         results.push({
@@ -749,14 +1237,20 @@ if (require.main === module) {
   const pageName = args.find((a, i) => args[i - 1] === '--page') || 'home';
   const sectionFilter = args.find((a, i) => args[i - 1] === '--section');
   const verbose = args.includes('--verbose');
+  const noAutodiscover = args.includes('--no-autodiscover');
+  const autodiscoverOnly = args.includes('--autodiscover-only');
+
+  const mode = noAutodiscover ? 'manual only' : autodiscoverOnly ? 'auto-discovery only' : 'manual + auto-discovery';
 
   console.log(`\n╔${'═'.repeat(58)}╗`);
   console.log(`║  FIDELITY CHECK — ${pageName}${sectionFilter ? ` (section: ${sectionFilter})` : ''}`.padEnd(59) + '║');
   console.log(`╚${'═'.repeat(58)}╝`);
-  console.log(`  Checking 8 findings: font-smoothing, <p> padding, font-weight,`);
-  console.log(`  line-height, unicode chars, display model, container font-size, transition`);
+  console.log(`  Mode: ${mode} | Properties: ${ELEMENT_PROPERTIES.length}`);
+  if (!noAutodiscover) {
+    console.log(`  Auto-discovery: ON — finds ALL visible text elements per section`);
+  }
 
-  run({ pageName, sectionFilter, verbose })
+  run({ pageName, sectionFilter, verbose, noAutodiscover, autodiscoverOnly })
     .then((report) => {
       process.exit(report.summary.fail > 0 ? 1 : 0);
     })
@@ -769,4 +1263,4 @@ if (require.main === module) {
     });
 }
 
-module.exports = { run };
+module.exports = { run, matchElements, normalizeText, ELEMENT_PROPERTIES };

@@ -348,14 +348,14 @@ ${superD.css('fchecks-deco', { variant: 'outline', position: 'left', opacity: 0.
 /* === SECTION HEADER === */
 .checks-header{text-align:center;max-width:800px;margin:0 auto 56px;position:relative;z-index:2}
 
-.checks-header-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.2em;color:#0369a1;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:12px}
+.checks-header-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.2em;color:#0369a1;margin-bottom:16px;line-height:1.6;display:flex;align-items:center;justify-content:center;gap:12px}
 .checks-header-label::before,
 .checks-header-label::after{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,#0369a1);flex-shrink:0}
 .checks-header-label::after{transform:scaleX(-1)}
 
 .checks-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;color:#000864;line-height:1.15;letter-spacing:-0.02em;margin:0 0 16px}
 
-.checks-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;margin:0 300px}
+.checks-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;margin:0 auto;max-width:600px}
 
 /* === CARDS GRID === */
 .checks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:32px}
@@ -368,18 +368,18 @@ ${superD.css('fchecks-deco', { variant: 'outline', position: 'left', opacity: 0.
 .checks-card--full{grid-column:1 / -1}
 
 /* === CARD ELEMENTS === */
-.checks-card-number{font-family:'Noto Sans',sans-serif;font-size:64px;font-weight:800;color:#0369a1;opacity:0.15;line-height:1;margin-bottom:16px}
+.checks-card-number{font-family:'Noto Sans',sans-serif;font-size:64px;font-weight:800;color:#0369a1;opacity:0.15;line-height:1;margin-bottom:24px}
 
 .checks-card-title{font-family:'Noto Sans',sans-serif;font-size:20px;font-weight:700;color:#000864;margin:0 0 16px;line-height:1.6;position:relative;z-index:1}
 
-.checks-card-quote{font-family:'Noto Sans',sans-serif;font-size:16px;font-style:italic;color:#475569;line-height:1.7;padding-left:16px;border-left:3px solid #00AFF0;margin-bottom:16px}
+.checks-card-quote{font-family:'Noto Sans',sans-serif;font-size:16px;font-style:italic;color:#475569;line-height:1.7;padding-left:16px;border-left:3px solid #00AFF0;margin-bottom:20px}
 
 .checks-card-desc{font-family:'Noto Sans',sans-serif;font-size:15px;color:#5b6b80;line-height:1.6;margin:0}
 
 /* === CTA === */
 .checks-cta{display:flex;justify-content:center;margin-top:56px}
 
-.checks-btn{font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;padding:16px 32px;border-radius:8px;cursor:pointer;transition:all 0.3s ease;text-decoration:none;display:inline-block;position:relative;overflow:hidden;border:none}
+.checks-btn{font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;padding:16px 32px;border-radius:8px;cursor:pointer;transition:all 0.3s ease;text-decoration:none;display:inline-flex;align-items:center;gap:8px;text-align:center;position:relative;overflow:visible;border:none;line-height:1.6}
 
 .checks-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.5s}
 

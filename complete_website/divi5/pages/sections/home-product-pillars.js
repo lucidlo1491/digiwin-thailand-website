@@ -155,7 +155,7 @@ function css() {
 .products-header{text-align:center;max-width:800px;margin:0 auto 56px;position:relative;z-index:2}
 .products-header-label{font-family:'Noto Sans',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#0369a1;margin-bottom:12px;line-height:1.6}
 .products-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;color:#000864;line-height:1.15;letter-spacing:-0.02em;margin:0 0 16px}
-.products-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto}`);
+.products-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;margin:0}`);
 
   // Super D decoration
   parts.push(`/* Super D: gradient corner-br */\n${superD.css('products-deco', { variant: 'gradient', position: 'corner-br', opacity: 0.08 })}`);
@@ -284,7 +284,8 @@ function css() {
   color: #0369a1;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 16px;
+  margin-bottom: 4px;
+  text-align: left;
 }
 
 /* Tagline */
@@ -294,7 +295,8 @@ function css() {
   font-size: 15px;
   line-height: 1.3;
   color: #000864;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
+  text-align: left;
 }
 
 /* Features List */
@@ -310,8 +312,8 @@ function css() {
   font-size: 13px;
   line-height: 1.6;
   color: #5b6b80;
-  margin-bottom: 12px;
-  padding-left: 16px;
+  margin-bottom: 0;
+  padding: 4px 0 4px 12px;
   position: relative;
 }
 
@@ -332,7 +334,7 @@ function css() {
 
 .products-card__features strong {
   font-weight: 600;
-  color: #000864;
+  color: #475569;
 }
 
 /* Benefit Line */
@@ -340,11 +342,12 @@ function css() {
   font-family: 'Noto Sans', sans-serif;
   font-size: 13px;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.6;
   color: #0369a1;
   border-top: 1px solid #e2e8f0;
-  padding-top: 16px;
-  margin-top: 20px;
+  padding-top: 10px;
+  margin-top: 4px;
+  text-align: left;
 }
 
 /* Responsive: Tablet */

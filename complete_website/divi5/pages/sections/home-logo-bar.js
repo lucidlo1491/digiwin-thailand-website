@@ -43,6 +43,7 @@ const SPEC = {
     fontSize: '30px',           // line 231
     fontWeight: '600',          // line 231
     color: '#334155',           // line 231
+    lineHeight: '1.25',         // fidelity: 37.5px at 30px
     opacityDefault: '0.55',     // line 231
     opacityHover: '1',          // line 231
   },
@@ -177,7 +178,7 @@ function blocks() {
     columnOpen({
       adminLabel: 'Logo Bar Content',
       layout: { display: 'flex', flexDirection: 'column', alignItems: 'center' },
-      css: 'selector{display:flex !important;flex-direction:column !important;align-items:center !important;gap:48px;}',
+      css: 'selector{display:flex !important;flex-direction:column !important;align-items:center !important;gap:0 !important;}',
     }),
 
     // Label
@@ -190,11 +191,11 @@ function blocks() {
         family: SPEC.label.fontFamily,
       },
       {
-        marginBottom: '0',
+        marginBottom: '48px',
         adminLabel: 'Label: Trusted by Leading Manufacturers',
         textAlign: 'center',
       },
-      `selector{text-align:center;margin:0 !important;}selector p{font-family:${SPEC.label.fontFamily} !important;font-size:${SPEC.label.fontSize} !important;font-weight:${SPEC.label.fontWeight} !important;text-transform:${SPEC.label.textTransform} !important;letter-spacing:${SPEC.label.letterSpacing} !important;color:${SPEC.label.color} !important;}`
+      `selector{text-align:center;margin:0 0 48px !important;}selector p{font-family:${SPEC.label.fontFamily} !important;font-size:${SPEC.label.fontSize} !important;font-weight:${SPEC.label.fontWeight} !important;text-transform:${SPEC.label.textTransform} !important;letter-spacing:${SPEC.label.letterSpacing} !important;color:${SPEC.label.color} !important;line-height:1.6 !important;}`
     ),
 
     // Logo Marquee + Stats (single Code Module with wrapper)
@@ -211,17 +212,18 @@ function logoBarCss() {
 /* ===== LOGO BAR SECTION ===== */
 .logobar-section{
   background:${SPEC.section.background};
-  padding:${SPEC.section.padding};
+  padding:0;
   -webkit-font-smoothing:auto;
   -moz-osx-font-smoothing:auto;
   font-size:16px;
+  overflow:hidden;
 }
-
 .logo-bar-marquee-wrapper{
   width:100%;
   overflow:hidden;
   position:relative;
-  padding:32px 0;
+  padding:0;
+  margin:0 0 48px;
   mask-image:${SPEC.marquee.maskImage};
   -webkit-mask-image:${SPEC.marquee.maskImage};
 }
@@ -291,7 +293,7 @@ function logoBarCss() {
   font-weight:${SPEC.companyName.fontWeight};
   color:${SPEC.companyName.color};
   opacity:${SPEC.companyName.opacityDefault};
-  line-height:1.2;
+  line-height:${SPEC.companyName.lineHeight};
   transition:opacity 0.4s ease;
 }
 
@@ -306,6 +308,8 @@ function logoBarCss() {
   color:${SPEC.subtitle.color};
   text-transform:${SPEC.subtitle.textTransform};
   letter-spacing:${SPEC.subtitle.letterSpacing};
+  line-height:1.25;
+  margin-top:4px;
 }
 
 /* ===== STATS ROW ===== */
@@ -314,10 +318,9 @@ function logoBarCss() {
   gap:60px;
   justify-content:center;
   align-items:center;
-  padding-top:32px;
+  padding:32px 40px 0;
   border-top:1px solid #e2e8f0;
   max-width:1200px;
-  width:100%;
   margin:0 auto;
 }
 
@@ -332,7 +335,7 @@ function logoBarCss() {
   font-weight:${SPEC.stats.valueWeight};
   color:${SPEC.stats.valueColor};
   line-height:${SPEC.stats.valueLineHeight};
-  letter-spacing:-0.02em;
+  letter-spacing:normal;
 }
 
 .logo-bar-stat-label{

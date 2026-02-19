@@ -124,7 +124,7 @@ function css() {
 .trust-section{background:#ffffff;padding:100px 40px;position:relative;overflow:hidden;-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto;font-size:16px}
 .trust-container{max-width:1200px;margin:0 auto}
 .trust-header{text-align:center;max-width:700px;margin:0 auto 60px}
-.trust-header-label{font-family:'Noto Sans',sans-serif;font-size:13px;font-weight:600;color:#00AFF0;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px}
+.trust-header-label{font-family:'Noto Sans',sans-serif;font-size:13px;font-weight:600;color:#0369a1;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;line-height:1.6}
 .trust-title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:clamp(32px,3.5vw,44px);color:#000864;line-height:1.15;margin:0 0 16px}
 .trust-subtitle{font-family:'Noto Sans',sans-serif;font-weight:400;font-size:18px;color:#5b6b80;line-height:1.6;margin:0}
 .trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:${SPEC.gridGap}}

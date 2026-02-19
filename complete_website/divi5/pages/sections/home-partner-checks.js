@@ -169,11 +169,13 @@ function css() {
 
 .pchecks-label-text {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  margin-bottom: 16px;
 }
 
 .pchecks-title {
@@ -192,7 +194,8 @@ function css() {
   font-weight: 400;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.75);
-  margin: 0 300px;
+  margin: 0 auto;
+  max-width: 600px;
 }
 
 /* ============================================
@@ -232,20 +235,20 @@ function css() {
 
 .pchecks-card-number {
   font-family: 'Noto Sans', sans-serif;
-  font-size: 72px;
-  font-weight: 700;
+  font-size: 64px;
+  font-weight: 800;
   line-height: 1;
-  color: rgba(255, 255, 255, 0.15);
-  margin-bottom: 16px;
+  color: #ffffff;
+  margin-bottom: 24px;
 }
 
 .pchecks-card-title {
   font-family: 'Noto Sans', sans-serif;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 1.3;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.6;
   color: #ffffff;
-  margin: 0 0 20px;
+  margin: 0 0 16px;
 }
 
 .pchecks-card-quote {
@@ -253,10 +256,10 @@ function css() {
   font-size: 16px;
   font-weight: 400;
   font-style: italic;
-  line-height: 1.6;
+  line-height: 1.7;
   color: rgba(255, 255, 255, 0.8);
   margin: 0 0 20px;
-  padding-left: 20px;
+  padding-left: 16px;
   border-left: 3px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -264,7 +267,7 @@ function css() {
   font-family: 'Noto Sans', sans-serif;
   font-size: 15px;
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.75);
   margin: 0;
 }
@@ -278,16 +281,20 @@ function css() {
 }
 
 .pchecks-cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: 'Noto Sans', sans-serif;
   font-size: 16px;
   font-weight: 600;
+  line-height: 1.6;
   color: #ffffff;
-  background: var(--dw-blue, #00AFF0);
-  padding: 16px 48px;
+  background: #006dac;
+  padding: 16px 32px;
   border-radius: 8px;
   text-decoration: none;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 175, 240, 0.35);
 }
 
 .pchecks-cta:hover {

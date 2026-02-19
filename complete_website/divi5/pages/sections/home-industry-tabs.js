@@ -341,7 +341,7 @@ function css() {
 .ind-header{text-align:center;margin-bottom:56px}
 .ind-label{font-family:'Noto Sans',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#0369a1;margin-bottom:12px;line-height:1.6}
 .ind-title{font-family:'Noto Sans',sans-serif;font-size:44px;font-weight:700;line-height:1.15;color:#000864;margin:0 0 16px 0}
-.ind-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;line-height:1.6;color:#475569;margin:0;max-width:700px;margin-left:auto;margin-right:auto}
+.ind-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;line-height:1.6;color:#5b6b80;margin:0}
 .ind-tab-bar{display:inline-flex;background:#f1f5f9;border-radius:16px 16px 0 0;padding:6px 6px 0 6px;margin-bottom:-1px;position:relative;z-index:2}
 .ind-tab{font-family:'Noto Sans',sans-serif;font-size:14px;font-weight:500;color:#5b6b80;background:transparent;border:none;padding:14px 28px;cursor:pointer;transition:all 0.25s ease;border-radius:12px 12px 0 0;position:relative}
 .ind-tab:hover{color:#0369a1;background:rgba(0,175,240,0.08)}
@@ -355,12 +355,12 @@ button.ind-tab.ind-tab-active::after{content:'';position:absolute;bottom:0;left:
 .ind-image-container{height:450px;background:linear-gradient(145deg,#0f1419 0%,#1a2632 50%,#000864 100%);border-radius:16px;overflow:hidden}
 .ind-image-container svg{width:100%;height:100%;display:block}
 .ind-text-content{display:flex;flex-direction:column;gap:24px}
-.ind-content-title{font-family:'Noto Sans',sans-serif;font-size:32px;font-weight:700;line-height:1.3;color:#000864;margin:0}
-.ind-content-desc{font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:400;line-height:1.7;color:#475569;margin:0}
+.ind-content-title{font-family:'Noto Sans',sans-serif;font-size:32px;font-weight:700;line-height:1.6;letter-spacing:-0.02em;color:#000864;margin:0 0 16px}
+.ind-content-desc{font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:400;line-height:1.75;color:#5b6b80;margin:0 0 28px}
 .ind-features{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
 .ind-features li{font-family:'Noto Sans',sans-serif;font-size:15px;font-weight:400;color:#475569;padding:10px 0 10px 32px;position:relative;line-height:1.6}
 .ind-features li svg{position:absolute;left:0;top:10px;flex-shrink:0}
-.ind-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;color:#ffffff;background:#006dac;padding:14px 28px;border-radius:8px;text-decoration:none;transition:all 0.3s ease;align-self:flex-start;box-shadow:0 4px 14px rgba(0,175,240,0.35)}
+.ind-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;line-height:1.6;color:#ffffff;background:#006dac;padding:16px 32px;border-radius:8px;text-decoration:none;transition:all 0.3s ease;align-self:flex-start;box-shadow:0 4px 14px rgba(0,175,240,0.35)}
 .ind-cta:hover{background:#003CC8;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,175,240,0.45);color:#ffffff}
 .ind-cta svg{transition:transform 0.3s ease;display:none}
 .ind-cta:hover svg{transform:translateX(4px)}

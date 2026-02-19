@@ -16,8 +16,8 @@ function blocks() {
 
   // Section open
   output.push(sectionOpen({
-    admin_label: 'Home: Product Pillars',
-    background_color: '#F5F7FA'
+    adminLabel: 'Home: Product Pillars',
+    css: 'selector{background:transparent !important;padding:0 !important;}',
   }));
 
   output.push(rowOpen());
@@ -373,6 +373,18 @@ function css() {
 
   .products-card__benefit {
     font-size: 12px;
+  }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  .products-card,
+  .products-card__icon,
+  .products-card__icon::after {
+    transition: none !important;
+  }
+  .products-card:hover .products-card__icon {
+    transform: none !important;
   }
 }
   `.trim());

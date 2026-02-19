@@ -9,7 +9,7 @@
 
 const path = require('path');
 
-// Section builders
+// Section builders (header/footer are global — see divi5/global/)
 const heroBuilder = require('./sections/home-hero');
 const logoBarBuilder = require('./sections/home-logo-bar');
 const factoryChecksBuilder = require('./sections/home-factory-checks');
@@ -27,7 +27,7 @@ module.exports = {
   siteUrl: 'https://digiwin-thailand.local',
   specPath: path.join(__dirname, '..', '..', '..', 'docs', 'content-specs', 'ContentSpec_Home_Divi5_2.0.md'),
   prototypePath: path.join(__dirname, '..', '..', 'index.html'),
-  // goldenRef: 'hero', // Hero golden ref is section-specific; needs update for full-page module numbering
+  protoFile: 'index.html', // relative to complete_website/ — used by screenshot-reference.js
 
   // Sections in page order (top to bottom)
   sections: [
@@ -46,6 +46,23 @@ module.exports = {
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],
     maxHtmlBlocks: 1,
+  },
+
+  // Visual verification config — used by screenshot.js + visual-diff.js
+  verify: {
+    wpUrl: 'https://digiwin-thailand.local/?page_id=100684',
+    sections: [
+      { name: 'hero',            wpSelector: '.et_pb_section_0', htmlSelector: '.dw-hero-split' },
+      { name: 'logo-bar',        wpSelector: '.et_pb_section_1', htmlSelector: '.dw-clients-section',    skipPixelDiff: true },
+      { name: 'factory-checks',  wpSelector: '.et_pb_section_2', htmlSelector: '.dw-checks-section--factory' },
+      { name: 'partner-checks',  wpSelector: '.et_pb_section_3', htmlSelector: '.dw-checks-section--partner' },
+      { name: 'product-pillars', wpSelector: '.et_pb_section_4', htmlSelector: 'section.dw-section:nth-of-type(5)' },
+      { name: 'industry-tabs',   wpSelector: '.et_pb_section_5', htmlSelector: 'section.dw-section:nth-of-type(6)' },
+      { name: 'stats-banner',    wpSelector: '.et_pb_section_6', htmlSelector: '.dw-stats-section' },
+      { name: 'trust-anchors',   wpSelector: '.et_pb_section_7', htmlSelector: '.dw-trust-section' },
+      { name: 'proven-results',  wpSelector: '.et_pb_section_8', htmlSelector: '.dw-results-section' },
+      { name: 'final-cta',       wpSelector: '.et_pb_section_9', htmlSelector: '.dw-cta-section' },
+    ],
   },
 
   pageJS: () => {

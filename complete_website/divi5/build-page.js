@@ -6,7 +6,7 @@
  * Pipeline: spec gate → backup → post-lock check → assemble → MySQL push → cache flush → verify
  *
  * Usage:
- *   node complete_website/divi5/build-page.js --page home [--section hero] [--dry-run] [--force] [--no-verify]
+ *   node complete_website/divi5/build-page.js --page home [--section hero] [--dry-run] [--force]
  *   node complete_website/divi5/build-page.js --page home --restore backups/page-100684-*.sql
  *
  * Available pages: home (more coming)
@@ -17,6 +17,7 @@ const path = require('path');
 const mysql = require('./lib/mysql');
 const cacheFlush = require('./lib/cache-flush');
 const verifyRunner = require('./lib/verify-runner');
+const screenshot = require('./lib/screenshot');
 const { placeholderWrap } = require('./lib/modules');
 const cssAssembler = require('./lib/css-assembler');
 
@@ -34,11 +35,10 @@ const pageName = getArg('--page');
 const sectionFilter = getArg('--section');
 const DRY_RUN = hasFlag('--dry-run');
 const FORCE = hasFlag('--force');
-const NO_VERIFY = hasFlag('--no-verify');
 const restoreFile = getArg('--restore');
 
 if (!pageName) {
-  console.error('Usage: node build-page.js --page <name> [--section <name>] [--dry-run] [--force] [--no-verify]');
+  console.error('Usage: node build-page.js --page <name> [--section <name>] [--dry-run] [--force]');
   console.error('       node build-page.js --page <name> --restore <backup-file>');
   console.error('\nAvailable pages: home');
   process.exit(1);
@@ -218,16 +218,42 @@ const cacheResult = cacheFlush.flushPage(pageConfig.pageId, { includeDb: true })
 if (cacheResult.disk) console.log('  ✓ Disk cache flushed');
 if (cacheResult.db) console.log('  ✓ DB cache flushed');
 
-console.log(`\n✓ Build complete! View at: ${SITE_URL}/?page_id=${pageConfig.pageId}`);
-console.log(`  VB: ${SITE_URL}/?page_id=${pageConfig.pageId}&et_fb=1`);
+const pageUrl = `${SITE_URL}/?page_id=${pageConfig.pageId}`;
+console.log(`\n✓ Build complete! View at: ${pageUrl}`);
+console.log(`  VB: ${pageUrl}&et_fb=1`);
 
 // ════════════════════════════════════════════════════════════════
-// STEP 7: VERIFICATION (Gates 1-3)
+// STEP 7: SCREENSHOT CAPTURE (mandatory — cannot skip)
 // ════════════════════════════════════════════════════════════════
-if (!NO_VERIFY) {
+console.log('\n▸ Capturing screenshots of live WordPress page...');
+
+const verifyConf = pageConfig.verify || {};
+const wpUrl = verifyConf.wpUrl || pageUrl;
+const wpSections = verifyConf.sections || [];
+
+// This is async — wrap the remaining steps
+(async () => {
+  try {
+    const shots = await screenshot.capture({
+      pageName,
+      wpUrl,
+      sections: wpSections,
+    });
+
+    console.log(`  ✓ ${shots.length} screenshot(s) captured:`);
+    shots.forEach(p => console.log(`    → ${p}`));
+  } catch (err) {
+    console.error(`\n✗ Screenshot capture FAILED: ${err.message}`);
+    console.error('  Visual verification is mandatory. Fix the issue and re-run.');
+    process.exit(1);
+  }
+
+  // ════════════════════════════════════════════════════════════════
+  // STEP 8: VERIFICATION (Gates 1-3)
+  // ════════════════════════════════════════════════════════════════
   console.log('\n▸ Running verification gates...');
 
-  const verifyConfig = {
+  const gateConfig = {
     pageId: pageConfig.pageId,
     siteUrl: SITE_URL,
     prototypePath: pageConfig.prototypePath,
@@ -238,11 +264,11 @@ if (!NO_VERIFY) {
     },
   };
 
-  const results = verifyRunner.runAll(verifyConfig);
+  const results = verifyRunner.runAll(gateConfig);
   verifyRunner.printReport(results);
 
   if (!results.pass) {
     console.error('\n✗ Verification failed. Fix issues and re-run.');
     process.exit(1);
   }
-}
+})();

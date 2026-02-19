@@ -44,7 +44,7 @@ function blocks() {
   `;
 
   return [
-    sectionOpen({ adminLabel: 'Proven Results: 2 Case Studies' }),
+    sectionOpen({ adminLabel: 'Proven Results: 2 Case Studies', css: 'selector{background:transparent !important;padding:0 !important;}' }),
     rowOpen(),
     columnOpen(),
     codeModule(html, 'Proven Results: 2 Cards'),

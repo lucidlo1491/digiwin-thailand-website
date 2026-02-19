@@ -7,8 +7,13 @@
  * ContentSpec: §3.2 "Client Logo Bar" (lines 197-266)
  */
 
+const fs = require('fs');
+const path = require('path');
 const { textModule, codeModule, htmlBlock, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../../lib/modules');
 const css = require('../../lib/css-assembler');
+
+// Logo images directory
+const LOGO_DIR = path.join(__dirname, '..', '..', '..', 'logos');
 
 // ────────────────────────────────────────────────────────────────
 // SPEC — Design tokens from ContentSpec_Home_Divi5_2.0.md §3.2
@@ -69,49 +74,52 @@ const SPEC = {
 // ════════════════════════════════════════════════════════════════
 
 const CLIENTS = [
-  { name: 'Cal-Comp Electronics', subtitle: 'SET: CCET', initials: 'CC', color: '#0369a1' },
-  { name: 'TTS Plastic', subtitle: 'Injection Molding', initials: 'TTS', color: '#dc2626' },
-  { name: 'Yeong Guan Energy', subtitle: 'TWSE: 1589', initials: 'YG', color: '#059669' },
-  { name: 'S.T.K. Steel', subtitle: 'Stainless Steel', initials: 'STK', color: '#7c3aed' },
-  { name: 'Goldensea Hi-Tech', subtitle: 'Specialty Chemicals', initials: 'GH', color: '#ea580c' },
-  { name: 'Chelic Corporation', subtitle: 'TWSE: 4555', initials: 'CHE', color: '#0891b2' },
-  { name: 'Chung Tai Rubber', subtitle: 'Vibration Control', initials: 'CTR', color: '#475569' },
-  { name: 'Haidilao International', subtitle: 'HKEX: 6862', initials: 'HDL', color: '#dc2626' },
+  { name: 'Cal-Comp Electronics', subtitle: 'SET: CCET', initials: 'CC', color: '#0369a1', logo: 'calcomp.png' },
+  { name: 'TTS Plastic', subtitle: 'Injection Molding', initials: 'TTS', color: '#dc2626', logo: 'tts-plastic.png' },
+  { name: 'Yeong Guan Energy', subtitle: 'TWSE: 1589', initials: 'YG', color: '#059669', logo: 'yeong-guan.jpg' },
+  { name: 'S.T.K. Steel', subtitle: 'Stainless Steel', initials: 'STK', color: '#7c3aed', logo: 'stk-steel.png' },
+  { name: 'Goldensea Hi-Tech', subtitle: 'Specialty Chemicals', initials: 'GH', color: '#ea580c', logo: 'goldensea.png' },
+  { name: 'Chelic Corporation', subtitle: 'TWSE: 4555', initials: 'CHE', color: '#0891b2', logo: 'chelic.png' },
+  { name: 'Chung Tai Rubber', subtitle: 'Vibration Control', initials: 'CTR', color: '#475569', logo: 'ctr.png' },
+  { name: 'Haidilao International', subtitle: 'HKEX: 6862', initials: 'HDL', color: '#dc2626', logo: 'haidilao.png' },
 ];
+
+// Pre-encode logos as Base64 data URIs at build time
+function getLogoDataUri(filename) {
+  const filePath = path.join(LOGO_DIR, filename);
+  if (!fs.existsSync(filePath)) return null;
+  const ext = path.extname(filename).slice(1);
+  const mime = ext === 'jpg' ? 'image/jpeg' : 'image/png';
+  const b64 = fs.readFileSync(filePath).toString('base64');
+  return `data:${mime};base64,${b64}`;
+}
 
 // ════════════════════════════════════════════════════════════════
 // LOGO MARQUEE HTML
 // ════════════════════════════════════════════════════════════════
 
+function logoItemHTML(client, i, ariaHidden) {
+  const dataUri = getLogoDataUri(client.logo);
+  const logoInner = dataUri
+    ? `<img src="${dataUri}" alt="${client.name}" loading="lazy" style="max-height:100%;max-width:100%;object-fit:contain;">`
+    : `<div class="logo-bar-placeholder" style="background:${client.color}"><span>${client.initials}</span></div>`;
+  const ariaAttr = ariaHidden ? ' aria-hidden="true"' : '';
+  return `
+    <div class="logo-bar-item"${ariaAttr}>
+      <div class="logo-bar-logo" data-client="${i + 1}">
+        ${logoInner}
+      </div>
+      <div class="logo-bar-text">
+        <div class="logo-bar-name">${client.name}</div>
+        <small class="logo-bar-subtitle">${client.subtitle}</small>
+      </div>
+    </div>`;
+}
+
 function getLogoMarqueeHTML() {
   // Generate logo items (8 real + 8 aria-hidden clones for seamless loop)
-  const logoItems = CLIENTS.map((client, i) => `
-    <div class="logo-bar-item">
-      <div class="logo-bar-logo" data-client="${i + 1}">
-        <div class="logo-bar-placeholder" style="background: ${client.color}">
-          <span>${client.initials}</span>
-        </div>
-      </div>
-      <div class="logo-bar-text">
-        <div class="logo-bar-name">${client.name}</div>
-        <small class="logo-bar-subtitle">${client.subtitle}</small>
-      </div>
-    </div>
-  `).join('');
-
-  const cloneItems = CLIENTS.map((client, i) => `
-    <div class="logo-bar-item" aria-hidden="true">
-      <div class="logo-bar-logo" data-client="${i + 1}">
-        <div class="logo-bar-placeholder" style="background: ${client.color}">
-          <span>${client.initials}</span>
-        </div>
-      </div>
-      <div class="logo-bar-text">
-        <div class="logo-bar-name">${client.name}</div>
-        <small class="logo-bar-subtitle">${client.subtitle}</small>
-      </div>
-    </div>
-  `).join('');
+  const logoItems = CLIENTS.map((client, i) => logoItemHTML(client, i, false)).join('');
+  const cloneItems = CLIENTS.map((client, i) => logoItemHTML(client, i, true)).join('');
 
   return `
 <div class="logo-bar-marquee-wrapper">
@@ -203,7 +211,7 @@ function logoBarCss() {
 /* ===== LOGO BAR SECTION ===== */
 .logobar-section{
   background:${SPEC.section.background};
-  padding:80px 40px;
+  padding:${SPEC.section.padding};
 }
 
 .logo-bar-marquee-wrapper{

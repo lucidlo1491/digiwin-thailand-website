@@ -105,7 +105,7 @@ function blocks() {
   `;
 
   return [
-    sectionOpen({ adminLabel: 'Stats Banner: 6 Key Numbers' }),
+    sectionOpen({ adminLabel: 'Stats Banner: 6 Key Numbers', css: 'selector{background:transparent !important;padding:0 !important;}' }),
     rowOpen(),
     columnOpen(),
     codeModule(html, 'Stats Banner: 6 Numbers + Counter JS'),

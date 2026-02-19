@@ -153,7 +153,7 @@ WHERE ID = ${pageId};`;
     ['_et_pb_use_builder', 'on'],
     ['_et_pb_use_divi_5', 'on'],
     ['_et_pb_page_layout', 'et_full_width_page'],
-    ['_wp_page_template', 'page-template-blank.php'],
+    ['_wp_page_template', 'default'],
   ];
 
   const metaSQL = metaEntries.map(([key, value]) => {

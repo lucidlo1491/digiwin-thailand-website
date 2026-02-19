@@ -28,3 +28,4 @@ node_modules/
 # Debug output
 complete_website/map-svg-*.txt
 complete_website/generate-vortex.js
+complete_website/divi5/backups/

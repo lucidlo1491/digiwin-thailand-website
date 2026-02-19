@@ -23,7 +23,7 @@ function blocks() {
   `;
 
   return [
-    sectionOpen({ adminLabel: "Final CTA: Let's Start a Conversation" }),
+    sectionOpen({ adminLabel: "Final CTA: Let's Start a Conversation", css: 'selector{background:transparent !important;padding:0 !important;}' }),
     rowOpen(),
     columnOpen(),
     codeModule(html, 'Final CTA: Title + 2 Buttons'),

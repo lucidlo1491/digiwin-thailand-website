@@ -71,9 +71,9 @@ function blocks() {
   `;
 
   return [
-    sectionOpen({ adminLabel: 'Trust Anchors: 5 Credibility Cards' }),
-    rowOpen(),
-    columnOpen(),
+    sectionOpen({ adminLabel: 'Trust Anchors: 5 Credibility Cards', css: 'selector{background:transparent !important;padding:0 !important;}' }),
+    rowOpen({ css: 'selector{max-width:100% !important;width:100% !important;padding:0 !important;}' }),
+    columnOpen({ css: 'selector{padding:0 !important;}' }),
     codeModule(html, 'Trust Anchors: 5 Cards'),
     columnClose(),
     rowClose(),
@@ -86,24 +86,22 @@ function css() {
 /* === TRUST ANCHORS === */
 .trust-section{background:#ffffff;padding:100px 40px}
 .trust-container{max-width:1200px;margin:0 auto}
-.trust-header{text-align:center;margin-bottom:64px}
-.trust-header-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#00AFF0;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:12px}
-.trust-header-label::before,.trust-header-label::after{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,#00AFF0);flex-shrink:0}
-.trust-header-label::after{transform:scaleX(-1)}
-.trust-title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:clamp(32px,4vw,44px);color:#000864;letter-spacing:-0.02em;line-height:1.2;margin:0 0 20px}
-.trust-subtitle{font-family:'Noto Sans',sans-serif;font-weight:400;font-size:18px;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto}
+.trust-header{text-align:center;max-width:700px;margin:0 auto 60px}
+.trust-header-label{font-family:'Noto Sans',sans-serif;font-size:13px;font-weight:600;color:#00AFF0;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px}
+.trust-title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:clamp(32px,3.5vw,44px);color:#000864;line-height:1.15;margin:0 0 16px}
+.trust-subtitle{font-family:'Noto Sans',sans-serif;font-weight:400;font-size:18px;color:#5b6b80;line-height:1.6;margin:0}
 .trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:${SPEC.gridGap}}
 .trust-card{background:${SPEC.cardBg};border-radius:${SPEC.cardRadius};padding:${SPEC.cardPadding};min-height:${SPEC.cardMinHeight};position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
 .trust-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none;z-index:1}
 .trust-card>*{position:relative;z-index:2}
-.trust-card:hover{box-shadow:0 24px 48px rgba(0,0,0,0.25);transform:translateY(-4px)}
+.trust-card:hover{box-shadow:0 24px 48px rgba(0,0,0,0.25)}
 .trust-card-full{grid-column:1 / -1}
 .trust-bg-icon{position:absolute;top:-20px;right:-20px;width:180px;height:180px;opacity:0.08;z-index:1;transition:all 0.4s ease;pointer-events:none}
 .trust-card:hover .trust-bg-icon{opacity:0.12;transform:scale(1.05) rotate(5deg)}
 .trust-icon{width:48px;height:48px;background:rgba(0,175,240,0.15);border:1px solid rgba(0,175,240,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative;z-index:2}
-.trust-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#0369a1;background:rgba(0,175,240,0.15);border:1px solid rgba(0,175,240,0.25);padding:5px 12px;border-radius:6px;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:20px}
-.trust-card-title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:22px;color:#fff;margin:0 0 16px;line-height:1.3}
-.trust-headline{font-family:'Noto Sans',sans-serif;font-weight:500;font-size:15px;color:rgba(255,255,255,0.9);line-height:1.6;margin:0 0 16px}
+.trust-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#0369a1;background:rgba(0,175,240,0.15);border:1px solid rgba(0,175,240,0.25);padding:5px 12px;border-radius:6px;letter-spacing:0.05em;margin-bottom:14px;position:relative;z-index:2}
+.trust-card-title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;line-height:1.3}
+.trust-headline{font-family:'Noto Sans',sans-serif;font-weight:500;font-size:15px;color:rgba(255,255,255,0.9);line-height:1.6;margin:0 0 14px}
 .trust-detail{font-family:'Noto Sans',sans-serif;font-weight:400;font-size:13px;color:rgba(255,255,255,0.75);line-height:1.65;margin:0}
 .trust-detail a{color:#0369a1;text-decoration:none;transition:color 0.3s ease}
 .trust-detail a:hover{color:#00AFF0;text-decoration:underline}

@@ -339,7 +339,7 @@ function css() {
 .ind-section{background:#ffffff;padding:100px 40px}
 .ind-container{max-width:1200px;margin:0 auto;padding:0 20px}
 .ind-header{text-align:center;margin-bottom:56px}
-.ind-label{font-family:'Noto Sans',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#00AFF0;margin-bottom:12px}
+.ind-label{font-family:'Noto Sans',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#0369a1;margin-bottom:12px}
 .ind-title{font-family:'Noto Sans',sans-serif;font-size:42px;font-weight:700;line-height:1.2;color:#000864;margin:0 0 20px 0}
 .ind-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;line-height:1.6;color:#475569;margin:0;max-width:700px;margin-left:auto;margin-right:auto}
 .ind-tab-bar{display:inline-flex;background:#f1f5f9;border-radius:16px 16px 0 0;padding:6px 6px 0 6px;margin-bottom:-1px;position:relative;z-index:2}

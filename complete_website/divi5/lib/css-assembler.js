@@ -153,6 +153,18 @@ function statsCSS(prefix, opts = {}) {
 }
 
 /**
+ * Global Divi theme default overrides
+ * Divi 5 defaults: Open Sans, weight 500, color #666666, heading padding-bottom 10px
+ * These bleed through to Code Module content unless explicitly overridden.
+ */
+const GLOBAL_THEME_RESET = `
+/* === GLOBAL DIVI THEME RESET === */
+.et_pb_section,.et_pb_row,.et_pb_column,.et_pb_code,.et_pb_code_inner{font-family:'Noto Sans',sans-serif !important;font-weight:400 !important;color:#333 !important}
+.et_pb_section h1,.et_pb_section h2,.et_pb_section h3,.et_pb_section h4,.et_pb_section h5,.et_pb_section h6{padding-bottom:0 !important}
+.et_pb_section:not([class*='tb_body']){overflow:hidden !important}
+.et_pb_row:not([class*='tb_body']){gap:0 !important}`;
+
+/**
  * Keyframes shared across sections
  */
 const SHARED_KEYFRAMES = `
@@ -178,7 +190,7 @@ ${customRules}
  * @param {string[]} sections - Array of CSS strings, one per section
  */
 function assemble(sections) {
-  return [SHARED_KEYFRAMES, ...sections].join('\n').trim();
+  return [GLOBAL_THEME_RESET, SHARED_KEYFRAMES, ...sections].join('\n').trim();
 }
 
 module.exports = {

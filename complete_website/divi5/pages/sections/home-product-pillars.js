@@ -31,9 +31,9 @@ function blocks() {
   output.push(codeModule(`
       <div class="products-section">
       <div class="products-header">
-        <div class="products-header__label">Complete Manufacturing Stack</div>
-        <h2 class="products-header__title">One Ecosystem. Total Visibility.</h2>
-        <p class="products-header__subtitle">From financials to the factory floor, every DigiWin product works together\u2014no integration nightmares, no data silos.</p>
+        <div class="products-header-label">Complete Manufacturing Stack</div>
+        <h2 class="products-title">One Ecosystem. Total Visibility.</h2>
+        <p class="products-subtitle">From financials to the factory floor, every DigiWin product works together\u2014no integration nightmares, no data silos.</p>
       </div>
 
       <div class="products-grid">

@@ -95,6 +95,8 @@ function blocks() {
         if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', checkScroll);
         else checkScroll();
         window.addEventListener('scroll', function() { checkScroll(); }, { passive: true });
+        // Fallback: fire counters after 3s even without scroll (ensures screenshots capture final values)
+        setTimeout(function() { if (!animated) { animated = true; counters.forEach(function(c,i) { setTimeout(function() { animateCounter(c); }, i * 100); }); } }, 3000);
         // Dynamic year calculation
         var years = new Date().getFullYear() - 1982;
         document.querySelectorAll('.dw-years').forEach(function(el) { el.textContent = years; });

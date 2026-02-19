@@ -19,7 +19,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const puppeteer = require('puppeteer');
-const { startServer } = require('./http-server');
+const { startServer, COMPLETE_WEBSITE_DIR } = require('./http-server');
 
 const SCREENSHOTS_DIR = path.join(__dirname, '..', '..', '..', 'screenshots', 'reference');
 

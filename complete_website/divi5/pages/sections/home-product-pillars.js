@@ -165,6 +165,8 @@ function css() {
   padding: 100px 40px;
   position: relative;
   overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
 }`);
 
   // Products grid

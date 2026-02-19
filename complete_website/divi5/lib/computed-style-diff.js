@@ -1,5 +1,5 @@
 /**
- * computed-style-diff.js — Computed Style Comparison Engine (Autopilot v3)
+ * computed-style-diff.js — Computed Style Comparison Engine (Autopilot v4)
  *
  * Opens HTML ref (temp server) + WP (direct), extracts computed styles
  * from matched element pairs via styleMap config, compares property-by-property.
@@ -10,6 +10,7 @@
  * - Missing selector = FAIL (not skip)
  * - Smart deep-scan when pixel diff high but computed mismatches low
  * - Single Puppeteer instance, shared readiness
+ * - v4: Fixability classification (FIXABLE / STRUCTURAL) — convergence uses FIXABLE only
  *
  * Usage (standalone):
  *   node complete_website/divi5/lib/computed-style-diff.js --page home [--section hero] [--deep-scan]
@@ -58,6 +59,52 @@ const DEFAULT_PROPERTIES = [
 const PROTECTED_PROPERTIES = [
   'display', 'flex-direction', 'flex-wrap', 'flex-grow', 'flex-shrink', 'flex-basis',
 ];
+
+// ═══════════════════════════════════════════════════════════
+// FIXABILITY CLASSIFICATION (v4)
+// ═══════════════════════════════════════════════════════════
+
+/**
+ * Patterns that are STRUCTURAL — Divi wrapper vs HTML wrapper differences
+ * that cannot be fixed without breaking Divi's layout engine.
+ */
+const STRUCTURAL_PATTERNS = [
+  // Divi section wrapper vs HTML section — always different
+  { labelPattern: /Section BG/i, properties: ['display', 'flex-direction', 'align-items', 'gap', 'justify-content', 'flex-wrap'] },
+  // Divi section padding (handled by inner wrapper, not section)
+  { labelPattern: /Section BG/i, properties: ['padding-top', 'padding-right', 'padding-bottom', 'padding-left'] },
+  // Divi section background (handled by inner wrapper)
+  { labelPattern: /Section BG/i, properties: ['background-color', 'background-image'] },
+  // Divi section overflow
+  { labelPattern: /Section BG/i, properties: ['overflow', 'overflow-x', 'overflow-y'] },
+];
+
+/**
+ * Classify a mismatch as FIXABLE or STRUCTURAL.
+ *
+ * STRUCTURAL = inherent Divi wrapper difference that cannot be overridden.
+ * FIXABLE = can be fixed via CSS in the builder's css() function.
+ *
+ * @param {{label: string, property: string}} mismatch
+ * @returns {'FIXABLE' | 'STRUCTURAL'}
+ */
+function classifyMismatch(mismatch) {
+  // Protected properties on any element
+  if (PROTECTED_PROPERTIES.includes(mismatch.property)) {
+    return 'STRUCTURAL';
+  }
+  // Section BG structural patterns
+  for (const pat of STRUCTURAL_PATTERNS) {
+    if (pat.labelPattern.test(mismatch.label) && pat.properties.includes(mismatch.property)) {
+      return 'STRUCTURAL';
+    }
+  }
+  // Width/height on Section BG (content reflow from wrapper differences)
+  if (/Section BG/i.test(mismatch.label) && /^(width|height|min-width)$/.test(mismatch.property)) {
+    return 'STRUCTURAL';
+  }
+  return 'FIXABLE';
+}
 
 // ═══════════════════════════════════════════════════════════
 // FUZZY MATCHING ENGINE
@@ -536,7 +583,12 @@ async function run({ pageName, sectionFilter, deepScan = false, properties }) {
         details: comparison,
       });
 
-      allMismatches.push(...mismatches.map(m => ({ section: section.name, ...m })));
+      allMismatches.push(...mismatches.map(m => ({
+        section: section.name,
+        ...m,
+        fixability: classifyMismatch(m),
+        protected: PROTECTED_PROPERTIES.includes(m.property),
+      })));
     }
   } finally {
     await browser.close();
@@ -547,11 +599,16 @@ async function run({ pageName, sectionFilter, deepScan = false, properties }) {
   const jsonPath = path.join(SCREENSHOTS_DIR, `style-diff-${pageName}.json`);
   fs.mkdirSync(path.dirname(jsonPath), { recursive: true });
 
+  const fixableCount = allMismatches.filter(m => m.fixability === 'FIXABLE').length;
+  const structuralCount = allMismatches.filter(m => m.fixability === 'STRUCTURAL').length;
+
   const output = {
     timestamp: new Date().toISOString(),
     page: pageName,
     sectionFilter: sectionFilter || null,
     totalMismatches: allMismatches.length,
+    fixableMismatches: fixableCount,
+    structuralMismatches: structuralCount,
     sections: allResults,
     mismatches: allMismatches,
     protectedProperties: PROTECTED_PROPERTIES,
@@ -561,28 +618,30 @@ async function run({ pageName, sectionFilter, deepScan = false, properties }) {
 
   // Console report
   console.log('\n╔══════════════════════════════════════════════════════════╗');
-  console.log('║         COMPUTED STYLE DIFF (v3)                        ║');
+  console.log('║         COMPUTED STYLE DIFF (v4)                        ║');
   console.log('╚══════════════════════════════════════════════════════════╝\n');
 
   for (const section of allResults) {
-    const icon = section.mismatches === 0 ? '✓' : '✗';
-    console.log(`  ${icon} ${section.section}: ${section.matches}/${section.total} match, ${section.mismatches} mismatches`);
+    const sectionMismatches = allMismatches.filter(m => m.section === section.section);
+    const sFixable = sectionMismatches.filter(m => m.fixability === 'FIXABLE').length;
+    const sStructural = sectionMismatches.filter(m => m.fixability === 'STRUCTURAL').length;
+    const icon = sFixable === 0 ? '✓' : '✗';
+    console.log(`  ${icon} ${section.section}: ${section.matches}/${section.total} match | ${sFixable} fixable, ${sStructural} structural`);
   }
 
-  if (allMismatches.length > 0) {
-    console.log('\n  ── Mismatches ──');
-    for (const m of allMismatches) {
+  // Show FIXABLE mismatches in detail
+  const fixableMismatches = allMismatches.filter(m => m.fixability === 'FIXABLE');
+  if (fixableMismatches.length > 0) {
+    console.log('\n  ── FIXABLE Mismatches ──');
+    for (const m of fixableMismatches) {
       const reason = m.reason ? ` (${m.reason})` : '';
       const ds = m.deepScan ? ' [deep-scan]' : '';
-      const protectedWarning = PROTECTED_PROPERTIES.includes(m.property)
-        ? ' ⚠ PROTECTED — do NOT override with !important'
-        : '';
-      console.log(`  [${m.section}] ${m.label} → ${m.property}: ref="${m.refValue}" vs wp="${m.wpValue}"${reason}${ds}${protectedWarning}`);
+      console.log(`  [${m.section}] ${m.label} → ${m.property}: ref="${m.refValue}" vs wp="${m.wpValue}"${reason}${ds}`);
     }
 
-    // Fix recipes
+    // Fix recipes (only for FIXABLE)
     console.log('\n  ── Fix Recipes ──');
-    const categories = categorizeMismatches(allMismatches);
+    const categories = categorizeMismatches(fixableMismatches);
     for (const [cat, items] of Object.entries(categories)) {
       if (items.length === 0) continue;
       console.log(`  ${cat}: ${items.length} issue(s)`);
@@ -590,11 +649,24 @@ async function run({ pageName, sectionFilter, deepScan = false, properties }) {
     }
   }
 
-  const summary = `${allResults.reduce((a, s) => a + s.matches, 0)} match, ${allMismatches.length} mismatches across ${allResults.length} sections`;
+  // Show STRUCTURAL count as summary only
+  if (structuralCount > 0) {
+    console.log(`\n  ── STRUCTURAL (${structuralCount} — expected, not fixable) ──`);
+    const structuralBySection = {};
+    for (const m of allMismatches.filter(m => m.fixability === 'STRUCTURAL')) {
+      structuralBySection[m.section] = (structuralBySection[m.section] || 0) + 1;
+    }
+    for (const [section, count] of Object.entries(structuralBySection)) {
+      console.log(`  [${section}] ${count} structural differences (Divi wrapper vs HTML wrapper)`);
+    }
+  }
+
+  const summary = `${fixableCount} fixable, ${structuralCount} structural, ${allMismatches.length} total across ${allResults.length} sections`;
   console.log(`\n  Summary: ${summary}`);
+  console.log(`  Convergence metric: ${fixableCount} FIXABLE mismatches`);
   console.log(`  JSON: ${jsonPath}`);
 
-  return { sections: allResults, mismatches: allMismatches, summary, jsonPath };
+  return { sections: allResults, mismatches: allMismatches, fixableCount, structuralCount, summary, jsonPath };
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -636,8 +708,10 @@ module.exports = {
   extractStyles,
   compareStyles,
   compareValues,
+  classifyMismatch,
   DEFAULT_PROPERTIES,
   PROTECTED_PROPERTIES,
+  STRUCTURAL_PATTERNS,
   FIX_RECIPES,
   // Fuzzy helpers (exported for testing)
   parseColor, colorsMatch, parseDimension, dimensionsMatch,

@@ -1,10 +1,10 @@
-# Autopilot v3 — Visual Fidelity System (Computed Style + Prescriptive Diagnosis)
+# Autopilot v4 — Visual Fidelity System (Fixability Classification + Layout Fixes)
 
 You are running the autopilot visual fidelity loop for page: **$ARGUMENTS**
 
 Your job: make the WordPress Divi 5 page look identical to the HTML reference site. You use **four-layer data-first diagnosis** (structural → computed style → pixel → vision), NOT vision-first guessing.
 
-**v3 upgrade over v2:** Computed style extraction replaces CSS guessing. Every mismatch gets a prescriptive fix recipe. Style-first convergence ensures fixes are measurable.
+**v4 upgrade over v3:** Fixability classification (FIXABLE vs STRUCTURAL) eliminates wasted iterations on unfixable Divi wrapper differences. Convergence metric uses FIXABLE count only. Row max-width override ensures layout parity.
 
 ---
 
@@ -60,7 +60,7 @@ Your job: make the WordPress Divi 5 page look identical to the HTML reference si
    ```bash
    node complete_website/divi5/lib/computed-style-diff.js --page $ARGUMENTS
    ```
-   Extracts computed styles from matched element pairs (via `styleMap` in page config), compares 30+ properties with fuzzy matching. Outputs JSON + console report with fix recipes.
+   Extracts computed styles from matched element pairs (via `styleMap` in page config), compares 30+ properties with fuzzy matching. Outputs JSON with **fixability classification** (FIXABLE / STRUCTURAL) + console report with fix recipes. **Only FIXABLE mismatches count toward convergence.**
 
 5. **Run visual diff** (LAYER 3 — PIXEL — ADVISORY):
    ```bash
@@ -70,7 +70,7 @@ Your job: make the WordPress Divi 5 page look identical to the HTML reference si
 
 6. **Report baseline** — show Peter:
    - Element presence results (any missing = STRUCTURAL issue, priority 1)
-   - Computed style mismatches per section (with fix recipes)
+   - Computed style mismatches per section: **FIXABLE count** (convergence metric) + STRUCTURAL count (informational)
    - Visual diff verdicts per section
    - Read and display key screenshots
 
@@ -90,6 +90,7 @@ For each section with issues (prioritized: FAIL > REVIEW > MATCH):
 **Catches:** Wrong font, color, spacing, background, layout
 **Fix in:** Builder's `css()` function
 **Read the JSON output:** `screenshots/style-diff-$ARGUMENTS.json`
+**v4:** Only focus on mismatches where `fixability === "FIXABLE"`. STRUCTURAL mismatches are Divi wrapper differences — expected and unfixable. Report their count but do NOT try to fix them.
 
 ### Layer 3: PIXEL (visual diffs not caught by L1-L2)
 **Tool:** `visual-diff.js --page $ARGUMENTS`
@@ -131,8 +132,9 @@ BACKGROUND MISMATCH →
   2. Fix: !important on BOTH background AND background-image
 
 LAYOUT MISMATCH →
-  1. Check Divi max-width:1080px default on rows
-  2. Fix: max-width:100% !important on .et_pb_row_N
+  1. Check Divi max-width:1080px default on rows (now auto-fixed by GLOBAL_THEME_RESET)
+  2. Check inner wrapper max-width constraint (e.g. .products-section needs max-width:1200px)
+  3. Fix: max-width on inner wrapper div, NOT on .et_pb_row (global reset handles rows)
 
 OVERFLOW MISMATCH →
   1. Check overflow:hidden clipping absolutely positioned decorations
@@ -149,7 +151,7 @@ Overriding these on `.et_pb_*` elements WILL break Divi's layout engine.
 
 ### State tracking per section:
 ```
-bestMismatchCount = current style mismatches
+bestFixableCount = current FIXABLE style mismatches (convergence metric)
 bestDiffPct = current pixel diff%
 bestCode = snapshot of builder file before changes
 noImprovementCount = 0
@@ -159,8 +161,10 @@ verdictHistory = [] (for oscillation detection)
 ### Per iteration:
 
 1. **Read the computed-style-diff JSON** (`screenshots/style-diff-$ARGUMENTS.json`):
-   - Identify top mismatches by category
+   - Filter to `fixability: "FIXABLE"` mismatches only
+   - Identify top fixable mismatches by category
    - Note the fix recipes from the output
+   - Ignore STRUCTURAL mismatches (Divi wrapper differences — expected)
 
 2. **Fix in priority order:**
    - `MISSING_ELEMENT` first — add SVGs/decorations to `blocks()` using wrapper div + Base64 pattern
@@ -189,16 +193,17 @@ verdictHistory = [] (for oscillation detection)
    node complete_website/divi5/lib/visual-diff.js --page $ARGUMENTS
    ```
 
-8. **Check improvement (BOTH metrics must be tracked):**
-   - If new mismatchCount < bestMismatchCount → update bestMismatchCount, save bestCode, reset noImprovementCount
+8. **Check improvement (FIXABLE count is the primary convergence metric):**
+   - If new fixableCount < bestFixableCount → update bestFixableCount, save bestCode, reset noImprovementCount
    - If new diffPct < bestDiffPct → update bestDiffPct
-   - If mismatchCount = 0 AND diffPct < 3% → section DONE
+   - If fixableCount = 0 → section DONE (regardless of STRUCTURAL count or pixel verdict)
    - If neither improved → increment noImprovementCount
 
 9. **Stop conditions:**
    - **No improvement for 2 consecutive iterations** → rollback to bestCode, move to next section
-   - **0 style mismatches AND MATCH pixel verdict** → done
-   - **All sections at 0 mismatches or REVIEW** → done
+   - **0 FIXABLE mismatches** → section done (STRUCTURAL + pixel diff from wrapper differences are acceptable)
+   - **0 FIXABLE mismatches AND (MATCH or REVIEW pixel verdict)** → fully converged
+   - **All sections at 0 FIXABLE mismatches** → page done
 
 ### Smart Deep-Scan Trigger:
 If pixel diff > 10% but computed-style-diff shows < 3 mismatches, run deep-scan:
@@ -248,16 +253,17 @@ This checks ALL computed properties (not just the default 30+) to find hidden mi
 6. **Final report:**
    ```
    ═══════════════════════════════════════════════════════════
-   AUTOPILOT v3 COMPLETE — $ARGUMENTS
+   AUTOPILOT v4 COMPLETE — $ARGUMENTS
    ═══════════════════════════════════════════════════════════
-   Section          | Pixel Before | Pixel After | Style Mismatches | Verdict | Elements
-   -----------------+--------------+-------------+------------------+---------+---------
-   hero             | 45.2%        | 2.1%        | 0                | MATCH   | 5/5 ✓
-   logo-bar         | SKIP         | SKIP        | 0                | MATCH   | —
-   factory-checks   | 22.1%        | 5.4%        | 2                | REVIEW  | 4/4 ✓
+   Section          | Pixel Before | Pixel After | Fixable | Structural | Verdict | Elements
+   -----------------+--------------+-------------+---------+------------+---------+---------
+   hero             | 45.2%        | 2.1%        | 0       | 12         | MATCH   | 5/5 ✓
+   logo-bar         | SKIP         | SKIP        | 0       | 0          | MATCH   | —
+   factory-checks   | 22.1%        | 5.4%        | 0       | 8          | REVIEW  | 4/4 ✓
    ...
    ═══════════════════════════════════════════════════════════
-   Remaining style mismatches: [list property, ref vs wp value, fix recipe]
+   Remaining FIXABLE mismatches: [list property, ref vs wp value, fix recipe]
+   STRUCTURAL mismatches: [count] (expected — Divi wrapper differences)
    Issues remaining: [list any REVIEW or FAIL sections with reason]
    Files modified: [list every file changed]
    ```
@@ -291,6 +297,8 @@ This checks ALL computed properties (not just the default 30+) to find hidden mi
 
 10. **SVG background rule.** NEVER apply `::before`/`::after` to `.et_pb_*` selectors (Divi owns those). Always use wrapper `<div>` inside Code Module for decorative elements.
 
-11. **Style-first convergence.** After every fix iteration, re-run `computed-style-diff.js` BEFORE `visual-diff.js`. Mismatch count is the primary convergence metric; pixel diff% is secondary.
+11. **Style-first convergence.** After every fix iteration, re-run `computed-style-diff.js` BEFORE `visual-diff.js`. **FIXABLE** mismatch count is the primary convergence metric; pixel diff% is secondary. STRUCTURAL mismatches do not count.
 
 12. **Protected properties.** NEVER override `display`, `flex-direction`, `flex-wrap`, `flex-grow`, `flex-shrink`, `flex-basis` with `!important` on `.et_pb_*` elements. This WILL break Divi layout.
+
+13. **Fixability classification.** Every mismatch in computed-style-diff output now has a `fixability` field. Only `FIXABLE` mismatches should drive the fix loop. `STRUCTURAL` mismatches are inherent Divi wrapper differences (section wrapper display:flex vs HTML display:block, section BG padding, etc.) — they are expected and cannot be fixed without breaking Divi.

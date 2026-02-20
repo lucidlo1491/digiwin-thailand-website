@@ -3,6 +3,7 @@
  *
  * ContentSpec §3.10 — "Let's Start a Conversation"
  * Bright gradient background, cross pattern, two CTAs.
+ * Decorative overlays: Super D gradient on left + wave-flow at bottom.
  *
  * REFACTORED: Uses cta-gradient template (53 → ~25 lines)
  */
@@ -19,6 +20,8 @@ const DATA = {
     { text: "Let\u2019s Talk", href: '/demo.html', style: 'primary' },
     { text: 'Explore Partnership', href: '/partner-program.html', style: 'ghost' },
   ],
+  superD: { variant: 'gradient', position: 'left', opacity: 0.16 },
+  waveFlow: { height: '220px', opacity: 0.45 },
 };
 
 module.exports = {

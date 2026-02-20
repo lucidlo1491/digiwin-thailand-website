@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage Preview — DigiWin Thailand</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* Reset */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans', sans-serif; color: #333; background: #fff; }
+    img { max-width: 100%; height: auto; }
+    a { color: inherit; }
+
+    /* Preview section wrapper */
+    .preview-section { position: relative; overflow: hidden; }
+    .preview-section[data-section="hero"] { /* hero needs its own bg */ }
+    .preview-section[data-section="factory-checks"] { background: linear-gradient(165deg, #f8fafc 0%, #f1f5f9 100%); padding: 100px 40px; }
+    .preview-section[data-section="partner-checks"] { background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #000864 100%); padding: 100px 40px; }
+    .preview-section[data-section="logo-bar"] { background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%); padding: 80px 40px; }
+    .preview-section[data-section="product-pillars"] { background: #fff; padding: 100px 40px; }
+    .preview-section[data-section="industry-tabs"] { background: #fff; padding: 80px 40px; }
+    .preview-section[data-section="stats-banner"] { background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #000864 100%); padding: 100px 40px; }
+    .preview-section[data-section="trust-anchors"] { background: #fff; padding: 100px 40px; }
+    .preview-section[data-section="proven-results"] { background: #f8fafc; padding: 100px 40px; }
+    .preview-section[data-section="final-cta"] { background: linear-gradient(135deg, #00AFF0 0%, #003CC8 50%, #000864 100%); padding: 100px 40px; }
+
+    /* Section CSS from builders */
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slide-up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes grain{0%,100%{transform:translate(0,0)}10%{transform:translate(-2%,-2%)}20%{transform:translate(2%,2%)}30%{transform:translate(-1%,1%)}40%{transform:translate(1%,-1%)}50%{transform:translate(-2%,2%)}60%{transform:translate(2%,-2%)}70%{transform:translate(-1%,-1%)}80%{transform:translate(1%,1%)}90%{transform:translate(-2%,2%)}}
+@keyframes dw-wave-drift{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes dw-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* === THEME BUILDER FULL-BLEED OVERRIDE === */
+.et_pb_section_0_tb_body{background:transparent !important;padding:0 !important;margin:0 !important;}
+.et_pb_row_0_tb_body{max-width:100% !important;width:100% !important;padding:0 !important;margin:0 !important;}
+.et_pb_column_0_tb_body{padding:0 !important;}
+
+/* === FORCE OPAQUE COLUMN BACKGROUNDS === */
+.et_pb_section_0 .et_pb_column_0{background:linear-gradient(165deg, rgb(15,20,25) 0%, rgb(26,38,50) 40%, rgb(0,8,100) 100%) !important;background-image:linear-gradient(165deg, rgb(15,20,25) 0%, rgb(26,38,50) 40%, rgb(0,8,100) 100%) !important}
+.et_pb_section_0 .et_pb_column_1{background:linear-gradient(165deg, rgb(0,175,240) 0%, rgb(0,60,200) 40%, rgb(0,60,200) 100%) !important;background-image:linear-gradient(165deg, rgb(0,175,240) 0%, rgb(0,60,200) 40%, rgb(0,60,200) 100%) !important}
+.et_pb_section_0{background-color:#000432 !important}
+
+/* === DIVI SPACING RESET === */
+.et_pb_section_0:not([class*='tb_body']) .et_pb_column{gap:0 !important}
+
+/* === SVG ILLUSTRATIONS (v28) === */
+.hero-svg-illustration{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:1;opacity:0.45}
+.hero-svg-illustration svg{width:100%;height:100%;display:block}
+
+/* === HERO LABELS === */
+.hero-label{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;color:#00AFF0;margin-bottom:24px;display:flex;align-items:center;gap:12px;position:relative;z-index:2}
+.hero-label::before{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,#00AFF0);flex-shrink:0}
+.hero-label--partner{color:rgba(255,255,255,0.9)}
+.hero-label--partner::before{background:linear-gradient(90deg,transparent,rgba(255,255,255,0.8))}
+
+/* === DIVI TEXT MODULE OVERRIDE === */
+.et_pb_text .et_pb_text_inner,.et_pb_text .et_pb_text_inner p{font-family:'Noto Sans',sans-serif !important;font-weight:400 !important;font-size:18px !important;line-height:1.75 !important;color:rgba(255,255,255,0.75) !important}
+
+/* === HERO TITLES === */
+.hero-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,3.5vw,52px);font-weight:700;color:#fff;margin:0 0 24px 0;line-height:1.1;letter-spacing:-0.03em;position:relative;z-index:2;max-width:520px}
+.hero-title .hl-blue{color:#00AFF0}
+.hero-title .hl-gold{color:#fef3c7}
+
+/* === HERO SUBTITLES === */
+.hero-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:rgba(255,255,255,0.75);margin:0 0 36px 0;line-height:1.75;position:relative;z-index:2;max-width:500px}
+
+/* === HERO CONTENT WRAPPER === */
+.hero-content{position:relative;z-index:2;max-width:520px;animation:slide-up 0.8s ease-out}
+.hero-content--delay{animation-delay:0.2s;animation-fill-mode:backwards}
+
+/* === BUTTONS === */
+.hero-btn{font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;padding:16px 32px;border-radius:8px;cursor:pointer;transition:all 0.3s ease;text-decoration:none;display:inline-block;position:relative;overflow:hidden;border:none}
+.hero-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.5s}
+.hero-btn:hover::before{left:100%}
+.hero-btn--primary{background:#006dac;color:#fff;box-shadow:0 4px 14px rgba(0,175,240,0.35)}
+.hero-btn--primary:hover{background:#003CC8;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,175,240,0.45)}
+.hero-btn--ghost{background:rgba(255,255,255,0.15);color:#fff;border:2px solid rgba(255,255,255,0.9);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.hero-btn--ghost:hover{background:#fff;color:#0369a1;border-color:#fff}
+.hero-btn-row{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:2;max-width:520px}
+
+/* === STATS === */
+.hero-stats{display:flex;gap:40px;margin-top:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.1);animation:fadeIn 1s ease-out 0.5s both;position:relative;z-index:2;max-width:520px}
+.hero-stat-number{font-family:'Noto Sans',sans-serif;font-size:32px;font-weight:800;color:#00AFF0;line-height:1;margin-bottom:8px;letter-spacing:-0.02em}
+.hero-stat-number--white{color:#fff}
+.hero-stat-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:400;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.1em}
+
+/* === GRAIN TEXTURE OVERLAY === */
+.hero-grain{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:1}
+.hero-grain::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none;z-index:1;animation:grain 8s steps(10) infinite}
+.hero-grain--partner::before{opacity:0.04;animation:none}
+
+/* === LIGHT LEAK (Partner panel only) === */
+.hero-light-leak{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:1}
+.hero-light-leak::after{content:'';position:absolute;top:-50%;right:-30%;width:80%;height:150%;background:radial-gradient(ellipse at center,rgba(255,255,255,0.15) 0%,transparent 60%);pointer-events:none;z-index:1}
+
+/* === RESPONSIVE === */
+@media(max-width:1024px){
+.et_pb_section_0 .et_pb_row_0{flex-direction:column !important;min-height:auto !important;}
+.et_pb_section_0 .et_pb_column{width:100% !important;flex:none !important;min-height:70vh;}
+.hero-stats{gap:24px;flex-wrap:wrap}
+.hero-title{font-size:32px}
+.hero-subtitle{font-size:16px}
+}
+@media(max-width:640px){
+.et_pb_section_0 .et_pb_column{padding:48px 24px !important;min-height:80vh;}
+.hero-stats{flex-direction:column;gap:24px}
+.hero-btn-row{flex-direction:column}
+.hero-btn{text-align:center}
+}
+
+/* === REDUCED MOTION === */
+@media(prefers-reduced-motion:reduce){
+.hero-content,.hero-content--delay{animation:none}
+.hero-stats{animation:none}
+.hero-grain::before{animation:none}
+.hero-btn::before{transition:none}
+.hero-svg-illustration{opacity:0.25}
+}
+
+/* ===== LOGO BAR SECTION ===== */
+.logobar-section{
+  background:linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  padding:80px 40px;
+}
+
+.logo-bar-marquee-wrapper{
+  width:100%;
+  overflow:hidden;
+  position:relative;
+  padding:32px 0;
+  mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.logo-bar-marquee{
+  display:flex;
+  gap:60px;
+  animation:dw-scroll 35s linear infinite;
+  width:max-content;
+}
+
+.logo-bar-marquee:hover{
+  animation-play-state:paused;
+}
+
+@keyframes dw-scroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+
+.logo-bar-item{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-shrink:0;
+  transition:all 0.4s ease;
+}
+
+.logo-bar-logo{
+  height:108px;
+  max-width:126px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:filter 0.4s ease;
+  filter:grayscale(100%) opacity(0.45);
+}
+
+.logo-bar-item:hover .logo-bar-logo{
+  filter:grayscale(0%) opacity(1);
+}
+
+/* Placeholder logo styling (colored circles with initials) */
+.logo-bar-placeholder{
+  width:108px;
+  height:108px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-family:'Noto Sans',sans-serif;
+  font-size:32px;
+  font-weight:700;
+  letter-spacing:-0.02em;
+}
+
+.logo-bar-text{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.logo-bar-name{
+  font-family:'Noto Sans', sans-serif;
+  font-size:30px;
+  font-weight:600;
+  color:#334155;
+  opacity:0.55;
+  line-height:1.2;
+  transition:opacity 0.4s ease;
+}
+
+.logo-bar-item:hover .logo-bar-name{
+  opacity:1;
+}
+
+.logo-bar-subtitle{
+  font-family:'Noto Sans',sans-serif;
+  font-size:16px;
+  font-weight:400;
+  color:#5b6b80;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+}
+
+/* ===== STATS ROW ===== */
+.logo-bar-stats{
+  display:flex;
+  gap:60px;
+  justify-content:center;
+  align-items:center;
+  padding-top:32px;
+  border-top:1px solid #e2e8f0;
+  max-width:1200px;
+  width:100%;
+  margin:0 auto;
+}
+
+.logo-bar-stat{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+}
+
+.logo-bar-stat-value{
+  font-family:'Noto Sans', sans-serif;
+  font-size:28px;
+  font-weight:700;
+  color:#000864;
+  line-height:1.2;
+  letter-spacing:-0.02em;
+}
+
+.logo-bar-stat-label{
+  font-family:'Noto Sans',sans-serif;
+  font-size:13px;
+  color:#5b6b80;
+  text-align:center;
+  line-height:1.4;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .logo-bar-marquee{gap:48px}
+  .logo-bar-logo{height:80px;max-width:96px}
+  .logo-bar-placeholder{width:80px;height:80px;font-size:24px}
+  .logo-bar-name{font-size:24px}
+  .logo-bar-subtitle{font-size:13px}
+  .logo-bar-stats{gap:40px}
+}
+
+@media(max-width:768px){
+  .logo-bar-marquee{gap:40px}
+  .logo-bar-logo{height:64px;max-width:76px}
+  .logo-bar-placeholder{width:64px;height:64px;font-size:20px}
+  .logo-bar-name{font-size:20px}
+  .logo-bar-subtitle{font-size:11px}
+  .logo-bar-stats{
+    flex-direction:column;
+    gap:24px;
+    padding-top:24px;
+  }
+  .logo-bar-stat-value{font-size:24px}
+  .logo-bar-stat-label{font-size:12px}
+}
+
+@media(max-width:640px){
+  .et_pb_section .et_pb_row{padding:0 24px !important}
+  .logo-bar-marquee-wrapper{padding:40px 0}
+  .logo-bar-marquee{gap:36px}
+  .logo-bar-logo{height:52px;max-width:60px}
+  .logo-bar-placeholder{width:52px;height:52px;font-size:16px;border-radius:8px}
+  .logo-bar-item{gap:16px}
+  .logo-bar-name{font-size:16px}
+  .logo-bar-subtitle{display:none}
+  .logo-bar-stat-value{font-size:20px}
+  .logo-bar-stat-label{font-size:11px}
+}
+
+/* ===== REDUCED MOTION ===== */
+@media(prefers-reduced-motion:reduce){
+  .logo-bar-marquee{
+    animation:none;
+    flex-wrap:wrap;
+    justify-content:center;
+    width:100%;
+  }
+  .logo-bar-item[aria-hidden="true"]{
+    display:none;
+  }
+  .logo-bar-marquee-wrapper{
+    mask-image:none;
+    -webkit-mask-image:none;
+  }
+}
+
+/* === THEME BUILDER FULL-BLEED OVERRIDE (section 2) === */
+.et_pb_section_2_tb_body{background:transparent !important;padding:0 !important;margin:0 !important;}
+.et_pb_row_2_tb_body{max-width:1200px !important;width:100% !important;padding:0 !important;margin:0 auto !important;}
+.et_pb_column_2_tb_body{padding:0 !important;}
+
+/* === DIVI SPACING RESET === */
+.et_pb_section_2:not([class*='tb_body']) .et_pb_column{gap:0 !important}
+
+/* === SECTION WRAPPER === */
+.checks-section{background:linear-gradient(165deg, #f8fafc 0%, #f1f5f9 100%);padding:100px 40px}
+
+/* === SECTION CONTAINER === */
+.checks-container{position:relative;z-index:2;max-width:1200px;margin:0 auto}
+
+/* === SECTION HEADER === */
+.checks-header{text-align:center;max-width:800px;margin:0 auto 56px;position:relative;z-index:2}
+
+.checks-header-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.2em;color:#0369a1;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:12px}
+.checks-header-label::before,
+.checks-header-label::after{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,#0369a1);flex-shrink:0}
+.checks-header-label::after{transform:scaleX(-1)}
+
+.checks-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;color:#000864;line-height:1.15;letter-spacing:-0.02em;margin:0 0 20px}
+
+.checks-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto}
+
+/* === CARDS GRID === */
+.checks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:32px}
+
+/* === CARD STYLING === */
+.checks-card{background:#fff;border:1px solid #e2e8f0;box-shadow:0 4px 24px rgba(0,0,0,0.04);border-radius:20px;padding:40px 32px;position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
+
+.checks-card:hover{box-shadow:0 20px 60px rgba(0,175,240,0.12);border-color:#00AFF0}
+
+.checks-card--full{grid-column:1 / -1}
+
+/* === CARD ELEMENTS === */
+.checks-card-number{font-family:'Noto Sans',sans-serif;font-size:64px;font-weight:800;color:#0369a1;opacity:0.15;line-height:1;margin-bottom:16px}
+
+.checks-card-title{font-family:'Noto Sans',sans-serif;font-size:20px;font-weight:700;color:#000864;margin:0 0 16px;line-height:1.3}
+
+.checks-card-quote{font-family:'Noto Sans',sans-serif;font-size:16px;font-style:italic;color:#475569;line-height:1.7;padding-left:16px;border-left:3px solid #00AFF0;margin-bottom:16px}
+
+.checks-card-desc{font-family:'Noto Sans',sans-serif;font-size:15px;color:#5b6b80;line-height:1.6;margin:0}
+
+/* === CTA === */
+.checks-cta{display:flex;justify-content:center;margin-top:56px}
+
+.checks-btn{font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;padding:16px 32px;border-radius:8px;cursor:pointer;transition:all 0.3s ease;text-decoration:none;display:inline-block;position:relative;overflow:hidden;border:none}
+
+.checks-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.5s}
+
+.checks-btn:hover::before{left:100%}
+
+.checks-btn--primary{background:#006dac;color:#fff;box-shadow:0 4px 14px rgba(0,175,240,0.35)}
+
+.checks-btn--primary:hover{background:#003CC8;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,175,240,0.45)}
+
+/* === RESPONSIVE === */
+@media(max-width:1024px){
+  .checks-grid{grid-template-columns:repeat(2,1fr);gap:24px}
+  .checks-grid .checks-card:nth-child(3){grid-column:span 2;max-width:500px;margin:0 auto;width:100%}
+  .et_pb_section_2{padding:80px 32px !important}
+  .checks-card{padding:32px 24px}
+  .checks-title{font-size:32px}
+  .checks-subtitle{font-size:16px}
+  .checks-card-number{font-size:52px}
+}
+
+@media(max-width:768px){
+  .checks-grid{grid-template-columns:1fr}
+  .checks-grid .checks-card:nth-child(3){grid-column:auto;max-width:none}
+  .et_pb_section_2{padding:64px 24px !important}
+  .checks-card{padding:32px 24px}
+  .checks-header-label{font-size:10px}
+  .checks-card-title{font-size:18px}
+  .checks-card-quote{font-size:15px}
+}
+
+@media(max-width:640px){
+  .checks-header-label::before,
+  .checks-header-label::after{width:24px}
+  .checks-btn{width:100%;text-align:center}
+}
+
+/* === REDUCED MOTION === */
+@media(prefers-reduced-motion:reduce){
+  .checks-card{transition:none}
+  .checks-btn::before{transition:none}
+}
+
+/* ============================================
+   Partner Path Understanding Checks (Dark Theme)
+   ContentSpec §3.4
+   ============================================ */
+
+.pchecks-section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(165deg, #0f1419 0%, #1a2632 50%, #000864 100%);
+  padding: 100px 40px;
+  margin: -20px 0;
+}
+
+/* ============================================
+   Section Header (Dark Theme)
+   ============================================ */
+
+
+.pchecks-header{text-align:center;max-width:800px;margin:0 auto 56px;position:relative;z-index:2}
+.pchecks-header-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.75);margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:12px}
+.pchecks-header-label::before,.pchecks-header-label::after{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4));flex-shrink:0}
+.pchecks-header-label::after{transform:scaleX(-1)}
+.pchecks-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;color:#fff;line-height:1.15;letter-spacing:-0.02em;margin:0 0 20px}
+.pchecks-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:rgba(255,255,255,0.75);line-height:1.6;max-width:600px;margin:0 auto}
+
+.pchecks-header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 80px;
+}
+
+.pchecks-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.pchecks-label-line {
+  width: 40px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.pchecks-label-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.pchecks-title {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 0 0 20px;
+}
+
+.pchecks-subtitle {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+}
+
+/* ============================================
+   3-Column Grid
+   ============================================ */
+
+.pchecks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-bottom: 60px;
+}
+
+/* ============================================
+   Pain Point Cards (Dark Theme)
+   ============================================ */
+
+
+.pchecks-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:40px 32px;position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
+.pchecks-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2)}
+
+.pchecks-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 40px 32px;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.pchecks-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.pchecks-card-number {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.15);
+  margin-bottom: 16px;
+}
+
+.pchecks-card-title {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #ffffff;
+  margin: 0 0 20px;
+}
+
+.pchecks-card-quote {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 20px;
+  padding-left: 20px;
+  border-left: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.pchecks-card-desc {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+}
+
+/* ============================================
+   CTA
+   ============================================ */
+
+.pchecks-cta-wrapper {
+  text-align: center;
+}
+
+.pchecks-cta {
+  display: inline-block;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--dw-blue, #00AFF0);
+  padding: 16px 48px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.pchecks-cta:hover {
+  background: #0099D6;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 175, 240, 0.3);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .pchecks-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pchecks-title {
+    font-size: 40px;
+  }
+
+  .pchecks-subtitle {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pchecks-section {
+    padding: 80px 24px !important;
+  }
+
+  .pchecks-header {
+    margin-bottom: 60px;
+  }
+
+  .pchecks-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .pchecks-title {
+    font-size: 32px;
+  }
+
+  .pchecks-subtitle {
+    font-size: 16px;
+  }
+
+  .pchecks-card {
+    padding: 32px 24px;
+  }
+
+  .pchecks-card-number {
+    font-size: 56px;
+  }
+
+  .pchecks-card-title {
+    font-size: 20px;
+  }
+
+  .pchecks-card-quote {
+    font-size: 15px;
+  }
+
+  .pchecks-card-desc {
+    font-size: 14px;
+  }
+
+  .pchecks-label-line {
+    width: 30px;
+  }
+
+  .pchecks-label-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pchecks-section {
+    padding: 60px 20px !important;
+  }
+
+  .pchecks-header {
+    margin-bottom: 48px;
+  }
+
+  .pchecks-title {
+    font-size: 28px;
+  }
+
+  .pchecks-cta {
+    width: 100%;
+    padding: 14px 32px;
+  }
+}
+
+
+.products-header{text-align:center;max-width:800px;margin:0 auto 56px;position:relative;z-index:2}
+.products-header-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.2em;color:#0369a1;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:12px}
+.products-header-label::before,.products-header-label::after{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,#0369a1);flex-shrink:0}
+.products-header-label::after{transform:scaleX(-1)}
+.products-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;color:#000864;line-height:1.15;letter-spacing:-0.02em;margin:0 0 20px}
+.products-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto}
+
+
+/* Products Section Wrapper */
+.products-section {
+  background: #F5F7FA;
+  padding: 100px 40px;
+}
+
+/* Products Grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 60px;
+}
+
+/* Product Card */
+.products-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px 28px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f1f5f9;
+  transition: all 0.4s ease;
+  text-decoration: none;
+  display: block;
+  overflow: hidden;
+}
+
+.products-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00AFF0, #003CC8);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.products-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 175, 240, 0.12);
+  border-color: transparent;
+}
+
+.products-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Card Icon */
+.products-card__icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #000864, #1e3a5f);
+  border-radius: 24px;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.products-card__icon::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #00AFF0, #003CC8);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.products-card:hover .products-card__icon {
+  transform: scale(1.05) rotate(-3deg);
+}
+
+.products-card:hover .products-card__icon::after {
+  opacity: 0.3;
+}
+
+.products-card__icon svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Card Title */
+.products-card__title {
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.3;
+  color: #000864;
+  margin: 0 0 8px 0;
+}
+
+/* Full Product Name */
+.products-card__full-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: #0369a1;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+/* Tagline */
+.products-card__tagline {
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.3;
+  color: #000864;
+  margin-bottom: 20px;
+}
+
+/* Features List */
+.products-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  text-align: left;
+}
+
+.products-card__features li {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #5b6b80;
+  margin-bottom: 12px;
+  padding-left: 16px;
+  position: relative;
+}
+
+.products-card__features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  background: #00AFF0;
+  border-radius: 50%;
+}
+
+.products-card__features li:last-child {
+  margin-bottom: 0;
+}
+
+.products-card__features strong {
+  font-weight: 600;
+  color: #000864;
+}
+
+/* Benefit Line */
+.products-card__benefit {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #0369a1;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 16px;
+  margin-top: 20px;
+}
+
+/* Responsive: Tablet */
+@media (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .products-card {
+    padding: 32px 24px;
+  }
+}
+
+/* Responsive: Mobile */
+@media (max-width: 640px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .products-card {
+    padding: 28px 20px;
+  }
+
+  .products-card__icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 20px;
+  }
+
+  .products-card__icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .products-card__title {
+    font-size: 18px;
+  }
+
+  .products-card__tagline {
+    font-size: 14px;
+  }
+
+  .products-card__features li {
+    font-size: 12px;
+  }
+
+  .products-card__benefit {
+    font-size: 12px;
+  }
+}
+
+/* === INDUSTRY TABS === */
+.ind-section{background:#ffffff;padding:80px 40px}
+.ind-container{max-width:1200px;margin:0 auto;padding:0 20px}
+.ind-header{text-align:center;margin-bottom:56px}
+.ind-label{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#00AFF0;margin-bottom:16px}
+.ind-title{font-family:'Noto Sans',sans-serif;font-size:42px;font-weight:700;line-height:1.2;color:#000864;margin:0 0 20px 0}
+.ind-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;line-height:1.6;color:#475569;margin:0;max-width:700px;margin-left:auto;margin-right:auto}
+.ind-tab-bar{display:inline-flex;background:#f1f5f9;border-radius:16px 16px 0 0;padding:6px 6px 0 6px;margin-bottom:-1px;position:relative;z-index:2}
+.ind-tab{font-family:'Noto Sans',sans-serif;font-size:14px;font-weight:500;color:#5b6b80;background:transparent;border:none;padding:14px 28px;cursor:pointer;transition:all 0.3s ease;border-radius:12px 12px 0 0;position:relative}
+.ind-tab:hover{color:#0369a1}
+button.ind-tab.ind-tab-active{background:#ffffff;color:#000864;font-weight:600;box-shadow:0 -2px 8px rgba(0,0,0,0.04)}
+button.ind-tab.ind-tab-active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00AFF0 0%,#003CC8 100%)}
+.ind-content-wrapper{background:#ffffff;border-radius:24px;box-shadow:0 12px 48px rgba(0,0,0,0.08);position:relative;z-index:1}
+.ind-tab-content{display:none;animation:indFadeIn 0.5s ease}
+.ind-tab-content.ind-tab-active{display:block}
+@keyframes indFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.ind-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:48px;align-items:center}
+.ind-image-placeholder{height:450px;background:linear-gradient(145deg,#0f1419 0%,#1a2632 50%,#000864 100%);border-radius:16px;display:flex;align-items:center;justify-content:center}
+.ind-image-placeholder span{font-family:'Noto Sans',sans-serif;font-size:16px;color:rgba(255,255,255,0.3);text-align:center;padding:0 20px}
+.ind-text-content{display:flex;flex-direction:column;gap:24px}
+.ind-content-title{font-family:'Noto Sans',sans-serif;font-size:32px;font-weight:700;line-height:1.3;color:#000864;margin:0}
+.ind-content-desc{font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:400;line-height:1.7;color:#475569;margin:0}
+.ind-features{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.ind-features li{font-family:'Noto Sans',sans-serif;font-size:15px;font-weight:400;color:#475569;padding:10px 0 10px 32px;position:relative;line-height:1.6}
+.ind-features li svg{position:absolute;left:0;top:10px;flex-shrink:0}
+.ind-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;color:#00AFF0;text-decoration:none;transition:all 0.3s ease;align-self:flex-start}
+.ind-cta:hover{color:#003CC8;transform:translateX(4px)}
+.ind-cta svg{transition:transform 0.3s ease}
+.ind-cta:hover svg{transform:translateX(4px)}
+@media(max-width:1024px){.ind-grid{grid-template-columns:1fr;gap:32px;padding:40px}.ind-image-placeholder{height:300px}.ind-title{font-size:36px}.ind-subtitle{font-size:16px}.ind-content-title{font-size:28px}}
+@media(max-width:640px){.ind-container{padding:0 16px}.ind-header{margin-bottom:40px}.ind-title{font-size:28px}.ind-subtitle{font-size:15px}.ind-tab-bar{display:flex;flex-direction:column;padding:4px;border-radius:12px;width:100%}.ind-tab{font-size:14px;padding:12px 16px;border-radius:8px}.ind-grid{grid-template-columns:1fr;gap:24px;padding:24px}.ind-image-placeholder{height:250px}.ind-content-title{font-size:24px}.ind-content-desc{font-size:15px}.ind-features li{font-size:14px;padding:8px 0 8px 28px}.ind-features li svg{width:18px;height:18px;top:8px}.ind-cta{font-size:15px}}
+@media(prefers-reduced-motion:reduce){.ind-tab-content{animation:none !important}.ind-tab,.ind-cta,.ind-cta svg{transition:none !important}}
+
+/* === STATS BANNER === */
+.stats-section{background:linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #000864 100%);padding:100px 40px;position:relative;overflow:hidden}
+.stats-container{position:relative;z-index:2;max-width:1200px;margin:0 auto}
+.stats-container::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");pointer-events:none;z-index:1}
+.stats-container::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(0,175,240,0.15) 0%,transparent 70%);pointer-events:none;z-index:1}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-bottom:48px}
+.stats-item{text-align:center;position:relative;padding:0 24px}
+.stats-item:not(:nth-child(3n))::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:60%;background:linear-gradient(180deg, transparent, rgba(0,175,240,0.3), transparent)}
+.stats-number{font-family:'Noto Sans',sans-serif;font-weight:800;font-size:clamp(48px, 6vw, 72px);color:#0369a1;letter-spacing:-0.03em;line-height:1.1;margin-bottom:12px}
+.stats-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.12em;line-height:1.5}
+.stats-source{text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,0.75);margin-top:24px}
+@media(max-width:991px){.stats-grid{grid-template-columns:repeat(2,1fr);gap:36px}.stats-item:nth-child(2n)::after{display:none}}
+@media(max-width:767px){.stats-grid{gap:28px}.stats-item{padding:0 12px}.stats-number{font-size:clamp(36px,10vw,48px)}.stats-label{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.stats-counter{animation:none !important}}
+
+/* === TRUST ANCHORS === */
+.trust-section{background:#ffffff;padding:100px 40px}
+.trust-container{max-width:1200px;margin:0 auto}
+.trust-header{text-align:center;margin-bottom:64px}
+.trust-header-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#00AFF0;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:12px}
+.trust-header-label::before,.trust-header-label::after{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,#00AFF0);flex-shrink:0}
+.trust-header-label::after{transform:scaleX(-1)}
+.trust-title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:clamp(32px,4vw,44px);color:#000864;letter-spacing:-0.02em;line-height:1.2;margin:0 0 20px}
+.trust-subtitle{font-family:'Noto Sans',sans-serif;font-weight:400;font-size:18px;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto}
+.trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.trust-card{background:linear-gradient(135deg, #000864 0%, #1e3a5f 50%, #0f172a 100%);border-radius:20px;padding:36px;min-height:280px;position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
+.trust-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none;z-index:1}
+.trust-card>*{position:relative;z-index:2}
+.trust-card:hover{box-shadow:0 24px 48px rgba(0,0,0,0.25);transform:translateY(-4px)}
+.trust-card-full{grid-column:1 / -1}
+.trust-bg-icon{position:absolute;top:-20px;right:-20px;width:180px;height:180px;opacity:0.08;z-index:1;transition:all 0.4s ease;pointer-events:none}
+.trust-card:hover .trust-bg-icon{opacity:0.12;transform:scale(1.05) rotate(5deg)}
+.trust-icon{width:48px;height:48px;background:rgba(0,175,240,0.15);border:1px solid rgba(0,175,240,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative;z-index:2}
+.trust-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#0369a1;background:rgba(0,175,240,0.15);border:1px solid rgba(0,175,240,0.25);padding:5px 12px;border-radius:6px;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:20px}
+.trust-card-title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:22px;color:#fff;margin:0 0 16px;line-height:1.3}
+.trust-headline{font-family:'Noto Sans',sans-serif;font-weight:500;font-size:15px;color:rgba(255,255,255,0.9);line-height:1.6;margin:0 0 16px}
+.trust-detail{font-family:'Noto Sans',sans-serif;font-weight:400;font-size:13px;color:rgba(255,255,255,0.75);line-height:1.65;margin:0}
+.trust-detail a{color:#0369a1;text-decoration:none;transition:color 0.3s ease}
+.trust-detail a:hover{color:#00AFF0;text-decoration:underline}
+@media(max-width:991px){.trust-grid{grid-template-columns:1fr}.trust-card-full{grid-column:1}}
+@media(max-width:767px){.trust-card{padding:28px 24px;min-height:auto}.trust-card-title{font-size:20px}.trust-headline{font-size:14px}.trust-detail{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.trust-card{transition:none !important}}
+
+/* === PROVEN RESULTS === */
+.results-section{background:#f8fafc;padding:80px 40px}
+.results-container{max-width:1200px;margin:0 auto}
+.results-header{text-align:center;margin-bottom:48px}
+.results-header-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#00AFF0;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:12px}
+.results-header-label::before,.results-header-label::after{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,#00AFF0);flex-shrink:0}
+.results-header-label::after{transform:scaleX(-1)}
+.results-title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:clamp(32px,4vw,44px);color:#000864;letter-spacing:-0.02em;line-height:1.2;margin:0 0 20px}
+.results-subtitle{font-family:'Noto Sans',sans-serif;font-weight:400;font-size:18px;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto}
+.results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;max-width:900px;margin:48px auto 0}
+.results-card{background:#fff;border-radius:16px;padding:36px 32px;border:1px solid #e2e8f0;transition:all 0.3s ease}
+.results-card:hover{box-shadow:0 8px 32px rgba(0,8,100,0.08);transform:translateY(-2px)}
+.results-company{font-family:'JetBrains Mono',monospace;font-size:11px;color:#00AFF0;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:12px}
+.results-metric{font-family:'Noto Sans',sans-serif;font-weight:600;font-size:20px;color:#000864;line-height:1.4;margin-bottom:16px}
+.results-detail{font-family:'Noto Sans',sans-serif;font-weight:400;font-size:14px;color:#5b6b80;line-height:1.65;margin:0}
+.results-cta{text-align:center;margin-top:48px}
+.results-link{font-family:'Noto Sans',sans-serif;font-weight:600;font-size:14px;color:#00AFF0;text-decoration:none;transition:color 0.3s ease}
+.results-link:hover{color:#003CC8}
+@media(max-width:767px){.results-grid{grid-template-columns:1fr;gap:24px;margin-top:36px}.results-card{padding:28px 24px}.results-metric{font-size:18px}}
+@media(prefers-reduced-motion:reduce){.results-card{transition:none !important}}
+
+/* === FINAL CTA BANNER === */
+.cta-section{background:linear-gradient(135deg, #00AFF0 0%, #003CC8 50%, #003CC8 100%);padding:120px 40px;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 0v20M0 10h20' stroke='%23fff' stroke-width='0.5' opacity='0.05'/%3E%3C/svg%3E");pointer-events:none;z-index:1}
+.cta-section::after{content:'';position:absolute;bottom:-20%;right:-10%;width:80%;height:80%;background:radial-gradient(ellipse at center,rgba(255,255,255,0.1) 0%,transparent 70%);pointer-events:none;z-index:1}
+.cta-container{position:relative;z-index:2;max-width:800px;margin:0 auto;text-align:center}
+.cta-title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:clamp(36px,4.5vw,52px);color:#fff;letter-spacing:-0.02em;line-height:1.15;margin:0 0 24px}
+.cta-subtitle{font-family:'Noto Sans',sans-serif;font-size:20px;color:rgba(255,255,255,0.9);line-height:1.65;margin:0 0 48px;max-width:720px;margin-left:auto;margin-right:auto}
+
+.cta-btn{font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;padding:16px 32px;border-radius:8px;cursor:pointer;transition:all 0.3s ease;text-decoration:none;display:inline-block;position:relative;overflow:hidden;border:none}
+.cta-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.5s}
+.cta-btn:hover::before{left:100%}
+.cta-btn--primary{background:#fff;color:#003CC8;font-weight:600;box-shadow:0 4px 20px rgba(0,0,0,0.15)}
+.cta-btn--primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.2)}
+.cta-btn--ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.6)}
+.cta-btn--ghost:hover{background:rgba(255,255,255,0.15);border-color:#fff}
+.cta-btn-row{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;position:relative;z-index:2}
+@media(max-width:767px){.cta-title{font-size:clamp(28px,8vw,36px);margin-bottom:20px}.cta-subtitle{font-size:16px;margin-bottom:36px}.cta-btn-row{flex-direction:column;align-items:stretch;gap:16px}.cta-btn{width:100%;max-width:300px;margin:0 auto;text-align:center}}
+@media(prefers-reduced-motion:reduce){.cta-btn{transition:none !important}.cta-btn::before{display:none}}
+  </style>
+</head>
+<body>
+  
+<!-- ========== HERO ========== -->
+<section class="preview-section" data-section="hero">
+<p class="hero-label hero-label--factory">For Manufacturing Business Owners</p>
+<h1 class="hero-title">Your True Costs Are <span class="hl-blue">Invisible.</span></h1>
+<div class="text-module">“Shadow Excel” files have replaced your standard operating procedures. Ghost inventory means system says 100, shelf says 50. We fix this—because we’ve spent 44 years doing nothing but manufacturing software.</div>
+<div class="hero-btn-row"><a href="/demo.html" class="hero-btn hero-btn--primary">Let’s Talk</a><a href="/products.html" class="hero-btn hero-btn--ghost">See Our Solutions</a></div>
+<div class="hero-stats"><div class="hero-stat"><div class="hero-stat-number" data-dw-years>44</div><div class="hero-stat-label">Years Manufacturing Focus</div></div><div class="hero-stat"><div class="hero-stat-number">50K+</div><div class="hero-stat-label">Factories Served</div></div><div class="hero-stat"><div class="hero-stat-number">300378</div><div class="hero-stat-label">Shenzhen Listed</div></div></div>
+<p class="hero-label hero-label--partner">For ERP Implementers</p>
+<h2 class="hero-title">Trapped in the <span class="hl-gold">Man-Day</span> Model?</h2>
+<div class="text-module">Your revenue is capped by headcount. Customization wars burn out your best consultants. We offer a way out—product-based margins that compound instead of compress.</div>
+<div class="hero-btn-row"><a href="/partner-program.html" class="hero-btn hero-btn--primary">Escape the Trap</a></div>
+<div class="hero-stats"><div class="hero-stat"><div class="hero-stat-number hero-stat-number--white">30–40%</div><div class="hero-stat-label">License Margins</div></div><div class="hero-stat"><div class="hero-stat-number hero-stat-number--white">Yours to Keep</div><div class="hero-stat-label">Maintenance Revenue</div></div></div>
+</section>
+
+<!-- ========== LOGO-BAR ========== -->
+<section class="preview-section" data-section="logo-bar">
+<div class="text-module">Trusted by Leading Manufacturers in Thailand</div>
+<div class="logobar-section">
+<div class="logo-bar-marquee-wrapper">
+  <div class="logo-bar-marquee">
+    
+    <div class="logo-bar-item">
+      <div class="logo-bar-logo" data-client="1">
+        <div class="logo-bar-placeholder" style="background: #0369a1">
+          <span>CC</span>
+        </div>
+      </div>
+      <div class="logo-bar-text">
+        <div class="logo-bar-name">Cal-Comp Electronics</div>
+        <small class="logo-bar-subtitle">SET: CCET</small>
+      </div>
+    </div>
+  
+    <div class="logo-bar-item">
+      <div class="logo-bar-logo" data-client="2">
+        <div class="logo-bar-placeholder" style="background: #dc2626">
+          <span>TTS</span>
+        </div>
+      </div>
+      <div class="logo-bar-text">
+        <div class="logo-bar-name">TTS Plastic</div>
+        <small class="logo-bar-subtitle">Injection Molding</small>
+      </div>
+    </div>
+  
+    <div class="logo-bar-item">
+      <div class="logo-bar-logo" data-client="3">
+        <div class="logo-bar-placeholder" style="background: #059669">
+          <span>YG</span>
+        </div>
+      </div>
+      <div class="logo-bar-text">
+        <div class="logo-bar-name">Yeong Guan Energy</div>
+        <small class="logo-bar-subtitle">TWSE: 1589</small>
+      </div>
+    </div>
+  
+    <div class="logo-bar-item">
+      <div class="logo-bar-logo" data-client="4">
+        <div class="logo-bar-placeholder" style="background: #7c3aed">
+          <span>STK</span>
+        </div>
+      </div>
+      <div class="logo-bar-text">
+        <div class="logo-bar-name">S.T.K. Steel</div>
+        <small class="logo-bar-subtitle">Stainless Steel</small>
+      </div>
+    </div>
+  
+    <div class="logo-bar-item">
+      <div class="logo-bar-logo" data-client="5">
+        <div class="logo-bar-placeholder" style="background: #ea580c">
+          <span>GH</span>
+        </div>
+      </div>
+      <div class="logo-bar-text">
+        <div class="logo-bar-name">Goldensea Hi-Tech</div>
+        <small class="logo-bar-subtitle">Specialty Chemicals</small>
+      </div>
+    </div>
+  
+    <div class="logo-bar-item">
+      <div class="logo-bar-logo" data-client="6">
+        <div class="logo-bar-placeholder" style="background: #0891b2">
+          <span>CHE</span>
+        </div>
+      </div>
+      <div class="logo-bar-text">
+        <div class="logo-bar-name">Chelic Corporation</div>
+        <small class="logo-bar-subtitle">TWSE: 4555</small>
+      </div>
+    </div>
+  
+    <div class="logo-bar-item">
+      <div class="logo-bar-logo" data-client="7">
+        <div class="logo-bar-placeholder" style="background: #475569">
+          <span>CTR</span>
+        </div>
+      </div>
+      <div class="logo-bar-text">
+        <div class="logo-bar-name">Chung Tai Rubber</div>
+        <small class="logo-bar-subtitle">Vibration Control</small>
+      </div>
+    </div>
+  
+    <div class="logo-bar-item">
+      <div class="logo-bar-logo" data-client="8">
+        <div class="logo-bar-placeholder" style="background: #dc2626">
+          <span>HDL</span>
+        </div>
+      </div>
+      <div class="logo-bar-text">
+        <div class="logo-bar-name">Haidilao International</div>
+        <small class="logo-bar-subtitle">HKEX: 6862</small>
+      </div>
+    </div>
+  
+    
+    <div class="logo-bar-item" aria-hidden="true">
+      <div class="logo-bar-logo" data-client="1">
+        <div class="logo-bar-placeholder" style="background: #0369a1">
+          <span>CC</span>
+        </div>
+      </div>
+      <div class="logo-bar-text">
+        <div class="logo-bar-name">Cal-Comp Electronics</div>
+        <small class="logo-bar-subtitle">SET: CCET</small>
+      </div>
+    </div>
+  
+    <div class="logo-bar-item" aria-hidden="true">
+      <div class="logo-bar-logo" data-client="2">
+        <div class="logo-bar-placeholder" style="background: #dc2626">
+          <span>TTS</span>
+        </div>
+      </div>
+      <div class="logo-bar-text">
+        <div class="logo-bar-name">TTS Plastic</div>
+        <small class="logo-bar-subtitle">Injection Molding</small>
+      </div>
+    </div>
+  
+    <div class="logo-bar-item" aria-hidden="true">
+      <div class="logo-bar-logo" data-client="3">
+        <div class="logo-bar-placeholder" style="background: #059669">
+          <span>YG</span>
+        </div>
+      </div>
+      <div class="logo-bar-text">
+        <div class="logo-bar-name">Yeong Guan Energy</div>
+        <small class="logo-bar-subtitle">TWSE: 1589</small>
+      </div>
+    </div>
+  
+    <div class="logo-bar-item" aria-hidden="true">
+      <div class="logo-bar-logo" data-client="4">
+        <div class="logo-bar-placeholder" style="background: #7c3aed">
+          <span>STK</span>
+        </div>
+      </div>
+      <div class="logo-bar-text">
+        <div class="logo-bar-name">S.T.K. Steel</div>
+        <small class="logo-bar-subtitle">Stainless Steel</small>
+      </div>
+    </div>
+  
+    <div class="logo-bar-item" aria-hidden="true">
+      <div class="logo-bar-logo" data-client="5">
+        <div class="logo-bar-placeholder" style="background: #ea580c">
+          <span>GH</span>
+        </div>
+      </div>
+      <div class="logo-bar-text">
+        <div class="logo-bar-name">Goldensea Hi-Tech</div>
+        <small class="logo-bar-subtitle">Specialty Chemicals</small>
+      </div>
+    </div>
+  
+    <div class="logo-bar-item" aria-hidden="true">
+      <div class="logo-bar-logo" data-client="6">
+        <div class="logo-bar-placeholder" style="background: #0891b2">
+          <span>CHE</span>
+        </div>
+      </div>
+      <div class="logo-bar-text">
+        <div class="logo-bar-name">Chelic Corporation</div>
+        <small class="logo-bar-subtitle">TWSE: 4555</small>
+      </div>
+    </div>
+  
+    <div class="logo-bar-item" aria-hidden="true">
+      <div class="logo-bar-logo" data-client="7">
+        <div class="logo-bar-placeholder" style="background: #475569">
+          <span>CTR</span>
+        </div>
+      </div>
+      <div class="logo-bar-text">
+        <div class="logo-bar-name">Chung Tai Rubber</div>
+        <small class="logo-bar-subtitle">Vibration Control</small>
+      </div>
+    </div>
+  
+    <div class="logo-bar-item" aria-hidden="true">
+      <div class="logo-bar-logo" data-client="8">
+        <div class="logo-bar-placeholder" style="background: #dc2626">
+          <span>HDL</span>
+        </div>
+      </div>
+      <div class="logo-bar-text">
+        <div class="logo-bar-name">Haidilao International</div>
+        <small class="logo-bar-subtitle">HKEX: 6862</small>
+      </div>
+    </div>
+  
+  </div>
+</div>
+
+<div class="logo-bar-stats">
+  <div class="logo-bar-stat">
+    <div class="logo-bar-stat-value">50,000+</div>
+    <div class="logo-bar-stat-label">Factories Worldwide</div>
+  </div>
+  <div class="logo-bar-stat">
+    <div class="logo-bar-stat-value">44</div>
+    <div class="logo-bar-stat-label">Years in Manufacturing</div>
+  </div>
+  <div class="logo-bar-stat">
+    <div class="logo-bar-stat-value">Certified</div>
+    <div class="logo-bar-stat-label">Thai Revenue Department</div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ========== FACTORY-CHECKS ========== -->
+<section class="preview-section" data-section="factory-checks">
+
+<div class="checks-section">
+<div class="checks-container">
+  <div class="checks-header">
+    <div class="checks-header-label">For Manufacturing Business Owners</div>
+    <h2 class="checks-title">Do You Recognize These Problems?</h2>
+    <p class="checks-subtitle">If any of these sound familiar, you're not alone. These are the most common problems we solve for factories across Thailand and Asia.</p>
+  </div>
+
+  <div class="checks-grid">
+    <!-- Card 1: "Shadow Excel" Reality -->
+    <div class="checks-card">
+      <div class="checks-card-number">01</div>
+      <h3 class="checks-card-title">"Shadow Excel" Reality</h3>
+      <div class="checks-card-quote">"You know your factory isn't actually running on your current system—it's running on spreadsheets because your staff finds the software too rigid or slow."</div>
+      <p class="checks-card-desc">Your real operations live in unconnected Excel files, not in your ERP. Financial data doesn't match physical reality because planners work outside the system.</p>
+    </div>
+
+    <!-- Card 2: "The Black Box" Problem -->
+    <div class="checks-card">
+      <div class="checks-card-number">02</div>
+      <h3 class="checks-card-title">"The Black Box" Problem</h3>
+      <div class="checks-card-quote">"You know exactly how much raw material you bought and how many finished goods you sold, but the 3 weeks in between — your work in progress — are invisible."</div>
+      <p class="checks-card-desc">You rely on paper reports filled out yesterday to understand what happened today. You can't see what's happening on the floor right now without walking over and asking.</p>
+    </div>
+
+    <!-- Card 3: "Ghost Inventory" Crisis -->
+    <div class="checks-card">
+      <div class="checks-card-number">03</div>
+      <h3 class="checks-card-title">"Ghost Inventory" Crisis</h3>
+      <div class="checks-card-quote">"The system says you have 100 units, but the shelf has 50. This discrepancy forces your team to hoard 'safety stock' just to survive."</div>
+      <p class="checks-card-desc">Inventory inaccuracy ties up millions in unnecessary capital and destroys your ability to promise reliable delivery dates. The "borrowing culture" has replaced discipline.</p>
+    </div>
+  </div>
+
+  <!-- Cards 4-5: Full-width below grid -->
+  <div class="checks-card checks-card--full">
+    <div class="checks-card-number">04</div>
+    <h3 class="checks-card-title">"Cost Guesswork" Trap</h3>
+    <div class="checks-card-quote">"You quoted a price last month based on estimated costs. This month the same product costs 15% more to make — and you have no idea why."</div>
+    <p class="checks-card-desc">Batch-to-batch cost fluctuations are invisible without production-order-level tracking. You're pricing based on last quarter's averages, not this morning's reality.</p>
+  </div>
+
+  <div class="checks-card checks-card--full">
+    <div class="checks-card-number">05</div>
+    <h3 class="checks-card-title">"10-Second Answer" Failure</h3>
+    <div class="checks-card-quote">"When your biggest customer calls and asks 'where is my order?' — you put them on hold, walk to the shop floor, and hope someone knows."</div>
+    <p class="checks-card-desc">Real-time delivery status should be a click away, not a 20-minute investigation. Every hold costs you credibility with the customers who matter most.</p>
+  </div>
+
+  <div class="checks-cta">
+    <a href="/demo.html" class="checks-btn checks-btn--primary">Let's Talk About Your Factory</a>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ========== PARTNER-CHECKS ========== -->
+<section class="preview-section" data-section="partner-checks">
+
+        <div class="pchecks-section">
+        <!-- Section Header -->
+        <div class="pchecks-header">
+          <div class="pchecks-label">
+            <span class="pchecks-label-line"></span>
+            <span class="pchecks-label-text">For ERP Implementers</span>
+            <span class="pchecks-label-line"></span>
+          </div>
+          <h2 class="pchecks-title">Trapped in These Cycles?</h2>
+          <p class="pchecks-subtitle">The consulting model has structural limits. Recognizing these traps is the first step to escaping them.</p>
+        </div>
+
+        <!-- 3 Pain Point Cards -->
+        <div class="pchecks-grid">
+
+          <!-- Card 1: Man-Day Trap -->
+          <div class="pchecks-card">
+            <div class="pchecks-card-number">01</div>
+            <h3 class="pchecks-card-title">The Man-Day Trap</h3>
+            <blockquote class="pchecks-card-quote">
+              "Your revenue is mathematically capped by your headcount. You cannot grow your top line without proportionally increasing your payroll costs."
+            </blockquote>
+            <p class="pchecks-card-desc">
+              You are selling hours, not assets. Revenue = Hours Worked, making exponential growth impossible. Every January, you start at zero again.
+            </p>
+          </div>
+
+          <!-- Card 2: Customization Death Spiral -->
+          <div class="pchecks-card">
+            <div class="pchecks-card-number">02</div>
+            <h3 class="pchecks-card-title">Customization Death Spiral</h3>
+            <blockquote class="pchecks-card-quote">
+              "You accept customization requests to win the deal, but then you become married to that code forever."
+            </blockquote>
+            <p class="pchecks-card-desc">
+              You can't upgrade clients on custom code. Support becomes a nightmare of unbillable hours. Your profit evaporated the moment you said "Yes" to a non-standard request.
+            </p>
+          </div>
+
+          <!-- Card 3: Ghost IT Burden -->
+          <div class="pchecks-card">
+            <div class="pchecks-card-number">03</div>
+            <h3 class="pchecks-card-title">The Ghost IT Burden</h3>
+            <blockquote class="pchecks-card-quote">
+              "You aren't just their ERP consultant—you are their unpaid IT department, fixing Wi-Fi, printers, and user discipline issues."
+            </blockquote>
+            <p class="pchecks-card-desc">
+              Most Thai SMEs lack a dedicated IT manager. You end up subsidizing their operations with your margins — absorbing unbillable work you feel forced to do just to keep the relationship alive.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- CTA -->
+        <div class="pchecks-cta-wrapper">
+          <a href="/partner-program.html" class="pchecks-cta">See the Way Out</a>
+        </div>
+        </div>
+      
+</section>
+
+<!-- ========== PRODUCT-PILLARS ========== -->
+<section class="preview-section" data-section="product-pillars">
+
+      <div class="products-section">
+      <div class="products-header">
+        <div class="products-header__label">Complete Manufacturing Stack</div>
+        <h2 class="products-header__title">One Ecosystem. Total Visibility.</h2>
+        <p class="products-header__subtitle">From financials to the factory floor, every DigiWin product works together—no integration nightmares, no data silos.</p>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- Card 1: ERP Core -->
+        <a href="/products/erp.html" class="products-card">
+          <div class="products-card__icon">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#0369a1" stroke-width="1.5">
+              <rect x="4" y="2" width="20" height="28" rx="2"/>
+              <rect x="12" y="12" width="20" height="22" rx="2" fill="none"/>
+              <path d="M8 8h12M8 13h8M8 18h10"/>
+              <circle cx="22" cy="23" r="5"/>
+              <path d="M22 20v6M19 23h6"/>
+            </svg>
+          </div>
+          <h3 class="products-card__title">ERP Core</h3>
+          <div class="products-card__full-name">Enterprise Resource Planning</div>
+          <div class="products-card__tagline">The central brain of your business</div>
+          <ul class="products-card__features">
+            <li><strong>Financials</strong> — accounting, invoicing, budgets in one place</li>
+            <li><strong>Inventory</strong> — real-time stock levels across locations</li>
+            <li><strong>Operations</strong> — purchase orders, sales, and costs connected</li>
+          </ul>
+          <div class="products-card__benefit">Replace scattered spreadsheets with one source of truth.</div>
+        </a>
+
+        <!-- Card 2: MES -->
+        <a href="/products/mes.html" class="products-card">
+          <div class="products-card__icon">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#0369a1" stroke-width="1.5">
+              <rect x="2" y="6" width="32" height="18" rx="2"/>
+              <path d="M2 14h32"/>
+              <rect x="6" y="9" width="4" height="3" rx="1"/>
+              <rect x="12" y="9" width="4" height="3" rx="1"/>
+              <circle cx="28" cy="11" r="2"/>
+              <path d="M6 28h24"/>
+              <circle cx="12" cy="28" r="2"/>
+              <circle cx="24" cy="28" r="2"/>
+              <path d="M12 24v4M24 24v4"/>
+            </svg>
+          </div>
+          <h3 class="products-card__title">MES</h3>
+          <div class="products-card__full-name">Manufacturing Execution System</div>
+          <div class="products-card__tagline">Your digital eyes on the production floor</div>
+          <ul class="products-card__features">
+            <li><strong>Track</strong> — follow every product through each workstation</li>
+            <li><strong>Record</strong> — who made what, when, and how</li>
+            <li><strong>Alert</strong> — spot delays and quality issues instantly</li>
+          </ul>
+          <div class="products-card__benefit">Answer "which batch was my order?" in seconds.</div>
+        </a>
+
+        <!-- Card 3: WMS -->
+        <a href="/products/wms.html" class="products-card">
+          <div class="products-card__icon">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#0369a1" stroke-width="1.5">
+              <path d="M4 4v28h28"/>
+              <path d="M4 16h28M4 24h28"/>
+              <path d="M14 4v28M24 4v28"/>
+              <rect x="6" y="6" width="6" height="8" rx="1" fill="#0369a1" opacity="0.2"/>
+              <rect x="16" y="18" width="6" height="4" rx="1" fill="#0369a1" opacity="0.15"/>
+              <rect x="26" y="6" width="4" height="8" rx="1" fill="#0369a1" opacity="0.1"/>
+            </svg>
+          </div>
+          <h3 class="products-card__title">WMS</h3>
+          <div class="products-card__full-name">Warehouse Management System</div>
+          <div class="products-card__tagline">Never lose track of inventory again</div>
+          <ul class="products-card__features">
+            <li><strong>Locate</strong> — know which shelf, bin, and zone for every item</li>
+            <li><strong>Guide</strong> — barcode scanning for pick, pack, and ship</li>
+            <li><strong>Count</strong> — cycle counts that match reality</li>
+          </ul>
+          <div class="products-card__benefit">Faster fulfillment, fewer mistakes, accurate stock.</div>
+        </a>
+
+        <!-- Card 4: AIoT -->
+        <a href="/products/aiot.html" class="products-card">
+          <div class="products-card__icon">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#0369a1" stroke-width="1.5">
+              <rect x="12" y="12" width="12" height="12" rx="2"/>
+              <text x="18" y="20" text-anchor="middle" font-size="6" fill="#0369a1" stroke="none" font-family="monospace">AI</text>
+              <circle cx="6" cy="6" r="3"/>
+              <circle cx="30" cy="6" r="3"/>
+              <circle cx="6" cy="30" r="3"/>
+              <circle cx="30" cy="30" r="3"/>
+              <path d="M9 9l3 3M27 9l-3 3M9 27l3-3M27 27l-3-3"/>
+              <path d="M18 9V12M27 18h-3M18 27V24M9 18h3" stroke-dasharray="2 2"/>
+            </svg>
+          </div>
+          <h3 class="products-card__title">AIoT</h3>
+          <div class="products-card__full-name">AI + Internet of Things</div>
+          <div class="products-card__tagline">Connect your machines to the digital world</div>
+          <ul class="products-card__features">
+            <li><strong>Collect</strong> — temperature, speed, vibration automatically</li>
+            <li><strong>Predict</strong> — machine breakdowns before they happen</li>
+            <li><strong>Optimize</strong> — energy usage and efficiency gains</li>
+          </ul>
+          <div class="products-card__benefit">No manual logging. AI finds what humans miss.</div>
+        </a>
+
+      </div>
+      </div>
+    
+</section>
+
+<!-- ========== INDUSTRY-TABS ========== -->
+<section class="preview-section" data-section="industry-tabs">
+
+    <div class="ind-section">
+    <div class="ind-container">
+      <!-- Section Header -->
+      <div class="ind-header">
+        <div class="ind-label">Industry Expertise</div>
+        <h2 class="ind-title">Built for Your Industry</h2>
+        <p class="ind-subtitle">We don't just understand manufacturing—we understand YOUR manufacturing.</p>
+      </div>
+
+      <!-- Tab Bar -->
+      <div class="ind-tab-bar">
+        <button class="ind-tab ind-tab-active" data-tab="automotive" onclick="dwSwitchTab('automotive')">
+          Automotive Parts
+        </button>
+        <button class="ind-tab" data-tab="electronics" onclick="dwSwitchTab('electronics')">
+          Electronics Assembly
+        </button>
+        <button class="ind-tab" data-tab="metal-plastics" onclick="dwSwitchTab('metal-plastics')">
+          Metal & Plastics
+        </button>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="ind-content-wrapper">
+
+        <!-- Tab 1: Automotive Parts -->
+        <div class="ind-tab-content ind-tab-active" id="tab-automotive">
+          <div class="ind-grid">
+            <div class="ind-image-placeholder">
+              <span>Automotive Manufacturing Illustration</span>
+            </div>
+            <div class="ind-text-content">
+              <h3 class="ind-content-title">Automotive Parts Manufacturing</h3>
+              <p class="ind-content-desc">Thailand is ASEAN's automotive hub. We understand what tier-1 OEMs (Original Equipment Manufacturers) demand: perfect traceability, just-in-time delivery, and EDI (Electronic Data Interchange) integration that works — every time.</p>
+              <ul class="ind-features">
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="ind-check-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00AFF0;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#003CC8;stop-opacity:1" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="20" height="20" rx="4" fill="url(#ind-check-1)"/>
+                    <path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  OEM EDI integration ready
+                </li>
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="ind-check-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00AFF0;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#003CC8;stop-opacity:1" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="20" height="20" rx="4" fill="url(#ind-check-2)"/>
+                    <path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  IATF 16949 compliance support
+                </li>
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="ind-check-3" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00AFF0;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#003CC8;stop-opacity:1" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="20" height="20" rx="4" fill="url(#ind-check-3)"/>
+                    <path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Lot-level traceability for recalls
+                </li>
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="ind-check-4" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00AFF0;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#003CC8;stop-opacity:1" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="20" height="20" rx="4" fill="url(#ind-check-4)"/>
+                    <path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Kanban and just-in-time scheduling
+                </li>
+              </ul>
+              <a href="/industries/automotive.html" class="ind-cta">
+                Explore Automotive Solutions
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Electronics Assembly -->
+        <div class="ind-tab-content" id="tab-electronics">
+          <div class="ind-grid">
+            <div class="ind-image-placeholder">
+              <span>Electronics Assembly Illustration</span>
+            </div>
+            <div class="ind-text-content">
+              <h3 class="ind-content-title">Electronics Assembly</h3>
+              <p class="ind-content-desc">High-mix, low-volume. Fast product cycles. Thousands of components per board. We built our MES for exactly this complexity.</p>
+              <ul class="ind-features">
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="ind-check-5" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00AFF0;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#003CC8;stop-opacity:1" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="20" height="20" rx="4" fill="url(#ind-check-5)"/>
+                    <path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  SMT (Surface Mount Technology) machine integration
+                </li>
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="ind-check-6" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00AFF0;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#003CC8;stop-opacity:1" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="20" height="20" rx="4" fill="url(#ind-check-6)"/>
+                    <path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Component-level traceability
+                </li>
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="ind-check-7" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00AFF0;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#003CC8;stop-opacity:1" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="20" height="20" rx="4" fill="url(#ind-check-7)"/>
+                    <path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  MSD (Moisture Sensitivity Device) management
+                </li>
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="ind-check-8" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00AFF0;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#003CC8;stop-opacity:1" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="20" height="20" rx="4" fill="url(#ind-check-8)"/>
+                    <path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  AOI (Automated Optical Inspection) integration and defect tracking
+                </li>
+              </ul>
+              <a href="/industries/electronics.html" class="ind-cta">
+                Explore Electronics Solutions
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Metal & Plastics -->
+        <div class="ind-tab-content" id="tab-metal-plastics">
+          <div class="ind-grid">
+            <div class="ind-image-placeholder">
+              <span>Metal & Plastics Illustration</span>
+            </div>
+            <div class="ind-text-content">
+              <h3 class="ind-content-title">Metal & Plastics Processing</h3>
+              <p class="ind-content-desc">Stamping, injection molding, CNC machining. Process manufacturing where yield optimization and scrap reduction drive your margins.</p>
+              <ul class="ind-features">
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="ind-check-9" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00AFF0;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#003CC8;stop-opacity:1" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="20" height="20" rx="4" fill="url(#ind-check-9)"/>
+                    <path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Process parameter monitoring
+                </li>
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="ind-check-10" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00AFF0;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#003CC8;stop-opacity:1" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="20" height="20" rx="4" fill="url(#ind-check-10)"/>
+                    <path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Mold/die lifecycle management
+                </li>
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="ind-check-11" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00AFF0;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#003CC8;stop-opacity:1" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="20" height="20" rx="4" fill="url(#ind-check-11)"/>
+                    <path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Scrap analysis and reduction
+                </li>
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="ind-check-12" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00AFF0;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#003CC8;stop-opacity:1" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="20" height="20" rx="4" fill="url(#ind-check-12)"/>
+                    <path d="M6 10L9 13L14 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Cycle time optimization
+                </li>
+              </ul>
+              <a href="/industries/metal-plastics.html" class="ind-cta">
+                Explore Metal & Plastics Solutions
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </div>
+
+    <script>
+      // Tab switching logic
+      function dwSwitchTab(tabName) {
+        // Remove active class from all tabs and content
+        document.querySelectorAll('.ind-tab').forEach(tab => {
+          tab.classList.remove('ind-tab-active');
+        });
+        document.querySelectorAll('.ind-tab-content').forEach(content => {
+          content.classList.remove('ind-tab-active');
+        });
+
+        // Add active class to selected tab and content
+        const selectedTab = document.querySelector('.ind-tab[data-tab="' + tabName + '"]');
+        const selectedContent = document.getElementById('tab-' + tabName);
+
+        if (selectedTab) selectedTab.classList.add('ind-tab-active');
+        if (selectedContent) selectedContent.classList.add('ind-tab-active');
+      }
+    </script>
+  
+</section>
+
+<!-- ========== STATS-BANNER ========== -->
+<section class="preview-section" data-section="stats-banner">
+
+    <div class="stats-section">
+    <div class="stats-container">
+      <div class="stats-grid">
+        
+    <div class="stats-item" data-index="0">
+      <div class="stats-number stats-counter" data-target="44">
+        0
+      </div>
+      <div class="stats-label">Years in Manufacturing Software</div>
+    </div>
+  
+    <div class="stats-item" data-index="1">
+      <div class="stats-number stats-counter" data-target="50,000+">
+        0
+      </div>
+      <div class="stats-label">Factory Deployments Across Asia</div>
+    </div>
+  
+    <div class="stats-item" data-index="2">
+      <div class="stats-number stats-counter" data-target="100+">
+        0
+      </div>
+      <div class="stats-label">Thai Implementations</div>
+    </div>
+  
+    <div class="stats-item" data-index="3">
+      <div class="stats-number stats-counter" data-target="80%">
+        0
+      </div>
+      <div class="stats-label">of Taiwan's Top 2,000 Manufacturers</div>
+    </div>
+  
+    <div class="stats-item" data-index="4">
+      <div class="stats-number stats-counter" data-target="54%">
+        0
+      </div>
+      <div class="stats-label">Taiwan Manufacturing Solutions Market Share</div>
+    </div>
+  
+    <div class="stats-item" data-index="5">
+      <div class="stats-number" data-target="300378">
+        300378
+      </div>
+      <div class="stats-label">Shenzhen Stock Exchange</div>
+    </div>
+  
+      </div>
+      <div class="stats-source">
+        Source: Common Wealth Magazine, 2023
+      </div>
+    </div>
+    </div>
+    <script>
+      (function() {
+        var counters = document.querySelectorAll('.stats-counter');
+        var animated = false;
+        function animateCounter(el) {
+          var target = el.getAttribute('data-target');
+          var isPercentage = target.indexOf('%') !== -1;
+          var hasPlus = target.indexOf('+') !== -1;
+          var hasComma = target.indexOf(',') !== -1;
+          var numericTarget = parseFloat(target.replace(/[^0-9.]/g, ''));
+          var current = 0;
+          var increment = numericTarget / 60;
+          var frameRate = 1000 / 60;
+          el.classList.add('counting');
+          var timer = setInterval(function() {
+            current += increment;
+            if (current >= numericTarget) { current = numericTarget; clearInterval(timer); }
+            var displayValue = Math.floor(current).toString();
+            if (hasComma && current >= 1000) displayValue = displayValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            if (hasPlus) displayValue += '+';
+            if (isPercentage) displayValue += '%';
+            el.textContent = displayValue;
+          }, frameRate);
+        }
+        function checkScroll() {
+          if (animated) return;
+          var section = document.querySelector('.stats-container');
+          if (!section) return;
+          var rect = section.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.75 && rect.bottom > 0) {
+            animated = true;
+            counters.forEach(function(counter, index) {
+              setTimeout(function() { animateCounter(counter); }, index * 100);
+            });
+          }
+        }
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', checkScroll);
+        else checkScroll();
+        window.addEventListener('scroll', function() { checkScroll(); }, { passive: true });
+        // Dynamic year calculation
+        var years = new Date().getFullYear() - 1982;
+        document.querySelectorAll('.dw-years').forEach(function(el) { el.textContent = years; });
+        // Update the 44 stat to dynamic value
+        var yearStat = document.querySelector('.stats-counter[data-target="44"]');
+        if (yearStat) yearStat.setAttribute('data-target', String(years));
+      })();
+    </script>
+  
+</section>
+
+<!-- ========== TRUST-ANCHORS ========== -->
+<section class="preview-section" data-section="trust-anchors">
+
+    <div class="trust-section">
+    <div class="trust-container">
+      <div class="trust-header">
+        <div class="trust-header-label">Why Trust DigiWin</div>
+        <h2 class="trust-title">Credibility Without Hype</h2>
+        <p class="trust-subtitle">We don’t just claim to be different. Here’s the evidence.</p>
+      </div>
+      <div class="trust-grid">
+        
+    <div class="trust-card">
+      <div class="trust-bg-icon"><svg width="180" height="180" viewBox="0 0 24 24" fill="none" stroke="#00AFF0" stroke-width="1"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></div>
+      <div class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00AFF0" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></div>
+      <div class="trust-badge">300378</div>
+      <h3 class="trust-card-title">Financial Stability</h3>
+      <p class="trust-headline">We are a publicly traded company with transparent financials—the stability partners and clients need for a 10-year relationship.</p>
+      <p class="trust-detail">Our financials are publicly audited and regulated by the Shenzhen Stock Exchange. That means you’re partnering with a company that has the governance, capital, and long-term commitment to support your factory for years to come — not a vendor that might disappear after implementation.</p>
+    </div>
+  
+    <div class="trust-card">
+      <div class="trust-bg-icon"><svg width="180" height="180" viewBox="0 0 24 24" fill="none" stroke="#00AFF0" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <div class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00AFF0" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <div class="trust-badge">Foxconn FII</div>
+      <h3 class="trust-card-title">Manufacturing DNA</h3>
+      <p class="trust-headline">Strategic investment from Foxconn Industrial Internet — validation that our software meets the standards of the world’s largest electronics manufacturer.</p>
+      <p class="trust-detail">This isn’t generic IT software — it’s built for industrial reality. When the company that manufactures iPhones trusts DigiWin on their production lines, that speaks to the depth and reliability of our platform at the highest level of manufacturing complexity.</p>
+    </div>
+  
+    <div class="trust-card">
+      <div class="trust-bg-icon"><svg width="180" height="180" viewBox="0 0 24 24" fill="none" stroke="#00AFF0" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+      <div class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00AFF0" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+      <div class="trust-badge">Since 1982</div>
+      <h3 class="trust-card-title">Manufacturing Focus Since Day One</h3>
+      <p class="trust-headline">We have spent <span class="dw-years">44</span> years exclusively in manufacturing software—built on decades of shop-floor reality, not temporary tech trends.</p>
+      <p class="trust-detail">DigiWin has survived every technology shift (DOS → Windows → Cloud) while staying focused on manufacturing. We didn’t pivot to crypto or retail POS when it was trendy.</p>
+    </div>
+  
+    <div class="trust-card">
+      <div class="trust-bg-icon"><svg width="180" height="180" viewBox="0 0 24 24" fill="none" stroke="#00AFF0" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <div class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00AFF0" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <div class="trust-badge">50,000+</div>
+      <h3 class="trust-card-title">Proven at Scale</h3>
+      <p class="trust-headline">Our methodology is refined from 50,000+ implementations across Asia—adopt a proven standard, not a beta product.</p>
+      <p class="trust-detail">The software has been refined through thousands of real-world factory deployments across Asia. It handles the specific complexities — Thai tax rules, sub-contracting workflows, circular bills of materials — that often break smaller systems.</p>
+    </div>
+  
+    <div class="trust-card trust-card-full">
+      <div class="trust-bg-icon"><svg width="180" height="180" viewBox="0 0 24 24" fill="none" stroke="#00AFF0" stroke-width="1"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <div class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00AFF0" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <div class="trust-badge">BOI Ready</div>
+      <h3 class="trust-card-title">BOI Compliance</h3>
+      <p class="trust-headline">Production-order-level material reconciliation that passes BOI (Board of Investment) audits — a capability no competitor can match.</p>
+      <p class="trust-detail">One factory saved 10M+ THB/year in supplementary taxes. Our system tracks actual material consumption per production order, not theoretical bill-of-materials calculations — the gap that triggers costly audit findings. <a href="/blog/boi-compliance-jin-hai.html" style="color:#0369a1">Read the full story →</a></p>
+    </div>
+  
+      </div>
+    </div>
+    </div>
+  
+</section>
+
+<!-- ========== PROVEN-RESULTS ========== -->
+<section class="preview-section" data-section="proven-results">
+
+    <div class="results-section">
+    <div class="results-container">
+      <div class="results-header">
+        <div class="results-header-label">Proven Results</div>
+        <h2 class="results-title">Real Outcomes from Thai Factories</h2>
+        <p class="results-subtitle">These aren’t projections. These are results our clients achieved after going live.</p>
+      </div>
+      <div class="results-grid">
+        
+    <div class="results-card">
+      <div class="results-company">Thai Alpha Polymer</div>
+      <div class="results-metric">Month-end closing: 60 days to 15 days</div>
+      <p class="results-detail">Stock accuracy reached 95% with Workflow ERP + WMS integration across their PET plastic roll operations.</p>
+    </div>
+  
+    <div class="results-card">
+      <div class="results-company">Ginfong Precision Metal Stamping</div>
+      <div class="results-metric">Revenue growth of 200%, margins from 23% to 34%</div>
+      <p class="results-detail">Gross profit improved from 23% to 34% with ERP + SFT (Shop Floor Tracking) — even during the COVID period when competitors contracted.</p>
+    </div>
+  
+      </div>
+      <div class="results-cta">
+        <a href="/case-studies.html" class="results-link">See all case studies →</a>
+      </div>
+    </div>
+    </div>
+  
+</section>
+
+<!-- ========== FINAL-CTA ========== -->
+<section class="preview-section" data-section="final-cta">
+
+    <div class="cta-section">
+    <div class="cta-container">
+      <h2 class="cta-title">Let’s Start a Conversation</h2>
+      <p class="cta-subtitle">We’re eager to understand your challenges and explore how we can help. No pressure, no sales pitch—just a genuine conversation about your manufacturing operations.</p>
+      <div class="cta-btn-row">
+        <a href="/demo.html" class="cta-btn cta-btn--primary">Let’s Talk</a>
+        <a href="/partner-program.html" class="cta-btn cta-btn--ghost">Explore Partnership</a>
+      </div>
+    </div>
+    </div>
+  
+</section>
+
+  
+  
+</body>
+</html>

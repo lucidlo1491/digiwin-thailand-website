@@ -164,14 +164,14 @@ function blocks() {
     // Section
     sectionOpen({
       adminLabel: 'Client Logo Bar',
-      css: 'selector{width:100% !important;max-width:100% !important;background:linear-gradient(180deg, #f8fafc 0%, #ffffff 100%) !important;padding:60px 0 !important;position:relative;overflow:hidden;margin:0 !important;}',
+      css: 'selector{background:transparent !important;padding:0 !important;}',
     }),
 
     // Row
     rowOpen({
       adminLabel: 'Logo Bar Row',
       columns: 'equal-columns_1',
-      css: 'selector{max-width:1400px !important;margin:0 auto !important;padding:0 40px !important;}',
+      css: 'selector{max-width:100% !important;margin:0 !important;padding:0 !important;}',
     }),
 
     // Column
@@ -195,11 +195,14 @@ function logoBarCss() {
 /* ===== LOGO BAR SECTION ===== */
 .logobar-section{
   background:${SPEC.section.background};
-  padding:0;
+  padding:${SPEC.section.padding};
   -webkit-font-smoothing:auto;
   -moz-osx-font-smoothing:auto;
   font-size:16px;
   overflow:hidden;
+  position:relative;
+  width:100%;
+  max-width:100vw;
 }
 .logobar-label{
   font-family:${SPEC.label.fontFamily};

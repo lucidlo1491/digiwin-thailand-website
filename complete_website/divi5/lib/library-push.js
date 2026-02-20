@@ -73,6 +73,105 @@ const EXAMPLE_DATA = {
       { text: 'Secondary Action', href: '#', style: 'ghost' },
     ],
   },
+  'hero-gradient': {
+    adminLabel: 'DigiWin — Hero Gradient',
+    sectionPrefix: 'tpl-hero',
+    sectionBg: '#000432',
+    panels: [{
+      id: 'main',
+      label: 'Section Label',
+      title: 'Hero Title Goes Here',
+      subtitle: 'A compelling subtitle that draws the reader in and sets the context for the page.',
+      gradient: 'linear-gradient(165deg, #0f1419 0%, #1a2632 50%, #000864 100%)',
+      headingTag: 'h1',
+      buttons: [
+        { text: 'Primary Action', href: '#', style: 'primary' },
+        { text: 'Learn More', href: '#', style: 'ghost' },
+      ],
+    }],
+  },
+  'logo-marquee': {
+    adminLabel: 'DigiWin — Logo Marquee',
+    sectionPrefix: 'tpl-logos',
+    label: 'Trusted By Industry Leaders',
+    clients: [
+      { name: 'Company A', color: '#00AFF0', initials: 'CA', subtitle: 'Manufacturing' },
+      { name: 'Company B', color: '#003CC8', initials: 'CB', subtitle: 'Automotive' },
+      { name: 'Company C', color: '#000864', initials: 'CC', subtitle: 'Electronics' },
+    ],
+    stats: [
+      { value: '100+', label: 'Clients' },
+      { value: '50,000+', label: 'Users' },
+    ],
+  },
+  'footer-ocean': {
+    adminLabel: 'DigiWin — Footer Ocean',
+    sectionPrefix: 'tpl-footer',
+    logo: { src: '#', alt: 'DigiWin', width: 160, height: 40 },
+    tagline: 'Manufacturing intelligence since 1982.',
+    stockInfo: { label: 'Shenzhen Stock Exchange', code: '300378' },
+    columns: [
+      { heading: 'Solutions', links: [{ text: 'ERP', href: '#' }, { text: 'MES', href: '#' }, { text: 'WMS', href: '#' }] },
+      { heading: 'Company', links: [{ text: 'About', href: '#' }, { text: 'Contact', href: '#' }] },
+    ],
+    contact: {
+      heading: 'Contact',
+      company: 'DigiWin Software (Thailand)',
+      address: ['123 Example Road', 'Bangkok 10110, Thailand'],
+      email: 'info@example.com',
+    },
+    social: [
+      { label: 'LinkedIn', icon: 'in', href: '#' },
+      { label: 'LINE', icon: 'L', href: '#' },
+    ],
+    legal: {
+      copyright: '\u00A9 2026 DigiWin. All rights reserved.',
+      links: [{ text: 'Privacy Policy', href: '#' }, { text: 'Terms', href: '#' }],
+    },
+  },
+  'result-cards': {
+    adminLabel: 'DigiWin — Result Cards',
+    sectionPrefix: 'tpl-results',
+    background: '#F5F7FA',
+    header: {
+      label: 'Proven Results',
+      title: 'Real Outcomes from Our Clients',
+      subtitle: 'Verified results from actual implementations.',
+    },
+    cards: [
+      { company: 'Client Alpha', metric: 'Key metric improvement', detail: 'Details about how this was achieved.' },
+      { company: 'Client Beta', metric: 'Another key improvement', detail: 'Details about the second achievement.' },
+    ],
+    cta: { text: 'See all case studies \u2192', href: '#' },
+  },
+  'tab-content': {
+    adminLabel: 'DigiWin — Tabbed Content',
+    sectionPrefix: 'tpl-tabs',
+    background: '#ffffff',
+    header: {
+      label: 'Industry Expertise',
+      title: 'Built for Your Industry',
+      subtitle: 'Specialized solutions for different manufacturing verticals.',
+    },
+    tabs: [
+      {
+        id: 'tab-a',
+        label: 'Industry A',
+        title: 'Industry A Solutions',
+        description: 'Description of how the solution fits this industry.',
+        features: ['Feature one', 'Feature two', 'Feature three'],
+        cta: { text: 'Explore Solutions', href: '#' },
+      },
+      {
+        id: 'tab-b',
+        label: 'Industry B',
+        title: 'Industry B Solutions',
+        description: 'Description of how the solution fits this industry.',
+        features: ['Feature one', 'Feature two', 'Feature three'],
+        cta: { text: 'Explore Solutions', href: '#' },
+      },
+    ],
+  },
 };
 
 // ────────────────────────────────────────────────────────────────
@@ -96,15 +195,18 @@ function getTermTaxonomyId(taxonomy, slug, name) {
     if (lines.length > 1) return parseInt(lines[1], 10);
   }
 
-  // Create term if it doesn't exist
+  // Create term if it doesn't exist (combine INSERT + SELECT in single query)
   console.log(`  Creating taxonomy term: ${taxonomy}/${slug}`);
-  const insertTerm = `INSERT INTO wp_terms (name, slug, term_group) VALUES ('${mysql.escape(name)}', '${mysql.escape(slug)}', 0);`;
-  mysql.query(insertTerm);
-  const termId = mysql.query('SELECT LAST_INSERT_ID() AS id;').split('\n')[1].trim();
-  const insertTT = `INSERT INTO wp_term_taxonomy (term_id, taxonomy, description, parent, count) VALUES (${termId}, '${mysql.escape(taxonomy)}', '', 0, 0);`;
-  mysql.query(insertTT);
-  const ttId = mysql.query('SELECT LAST_INSERT_ID() AS id;').split('\n')[1].trim();
-  return parseInt(ttId, 10);
+  const createSql = `INSERT INTO wp_terms (name, slug, term_group) VALUES ('${mysql.escape(name)}', '${mysql.escape(slug)}', 0);
+SELECT LAST_INSERT_ID() AS id;`;
+  const termResult = mysql.query(createSql).trim();
+  const termId = parseInt(termResult.split('\n').pop().trim(), 10);
+
+  const createTTSql = `INSERT INTO wp_term_taxonomy (term_id, taxonomy, description, parent, count) VALUES (${termId}, '${mysql.escape(taxonomy)}', '', 0, 0);
+SELECT LAST_INSERT_ID() AS id;`;
+  const ttResult = mysql.query(createTTSql).trim();
+  const ttId = parseInt(ttResult.split('\n').pop().trim(), 10);
+  return ttId;
 }
 
 // ────────────────────────────────────────────────────────────────
@@ -162,6 +264,7 @@ function pushTemplate(name, tmpl, dryRun = false) {
       post_date_gmt = '${now}',
       post_content = '${escapedContent}',
       post_title = '${escapedTitle}',
+      post_excerpt = '',
       post_status = 'publish',
       post_name = '${mysql.escape(name)}',
       post_type = 'et_pb_layout',
@@ -169,9 +272,13 @@ function pushTemplate(name, tmpl, dryRun = false) {
       post_modified_gmt = '${now}',
       comment_status = 'closed',
       ping_status = 'closed',
-      post_mime_type = '';`;
-    mysql.query(insertSql);
-    postId = parseInt(mysql.query('SELECT LAST_INSERT_ID() AS id;').split('\n')[1].trim(), 10);
+      post_content_filtered = '',
+      to_ping = '',
+      pinged = '',
+      post_mime_type = '';
+SELECT LAST_INSERT_ID() AS id;`;
+    const insertResult = mysql.query(insertSql).trim();
+    postId = parseInt(insertResult.split('\n').pop().trim(), 10);
   }
 
   // Set required meta fields

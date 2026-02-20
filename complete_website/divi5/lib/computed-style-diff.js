@@ -86,6 +86,11 @@ const STRUCTURAL_PATTERNS = [
   { labelPattern: /Section BG/i, properties: ['background-color', 'background-image'] },
   // Divi section overflow
   { labelPattern: /Section BG/i, properties: ['overflow', 'overflow-x', 'overflow-y'] },
+  // Section Wrapper: width/height/line-height are layout-computed (different container widths,
+  // body line-height inheritance). Only padding/margin on wrappers are real CSS bugs.
+  { labelPattern: /Section Wrapper/i, properties: ['width', 'height', 'min-width', 'max-width', 'min-height', 'max-height', 'line-height'] },
+  // Section Wrapper: position/overflow/display differ due to HTML inline styles vs Divi defaults
+  { labelPattern: /Section Wrapper/i, properties: ['position', 'overflow', 'overflow-x', 'overflow-y', 'display', 'flex-direction', 'align-items', 'justify-content'] },
 ];
 
 /**

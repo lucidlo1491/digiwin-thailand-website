@@ -88,6 +88,7 @@ module.exports = {
           { selector: '.checks-title', label: 'Section Title' },
         ],
         styleMap: [
+          { label: 'Section Wrapper', htmlSel: '.dw-checks-section--factory', wpSel: '.checks-section' },
           { label: 'Section Title', htmlSel: '.dw-checks-section--factory .dw-checks-title', wpSel: '.checks-title' },
           { label: 'Section Subtitle', htmlSel: '.dw-checks-section--factory .dw-checks-subtitle', wpSel: '.checks-subtitle' },
           { label: 'Check Card', htmlSel: '.dw-checks-section--factory .dw-check-card', wpSel: '.checks-card' },
@@ -103,6 +104,7 @@ module.exports = {
           { selector: '.pchecks-title', label: 'Section Title' },
         ],
         styleMap: [
+          { label: 'Section Wrapper', htmlSel: '.dw-checks-section--partner', wpSel: '.pchecks-section' },
           { label: 'Section Title', htmlSel: '.dw-checks-section--partner .dw-checks-title', wpSel: '.pchecks-title' },
           { label: 'Section Subtitle', htmlSel: '.dw-checks-section--partner .dw-checks-subtitle', wpSel: '.pchecks-subtitle' },
           { label: 'Check Card', htmlSel: '.dw-checks-section--partner .dw-check-card', wpSel: '.pchecks-card' },
@@ -117,6 +119,7 @@ module.exports = {
           { selector: '.products-title', label: 'Section Title' },
         ],
         styleMap: [
+          { label: 'Section Wrapper', htmlSel: 'section.dw-section:nth-of-type(5)', wpSel: '.products-section' },
           { label: 'Section Title', htmlSel: '.dw-section-title', wpSel: '.products-title' },
           { label: 'Section Label', htmlSel: '.dw-section-label', wpSel: '.products-header-label' },
           { label: 'Product Card', htmlSel: '.dw-value-prop', wpSel: '.products-card' },
@@ -127,6 +130,7 @@ module.exports = {
         name: 'industry-tabs', wpSelector: '.ind-section', htmlSelector: 'section.dw-section:nth-of-type(6)',
         pixelThreshold: 0.1, note: 'tab state may differ',
         styleMap: [
+          { label: 'Section Wrapper', htmlSel: 'section.dw-section:nth-of-type(6)', wpSel: '.ind-section' },
           { label: 'Section Title', htmlSel: 'section.dw-section:nth-of-type(6) .dw-section-title', wpSel: '.ind-title' },
           { label: 'Section Label', htmlSel: 'section.dw-section:nth-of-type(6) .dw-section-label', wpSel: '.ind-label' },
         ],
@@ -140,6 +144,7 @@ module.exports = {
           { selector: '.stats-number', label: 'Stat Numbers' },
         ],
         styleMap: [
+          { label: 'Section Wrapper', htmlSel: '.dw-stats-section', wpSel: '.stats-section' },
           { label: 'Stat Number', htmlSel: '.dw-stat-value', wpSel: '.stats-number' },
           { label: 'Stat Label', htmlSel: '.dw-stat-label', wpSel: '.stats-label' },
           { label: 'Stats Grid', htmlSel: '.dw-stats-inner', wpSel: '.stats-grid' },
@@ -154,6 +159,7 @@ module.exports = {
           { selector: '.trust-title', label: 'Section Title' },
         ],
         styleMap: [
+          { label: 'Section Wrapper', htmlSel: '.dw-trust-section', wpSel: '.trust-section' },
           { label: 'Section Title', htmlSel: '.dw-trust-section .dw-section-title', wpSel: '.trust-title' },
           { label: 'Trust Card', htmlSel: '.dw-trust-card', wpSel: '.trust-card' },
           { label: 'Trust Card Title', htmlSel: '.dw-trust-title', wpSel: '.trust-card-title' },
@@ -164,6 +170,7 @@ module.exports = {
         name: 'proven-results', wpSelector: '.results-section', htmlSelector: '.dw-results-section',
         pixelThreshold: 0.1,
         styleMap: [
+          { label: 'Section Wrapper', htmlSel: '.dw-results-section', wpSel: '.results-section' },
           { label: 'Section Title', htmlSel: '.dw-results-section .dw-section-title', wpSel: '.results-title' },
           { label: 'Result Card', htmlSel: '.dw-result-card', wpSel: '.results-card' },
         ],
@@ -172,6 +179,7 @@ module.exports = {
         name: 'final-cta', wpSelector: '.cta-section', htmlSelector: '.dw-cta-section',
         pixelThreshold: 0.1,
         styleMap: [
+          { label: 'Section Wrapper', htmlSel: '.dw-cta-section', wpSel: '.cta-section' },
           { label: 'CTA Title', htmlSel: '.dw-cta-title', wpSel: '.cta-title' },
           { label: 'CTA Subtitle', htmlSel: '.dw-cta-subtitle', wpSel: '.cta-subtitle' },
           { label: 'CTA Primary Button', htmlSel: '.dw-cta-section .dw-btn-white', wpSel: '.cta-btn--primary' },

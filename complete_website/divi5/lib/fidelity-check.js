@@ -771,6 +771,26 @@ async function run(opts) {
       report.sections.push(sectionReport);
     }
 
+    // ═══════════════════════════════════════════════════════
+    // F9: INTER-SECTION GAP CHECK (runs once, across all sections)
+    // ═══════════════════════════════════════════════════════
+
+    if (!autodiscoverOnly && sections.length >= 2) {
+      console.log(`\n${'═'.repeat(60)}`);
+      console.log('  F9: Inter-Section Gap Check');
+      console.log('═'.repeat(60));
+
+      const gapResults = await checkSectionGaps(htmlPage, wpPage, sections, verbose);
+      report.sectionGaps = gapResults;
+
+      for (const g of gapResults) {
+        logFinding(g);
+        if (g.status === 'FAIL') report.summary.fail++;
+        else if (g.status === 'PASS') report.summary.pass++;
+        else if (g.status === 'WARN') report.summary.warn++;
+      }
+    }
+
   } finally {
     await browser.close();
     await htmlServer.close();
@@ -830,8 +850,18 @@ async function run(opts) {
     }
   }
 
+  // Section gap issues (F9)
+  const gapFailures = (report.sectionGaps || []).filter(g => g.status === 'FAIL');
+  if (gapFailures.length > 0) {
+    console.log('\n  SECTION GAP issues:');
+    for (const g of gapFailures) {
+      console.log(`    → ${g.label}: ${g.note}`);
+    }
+  }
+
   // Manual action items (from F1-F8)
-  if (report.summary.fail > allFixable.length) {
+  const manualFails = report.summary.fail - allFixable.length - gapFailures.length;
+  if (manualFails > 0) {
     console.log('\n  Manual check action items:');
     for (const s of report.sections) {
       for (const f of s.findings) {
@@ -999,8 +1029,24 @@ async function checkElementStyles(htmlPage, wpPage, mapping, section, verbose) {
     return result;
   }
 
+  // Section Wrapper elements: skip layout-computed properties (width, height, line-height,
+  // position, overflow, display) — these differ due to container width and body inheritance.
+  // Only padding/margin on wrappers are real CSS bugs worth flagging.
+  const isWrapper = /Section Wrapper/i.test(mapping.label);
+  const WRAPPER_SKIP_PROPS = new Set([
+    'width', 'height', 'min-width', 'max-width', 'min-height', 'max-height',
+    'line-height', 'position', 'overflow', 'overflow-x', 'overflow-y',
+    'display', 'flex-direction', 'align-items', 'justify-content', 'gap',
+  ]);
+
   // Compare each property
   for (const prop of ELEMENT_PROPERTIES) {
+    // Skip layout-computed properties on Section Wrapper elements
+    if (isWrapper && WRAPPER_SKIP_PROPS.has(prop)) {
+      result.matchCount++;
+      continue;
+    }
+
     const htmlVal = htmlStyles[prop] || '';
     const wpVal = wpStyles[prop] || '';
     const cmp = compareValues(prop, htmlVal, wpVal);
@@ -1134,6 +1180,76 @@ async function checkUnicodeCharacters(htmlPage, wpPage, section) {
       id: 'F5', label: 'Unicode characters', status: 'PASS',
       note: 'No curly quote/apostrophe mismatches detected',
     });
+  }
+
+  return results;
+}
+
+/**
+ * F9: Check inter-section gaps.
+ * Measures the pixel gap between consecutive section wrappers on both HTML and WP.
+ * A gap difference > threshold indicates missing/extra spacing between sections.
+ */
+async function checkSectionGaps(htmlPage, wpPage, allSections, verbose) {
+  const results = [];
+  const GAP_TOLERANCE = 10; // px — gaps within ±10px are acceptable
+
+  // Build ordered list of section wrapper selectors
+  const htmlSelectors = allSections.map(s => s.htmlSelector).filter(Boolean);
+  const wpSelectors = allSections.map(s => s.wpSelector).filter(Boolean);
+
+  // Measure bounding rects on both sides
+  const [htmlRects, wpRects] = await Promise.all([
+    htmlPage.evaluate((selectors) => {
+      return selectors.map(sel => {
+        const el = document.querySelector(sel);
+        if (!el) return null;
+        const r = el.getBoundingClientRect();
+        return { top: r.top, bottom: r.bottom, height: r.height, selector: sel };
+      });
+    }, htmlSelectors),
+    wpPage.evaluate((selectors) => {
+      return selectors.map(sel => {
+        const el = document.querySelector(sel);
+        if (!el) return null;
+        const r = el.getBoundingClientRect();
+        return { top: r.top, bottom: r.bottom, height: r.height, selector: sel };
+      });
+    }, wpSelectors),
+  ]);
+
+  // Compare consecutive pairs
+  for (let i = 0; i < allSections.length - 1; i++) {
+    const htmlCurrent = htmlRects[i];
+    const htmlNext = htmlRects[i + 1];
+    const wpCurrent = wpRects[i];
+    const wpNext = wpRects[i + 1];
+
+    if (!htmlCurrent || !htmlNext || !wpCurrent || !wpNext) continue;
+
+    const htmlGap = htmlNext.top - htmlCurrent.bottom;
+    const wpGap = wpNext.top - wpCurrent.bottom;
+    const diff = Math.abs(htmlGap - wpGap);
+
+    const sectionPair = `${allSections[i].name} → ${allSections[i + 1].name}`;
+
+    if (diff > GAP_TOLERANCE) {
+      results.push({
+        id: 'F9',
+        label: `Section gap: ${sectionPair}`,
+        status: 'FAIL',
+        htmlValue: `${Math.round(htmlGap)}px`,
+        wpValue: `${Math.round(wpGap)}px`,
+        note: `Gap differs by ${Math.round(diff)}px (HTML=${Math.round(htmlGap)}px, WP=${Math.round(wpGap)}px). Check margin/padding on section wrappers.`,
+      });
+    } else if (verbose) {
+      results.push({
+        id: 'F9',
+        label: `Section gap: ${sectionPair}`,
+        status: 'PASS',
+        note: `HTML=${Math.round(htmlGap)}px, WP=${Math.round(wpGap)}px (diff: ${Math.round(diff)}px)`,
+      });
+    }
   }
 
   return results;

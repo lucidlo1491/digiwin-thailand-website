@@ -14,6 +14,7 @@ const statsBanner = require('./stats-banner');
 const ctaGradient = require('./cta-gradient');
 const heroGradient = require('./hero-gradient');
 const logoMarquee = require('./logo-marquee');
+const footerOcean = require('./footer-ocean');
 
 // Registry: name → template module
 const templates = {
@@ -23,6 +24,7 @@ const templates = {
   'cta-gradient': ctaGradient,
   'hero-gradient': heroGradient,
   'logo-marquee': logoMarquee,
+  'footer-ocean': footerOcean,
 };
 
 /**

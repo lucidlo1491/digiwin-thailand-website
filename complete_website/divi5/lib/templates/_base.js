@@ -8,6 +8,8 @@
  * - Responsive breakpoint helpers
  * - Reduced-motion helper
  * - Button CSS generators
+ * - Divi list-style quirk resets (diviListReset)
+ * - Design token color constants (COLORS)
  */
 
 const { codeModule, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../modules');
@@ -17,6 +19,20 @@ const superD = require('../super-d');
 // BREAKPOINTS — single source of truth for all templates
 // ────────────────────────────────────────────────────────────────
 const BREAKPOINTS = { tablet: 1024, mobile: 768, small: 480 };
+
+// ────────────────────────────────────────────────────────────────
+// COLORS — design token values (must match CSS custom properties)
+// Use these instead of hardcoding hex values in templates.
+// Source of truth: design-system.md + styles.css :root block.
+// ────────────────────────────────────────────────────────────────
+const COLORS = {
+  grayLight: '#F5F7FA',  // --dw-gray-light (NOT #f8fafc)
+  navy:      '#000864',  // --dw-navy
+  navyDeep:  '#000432',  // --dw-navy-deep
+  blue:      '#00AFF0',  // --dw-blue (Smart Blue)
+  royal:     '#003CC8',  // --dw-royal
+  cyan:      '#00E6FF',  // --dw-cyan
+};
 
 // ────────────────────────────────────────────────────────────────
 // DIVI BLOCK WRAPPERS
@@ -123,7 +139,7 @@ function sectionHeaderCSS(p, opts = {}) {
   const subtitleColor = dark ? 'rgba(255,255,255,0.75)' : '#5b6b80';
   const labelColor = dark ? 'rgba(255,255,255,0.75)' : '#0369a1';
   const lineColor = dark ? 'rgba(255,255,255,0.4)' : '#00AFF0';
-  const maxWidth = opts.headerMaxWidth || '800px';
+  const maxWidth = opts.headerMaxWidth || '700px';
   const marginBottom = opts.headerMarginBottom || '64px';
 
   return `
@@ -131,7 +147,7 @@ function sectionHeaderCSS(p, opts = {}) {
 .${p}-header-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.2em;color:${labelColor};margin-bottom:16px;line-height:1.6;display:flex;align-items:center;justify-content:center;gap:12px}
 .${p}-header-label::before,.${p}-header-label::after{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,${lineColor});flex-shrink:0}
 .${p}-header-label::after{transform:scaleX(-1)}
-.${p}-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;color:${titleColor};line-height:1.15;letter-spacing:-0.02em;margin:0 0 16px;padding:0}
+.${p}-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,3.5vw,44px);font-weight:700;color:${titleColor};line-height:1.15;letter-spacing:-0.02em;margin:0 0 16px;padding:0}
 .${p}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:${subtitleColor};line-height:1.6;max-width:600px;margin:0 auto;padding:0}`;
 }
 
@@ -157,7 +173,7 @@ function sectionHeaderSpanCSS(p, opts = {}) {
 .${p}-label-line{width:40px;height:1px;background:linear-gradient(90deg,transparent,${lineColor});flex-shrink:0}
 .${p}-label-line:last-child{transform:scaleX(-1)}
 .${p}-label-text{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:${labelColor};line-height:1.6}
-.${p}-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:${titleColor};margin:0 0 16px;padding:0}
+.${p}-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,3.5vw,44px);font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:${titleColor};margin:0 0 16px;padding:0}
 .${p}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;line-height:1.6;color:${subtitleColor};margin:0 auto;max-width:600px;padding:0}`;
 }
 
@@ -264,8 +280,25 @@ function grainCSS(selector) {
   return `${selector}::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none;z-index:1}`;
 }
 
+/**
+ * Reset Divi's default list-style overrides.
+ *
+ * Divi injects global styles that add bullets/numbers and padding to ul/ol/li.
+ * This reset strips all of that so templates have a clean slate to style lists
+ * however they need.  Apply per-section using the section's CSS prefix.
+ *
+ * @param {string} prefix — CSS class prefix (e.g. 'pchecks', 'solutions')
+ * @returns {string} CSS string
+ */
+function diviListReset(prefix) {
+  return `.${prefix} ul,.${prefix} ol{list-style:none !important;padding:0 !important;margin:0 !important}` +
+    `.${prefix} li{list-style:none !important;padding:0 !important}` +
+    `.${prefix} li::before{display:none !important}`;
+}
+
 module.exports = {
   BREAKPOINTS,
+  COLORS,
   wrapInDiviSection,
   sectionHeaderHTML,
   sectionHeaderSpanHTML,
@@ -278,4 +311,5 @@ module.exports = {
   buttonLightCSS,
   superDCSS,
   grainCSS,
+  diviListReset,
 };

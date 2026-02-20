@@ -1,59 +1,14 @@
 /**
- * home-hero.js — Homepage Hero Section Builder (Code Module Approach)
+ * home-hero.js — Homepage Hero Section (§3.1)
+ * Dual-panel split: Factory Operators (Track A) + Partners (Track B).
  *
- * ONE Code Module contains the entire hero HTML.
- * CSS Grid handles the 2-panel split. No Divi column layout dependencies.
- * SVGs are Base64-injected at runtime (wp_kses bypass).
- * Scripts go in a separate wp:html block (won't execute in Code Modules).
- *
- * ContentSpec: §3.1 "Hero Section — Dual Panel" (lines 99-196)
+ * Template: hero-gradient
  */
 
-const { codeModule, htmlBlock, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../../lib/modules');
-
-// ────────────────────────────────────────────────────────────────
-// SPEC — Design tokens from ContentSpec_Home_Divi5_2.0.md §3.1
-// ────────────────────────────────────────────────────────────────
-const SPEC = {
-  label: {
-    fontFamily: "'JetBrains Mono', monospace",
-    fontSize: '14px',
-    fontWeight: '600',
-    letterSpacing: '0.15em',
-    textTransform: 'uppercase',
-    colorFactory: '#00AFF0',
-    colorPartner: 'rgba(255,255,255,0.9)',
-  },
-  title: {
-    fontFamily: "'Noto Sans', sans-serif",
-    fontSize: 'clamp(32px, 3.5vw, 52px)',
-    fontWeight: '700',
-    lineHeight: '1.1',
-    letterSpacing: '-0.03em',
-    color: '#fff',
-    marginBottom: '24px',
-  },
-  subtitle: {
-    fontFamily: "'Noto Sans', sans-serif",
-    fontSize: '18px',
-    fontWeight: '400',
-    lineHeight: '1.75',
-    color: 'rgba(255,255,255,0.75)',
-    marginBottom: '36px',
-  },
-  cta: {
-    fontFamily: "'Noto Sans', sans-serif",
-    fontSize: '16px',
-    fontWeight: '600',
-    borderRadius: '8px',
-    padding: '14px 32px',
-    primaryBg: '#00AFF0',
-    secondaryBorder: 'rgba(255,255,255,0.3)',
-  },
-};
+const heroGradient = require('../../lib/templates/hero-gradient');
 
 // ════════════════════════════════════════════════════════════════
-// SVG ILLUSTRATIONS (Base64-encoded at build time for KSES bypass)
+// SVG ILLUSTRATIONS (unchanged — Base64-encoded at build time)
 // ════════════════════════════════════════════════════════════════
 
 function getFactorySVGRaw() {
@@ -169,275 +124,61 @@ function getPartnerSVGRaw() {
 }
 
 // ════════════════════════════════════════════════════════════════
-// HERO JS (SVG injection + reduced-motion + dynamic year + IntersectionObserver)
-// ════════════════════════════════════════════════════════════════
-function getHeroJS() {
-  const factoryB64 = Buffer.from(getFactorySVGRaw()).toString('base64');
-  const partnerB64 = Buffer.from(getPartnerSVGRaw()).toString('base64');
-
-  return `<script>
-(function(){
-function u8(b){return decodeURIComponent(Array.from(atob(b),function(c){return'%'+('00'+c.charCodeAt(0).toString(16)).slice(-2)}).join(''))}
-var factorySVG=u8('${factoryB64}');
-var partnerSVG=u8('${partnerB64}');
-var fc=document.getElementById('dw-factory-svg');
-var pc=document.getElementById('dw-partner-svg');
-if(fc)fc.innerHTML=factorySVG;
-if(pc){pc.innerHTML=partnerSVG;pc.setAttribute('data-freeze-trigger','');}
-var rm=window.matchMedia('(prefers-reduced-motion:reduce)');
-function handleMotion(){
-if(rm.matches){
-document.querySelectorAll('.hero-svg-illustration animate,.hero-svg-illustration animateTransform,.hero-svg-illustration animateMotion')
-.forEach(function(el){el.remove()});
-}
-}
-handleMotion();
-rm.addEventListener('change',handleMotion);
-var yrs=new Date().getFullYear()-1982;
-document.querySelectorAll('[data-dw-years]').forEach(function(el){el.textContent=yrs});
-if(!rm.matches){if('IntersectionObserver' in window){
-document.querySelectorAll('[data-freeze-trigger]').forEach(function(wrapper){
-var obs=new IntersectionObserver(function(entries){
-entries.forEach(function(entry){
-if(entry.isIntersecting){
-wrapper.querySelectorAll('[data-freeze]').forEach(function(anim){
-try{anim.beginElement()}catch(e){}
-});
-}
-});
-},{threshold:0.3});
-obs.observe(wrapper);
-});
-}}
-})();
-</script>`;
-}
-
-// ════════════════════════════════════════════════════════════════
-// HERO HTML — Entire section in ONE Code Module
+// DATA CONFIG
 // ════════════════════════════════════════════════════════════════
 
-function getHeroHTML() {
-  return `
-<div class="hero-split">
-  <!-- Factory Operators Panel -->
-  <div class="hero-panel hero-panel--factory">
-    <div id="dw-factory-svg" class="hero-svg-illustration hero-svg-illustration--factory"></div>
-    <div class="hero-grain"></div>
-    <div class="hero-content">
-      <p class="hero-label hero-label--factory">For Manufacturing Business Owners</p>
-      <h1 class="hero-title">Your True Costs Are <span class="hl-blue">Invisible.</span></h1>
-      <p class="hero-subtitle">"Shadow Excel" files have replaced your standard operating procedures. Ghost inventory means system says 100, shelf says 50. We fix this\u2014because we've spent <span data-dw-years>44</span> years doing nothing but manufacturing software.</p>
-      <div class="hero-btn-row">
-        <a href="/demo.html" class="hero-btn hero-btn--primary">Let's Talk</a>
-        <a href="/products.html" class="hero-btn hero-btn--ghost">See Our Solutions</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-number" data-dw-years>44</div>
-          <div class="hero-stat-label">Years Manufacturing Focus</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-number">50K+</div>
-          <div class="hero-stat-label">Factories Served</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-number">300378</div>
-          <div class="hero-stat-label">Shenzhen Listed</div>
-        </div>
-      </div>
-    </div>
-  </div>
+const DATA = {
+  adminLabel: 'Hero \u2014 Split Screen',
+  sectionPrefix: 'hero',
+  sectionBg: '#000432',
+  dynamicYear: true,
+  highlights: [
+    { class: 'hl-blue', color: '#00AFF0' },
+    { class: 'hl-gold', color: '#fef3c7' },
+  ],
+  panels: [
+    {
+      id: 'factory',
+      gradient: 'linear-gradient(165deg, rgb(15,20,25) 0%, rgb(26,38,50) 40%, rgb(0,8,100) 100%)',
+      svgRaw: getFactorySVGRaw,
+      headingTag: 'h1',
+      label: 'For Manufacturing Business Owners',
+      title: 'Your True Costs Are <span class="hl-blue">Invisible.</span>',
+      subtitle: '"Shadow Excel" files have replaced your standard operating procedures. Ghost inventory means system says 100, shelf says 50. We fix this\u2014because we\u2019ve spent <span data-dw-years>44</span> years doing nothing but manufacturing software.',
+      buttons: [
+        { text: 'Let\u2019s Talk', href: '/demo.html', style: 'primary' },
+        { text: 'See Our Solutions', href: '/products.html', style: 'ghost' },
+      ],
+      stats: [
+        { value: '44', label: 'Years Manufacturing Focus', dynamic: true },
+        { value: '50K+', label: 'Factories Served' },
+        { value: '300378', label: 'Shenzhen Listed' },
+      ],
+    },
+    {
+      id: 'partner',
+      gradient: 'linear-gradient(165deg, rgb(0,175,240) 0%, rgb(0,60,200) 40%, rgb(0,60,200) 100%)',
+      svgRaw: getPartnerSVGRaw,
+      freezeTrigger: true,
+      headingTag: 'h2',
+      label: 'For ERP Implementers',
+      labelColor: 'rgba(255,255,255,0.9)',
+      grainVariant: 'partner',
+      lightLeak: true,
+      title: 'Trapped in the <span class="hl-gold">Man-Day</span> Model?',
+      subtitle: 'Your revenue is capped by headcount. Customization wars burn out your best consultants. We offer a way out\u2014product-based margins that compound instead of compress.',
+      buttons: [
+        { text: 'Escape the Trap', href: '/partner-program.html', style: 'primary' },
+      ],
+      stats: [
+        { value: '30\u201340%', label: 'License Margins', white: true },
+        { value: 'Yours to Keep', label: 'Maintenance Revenue', white: true },
+      ],
+    },
+  ],
+};
 
-  <!-- Partner Prospects Panel -->
-  <div class="hero-panel hero-panel--partner">
-    <div id="dw-partner-svg" class="hero-svg-illustration hero-svg-illustration--partner"></div>
-    <div class="hero-grain hero-grain--partner"></div>
-    <div class="hero-light-leak"></div>
-    <div class="hero-content">
-      <p class="hero-label hero-label--partner">For ERP Implementers</p>
-      <h2 class="hero-title">Trapped in the <span class="hl-gold">Man-Day</span> Model?</h2>
-      <p class="hero-subtitle">Your revenue is capped by headcount. Customization wars burn out your best consultants. We offer a way out\u2014product-based margins that compound instead of compress.</p>
-      <div class="hero-btn-row">
-        <a href="/partner-program.html" class="hero-btn hero-btn--primary">Escape the Trap</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-number hero-stat-number--white">30\u201340%</div>
-          <div class="hero-stat-label">License Margins</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-number hero-stat-number--white">Yours to Keep</div>
-          <div class="hero-stat-label">Maintenance Revenue</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>`;
-}
-
-// ════════════════════════════════════════════════════════════════
-// EXPORTS: blocks() and css()
-// ════════════════════════════════════════════════════════════════
-
-function blocks() {
-  return [
-    // Thin Divi wrapper: Section → Row → Column → Code Module
-    sectionOpen({
-      adminLabel: 'Hero \u2014 Split Screen',
-      css: 'selector{background:#000432 !important;padding:0 !important;margin:0 !important;}',
-    }),
-
-    rowOpen({
-      adminLabel: 'Hero Row',
-      columns: 1,
-      css: 'selector{max-width:100% !important;width:100% !important;margin:0 !important;padding:0 !important;}',
-    }),
-    columnOpen({ css: 'selector{width:100% !important;padding:0 !important;}' }),
-
-    // ONE Code Module with the entire hero HTML
-    codeModule(getHeroHTML(), 'Hero: Dual Panel Split Screen'),
-
-    // Script block — wp:html because scripts don't execute in Code Modules
-    htmlBlock(getHeroJS()),
-
-    columnClose(),
-    rowClose(),
-    sectionClose(),
-  ];
-}
-
-function heroCss() {
-  return `
-/* ============================================
-   Hero Section — Code Module Approach
-   CSS Grid handles the 2-panel split.
-   No Divi column layout dependencies.
-   ============================================ */
-
-/* === THEME BUILDER FULL-BLEED OVERRIDES === */
-/* Theme builder wraps page content in its own section/row/column — must override all */
-.et_pb_section_0_tb_body{background:#000432 !important;padding:0 !important;margin:0 !important;width:100% !important}
-.et_pb_row_0_tb_body{max-width:100% !important;width:100% !important;padding:0 !important;margin:0 !important}
-.et_pb_column_0_tb_body{padding:0 !important;width:100% !important}
-.et_pb_post_content_0_tb_body{width:100% !important;max-width:100% !important}
-/* Nested row inside theme builder */
-.et_pb_row_1_tb_body{max-width:100% !important;width:100% !important;padding:0 !important;margin:0 !important}
-.et_pb_column_1_tb_body{width:100% !important;padding:0 !important}
-
-/* === PAGE-LEVEL DIVI WRAPPER RESETS === */
-.et_pb_section_0{background:#000432 !important;padding:0 !important;margin:0 !important}
-.et_pb_section_0 .et_pb_row{max-width:100% !important;width:100% !important;padding:0 !important;margin:0 !important}
-.et_pb_section_0 .et_pb_column{width:100% !important;padding:0 !important}
-.et_pb_section_0 .et_pb_code,.et_pb_section_0 .et_pb_code_inner{position:static !important;overflow:visible !important}
-
-/* === SPLIT SCREEN GRID === */
-.hero-split{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  min-height:calc(100vh - 80px);
-  margin-top:80px;
-  position:relative;
-  overflow:hidden;
-  background-color:#000432;
-  -webkit-font-smoothing:auto;
-  -moz-osx-font-smoothing:auto;
-  /* Break out of any constrained parent to full viewport width */
-  width:100vw;
-  margin-left:calc(-50vw + 50%);
-}
-
-/* === PANELS === */
-.hero-panel{
-  position:relative;
-  overflow:hidden;
-  padding:80px 60px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-.hero-panel--factory{
-  background:linear-gradient(165deg, rgb(15,20,25) 0%, rgb(26,38,50) 40%, rgb(0,8,100) 100%);
-}
-.hero-panel--partner{
-  background:linear-gradient(165deg, rgb(0,175,240) 0%, rgb(0,60,200) 40%, rgb(0,60,200) 100%);
-}
-
-/* === SVG ILLUSTRATIONS === */
-.hero-svg-illustration{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:1;opacity:0.45}
-.hero-svg-illustration svg{width:100%;height:100%;display:block}
-
-/* === HERO CONTENT === */
-.hero-content{position:relative;z-index:2;max-width:520px}
-
-/* === HERO LABELS === */
-.hero-label{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;line-height:1.6;color:#00AFF0;margin:0 0 24px;padding:0;display:flex;align-items:center;gap:12px}
-.hero-label::before{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,#00AFF0);flex-shrink:0}
-.hero-label--partner{color:rgba(255,255,255,0.9)}
-.hero-label--partner::before{background:linear-gradient(90deg,transparent,rgba(255,255,255,0.8))}
-
-/* === HERO TITLES === */
-.hero-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,3.5vw,52px);font-weight:700;color:#fff;margin:0 0 24px;line-height:1.1;letter-spacing:-0.03em}
-.hero-title .hl-blue{color:#00AFF0}
-.hero-title .hl-gold{color:#fef3c7}
-
-/* === HERO SUBTITLES === */
-.hero-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:rgba(255,255,255,0.75);margin:0 0 36px;line-height:1.75;max-width:500px}
-
-/* === BUTTONS === */
-.hero-btn{font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;line-height:1.6;padding:16px 32px;border-radius:8px;cursor:pointer;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);text-decoration:none;display:inline-flex !important;align-items:center;position:relative;overflow:hidden;border:none}
-.hero-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.5s}
-.hero-btn:hover::before{left:100%}
-.hero-btn--primary{background:#006dac;color:#fff;box-shadow:0 4px 14px rgba(0,175,240,0.35);gap:8px}
-.hero-btn--primary:hover{background:#003CC8;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,175,240,0.45)}
-.hero-btn--ghost{background:rgba(255,255,255,0.15);color:#fff;border:2px solid rgba(255,255,255,0.9);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);gap:8px}
-.hero-btn--ghost:hover{background:#fff;color:#0369a1;border-color:#fff}
-.hero-btn-row{max-width:520px;font-size:16px}
-.hero-btn-row .hero-btn--ghost{margin-left:12px}
-
-/* === STATS === */
-.hero-stats{display:flex;gap:40px;margin-top:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.1);max-width:520px}
-.hero-stat-number{font-family:'Noto Sans',sans-serif;font-size:32px;font-weight:800;color:#00AFF0;line-height:1;margin-bottom:8px;letter-spacing:-0.02em}
-.hero-stat-number--white{color:#fff}
-.hero-stat-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:400;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.1em;line-height:1.6}
-
-/* === GRAIN TEXTURE OVERLAY === */
-.hero-grain{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:1}
-.hero-grain::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none;z-index:1;animation:grain 8s steps(10) infinite}
-.hero-grain--partner::before{opacity:0.04;animation:none}
-
-/* === LIGHT LEAK (Partner panel only) === */
-.hero-light-leak{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:1}
-.hero-light-leak::after{content:'';position:absolute;top:-50%;right:-30%;width:80%;height:150%;background:radial-gradient(ellipse at center,rgba(255,255,255,0.15) 0%,transparent 60%);pointer-events:none;z-index:1}
-
-/* === RESPONSIVE === */
-@media(max-width:1024px){
-  .hero-split{grid-template-columns:1fr;min-height:auto}
-  .hero-panel{min-height:70vh;padding:60px 40px}
-  .hero-stats{gap:24px;flex-wrap:wrap}
-  .hero-title{font-size:32px}
-  .hero-subtitle{font-size:16px}
-}
-@media(max-width:640px){
-  .hero-panel{padding:48px 24px;min-height:80vh}
-  .hero-stats{flex-direction:column;gap:24px}
-  .hero-btn-row{flex-direction:column}
-  .hero-btn{text-align:center}
-}
-
-/* === ADMIN BAR COMPENSATION === */
-body.admin-bar .hero-split{margin-top:48px;min-height:calc(100vh - 80px)}
-
-/* === REDUCED MOTION === */
-@media(prefers-reduced-motion:reduce){
-  .hero-grain::before{animation:none}
-  .hero-btn::before{transition:none}
-  .hero-svg-illustration{opacity:0.25}
-}
-
-/* === GRAIN ANIMATION KEYFRAME === */
-@keyframes grain{0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-10%)}20%{transform:translate(-15%,5%)}30%{transform:translate(7%,-25%)}40%{transform:translate(-5%,25%)}50%{transform:translate(-15%,10%)}60%{transform:translate(15%,0%)}70%{transform:translate(0%,15%)}80%{transform:translate(3%,35%)}90%{transform:translate(-10%,10%)}}
-`;
-}
-
-module.exports = { blocks, css: heroCss, SPEC, getHeroJS };
+module.exports = {
+  blocks: () => heroGradient.blocks(DATA),
+  css: () => heroGradient.css(DATA),
+};

@@ -27,7 +27,7 @@ const DATA = {
       title: 'ERP Core',
       fullName: 'Enterprise Resource Planning',
       tagline: 'The central brain of your business',
-      icon: `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#0369a1" stroke-width="1.5"><rect x="4" y="2" width="20" height="28" rx="2"/><rect x="12" y="12" width="20" height="22" rx="2" fill="none"/><path d="M8 8h12M8 13h8M8 18h10"/><circle cx="22" cy="23" r="5"/><path d="M22 20v6M19 23h6"/></svg>`,
+      icon: `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="3" width="16" height="22" rx="2" fill="#00AFF0" fill-opacity="0.15" stroke="#00AFF0" stroke-width="2"/><path d="M8 9h8M8 13h6M8 17h7" stroke="#00AFF0" stroke-width="2" stroke-linecap="round"/><rect x="16" y="14" width="14" height="18" rx="2" fill="#000864" stroke="#00AFF0" stroke-width="2"/><rect x="19" y="17" width="8" height="4" rx="1" fill="#00AFF0" fill-opacity="0.3"/><circle cx="21" cy="26" r="1.5" fill="#00AFF0"/><circle cx="26" cy="26" r="1.5" fill="#00AFF0"/><circle cx="21" cy="29" r="1.5" fill="#00AFF0"/><circle cx="26" cy="29" r="1.5" fill="#00AFF0"/><circle cx="28" cy="7" r="5" fill="#000864" stroke="#00AFF0" stroke-width="2"/><text x="28" y="10" text-anchor="middle" fill="#00AFF0" font-size="8" font-weight="bold">$</text></svg>`,
       features: [
         '<strong>Financials</strong> \u2014 accounting, invoicing, budgets in one place',
         '<strong>Inventory</strong> \u2014 real-time stock levels across locations',
@@ -40,7 +40,7 @@ const DATA = {
       title: 'MES',
       fullName: 'Manufacturing Execution System',
       tagline: 'Your digital eyes on the production floor',
-      icon: `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#0369a1" stroke-width="1.5"><rect x="2" y="6" width="32" height="18" rx="2"/><path d="M2 14h32"/><rect x="6" y="9" width="4" height="3" rx="1"/><rect x="12" y="9" width="4" height="3" rx="1"/><circle cx="28" cy="11" r="2"/><path d="M6 28h24"/><circle cx="12" cy="28" r="2"/><circle cx="24" cy="28" r="2"/><path d="M12 24v4M24 24v4"/></svg>`,
+      icon: `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 28V12l8-6v8l8-6v8l8-6v12" fill="#00AFF0" fill-opacity="0.15" stroke="#00AFF0" stroke-width="2" stroke-linejoin="round"/><rect x="6" y="16" width="4" height="4" rx="0.5" fill="#00AFF0"/><rect x="14" y="16" width="4" height="4" rx="0.5" fill="#00AFF0"/><rect x="22" y="16" width="4" height="4" rx="0.5" fill="#00AFF0"/><rect x="3" y="28" width="30" height="4" rx="1" fill="#000864" stroke="#00AFF0" stroke-width="2"/><rect x="8" y="25" width="5" height="4" rx="1" fill="#00AFF0"/><rect x="18" y="25" width="5" height="4" rx="1" fill="#00AFF0" fill-opacity="0.6"/><circle cx="8" cy="30" r="1.5" fill="#00AFF0"/><circle cx="18" cy="30" r="1.5" fill="#00AFF0"/><circle cx="28" cy="30" r="1.5" fill="#00AFF0"/></svg>`,
       features: [
         '<strong>Track</strong> \u2014 follow every product through each workstation',
         '<strong>Record</strong> \u2014 who made what, when, and how',
@@ -53,7 +53,7 @@ const DATA = {
       title: 'WMS',
       fullName: 'Warehouse Management System',
       tagline: 'Never lose track of inventory again',
-      icon: `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#0369a1" stroke-width="1.5"><path d="M4 4v28h28"/><path d="M4 16h28M4 24h28"/><path d="M14 4v28M24 4v28"/><rect x="6" y="6" width="6" height="8" rx="1" fill="#0369a1" opacity="0.2"/><rect x="16" y="18" width="6" height="4" rx="1" fill="#0369a1" opacity="0.15"/><rect x="26" y="6" width="4" height="8" rx="1" fill="#0369a1" opacity="0.1"/></svg>`,
+      icon: `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 32V4M14 32V4M24 32V4M34 32V4" stroke="#00AFF0" stroke-width="2"/><path d="M4 12h30M4 22h30M4 32h30" stroke="#00AFF0" stroke-width="2"/><rect x="6" y="6" width="6" height="5" rx="1" fill="#00AFF0"/><rect x="16" y="7" width="6" height="4" rx="1" fill="#00AFF0" fill-opacity="0.7"/><rect x="26" y="6" width="6" height="5" rx="1" fill="#00AFF0" fill-opacity="0.5"/><rect x="6" y="15" width="6" height="6" rx="1" fill="#00AFF0" fill-opacity="0.6"/><rect x="16" y="14" width="6" height="7" rx="1" fill="#00AFF0"/><rect x="26" y="16" width="6" height="5" rx="1" fill="#00AFF0" fill-opacity="0.8"/><rect x="6" y="25" width="6" height="6" rx="1" fill="#00AFF0" fill-opacity="0.5"/><rect x="17" y="24" width="5" height="7" rx="1" fill="#00AFF0" fill-opacity="0.7"/><rect x="26" y="25" width="6" height="6" rx="1" fill="#00AFF0"/></svg>`,
       features: [
         '<strong>Locate</strong> \u2014 know which shelf, bin, and zone for every item',
         '<strong>Guide</strong> \u2014 barcode scanning for pick, pack, and ship',
@@ -66,7 +66,7 @@ const DATA = {
       title: 'AIoT',
       fullName: 'AI + Internet of Things',
       tagline: 'Connect your machines to the digital world',
-      icon: `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#0369a1" stroke-width="1.5"><rect x="12" y="12" width="12" height="12" rx="2"/><text x="18" y="20" text-anchor="middle" font-size="6" fill="#0369a1" stroke="none" font-family="monospace">AI</text><circle cx="6" cy="6" r="3"/><circle cx="30" cy="6" r="3"/><circle cx="6" cy="30" r="3"/><circle cx="30" cy="30" r="3"/><path d="M9 9l3 3M27 9l-3 3M9 27l3-3M27 27l-3-3"/><path d="M18 9V12M27 18h-3M18 27V24M9 18h3" stroke-dasharray="2 2"/></svg>`,
+      icon: `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="12" y="12" width="12" height="12" rx="2" fill="#000864" stroke="#00AFF0" stroke-width="2"/><text x="18" y="20" text-anchor="middle" fill="#00AFF0" font-size="6" font-weight="bold">AI</text><path d="M12 18H6M24 18h6M18 12V6M18 24v6" stroke="#00AFF0" stroke-width="2"/><path d="M13 13L8 8M23 13l5-5M13 23l-5 5M23 23l5 5" stroke="#00AFF0" stroke-width="1.5" stroke-dasharray="3 2"/><circle cx="5" cy="18" r="3" fill="#00AFF0"/><circle cx="31" cy="18" r="3" fill="#00AFF0"/><circle cx="18" cy="5" r="3" fill="#00AFF0"/><circle cx="18" cy="31" r="3" fill="#00AFF0"/><circle cx="6" cy="6" r="2.5" fill="#00AFF0" fill-opacity="0.6"/><circle cx="30" cy="6" r="2.5" fill="#00AFF0" fill-opacity="0.6"/><circle cx="6" cy="30" r="2.5" fill="#00AFF0" fill-opacity="0.6"/><circle cx="30" cy="30" r="2.5" fill="#00AFF0" fill-opacity="0.6"/></svg>`,
       features: [
         '<strong>Collect</strong> \u2014 temperature, speed, vibration automatically',
         '<strong>Predict</strong> \u2014 machine breakdowns before they happen',

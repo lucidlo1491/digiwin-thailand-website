@@ -42,7 +42,8 @@ function blocks() {
         <p class="ind-subtitle">We don't just understand manufacturing—we understand YOUR manufacturing.</p>
       </div>
 
-      <!-- Tab Bar -->
+      <!-- Tab Bar + Content (centered wrapper) -->
+      <div class="ind-content-wrapper-outer">
       <div class="ind-tab-bar">
         <button class="ind-tab ind-tab-active" data-tab="automotive" onclick="dwSwitchTab('automotive')">
           Automotive Parts
@@ -272,6 +273,7 @@ function blocks() {
         </div>
 
       </div>
+      </div>
     </div>
     </div>
 
@@ -342,23 +344,24 @@ function css() {
 .ind-label{font-family:'Noto Sans',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#0369a1;margin-bottom:12px;line-height:1.6}
 .ind-title{font-family:'Noto Sans',sans-serif;font-size:44px;font-weight:700;line-height:1.15;color:#000864;margin:0 0 16px 0}
 .ind-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;line-height:1.6;color:#5b6b80;margin:0}
+.ind-content-wrapper-outer{display:flex;flex-direction:column;align-items:center}
 .ind-tab-bar{display:inline-flex;background:#f1f5f9;border-radius:16px 16px 0 0;padding:6px 6px 0 6px;margin-bottom:-1px;position:relative;z-index:2}
 .ind-tab{font-family:'Noto Sans',sans-serif;font-size:14px;font-weight:500;color:#5b6b80;background:transparent;border:none;padding:14px 28px;cursor:pointer;transition:all 0.25s ease;border-radius:12px 12px 0 0;position:relative}
 .ind-tab:hover{color:#0369a1;background:rgba(0,175,240,0.08)}
 button.ind-tab.ind-tab-active{background:#ffffff;color:#000864;font-weight:600;box-shadow:0 -2px 8px rgba(0,0,0,0.04)}
 button.ind-tab.ind-tab-active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00AFF0 0%,#003CC8 100%)}
-.ind-content-wrapper{background:#ffffff;border-radius:24px;box-shadow:0 12px 48px rgba(0,0,0,0.08);position:relative;z-index:1}
+.ind-content-wrapper{background:#ffffff;border-radius:24px;box-shadow:0 12px 48px rgba(0,0,0,0.08);position:relative;z-index:1;width:100%;margin-top:-1px}
 .ind-tab-content{display:none;animation:indFadeIn 0.5s ease}
 .ind-tab-content.ind-tab-active{display:block}
 @keyframes indFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .ind-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:48px;align-items:center}
-.ind-image-container{height:450px;background:linear-gradient(145deg,#0f1419 0%,#1a2632 50%,#000864 100%);border-radius:16px;overflow:hidden}
-.ind-image-container svg{width:100%;height:100%;display:block}
+.ind-image-container{height:450px;background:linear-gradient(145deg,#0f1419 0%,#1a2632 50%,#000864 100%);border-radius:16px;overflow:hidden;position:relative}
+.ind-image-container svg{position:absolute;top:0;left:0;width:100%;height:100%}
 .ind-text-content{display:flex;flex-direction:column;gap:24px}
 .ind-content-title{font-family:'Noto Sans',sans-serif;font-size:32px;font-weight:700;line-height:1.6;letter-spacing:-0.02em;color:#000864;margin:0 0 16px}
 .ind-content-desc{font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:400;line-height:1.75;color:#5b6b80;margin:0 0 28px}
-.ind-features{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
-.ind-features li{font-family:'Noto Sans',sans-serif;font-size:15px;font-weight:400;color:#475569;padding:10px 0 10px 32px;position:relative;line-height:1.6}
+.ind-features{list-style:none !important;padding:0 !important;margin:0 0 36px 0;display:flex;flex-direction:column;gap:8px}
+.ind-features li{list-style:none !important;font-family:'Noto Sans',sans-serif;font-size:15px;font-weight:400;color:#475569;padding:10px 0 10px 32px;position:relative;line-height:1.6}
 .ind-features li svg{position:absolute;left:0;top:10px;flex-shrink:0}
 .ind-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;line-height:1.6;color:#ffffff;background:#006dac;padding:16px 32px;border-radius:8px;text-decoration:none;transition:all 0.3s ease;align-self:flex-start;box-shadow:0 4px 14px rgba(0,175,240,0.35)}
 .ind-cta:hover{background:#003CC8;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,175,240,0.45);color:#ffffff}

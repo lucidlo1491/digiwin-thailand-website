@@ -15,8 +15,8 @@ const DATA = {
   background: 'linear-gradient(165deg, #f8fafc 0%, #f1f5f9 100%)',
   padding: '100px 40px',
   headerStyle: 'pseudo',
-  headerMaxWidth: '800px',
-  headerMarginBottom: '56px',
+  headerMaxWidth: '1200px',
+  headerMarginBottom: '64px',
   header: {
     label: 'For Manufacturing Business Owners',
     title: 'Do You Recognize These Problems?',
@@ -73,7 +73,7 @@ const DATA = {
     <line x1="1055" y1="157" x2="1075" y2="157" stroke="#000864" stroke-width="0.5" opacity="0.2"/>
     <line x1="1055" y1="163" x2="1070" y2="163" stroke="#000864" stroke-width="0.5" opacity="0.2"/>
   </svg>`,
-  sceneOpacity: 0.35,
+  sceneOpacity: 0.20,
   gridCols: 3,
   gridGap: '32px',
   gridMarginBottom: '32px',

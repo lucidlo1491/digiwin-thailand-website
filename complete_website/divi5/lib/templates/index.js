@@ -12,6 +12,8 @@ const cardGridDark = require('./card-grid-dark');
 const cardGridLight = require('./card-grid-light');
 const statsBanner = require('./stats-banner');
 const ctaGradient = require('./cta-gradient');
+const heroGradient = require('./hero-gradient');
+const logoMarquee = require('./logo-marquee');
 
 // Registry: name → template module
 const templates = {
@@ -19,6 +21,8 @@ const templates = {
   'card-grid-light': cardGridLight,
   'stats-banner': statsBanner,
   'cta-gradient': ctaGradient,
+  'hero-gradient': heroGradient,
+  'logo-marquee': logoMarquee,
 };
 
 /**

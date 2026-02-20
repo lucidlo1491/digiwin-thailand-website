@@ -85,8 +85,15 @@ function blocks(data) {
       ${data.header.subtitle ? `<p class="${p}-subtitle">${data.header.subtitle}</p>` : ''}
     </div>`;
 
+  // Super D decoration — must be INSIDE the section div for position:absolute to work
+  const superD = require('../super-d');
+  const superDHTML = data.superD
+    ? `<div class="${data.superD.class}" aria-hidden="true"></div>`
+    : '';
+
   const html = `
     <div class="${p}-section">
+    ${superDHTML}
     ${headerHTML}
     <div class="${p}-grid">${cardsHTML}</div>
     </div>`;
@@ -94,8 +101,7 @@ function blocks(data) {
   return base.wrapInDiviSection(
     data.adminLabel,
     html,
-    `${data.adminLabel}: Content`,
-    data.superD ? { superDClass: data.superD.class, superDLabel: data.superD.label } : {}
+    `${data.adminLabel}: Content`
   );
 }
 
@@ -120,8 +126,8 @@ function css(data) {
     : `
 .${p}-header{text-align:center;max-width:800px;margin:0 auto 56px;position:relative;z-index:2}
 .${p}-header-label{font-family:'Noto Sans',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#0369a1;margin-bottom:12px;line-height:1.6}
-.${p}-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;color:#000864;line-height:1.15;letter-spacing:-0.02em;margin:0 0 16px}
-.${p}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;margin:0}`;
+.${p}-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;color:#000864;line-height:1.15;letter-spacing:-0.02em;margin:0 0 16px;padding:0}
+.${p}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;margin:0;padding:0}`;
 
   return `
 ${superDPart}
@@ -136,19 +142,19 @@ ${headerCSS}
 .${p}-grid{display:grid;grid-template-columns:repeat(${cols},1fr);gap:${data.gridGap || '24px'};margin-top:60px}
 
 /* Cards */
-.${p}-card{position:relative;background:#ffffff;border-radius:20px;padding:${data.cardPadding || '40px 28px'};text-align:center;box-shadow:0 4px 24px rgba(0,0,0,0.04);border:1px solid #f1f5f9;transition:all 0.2s ease;${isLink ? 'text-decoration:none;display:block;color:#333333;' : ''}line-height:1.6;overflow:hidden}
-.${p}-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00AFF0,#003CC8);transform:scaleX(0);transform-origin:left;transition:transform 0.2s ease}
+.${p}-card{position:relative;background:#ffffff;border-radius:20px;padding:${data.cardPadding || '40px 28px'};text-align:center;box-shadow:0 4px 24px rgba(0,0,0,0.04);border:1px solid #f1f5f9;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);${isLink ? 'text-decoration:none;display:block;color:#333333;' : ''}line-height:1.6;overflow:hidden}
+.${p}-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00AFF0,#003CC8);transform:scaleX(0);transform-origin:left;transition:transform 0.4s ease}
 .${p}-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,175,240,0.12);border-color:transparent}
 .${p}-card:hover::before{transform:scaleX(1)}
 
 /* Card Title */
-.${p}-card__title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:20px;line-height:1.6;color:#000864;margin:0 0 10px 0}
+.${p}-card__title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:20px;line-height:1.6;color:#000864;margin:0 0 10px 0;padding:0}
 
 ${hasIcons ? `/* Card Icon */
 .${p}-card__icon{width:80px;height:80px;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#000864,#1e3a5f);border-radius:24px;transition:all 0.4s ease;position:relative}
-.${p}-card__icon::after{content:'';position:absolute;inset:-4px;border-radius:28px;background:linear-gradient(145deg,#00AFF0,#003CC8);opacity:0;transition:opacity 0.4s ease;z-index:-1}
+.${p}-card__icon::after{content:'';position:absolute;inset:-2px;border-radius:26px;background:linear-gradient(135deg,#00AFF0,transparent);opacity:0;transition:opacity 0.4s ease;z-index:-1}
 .${p}-card:hover .${p}-card__icon{transform:scale(1.05) rotate(-3deg)}
-.${p}-card:hover .${p}-card__icon::after{opacity:0.3}
+.${p}-card:hover .${p}-card__icon::after{opacity:1}
 .${p}-card__icon svg{filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1))}` : ''}
 
 ${hasFullName ? `/* Full Product Name */
@@ -158,10 +164,10 @@ ${hasTagline ? `/* Tagline */
 .${p}-card__tagline{font-family:'Noto Sans',sans-serif;font-weight:600;font-size:15px;line-height:1.3;color:#000864;margin-bottom:12px;text-align:left}` : ''}
 
 ${hasFeatures ? `/* Features List */
-.${p}-card__features{list-style:none;padding:0;margin:0 0 20px 0;text-align:left}
-.${p}-card__features li{font-family:'Noto Sans',sans-serif;font-size:13px;line-height:1.6;color:#5b6b80;margin-bottom:0;padding:4px 0 4px 12px;position:relative}
-.${p}-card__features li::before{content:'';position:absolute;left:0;top:8px;width:4px;height:4px;background:#00AFF0;border-radius:50%}
-.${p}-card__features strong{font-weight:600;color:#475569}` : ''}
+.${p}-card__features{list-style:none !important;padding:0 !important;margin:0 0 12px 0;text-align:left}
+.${p}-card__features li{font-family:'Noto Sans',sans-serif;font-size:13px;line-height:1.6;color:#5b6b80;margin-bottom:0;padding:4px 0 4px 12px;position:relative;list-style:none !important}
+.${p}-card__features li::before{content:'';position:absolute;left:0;top:11px;width:4px;height:4px;background:#00AFF0;border-radius:50%}
+.${p}-card__features strong,.${p}-card__features em{font-style:normal;font-weight:600;color:#475569}` : ''}
 
 ${hasBenefit ? `/* Benefit Line */
 .${p}-card__benefit{font-family:'Noto Sans',sans-serif;font-size:13px;font-weight:500;line-height:1.6;color:#0369a1;border-top:1px solid #e2e8f0;padding-top:10px;margin-top:4px;text-align:left}` : ''}

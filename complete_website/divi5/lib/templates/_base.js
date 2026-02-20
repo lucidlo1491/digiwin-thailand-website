@@ -122,17 +122,17 @@ function sectionHeaderCSS(p, opts = {}) {
   const titleColor = dark ? '#fff' : '#000864';
   const subtitleColor = dark ? 'rgba(255,255,255,0.75)' : '#5b6b80';
   const labelColor = dark ? 'rgba(255,255,255,0.75)' : '#0369a1';
-  const lineColor = dark ? 'rgba(255,255,255,0.4)' : '#0369a1';
+  const lineColor = dark ? 'rgba(255,255,255,0.4)' : '#00AFF0';
   const maxWidth = opts.headerMaxWidth || '800px';
-  const marginBottom = opts.headerMarginBottom || '56px';
+  const marginBottom = opts.headerMarginBottom || '64px';
 
   return `
 .${p}-header{text-align:center;max-width:${maxWidth};margin:0 auto ${marginBottom};position:relative;z-index:2}
-.${p}-header-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.2em;color:${labelColor};margin-bottom:20px;line-height:1.6;display:flex;align-items:center;justify-content:center;gap:12px}
+.${p}-header-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.2em;color:${labelColor};margin-bottom:16px;line-height:1.6;display:flex;align-items:center;justify-content:center;gap:12px}
 .${p}-header-label::before,.${p}-header-label::after{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,${lineColor});flex-shrink:0}
 .${p}-header-label::after{transform:scaleX(-1)}
-.${p}-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;color:${titleColor};line-height:1.15;letter-spacing:-0.02em;margin:0 0 16px}
-.${p}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:${subtitleColor};line-height:1.6;max-width:600px;margin:0 auto}`;
+.${p}-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;color:${titleColor};line-height:1.15;letter-spacing:-0.02em;margin:0 0 16px;padding:0}
+.${p}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:${subtitleColor};line-height:1.6;max-width:600px;margin:0 auto;padding:0}`;
 }
 
 /**
@@ -147,17 +147,18 @@ function sectionHeaderSpanCSS(p, opts = {}) {
   const titleColor = dark ? '#ffffff' : '#000864';
   const subtitleColor = dark ? 'rgba(255,255,255,0.75)' : '#5b6b80';
   const labelColor = dark ? 'rgba(255,255,255,0.75)' : '#0369a1';
-  const lineColor = dark ? 'rgba(255,255,255,0.4)' : '#0369a1';
+  const lineColor = dark ? 'rgba(255,255,255,0.4)' : '#00AFF0';
   const maxWidth = opts.headerMaxWidth || '900px';
   const marginBottom = opts.headerMarginBottom || '80px';
 
   return `
-.${p}-header{text-align:center;max-width:${maxWidth};margin:0 auto ${marginBottom}}
+.${p}-header{text-align:center;max-width:${maxWidth};margin:0 auto ${marginBottom};position:relative;z-index:2}
 .${p}-label{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:24px}
-.${p}-label-line{width:40px;height:1px;background:${lineColor}}
-.${p}-label-text{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:${labelColor};line-height:1.6;margin-bottom:16px}
-.${p}-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:${titleColor};margin:0 0 16px}
-.${p}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;line-height:1.6;color:${subtitleColor};margin:0 auto;max-width:600px}`;
+.${p}-label-line{width:40px;height:1px;background:linear-gradient(90deg,transparent,${lineColor});flex-shrink:0}
+.${p}-label-line:last-child{transform:scaleX(-1)}
+.${p}-label-text{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:${labelColor};line-height:1.6}
+.${p}-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:${titleColor};margin:0 0 16px;padding:0}
+.${p}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;line-height:1.6;color:${subtitleColor};margin:0 auto;max-width:600px;padding:0}`;
 }
 
 // ────────────────────────────────────────────────────────────────

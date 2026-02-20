@@ -44,15 +44,15 @@ function getSvgBase64(variant) {
  */
 const positions = {
   'corner-br': {
-    right: '0', bottom: '0', top: 'auto', left: 'auto',
+    right: '-5%', bottom: '-5%', top: 'auto', left: 'auto',
     width: '35%', minHeight: '40vh',
-    backgroundPosition: 'bottom right',
+    backgroundPosition: 'center right',
     transform: 'none',
   },
   'corner-tr': {
-    right: '0', top: '0', bottom: 'auto', left: 'auto',
-    width: '25%', minHeight: '25vh',
-    backgroundPosition: 'top right',
+    right: '-5%', top: '-5%', bottom: 'auto', left: 'auto',
+    width: '30%', minHeight: '30vh',
+    backgroundPosition: 'center right',
     transform: 'none',
   },
   'left': {

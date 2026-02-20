@@ -165,7 +165,7 @@ function css() {
 /* Products Section Wrapper */
 .products-section {
   background: #F5F7FA;
-  padding: 100px 40px;
+  padding: 100px 80px;
   position: relative;
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;

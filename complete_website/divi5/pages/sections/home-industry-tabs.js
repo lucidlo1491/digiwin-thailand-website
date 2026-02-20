@@ -336,7 +336,7 @@ function blocks() {
 function css() {
   return `
 /* === INDUSTRY TABS === */
-.ind-section{background:#ffffff;padding:100px 40px;-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto;font-size:16px}
+.ind-section{background:#ffffff;padding:100px 80px;-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto;font-size:16px}
 .ind-container{max-width:1200px;margin:0 auto;padding:0 20px}
 .ind-header{text-align:center;margin-bottom:56px}
 .ind-label{font-family:'Noto Sans',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#0369a1;margin-bottom:12px;line-height:1.6}

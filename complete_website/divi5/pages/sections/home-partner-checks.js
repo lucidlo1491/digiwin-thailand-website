@@ -136,7 +136,6 @@ function css() {
   font-size: 16px;
   background: linear-gradient(165deg, #0f1419 0%, #1a2632 50%, #000864 100%);
   padding: 100px 40px;
-  margin: -20px 0;
 }
 
 /* Background scene SVG */
@@ -239,6 +238,7 @@ function css() {
   font-weight: 800;
   line-height: 1;
   color: #ffffff;
+  opacity: 0.15;
   margin-bottom: 24px;
 }
 

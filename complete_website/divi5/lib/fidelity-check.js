@@ -1218,6 +1218,34 @@ async function checkSectionGaps(htmlPage, wpPage, allSections, verbose) {
     }, wpSelectors),
   ]);
 
+  // Check for dw-wave-fade elements between sections in HTML (decorative transitions not in WP)
+  const waveFadePairs = await htmlPage.evaluate((selectors) => {
+    const pairs = new Set();
+    const waveFades = document.querySelectorAll('.dw-wave-fade');
+    for (const wf of waveFades) {
+      // Find the previous and next section siblings
+      let prev = wf.previousElementSibling;
+      let next = wf.nextElementSibling;
+      // Walk past non-section siblings
+      while (prev && prev.tagName !== 'SECTION') prev = prev.previousElementSibling;
+      while (next && next.tagName !== 'SECTION') next = next.nextElementSibling;
+      if (prev && next) {
+        // Find which selector indices match these sections
+        for (let a = 0; a < selectors.length; a++) {
+          if (prev.matches(selectors[a]) || prev.querySelector(selectors[a])) {
+            for (let b = 0; b < selectors.length; b++) {
+              if (next.matches(selectors[b]) || next.querySelector(selectors[b])) {
+                pairs.add(`${a}-${b}`);
+              }
+            }
+          }
+        }
+      }
+    }
+    return [...pairs];
+  }, htmlSelectors);
+  const waveFadeSet = new Set(waveFadePairs);
+
   // Compare consecutive pairs
   for (let i = 0; i < allSections.length - 1; i++) {
     const htmlCurrent = htmlRects[i];
@@ -1232,8 +1260,21 @@ async function checkSectionGaps(htmlPage, wpPage, allSections, verbose) {
     const diff = Math.abs(htmlGap - wpGap);
 
     const sectionPair = `${allSections[i].name} → ${allSections[i + 1].name}`;
+    const hasWaveFade = waveFadeSet.has(`${i}-${i + 1}`);
 
-    if (diff > GAP_TOLERANCE) {
+    // Wave-fade gaps: HTML has decorative transition that WP intentionally omits
+    if (hasWaveFade && htmlGap > wpGap) {
+      if (verbose) {
+        results.push({
+          id: 'F9',
+          label: `Section gap: ${sectionPair}`,
+          status: 'WARN',
+          htmlValue: `${Math.round(htmlGap)}px`,
+          wpValue: `${Math.round(wpGap)}px`,
+          note: `Wave-fade transition in HTML adds ${Math.round(htmlGap - wpGap)}px — expected difference (decorative element not in WP).`,
+        });
+      }
+    } else if (diff > GAP_TOLERANCE) {
       results.push({
         id: 'F9',
         label: `Section gap: ${sectionPair}`,

@@ -181,25 +181,8 @@ function blocks() {
       css: 'selector{display:flex !important;flex-direction:column !important;align-items:center !important;gap:0 !important;}',
     }),
 
-    // Label
-    textModule(
-      'Trusted by Leading Manufacturers in Thailand',
-      {
-        color: SPEC.label.color,
-        size: SPEC.label.fontSize,
-        weight: SPEC.label.fontWeight,
-        family: SPEC.label.fontFamily,
-      },
-      {
-        marginBottom: '48px',
-        adminLabel: 'Label: Trusted by Leading Manufacturers',
-        textAlign: 'center',
-      },
-      `selector{text-align:center;margin:0 0 48px !important;}selector p{font-family:${SPEC.label.fontFamily} !important;font-size:${SPEC.label.fontSize} !important;font-weight:${SPEC.label.fontWeight} !important;text-transform:${SPEC.label.textTransform} !important;letter-spacing:${SPEC.label.letterSpacing} !important;color:${SPEC.label.color} !important;line-height:1.6 !important;}`
-    ),
-
-    // Logo Marquee + Stats (single Code Module with wrapper)
-    codeModule(`<div class="logobar-section">${getLogoMarqueeHTML()}${getStatsHTML()}</div>`, 'Logo Bar: Marquee + Stats'),
+    // Logo Label + Marquee + Stats (single Code Module — label MUST be inside to avoid Divi text module gap)
+    codeModule(`<div class="logobar-section"><p class="logobar-label">Trusted by Leading Manufacturers in Thailand</p>${getLogoMarqueeHTML()}${getStatsHTML()}</div>`, 'Logo Bar: Label + Marquee + Stats'),
 
     columnClose(),
     rowClose(),
@@ -217,6 +200,18 @@ function logoBarCss() {
   -moz-osx-font-smoothing:auto;
   font-size:16px;
   overflow:hidden;
+}
+.logobar-label{
+  font-family:${SPEC.label.fontFamily};
+  font-size:${SPEC.label.fontSize};
+  font-weight:${SPEC.label.fontWeight};
+  text-transform:${SPEC.label.textTransform};
+  letter-spacing:${SPEC.label.letterSpacing};
+  color:${SPEC.label.color};
+  text-align:center;
+  line-height:1.6;
+  margin:0;
+  padding:0;
 }
 .logo-bar-marquee-wrapper{
   width:100%;

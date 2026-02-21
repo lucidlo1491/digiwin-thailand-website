@@ -111,14 +111,14 @@ function css() {
 .${P}-section{padding:100px 24px;background:#fff;position:relative;overflow:hidden;${base.fontSmoothingReset(P)}font-size:16px}
 .${P}-wave-vertical{position:absolute;top:0;left:0;width:200px;height:100%;background:linear-gradient(90deg,rgba(0,175,240,0.04),transparent);pointer-events:none;z-index:0;opacity:0.06}
 .${P}-inner{max-width:900px;margin:0 auto;position:relative;z-index:2}
-.${P}-header{text-align:center;max-width:700px;margin:0 auto 48px}
+.${P}-header{text-align:center;margin:0 0 48px}
 .${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
-.${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;margin:0 auto;padding:0}
+.${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto;padding:0}
 .${P}-paths{display:grid;gap:24px;margin-bottom:48px}
 .${P}-path{border:1px solid;border-radius:16px;padding:32px}
 .${P}-path-top{display:flex;align-items:center;gap:16px;margin-bottom:16px}
 .${P}-path-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.${P}-path h3{font-family:'Noto Sans',sans-serif;font-size:20px;font-weight:600;margin:0;padding:0}
+.${P}-path h3{font-family:'Noto Sans',sans-serif;font-size:20px;font-weight:600;line-height:1.6;margin:0;padding:0}
 .${P}-path-subtitle{font-family:'Noto Sans',sans-serif;font-size:14px;margin:4px 0 0 0;padding:0}
 .${P}-path-body{font-family:'Noto Sans',sans-serif;font-size:15px;line-height:1.7;margin:0;padding:0}
 .${P}-insight{background:linear-gradient(135deg,#000864 0%,#000432 100%);border-radius:24px;padding:60px;text-align:center;position:relative;overflow:hidden}

@@ -159,7 +159,7 @@ function statsCSS(prefix, opts = {}) {
  */
 const GLOBAL_THEME_RESET = `
 /* === GLOBAL DIVI THEME RESET === */
-.et_pb_section,.et_pb_row,.et_pb_column,.et_pb_code,.et_pb_code_inner{font-family:'Noto Sans',sans-serif !important;font-weight:400 !important;color:#333 !important}
+.et_pb_section,.et_pb_row,.et_pb_column,.et_pb_code,.et_pb_code_inner{font-family:'Noto Sans',sans-serif !important;font-weight:400 !important;font-size:16px !important;color:#333 !important}
 .et_pb_section h1,.et_pb_section h2,.et_pb_section h3,.et_pb_section h4,.et_pb_section h5,.et_pb_section h6{padding-bottom:0 !important}
 .et_pb_section:not([class*='tb_body']){overflow:hidden !important;margin:0 !important}
 .et_pb_row:not([class*='tb_body']){max-width:100% !important;width:100% !important;padding:0 !important;margin-top:0 !important;margin-bottom:0 !important;gap:0 !important}

@@ -112,7 +112,7 @@ function css() {
 .${P}-wave-vertical{position:absolute;top:0;left:0;width:200px;height:100%;background:linear-gradient(90deg,rgba(0,175,240,0.04),transparent);pointer-events:none;z-index:0;opacity:0.06}
 .${P}-inner{max-width:900px;margin:0 auto;position:relative;z-index:2}
 .${P}-header{text-align:center;max-width:700px;margin:0 auto 48px}
-.${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.15;margin:0 0 16px;padding:0}
+.${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
 .${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;margin:0 auto;padding:0}
 .${P}-paths{display:grid;gap:24px;margin-bottom:48px}
 .${P}-path{border:1px solid;border-radius:16px;padding:32px}

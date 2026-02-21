@@ -77,8 +77,8 @@ function css() {
 .${P}-section{padding:100px 24px;background:#fff;position:relative;overflow:hidden;${base.fontSmoothingReset(P)}font-size:16px}
 .${P}-d-bg{position:absolute;bottom:0;right:0;width:400px;height:400px;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M100 0C44.8 0 0 44.8 0 100s44.8 100 100 100c55.2 0 100-44.8 100-100V0H100z' fill='%23000864' opacity='0.08'/%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat;background-position:bottom right;pointer-events:none;z-index:0;opacity:0.08}
 .${P}-inner{max-width:1000px;margin:0 auto;position:relative;z-index:2}
-.${P}-header{text-align:center;margin-bottom:48px}
-.${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.15;margin:0;padding:0}
+.${P}-header{text-align:center;margin-bottom:60px}
+.${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
 .${P}-table{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);width:100%;border-collapse:collapse}
 .${P}-table thead{background:#000864}
 .${P}-table th{padding:20px 24px;font-family:'Noto Sans',sans-serif;font-weight:600;font-size:16px;color:#fff;text-align:left}

@@ -45,7 +45,7 @@ function css() {
 .${P}-wave{position:absolute;bottom:0;left:0;right:0;height:160px;background:linear-gradient(180deg,transparent,rgba(255,255,255,0.08));pointer-events:none;z-index:1;opacity:0.3}
 .${P}-dot-overlay{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:20px 20px;pointer-events:none;z-index:1}
 .${P}-inner{max-width:800px;margin:0 auto;text-align:center;position:relative;z-index:3}
-.${P}-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;color:#fff;line-height:1.15;margin:0 0 16px;padding:0}
+.${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#fff;line-height:1.6;margin:0 0 16px;padding:0}
 .${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:rgba(255,255,255,0.9);line-height:1.6;max-width:600px;margin:0 auto 40px;padding:0}
 ${base.buttonLightCSS(P)}
 @media(max-width:${base.BREAKPOINTS.mobile}px){

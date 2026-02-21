@@ -170,10 +170,10 @@ function sharedCSS() {
 .${P}-section--row1{padding-bottom:0}
 .${P}-section--row2{background:#fff;padding-top:24px}
 ${base.svgSceneCSS(P)}
-.${P}-wave-fade{position:absolute;inset:0;background-image:radial-gradient(circle at 50% 120%,rgba(0,175,240,0.06) 0%,transparent 60%);pointer-events:none;z-index:0;opacity:0.05}
+.${P}-wave-fade{position:relative;width:100%;height:120px;background-image:radial-gradient(circle at 50% 120%,rgba(0,175,240,0.06) 0%,transparent 60%);pointer-events:none;z-index:0;opacity:0.05;margin:-1px 0}
 .${P}-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2}
 .${P}-header{text-align:center;max-width:700px;margin:0 auto 60px}
-.${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.15;margin:0 0 16px;padding:0}
+.${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
 .${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;margin:0 auto;padding:0}
 .${P}-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .${P}-card{background:#fff;border:1px solid #fecaca;border-radius:20px;padding:40px;position:relative;overflow:hidden}

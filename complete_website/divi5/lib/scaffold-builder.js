@@ -22,7 +22,6 @@
  * Does NOT:
  *   - Resolve computed styles (preserves clamp(), CSS vars, media queries as-is)
  *   - Replace existing builder files (skips if file exists, use --force to overwrite)
- *   - Touch styles.css (only extracts from inline <style> blocks)
  */
 
 const fs = require('fs');
@@ -305,6 +304,147 @@ function extractMatchingCSS(styleBlock, classNames) {
 }
 
 /**
+ * Load styles.css from the same directory as the HTML prototype.
+ * Follows the <link rel="stylesheet" href="..."> reference.
+ */
+function loadExternalStylesheet(htmlContent, protoDir) {
+  const linkMatch = htmlContent.match(/<link\s+rel="stylesheet"\s+href="([^"]*styles\.css)"/i)
+    || htmlContent.match(/<link\s+href="([^"]*styles\.css)"\s+rel="stylesheet"/i);
+  if (!linkMatch) return { css: '', path: null };
+
+  const href = linkMatch[1];
+  const cssPath = path.resolve(protoDir, href);
+  if (!fs.existsSync(cssPath)) return { css: '', path: cssPath };
+
+  return { css: fs.readFileSync(cssPath, 'utf-8'), path: cssPath };
+}
+
+/**
+ * Extract CSS rules from styles.css that match a section's classes.
+ * Categorizes rules into: base, hover, pseudo, hidden (display:none), keyframes.
+ *
+ * @param {string} stylesheet — full styles.css content
+ * @param {string[]} classNames — classes used in the section HTML
+ * @returns {object} { base, hover, pseudo, hidden, keyframes, sharedComponents }
+ */
+function extractExternalCSS(stylesheet, classNames) {
+  const result = { base: [], hover: [], pseudo: [], hidden: [], keyframes: [], sharedComponents: [] };
+  if (!stylesheet || classNames.length === 0) return result;
+
+  // Also look for shared component classes referenced in the HTML
+  // These are classes that exist in the HTML but have rules in styles.css
+  const classPattern = classNames
+    .map(c => c.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+    .join('|');
+  const selectorRegex = new RegExp(`\\.(${classPattern})\\b`);
+
+  // Parse stylesheet into blocks
+  let i = 0;
+  while (i < stylesheet.length) {
+    // Skip whitespace
+    const wsMatch = stylesheet.substring(i).match(/^\s+/);
+    if (wsMatch) { i += wsMatch[0].length; continue; }
+    // Skip comments
+    const commentMatch = stylesheet.substring(i).match(/^\/\*[\s\S]*?\*\//);
+    if (commentMatch) { i += commentMatch[0].length; continue; }
+
+    // @media block
+    const mediaMatch = stylesheet.substring(i).match(/^@media\s*\([^)]*\)\s*\{/);
+    if (mediaMatch) {
+      const start = i;
+      i += mediaMatch[0].length;
+      let depth = 1;
+      while (depth > 0 && i < stylesheet.length) {
+        if (stylesheet[i] === '{') depth++;
+        else if (stylesheet[i] === '}') depth--;
+        i++;
+      }
+      const block = stylesheet.substring(start, i).trim();
+      if (selectorRegex.test(block)) {
+        result.base.push(block);
+      }
+      continue;
+    }
+
+    // @keyframes block
+    const kfMatch = stylesheet.substring(i).match(/^@keyframes\s+([\w-]+)\s*\{/);
+    if (kfMatch) {
+      const start = i;
+      i += kfMatch[0].length;
+      let depth = 1;
+      while (depth > 0 && i < stylesheet.length) {
+        if (stylesheet[i] === '{') depth++;
+        else if (stylesheet[i] === '}') depth--;
+        i++;
+      }
+      result.keyframes.push(stylesheet.substring(start, i).trim());
+      continue;
+    }
+
+    // Regular rule
+    const ruleMatch = stylesheet.substring(i).match(/^([^{}@]+)\{/);
+    if (ruleMatch) {
+      const selector = ruleMatch[1].trim();
+      const start = i;
+      i += ruleMatch[0].length;
+      let depth = 1;
+      while (depth > 0 && i < stylesheet.length) {
+        if (stylesheet[i] === '{') depth++;
+        else if (stylesheet[i] === '}') depth--;
+        i++;
+      }
+      const ruleText = stylesheet.substring(start, i).trim();
+
+      if (selectorRegex.test(selector)) {
+        // Categorize
+        if (/display\s*:\s*none/.test(ruleText)) {
+          result.hidden.push(ruleText);
+        } else if (/:hover\b/.test(selector)) {
+          result.hover.push(ruleText);
+        } else if (/::?(?:before|after)\b/.test(selector)) {
+          result.pseudo.push(ruleText);
+        } else {
+          result.base.push(ruleText);
+        }
+      }
+      continue;
+    }
+    i++;
+  }
+
+  return result;
+}
+
+/**
+ * Format external CSS extraction into a readable comment block for the builder.
+ */
+function formatExternalCSSReport(extCSS) {
+  const sections = [];
+
+  if (extCSS.hover.length > 0) {
+    sections.push('/* ⚠ HOVER STATES from styles.css (MUST port to builder CSS) */');
+    extCSS.hover.forEach(r => sections.push('/* ' + r.replace(/\n/g, '\n * ') + ' */'));
+  }
+
+  if (extCSS.pseudo.length > 0) {
+    sections.push('/* ⚠ PSEUDO-ELEMENTS from styles.css (::before/::after — check if needed) */');
+    extCSS.pseudo.forEach(r => sections.push('/* ' + r.replace(/\n/g, '\n * ') + ' */'));
+  }
+
+  if (extCSS.hidden.length > 0) {
+    sections.push('/* ⚠ HIDDEN ELEMENTS from styles.css (display:none — DO NOT include in builder) */');
+    extCSS.hidden.forEach(r => sections.push('/* ' + r.replace(/\n/g, '\n * ') + ' */'));
+  }
+
+  if (extCSS.base.length > 0) {
+    sections.push('/* ℹ BASE RULES from styles.css (reference values — port key properties) */');
+    extCSS.base.forEach(r => sections.push('/* ' + r.replace(/\n/g, '\n * ') + ' */'));
+  }
+
+  return sections.join('\n');
+}
+
+/**
  * Escape a string for use inside JS template literals.
  */
 function escapeForTemplate(str) {
@@ -344,6 +484,10 @@ function cleanInnerHTML(html) {
 const styleBlock = extractStyleBlock(html);
 const sections = extractSections(html);
 
+// Load external stylesheet (styles.css)
+const protoDir = path.dirname(protoPath);
+const externalSheet = loadExternalStylesheet(html, protoDir);
+
 if (sections.length === 0) {
   console.error('  ✗ No sections found in <main>. Cannot scaffold.');
   process.exit(1);
@@ -351,12 +495,18 @@ if (sections.length === 0) {
 
 console.log(`  Found ${sections.length} sections`);
 console.log(`  Style block: ${styleBlock.length} chars`);
+if (externalSheet.css) {
+  console.log(`  External CSS: ${externalSheet.path} (${externalSheet.css.length} chars)`);
+} else {
+  console.log(`  External CSS: not found`);
+}
 
 // Derive section names and extract CSS
 const sectionData = sections.map(section => {
   const name = deriveSectionName(section, pageName);
   const classNames = extractClassNames(section.outerHTML);
   const { rules, mediaQueries } = extractMatchingCSS(styleBlock, classNames);
+  const extCSS = externalSheet.css ? extractExternalCSS(externalSheet.css, classNames) : null;
   const prefix = generatePrefix(name);
 
   return {
@@ -366,6 +516,7 @@ const sectionData = sections.map(section => {
     classNames,
     cssRules: rules,
     cssMediaQueries: mediaQueries,
+    extCSS,
     cleanHTML: cleanInnerHTML(section.innerHTML),
   };
 });
@@ -375,7 +526,14 @@ deduplicateNames(sectionData);
 
 console.log('\n  Sections:');
 sectionData.forEach((s, i) => {
-  console.log(`    ${i}: ${s.name} (${s.classNames.length} classes, ${s.cssRules.length} rules, line ${s.startLine})`);
+  const ext = s.extCSS;
+  const extCount = ext ? (ext.base.length + ext.hover.length + ext.pseudo.length + ext.hidden.length) : 0;
+  const hoverCount = ext ? ext.hover.length : 0;
+  const hiddenCount = ext ? ext.hidden.length : 0;
+  const extInfo = extCount > 0
+    ? `, +${extCount} from styles.css${hoverCount ? ` (${hoverCount} hover)` : ''}${hiddenCount ? ` (${hiddenCount} hidden)` : ''}`
+    : '';
+  console.log(`    ${i}: ${s.name} (${s.classNames.length} classes, ${s.cssRules.length} inline rules${extInfo}, line ${s.startLine})`);
 });
 
 // ════════════════════════════════════════════════════════════════
@@ -403,12 +561,25 @@ sectionData.forEach(section => {
   const hasList = /<(?:ul|ol)\b/i.test(section.cleanHTML);
 
   // Check if section has transitions/animations (needs reducedMotion)
-  const hasTransition = /transition/i.test(section.cssRules.join(''));
+  const allCSS = section.cssRules.join('') + (section.extCSS ? section.extCSS.base.join('') : '');
+  const hasTransition = /transition/i.test(allCSS);
 
   // Build CSS string from extracted rules
   const cssBody = [...section.cssRules, ...section.cssMediaQueries]
     .join('\n')
     .trim();
+
+  // External CSS report (hover states, pseudo-elements, hidden elements, base rules)
+  const extReport = section.extCSS ? formatExternalCSSReport(section.extCSS) : '';
+  const extReportEscaped = extReport ? '\n' + escapeForTemplate(extReport) : '';
+
+  // Summary counts for header comment
+  const extCounts = section.extCSS
+    ? { hover: section.extCSS.hover.length, pseudo: section.extCSS.pseudo.length, hidden: section.extCSS.hidden.length, base: section.extCSS.base.length }
+    : null;
+  const extSummary = extCounts && (extCounts.hover + extCounts.pseudo + extCounts.hidden + extCounts.base > 0)
+    ? `\n * styles.css: ${extCounts.base} base, ${extCounts.hover} hover, ${extCounts.pseudo} pseudo, ${extCounts.hidden} hidden`
+    : '';
 
   // Detect SVGs that need script injection (wp_kses strips <text> etc.)
   const hasSVG = /<svg\b/i.test(section.cleanHTML);
@@ -419,7 +590,7 @@ sectionData.forEach(section => {
  *
  * AUTO-GENERATED by scaffold-builder.js — review and customize before pushing.
  * Source: ${pageName}.html line ${section.startLine}
- *${svgNote}
+ *${svgNote}${extSummary}
  * Original classes: ${section.classNames.slice(0, 5).join(', ')}${section.classNames.length > 5 ? ` (+${section.classNames.length - 5} more)` : ''}
  */
 
@@ -446,6 +617,7 @@ function css() {
 /* TODO: Review and remap class selectors to use \\\${P} prefix */
 /* TODO: Add section container: .\\\${P}-section{...;\\\${base.fontSmoothingReset(P)}font-size:16px} */
 ${escapeForTemplate(cssBody)}
+${extReportEscaped}
 ${hasList ? `\\\${base.diviListReset(P)}` : ''}
 ${hasTransition ? `\\\${base.reducedMotion(\\\`\\\`)}` : ''}
 \`.trim();

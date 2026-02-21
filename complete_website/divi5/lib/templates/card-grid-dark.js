@@ -155,10 +155,11 @@ function css(data) {
     const lColor = headerDark ? 'rgba(255,255,255,0.75)' : '#0369a1';
     const tColor = headerDark ? '#fff' : '#000864';
     const sColor = headerDark ? 'rgba(255,255,255,0.75)' : '#5b6b80';
+    const mw = data.headerMaxWidth ? `max-width:${data.headerMaxWidth};` : '';
     headerCSS = `
-.${p}-header{text-align:center;max-width:${data.headerMaxWidth || '700px'};margin:0 auto ${data.headerMarginBottom || '60px'};position:relative;z-index:2}
+.${p}-header{text-align:center;${mw}margin:0 auto ${data.headerMarginBottom || '60px'};position:relative;z-index:2}
 .${p}-header-label{font-family:'Noto Sans',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:${lColor};margin-bottom:12px;line-height:1.6}
-.${p}-title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:clamp(32px,3.5vw,44px);color:${tColor};line-height:1.15;margin:0 0 16px;padding:0}
+.${p}-title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:clamp(32px,3.5vw,44px);color:${tColor};line-height:1.6;margin:0 0 16px;padding:0}
 .${p}-subtitle{font-family:'Noto Sans',sans-serif;font-weight:400;font-size:18px;color:${sColor};line-height:1.6;margin:0;padding:0}`;
   } else if (headerStyle === 'span') {
     headerCSS = base.sectionHeaderSpanCSS(p, { dark: headerDark, headerMaxWidth: data.headerMaxWidth, headerMarginBottom: data.headerMarginBottom });

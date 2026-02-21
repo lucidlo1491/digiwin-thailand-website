@@ -83,7 +83,8 @@ function css() {
 .${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto;padding:0}
 .${P}-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .${P}-card{background:#fff;border:1px solid #86efac;border-radius:20px;padding:40px;position:relative;overflow:hidden;transition:all 0.3s ease}
-.${P}-card:hover{border-color:#4ade80;box-shadow:0 12px 40px rgba(34,197,94,0.15)}
+.${P}-card:hover{border-color:#00AFF0;box-shadow:0 12px 40px rgba(0,175,240,0.12)}
+.${P}-card:hover .${P}-icon{background:linear-gradient(135deg,#00AFF0,#003CC8)}
 .${P}-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#22c55e,#10b981)}
 .${P}-icon{width:64px;height:64px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:24px}
 .${P}-icon svg{width:32px;height:32px;stroke:#fff;fill:none}

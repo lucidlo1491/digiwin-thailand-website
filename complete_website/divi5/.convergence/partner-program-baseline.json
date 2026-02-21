@@ -1,10 +1,10 @@
 {
   "page": "partner-program",
-  "savedAt": "2026-02-21T04:36:44.172Z",
+  "savedAt": "2026-02-21T05:01:25.110Z",
   "sections": {
     "fullpage": {
-      "diffPercent": 4.39,
-      "verdict": "REVIEW",
+      "diffPercent": 6.88,
+      "verdict": "FAIL",
       "skipped": false
     },
     "hero": {
@@ -23,7 +23,7 @@
       "skipped": false
     },
     "alternative": {
-      "diffPercent": 4.64,
+      "diffPercent": 2.73,
       "verdict": "REVIEW",
       "skipped": false
     },
@@ -48,7 +48,7 @@
       "skipped": false
     },
     "final-cta": {
-      "diffPercent": 4.78,
+      "diffPercent": 4.79,
       "verdict": "REVIEW",
       "skipped": false
     }

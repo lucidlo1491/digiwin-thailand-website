@@ -311,8 +311,10 @@ function svgSceneCSS(prefix) {
  * @returns {string} CSS string
  */
 function diviListReset(prefix) {
+  // NOTE: Do NOT add padding:0 on li — it kills intentional spacing set by section CSS.
+  // Only reset list-style (Divi adds bullets) and ::before (Divi injects pseudo-bullets).
   return `.${prefix} ul,.${prefix} ol{list-style:none !important;padding:0 !important;margin:0 !important}` +
-    `.${prefix} li{list-style:none !important;padding:0 !important}` +
+    `.${prefix} li{list-style:none !important}` +
     `.${prefix} li::before{display:none !important}`;
 }
 

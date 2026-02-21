@@ -1,9 +1,9 @@
 {
   "page": "partner-program",
-  "savedAt": "2026-02-21T04:19:54.004Z",
+  "savedAt": "2026-02-21T04:36:44.172Z",
   "sections": {
     "fullpage": {
-      "diffPercent": 4.45,
+      "diffPercent": 4.39,
       "verdict": "REVIEW",
       "skipped": false
     },
@@ -13,12 +13,12 @@
       "skipped": false
     },
     "pain-revenue": {
-      "diffPercent": 0.64,
+      "diffPercent": 0.28,
       "verdict": "MATCH",
       "skipped": false
     },
     "pain-operational": {
-      "diffPercent": 0.77,
+      "diffPercent": 0.51,
       "verdict": "MATCH",
       "skipped": false
     },

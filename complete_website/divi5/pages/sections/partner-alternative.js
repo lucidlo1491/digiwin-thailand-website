@@ -7,9 +7,16 @@
  * Source: partner-program.html lines 1201-1293
  */
 
+const fs = require('fs');
+const path = require('path');
 const base = require('../../lib/templates/_base');
 
 const P = 'alt'; // CSS prefix
+
+// Read particle-ocean.js for inline injection (wp_kses strips <canvas> but script runs after parse)
+const PARTICLE_JS = fs.readFileSync(
+  path.join(__dirname, '..', '..', '..', 'particle-ocean.js'), 'utf8'
+);
 
 // ════════════════════════════════════════════════════════════════
 // ICONS
@@ -88,7 +95,7 @@ function blocks() {
   const arrowSVG = '<svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
 
   const html = `
-    <div class="${P}-section">
+    <div class="${P}-section" data-particles>
       <div class="${P}-wave" aria-hidden="true"></div>
       <div class="${P}-inner">
         <div class="${P}-header">
@@ -118,7 +125,8 @@ function blocks() {
           <p class="${P}-cta-note">30-minute conversation. We\u2019ll walk through your current portfolio and show you where DigiWin fits.</p>
         </div>
       </div>
-    </div>`;
+    </div>
+    <script>${PARTICLE_JS}</script>`;
 
   return base.wrapInDiviSection('Alternative Model: Partner-First', html, 'Alternative Model: Content');
 }

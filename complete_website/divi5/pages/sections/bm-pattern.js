@@ -66,15 +66,15 @@ function css() {
 /* === PATTERN CYCLE (S2) === */
 .${P}-section{padding:100px 24px;background:#fff;position:relative;overflow:hidden;${base.fontSmoothingReset(P)}font-size:16px}
 .${P}-inner{max-width:1000px;margin:0 auto;position:relative;z-index:2}
-.${P}-header{text-align:center;max-width:700px;margin:0 auto 60px}
-.${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.15;margin:0 0 16px;padding:0}
-.${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;margin:0 auto;padding:0}
+.${P}-header{text-align:center;margin:0 0 60px}
+.${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
+.${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto;padding:0}
 .${P}-cycle{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
 .${P}-cycle::before{content:'';position:absolute;top:48px;left:12.5%;right:12.5%;height:3px;background:linear-gradient(90deg,#dc2626,#f97316,#eab308,#dc2626);border-radius:2px;z-index:0}
 .${P}-step{text-align:center;position:relative;z-index:1}
 .${P}-icon{width:96px;height:96px;background:linear-gradient(135deg,#fef2f2 0%,#fee2e2 100%);border:2px solid #fecaca;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
 .${P}-icon svg{width:40px;height:40px;stroke:#dc2626;fill:none}
-.${P}-step h3{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:600;color:#000864;margin:0 0 12px;padding:0}
+.${P}-step h3{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:600;color:#000864;line-height:1.6;margin:0 0 12px;padding:0}
 .${P}-step p{font-family:'Noto Sans',sans-serif;font-size:14px;color:#5b6b80;line-height:1.6;margin:0;padding:0}
 .${P}-repeat{text-align:center;margin-top:48px;padding:32px;background:linear-gradient(135deg,#fef2f2,#fff5f5);border:1px solid #fecaca;border-radius:16px}
 .${P}-repeat p{font-family:'Noto Sans',sans-serif;font-size:20px;color:#991b1b;font-weight:500;margin:0;padding:0}

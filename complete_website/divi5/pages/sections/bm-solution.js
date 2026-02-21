@@ -78,16 +78,16 @@ function css() {
 /* === SOLUTION CARDS (S6) === */
 .${P}-section{padding:100px 24px;background:linear-gradient(180deg,#f8fafc 0%,#fff 100%);position:relative;overflow:hidden;${base.fontSmoothingReset(P)}font-size:16px}
 .${P}-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2}
-.${P}-header{text-align:center;max-width:700px;margin:0 auto 60px}
-.${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.15;margin:0 0 16px;padding:0}
-.${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;margin:0 auto;padding:0}
+.${P}-header{text-align:center;margin:0 0 60px}
+.${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
+.${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto;padding:0}
 .${P}-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .${P}-card{background:#fff;border:1px solid #86efac;border-radius:20px;padding:40px;position:relative;overflow:hidden;transition:all 0.3s ease}
 .${P}-card:hover{border-color:#4ade80;box-shadow:0 12px 40px rgba(34,197,94,0.15)}
 .${P}-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#22c55e,#10b981)}
 .${P}-icon{width:64px;height:64px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:24px}
 .${P}-icon svg{width:32px;height:32px;stroke:#fff;fill:none}
-.${P}-card h3{font-family:'Noto Sans',sans-serif;font-size:22px;font-weight:600;color:#000864;margin:0 0 16px;padding:0}
+.${P}-card h3{font-family:'Noto Sans',sans-serif;font-size:22px;font-weight:600;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
 .${P}-card p{font-family:'Noto Sans',sans-serif;font-size:15px;color:#5b6b80;line-height:1.7;margin:0 0 24px;padding:0}
 .${P}-formula{background:#f0fdf4;border-radius:12px;padding:20px;text-align:center}
 .${P}-formula code{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:600;color:#166534}

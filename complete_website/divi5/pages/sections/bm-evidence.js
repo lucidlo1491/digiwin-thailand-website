@@ -172,15 +172,15 @@ function sharedCSS() {
 ${base.svgSceneCSS(P)}
 .${P}-wave-fade{position:relative;width:100%;height:120px;background-image:radial-gradient(circle at 50% 120%,rgba(0,175,240,0.06) 0%,transparent 60%);pointer-events:none;z-index:0;opacity:0.05;margin:-1px 0}
 .${P}-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2}
-.${P}-header{text-align:center;max-width:700px;margin:0 auto 60px}
+.${P}-header{text-align:center;margin:0 0 60px}
 .${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
-.${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;margin:0 auto;padding:0}
+.${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto;padding:0}
 .${P}-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .${P}-card{background:#fff;border:1px solid #fecaca;border-radius:20px;padding:40px;position:relative;overflow:hidden}
 .${P}-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#dc2626,#f97316)}
 .${P}-icon{width:64px;height:64px;background:linear-gradient(135deg,#dc2626,#b91c1c);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:24px}
 .${P}-icon svg{width:32px;height:32px;stroke:#fff;fill:none}
-.${P}-card h3{font-family:'Noto Sans',sans-serif;font-size:22px;font-weight:600;color:#000864;margin:0 0 16px;padding:0}
+.${P}-card h3{font-family:'Noto Sans',sans-serif;font-size:22px;font-weight:600;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
 .${P}-card p{font-family:'Noto Sans',sans-serif;font-size:15px;color:#5b6b80;line-height:1.7;margin:0 0 24px;padding:0}
 .${P}-formula{background:#fef2f2;border-radius:12px;padding:20px;text-align:center}
 .${P}-formula code{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:600;color:#991b1b}

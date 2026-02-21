@@ -115,7 +115,7 @@ const TIER_CONFIG = {
   id: 'tiers',
   adminLabel: 'Journey: How You Grow',
   bg: '#fff',
-  showLine: false,
+  showLine: true,
   header: {
     title: 'How You Grow With Us',
     subtitle: 'Clear milestones define your progression from co-delivery to full autonomy \u2014 and higher margins at every stage.',

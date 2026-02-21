@@ -17,6 +17,7 @@ const path = require('path');
 const mysql = require('./lib/mysql');
 const cacheFlush = require('./lib/cache-flush');
 const verifyRunner = require('./lib/verify-runner');
+const elementParity = require('./lib/element-parity-check');
 const screenshot = require('./lib/screenshot');
 const { placeholderWrap } = require('./lib/modules');
 const cssAssembler = require('./lib/css-assembler');
@@ -281,5 +282,21 @@ const wpSections = verifyConf.sections || [];
   if (!results.pass) {
     console.error('\n✗ Verification failed. Fix issues and re-run.');
     process.exit(1);
+  }
+
+  // ════════════════════════════════════════════════════════════════
+  // STEP 9: ELEMENT PARITY CHECK (Gate 4 — catches visual mismatches)
+  // Compares DOM properties between HTML prototype and live WP page:
+  //   - Pseudo-elements (::before/::after)
+  //   - Canvas/dynamic elements (data-particles)
+  //   - Spacing on layout elements (li padding, card gaps)
+  //   - Decoration opacity (SVG scenes, wave flows)
+  // ════════════════════════════════════════════════════════════════
+  if (pageConfig.verify && pageConfig.verify.sections) {
+    const parityResult = await elementParity.run(pageConfig);
+    if (!parityResult.pass) {
+      console.error('\n✗ Element parity check failed. Fix mismatches and re-run.');
+      process.exit(1);
+    }
   }
 })();

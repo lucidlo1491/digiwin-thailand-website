@@ -138,7 +138,7 @@ function css() {
   return `
 /* === ALTERNATIVE MODEL (S4) === */
 .${P}-section{background:linear-gradient(180deg,#F5F7FA 0%,#fff 100%);padding:100px 24px 180px;position:relative;overflow:hidden;${base.fontSmoothingReset(P)}font-size:16px}
-.${P}-wave{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(180deg,transparent,rgba(0,60,200,0.04));pointer-events:none;z-index:0}
+.${P}-wave{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(180deg,transparent,rgba(0,60,200,0.04));pointer-events:none;z-index:0;opacity:0.08}
 .${P}-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2}
 .${P}-header{text-align:center;max-width:860px;margin:0 auto 60px}
 .${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}

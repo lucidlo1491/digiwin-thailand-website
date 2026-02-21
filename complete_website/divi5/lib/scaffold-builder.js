@@ -416,29 +416,183 @@ function extractExternalCSS(stylesheet, classNames) {
 }
 
 /**
- * Format external CSS extraction into a readable comment block for the builder.
+ * Remap class names in a CSS rule to use the ${P} prefix pattern.
+ *
+ * Strategy: Find the longest common prefix among the section's class names,
+ * then replace it with `${P}`. Falls back to replacing each known class.
+ *
+ * e.g. classNames = ['solution-card', 'solution-icon', 'solution-section']
+ *      commonPrefix = 'solution'
+ *      '.solution-card:hover' → '.${P}-card:hover'
+ *      '.solution-icon' → '.${P}-icon'
+ *
+ * @param {string} cssRule — full CSS rule text
+ * @param {string[]} classNames — classes used in the section
+ * @returns {string} remapped CSS rule
  */
-function formatExternalCSSReport(extCSS) {
-  const sections = [];
+function remapClassesToPrefix(cssRule, classNames) {
+  if (classNames.length === 0) return cssRule;
 
-  if (extCSS.hover.length > 0) {
-    sections.push('/* ⚠ HOVER STATES from styles.css (MUST port to builder CSS) */');
-    extCSS.hover.forEach(r => sections.push('/* ' + r.replace(/\n/g, '\n * ') + ' */'));
+  // Find the dominant prefix: the first word (before first '-') that appears
+  // most frequently among the class names. Excludes generic prefixes like 'dw'.
+  const prefixCounts = {};
+  classNames.forEach(cls => {
+    const firstWord = cls.split('-')[0];
+    if (firstWord.length >= 3 && firstWord !== 'dw') {
+      prefixCounts[firstWord] = (prefixCounts[firstWord] || 0) + 1;
+    }
+    // Also try two-word prefix (e.g. 'partner-hero' from 'partner-hero-title')
+    const parts = cls.split('-');
+    if (parts.length >= 2) {
+      const twoWord = parts[0] + '-' + parts[1];
+      if (twoWord.length >= 5 && parts[0] !== 'dw') {
+        prefixCounts[twoWord] = (prefixCounts[twoWord] || 0) + 1;
+      }
+    }
+  });
+
+  // Pick the prefix with most matches (prefer longer prefixes on tie)
+  const sorted = Object.entries(prefixCounts)
+    .sort((a, b) => b[1] - a[1] || b[0].length - a[0].length);
+  const dominant = sorted.length > 0 ? sorted[0][0] : '';
+
+  if (dominant.length < 3) {
+    // No good prefix found — replace each class individually
+    let result = cssRule;
+    const byLength = [...classNames].sort((a, b) => b.length - a.length);
+    byLength.forEach(cls => {
+      const escaped = cls.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      result = result.replace(new RegExp('\\.' + escaped + '\\b', 'g'), '.\\${P}-' + cls);
+    });
+    return result;
   }
 
-  if (extCSS.pseudo.length > 0) {
-    sections.push('/* ⚠ PSEUDO-ELEMENTS from styles.css (::before/::after — check if needed) */');
-    extCSS.pseudo.forEach(r => sections.push('/* ' + r.replace(/\n/g, '\n * ') + ' */'));
+  // Replace .{dominant}-{suffix} with ${P}-{suffix}
+  // Also handle .{dominant} alone (maps to ${P}-section or just ${P})
+  const escaped = dominant.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  let result = cssRule.replace(
+    new RegExp('\\.' + escaped + '(-[\\w-]+)?\\b', 'g'),
+    (match, suffix) => '.\\${P}' + (suffix || '')
+  );
+
+  return result;
+}
+
+/**
+ * Minify a CSS rule: collapse whitespace, remove newlines.
+ * Produces single-line rules matching the builder's CSS style.
+ */
+function minifyRule(rule) {
+  return rule
+    .replace(/\s*\n\s*/g, '')          // Remove newlines
+    .replace(/\s*\{\s*/g, '{')          // Tighten braces
+    .replace(/\s*\}\s*/g, '}')
+    .replace(/\s*:\s*/g, ':')           // Tighten colons
+    .replace(/\s*;\s*/g, ';')           // Tighten semicolons
+    .replace(/;\}/g, '}')               // Remove trailing semicolons before }
+    .trim();
+}
+
+/**
+ * Check if a CSS rule's selectors can be cleanly remapped to ${P} prefix.
+ * Returns true if ALL class selectors in the rule belong to the section's
+ * dominant prefix family. Returns false if the rule uses shared global
+ * classes (dw-btn-*, dw-partner-*) that don't follow the section pattern.
+ */
+function canAutoRemap(cssRule, classNames) {
+  // Find dominant prefix
+  const prefixCounts = {};
+  classNames.forEach(cls => {
+    const firstWord = cls.split('-')[0];
+    if (firstWord.length >= 3 && firstWord !== 'dw') {
+      prefixCounts[firstWord] = (prefixCounts[firstWord] || 0) + 1;
+    }
+  });
+  const sorted = Object.entries(prefixCounts)
+    .sort((a, b) => b[1] - a[1] || b[0].length - a[0].length);
+  const dominant = sorted.length > 0 ? sorted[0][0] : '';
+  if (dominant.length < 3) return false;
+
+  // Only examine class selectors in the SELECTOR part (before the opening brace)
+  const selectorPart = cssRule.split('{')[0] || '';
+  const classRefs = selectorPart.match(/\.[\w-]+/g) || [];
+  if (classRefs.length === 0) return false;
+  return classRefs.every(ref => {
+    const cls = ref.substring(1); // strip the dot
+    return cls.startsWith(dominant + '-') || cls === dominant;
+  });
+}
+
+/**
+ * Format external CSS extraction into live CSS + warning comments for the builder.
+ *
+ * Returns content ready for direct insertion into a JS template literal.
+ * - hover + pseudo with section-specific classes → LIVE CSS with \${P} (auto-remapped)
+ * - hover + pseudo with global classes → WARNING comments (manual port needed)
+ * - hidden → WARNING comments (do not include)
+ * - base → REFERENCE comments (for manual review)
+ *
+ * @param {object} extCSS — from extractExternalCSS()
+ * @param {string[]} classNames — section's class names for remapping
+ * @returns {string} template-literal-ready CSS block
+ */
+function formatExternalCSSReport(extCSS, classNames) {
+  const sections = [];
+
+  // Escape for template literal (comments only — live CSS uses ${P} interpolation)
+  const esc = (s) => s.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$/g, '\\$');
+
+  // Split hover/pseudo rules into auto-remappable vs manual
+  const autoHover = [];
+  const manualHover = [];
+  extCSS.hover.forEach(r => {
+    if (canAutoRemap(r, classNames)) autoHover.push(r);
+    else manualHover.push(r);
+  });
+
+  const autoPseudo = [];
+  const manualPseudo = [];
+  extCSS.pseudo.forEach(r => {
+    if (canAutoRemap(r, classNames)) autoPseudo.push(r);
+    else manualPseudo.push(r);
+  });
+
+  // Auto-remapped hover rules (live CSS)
+  if (autoHover.length > 0) {
+    sections.push('/* === HOVER STATES (auto-ported from styles.css) === */');
+    autoHover.forEach(r => {
+      sections.push(minifyRule(remapClassesToPrefix(r, classNames)));
+    });
+  }
+
+  // Auto-remapped pseudo rules (live CSS)
+  if (autoPseudo.length > 0) {
+    sections.push('/* === PSEUDO-ELEMENTS (auto-ported from styles.css) === */');
+    autoPseudo.forEach(r => {
+      sections.push(minifyRule(remapClassesToPrefix(r, classNames)));
+    });
+  }
+
+  // Manual hover rules (global classes — need human review)
+  if (manualHover.length > 0) {
+    sections.push('/* TODO: HOVER STATES using global classes (port manually) */');
+    manualHover.forEach(r => sections.push('/* ' + esc(minifyRule(r)) + ' */'));
+  }
+
+  // Manual pseudo rules
+  if (manualPseudo.length > 0) {
+    sections.push('/* TODO: PSEUDO-ELEMENTS using global classes (port manually) */');
+    manualPseudo.forEach(r => sections.push('/* ' + esc(minifyRule(r)) + ' */'));
   }
 
   if (extCSS.hidden.length > 0) {
-    sections.push('/* ⚠ HIDDEN ELEMENTS from styles.css (display:none — DO NOT include in builder) */');
-    extCSS.hidden.forEach(r => sections.push('/* ' + r.replace(/\n/g, '\n * ') + ' */'));
+    sections.push('/* WARNING: HIDDEN in styles.css (display:none) — DO NOT include in builder HTML */');
+    extCSS.hidden.forEach(r => sections.push('/* ' + esc(r).replace(/\n/g, '\n * ') + ' */'));
   }
 
   if (extCSS.base.length > 0) {
-    sections.push('/* ℹ BASE RULES from styles.css (reference values — port key properties) */');
-    extCSS.base.forEach(r => sections.push('/* ' + r.replace(/\n/g, '\n * ') + ' */'));
+    sections.push('/* REF: BASE RULES from styles.css (check against inline CSS above) */');
+    extCSS.base.forEach(r => sections.push('/* ' + esc(minifyRule(r)) + ' */'));
   }
 
   return sections.join('\n');
@@ -570,8 +724,10 @@ sectionData.forEach(section => {
     .trim();
 
   // External CSS report (hover states, pseudo-elements, hidden elements, base rules)
-  const extReport = section.extCSS ? formatExternalCSSReport(section.extCSS) : '';
-  const extReportEscaped = extReport ? '\n' + escapeForTemplate(extReport) : '';
+  // NOTE: formatExternalCSSReport returns template-literal-ready content (already escaped).
+  // Do NOT run escapeForTemplate on it again.
+  const extReport = section.extCSS ? formatExternalCSSReport(section.extCSS, section.classNames) : '';
+  const extReportEscaped = extReport ? '\n' + extReport : '';
 
   // Summary counts for header comment
   const extCounts = section.extCSS

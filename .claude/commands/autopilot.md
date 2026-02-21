@@ -180,10 +180,11 @@ noImprovementCount = 0
    node complete_website/divi5/build-page.js --page $ARGUMENTS --force
    ```
 
-7. **Re-run visual diff + read composites:**
+7. **Re-run visual diff + regression check:**
    ```bash
-   node complete_website/divi5/lib/visual-diff.js --page $ARGUMENTS
+   node complete_website/divi5/lib/visual-diff.js --page $ARGUMENTS --regression-check
    ```
+   If `--regression-check` exits non-zero, a previously-passing section regressed >2pp — revert the change immediately.
 
 8. **Check improvement (pixel diff% is convergence):**
    - If section diffPct < bestDiffPct → update, save bestCode, reset counter

@@ -29,6 +29,7 @@ const REF_DIR = path.join(__dirname, '..', '..', '..', 'screenshots', 'reference
 const WP_DIR = path.join(__dirname, '..', '..', '..', 'screenshots', 'verify');
 const DIFF_DIR = path.join(__dirname, '..', '..', '..', 'screenshots', 'diffs');
 const REVIEW_DIR = path.join(__dirname, '..', '..', '..', 'screenshots');
+const BASELINE_DIR = path.join(__dirname, '..', '.convergence');
 
 /** Default pixelmatch threshold (0 = exact, 1 = anything matches) */
 const DEFAULT_THRESHOLD = 0.1;
@@ -648,13 +649,73 @@ function printPresenceReport(presenceResults) {
   }
 }
 
+/**
+ * Save current diff percentages as a regression baseline.
+ * @param {string} pageName
+ * @param {object} report — output from compare()
+ * @returns {string} path to saved baseline JSON
+ */
+function saveBaseline(pageName, report) {
+  fs.mkdirSync(BASELINE_DIR, { recursive: true });
+  const baselinePath = path.join(BASELINE_DIR, `${pageName}-baseline.json`);
+  const baseline = {
+    page: pageName,
+    savedAt: new Date().toISOString(),
+    sections: {},
+  };
+  for (const r of report.sections) {
+    baseline.sections[r.section] = {
+      diffPercent: r.diffPercent ?? (r.error ? 100 : 0),
+      verdict: r.verdict,
+      skipped: r.skipped || false,
+    };
+  }
+  fs.writeFileSync(baselinePath, JSON.stringify(baseline, null, 2));
+  return baselinePath;
+}
+
+/**
+ * Check current diff percentages against saved baseline.
+ * A section has regressed if its diff% increased by more than `threshold` percentage points.
+ *
+ * @param {string} pageName
+ * @param {object} report — output from compare()
+ * @param {number} [threshold=2] — max allowed regression in percentage points
+ * @returns {{ pass: boolean, regressions: Array<{ section, baselinePct, currentPct, delta }>, baselinePath: string }}
+ */
+function checkRegression(pageName, report, threshold = 2) {
+  const baselinePath = path.join(BASELINE_DIR, `${pageName}-baseline.json`);
+  if (!fs.existsSync(baselinePath)) {
+    return { pass: true, regressions: [], baselinePath, error: 'No baseline found — run with --save-baseline first' };
+  }
+  const baseline = JSON.parse(fs.readFileSync(baselinePath, 'utf-8'));
+  const regressions = [];
+
+  for (const r of report.sections) {
+    if (r.skipped) continue;
+    const baseEntry = baseline.sections[r.section];
+    if (!baseEntry || baseEntry.skipped) continue;
+
+    const currentPct = r.diffPercent ?? (r.error ? 100 : 0);
+    const baselinePct = baseEntry.diffPercent;
+    const delta = currentPct - baselinePct;
+
+    if (delta > threshold) {
+      regressions.push({ section: r.section, baselinePct, currentPct, delta: Math.round(delta * 100) / 100 });
+    }
+  }
+
+  return { pass: regressions.length === 0, regressions, baselinePath };
+}
+
 module.exports = {
   compare, compareSection, printReport,
   checkElementPresence, printPresenceReport,
   generateReviewHTML,
+  saveBaseline, checkRegression,
   verdict,
   MATCH_CEILING, REVIEW_CEILING,
-  DIFF_DIR, REF_DIR, WP_DIR, REVIEW_DIR,
+  DIFF_DIR, REF_DIR, WP_DIR, REVIEW_DIR, BASELINE_DIR,
 };
 
 // CLI mode
@@ -665,7 +726,7 @@ if (require.main === module) {
   const pageName = getArg('--page');
 
   if (!pageName) {
-    console.error('Usage: node visual-diff.js --page <name> [--presence-check]');
+    console.error('Usage: node visual-diff.js --page <name> [--presence-check] [--save-baseline] [--regression-check]');
     process.exit(1);
   }
 
@@ -686,6 +747,28 @@ if (require.main === module) {
   console.log(`▸ Running visual diff for: ${pageName}`);
   const report = compare({ pageName, sections });
   printReport(report);
+
+  // Regression baseline: save
+  if (hasFlag('--save-baseline')) {
+    const baselinePath = saveBaseline(pageName, report);
+    console.log(`\n  ✓ Baseline saved → ${baselinePath}`);
+  }
+
+  // Regression baseline: check
+  if (hasFlag('--regression-check')) {
+    const result = checkRegression(pageName, report);
+    if (result.error) {
+      console.log(`\n  ⚠ ${result.error}`);
+    } else if (result.pass) {
+      console.log(`\n  ✓ Regression check PASSED — no sections regressed >2pp vs baseline`);
+    } else {
+      console.log(`\n  ✗ Regression check FAILED — ${result.regressions.length} section(s) regressed:`);
+      for (const r of result.regressions) {
+        console.log(`    ✗ ${r.section}: ${r.baselinePct}% → ${r.currentPct}% (+${r.delta}pp)`);
+      }
+      process.exit(1);
+    }
+  }
 
   // Element presence check (async)
   if (hasFlag('--presence-check')) {

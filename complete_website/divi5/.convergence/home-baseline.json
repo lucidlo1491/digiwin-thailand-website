@@ -1,0 +1,61 @@
+{
+  "page": "home",
+  "savedAt": "2026-02-21T04:01:03.478Z",
+  "sections": {
+    "fullpage": {
+      "diffPercent": 20.61,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "hero": {
+      "diffPercent": 20.67,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "logo-bar": {
+      "diffPercent": 0,
+      "verdict": "MATCH",
+      "skipped": true
+    },
+    "factory-checks": {
+      "diffPercent": 0.6,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "partner-checks": {
+      "diffPercent": 5.58,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "product-pillars": {
+      "diffPercent": 2.18,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "industry-tabs": {
+      "diffPercent": 7.8,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "stats-banner": {
+      "diffPercent": 4.72,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "trust-anchors": {
+      "diffPercent": 1.68,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "proven-results": {
+      "diffPercent": 2.37,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "final-cta": {
+      "diffPercent": 1.92,
+      "verdict": "MATCH",
+      "skipped": false
+    }
+  }
+}

@@ -1,15 +1,20 @@
 /**
  * _base.js — Shared template foundation for Divi 5 section templates
  *
- * Every template imports this. Provides:
+ * Every template and section builder imports this. Provides:
  * - Divi block wrappers (section + row + column + code module)
  * - Section header HTML/CSS generators (dark/light)
  * - Font-smoothing resets
  * - Responsive breakpoint helpers
  * - Reduced-motion helper
- * - Button CSS generators
+ * - Button CSS generators (buttonCSS, buttonLightCSS)
+ * - Grain texture CSS (grainCSS)
  * - Divi list-style quirk resets (diviListReset)
  * - Design token color constants (COLORS)
+ *
+ * NOTE: This is the canonical source for section-level UI helpers.
+ * css-assembler.js handles ONLY global assembly (GLOBAL_THEME_RESET,
+ * SHARED_KEYFRAMES, assemble()) and Divi infrastructure overrides.
  */
 
 const { codeModule, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../modules');

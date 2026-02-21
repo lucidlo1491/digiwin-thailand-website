@@ -1,8 +1,14 @@
 /**
- * css-assembler.js — Shared CSS components + section-scoped assembly
+ * css-assembler.js — Global CSS assembly + Divi infrastructure overrides
  *
- * Provides reusable CSS patterns (labels, titles, buttons, stats, grains)
- * and assembles per-page CSS with section-scoped selectors.
+ * This module provides:
+ * - GLOBAL_THEME_RESET / SHARED_KEYFRAMES (used by every page via assemble())
+ * - Divi infrastructure helpers: themeBuilderReset, columnGapReset, textModuleOverride
+ * - Per-section component helpers: labelCSS, cardCSS, statsCSS
+ *
+ * NOTE: Section-level UI helpers (sectionHeaderCSS, buttonCSS, buttonLightCSS,
+ * grainCSS, reducedMotion) live in templates/_base.js — that is the canonical
+ * source for all template and section builder code. Do NOT duplicate here.
  *
  * Rule: No generic selectors (.label, .card). Always section-scoped (.hero-label, .checks-card).
  * Rule: No !important except where Divi's cascade requires it (section/row/column overrides).
@@ -50,27 +56,6 @@ function labelCSS(prefix, opts = {}) {
 }
 
 /**
- * Section header group (label + title + subtitle, centered)
- * @param {string} prefix - Section prefix
- * @param {object} opts - { titleColor, subtitleColor, dark }
- */
-function sectionHeaderCSS(prefix, opts = {}) {
-  const dark = opts.dark || false;
-  const titleColor = opts.titleColor || (dark ? '#fff' : '#000864');
-  const subtitleColor = opts.subtitleColor || (dark ? 'rgba(255,255,255,0.75)' : '#5b6b80');
-  const labelColor = opts.labelColor || (dark ? 'rgba(255,255,255,0.75)' : '#0369a1');
-  const lineColor = opts.lineColor || (dark ? 'rgba(255,255,255,0.4)' : '#0369a1');
-
-  return `
-.${prefix}-header{text-align:center;max-width:800px;margin:0 auto 56px;position:relative;z-index:2}
-.${prefix}-header-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.2em;color:${labelColor};margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:12px}
-.${prefix}-header-label::before,.${prefix}-header-label::after{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,${lineColor});flex-shrink:0}
-.${prefix}-header-label::after{transform:scaleX(-1)}
-.${prefix}-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,4vw,44px);font-weight:700;color:${titleColor};line-height:1.15;letter-spacing:-0.02em;margin:0 0 20px}
-.${prefix}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:${subtitleColor};line-height:1.6;max-width:600px;margin:0 auto}`;
-}
-
-/**
  * Card CSS (white card with hover effects)
  * @param {string} prefix - Section prefix
  * @param {object} opts - { dark, radius, padding }
@@ -89,52 +74,6 @@ function cardCSS(prefix, opts = {}) {
   return `
 .${prefix}-card{background:#fff;border:1px solid #e2e8f0;box-shadow:0 4px 24px rgba(0,0,0,0.04);border-radius:${radius};padding:${padding};position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
 .${prefix}-card:hover{box-shadow:0 20px 60px rgba(0,175,240,0.12);border-color:#00AFF0}`;
-}
-
-/**
- * Grain texture overlay CSS
- * @param {string} selector - CSS selector for the grain container
- * @param {object} opts - { opacity, animated }
- */
-function grainCSS(selector, opts = {}) {
-  const opacity = opts.opacity || 0.03;
-  const animated = opts.animated !== false;
-
-  return `
-${selector}{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:1}
-${selector}::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:${opacity};pointer-events:none;z-index:1${animated ? ";animation:grain 8s steps(10) infinite" : ""}}`;
-}
-
-/**
- * Button CSS (primary + ghost variants with shine effect)
- * @param {string} prefix - Section prefix
- */
-function buttonCSS(prefix) {
-  return `
-.${prefix}-btn{font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;padding:16px 32px;border-radius:8px;cursor:pointer;transition:all 0.3s ease;text-decoration:none;display:inline-block;position:relative;overflow:hidden;border:none}
-.${prefix}-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.5s}
-.${prefix}-btn:hover::before{left:100%}
-.${prefix}-btn--primary{background:#006dac;color:#fff;box-shadow:0 4px 14px rgba(0,175,240,0.35)}
-.${prefix}-btn--primary:hover{background:#003CC8;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,175,240,0.45)}
-.${prefix}-btn--ghost{background:rgba(255,255,255,0.15);color:#fff;border:2px solid rgba(255,255,255,0.9);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-.${prefix}-btn--ghost:hover{background:#fff;color:#0369a1;border-color:#fff}
-.${prefix}-btn-row{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:2}`;
-}
-
-/**
- * Button CSS for light backgrounds (CTA section style)
- * @param {string} prefix - Section prefix
- */
-function buttonLightCSS(prefix) {
-  return `
-.${prefix}-btn{font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;padding:16px 32px;border-radius:8px;cursor:pointer;transition:all 0.3s ease;text-decoration:none;display:inline-block;position:relative;overflow:hidden;border:none}
-.${prefix}-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.5s}
-.${prefix}-btn:hover::before{left:100%}
-.${prefix}-btn--primary{background:#fff;color:#003CC8;font-weight:600;box-shadow:0 4px 20px rgba(0,0,0,0.15)}
-.${prefix}-btn--primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.2)}
-.${prefix}-btn--ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.6)}
-.${prefix}-btn--ghost:hover{background:rgba(255,255,255,0.15);border-color:#fff}
-.${prefix}-btn-row{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;position:relative;z-index:2}`;
 }
 
 /**
@@ -177,17 +116,6 @@ const SHARED_KEYFRAMES = `
 @keyframes dw-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}`;
 
 /**
- * Reduced motion media query
- * @param {string} customRules - Additional rules for reduced-motion
- */
-function reducedMotion(customRules = '') {
-  return `
-@media(prefers-reduced-motion:reduce){
-${customRules}
-}`;
-}
-
-/**
  * Assemble page-level CSS from section CSS arrays
  * @param {string[]} sections - Array of CSS strings, one per section
  */
@@ -200,13 +128,8 @@ module.exports = {
   columnGapReset,
   textModuleOverride,
   labelCSS,
-  sectionHeaderCSS,
   cardCSS,
-  grainCSS,
-  buttonCSS,
-  buttonLightCSS,
   statsCSS,
-  reducedMotion,
   assemble,
   SHARED_KEYFRAMES,
 };

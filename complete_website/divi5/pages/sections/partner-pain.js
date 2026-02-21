@@ -187,8 +187,7 @@ function sharedCSS() {
 .${P}-wave-fade{position:relative;width:100%;height:120px;pointer-events:none;opacity:0.06;margin:-1px 0}
 .${P}-section{padding:100px 24px;position:relative;overflow:hidden;${base.fontSmoothingReset(P)}font-size:16px}
 .${P}-section--operational{padding-top:60px}
-.${P}-scene{position:absolute;inset:0;pointer-events:none;z-index:0}
-.${P}-scene svg{width:100%;height:100%;position:absolute;top:0;left:0}
+${base.svgSceneCSS(P)}
 .${P}-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2}
 .${P}-header{text-align:center;max-width:800px;margin:0 auto 60px}
 .${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}

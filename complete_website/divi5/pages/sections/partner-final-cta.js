@@ -53,7 +53,7 @@ function css() {
 
   // Add footer text styling
   const footerCSS = `
-.${P}-footer-text{text-align:center;max-width:600px;margin:32px auto 40px;font-family:'Noto Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.75);position:relative;z-index:3}
+.${P}-footer-text{text-align:center;max-width:600px;margin:24px auto 20px;font-family:'Noto Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.75);position:relative;z-index:3}
 .${P}-footer-text strong{font-weight:600;color:rgba(255,255,255,0.9)}
 .${P}-footer-text a{color:#7EC8F2;text-decoration:underline;transition:color 0.2s}
 .${P}-footer-text a:hover{color:#fff}`;

@@ -73,7 +73,7 @@ function blocks() {
 function css() {
   return `
 /* === MARKET TIMING (S8) === */
-.${P}-section{background:#F5F7FA;padding:80px 0;position:relative;overflow:hidden;${base.fontSmoothingReset(P)}font-size:16px}
+.${P}-section{background:#F5F7FA;padding:80px 0 100px;position:relative;overflow:hidden;${base.fontSmoothingReset(P)}font-size:16px}
 .${P}-inner{max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
 .${P}-header{text-align:center;margin-bottom:48px}
 .${P}-label{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:#0369a1;margin-bottom:12px}

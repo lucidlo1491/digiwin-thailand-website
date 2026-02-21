@@ -129,7 +129,7 @@ const TIER_CONFIG = {
 function sharedCSS() {
   return `
 /* === JOURNEY SECTIONS (S6+S7) === */
-.${P}-section{padding:100px 24px;position:relative;overflow:hidden;${base.fontSmoothingReset(P)}font-size:16px}
+.${P}-section{padding:100px 24px 120px;position:relative;overflow:hidden;${base.fontSmoothingReset(P)}font-size:16px}
 .${P}-section--tiers{padding-top:60px}
 .${P}-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2}
 .${P}-header{text-align:center;max-width:800px;margin:0 auto 60px}

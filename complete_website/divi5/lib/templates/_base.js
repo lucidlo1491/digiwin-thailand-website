@@ -286,6 +286,21 @@ function grainCSS(selector) {
 }
 
 /**
+ * SVG scene background CSS — container rules for decorative SVG illustrations.
+ *
+ * The HTML prototype uses `.dw-section-scene svg { opacity: 0.20 }` globally.
+ * Divi 5 builders write per-section CSS, so this opacity gets lost.
+ * ALWAYS use this helper for sections with SVG background scenes.
+ *
+ * @param {string} prefix — CSS class prefix (e.g. 'reality', 'alt')
+ * @returns {string} CSS string
+ */
+function svgSceneCSS(prefix) {
+  return `.${prefix}-scene{position:absolute;inset:0;pointer-events:none;z-index:0}` +
+    `.${prefix}-scene svg{width:100%;height:100%;position:absolute;top:0;left:0;opacity:0.20}`;
+}
+
+/**
  * Reset Divi's default list-style overrides.
  *
  * Divi injects global styles that add bullets/numbers and padding to ul/ol/li.
@@ -316,5 +331,6 @@ module.exports = {
   buttonLightCSS,
   superDCSS,
   grainCSS,
+  svgSceneCSS,
   diviListReset,
 };

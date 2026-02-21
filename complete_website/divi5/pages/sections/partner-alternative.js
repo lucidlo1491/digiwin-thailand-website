@@ -129,7 +129,7 @@ function blocks() {
 function css() {
   return `
 /* === ALTERNATIVE MODEL (S4) === */
-.${P}-section{background:linear-gradient(180deg,#f8fafc 0%,#fff 100%);padding:100px 24px;position:relative;overflow:hidden;${base.fontSmoothingReset(P)}font-size:16px}
+.${P}-section{background:linear-gradient(180deg,#F5F7FA 0%,#fff 100%);padding:100px 24px 180px;position:relative;overflow:hidden;${base.fontSmoothingReset(P)}font-size:16px}
 .${P}-wave{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(180deg,transparent,rgba(0,60,200,0.04));pointer-events:none;z-index:0}
 .${P}-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2}
 .${P}-header{text-align:center;max-width:860px;margin:0 auto 60px}
@@ -151,7 +151,7 @@ function css() {
 .${P}-model-new .${P}-model-list li svg{stroke:#16a34a}
 .${P}-arrow{display:flex;align-items:center;justify-content:center}
 .${P}-arrow svg{width:48px;height:48px;stroke:#00AFF0}
-.${P}-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.${P}-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:16px}
 .${P}-benefit{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:32px;transition:all 0.3s ease}
 .${P}-benefit:hover{border-color:#00AFF0;box-shadow:0 8px 32px rgba(0,175,240,0.12)}
 .${P}-benefit-icon{width:56px;height:56px;background:linear-gradient(135deg,#00AFF0,#003CC8);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}

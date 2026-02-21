@@ -1,0 +1,56 @@
+{
+  "page": "partner-program",
+  "savedAt": "2026-02-21T04:19:54.004Z",
+  "sections": {
+    "fullpage": {
+      "diffPercent": 4.45,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "hero": {
+      "diffPercent": 0.78,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "pain-revenue": {
+      "diffPercent": 0.64,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "pain-operational": {
+      "diffPercent": 0.77,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "alternative": {
+      "diffPercent": 4.64,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "offerings": {
+      "diffPercent": 0.69,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "journey-research": {
+      "diffPercent": 3.67,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "journey-tiers": {
+      "diffPercent": 1.91,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "market-timing": {
+      "diffPercent": 3.75,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "final-cta": {
+      "diffPercent": 4.78,
+      "verdict": "REVIEW",
+      "skipped": false
+    }
+  }
+}

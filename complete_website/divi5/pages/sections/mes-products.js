@@ -413,6 +413,7 @@ function css() {
 .workflow-steps {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0;
             overflow-x: auto;
             padding-bottom: 16px;
@@ -423,7 +424,7 @@ function css() {
             flex-direction: column;
             align-items: center;
             flex-shrink: 0;
-            min-width: 72px;
+            min-width: 100px;
         }
 .workflow-step-circle {
             width: 44px;

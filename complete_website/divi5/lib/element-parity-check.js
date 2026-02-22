@@ -440,7 +440,7 @@ async function run(pageConfig, opts = {}) {
       // Print result
       const icon = result.pass ? '✓' : '✗';
       const status = result.pass ? 'PASS' : 'FAIL';
-      const issueSummary = result.issues.length > 0
+      const issueSummary = result.issues.length > 0 && result.counts
         ? ` (${result.counts.fail} fail, ${result.counts.warn} warn)`
         : '';
       console.log(`  ${icon} [${status}] ${section.name}${issueSummary}`);

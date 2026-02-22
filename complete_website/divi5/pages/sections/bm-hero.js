@@ -23,7 +23,7 @@ function blocks() {
       <div class="${P}-dot-overlay" aria-hidden="true"></div>
       <div class="${P}-inner">
         <div class="${P}-breadcrumb">
-          <a href="/partner-program.html">Partner Program</a>
+          <a href="/partner-program/">Partner Program</a>
           <span>/</span>
           <span>Business Model Crisis</span>
         </div>

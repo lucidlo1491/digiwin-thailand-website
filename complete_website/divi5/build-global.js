@@ -117,7 +117,52 @@ for (const layout of layouts) {
   console.log('  ✓ Cache flushed (all pages)');
 }
 
+// ════════════════════════════════════════════════════════════════
+// SMOKE TEST — verify header/footer render on a live page
+// ════════════════════════════════════════════════════════════════
 if (!DRY_RUN) {
+  console.log('\n▸ Smoke test — verifying global layouts render...');
+
+  try {
+    const { execSync } = require('child_process');
+    const testUrl = 'https://digiwin-thailand.local/'; // homepage (follow redirects)
+    const html = execSync(
+      `curl -sSk -L --max-time 15 "${testUrl}"`,
+      { encoding: 'utf8', maxBuffer: 5 * 1024 * 1024 }
+    );
+
+    const checks = [];
+
+    // Header checks
+    if (!ONLY || ONLY === 'header') {
+      checks.push({ label: 'Header nav links', found: html.includes('dw-nav-link') || html.includes('dw-header') });
+      checks.push({ label: 'Logo present', found: html.includes('dw-logo') });
+      checks.push({ label: '"Let\'s Talk" CTA', found: html.includes("Let's Talk") || html.includes('Let&#8217;s Talk') });
+    }
+
+    // Footer checks
+    if (!ONLY || ONLY === 'footer') {
+      checks.push({ label: 'Footer copyright', found: html.includes('2026 DigiWin') || html.includes('All rights reserved') });
+      checks.push({ label: 'Footer contact', found: html.includes('digiwin.co.th') || html.includes('Bangkok') });
+    }
+
+    const failures = checks.filter(c => !c.found);
+    if (failures.length > 0) {
+      console.error('  ✗ Smoke test FAILED:');
+      failures.forEach(f => console.error(`    - ${f.label}: NOT FOUND in page HTML`));
+      console.error('  Global layout may not be rendering. Check wp:divi/code blocks and Divi cache.');
+      console.error('  Try: curl -sSk "' + testUrl + '" | grep -c "dw-header"');
+      process.exit(1);
+    }
+
+    console.log(`  ✓ All checks pass (${checks.length}/${checks.length})`);
+    checks.forEach(c => console.log(`    ✓ ${c.label}`));
+  } catch (err) {
+    console.error(`  ✗ Smoke test error: ${err.message}`);
+    console.error('  Is LocalWP running?');
+    process.exit(1);
+  }
+
   console.log('\n✓ Global layouts updated!');
   console.log('  Header: https://digiwin-thailand.local/?page_id=100684');
   console.log('  (Check any page — header/footer should appear globally)');

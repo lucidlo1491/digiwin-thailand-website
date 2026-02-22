@@ -73,8 +73,8 @@ function blocks() {
         <h1 class="${P}-title">Tired of Selling <span class="${P}-hl">Man-Days?</span><br>The Problem Isn\u2019t Your Team.</h1>
         <p class="${P}-subtitle">You\u2019re fighting customization wars that burn out your best consultants and compress your margins every year. The problem isn\u2019t execution \u2014 it\u2019s your business model. We offer a different architecture.</p>
         <div class="${P}-ctas">
-          <a href="/demo.html" class="${P}-btn ${P}-btn--primary">Let\u2019s Talk Partnership</a>
-          <a href="/partner-program/economics.html" class="${P}-btn ${P}-btn--ghost">See the Math First</a>
+          <a href="/contact/" class="${P}-btn ${P}-btn--primary">Let\u2019s Talk Partnership</a>
+          <a href="/partner-program/economics/" class="${P}-btn ${P}-btn--ghost">See the Math First</a>
         </div>
         <div class="${P}-stats">
           <div class="${P}-stat">

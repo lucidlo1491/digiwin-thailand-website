@@ -4,15 +4,19 @@ You are running the autopilot visual fidelity loop for page: **$ARGUMENTS**
 
 **Core principle:** Make the WordPress Divi 5 page look identical to the HTML reference site.
 
-**v7 key change:** Flipped diagnostic hierarchy. Claude Vision is the PRIMARY diagnostic tool (closest to "human eyes"). Pixel diff is the pass/fail GATE. Computed style diff is the CSS PRESCRIPTION.
+**v7.1 key change:** Data-first diagnostic hierarchy. Fidelity-check (structured data) is the PRIMARY diagnostic. Claude Vision is demoted to STRUCTURAL checks only (missing/extra elements). Pixel diff remains the pass/fail GATE. CSD provides fix recipes.
 
-**What's new in v7:**
+**The Perception Gap:** LLMs process images as 16×16 patches. A 20px padding difference ≈ 1 patch. Research confirms Claude/GPT-4/Gemini all fail at detecting CSS-level differences from screenshots. The solution: give Claude exact property values (fidelity-check output), not pixels.
+
+**What's in v7.1:**
 - Shared screenshot config (`screenshot-config.js`) — deterministic, comparable captures across all tools
 - Side-by-side composite images — Peter can see REF vs WP in one PNG
 - Review HTML page (`screenshots/review-{page}.html`) — interactive toggle/slider
-- Claude Vision as primary diagnostic (not last resort)
+- **Fidelity-check as primary diagnostic** (exact CSS property values, not visual guessing)
+- **Claude Vision demoted to structural checks** (missing SVGs, extra pseudo-elements, broken layouts)
 - HTML files are the PRIMARY build source (mechanical translation). ContentSpec is verification only.
 - 17 build principles embedded (from v1-v6 + Round 2/3 red team findings)
+- **Gate 6 + Gate 7 in build-page.js** (--full-verify flag): auto-run fidelity-check + visual-diff + regression
 
 ---
 
@@ -99,45 +103,49 @@ For each section builder, compare `blocks()` output against HTML source:
 
 ---
 
-## Phase 3 — Convergence (Flipped Hierarchy)
+## Phase 3 — Convergence (Data-First Hierarchy)
+
+**Core insight: Don't ask Claude to see. Give it data.**
+LLMs process images as 16×16 patches. A 20px padding difference ≈ 1 patch. Claude is good at CONFIRMING differences Peter points out, but cannot DISCOVER CSS-level differences independently. The tools that output exact property mismatches already exist — use them first.
 
 For each section, in priority order (FAIL > REVIEW):
 
 ### Layer 1: PIXEL DIFF as GATE
 **Tool:** `visual-diff.js --page $ARGUMENTS`
 - <2% = **MATCH** → section DONE, skip all further diagnosis
-- 2-5% = **REVIEW** → Claude Vision quick check, accept if cosmetic
-- >5% = **FAIL** → Claude Vision diagnosis MANDATORY
+- 2-5% = **REVIEW** → Layer 2 quick scan, accept if cosmetic
+- >5% = **FAIL** → full Layer 2 + 3 diagnosis MANDATORY
 
-### Layer 2: CLAUDE VISION as PRIMARY DIAGNOSTIC
-**Tool:** Claude reads the composite PNG (or ref + WP screenshots)
-**For FAIL and REVIEW sections**, Claude MUST:
-1. Read both reference + WP screenshots using the Read tool
-2. Describe every visual difference in natural language:
-   - "The heading font is bolder on WP"
-   - "The card spacing is wider, about 20px extra"
-   - "The gradient background is missing the blue-to-navy transition"
-   - "There's an extra horizontal line under the section label"
-3. Categorize each difference:
-   - `MISSING_ELEMENT` — SVG/decoration/animation not in builder
-   - `EXTRA_ELEMENT` — Decorator function adding unwanted pseudo-elements
-   - `FONT_DIFF` — Wrong family, weight, or size
-   - `COLOR_DIFF` — Wrong text color, background color, gradient
-   - `SPACING_DIFF` — Wrong padding, margin, gap
-   - `LAYOUT_DIFF` — Wrong grid, flex layout, alignment
-   - `OPACITY_DIFF` — SVG/background opacity significantly different
-   - `TEXT_CONTENT_DIFF` — Quotation marks, special characters, text differences
-   - `RENDERING_DIFF` — SVG rendering, anti-aliasing (not fixable)
-
-### Layer 3: COMPUTED STYLE DIFF as CSS PRESCRIPTION
-**Tool:** `computed-style-diff.js --page $ARGUMENTS [--section <fail-section>]`
-**Only for FAIL sections where Claude Vision identified a CSS issue.**
-Maps Claude's observation to exact CSS property + selector:
+### Layer 2: FIDELITY CHECK as PRIMARY DIAGNOSTIC (structured data)
+**Tool:** `fidelity-check.js --page $ARGUMENTS [--section <fail-section>]`
+**For FAIL sections**, fidelity-check outputs exact property mismatches:
+```
+FIXABLE: .card padding-top: expected "24px", got "40px"
+  → Fix: .card{padding-top:24px} in section css()
+FIXABLE: h3 font-size: expected "20px", got "32px"
+  → Fix: .card-name{font-size:20px} in section css()
+```
+**Claude applies each fix mechanically.** No guessing. No visual interpretation.
 - **FIXABLE** — real CSS bugs to fix (font, color, padding on content elements)
-- **STRUCTURAL** — Divi wrapper defaults (position, z-index, flex on containers) → IGNORE
-- **ACCEPTABLE** — equivalent values expressed differently (auto vs 0px) → IGNORE
+- Filter: ignore STRUCTURAL (Divi wrapper defaults) and ACCEPTABLE (equivalent values)
 
-### Layer 4: ELEMENT PRESENCE as STRUCTURAL SANITY CHECK
+### Layer 3: CLAUDE VISION as STRUCTURAL CHECK (missing/extra elements only)
+**Tool:** Claude reads the composite PNG (or ref + WP screenshots)
+**Only used for issues fidelity-check CANNOT catch:**
+- `MISSING_ELEMENT` — SVG/decoration/animation not in builder
+- `EXTRA_ELEMENT` — Decorator function adding unwanted pseudo-elements
+- `LAYOUT_DIFF` — Fundamentally different grid/flex structure
+- `TEXT_CONTENT_DIFF` — Missing text, wrong quotation marks
+
+**Vision is NOT used for:** font-size, padding, margin, color, line-height, font-weight.
+These are CSS properties — fidelity-check gives exact values. Vision cannot.
+
+### Layer 4: COMPUTED STYLE DIFF as CSS PRESCRIPTION
+**Tool:** `computed-style-diff.js --page $ARGUMENTS [--section <fail-section>]`
+**For remaining FAIL sections after Layer 2 fixes.**
+Maps structural observations to exact CSS property + selector with fix recipes.
+
+### Layer 5: ELEMENT PRESENCE as STRUCTURAL SANITY CHECK
 **Tool:** `visual-diff.js --page $ARGUMENTS --presence-check`
 Catches elements that are in DOM but invisible (opacity:0, display:none, zero dimensions).
 
@@ -156,21 +164,23 @@ noImprovementCount = 0
 
 1. **Identify FAIL sections** from visual diff (>5%).
 
-2. **Claude reads screenshots** (Layer 2 — PRIMARY):
-   - Read composite PNG for the section
-   - List every visual difference
-   - Determine fix category
+2. **Run fidelity-check** (Layer 2 — PRIMARY):
+   - Read the FIXABLE output (structured data, exact property values)
+   - Apply each fix mechanically — the data tells you the CSS
 
-3. **For CSS issues**, run computed-style-diff (Layer 3):
+3. **If fidelity-check found nothing**, use Claude Vision (Layer 3 — STRUCTURAL):
+   - Read composite PNG for the section
+   - Look for MISSING/EXTRA elements, layout structure issues
+   - Do NOT try to diagnose CSS property values from screenshots
+
+4. **For remaining CSS issues**, run computed-style-diff (Layer 4):
    - Filter to `fixability: "FIXABLE"` only
    - Ignore STRUCTURAL and ACCEPTABLE
 
-4. **Fix in priority order:**
+5. **Fix in priority order:**
    - `MISSING_ELEMENT` → add to `blocks()`
    - `EXTRA_ELEMENT` → remove decorator call or override with `display:none`
-   - `FONT_DIFF` → fix in `css()` with `!important`
-   - `COLOR_DIFF` → fix in `css()` with `!important`
-   - `SPACING_DIFF` → fix in `css()` (check Divi default padding: 4% lr on rows)
+   - CSS property fixes → apply exact values from fidelity-check/CSD output
    - `LAYOUT_DIFF` → fix in `css()` (check Divi max-width: 1080px default)
 
 5. **Read the section builder file** before making changes.
@@ -431,7 +441,7 @@ VALUES ('Page Title', 'page-slug', 'page', 'publish', '', 1);
 1. **ALWAYS show Peter screenshots.** Read composite PNGs and describe what you see.
 2. **Full-page builds only.** Never use `--section` for MySQL push.
 3. **Read before editing.** Always read the builder file before changes.
-4. **Pixel diff is the GATE.** Claude Vision is the DIAGNOSTIC. Style diff is the PRESCRIPTION.
+4. **Pixel diff is the GATE.** Fidelity-check is the PRIMARY DIAGNOSTIC (data). Vision is STRUCTURAL only. CSD is the PRESCRIPTION.
 5. **Don't fix STRUCTURAL or ACCEPTABLE mismatches.** They're expected Divi differences.
 6. **Don't loop on unfixable issues.** Report and move on.
 7. **Respect the HTML source.** Don't change copy, structure, or functionality.

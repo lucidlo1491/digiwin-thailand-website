@@ -24,6 +24,7 @@ module.exports = {
     }
     .dw-clients-track { animation: none !important; }
     .dw-particle-wave, [data-particles] canvas { display: none !important; }
+    .fade-in { opacity: 1 !important; transform: none !important; }
   `,
 
   // ═══════════════════════════════════════════════════════
@@ -71,6 +72,7 @@ module.exports = {
     '.dw-check-card', '.checks-card', '.pchecks-card',
     '.dw-result-card', '.results-card',
     '.dw-value-prop', '.products-card',
+    '.fade-in',
   ].join(', '),
 
   /** Header hiding — HTML side */
@@ -97,7 +99,7 @@ module.exports = {
   WARM_UP_WAIT_UNTIL: 'domcontentloaded',
   STABILIZATION_MS: 2000,
   PRESENCE_CHECK_STABILIZATION_MS: 3000,
-  PROTOCOL_TIMEOUT: 180000,   // 3 min — consistent across all tools
+  PROTOCOL_TIMEOUT: 300000,   // 5 min — consistent across all tools
   PUPPETEER_ARGS: ['--ignore-certificate-errors', '--no-sandbox', '--font-render-hinting=none'],
 
   // ═══════════════════════════════════════════════════════

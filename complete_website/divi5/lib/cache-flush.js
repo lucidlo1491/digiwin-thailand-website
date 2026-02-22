@@ -31,17 +31,16 @@ function flushPage(pageId, opts = {}) {
     console.warn(`⚠ Could not flush disk cache for page ${pageId}: ${err.message}`);
   }
 
-  // 2. DB transients (page-specific dynamic assets)
-  if (opts.includeDb) {
-    try {
-      mysql.query(
-        `DELETE FROM wp_postmeta WHERE post_id = ${pageId} AND meta_key = '_divi_dynamic_assets_canvases_used';`,
-        opts
-      );
-      results.db = true;
-    } catch (err) {
-      console.warn(`⚠ Could not flush DB cache for page ${pageId}: ${err.message}`);
-    }
+  // 2. DB dynamic asset meta (always flush — stale entries prevent code module rendering)
+  try {
+    mysql.query(
+      `DELETE FROM wp_postmeta WHERE post_id = ${pageId} AND meta_key LIKE '_divi_dynamic_assets%';
+DELETE FROM wp_postmeta WHERE post_id = ${pageId} AND meta_key LIKE '_divi_%canvas%';`,
+      opts
+    );
+    results.db = true;
+  } catch (err) {
+    console.warn(`⚠ Could not flush DB cache for page ${pageId}: ${err.message}`);
   }
 
   return results;
@@ -62,16 +61,16 @@ function flushAll(opts = {}) {
     console.warn(`⚠ Could not flush all disk cache: ${err.message}`);
   }
 
-  if (opts.includeDb) {
-    try {
-      mysql.query(
-        `DELETE FROM wp_postmeta WHERE meta_key = '_divi_dynamic_assets_canvases_used';
+  // Always flush DB dynamic asset meta (stale entries prevent code module rendering)
+  try {
+    mysql.query(
+      `DELETE FROM wp_postmeta WHERE meta_key LIKE '_divi_dynamic_assets%';
+DELETE FROM wp_postmeta WHERE meta_key LIKE '_divi_%canvas%';
 DELETE FROM wp_options WHERE option_name LIKE '%_et_dynamic_cached_%' OR option_name LIKE '_transient_et_%';`,
-        opts
-      );
-    } catch (err) {
-      console.warn(`⚠ Could not flush all DB cache: ${err.message}`);
-    }
+      opts
+    );
+  } catch (err) {
+    console.warn(`⚠ Could not flush all DB cache: ${err.message}`);
   }
 }
 

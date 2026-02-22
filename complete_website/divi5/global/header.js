@@ -101,7 +101,55 @@ function getHeaderHTML() {
   const desktopLogoUri = getSvgDataUri('digiwin-logo-en.svg');
   const mobileLogoUri = getSvgDataUri('digiwin-d-mark.svg');
 
-  return `<header class="dw-header">
+  return `<style>
+/* Header responsive — must be inline (Divi strips @media from _et_pb_custom_css in Theme Builder templates) */
+/* Desktop overrides — Divi's CSS extraction flattens @media rules into non-media selectors;
+   these !important rules guarantee correct desktop state regardless of Divi cache. */
+@media(min-width:1025px){
+  .dw-menu-toggle{display:none !important}
+  .dw-header-cta{display:inline-flex !important}
+  .dw-nav{display:flex !important}
+  .dw-logo-img--desktop{display:block !important}
+  .dw-logo-img--mobile{display:none !important}
+}
+@media(max-width:1024px){
+  .dw-header-inner{padding:0 24px;height:${SPEC.header.heightMobile}}
+  .dw-logo-img--desktop{display:none}
+  .dw-logo-img--mobile{display:block}
+  .dw-nav{display:none;position:fixed;top:${SPEC.header.heightMobile};left:0;width:100%;height:calc(100dvh - ${SPEC.header.heightMobile});background:#fff;flex-direction:column;overflow-y:auto;padding:8px 0 100px;z-index:999998;box-shadow:0 8px 32px rgba(37,59,80,0.15)}
+  .dw-nav.dw-nav--open{display:flex}
+  .dw-nav-item{width:100%;border-bottom:1px solid rgba(37,59,80,0.06)}
+  .dw-nav-link{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;font-size:16px;font-weight:500;color:${SPEC.nav.color};width:100%}
+  .dw-nav-link::after{display:none}
+  .dw-nav-link svg{width:20px;height:20px;transition:transform ${SPEC.animation.transition}}
+  .dw-nav-item.active .dw-nav-link svg{transform:rotate(180deg)}
+  .dw-mega-menu{position:static;opacity:1;visibility:visible;transform:none;display:none;box-shadow:none;border-radius:0;background:#f8fafc;padding:0;width:100%}
+  .dw-mega-menu.active{display:block}
+  .dw-mega-menu::before{display:none}
+  .dw-mega-inner{display:flex;flex-direction:column;padding:8px 0;gap:0}
+  .dw-mega-column{padding:0;border:none}
+  .dw-mega-column-title{padding:12px 32px 4px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:${SPEC.megaMenu.columnTitleColor}}
+  .dw-mega-item{padding:12px 32px;border-radius:0;gap:12px}
+  .dw-mega-item:hover{background:rgba(0,175,240,0.06)}
+  .dw-mega-icon{width:32px;height:32px;min-width:32px}
+  .dw-mega-title{font-size:14px}
+  .dw-mega-desc{font-size:12px}
+  .dw-mega-viewall{padding:12px 32px;border-radius:0;font-size:13px}
+  .dw-mega-featured{display:none}
+  .dw-nav::after{content:'';display:block;padding:16px 24px}
+  .dw-menu-toggle{display:flex;position:relative;z-index:999999}
+  .dw-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+  .dw-menu-toggle.active span:nth-child(2){opacity:0}
+  .dw-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+  .dw-header-cta{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .dw-header,.dw-header-cta,.dw-mega-menu,.dw-nav-link,.dw-nav-link::after,.dw-mega-item,.dw-mega-icon,.dw-mega-featured-cta,.dw-mega-viewall svg,.dw-logo,.dw-logo-since,.dw-menu-toggle span,.dw-nav-link svg{transition:none !important}
+  .dw-header-cta::before{transition:none !important}
+  .dw-header-cta:hover,.dw-mega-featured-cta:hover,.dw-logo:hover{transform:none !important}
+}
+</style>
+<header class="dw-header">
   <div class="dw-header-inner">
     <a href="/" class="dw-logo">
       <img src="${desktopLogoUri}" alt="DigiWin" class="dw-logo-img dw-logo-img--desktop" width="160" height="40">
@@ -119,23 +167,23 @@ function getHeaderHTML() {
           <div class="dw-mega-inner">
             <div class="dw-mega-column">
               <div class="dw-mega-column-title">Core Systems</div>
-              <a href="/products/erp.html" class="dw-mega-item">
+              <a href="/products/erp/" class="dw-mega-item">
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 3h18v18H3V3z"/><path d="M3 9h18M9 21V9"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">ERP: T100 &amp; iGP</p><p class="dw-mega-desc">Finance, supply chain, and operations</p></div>
               </a>
-              <a href="/products/mes.html" class="dw-mega-item">
+              <a href="/products/mes/" class="dw-mega-item">
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 20h20M6 20V10l4-6h4l4 6v10"/><path d="M6 14h12"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">MES &amp; SFT</p><p class="dw-mega-desc">Production tracking and quality</p></div>
               </a>
-              <a href="/products/wms.html" class="dw-mega-item">
+              <a href="/products/wms/" class="dw-mega-item">
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">WMS: sFLS</p><p class="dw-mega-desc">Warehouse and inventory</p></div>
               </a>
-              <a href="/products/aiot.html" class="dw-mega-item">
+              <a href="/products/aiot/" class="dw-mega-item">
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">AIoT &amp; Smart Factory</p><p class="dw-mega-desc">Machine connectivity and analytics</p></div>
               </a>
-              <a href="/products.html" class="dw-mega-viewall">View All Products<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+              <a href="/products/" class="dw-mega-viewall">View All Products<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             </div>
             <div class="dw-mega-featured">
               <div class="dw-mega-featured-image"><svg aria-hidden="true" viewBox="0 0 120 120"><path d="M20 90V50l20-20h40l20 20v40" stroke-linecap="round"/><path d="M35 90V65h20v25M65 90V55h20v35"/><circle cx="60" cy="25" r="8"/><path d="M60 33v12"/></svg></div>
@@ -143,7 +191,7 @@ function getHeaderHTML() {
                 <span class="dw-mega-featured-label">Complete Stack</span>
                 <p class="dw-mega-featured-title">Manufacturing &amp; Distribution</p>
                 <p class="dw-mega-featured-desc">Tailor-made ERP for manufacturing and distribution companies in Thailand and ASEAN.</p>
-                <a href="/products.html" class="dw-mega-featured-cta">Explore Solutions<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                <a href="/products/" class="dw-mega-featured-cta">Explore Solutions<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
               </div>
             </div>
           </div>
@@ -157,19 +205,19 @@ function getHeaderHTML() {
           <div class="dw-mega-inner">
             <div class="dw-mega-column">
               <div class="dw-mega-column-title">Manufacturing Sectors</div>
-              <a href="/industries/automotive.html" class="dw-mega-item">
+              <a href="/industries/automotive/" class="dw-mega-item">
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-6l2-4h12l2 4v6h-2M5 17h10"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">Automotive Parts</p><p class="dw-mega-desc">JIT delivery and OEM traceability</p></div>
               </a>
-              <a href="/industries/electronics.html" class="dw-mega-item">
+              <a href="/industries/electronics/" class="dw-mega-item">
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">Electronics Assembly</p><p class="dw-mega-desc">SMT integration and MSD tracking</p></div>
               </a>
-              <a href="/industries/metal-plastics.html" class="dw-mega-item">
+              <a href="/industries/metal-plastics/" class="dw-mega-item">
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">Metal &amp; Plastics</p><p class="dw-mega-desc">Yield optimization and scrap reduction</p></div>
               </a>
-              <a href="/industries.html" class="dw-mega-viewall">View All Industries<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+              <a href="/industries/" class="dw-mega-viewall">View All Industries<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             </div>
             <div class="dw-mega-featured">
               <div class="dw-mega-featured-image"><svg aria-hidden="true" viewBox="0 0 120 120"><path d="M20 100V60l15-25h50l15 25v40" stroke-linecap="round"/><rect x="35" y="70" width="20" height="30" rx="2"/><rect x="65" y="60" width="20" height="40" rx="2"/><path d="M45 40h30M60 25v15"/><circle cx="60" cy="20" r="5"/></svg></div>
@@ -177,7 +225,7 @@ function getHeaderHTML() {
                 <span class="dw-mega-featured-label">50,000+ Factories</span>
                 <p class="dw-mega-featured-title">Industry-Specific Solutions</p>
                 <p class="dw-mega-featured-desc">Pre-configured templates and best practices for your specific manufacturing sector.</p>
-                <a href="/industries.html" class="dw-mega-featured-cta">Find Your Industry<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                <a href="/industries/" class="dw-mega-featured-cta">Find Your Industry<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
               </div>
             </div>
           </div>
@@ -191,31 +239,31 @@ function getHeaderHTML() {
           <div class="dw-mega-inner">
             <div class="dw-mega-column">
               <div class="dw-mega-column-title">Why Partner</div>
-              <a href="/partner-program/business-model.html" class="dw-mega-item">
+              <a href="/partner-program/business-model/" class="dw-mega-item">
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">The Evolving Business Model</p></div>
               </a>
-              <a href="/partner-program/economics.html" class="dw-mega-item">
+              <a href="/partner-program/economics/" class="dw-mega-item">
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">Partner Economics</p></div>
               </a>
-              <a href="/partner-program/solutions.html" class="dw-mega-item">
+              <a href="/partner-program/solutions/" class="dw-mega-item">
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">Solution Stack</p></div>
               </a>
-              <a href="/partner-program.html" class="dw-mega-viewall">Partner Overview<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+              <a href="/partner-program/" class="dw-mega-viewall">Partner Overview<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             </div>
             <div class="dw-mega-column">
               <div class="dw-mega-column-title">Getting Started</div>
-              <a href="/partner-program.html" class="dw-mega-item">
+              <a href="/partner-program/" class="dw-mega-item">
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">Become a Partner</p></div>
               </a>
-              <a href="/demo.html" class="dw-mega-item">
+              <a href="/contact/" class="dw-mega-item">
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">Let's Talk</p></div>
               </a>
-              <a href="/about.html" class="dw-mega-item">
+              <a href="/about-us/" class="dw-mega-item">
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">About DigiWin</p></div>
               </a>
@@ -226,7 +274,7 @@ function getHeaderHTML() {
                 <span class="dw-mega-featured-label">For ERP Implementers</span>
                 <p class="dw-mega-featured-title">Grow Beyond the Man-Day Model</p>
                 <p class="dw-mega-featured-desc">30-40% license margins. 100% service fees. Recurring revenue that compounds.</p>
-                <a href="/partner-program.html" class="dw-mega-featured-cta">Become a Partner<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                <a href="/partner-program/" class="dw-mega-featured-cta">Become a Partner<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
               </div>
             </div>
           </div>
@@ -240,15 +288,15 @@ function getHeaderHTML() {
           <div class="dw-mega-inner">
             <div class="dw-mega-column">
               <div class="dw-mega-column-title">Learn &amp; Connect</div>
-              <a href="/case-studies.html" class="dw-mega-item">
+              <a href="/case-studies/" class="dw-mega-item">
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">Case Studies</p><p class="dw-mega-desc">Real factory results from Thai manufacturers</p></div>
               </a>
-              <a href="/news.html" class="dw-mega-item">
+              <a href="/news/" class="dw-mega-item">
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">News &amp; Events</p><p class="dw-mega-desc">Seminars, workshops, and factory visits</p></div>
               </a>
-              <a href="/blog.html" class="dw-mega-item">
+              <a href="/blog/" class="dw-mega-item">
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">Insights &amp; Knowledge</p><p class="dw-mega-desc">Technical guides and implementation stories</p></div>
               </a>
@@ -259,7 +307,7 @@ function getHeaderHTML() {
                 <span class="dw-mega-featured-label">Latest Insight</span>
                 <p class="dw-mega-featured-title">BOI Compliance: 10M THB Saved</p>
                 <p class="dw-mega-featured-desc">How one factory eliminated supplementary taxes through production-order-level reconciliation.</p>
-                <a href="/blog/boi-compliance-jin-hai.html" class="dw-mega-featured-cta">Read the Story<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                <a href="/blog/" class="dw-mega-featured-cta">Read the Story<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
               </div>
             </div>
           </div>
@@ -267,9 +315,9 @@ function getHeaderHTML() {
       </div>
 
       <!-- About -->
-      <div class="dw-nav-item"><a href="/about.html" class="dw-nav-link">About</a></div>
+      <div class="dw-nav-item"><a href="/about-us/" class="dw-nav-link">About</a></div>
     </nav>
-    <a href="/demo.html" class="dw-header-cta">
+    <a href="/contact/" class="dw-header-cta">
       <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;margin-right:8px;vertical-align:middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       <span style="vertical-align:middle;">Let's Talk</span>
     </a>
@@ -400,45 +448,9 @@ function headerCss() {
 .dw-menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:12px;background:none;border:none}
 .dw-menu-toggle span{width:24px;height:2px;background:${SPEC.nav.color};transition:all ${SPEC.animation.transition}}
 
-/* ===== RESPONSIVE (max-width: 1024px) ===== */
-@media(max-width:1024px){
-  .dw-header-inner{padding:0 24px;height:${SPEC.header.heightMobile}}
-  .dw-logo-img--desktop{display:none}
-  .dw-logo-img--mobile{display:block}
-  .dw-nav{display:none;position:fixed;top:${SPEC.header.heightMobile};left:0;width:100%;height:calc(100dvh - ${SPEC.header.heightMobile});background:#fff;flex-direction:column;overflow-y:auto;padding:8px 0 100px;z-index:999998;box-shadow:0 8px 32px rgba(37,59,80,0.15)}
-  .dw-nav.dw-nav--open{display:flex}
-  .dw-nav-item{width:100%;border-bottom:1px solid rgba(37,59,80,0.06)}
-  .dw-nav-link{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;font-size:16px;font-weight:500;color:${SPEC.nav.color};width:100%}
-  .dw-nav-link::after{display:none}
-  .dw-nav-link svg{width:20px;height:20px;transition:transform ${SPEC.animation.transition}}
-  .dw-nav-item.active .dw-nav-link svg{transform:rotate(180deg)}
-  .dw-mega-menu{position:static;opacity:1;visibility:visible;transform:none;display:none;box-shadow:none;border-radius:0;background:#f8fafc;padding:0;width:100%}
-  .dw-mega-menu.active{display:block}
-  .dw-mega-menu::before{display:none}
-  .dw-mega-inner{display:flex;flex-direction:column;padding:8px 0;gap:0}
-  .dw-mega-column{padding:0;border:none}
-  .dw-mega-column-title{padding:12px 32px 4px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:${SPEC.megaMenu.columnTitleColor}}
-  .dw-mega-item{padding:12px 32px;border-radius:0;gap:12px}
-  .dw-mega-item:hover{background:rgba(0,175,240,0.06)}
-  .dw-mega-icon{width:32px;height:32px;min-width:32px}
-  .dw-mega-title{font-size:14px}
-  .dw-mega-desc{font-size:12px}
-  .dw-mega-viewall{padding:12px 32px;border-radius:0;font-size:13px}
-  .dw-mega-featured{display:none}
-  .dw-nav::after{content:'';display:block;padding:16px 24px}
-  .dw-menu-toggle{display:flex;position:relative;z-index:999999}
-  .dw-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-  .dw-menu-toggle.active span:nth-child(2){opacity:0}
-  .dw-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-  .dw-header-cta{display:none}
-}
-
-/* ===== REDUCED MOTION ===== */
-@media(prefers-reduced-motion:reduce){
-  .dw-header,.dw-header-cta,.dw-mega-menu,.dw-nav-link,.dw-nav-link::after,.dw-mega-item,.dw-mega-icon,.dw-mega-featured-cta,.dw-mega-viewall svg,.dw-logo,.dw-logo-since,.dw-menu-toggle span,.dw-nav-link svg{transition:none !important}
-  .dw-header-cta::before{transition:none !important}
-  .dw-header-cta:hover,.dw-mega-featured-cta:hover,.dw-logo:hover{transform:none !important}
-}`;
+/* ===== RESPONSIVE + REDUCED MOTION ===== */
+/* NOTE: @media rules moved to inline <style> in header HTML. */
+/* Divi strips @media from _et_pb_custom_css in Theme Builder templates. */`;
 }
 
 module.exports = { blocks, css: headerCss, SPEC };

@@ -56,7 +56,10 @@ const COMPLETE_DIR = path.join(__dirname, '..', '..');
 const PAGES_DIR = path.join(__dirname, '..', 'pages');
 const SECTIONS_DIR = path.join(PAGES_DIR, 'sections');
 
-const protoPath = path.join(COMPLETE_DIR, `${pageName}.html`);
+const protoArg = getArg('--proto');
+const protoPath = protoArg
+  ? path.resolve(COMPLETE_DIR, protoArg)
+  : path.join(COMPLETE_DIR, `${pageName}.html`);
 if (!fs.existsSync(protoPath)) {
   console.error(`Prototype not found: ${protoPath}`);
   console.error(`Available HTML files:`);
@@ -633,6 +636,105 @@ function cleanInnerHTML(html) {
 }
 
 // ════════════════════════════════════════════════════════════════
+// A3: TEMPLATE SUGGESTION HEURISTIC
+// ════════════════════════════════════════════════════════════════
+
+/**
+ * Suggest a matching template based on section characteristics.
+ * Returns a JS comment string (not code) — human reviews before adopting.
+ */
+function suggestTemplate(section) {
+  const html = section.outerHTML.toLowerCase();
+  const cls = section.className.toLowerCase();
+  const allCSS = section.cssRules.join(' ').toLowerCase();
+
+  // Dark background + cards
+  if ((/dark|navy|#000864|#000432/.test(allCSS) || /dark/.test(cls)) && /card/.test(html)) {
+    return '\n// TEMPLATE HINT: matches "card-grid-dark". See home-trust-anchors.js for example.';
+  }
+  // Light cards
+  if (/card/.test(html) && !/dark/.test(cls) && !/navy/.test(allCSS)) {
+    return '\n// TEMPLATE HINT: matches "card-grid-light". See home-factory-checks.js for example.';
+  }
+  // Stats / counters
+  if (/data-target|counter|stat/.test(html) && /particle|ocean|banner/.test(cls)) {
+    return '\n// TEMPLATE HINT: matches "stats-banner". See home-stats.js for example.';
+  }
+  // CTA gradient
+  if ((/gradient/.test(allCSS) || /cta/.test(cls)) && /btn|button|Let.*Talk/i.test(html)) {
+    return '\n// TEMPLATE HINT: matches "cta-gradient". See home-cta.js for example.';
+  }
+  // Hero with gradient
+  if (/hero/.test(cls) && (/gradient/.test(allCSS) || /linear-gradient/.test(allCSS))) {
+    return '\n// TEMPLATE HINT: matches "hero-gradient". See home-hero.js for example.';
+  }
+  // Logo marquee
+  if (/marquee|logo-bar|client/.test(cls)) {
+    return '\n// TEMPLATE HINT: matches "logo-marquee". See home-logo-bar.js for example.';
+  }
+  // Tabs
+  if (/tab-btn|tab-content|tab-panel/.test(html)) {
+    return '\n// TEMPLATE HINT: matches "tab-content". See the tab-content template.';
+  }
+  return '';
+}
+
+// ════════════════════════════════════════════════════════════════
+// A2: REMAP CLASS NAMES IN HTML OUTPUT
+// ════════════════════════════════════════════════════════════════
+
+/**
+ * Apply ${P} prefix remapping to HTML content (class attributes + SVG ids).
+ * Uses the same dominant-prefix logic as remapClassesToPrefix() for CSS.
+ */
+function remapHTMLClasses(html, classNames) {
+  if (classNames.length === 0) return html;
+
+  // Find dominant prefix (same algorithm as remapClassesToPrefix)
+  const prefixCounts = {};
+  classNames.forEach(cls => {
+    const firstWord = cls.split('-')[0];
+    if (firstWord.length >= 3 && firstWord !== 'dw') {
+      prefixCounts[firstWord] = (prefixCounts[firstWord] || 0) + 1;
+    }
+    const parts = cls.split('-');
+    if (parts.length >= 2) {
+      const twoWord = parts[0] + '-' + parts[1];
+      if (twoWord.length >= 5 && parts[0] !== 'dw') {
+        prefixCounts[twoWord] = (prefixCounts[twoWord] || 0) + 1;
+      }
+    }
+  });
+  const sorted = Object.entries(prefixCounts)
+    .sort((a, b) => b[1] - a[1] || b[0].length - a[0].length);
+  const dominant = sorted.length > 0 ? sorted[0][0] : '';
+  if (dominant.length < 3) return html;
+
+  const escaped = dominant.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+  // Remap class="..." values: replace dominant prefix with ${P}
+  let result = html.replace(/class="([^"]*)"/g, (match, value) => {
+    const remapped = value.replace(
+      new RegExp('\\b' + escaped + '(-[\\w-]+)?\\b', 'g'),
+      (m, suffix) => '\\${P}' + (suffix || '')
+    );
+    return `class="${remapped}"`;
+  });
+
+  // Remap SVG id/url() references to prevent cross-section collisions
+  result = result.replace(
+    new RegExp('id="(' + escaped + '[-\\w]*)"', 'g'),
+    (m, id) => `id="\\${P}-${id.replace(new RegExp('^' + escaped), '').replace(/^-/, '')}"`
+  );
+  result = result.replace(
+    new RegExp('url\\(#(' + escaped + '[-\\w]*)\\)', 'g'),
+    (m, id) => `url(#\\${P}-${id.replace(new RegExp('^' + escaped), '').replace(/^-/, '')})`
+  );
+
+  return result;
+}
+
+// ════════════════════════════════════════════════════════════════
 // MAIN
 // ════════════════════════════════════════════════════════════════
 const styleBlock = extractStyleBlock(html);
@@ -741,6 +843,12 @@ sectionData.forEach(section => {
   const hasSVG = /<svg\b/i.test(section.cleanHTML);
   const svgNote = hasSVG ? '\n// NOTE: Contains inline SVGs — may need Base64 JS injection if wp_kses strips elements.' : '';
 
+  // ── A3: Template suggestion heuristic ──
+  const templateHint = suggestTemplate(section);
+
+  // ── A2: Remap class names in HTML output ──
+  const remappedHTML = remapHTMLClasses(section.cleanHTML, section.classNames);
+
   const content = `/**
  * ${fileName} — ${adminLabel} Section (S${section.index + 1})
  *
@@ -749,7 +857,7 @@ sectionData.forEach(section => {
  *${svgNote}${extSummary}
  * Original classes: ${section.classNames.slice(0, 5).join(', ')}${section.classNames.length > 5 ? ` (+${section.classNames.length - 5} more)` : ''}
  */
-
+${templateHint}
 const base = require('../../lib/templates/_base');
 
 const P = '${section.prefix}'; // CSS prefix — customize if needed
@@ -759,7 +867,7 @@ const P = '${section.prefix}'; // CSS prefix — customize if needed
 // ════════════════════════════════════════════════════════════════
 function blocks() {
   const html = \`
-    ${escapeForTemplate(section.cleanHTML).replace(/\n/g, '\n    ')}\`;
+    ${escapeForTemplate(remappedHTML).replace(/\n/g, '\n    ')}\`;
 
   return base.wrapInDiviSection('${adminLabel}', html, '${adminLabel}: Content');
 }
@@ -770,12 +878,14 @@ function blocks() {
 function css() {
   return \`
 /* === ${adminLabel.toUpperCase()} (S${section.index + 1}) === */
-/* TODO: Review and remap class selectors to use \\\${P} prefix */
-/* TODO: Add section container: .\\\${P}-section{...;\\\${base.fontSmoothingReset(P)}font-size:16px} */
+/* Divi 5 section boilerplate (font-smoothing, p padding, heading resets) */
+.\\\${P}-section{position:relative;overflow:hidden;\\\${base.fontSmoothingReset(P)}font-size:16px}
+.\\\${P}-section p{padding-bottom:0;line-height:1.6}
+.\\\${P}-section h2,.\\\${P}-section h3,.\\\${P}-section h4{margin:0;padding:0}
 ${escapeForTemplate(cssBody)}
 ${extReportEscaped}
 ${hasList ? `\\\${base.diviListReset(P)}` : ''}
-${hasTransition ? `\\\${base.reducedMotion(\\\`\\\`)}` : ''}
+${hasTransition ? `\\\${base.reducedMotion('*{animation:none !important;transition:none !important}')}` : ''}
 \`.trim();
 }
 
@@ -818,15 +928,39 @@ if (fs.existsSync(configFilePath) && !FORCE) {
   ).join('\n');
 
   const verifyEntries = sectionData.map((s, i) => {
-    const wpSel = `.et_pb_section_${i}`;
+    // Use section's CSS prefix as the WP selector (matches remapped output)
+    const wpSel = `.${s.prefix}-section`;
     const htmlSel = s.className
       ? `.${s.className.split(/\s+/)[0]}`
       : `main > section:nth-child(${i + 1})`;
+
+    // Build styleMap from detected elements
+    const styleMapEntries = [];
+    // Always add section title if h2 exists
+    if (/<h2\b/i.test(s.innerHTML)) {
+      styleMapEntries.push(`          { label: 'Section Title', htmlSel: '${htmlSel} h2', wpSel: '${wpSel} h2' }`);
+    }
+    if (/<h3\b/i.test(s.innerHTML)) {
+      styleMapEntries.push(`          { label: 'Subtitle/H3', htmlSel: '${htmlSel} h3', wpSel: '${wpSel} h3' }`);
+    }
+    // Detect buttons/CTAs
+    if (/class="[^"]*btn|class="[^"]*cta/i.test(s.innerHTML)) {
+      styleMapEntries.push(`          { label: 'Button/CTA', htmlSel: '${htmlSel} a[class*="btn"], ${htmlSel} a[class*="cta"]', wpSel: '${wpSel} a[class*="btn"], ${wpSel} a[class*="cta"]' }`);
+    }
+    // Detect stat numbers
+    if (/data-target|class="[^"]*stat|class="[^"]*number/i.test(s.innerHTML)) {
+      styleMapEntries.push(`          { label: 'Stat Number', htmlSel: '${htmlSel} [data-target]', wpSel: '${wpSel} [data-target]' }`);
+    }
+    // Fallback: at least one entry
+    if (styleMapEntries.length === 0) {
+      styleMapEntries.push(`          { label: 'Section Title', htmlSel: '${htmlSel} h2', wpSel: '${wpSel} h2' }`);
+    }
+
     return `      {
         name: '${s.name}', wpSelector: '${wpSel}', htmlSelector: '${htmlSel}',
         pixelThreshold: 0.1,
         styleMap: [
-          { label: 'Section Title', htmlSel: '${htmlSel} h2', wpSel: '${wpSel} h2' },
+${styleMapEntries.join(',\n')},
         ],
       },`;
   }).join('\n');
@@ -850,8 +984,8 @@ module.exports = {
   title: '${pageName.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}',
   siteUrl: 'https://digiwin-thailand.local',
   specPath: path.join(__dirname, '..', '..', '..', 'docs', 'content-specs', 'ContentSpec_${pageName.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('')}_Divi5_2.0.md'),
-  prototypePath: path.join(__dirname, '..', '..', '${pageName}.html'),
-  protoFile: '${pageName}.html',
+  prototypePath: path.join(__dirname, '..', '..', '${protoArg || pageName + '.html'}'),
+  protoFile: '${protoArg || pageName + '.html'}',
 
   sections: [
 ${sectionEntries}

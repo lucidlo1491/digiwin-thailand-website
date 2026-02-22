@@ -47,6 +47,21 @@ Run `node complete_website/audit.js` after every build. Checks: skip-to-content 
 - **Accessibility in the template, not retrofitted.** Skip links, landmarks, reduced-motion, contrast — baked in from Day 1.
 - **Context:** HTML site's `styles.css` is temporary (CloneWebX fidelity). Divi 5 replaces all CSS. Apply these lessons in Divi 5 builds.
 
+## WordPress Block Content — Hands Off the Database (D67)
+- **NEVER do raw SQL text replacement** (`UPDATE ... SET post_content = REPLACE(...)`) on WordPress block content. The escaping layers — JSON inside block comments inside MySQL — are too fragile for manual patching.
+- If post_content needs fixing, **always re-push from the JS source files** (`build-page.js`, `build-global.js`). These handle escaping correctly.
+- If the source JS is wrong, fix the JS source and re-push — never patch the database directly.
+- Context: A `REPLACE('\\n', '\n')` on the header post broke all JSON inside `wp:divi/code` blocks, killing the header on every page. The fix was simply re-running `build-global.js`.
+
+## Visual Diagnosis Protocol (The Perception Gap)
+When visual diff >5%:
+1. **Read fidelity-check FIXABLE output first.** It gives exact property mismatches (e.g., `padding-top: expected 24px, got 40px`).
+2. **Apply each fix mechanically** — the data tells you exactly what CSS to write.
+3. **Use Claude Vision ONLY for structural issues** — missing/extra elements, broken layouts, absent SVGs. These are things Vision CAN reliably detect.
+4. **Never guess CSS values from screenshots.** LLMs process images as 16×16 patches. A 20px padding difference = ~1 patch. Research confirms Claude/GPT-4/Gemini all fail at pixel-level CSS diagnosis.
+5. **Max 2 fix attempts per section**, then escalate to Peter with the fidelity-check output.
+6. **Use `--full-verify` flag** on build-page.js to auto-run Gate 6 (fidelity-check) + Gate 7 (visual-diff + regression).
+
 ## Divi 5 Build Protocol (MANDATORY for every build-*-divi5.js push)
 1. **BEFORE writing any CSS value:** Open the page's ContentSpec. Read the exact spec values. Never eyeball from browser DevTools or styles.css.
 2. **SPEC tokens block:** Every build script MUST have `const SPEC = {}` at the top with ContentSpec line numbers. All CSS values trace to SPEC. (D45)

@@ -94,7 +94,7 @@ const DATA = {
       icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00AFF0" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>',
       bgIcon: '<svg width="180" height="180" viewBox="0 0 24 24" fill="none" stroke="#00AFF0" stroke-width="1"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>',
       headline: 'Production-order-level material reconciliation that passes BOI (Board of Investment) audits \u2014 a capability no competitor can match.',
-      detail: 'One factory saved 10M+ THB/year in supplementary taxes. Our system tracks actual material consumption per production order, not theoretical bill-of-materials calculations \u2014 the gap that triggers costly audit findings. <a href="/blog/boi-compliance-jin-hai.html" style="color:#0369a1">Read the full story \u2192</a>',
+      detail: 'One factory saved 10M+ THB/year in supplementary taxes. Our system tracks actual material consumption per production order, not theoretical bill-of-materials calculations \u2014 the gap that triggers costly audit findings. <a href="/blog/" style="color:#0369a1">Read the full story \u2192</a>',
     },
   ],
 };

@@ -17,7 +17,7 @@
  * SHARED_KEYFRAMES, assemble()) and Divi infrastructure overrides.
  */
 
-const { codeModule, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../modules');
+const { codeModule, htmlBlock, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../modules');
 const superD = require('../super-d');
 
 // ────────────────────────────────────────────────────────────────
@@ -69,15 +69,15 @@ function wrapInDiviSection(adminLabel, html, codeLabel, opts = {}) {
     }),
   ];
 
-  // Optional Super D decoration
+  // Optional Super D decoration (also uses wp:html for frontend rendering)
   if (opts.superDClass) {
-    blocks.push(codeModule(
-      superD.html(opts.superDClass),
-      opts.superDLabel || `Decoration: Super D`
-    ));
+    blocks.push(htmlBlock(superD.html(opts.superDClass)));
   }
 
-  blocks.push(codeModule(html, codeLabel));
+  // Use wp:html (WordPress core) instead of wp:divi/code —
+  // Divi 5 beta does NOT render code module content server-side on the frontend.
+  // wp:html renders correctly but shows as "Unknown Module" in VB.
+  blocks.push(htmlBlock(html.trim()));
   blocks.push(columnClose());
   blocks.push(rowClose());
   blocks.push(sectionClose());

@@ -1,7 +1,7 @@
 /**
  * footer.js — Divi 5 Global Footer Builder
  *
- * Dark navy footer with ocean gradient background (CSS-only, no PNG),
+ * Dark navy footer with ocean PNG background (Base64-encoded at build time),
  * logo, company info, 3 link columns, social icons, and legal bar.
  * Dynamic year calculation via inline script.
  *
@@ -17,11 +17,18 @@ const { codeModule, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, co
 // ────────────────────────────────────────────────────────────────
 const ASSETS_DIR = path.join(__dirname, '..', '..', 'assets');
 
-function getSvgDataUri(filename) {
+function getAssetDataUri(filename) {
   const filePath = path.join(ASSETS_DIR, filename);
   if (!fs.existsSync(filePath)) return '';
-  const svg = fs.readFileSync(filePath, 'utf8');
-  return 'data:image/svg+xml;base64,' + Buffer.from(svg).toString('base64');
+  const data = fs.readFileSync(filePath);
+  const ext = path.extname(filename).toLowerCase();
+  if (ext === '.svg') {
+    return 'data:image/svg+xml;base64,' + Buffer.from(data).toString('base64');
+  }
+  if (ext === '.png') {
+    return 'data:image/png;base64,' + data.toString('base64');
+  }
+  return '';
 }
 
 // ────────────────────────────────────────────────────────────────
@@ -81,9 +88,12 @@ const SPEC = {
 // ════════════════════════════════════════════════════════════════
 
 function getFooterHTML() {
-  const whiteLogoUri = getSvgDataUri('digiwin-logo-en-white.svg');
+  const whiteLogoUri = getAssetDataUri('digiwin-logo-en-white.svg');
+  // Inline CSS — Divi 5 does NOT inject _et_pb_custom_css for et_footer_layout posts
+  const inlineCSS = footerCss();
 
-  return `<footer class="dw-footer">
+  return `<style>${inlineCSS}</style>
+<footer class="dw-footer">
   <div class="dw-footer-ocean" aria-hidden="true"></div>
   <div class="dw-footer-inner">
     <div class="dw-footer-grid">
@@ -98,32 +108,32 @@ function getFooterHTML() {
       <div class="dw-footer-column">
         <p class="dw-footer-heading">Products</p>
         <ul class="dw-footer-links">
-          <li><a href="/products.html">All Products</a></li>
-          <li><a href="/products/erp.html">ERP: T100 &amp; iGP</a></li>
-          <li><a href="/products/mes.html">MES &amp; SFT</a></li>
-          <li><a href="/products/wms.html">WMS: sFLS</a></li>
-          <li><a href="/products/aiot.html">AIoT &amp; Smart Factory</a></li>
+          <li><a href="/products/">All Products</a></li>
+          <li><a href="/products/erp/">ERP: T100 &amp; iGP</a></li>
+          <li><a href="/products/mes/">MES &amp; SFT</a></li>
+          <li><a href="/products/wms/">WMS: sFLS</a></li>
+          <li><a href="/products/aiot/">AIoT &amp; Smart Factory</a></li>
         </ul>
       </div>
 
       <div class="dw-footer-column">
         <p class="dw-footer-heading">Industries</p>
         <ul class="dw-footer-links">
-          <li><a href="/industries.html">All Industries</a></li>
-          <li><a href="/industries/automotive.html">Automotive Parts</a></li>
-          <li><a href="/industries/electronics.html">Electronics Assembly</a></li>
-          <li><a href="/industries/metal-plastics.html">Metal &amp; Plastics</a></li>
+          <li><a href="/industries/">All Industries</a></li>
+          <li><a href="/industries/automotive/">Automotive Parts</a></li>
+          <li><a href="/industries/electronics/">Electronics Assembly</a></li>
+          <li><a href="/industries/metal-plastics/">Metal &amp; Plastics</a></li>
         </ul>
         <p class="dw-footer-heading" style="margin-top:24px">Partners</p>
         <ul class="dw-footer-links">
-          <li><a href="/partner-program.html">Partner Program</a></li>
-          <li><a href="/partner-program/economics.html">Partner Economics</a></li>
+          <li><a href="/partner-program/">Partner Program</a></li>
+          <li><a href="/partner-program/economics/">Partner Economics</a></li>
         </ul>
         <p class="dw-footer-heading" style="margin-top:24px">Resources</p>
         <ul class="dw-footer-links">
-          <li><a href="/case-studies.html">Case Studies</a></li>
-          <li><a href="/news.html">News &amp; Events</a></li>
-          <li><a href="/blog.html">Insights &amp; Knowledge</a></li>
+          <li><a href="/case-studies/">Case Studies</a></li>
+          <li><a href="/news/">News &amp; Events</a></li>
+          <li><a href="/blog/">Insights &amp; Knowledge</a></li>
         </ul>
       </div>
 
@@ -144,9 +154,9 @@ function getFooterHTML() {
     <div class="dw-footer-bottom">
       <p class="dw-footer-copyright">&copy; <span class="dw-footer-year">2026</span> DigiWin Thailand. All rights reserved.</p>
       <div class="dw-footer-legal">
-        <a href="/privacy-policy.html">Privacy Policy</a>
-        <a href="/terms.html">Terms of Service</a>
-        <a href="/about.html">About Us</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-of-service/">Terms of Service</a>
+        <a href="/about-us/">About Us</a>
       </div>
     </div>
   </div>
@@ -186,69 +196,78 @@ function blocks() {
 }
 
 function footerCss() {
+  // Base64-encode the actual ocean PNG for the background effect
+  const oceanUri = getAssetDataUri('footer-ocean.png');
+
+  // Strategy: Use `.dw-footer` parent scope on all selectors for specificity.
+  // Divi's `.et_pb_code_inner ul li` = 3 classes+element = specificity (0,1,2).
+  // Our `.dw-footer .dw-footer-links li` = (0,2,1) which beats it naturally.
+  // Only `!important` on the Divi section/row wrapper overrides (in blocks()),
+  // not on our own scoped content CSS.
   return `
-/* ===== FOOTER ===== */
-.dw-footer{background:${SPEC.section.background};color:${SPEC.text.primary};padding:${SPEC.section.padding};position:relative;overflow:hidden}
+/* ===== FOOTER — scoped for Divi specificity ===== */
+footer.dw-footer{background:${SPEC.section.background};color:${SPEC.text.primary};padding:${SPEC.section.padding};position:relative;overflow:hidden;font-size:16px;line-height:1.5;-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto}
+footer.dw-footer *{box-sizing:border-box}
+footer.dw-footer p,footer.dw-footer ul,footer.dw-footer li,footer.dw-footer div,footer.dw-footer span,footer.dw-footer strong{font-family:${SPEC.heading.fontFamily};color:${SPEC.text.secondary}}
+footer.dw-footer a{font-family:${SPEC.heading.fontFamily};color:${SPEC.text.secondary}}
 
-/* Ocean background — CSS gradient approximation (replaces 418KB PNG) */
-.dw-footer-ocean{position:absolute;inset:0;background:
-  radial-gradient(ellipse 120% 60% at 50% 100%, rgba(0,175,240,0.08) 0%, transparent 60%),
-  radial-gradient(ellipse 80% 40% at 30% 90%, rgba(0,175,240,0.05) 0%, transparent 50%),
-  radial-gradient(ellipse 60% 30% at 70% 95%, rgba(0,60,200,0.06) 0%, transparent 40%);
-  pointer-events:none;z-index:0;opacity:0.9}
+/* Ocean background — real PNG from brand kit */
+footer.dw-footer .dw-footer-ocean{position:absolute;inset:0;background:url("${oceanUri}") no-repeat center bottom;background-size:100% auto;pointer-events:none;z-index:0}
 
-.dw-footer-inner{max-width:${SPEC.inner.maxWidth};margin:0 auto;padding:${SPEC.inner.padding};position:relative;z-index:1}
+footer.dw-footer .dw-footer-inner{max-width:${SPEC.inner.maxWidth};margin:0 auto;padding:${SPEC.inner.padding};position:relative;z-index:1}
 
-.dw-footer-grid{display:grid;grid-template-columns:${SPEC.grid.columns};gap:${SPEC.grid.gap};padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,0.1)}
+footer.dw-footer .dw-footer-grid{display:grid;grid-template-columns:${SPEC.grid.columns};gap:${SPEC.grid.gap};padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,0.1)}
 
-.dw-footer-brand{padding-right:40px}
+footer.dw-footer .dw-footer-brand{padding-right:40px}
 
-.dw-footer-logo{margin-bottom:16px}
-.dw-footer-logo img{display:block}
+footer.dw-footer .dw-footer-logo{margin-bottom:16px}
+footer.dw-footer .dw-footer-logo img{display:block}
 
-.dw-footer-tagline{font-family:${SPEC.heading.fontFamily};font-size:${SPEC.tagline.fontSize};color:${SPEC.text.secondary};line-height:${SPEC.tagline.lineHeight};margin-bottom:24px}
+footer.dw-footer .dw-footer-tagline{font-size:${SPEC.tagline.fontSize};color:${SPEC.text.secondary};line-height:${SPEC.tagline.lineHeight};margin:0 0 24px 0;padding:0}
 
-.dw-footer-stock{font-family:${SPEC.heading.fontFamily};font-size:${SPEC.stock.fontSize};color:${SPEC.text.secondary};text-transform:uppercase;letter-spacing:${SPEC.stock.letterSpacing}}
-.dw-footer-stock strong{color:${SPEC.text.accent}}
+footer.dw-footer .dw-footer-stock{font-size:${SPEC.stock.fontSize};color:${SPEC.text.secondary};text-transform:uppercase;letter-spacing:${SPEC.stock.letterSpacing};margin:0;padding:0}
+footer.dw-footer .dw-footer-stock strong{color:${SPEC.text.accent}}
 
-.dw-footer-heading{font-family:${SPEC.heading.fontFamily};font-size:${SPEC.heading.fontSize};font-weight:${SPEC.heading.fontWeight};color:${SPEC.text.primary};text-transform:${SPEC.heading.textTransform};letter-spacing:${SPEC.heading.letterSpacing};margin:0 0 20px 0}
+footer.dw-footer .dw-footer-heading{font-size:${SPEC.heading.fontSize};font-weight:${SPEC.heading.fontWeight};color:${SPEC.text.primary};text-transform:${SPEC.heading.textTransform};letter-spacing:${SPEC.heading.letterSpacing};margin:0 0 20px 0;padding:0;line-height:1.4}
 
-.dw-footer-links{list-style:none;padding:0;margin:0}
-.dw-footer-links li{margin-bottom:12px}
-.dw-footer-links a{font-family:${SPEC.heading.fontFamily};font-size:${SPEC.link.fontSize};color:${SPEC.link.color};text-decoration:none;transition:color 0.2s ease;display:inline-flex;align-items:center;min-height:44px}
-.dw-footer-links a:hover{color:${SPEC.link.hoverColor}}
+footer.dw-footer .dw-footer-links{list-style:none;padding:0;margin:0}
+footer.dw-footer .dw-footer-links li{list-style:none;margin:0 0 12px 0;padding:0;line-height:1.4}
+footer.dw-footer .dw-footer-links li::before{display:none;content:none}
+footer.dw-footer .dw-footer-links li::marker{content:none;display:none}
+footer.dw-footer .dw-footer-links a{font-size:${SPEC.link.fontSize};color:${SPEC.link.color};text-decoration:none;transition:color 0.2s ease;display:inline-flex;align-items:center;min-height:44px}
+footer.dw-footer .dw-footer-links a:hover{color:${SPEC.link.hoverColor}}
 
-.dw-footer-contact p{font-family:${SPEC.heading.fontFamily};font-size:${SPEC.link.fontSize};color:${SPEC.text.secondary};line-height:1.6;margin:0 0 16px 0}
-.dw-footer-contact a{color:${SPEC.text.accent};text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+footer.dw-footer .dw-footer-contact p{font-size:${SPEC.link.fontSize};color:${SPEC.text.secondary};line-height:1.6;margin:0 0 16px 0;padding:0}
+footer.dw-footer .dw-footer-contact a{color:${SPEC.text.accent};text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
 
-.dw-footer-social{display:flex;gap:12px;margin-top:24px}
-.dw-footer-social a{width:${SPEC.social.size};height:${SPEC.social.size};background:${SPEC.social.bgDefault};border-radius:${SPEC.social.borderRadius};display:flex;align-items:center;justify-content:center;color:${SPEC.text.primary};text-decoration:none;transition:all 0.2s ease;font-family:${SPEC.heading.fontFamily};font-weight:600}
-.dw-footer-social a:hover{background:${SPEC.social.bgHover}}
+footer.dw-footer .dw-footer-social{display:flex;gap:12px;margin-top:24px}
+footer.dw-footer .dw-footer-social a{width:${SPEC.social.size};height:${SPEC.social.size};background:${SPEC.social.bgDefault};border-radius:${SPEC.social.borderRadius};display:flex;align-items:center;justify-content:center;color:${SPEC.text.primary};text-decoration:none;transition:all 0.2s ease;font-weight:600}
+footer.dw-footer .dw-footer-social a:hover{background:${SPEC.social.bgHover}}
 
-.dw-footer-bottom{padding:24px 0;display:flex;justify-content:space-between;align-items:center}
-.dw-footer-copyright{font-family:${SPEC.heading.fontFamily};font-size:${SPEC.copyright.fontSize};color:${SPEC.text.secondary};margin:0}
-.dw-footer-legal{display:flex;gap:24px}
-.dw-footer-legal a{font-family:${SPEC.heading.fontFamily};font-size:${SPEC.copyright.fontSize};color:${SPEC.text.secondary};text-decoration:none;transition:color 0.2s ease;padding:15px 0}
-.dw-footer-legal a:hover{color:${SPEC.link.hoverColor}}
+footer.dw-footer .dw-footer-bottom{padding:24px 0;display:flex;justify-content:space-between;align-items:center}
+footer.dw-footer .dw-footer-copyright{font-size:${SPEC.copyright.fontSize};color:${SPEC.text.secondary};margin:0;padding:0}
+footer.dw-footer .dw-footer-legal{display:flex;gap:24px}
+footer.dw-footer .dw-footer-legal a{font-size:${SPEC.copyright.fontSize};color:${SPEC.text.secondary};text-decoration:none;transition:color 0.2s ease;padding:15px 0}
+footer.dw-footer .dw-footer-legal a:hover{color:${SPEC.link.hoverColor}}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:1024px){
-  .dw-footer-grid{grid-template-columns:1fr 1fr}
-  .dw-footer-brand{grid-column:1 / -1;padding-right:0}
+  footer.dw-footer .dw-footer-grid{grid-template-columns:1fr 1fr}
+  footer.dw-footer .dw-footer-brand{grid-column:1 / -1;padding-right:0}
 }
 @media(max-width:640px){
-  .dw-footer{padding:60px 0 0 0}
-  .dw-footer-inner{padding:0 24px}
-  .dw-footer-grid{grid-template-columns:1fr;gap:36px}
-  .dw-footer-bottom{flex-direction:column;text-align:center;gap:16px}
-  .dw-footer-legal{flex-wrap:wrap;justify-content:center}
+  footer.dw-footer{padding:60px 0 0 0}
+  footer.dw-footer .dw-footer-inner{padding:0 24px}
+  footer.dw-footer .dw-footer-grid{grid-template-columns:1fr;gap:36px}
+  footer.dw-footer .dw-footer-bottom{flex-direction:column;text-align:center;gap:16px}
+  footer.dw-footer .dw-footer-legal{flex-wrap:wrap;justify-content:center}
 }
 
 /* ===== REDUCED MOTION ===== */
 @media(prefers-reduced-motion:reduce){
-  .dw-footer-social a{transition:none}
-  .dw-footer-links a{transition:none}
-  .dw-footer-legal a{transition:none}
+  footer.dw-footer .dw-footer-social a{transition:none}
+  footer.dw-footer .dw-footer-links a{transition:none}
+  footer.dw-footer .dw-footer-legal a{transition:none}
 }`;
 }
 

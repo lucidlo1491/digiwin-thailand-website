@@ -107,30 +107,83 @@ async function capture({ pageName, wpUrl, sections = [], warmUp = true, freeze =
     // Hide WP admin bar
     await config.hideAdminBar(page);
 
-    // 2. Full-page screenshot
+    // Kill JS-driven animations (rAF loops, particles) that can crash Chrome
+    await page.evaluate(new Function(config.JS_ANIMATION_KILL_JS));
+
+    // 2. Full-page screenshot — with height cap and recovery
     const fullPath = path.join(SCREENSHOTS_DIR, `${normalized}-${timestamp}-fullpage.png`);
-    await page.screenshot({ path: fullPath, fullPage: true });
-    savedPaths.push(fullPath);
-
-    // Hide fixed header before per-section screenshots
-    await config.hideHeaderWP(page);
-
-    // 3. Per-section screenshots
-    for (const section of sections) {
+    let pageUsable = true;
+    try {
+      const bodyHeight = await page.evaluate(() => document.body.scrollHeight);
+      if (bodyHeight > 8000) {
+        console.warn(`  ⚠ Fullpage screenshot skipped (page height ${bodyHeight}px > 8000px cap)`);
+      } else {
+        await page.screenshot({ path: fullPath, fullPage: true });
+        savedPaths.push(fullPath);
+      }
+    } catch (e) {
+      console.warn(`  ⚠ Fullpage screenshot failed (${e.message.substring(0, 80)})`);
+      // Chrome tab may have crashed — open fresh page for section screenshots
       try {
-        // Clip to viewport width to prevent overflow capture (V8)
-        await config.clipToViewport(page, section.wpSelector);
-
-        const el = await page.$(section.wpSelector);
-        if (el) {
-          const sectionPath = path.join(SCREENSHOTS_DIR, `${normalized}-${section.name}-${timestamp}.png`);
-          await el.screenshot({ path: sectionPath });
-          savedPaths.push(sectionPath);
-        } else {
-          console.warn(`  ⚠ Section "${section.name}" selector not found: ${section.wpSelector}`);
+        await page.close();
+      } catch {}
+      try {
+        const freshPage = await browser.newPage();
+        await freshPage.setViewport(config.VIEWPORT);
+        await freshPage.goto(wpUrl, { waitUntil: config.WAIT_UNTIL, timeout: 60000 });
+        await config.loadFonts(freshPage);
+        await new Promise(r => setTimeout(r, config.STABILIZATION_MS));
+        await config.forceScrollElementsVisible(freshPage);
+        await config.applyFreeze(freshPage);
+        await config.hideAdminBar(freshPage);
+        await config.hideHeaderWP(freshPage);
+        await page.constructor.bind(freshPage); // rebind
+        // Replace page reference for section screenshots below
+        // Use a flag + fresh page approach
+        console.log('  ↻ Recovered with fresh page for section screenshots');
+        for (const section of sections) {
+          try {
+            await config.clipToViewport(freshPage, section.wpSelector);
+            const el = await freshPage.$(section.wpSelector);
+            if (el) {
+              const sectionPath = path.join(SCREENSHOTS_DIR, `${normalized}-${section.name}-${timestamp}.png`);
+              await el.screenshot({ path: sectionPath });
+              savedPaths.push(sectionPath);
+            } else {
+              console.warn(`  ⚠ Section "${section.name}" selector not found: ${section.wpSelector}`);
+            }
+          } catch (err) {
+            console.warn(`  ⚠ Section "${section.name}" screenshot failed: ${err.message}`);
+          }
         }
-      } catch (err) {
-        console.warn(`  ⚠ Section "${section.name}" screenshot failed: ${err.message}`);
+        pageUsable = false; // skip the normal section loop below
+      } catch (recoveryErr) {
+        console.warn(`  ⚠ Recovery failed: ${recoveryErr.message.substring(0, 80)}`);
+        pageUsable = false;
+      }
+    }
+
+    if (pageUsable) {
+      // Hide fixed header before per-section screenshots
+      await config.hideHeaderWP(page);
+
+      // 3. Per-section screenshots
+      for (const section of sections) {
+        try {
+          // Clip to viewport width to prevent overflow capture (V8)
+          await config.clipToViewport(page, section.wpSelector);
+
+          const el = await page.$(section.wpSelector);
+          if (el) {
+            const sectionPath = path.join(SCREENSHOTS_DIR, `${normalized}-${section.name}-${timestamp}.png`);
+            await el.screenshot({ path: sectionPath });
+            savedPaths.push(sectionPath);
+          } else {
+            console.warn(`  ⚠ Section "${section.name}" selector not found: ${section.wpSelector}`);
+          }
+        } catch (err) {
+          console.warn(`  ⚠ Section "${section.name}" screenshot failed: ${err.message}`);
+        }
       }
     }
   } finally {

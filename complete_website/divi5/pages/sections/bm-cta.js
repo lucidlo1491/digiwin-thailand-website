@@ -27,8 +27,8 @@ function blocks() {
         <h2 class="${P}-title">See How the Economics Actually Work</h2>
         <p class="${P}-subtitle">You\u2019ve seen the problem. Now see the math of the solution\u2014what you keep, what compounds, and why 100% of service fees stay with you.</p>
         <div class="${P}-btn-row">
-          <a href="/partner-program/economics.html" class="${P}-btn ${P}-btn--primary">See Partner Economics</a>
-          <a href="/partner-program/solutions.html" class="${P}-btn ${P}-btn--ghost">Evaluate the Weapon First</a>
+          <a href="/partner-program/economics/" class="${P}-btn ${P}-btn--primary">See Partner Economics</a>
+          <a href="/partner-program/solutions/" class="${P}-btn ${P}-btn--ghost">Evaluate the Weapon First</a>
         </div>
       </div>
     </div>`;

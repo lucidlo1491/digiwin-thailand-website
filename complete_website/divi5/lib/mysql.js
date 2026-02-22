@@ -37,7 +37,7 @@ function query(sql, opts = {}) {
   const socket = opts.mysqlSocket || DEFAULTS.mysqlSocket;
   const db = opts.mysqlDb || DEFAULTS.mysqlDb;
 
-  const tmpFile = path.join(__dirname, '..', '.tmp-sql.sql');
+  const tmpFile = path.join(__dirname, '..', `.tmp-sql-${process.pid}-${Date.now()}.sql`);
   fs.writeFileSync(tmpFile, sql, 'utf8');
   try {
     const result = execSync(

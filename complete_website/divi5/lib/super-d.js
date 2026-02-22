@@ -4,13 +4,20 @@
  * Reads SVG files from assets/ and provides Base64-encoded data URIs
  * for use as CSS background-image in Code Module wrapper divs.
  *
- * RULE: Never apply ::before/::after to .et_pb_* selectors (Divi owns those).
- * Always use wrapper <div> inside Code Module for decorative elements.
+ * MODIFIER SYSTEM (mirrors styles.css .dw-d-bg-* classes):
+ * - Variants: gradient (0.15), particle (0.20), outline (0.12)
+ * - Intensity: subtle (0.06), medium (0.14), bold (0.22)
+ * - Animation: glow (pulsing drop-shadow), parallax (will-change)
  *
  * Usage:
  *   const superD = require('../../lib/super-d');
- *   // In blocks():  codeModule(superD.html('section-deco'), 'Decoration: Super D')
- *   // In css():     superD.css('section-deco', { variant: 'gradient', position: 'corner-br', opacity: 0.08 })
+ *   // Simple:
+ *   superD.css('my-deco', { variant: 'gradient', position: 'right' })
+ *   // With modifiers (matches HTML: dw-d-bg--gradient dw-d-bg--bold dw-d-glow):
+ *   superD.css('my-deco', { variant: 'gradient', position: 'right', modifiers: ['bold', 'glow'] })
+ *
+ * RULE: Never apply ::before/::after to .et_pb_* selectors (Divi owns those).
+ * Always use wrapper <div> inside Code Module for decorative elements.
  */
 
 const fs = require('fs');
@@ -39,6 +46,26 @@ function getSvgBase64(variant) {
 }
 
 /**
+ * Default opacities per variant — matches styles.css .dw-d-bg--{variant}
+ * These are the BASE opacities before any intensity modifier.
+ */
+const VARIANT_OPACITY = {
+  gradient: 0.15,
+  particle: 0.20,
+  outline:  0.12,
+};
+
+/**
+ * Intensity modifiers — override the variant's base opacity.
+ * Matches styles.css .dw-d-bg--{modifier}
+ */
+const INTENSITY = {
+  subtle: 0.06,
+  medium: 0.14,
+  bold:   0.22,
+};
+
+/**
  * Position presets for Super D backgrounds.
  * Maps to CSS positioning rules matching the HTML site's .dw-d-bg-* classes.
  */
@@ -57,21 +84,33 @@ const positions = {
   },
   'left': {
     left: '-15%', right: 'auto', top: '50%',
-    width: '50%', minHeight: '80vh',
+    width: '60%', minHeight: '60vh',
     backgroundPosition: 'center left',
     transform: 'translateY(-50%)',
   },
   'center': {
     left: '50%', right: 'auto', top: '50%',
-    width: '90%', minHeight: '90vh',
+    width: '80%', minHeight: '80vh',
     backgroundPosition: 'center center',
     transform: 'translate(-50%, -50%)',
   },
   'right': {
     right: '-10%', left: 'auto', top: '50%',
-    width: '60%', minHeight: '80vh',
+    width: '60%', minHeight: '60vh',
     backgroundPosition: 'center right',
     transform: 'translateY(-50%)',
+  },
+  'bottom': {
+    right: '-10%', left: 'auto', top: 'auto', bottom: '-20%',
+    width: '60%', minHeight: '60vh',
+    backgroundPosition: 'center bottom',
+    transform: 'none',
+  },
+  'top': {
+    right: '-10%', left: 'auto', top: '-20%', bottom: 'auto',
+    width: '60%', minHeight: '60vh',
+    backgroundPosition: 'center top',
+    transform: 'none',
   },
 };
 
@@ -85,25 +124,44 @@ function html(className) {
 }
 
 /**
+ * Resolve final opacity from variant + modifiers + explicit override.
+ * Priority: explicit opts.opacity > intensity modifier > variant default
+ */
+function resolveOpacity(variant, modifiers, explicitOpacity) {
+  if (explicitOpacity !== undefined && explicitOpacity !== null) return explicitOpacity;
+  // Check modifiers for intensity override
+  if (modifiers) {
+    for (const mod of modifiers) {
+      if (INTENSITY[mod] !== undefined) return INTENSITY[mod];
+    }
+  }
+  return VARIANT_OPACITY[variant] || 0.08;
+}
+
+/**
  * Generate CSS for a Super D decoration.
  * @param {string} className — matches the html() className
  * @param {object} opts
  * @param {'gradient'|'particle'|'outline'} opts.variant — SVG variant
- * @param {string} opts.position — position preset key (corner-br, left, center, etc.)
- * @param {number} opts.opacity — decoration opacity (0.05-0.18 typical)
+ * @param {string} opts.position — position preset key
+ * @param {number} [opts.opacity] — explicit opacity override (skips modifier/variant defaults)
+ * @param {string[]} [opts.modifiers] — ['bold','glow','parallax','medium','subtle']
  * @param {string} [opts.width] — override width
  * @param {string} [opts.minHeight] — override minHeight
- * @returns {string} CSS string
+ * @returns {string} CSS string (may include @keyframes for glow)
  */
 function css(className, opts = {}) {
   const variant = opts.variant || 'gradient';
+  const modifiers = opts.modifiers || [];
   const pos = positions[opts.position || 'corner-br'];
-  const opacity = opts.opacity ?? 0.08;
+  const opacity = resolveOpacity(variant, modifiers, opts.opacity);
   const b64 = getSvgBase64(variant);
   const width = opts.width || pos.width;
   const minHeight = opts.minHeight || pos.minHeight;
 
-  return `.${className}{` +
+  const hasGlow = modifiers.includes('glow');
+
+  let result = `.${className}{` +
     `position:absolute;` +
     `${pos.top !== undefined ? `top:${pos.top};` : ''}` +
     `${pos.right !== undefined ? `right:${pos.right};` : ''}` +
@@ -114,7 +172,15 @@ function css(className, opts = {}) {
     `background-size:contain;` +
     `${pos.transform !== 'none' ? `transform:${pos.transform};` : ''}` +
     `opacity:${opacity};pointer-events:none;z-index:0` +
+    `${hasGlow ? `;animation:superDGlow 3s ease-in-out infinite` : ''}` +
     `}`;
+
+  // Add glow keyframes if needed (idempotent — same keyframes name)
+  if (hasGlow) {
+    result += `\n@keyframes superDGlow{0%,100%{filter:drop-shadow(0 0 20px rgba(0,175,240,0.1))}50%{filter:drop-shadow(0 0 40px rgba(0,175,240,0.25))}}`;
+  }
+
+  return result;
 }
 
-module.exports = { html, css, getSvgBase64, positions };
+module.exports = { html, css, getSvgBase64, positions, VARIANT_OPACITY, INTENSITY };

@@ -82,25 +82,35 @@ async function capture({ pageName, htmlFile, sections = [], force = false }) {
       const page = await browser.newPage();
       await page.setViewport(config.VIEWPORT);
 
+      // Disable JavaScript — HTML reference pages are static; JS (particles,
+      // IntersectionObserver, rAF loops) crashes Chrome on tall/complex pages.
+      // FREEZE_CSS handles visibility (fade-in, animations) via pure CSS.
+      await page.setJavaScriptEnabled(false);
+
       const url = `http://127.0.0.1:${port}/${htmlFile}`;
-      await page.goto(url, { waitUntil: config.WAIT_UNTIL, timeout: 30000 });
+      await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
 
       // Wait for fonts (consistent weights: 400+700)
       await config.loadFonts(page);
 
-      // Freeze animations + counter finalize + SVG animate removal
-      await config.applyFreeze(page);
+      // Inject freeze CSS (animations + fade-in visibility)
+      await page.addStyleTag({ content: config.FREEZE_CSS });
 
-      // Force scroll-animated elements visible
+      // Force scroll-animated elements visible via inline styles
       await config.forceScrollElementsVisible(page);
 
       // Stabilization wait (matched to WP screenshot timing)
       await new Promise(r => setTimeout(r, config.STABILIZATION_MS));
 
-      // Full-page screenshot
+      // Full-page screenshot — cap height to avoid Chrome memory issues
       const fullPath = path.join(SCREENSHOTS_DIR, `${pageName}-fullpage.png`);
-      await page.screenshot({ path: fullPath, fullPage: true });
-      savedPaths.push(fullPath);
+      const bodyHeight = await page.evaluate(() => document.body.scrollHeight);
+      if (bodyHeight > 8000) {
+        console.warn(`  ⚠ Fullpage screenshot skipped (page height ${bodyHeight}px > 8000px cap)`);
+      } else {
+        await page.screenshot({ path: fullPath, fullPage: true });
+        savedPaths.push(fullPath);
+      }
 
       // Hide fixed header before per-section screenshots
       await config.hideHeaderHTML(page);

@@ -80,6 +80,8 @@ ${superD.css('dw-d-bg', { variant: 'outline', position: 'right', modifiers: ['bo
 .product-detail-cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 @media (max-width:640px){.product-detail-cta-title{font-size:28px}.product-detail-cta-buttons{flex-direction:column}.product-detail-cta-buttons .btn-white,.product-detail-cta-buttons .btn-outline-white{width:100%;text-align:center}}
 
+/* Grain texture (::after — ::before is used for radial glow) */
+${base.grainCSS('.product-detail-cta', { pseudo: '::after' })}
 ${base.reducedMotion('')}
 `.trim();
 }

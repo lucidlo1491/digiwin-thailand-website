@@ -281,8 +281,19 @@ function superDCSS(className, opts) {
  * @param {string} selector — CSS selector
  * @returns {string} CSS string
  */
-function grainCSS(selector) {
-  return `${selector}::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none;z-index:1}`;
+function grainCSS(selector, opts = {}) {
+  const pseudo = opts.pseudo || '::before';
+  return `${selector}${pseudo}{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none;z-index:1}`;
+}
+
+/**
+ * List item line-height reset — opt-in per section.
+ * Divi defaults li line-height to 23.8px. This resets to 1.6 with font-smoothing.
+ * @param {string} sel — CSS selector scoping the list (e.g. '.capabilities-list')
+ * @returns {string} CSS string
+ */
+function diviListLineHeight(sel) {
+  return `${sel} li{line-height:1.6;-webkit-font-smoothing:auto}`;
 }
 
 /**
@@ -335,4 +346,5 @@ module.exports = {
   grainCSS,
   svgSceneCSS,
   diviListReset,
+  diviListLineHeight,
 };

@@ -892,7 +892,7 @@ function css() {
 /* Divi 5 section boilerplate (font-smoothing, p padding, heading resets) */
 .\${P}-section{position:relative;overflow:hidden;\${base.fontSmoothingReset(P)}font-size:16px}
 .\${P}-section p{padding-bottom:0;line-height:1.6}
-.\${P}-section h2,.\${P}-section h3,.\${P}-section h4{margin:0;padding:0}
+.\${P}-section h2,.\${P}-section h3,.\${P}-section h4{margin:0;padding:0;line-height:1.6}
 ${escapeForTemplate(cssBody)}
 ${extReportEscaped}
 ${hasSuperD ? superDCSSLine : ''}

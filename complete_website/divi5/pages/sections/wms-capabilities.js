@@ -176,19 +176,28 @@ function css() {
             font-weight: 600;
             color: #000864;
             margin-bottom: 4px;
-        }
+        
+            -webkit-font-smoothing: auto !important!important;
+
+            -webkit-font-smoothing: auto !important;}
 .capability-box-tagline {
             font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
             color: #5b6b80;
-        }
+        
+            -webkit-font-smoothing: auto !important!important;
+
+            -webkit-font-smoothing: auto !important;}
 .capability-box-desc {
             font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             color: #000864;
             line-height: 1.7;
             margin-bottom: 20px;
-        }
+        
+            -webkit-font-smoothing: auto !important!important;
+
+            -webkit-font-smoothing: auto !important;}
 .capability-features {
             list-style: none;
             padding: 0;
@@ -203,6 +212,8 @@ function css() {
             display: flex;
             align-items: flex-start;
             gap: 12px;
+            line-height: 1.6;
+            -webkit-font-smoothing: auto;
         }
 .capability-features li:last-child {
             border-bottom: none;
@@ -212,11 +223,21 @@ function css() {
             font-weight: bold;
             flex-shrink: 0;
             margin-top: 2px;
-        }
+        
+            -webkit-font-smoothing: auto !important!important;
+
+            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important;}
 .step-list--after li .check {
             color: #22c55e;
             font-weight: bold;
-        }
+        
+            -webkit-font-smoothing: auto !important!important;
+}
 @media (max-width: 1024px) {
             .problems-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -270,7 +291,11 @@ function css() {
 
 .section-header{text-align:center;margin-bottom:48px}
 .section-title{font-family:'Noto Sans', sans-serif;font-size:36px;font-weight:700;color:#000864;margin-bottom:16px}
-.section-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:#5b6b80;max-width:600px;margin:0 auto}
+.section-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:#5b6b80;max-width:600px;margin:0 auto
+            line-height: 28.8px !important;
+
+            -webkit-font-smoothing: auto !important;
+}
 .capabilities-inner{max-width:1200px;margin:0 auto;padding:0 24px}
 /* .capabilities-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:24px} */
 /* @media (max-width:1024px){.capabilities-grid{grid-template-columns:repeat(2, 1fr)}} */

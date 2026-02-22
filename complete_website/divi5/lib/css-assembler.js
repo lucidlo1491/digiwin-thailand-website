@@ -103,7 +103,9 @@ const GLOBAL_THEME_RESET = `
 .et_pb_section:not([class*='tb_body']){overflow:hidden !important;margin:0 !important}
 .et_pb_row:not([class*='tb_body']){max-width:100% !important;width:100% !important;padding:0 !important;margin-top:0 !important;margin-bottom:0 !important;gap:0 !important}
 .et_pb_column:not([class*='tb_body']){padding:0 !important;margin:0 !important;gap:0 !important}
-.et_pb_section .et_pb_row .et_pb_column .et_pb_text.et_pb_module{margin:0 !important;padding:0 !important}`;
+.et_pb_section .et_pb_row .et_pb_column .et_pb_text.et_pb_module{margin:0 !important;padding:0 !important}
+.section-title{line-height:1.6;-webkit-font-smoothing:auto}
+.section-subtitle{margin-left:auto;margin-right:auto;line-height:1.6}`;
 
 /**
  * Keyframes shared across sections

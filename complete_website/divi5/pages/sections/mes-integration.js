@@ -94,7 +94,7 @@ function css() {
 /* Header */
 .section-header{text-align:center;margin-bottom:48px}
 .section-title{font-family:'Noto Sans', sans-serif;font-size:36px;font-weight:700;color:#000864;margin-bottom:16px;line-height:1.3}
-.section-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:#5b6b80;max-width:600px;margin:0 126px;line-height:1.6}
+.section-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:#5b6b80;max-width:600px;margin:0 auto;line-height:1.6}
 
 /* Node layout */
 .integration-visual{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;margin:48px 0}

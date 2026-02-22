@@ -143,6 +143,8 @@ function css() {
             display: flex;
             align-items: center;
             gap: 10px;
+            line-height: 1.6;
+            -webkit-font-smoothing: auto;
         }
 .reports-list li:last-child {
             border-bottom: none;

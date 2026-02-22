@@ -58,7 +58,7 @@ function css() {
 .fade-in.no-delay{opacity:1;transform:none;transition:none}
 @media (prefers-reduced-motion:reduce){.fade-in{opacity:1;transform:none;transition:none}}
 @media (max-width:640px){.auto-hero, .elec-hero, .metal-hero{padding:120px 0 80px}.auto-hero h1, .elec-hero h1, .metal-hero h1{font-size:32px}.auto-hero-subtitle, .elec-hero-subtitle, .metal-hero-subtitle{font-size:17px}.auto-hero-stats, .elec-hero-stats, .metal-hero-stats{flex-direction:column;gap:24px}.auto-hero-stat-value, .elec-hero-stat-value, .metal-hero-stat-value{font-size:36px}.stake-card, .challenge-card{padding:32px 24px}.solution-card{padding:32px}.cta-section h2{font-size:28px}.cta-buttons{flex-direction:column}}
-.cta-section{padding:100px 0;background:linear-gradient(135deg, #00AFF0 0%, #003CC8 100%);text-align:center}
+.cta-section{padding:100px 0;background:linear-gradient(135deg, #00AFF0 0%, #003CC8 100%);text-align:center;position:relative;overflow:hidden}
 /* .cta-inner{max-width:700px;margin:0 auto;padding:0 24px} */
 .cta-section h2{font-family:'Noto Sans', sans-serif;font-size:40px;color:#fff;margin-bottom:16px}
 .cta-section p{font-size:20px;color:rgba(255,255,255,0.9);margin-bottom:40px}
@@ -68,6 +68,8 @@ function css() {
 /* @media (max-width:640px){.dw-hero-panel{min-height:80vh;padding:48px 24px}.dw-hero-title{font-size:32px}.dw-section{padding:48px 24px}.dw-grid-2,.dw-grid-3,.dw-grid-4{grid-template-columns:1fr}.dw-stats-grid{grid-template-columns:1fr 1fr;gap:24px}.dw-cta-buttons{flex-direction:column;align-items:center}.dw-footer-grid{grid-template-columns:1fr}.dw-footer-bottom{flex-direction:column;text-align:center;gap:16px}.cta-section h2{font-size:28px}.cta-buttons{flex-direction:column}} */
 /* @media (prefers-reduced-motion:reduce){.products-hero-content,.hero-stack-visual,.products-hero::before,.products-hero-badge::before,.stack-layer,.stack-layer::before,.data-particle,.ecosystem-node,.ecosystem-line,.ecosystem-ring,.data-flow-line,.data-flow-dot,.integration-hub::before,.integration-hub::after,.pp-card,.why-card,.why-card-icon,.pp-card-icon,.products-cta-glow,.dw-d-parallax,.dw-wave-flow,.dw-d-bg{animation:none !important;transition:none !important}.pp-card.visible{opacity:1;transform:none}} */
 
+/* Grain texture */
+${base.grainCSS('.cta-section')}
 ${base.reducedMotion('')}
 
 /* Super D decoration */

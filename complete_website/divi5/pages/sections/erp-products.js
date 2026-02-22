@@ -10,6 +10,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const { cardCSS, featureListCSS, bestForCSS } = require('../../theme/components');
 
 const P = 'pro'; // CSS prefix — customize if needed
 
@@ -202,11 +203,11 @@ function css() {
         }
 .products-title {
             font-family: 'Noto Sans', sans-serif;
-            font-size: 40px;
+            font-size: 36px;
             font-weight: 700;
             color: #000864;
             margin: 0 0 16px 0;
-            line-height: 1.6;
+            line-height: 57.6px;
         }
 .products-subtitle {
             font-family: 'Noto Sans', sans-serif;
@@ -221,129 +222,10 @@ function css() {
             grid-template-columns: repeat(2, 1fr);
             gap: 32px;
         }
-.product-card {
-            background: #ffffff;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 2px solid #e8eef3;
-            padding: 32px;
-            transition: all 0.4s ease;
-        }
-.product-card:hover {
-            border-color: #0369a1;
-            box-shadow: 0 20px 60px rgba(3, 105, 161, 0.15);
-        }
-.product-card-header {
-            padding: 36px 36px 28px;
-            background: linear-gradient(135deg, #0f1419 0%, #1a2632 100%);
-            position: relative;
-        }
-.product-card-header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #0369a1, #7ec8f2);
-        }
-.product-card-badge {
-            display: inline-block;
-            background: rgba(0, 175, 240, 0.2);
-            border: 1px solid rgba(0, 175, 240, 0.3);
-            color: #7ec8f2;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            font-weight: 500;
-            padding: 6px 14px;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 16px;
-            line-height: 1.6;
-        }
-.product-card-name {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            color: #000864;
-            margin-bottom: 12px;
-            line-height: 1.6;
-        }
-.product-card-tagline {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 14px;
-            color: #5b6b80;
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-.product-card-body {
-            padding: 0;
-        }
-.product-card-desc {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 14px;
-            color: #5b6b80;
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-.product-features {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 28px 0;
-        }
-.product-features li {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 15px;
-            color: #000864;
-            padding: 12px 0;
-            border-bottom: 1px solid #f0f4f8;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            line-height: 1.6;
-        }
-.product-features li:last-child {
-            border-bottom: none;
-        }
-.product-features .check-icon {
-            width: 22px;
-            height: 22px;
-            background: linear-gradient(135deg, #0369a1, #003CC8);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-.product-features .check-icon svg {
-            width: 12px;
-            height: 12px;
-            stroke: #ffffff;
-            stroke-width: 3;
-            fill: none;
-        }
-.product-best-for {
-            background: #F5F7FA;
-            border-radius: 12px;
-            padding: 20px 24px;
-        }
-.product-best-for-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            font-weight: 500;
-            color: #0369a1;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 8px;
-            line-height: 1.6;
-        }
-.product-best-for-text {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 14px;
-            color: #5b6b80;
-            line-height: 1.6;
-        }
+/* Product cards — from theme */
+${cardCSS('product', '.product-card')}
+${featureListCSS('.product-features')}
+${bestForCSS('.product-best-for')}
 .erp-use-case-pills {
             display: flex;
             gap: 12px;
@@ -441,7 +323,9 @@ function css() {
             align-items: center;
             justify-content: center;
             margin: 0 auto 10px;
-        }
+        
+            background-image: linear-gradient(135deg, rgba(0, 175, 240, 0.12), rgba(0, 175, 240, 0.04));
+}
 .erpii-module-icon svg {
             width: 20px;
             height: 20px;
@@ -477,11 +361,12 @@ function css() {
             font-family: 'Noto Sans', sans-serif;
             font-size: 13px;
             font-style: italic;
-            color: #666;
+            color: #5b6b80;
             margin-top: 16px;
+            margin-bottom: 16px;
             padding-top: 16px;
             border-top: 1px solid #f0f4f8;
-            line-height: 1.5;
+            line-height: 22.4px;
         }
 .erp-trust-callout {
             margin-top: 24px;
@@ -502,7 +387,9 @@ function css() {
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-        }
+        
+            background-image: linear-gradient(135deg, rgba(0, 175, 240, 0.15), rgba(0, 175, 240, 0.05));
+}
 .erp-trust-icon svg {
             width: 22px;
             height: 22px;
@@ -523,7 +410,7 @@ function css() {
             font-size: 14px;
             color: #5b6b80;
             line-height: 1.6;
-            margin: 0;
+            margin: 0 0 16px 0;
         }
 @media (max-width: 1024px) {
             .erp-hero-inner {
@@ -635,6 +522,18 @@ function css() {
 .products-section li::before{display:none !important}
 /* line-height: 1.6 inherited from .products-section */
 \${base.reducedMotion(\`\`)}
+
+.product-best-for-label {
+            line-height: 16px;
+        }
+
+.product-best-for-text {
+            color: rgb(91, 107, 128);
+        }
+
+.product-card-header {
+            background-image: linear-gradient(135deg, rgb(0, 8, 100) 0%, rgb(26, 38, 50) 100%);
+        }
 `.trim();
 }
 

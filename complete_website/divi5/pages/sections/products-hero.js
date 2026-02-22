@@ -218,7 +218,7 @@ function css() {
 .${P}-section{padding:160px 0 120px;background:linear-gradient(165deg,#000432 0%,#001080 40%,#000864 100%);position:relative;overflow:hidden;min-height:85vh;display:flex;align-items:center;${base.fontSmoothingReset(P)}font-size:16px}
 
 /* Super D background decoration */
-${superD.css(`${P}-d-bg`, { variant: 'gradient', position: 'left', opacity: 0.10 })}
+${superD.css(`${P}-d-bg`, { variant: 'outline', position: 'left', opacity: 0.10 })}
 
 /* Grain overlay */
 ${base.grainCSS(`.${P}-grain`)}

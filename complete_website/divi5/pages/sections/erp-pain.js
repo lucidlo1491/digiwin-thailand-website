@@ -10,6 +10,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const superD = require('../../lib/super-d');
 
 const P = 'pain'; // CSS prefix — customize if needed
 
@@ -113,7 +114,9 @@ function css() {
 .pain-section {
             padding: 100px 0;
             background: #ffffff;
+            -webkit-font-smoothing: auto;
         }
+.pain-section p { padding-bottom: 0 !important; }
 .pain-inner {
             max-width: 1200px;
             margin: 0 auto;
@@ -143,6 +146,8 @@ function css() {
             color: #000864;
             margin: 0 0 16px 0;
             letter-spacing: -0.02em;
+            line-height: 64px;
+            -webkit-font-smoothing: auto;
         }
 .pain-subtitle {
             font-family: 'Noto Sans', sans-serif;
@@ -216,7 +221,7 @@ function css() {
             -webkit-font-smoothing: auto !important;
 }
 .pain-card-label.problem { color: #DC2626; }
-.pain-card-label.solution { color: #02D28C; }
+.pain-card-label.solution { color: rgb(4, 120, 87); }
 .pain-card-title {
             font-family: 'Noto Sans', sans-serif;
             font-size: 18px;
@@ -241,7 +246,7 @@ function css() {
             font-weight: 600;
             color: #000864;
             margin-bottom: 8px;
-        
+            line-height: 25.6px;
             -webkit-font-smoothing: auto !important;
 }
 @media (max-width: 1024px) {
@@ -343,43 +348,8 @@ function css() {
 
 ${base.reducedMotion('')}
 
-.pain-card-label {
-            line-height: 16px !important;
-        
-            -webkit-font-smoothing: auto !important;
-}
-
-.pain-card-desc {
-            -webkit-font-smoothing: auto !important;
-        }
-
-.pain-card-label {
-            line-height: 16px !important;
-        
-            -webkit-font-smoothing: auto !important;
-}
-
-.pain-card-desc {
-            -webkit-font-smoothing: auto !important;
-        }
-
-.pain-card-title {
-            -webkit-font-smoothing: auto !important;
-        }
-
-.pain-card-label {
-            line-height: 16px !important;
-        
-            -webkit-font-smoothing: auto !important;
-}
-
-.pain-card-solution-title {
-            -webkit-font-smoothing: auto !important;
-        }
-
-.pain-card-desc {
-            -webkit-font-smoothing: auto !important;
-        }
+/* Super D decoration */
+${superD.css('dw-d-bg', { variant: 'outline', position: 'right' })}
 `.trim();
 }
 

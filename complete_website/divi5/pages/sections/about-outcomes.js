@@ -101,7 +101,7 @@ function css() {
   return `
 /* === OUTCOMES (S7) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .outcomes-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 @keyframes bounce-down {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(6px); }

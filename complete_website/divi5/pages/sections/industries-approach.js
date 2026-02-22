@@ -8,6 +8,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const statsBanner = require('../../lib/templates/stats-banner');
 
 const P = 'app'; // CSS prefix — customize if needed
 
@@ -16,8 +17,8 @@ const P = 'app'; // CSS prefix — customize if needed
 // ════════════════════════════════════════════════════════════════
 function blocks() {
   const html = `
-    <div class="approach-section">
-    <div class="approach-inner">
+    <div class="approach-section" data-particles="bold">
+    <div class="approach-inner" style="position:relative;z-index:2;">
                 <div class="approach-header">
                     <h2>Our Approach</h2>
                     <p>How we help you succeed, regardless of your starting point</p>
@@ -40,6 +41,7 @@ function blocks() {
                     </div>
                 </div>
             </div>
+    ${statsBanner.DEFAULT_PARTICLE_SCRIPT}
     </div>
     `;
 
@@ -53,7 +55,7 @@ function css() {
   return `
 /* === APPROACH (S5) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .approach-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .approach-section {
             padding: 100px 0;
             background: linear-gradient(135deg, #000864 0%, #0f1419 100%);

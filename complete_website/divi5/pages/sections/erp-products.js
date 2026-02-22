@@ -10,6 +10,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const superD = require('../../lib/super-d');
 const { cardCSS, featureListCSS, bestForCSS } = require('../../theme/components');
 
 const P = 'pro'; // CSS prefix — customize if needed
@@ -172,7 +173,7 @@ function css() {
   return `
 /* === PRODUCTS (S4) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .products-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .products-section {
             padding: 100px 0;
             background: #F5F7FA;
@@ -511,10 +512,10 @@ ${bestForCSS('.product-best-for')}
         }
 
 /* === HOVER STATES (auto-ported from styles.css) === */
-.${P}-card:hover{border-color:#0369a1;transform:translateY(-4px);box-shadow:0 12px 40px rgba(3, 105, 161, 0.12)}
-.${P}-card:hover .${P}-card-icon{background:linear-gradient(135deg, #0369a1, #003CC8)}
-.${P}-card:hover .${P}-card-icon svg{stroke:#fff}
-.${P}-card:hover .${P}-card-link{gap:10px}
+.erpii-module-card:hover{border-color:#0369a1;transform:translateY(-4px);box-shadow:0 12px 40px rgba(3, 105, 161, 0.12)}
+.erpii-module-card:hover .erpii-module-card-icon{background:linear-gradient(135deg, #0369a1, #003CC8)}
+.erpii-module-card:hover .erpii-module-card-icon svg{stroke:#fff}
+.erpii-module-card:hover .erpii-module-card-link{gap:10px}
 /* Products Hub page rules removed — this is the ERP product detail page */
 /* Divi list reset — scoped to actual wrapper class */
 .products-section ul,.products-section ol{list-style:none !important;padding:0 !important;margin:0 !important}
@@ -529,11 +530,20 @@ ${base.reducedMotion('')}
 
 .product-best-for-text {
             color: rgb(91, 107, 128);
+            line-height: 22.4px;
         }
-
+.product-card-badge {
+            border-radius: 50px !important;
+        }
+.product-card-name {
+            font-weight: 700 !important;
+        }
 .product-card-header {
             background-image: linear-gradient(135deg, rgb(0, 8, 100) 0%, rgb(26, 38, 50) 100%);
         }
+
+/* Super D decoration */
+${superD.css('dw-d-bg', { variant: 'outline', position: 'right' })}
 `.trim();
 }
 

@@ -62,13 +62,15 @@ function blocks() {
 // ════════════════════════════════════════════════════════════════
 function css() {
   return `
-/* === SECTION 2 (S9) === */
-/* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
-
-
-/* TODO: PSEUDO-ELEMENTS using global classes (port manually) */
-/* .dw-section--blue::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 50%);pointer-events:none} */
+/* === SECTION 2 / FAQ (S9) === */
+/* Divi section padding reset */
+.et_pb_section:has(.dw-section){padding:0}
+.dw-section,.dw-section *{-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto;line-height:1.6}
+.dw-section p{margin:0;padding:0}
+.dw-section h2{font-size:22px !important;line-height:1.6;margin-bottom:12px !important;text-align:center}
+.dw-section details summary{line-height:1.6}
+.dw-section details div p{font-size:17px !important;line-height:1.7;margin-bottom:24px}
+.dw-section details div p:last-child{margin-bottom:0}
 ${base.reducedMotion('')}
 `.trim();
 }

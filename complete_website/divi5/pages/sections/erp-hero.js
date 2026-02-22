@@ -172,8 +172,8 @@ ${superD.css('erp-super-d', { variant: 'gradient', position: 'center', opacity: 
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(3, 105, 161, 0.1);
-            border: 1px solid rgba(3, 105, 161, 0.3);
+            background: rgba(0, 175, 240, 0.1);
+            border: 1px solid rgba(0, 175, 240, 0.3);
             padding: 10px 20px;
             border-radius: 50px;
             color: #0369a1;
@@ -293,7 +293,7 @@ ${superD.css('erp-super-d', { variant: 'gradient', position: 'center', opacity: 
 
             -webkit-font-smoothing: auto !important;
 }
-.mockup-card-value.green { color: #02D28C; }
+.mockup-card-value.green { color: rgb(4, 120, 87); }
 .mockup-card-value.blue { color: #0369a1; }
 .mockup-chart {
             background: rgba(255, 255, 255, 0.03);
@@ -413,17 +413,9 @@ ${superD.css('erp-super-d', { variant: 'gradient', position: 'center', opacity: 
         }
 
 /* Buttons */
-.btn-white{background:#ffffff;color:#003CC8;padding:20px 40px;border-radius:14px;font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 4px 20px rgba(0, 0, 0, 0.15);display:inline-flex;align-items:center;gap:10px
-            line-height: 25.6px !important;
-
-            -webkit-font-smoothing: auto;
-}
+.btn-white{background:#ffffff;color:#003CC8;padding:20px 40px;border-radius:14px;font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 4px 20px rgba(0, 0, 0, 0.15);display:inline-flex;align-items:center;gap:10px;line-height:25.6px !important;-webkit-font-smoothing:auto}
 .btn-white:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0, 0, 0, 0.2)}
-.btn-outline-white{background:transparent;color:#ffffff;padding:20px 40px;border-radius:14px;border:2px solid rgba(255, 255, 255, 0.5);font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.3s ease
-            line-height: 25.6px !important;
-
-            -webkit-font-smoothing: auto;
-}
+.btn-outline-white{background:transparent;color:#ffffff;padding:20px 40px;border-radius:14px;border:2px solid rgba(255, 255, 255, 0.5);font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.3s ease;line-height:25.6px !important;-webkit-font-smoothing:auto}
 .btn-outline-white:hover{background:rgba(255, 255, 255, 0.15);border-color:#ffffff}
 /* Dashboard mockup */
 .mockup-header{display:flex;gap:8px;margin-bottom:16px}
@@ -432,7 +424,7 @@ ${superD.css('erp-super-d', { variant: 'gradient', position: 'center', opacity: 
 .mockup-dot:nth-child(2){background:#ffbd2e}
 .mockup-dot:nth-child(3){background:#28ca42}
 .mockup-nav{display:flex;gap:16px;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid rgba(255, 255, 255, 0.1)}
-.mockup-nav-item{font-family:'JetBrains Mono', monospace;font-size:10px;color:rgb(0, 175, 240) !important;text-transform:uppercase;letter-spacing:0.05em
+.mockup-nav-item{font-family:'JetBrains Mono', monospace;font-size:10px;color:rgba(255, 255, 255, 0.85) !important;text-transform:uppercase;letter-spacing:0.05em
             line-height: 16px !important;
 
             -webkit-font-smoothing: auto !important;

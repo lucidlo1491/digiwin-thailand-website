@@ -10,6 +10,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const superD = require('../../lib/super-d');
 
 const P = 'cap'; // CSS prefix — customize if needed
 
@@ -138,7 +139,7 @@ function css() {
   return `
 /* === CAPABILITIES (S5) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .capabilities-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .capabilities-section {
             padding: 100px 0;
             background: #fff;
@@ -271,7 +272,7 @@ function css() {
         }
 
 /* === HOVER STATES (auto-ported from styles.css) === */
-.${P}-card:hover{border-color:#00AFF0;box-shadow:0 8px 24px rgba(0, 175, 240, 0.1)}
+.capability-card:hover{border-color:#00AFF0;box-shadow:0 8px 24px rgba(0, 175, 240, 0.1)}
 .capabilities-section{padding:80px 0;background:#F5F7FA}
 .capabilities-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:24px}
 .capability-card{text-align:center;padding:32px 24px;background:#ffffff;border-radius:16px;border:1px solid #e8eef3;transition:all 0.3s ease}
@@ -284,6 +285,9 @@ function css() {
 /* Defensive SVG sizing */
 svg:not([width]):not([class]){max-width:48px;max-height:48px}
 ${base.reducedMotion('')}
+
+/* Super D decoration */
+${superD.css('dw-d-bg', { variant: 'outline', position: 'right', modifiers: ['glow'] })}
 `.trim();
 }
 

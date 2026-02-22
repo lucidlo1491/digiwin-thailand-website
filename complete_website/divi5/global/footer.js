@@ -218,7 +218,7 @@ footer.dw-footer .dw-footer-inner{max-width:${SPEC.inner.maxWidth};margin:0 auto
 
 footer.dw-footer .dw-footer-grid{display:grid;grid-template-columns:${SPEC.grid.columns};gap:${SPEC.grid.gap};padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,0.1)}
 
-footer.dw-footer .dw-footer-brand{padding-right:40px}
+footer.dw-footer .dw-footer-brand{padding-right:40px;grid-column:auto}
 
 footer.dw-footer .dw-footer-logo{margin-bottom:16px}
 footer.dw-footer .dw-footer-logo img{display:block}
@@ -271,4 +271,8 @@ footer.dw-footer .dw-footer-legal a:hover{color:${SPEC.link.hoverColor}}
 }`;
 }
 
-module.exports = { blocks, css: footerCss, SPEC };
+// Export empty css() — all CSS is inline in <style> inside getFooterHTML().
+// Returning footerCss here would cause build-global.js to push it to
+// _et_pb_custom_css, where Divi strips @media wrappers and leaks
+// mobile-only rules (grid-column:1/-1, grid-template-columns:1fr) to desktop.
+module.exports = { blocks, css: () => '', SPEC };

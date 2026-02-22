@@ -53,14 +53,16 @@ Run `node complete_website/audit.js` after every build. Checks: skip-to-content 
 - If the source JS is wrong, fix the JS source and re-push — never patch the database directly.
 - Context: A `REPLACE('\\n', '\n')` on the header post broke all JSON inside `wp:divi/code` blocks, killing the header on every page. The fix was simply re-running `build-global.js`.
 
-## Visual Diagnosis Protocol (The Perception Gap)
-When visual diff >5%:
-1. **Read fidelity-check FIXABLE output first.** It gives exact property mismatches (e.g., `padding-top: expected 24px, got 40px`).
-2. **Apply each fix mechanically** — the data tells you exactly what CSS to write.
-3. **Use Claude Vision ONLY for structural issues** — missing/extra elements, broken layouts, absent SVGs. These are things Vision CAN reliably detect.
-4. **Never guess CSS values from screenshots.** LLMs process images as 16×16 patches. A 20px padding difference = ~1 patch. Research confirms Claude/GPT-4/Gemini all fail at pixel-level CSS diagnosis.
-5. **Max 2 fix attempts per section**, then escalate to Peter with the fidelity-check output.
-6. **Use `--full-verify` flag** on build-page.js to auto-run Gate 6 (fidelity-check) + Gate 7 (visual-diff + regression).
+## Automated Build-Fix-Verify Pipeline (MANDATORY)
+When Peter asks to build or modify a Divi 5 page:
+1. Run `build-page.js --page <name> --full-verify --auto-fix`
+2. Pipeline handles: build → push → screenshots → Gates 1-6 → auto-fix → re-push → re-screenshots → Gate 7
+3. Present to Peter: what auto-fix resolved, what remains (AMBIGUOUS), visual diff verdicts
+4. Peter reviews and flags what automation missed
+5. Claude iterates on Peter's feedback (max 2 rounds per section, then escalate with fidelity-check data)
+6. Never guess CSS from screenshots — use fidelity-check FIXABLE output for mechanical fixes
+7. `--auto-fix` is opt-in. Use it for every build unless Peter says otherwise.
+8. **Use Claude Vision ONLY for structural issues** — missing/extra elements, broken layouts, absent SVGs.
 
 ## Divi 5 Build Protocol (MANDATORY for every build-*-divi5.js push)
 1. **BEFORE writing any CSS value:** Open the page's ContentSpec. Read the exact spec values. Never eyeball from browser DevTools or styles.css.

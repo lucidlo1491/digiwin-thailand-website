@@ -23,7 +23,7 @@ const DATA = {
     { text: "Let\u2019s Talk Partnership", href: '/demo.html', style: 'primary' },
     { text: 'See the Math First', href: '/partner-program/economics.html', style: 'ghost' },
   ],
-  superD: { variant: 'gradient', position: 'left', opacity: 0.12 },
+  superD: { variant: 'outline', position: 'left', opacity: 0.12 },
   waveFlow: { height: '160px', opacity: 0.30 },
 };
 

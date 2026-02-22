@@ -9,6 +9,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const superD = require('../../lib/super-d');
 
 const P = 'cta'; // CSS prefix — customize if needed
 
@@ -85,6 +86,9 @@ function css() {
 /* @media (prefers-reduced-motion:reduce){.products-hero-content,.hero-stack-visual,.products-hero::before,.products-hero-badge::before,.stack-layer,.stack-layer::before,.data-particle,.ecosystem-node,.ecosystem-line,.ecosystem-ring,.data-flow-line,.data-flow-dot,.integration-hub::before,.integration-hub::after,.pp-card,.why-card,.why-card-icon,.pp-card-icon,.products-cta-glow,.dw-d-parallax,.dw-wave-flow,.dw-d-bg{animation:none !important;transition:none !important}.pp-card.visible{opacity:1;transform:none}} */
 
 ${base.reducedMotion('')}
+
+/* Super D decoration */
+${superD.css('dw-d-bg', { variant: 'gradient', position: 'bottom' })}
 `.trim();
 }
 

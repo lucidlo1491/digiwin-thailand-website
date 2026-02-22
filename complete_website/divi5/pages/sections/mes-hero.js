@@ -9,6 +9,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const superD = require('../../lib/super-d');
 
 const P = 'hero'; // CSS prefix — customize if needed
 
@@ -133,7 +134,11 @@ function css() {
             font-family: 'JetBrains Mono', monospace;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-        }
+        
+            line-height: 17.6px;
+
+            -webkit-font-smoothing: auto;
+}
 .mes-hero-stats {
             display: flex;
             justify-content: center;
@@ -147,7 +152,11 @@ function css() {
             font-size: 32px;
             font-weight: 800;
             color: #00AFF0;
-        }
+        
+            line-height: 51.2px !important;
+
+            -webkit-font-smoothing: auto !important;
+}
 .mes-hero-stat-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 10px;
@@ -155,7 +164,11 @@ function css() {
             text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-top: 4px;
-        }
+        
+            line-height: 16px !important;
+
+            -webkit-font-smoothing: auto !important;
+}
 .mes-hero-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -198,7 +211,11 @@ function css() {
             font-size: 20px;
             font-weight: 700;
             color: #00AFF0;
-        }
+        
+            line-height: 32px !important;
+
+            -webkit-font-smoothing: auto !important;
+}
 .mockup-status-value.green { color: #047857; }
 .mockup-status-value.yellow { color: #f59e0b; }
 .mockup-status-label {
@@ -207,7 +224,11 @@ function css() {
             color: rgba(255, 255, 255, 0.75);
             text-transform: uppercase;
             margin-top: 4px;
-        }
+        
+            line-height: 14.4px !important;
+
+            -webkit-font-smoothing: auto !important;
+}
 .mockup-timeline {
             display: flex;
             gap: 8px;
@@ -232,7 +253,9 @@ function css() {
             max-width: 700px;
             margin: 0 auto 32px;
             line-height: 1.6;
-        }
+        
+            -webkit-font-smoothing: auto;
+}
 .mes-hero-ctas {
             display: flex;
             gap: 16px;
@@ -288,9 +311,17 @@ function css() {
 /* TODO: HOVER STATES using global classes (port manually) */
 /* .dw-nav-item.active .dw-nav-link svg,.dw-nav-item:hover .dw-nav-link svg{transform:rotate(180deg)} */
 /* Buttons */
-.btn-white{background:#ffffff;color:#003CC8;padding:20px 40px;border-radius:14px;font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 4px 20px rgba(0, 0, 0, 0.15);display:inline-flex;align-items:center;gap:10px}
+.btn-white{background:#ffffff;color:#003CC8;padding:20px 40px;border-radius:14px;font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 4px 20px rgba(0, 0, 0, 0.15);display:inline-flex;align-items:center;gap:10px
+            line-height: 25.6px!important;
+
+            -webkit-font-smoothing: auto;
+}
 .btn-white:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0, 0, 0, 0.2)}
-.btn-outline-white{background:transparent;color:#ffffff;padding:20px 40px;border-radius:14px;border:2px solid rgba(255, 255, 255, 0.5);font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.3s ease}
+.btn-outline-white{background:transparent;color:#ffffff;padding:20px 40px;border-radius:14px;border:2px solid rgba(255, 255, 255, 0.5);font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.3s ease
+            line-height: 25.6px!important;
+
+            -webkit-font-smoothing: auto;
+}
 .btn-outline-white:hover{background:rgba(255, 255, 255, 0.15);border-color:#ffffff}
 /* TODO: PSEUDO-ELEMENTS using global classes (port manually) */
 /* .dw-nav-item.active .dw-nav-link::after{transform:scaleX(1)} */
@@ -298,6 +329,57 @@ function css() {
 /* Defensive SVG sizing */
 svg:not([width]):not([class]){max-width:48px;max-height:48px}
 ${base.reducedMotion('')}
+
+.mes-hero-stat-label {
+            line-height: 16px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.mes-hero-stat-number {
+            line-height: 51.2px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.mes-hero-stat-label {
+            line-height: 16px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.mockup-status-value {
+            line-height: 32px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.mockup-status-label {
+            line-height: 14.4px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.mockup-status-label {
+            line-height: 14.4px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.mes-hero-stat-number {
+            line-height: 51.2px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.mockup-status-value {
+            line-height: 32px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+/* Super D decoration */
+${superD.css('dw-d-bg', { variant: 'particle', position: 'bottom', modifiers: ['glow'] })}
 `.trim();
 }
 

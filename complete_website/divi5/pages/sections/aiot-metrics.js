@@ -8,6 +8,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const statsBanner = require('../../lib/templates/stats-banner');
 
 const P = 'met'; // CSS prefix — customize if needed
 
@@ -16,12 +17,12 @@ const P = 'met'; // CSS prefix — customize if needed
 // ════════════════════════════════════════════════════════════════
 function blocks() {
   const html = `
-    <div class="metrics-section">
-    <div class="metrics-header">
+    <div class="metrics-section" data-particles="bold">
+    <div class="metrics-header" style="position:relative;z-index:2;">
                 <h2>Measured Impact</h2>
                 <p>What our customers achieve with AIoT implementation</p>
             </div>
-            <div class="metrics-grid">
+            <div class="metrics-grid" style="position:relative;z-index:2;">
                 <div class="metric-card">
                     <div class="metric-value">+15%</div>
                     <div class="metric-label">OEE Improvement</div>
@@ -39,6 +40,7 @@ function blocks() {
                     <div class="metric-label">Data Accuracy</div>
                 </div>
             </div>
+    ${statsBanner.DEFAULT_PARTICLE_SCRIPT}
     </div>
     `;
 
@@ -52,7 +54,7 @@ function css() {
   return `
 /* === METRICS (S6) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .metrics-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .metrics-section {
             padding: 100px 0;
             background: linear-gradient(135deg, #000864 0%, #000432 100%);

@@ -50,7 +50,7 @@ function css() {
   return `
 /* === CS INSIGHTS (S9) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .cs-insights-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .cs-insights-section {
             background: linear-gradient(135deg, #000432 0%, #000864 50%, #001080 100%);
             padding: 80px 24px;

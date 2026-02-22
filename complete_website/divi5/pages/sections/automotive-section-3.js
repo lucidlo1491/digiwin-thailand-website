@@ -64,7 +64,7 @@ function css() {
   return `
 /* === SECTION 3 (S8) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .dw-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 
 
 /* TODO: PSEUDO-ELEMENTS using global classes (port manually) */

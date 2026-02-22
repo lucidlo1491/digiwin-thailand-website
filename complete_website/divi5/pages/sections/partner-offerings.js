@@ -100,9 +100,9 @@ function css() {
   return `
 /* === PARTNER OFFERINGS (S5) === */
 .${P}-section{background:#fff;padding:100px 24px;position:relative;overflow:hidden;${base.fontSmoothingReset(P)}font-size:16px}
-.${P}-inner{max-width:1200px;margin:0 auto}
+.${P}-box-inner{max-width:1200px;margin:0 auto}
 .${P}-header{text-align:center;max-width:800px;margin:0 auto 60px}
-.${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
+.${P}-box-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
 .${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto;padding:0}
 .${P}-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-bottom:48px}
 .${P}-card{background:linear-gradient(135deg,#f8fafc,#fff);border:1px solid #e2e8f0;border-radius:20px;padding:40px;display:flex;gap:24px;text-decoration:none;transition:all 0.3s ease}

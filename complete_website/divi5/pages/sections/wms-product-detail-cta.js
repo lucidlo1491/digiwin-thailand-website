@@ -9,6 +9,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const superD = require('../../lib/super-d');
 
 const P = 'prod'; // CSS prefix — customize if needed
 
@@ -59,7 +60,7 @@ function css() {
         }
 
 /* === PSEUDO-ELEMENTS (auto-ported from styles.css) === */
-.${P}-cta::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);border-radius:50%}
+.product-detail-cta::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);border-radius:50%}
 /* TODO: HOVER STATES using global classes (port manually) */
 /* Buttons */
 .btn-white{background:#ffffff;color:#003CC8;padding:20px 40px;border-radius:14px;font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 4px 20px rgba(0, 0, 0, 0.15);display:inline-flex;align-items:center;gap:10px}
@@ -79,6 +80,9 @@ function css() {
 @media (max-width:640px){.product-detail-cta-title{font-size:28px}.product-detail-cta-buttons{flex-direction:column}.product-detail-cta-buttons .btn-white,.product-detail-cta-buttons .btn-outline-white{width:100%;text-align:center}}
 
 ${base.reducedMotion('')}
+
+/* Super D decoration */
+${superD.css('dw-d-bg', { variant: 'outline', position: 'right', modifiers: ['glow'] })}
 `.trim();
 }
 

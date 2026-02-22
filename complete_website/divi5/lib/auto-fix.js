@@ -474,12 +474,53 @@ function _patchCSSInsertOrAppend(fileContent, selector, property, newValue) {
     };
   }
 
-  // Strategy 3: Selector doesn't exist — append new rule before final backtick
+  // Strategy 3: Append new rule — but first check for duplicate selector
   const lastBacktick = fileContent.lastIndexOf('`.trim()');
   if (lastBacktick === -1) {
     return { patched: false, action: 'no-template-found', content: fileContent };
   }
 
+  // DEDUP GUARD: If the selector already exists anywhere in the CSS, try to patch
+  // the existing rule's property value instead of appending a duplicate rule.
+  const existingIdx = fileContent.indexOf(`${selector}{`);
+  const existingIdxSpaced = existingIdx === -1 ? fileContent.indexOf(`${selector} {`) : existingIdx;
+  if (existingIdxSpaced !== -1 && !isInsideInterpolation(fileContent, existingIdxSpaced)) {
+    // Found existing rule — find its closing brace and insert property
+    let braceDepth = 0;
+    let ruleEnd = -1;
+    for (let j = existingIdxSpaced; j < fileContent.length; j++) {
+      if (fileContent[j] === '{') braceDepth++;
+      else if (fileContent[j] === '}') {
+        braceDepth--;
+        if (braceDepth === 0) { ruleEnd = j; break; }
+      }
+    }
+    if (ruleEnd !== -1) {
+      // Check if property already exists in this rule block
+      const ruleBody = fileContent.substring(existingIdxSpaced, ruleEnd);
+      const propRe = new RegExp(`${property.replace(/[-]/g, '\\-')}\\s*:`);
+      if (propRe.test(ruleBody)) {
+        // Property exists — replace its value
+        const propMatch = ruleBody.match(new RegExp(`(${property.replace(/[-]/g, '\\-')}\\s*:\\s*)([^;!}]+)(\\s*(?:!important)?\\s*[;}])`));
+        if (propMatch) {
+          const absPos = existingIdxSpaced + propMatch.index;
+          return {
+            patched: true, action: 'dedup-replaced',
+            content: fileContent.substring(0, absPos) + propMatch[1] + newValue + propMatch[3] + fileContent.substring(absPos + propMatch[0].length),
+          };
+        }
+      }
+      // Property doesn't exist in rule — insert before closing brace
+      const indent = ruleBody.match(/\n(\s+)/)?.[1] || '            ';
+      const insertion = `\n${indent}${property}: ${newValue};`;
+      return {
+        patched: true, action: 'dedup-inserted',
+        content: fileContent.substring(0, ruleEnd) + insertion + fileContent.substring(ruleEnd),
+      };
+    }
+  }
+
+  // No existing rule found — append new rule
   const newRule = `\n${selector} {\n            ${property}: ${newValue};\n        }\n`;
   return {
     patched: true, action: 'appended',

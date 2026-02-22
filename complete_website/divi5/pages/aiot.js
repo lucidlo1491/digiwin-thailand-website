@@ -20,6 +20,7 @@ const protocolBuilder = require('./sections/aiot-protocol');
 const integrationBuilder = require('./sections/aiot-integration');
 const section2Builder = require('./sections/aiot-section-2');
 const ctaBuilder = require('./sections/aiot-cta');
+const relatedBuilder = require('./sections/aiot-related-solutions');
 
 module.exports = {
   pageId: 100564, // TODO: Create WP page and set page ID
@@ -39,6 +40,7 @@ module.exports = {
     { name: 'protocol', builder: protocolBuilder },
     { name: 'integration', builder: integrationBuilder },
     { name: 'section-2', builder: section2Builder },
+    { name: 'related-solutions', builder: relatedBuilder },
     { name: 'cta', builder: ctaBuilder },
   ],
 
@@ -114,10 +116,17 @@ module.exports = {
         ],
       },
       {
-        name: 'cta', wpSelector: '.et_pb_section_9', htmlSelector: '.cta-section',
+        name: 'related-solutions', wpSelector: '.et_pb_section_9', htmlSelector: '.related-solutions',
         pixelThreshold: 0.1,
         styleMap: [
-          { label: 'Section Title', htmlSel: '.cta-section h2', wpSel: '.et_pb_section_9 h2' },
+          { label: 'Related Title', htmlSel: '.related-solutions h2', wpSel: '.et_pb_section_9 h2' },
+        ],
+      },
+      {
+        name: 'cta', wpSelector: '.et_pb_section_10', htmlSelector: '.cta-section',
+        pixelThreshold: 0.1,
+        styleMap: [
+          { label: 'Section Title', htmlSel: '.cta-section h2', wpSel: '.et_pb_section_10 h2' },
         ],
       },
     ],

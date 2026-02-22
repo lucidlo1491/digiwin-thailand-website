@@ -129,7 +129,7 @@ function css() {
   return `
 /* === CAPABILITIES (S5) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .capabilities-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .products-inner {
             max-width: 1200px;
             margin: 0 auto;
@@ -141,24 +141,24 @@ function css() {
         }
 
 /* === HOVER STATES (auto-ported from styles.css) === */
-.${P}-card:hover{border-color:#00AFF0;box-shadow:0 8px 24px rgba(0, 175, 240, 0.1)}
+.capability-card:hover{border-color:#00AFF0;box-shadow:0 8px 24px rgba(0, 175, 240, 0.1)}
 .products-inner{max-width:1100px;margin:0 auto;padding:0 24px}
 .section-header{text-align:center;margin-bottom:48px}
 .section-title{font-family:'Noto Sans', sans-serif;font-size:36px;font-weight:700;color:#000864;margin-bottom:16px}
-/* .section-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:#5b6b80;max-width:600px;margin:0 auto} */
-.capabilities-section{padding:80px 0;background:#F5F7FA}
-/* .capabilities-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:24px} */
-/* .capability-card{text-align:center;padding:32px 24px;background:#ffffff;border-radius:16px;border:1px solid #e8eef3;transition:all 0.3s ease} */
-/* .capability-icon{width:64px;height:64px;background:linear-gradient(135deg, rgba(0, 175, 240, 0.1), rgba(0, 175, 240, 0.05));border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px} */
-/* .capability-icon svg{width:28px;height:28px;stroke:#00AFF0;stroke-width:1.5;fill:none} */
-/* .capability-title{font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;color:#000864;margin-bottom:8px} */
-/* .capability-desc{font-family:'Noto Sans', sans-serif;font-size:14px;color:#5b6b80;line-height:1.5} */
-/* @media (max-width:1024px){.capabilities-grid{grid-template-columns:repeat(2, 1fr)}} */
+.section-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:#5b6b80;max-width:600px;margin:0 auto;padding:0;line-height:1.6;-webkit-font-smoothing:auto}
+.capabilities-section{padding:80px 0;background:#F5F7FA;-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto}
+.capabilities-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:24px}
+.capability-card{text-align:center;padding:32px 24px;background:#ffffff;border-radius:16px;border:1px solid #e8eef3;transition:all 0.3s ease}
+.capability-icon{width:64px;height:64px;background:linear-gradient(135deg, rgba(0, 175, 240, 0.1), rgba(0, 175, 240, 0.05));border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.capability-icon svg{width:28px;height:28px;stroke:#00AFF0;stroke-width:1.5;fill:none}
+.capability-title{font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;color:#000864;margin:0 0 8px 0;padding:0;line-height:1.6;-webkit-font-smoothing:auto}
+.capability-desc{font-family:'Noto Sans', sans-serif;font-size:14px;color:#5b6b80;line-height:1.5;margin:0;padding:0;-webkit-font-smoothing:auto}
+@media (max-width:1024px){.capabilities-grid{grid-template-columns:repeat(2, 1fr)}}
 @media (max-width:640px){.section-title{font-size:28px}.capabilities-grid{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto}.product-detail-cta-title{font-size:28px}.product-detail-cta-buttons{flex-direction:column}.product-detail-cta-buttons .btn-white,.product-detail-cta-buttons .btn-outline-white{width:100%;text-align:center}}
 
-\
-/* Defensive SVG sizing */
-svg:not([width]):not([class]){max-width:48px;max-height:48px}
+/* Defensive SVG sizing — scene SVG should fill container */
+.dw-section-scene svg{width:100%;height:100%}
+.capability-icon svg{width:28px;height:28px}
 ${base.reducedMotion('')}
 `.trim();
 }

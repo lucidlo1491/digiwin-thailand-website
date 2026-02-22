@@ -9,6 +9,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const superD = require('../../lib/super-d');
 
 const P = 'tra'; // CSS prefix — customize if needed
 
@@ -154,7 +155,7 @@ function css() {
   return `
 /* === TRANSFORMATION (S7) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .transformation-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .capability-features .check {
             color: #22c55e;
             font-weight: bold;
@@ -401,6 +402,9 @@ function css() {
 
 ${base.diviListReset(P)}
 ${base.reducedMotion('')}
+
+/* Super D decoration */
+${superD.css('dw-d-bg', { variant: 'outline', position: 'right', modifiers: ['glow'] })}
 `.trim();
 }
 

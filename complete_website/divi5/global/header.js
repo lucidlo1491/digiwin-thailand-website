@@ -100,18 +100,17 @@ function getSvgDataUri(filename) {
 function getHeaderHTML() {
   const desktopLogoUri = getSvgDataUri('digiwin-logo-en.svg');
   const mobileLogoUri = getSvgDataUri('digiwin-d-mark.svg');
+  // ALL CSS must be inline — Divi 5 does NOT inject _et_pb_custom_css for Theme Builder layouts
+  const mainCSS = headerCss();
 
   return `<style>
+${mainCSS}
 /* Header responsive — must be inline (Divi strips @media from _et_pb_custom_css in Theme Builder templates) */
-/* Desktop overrides — Divi's CSS extraction flattens @media rules into non-media selectors;
-   these !important rules guarantee correct desktop state regardless of Divi cache. */
-@media(min-width:1025px){
-  .dw-menu-toggle{display:none !important}
-  .dw-header-cta{display:inline-flex !important}
-  .dw-nav{display:flex !important}
-  .dw-logo-img--desktop{display:block !important}
-  .dw-logo-img--mobile{display:none !important}
-}
+/* DIVI BUG DEFENSE: Divi's et-critical-inline-css extracts CSS from Code Module <style>
+   blocks and strips ALL @media wrappers. Mobile-only rules leak to desktop. We combat this
+   by ensuring EVERY property set in mobile @media has an explicit desktop default in the
+   non-@media CSS above. Our body <style> comes after et-critical-inline-css in <head>,
+   so source order lets our desktop defaults win over stripped mobile values. */
 @media(max-width:1024px){
   .dw-header-inner{padding:0 24px;height:${SPEC.header.heightMobile}}
   .dw-logo-img--desktop{display:none}
@@ -375,8 +374,15 @@ function blocks() {
 }
 
 function headerCss() {
+  // NOTE: This CSS is used ONLY by the inline <style> in getHeaderHTML().
+  // The exported css() function returns '' to prevent build-global.js from
+  // pushing it to _et_pb_custom_css, where Divi strips @media wrappers
+  // and exposes mobile-only rules at desktop width.
   return `
 /* ===== HEADER ===== */
+/* Reset Divi's inherited line-height (23.8px from 1.49em×16px) and <p> padding on all header elements */
+.dw-header,.dw-header *{line-height:1.6;-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto}
+.dw-header p,.dw-header h1,.dw-header h2,.dw-header h3{margin:0;padding:0}
 .dw-header{background:${SPEC.header.background};backdrop-filter:blur(${SPEC.header.backdropBlur});-webkit-backdrop-filter:blur(${SPEC.header.backdropBlur});box-shadow:0 1px 0 rgba(37,59,80,0.08);position:fixed;top:0;left:0;right:0;z-index:${SPEC.header.zIndex};transition:all ${SPEC.animation.transition}}
 .dw-header.scrolled{box-shadow:${SPEC.header.scrollShadow}}
 .dw-header-inner{max-width:${SPEC.header.maxWidth};margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:${SPEC.header.height}}
@@ -385,15 +391,15 @@ function headerCss() {
 .dw-logo{display:flex;flex-wrap:wrap;align-items:center;text-decoration:none;transition:transform ${SPEC.animation.transition};gap:0}
 .dw-logo:hover{transform:scale(1.02)}
 .dw-logo-img{height:auto;display:block}
-.dw-logo-img--desktop{width:${SPEC.logo.desktopWidth}}
+.dw-logo-img--desktop{width:${SPEC.logo.desktopWidth};display:block}
 .dw-logo-img--mobile{width:${SPEC.logo.mobileWidth};display:none}
 .dw-logo-since{display:block;width:100%;font-family:${SPEC.nav.fontFamily};font-size:${SPEC.logo.sinceFontSize};font-weight:400;letter-spacing:${SPEC.logo.sinceLetterSpacing};color:${SPEC.logo.sinceColor};margin-top:2px;transition:color ${SPEC.animation.transition}}
 .dw-logo:hover .dw-logo-since{color:#00AFF0}
 
 /* Nav */
-.dw-nav{display:flex;align-items:center;gap:8px}
-.dw-nav-item{position:relative}
-.dw-nav-link{font-family:${SPEC.nav.fontFamily};font-size:${SPEC.nav.fontSize};font-weight:${SPEC.nav.fontWeight};color:${SPEC.nav.color};text-decoration:none;padding:20px 24px;display:flex;align-items:center;gap:6px;transition:all ${SPEC.animation.transition};cursor:pointer;position:relative}
+.dw-nav{display:flex;align-items:center;gap:8px;position:relative;top:auto;left:auto;width:auto;height:auto;background:transparent;flex-direction:row;overflow-y:visible;padding:0;z-index:auto;box-shadow:none}
+.dw-nav-item{position:relative;width:auto;border-bottom:none}
+.dw-nav-link{font-family:${SPEC.nav.fontFamily};font-size:${SPEC.nav.fontSize};font-weight:${SPEC.nav.fontWeight};color:${SPEC.nav.color};text-decoration:none;padding:20px 24px;display:flex;align-items:center;gap:6px;transition:all ${SPEC.animation.transition};cursor:pointer;position:relative;justify-content:flex-start;width:auto}
 .dw-nav-link::after{content:'';position:absolute;bottom:20px;left:20px;right:20px;height:2px;background:${SPEC.nav.underlineGradient};border-radius:2px;transform:scaleX(0);transition:transform ${SPEC.animation.cubicBezier}}
 .dw-nav-link:hover{color:${SPEC.nav.hoverColor}}
 .dw-nav-link:hover::after{transform:scaleX(1)}
@@ -402,7 +408,7 @@ function headerCss() {
 .dw-nav-item.active .dw-nav-link svg,.dw-nav-item:hover .dw-nav-link svg{transform:rotate(180deg)}
 
 /* Mega menu */
-.dw-mega-menu{position:fixed;top:${SPEC.header.height};left:0;right:0;background:${SPEC.megaMenu.background};box-shadow:${SPEC.megaMenu.shadow};z-index:999998;opacity:0;visibility:hidden;transform:translateY(-10px);transition:all ${SPEC.animation.cubicBezier}}
+.dw-mega-menu{position:fixed;top:${SPEC.header.height};left:0;right:0;background:${SPEC.megaMenu.background};box-shadow:${SPEC.megaMenu.shadow};z-index:999998;opacity:0;visibility:hidden;transform:translateY(-10px);transition:all ${SPEC.animation.cubicBezier};display:block;padding:0;width:auto;border-radius:0}
 .dw-mega-menu.active{opacity:1;visibility:visible;transform:translateY(0)}
 .dw-mega-menu::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:${SPEC.megaMenu.accentBar}}
 .dw-mega-inner{max-width:${SPEC.header.maxWidth};margin:0 auto;padding:40px;display:grid;grid-template-columns:1fr 1fr 380px;gap:40px}
@@ -413,7 +419,7 @@ function headerCss() {
 .dw-mega-item:hover .dw-mega-icon{background:${SPEC.featured.ctaBg}}
 .dw-mega-item:hover .dw-mega-icon svg{stroke:${SPEC.featured.ctaColor}}
 .dw-mega-item:hover .dw-mega-title{color:${SPEC.nav.hoverColor}}
-.dw-mega-icon{width:36px;height:36px;background:${SPEC.megaMenu.iconBg};border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s ease}
+.dw-mega-icon{width:36px;height:36px;min-width:36px;background:${SPEC.megaMenu.iconBg};border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s ease}
 .dw-mega-icon svg{width:20px;height:20px;stroke:${SPEC.megaMenu.iconStroke};stroke-width:1.5;fill:none;transition:all 0.2s ease}
 .dw-mega-info{flex:1;min-width:0}
 .dw-mega-title{font-family:${SPEC.nav.fontFamily};font-size:15px;font-weight:500;color:${SPEC.megaMenu.itemTitleColor};margin:0;transition:color 0.2s ease}
@@ -439,18 +445,23 @@ function headerCss() {
 .dw-mega-header,.dw-mega-content-wrap,.dw-mega-hub{display:none}
 
 /* CTA button */
-.dw-header-cta{font-family:${SPEC.nav.fontFamily};font-size:${SPEC.cta.fontSize};font-weight:${SPEC.cta.fontWeight};background:${SPEC.cta.background};color:${SPEC.cta.color} !important;padding:${SPEC.cta.padding};border-radius:${SPEC.cta.borderRadius};text-decoration:none;transition:all ${SPEC.animation.cubicBezier};box-shadow:${SPEC.cta.shadow};position:relative;overflow:hidden}
+.dw-header-cta{font-family:${SPEC.nav.fontFamily};font-size:${SPEC.cta.fontSize};font-weight:${SPEC.cta.fontWeight};background:${SPEC.cta.background};color:${SPEC.cta.color} !important;padding:${SPEC.cta.padding};border-radius:${SPEC.cta.borderRadius};text-decoration:none;transition:all ${SPEC.animation.cubicBezier};box-shadow:${SPEC.cta.shadow};position:relative;overflow:hidden;display:inline-flex}
 .dw-header-cta::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.5s ease}
 .dw-header-cta:hover::before{left:100%}
 .dw-header-cta:hover{transform:translateY(-2px);box-shadow:${SPEC.cta.hoverShadow}}
 
 /* Hamburger */
-.dw-menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:12px;background:none;border:none}
+.dw-menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:12px;background:none;border:none;position:static;z-index:auto}
 .dw-menu-toggle span{width:24px;height:2px;background:${SPEC.nav.color};transition:all ${SPEC.animation.transition}}
+.dw-nav::after{content:none;display:none}
 
 /* ===== RESPONSIVE + REDUCED MOTION ===== */
 /* NOTE: @media rules moved to inline <style> in header HTML. */
 /* Divi strips @media from _et_pb_custom_css in Theme Builder templates. */`;
 }
 
-module.exports = { blocks, css: headerCss, SPEC };
+// Export empty css() — all CSS is inline in <style> inside getHeaderHTML().
+// Returning headerCss here would cause build-global.js to push it to
+// _et_pb_custom_css, where Divi strips @media wrappers and leaks
+// mobile-only rules (display:none, grid-column:1/-1) to desktop.
+module.exports = { blocks, css: () => '', SPEC };

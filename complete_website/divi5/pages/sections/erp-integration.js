@@ -10,6 +10,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const superD = require('../../lib/super-d');
 
 const P = 'int'; // CSS prefix — customize if needed
 
@@ -285,6 +286,9 @@ ${base.reducedMotion(`
   .dw-wave-fade,
   .dw-d-bg
 `)}
+
+/* Super D decoration */
+${superD.css('dw-d-bg', { variant: 'outline', position: 'right' })}
 `.trim();
 }
 

@@ -80,7 +80,7 @@ function css() {
   return `
 /* === CS DETAIL 5 (S7) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .cs-detail-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .cs-detail-section {
             padding: 80px 24px;
         }

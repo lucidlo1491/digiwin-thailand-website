@@ -157,9 +157,9 @@ function css() {
 .${P}-scene-wrap{position:absolute;inset:0;pointer-events:none;z-index:0}
 .${P}-scene-wrap svg{width:100%;height:100%;position:absolute;top:0;left:0;opacity:0.20}
 .${P}-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2}
-.${P}-header{text-align:center;margin-bottom:60px}
-.${P}-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.2em;color:#0369a1;display:block;margin-bottom:16px}
-.${P}-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,3.5vw,44px);font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
+.${P}-phase-header{text-align:center;margin-bottom:60px}
+.${P}-activity-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.2em;color:#0369a1;display:block;margin-bottom:16px}
+.${P}-summary-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,3.5vw,44px);font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
 .${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto;padding:0}
 
 /* Year Cards Grid */

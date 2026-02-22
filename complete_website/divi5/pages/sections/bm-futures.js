@@ -110,10 +110,10 @@ function css() {
 /* === THREE FUTURES (S5) === */
 .${P}-section{padding:100px 24px;background:#fff;position:relative;overflow:hidden;${base.fontSmoothingReset(P)}font-size:16px}
 .${P}-wave-vertical{position:absolute;top:0;left:0;width:200px;height:100%;background:linear-gradient(90deg,rgba(0,175,240,0.04),transparent);pointer-events:none;z-index:0;opacity:0.06}
-.${P}-inner{max-width:900px;margin:0 auto;position:relative;z-index:2}
+.${P}-insight-inner{max-width:900px;margin:0 auto;position:relative;z-index:2}
 .${P}-header{text-align:center;margin:0 0 48px}
 .${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
-.${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto;padding:0}
+.${P}-path-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto;padding:0}
 .${P}-paths{display:grid;gap:24px;margin-bottom:48px}
 .${P}-path{border:1px solid;border-radius:16px;padding:32px}
 .${P}-path-top{display:flex;align-items:center;gap:16px;margin-bottom:16px}

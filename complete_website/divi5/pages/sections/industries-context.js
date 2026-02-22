@@ -9,6 +9,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const superD = require('../../lib/super-d');
 
 const P = 'con'; // CSS prefix — customize if needed
 
@@ -56,7 +57,7 @@ function css() {
   return `
 /* === CONTEXT (S2) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .context-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .context-section {
             padding: 120px 0;
             background: #ffffff;
@@ -191,6 +192,9 @@ function css() {
 .context-inner p strong{color:#000864}
 
 ${base.reducedMotion('')}
+
+/* Super D decoration */
+${superD.css('dw-d-bg', { variant: 'outline', position: 'right' })}
 `.trim();
 }
 

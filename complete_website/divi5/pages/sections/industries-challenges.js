@@ -10,6 +10,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const superD = require('../../lib/super-d');
 
 const P = 'cha'; // CSS prefix — customize if needed
 
@@ -90,7 +91,7 @@ function css() {
   return `
 /* === CHALLENGES (S4) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .challenges-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .challenges-section {
             padding: 100px 0;
             background: #fff;
@@ -230,6 +231,9 @@ function css() {
 /* Defensive SVG sizing */
 svg:not([width]):not([class]){max-width:48px;max-height:48px}
 ${base.reducedMotion('')}
+
+/* Super D decoration */
+${superD.css('dw-d-bg', { variant: 'outline', position: 'right' })}
 `.trim();
 }
 

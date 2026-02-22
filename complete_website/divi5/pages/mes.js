@@ -20,6 +20,7 @@ const resultsBuilder = require('./sections/mes-results');
 const reportsBuilder = require('./sections/mes-reports');
 const section2Builder = require('./sections/mes-section-2');
 const productDetailCtaBuilder = require('./sections/mes-product-detail-cta');
+const relatedBuilder = require('./sections/mes-related-solutions');
 
 module.exports = {
   pageId: 100562, // TODO: Create WP page and set page ID
@@ -39,6 +40,7 @@ module.exports = {
     { name: 'results', builder: resultsBuilder },
     { name: 'reports', builder: reportsBuilder },
     { name: 'section-2', builder: section2Builder },
+    { name: 'related-solutions', builder: relatedBuilder },
     { name: 'product-detail-cta', builder: productDetailCtaBuilder },
   ],
 
@@ -107,17 +109,24 @@ module.exports = {
         ],
       },
       {
-        name: 'section-2', wpSelector: '.et_pb_section_8', htmlSelector: '.dw-section',
+        name: 'section-2', wpSelector: '.et_pb_section_8', htmlSelector: '.dw-section:has(details)',
         pixelThreshold: 0.1,
         styleMap: [
-          { label: 'Section Title', htmlSel: '.dw-section h2', wpSel: '.et_pb_section_8 h2' },
+          { label: 'Section Title', htmlSel: '.dw-section:has(details) h2', wpSel: '.et_pb_section_8 h2' },
         ],
       },
       {
-        name: 'product-detail-cta', wpSelector: '.et_pb_section_9', htmlSelector: '.product-detail-cta',
+        name: 'related-solutions', wpSelector: '.et_pb_section_9', htmlSelector: '.related-solutions',
         pixelThreshold: 0.1,
         styleMap: [
-          { label: 'Section Title', htmlSel: '.product-detail-cta h2', wpSel: '.et_pb_section_9 h2' },
+          { label: 'Related Title', htmlSel: '.related-solutions h2', wpSel: '.et_pb_section_9 h2' },
+        ],
+      },
+      {
+        name: 'product-detail-cta', wpSelector: '.et_pb_section_10', htmlSelector: '.product-detail-cta',
+        pixelThreshold: 0.1,
+        styleMap: [
+          { label: 'Section Title', htmlSel: '.product-detail-cta h2', wpSel: '.et_pb_section_10 h2' },
         ],
       },
     ],

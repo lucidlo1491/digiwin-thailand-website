@@ -10,6 +10,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const superD = require('../../lib/super-d');
 
 const P = 'pro'; // CSS prefix — customize if needed
 
@@ -193,7 +194,7 @@ function css() {
   return `
 /* === PRODUCTS (S4) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .products-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .products-section {
             padding: 80px 0;
             background: #F5F7FA;
@@ -422,7 +423,7 @@ function css() {
             flex-direction: column;
             align-items: center;
             flex-shrink: 0;
-            min-width: 100px;
+            min-width: 72px;
         }
 .workflow-step-circle {
             width: 44px;
@@ -447,7 +448,7 @@ function css() {
             white-space: nowrap;
         }
 .workflow-connector {
-            width: 32px;
+            width: 24px;
             height: 2px;
             background: #00AFF0;
             flex-shrink: 0;
@@ -519,8 +520,31 @@ function css() {
 /* .products-grid-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg, transparent, #00AFF0, transparent)} */
 /* .products-section-label::before,.products-section-label::after{content:'';width:40px;height:1px;background:linear-gradient(90deg, transparent, #00AFF0)} */
 /* .products-section-label::after{background:linear-gradient(90deg, #00AFF0, transparent)} */
-.products-section{padding:100px 0;background:#fff}
-.products-inner{max-width:1100px;margin:0 auto;padding:0 24px}
+/* Divi section padding reset */
+.et_pb_section:has(.products-section){padding:0}
+/* Divi overrides */
+.products-section,.products-section *{-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto;line-height:1.6}
+.products-section p{padding:0}
+.products-section h2,.products-section h3{padding:0}
+.section-title{margin:0 0 16px 0;line-height:1.6}
+.section-subtitle{margin:0 auto;line-height:1.6}
+.product-box-title{line-height:44.8px;margin:0 0 8px 0}
+.product-box-tagline{margin:0}
+.product-box-desc{margin:0 0 20px 0;line-height:25.5px}
+.product-box-badge{line-height:19.2px}
+.product-best-for-label{line-height:20.8px}
+.product-best-for-text{line-height:21px}
+.product-features li{line-height:22.4px}
+.check{line-height:22.4px}
+.selection-guide-arrow{line-height:1.6}
+.selection-guide-product{line-height:28.8px}
+.selection-guide-desc{line-height:21px}
+.workflow-step-circle{line-height:22.4px}
+.workflow-step-label{line-height:19.2px}
+.workflow-strip-title{line-height:32px;margin:0 0 32px 0}
+.erp-compat-content h3{line-height:32px;margin:0 0 8px 0}
+.erp-compat-content p{margin:0}
+.workflow-caption{margin:16px 0 0 0}
 /* .products-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:24px} */
 /* @media (max-width:1024px){.auto-hero h1, .elec-hero h1, .metal-hero h1{font-size:40px}.auto-hero-stats, .elec-hero-stats, .metal-hero-stats{gap:40px}.stakes-grid, .challenges-grid{grid-template-columns:1fr}.solutions-grid{grid-template-columns:1fr}.products-grid{grid-template-columns:1fr}} */
 /* .products-grid-section{padding:120px 0;background:linear-gradient(180deg, #f8fafc 0%, #ffffff 30%, #ffffff 70%, #f8fafc 100%);position:relative;overflow:hidden} */
@@ -545,6 +569,9 @@ ${base.diviListReset(P)}
 /* Defensive SVG sizing */
 svg:not([width]):not([class]){max-width:48px;max-height:48px}
 ${base.reducedMotion('')}
+
+/* Super D decoration */
+${superD.css('dw-d-bg', { variant: 'outline', position: 'right', modifiers: ['glow'] })}
 `.trim();
 }
 

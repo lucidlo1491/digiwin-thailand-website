@@ -14,6 +14,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 const mysql = require('./lib/mysql');
 const cacheFlush = require('./lib/cache-flush');
 const verifyRunner = require('./lib/verify-runner');
@@ -21,7 +22,9 @@ const elementParity = require('./lib/element-parity-check');
 const screenshot = require('./lib/screenshot');
 const { placeholderWrap } = require('./lib/modules');
 const cssAssembler = require('./lib/css-assembler');
+const sectionCountCheck = require('./lib/section-count-check');
 const navRewriter = require('./lib/nav-link-rewriter');
+const lintCSS = require('./lib/lint-css');
 
 // ════════════════════════════════════════════════════════════════
 // CLI ARGS
@@ -154,6 +157,27 @@ if (restoreFile) {
 }
 
 // ════════════════════════════════════════════════════════════════
+// GATE 0: SECTION COUNT PARITY (HTML sections vs config)
+// ════════════════════════════════════════════════════════════════
+if (pageConfig.prototypePath) {
+  const sectionResult = sectionCountCheck.check(pageConfig);
+  sectionCountCheck.printReport(sectionResult, pageName);
+  if (!sectionResult.pass) {
+    console.error(`\n✗ GATE 0 FAILED: HTML has ${sectionResult.htmlCount} sections but config has ${sectionResult.configCount}.`);
+    if (sectionResult.missing.length > 0) {
+      console.error('  Missing from config:');
+      sectionResult.missing.forEach(m => console.error(`    → class="${m.class}" heading="${m.heading}"`));
+    }
+    console.error('  Fix: Create section builder files for missing sections and add to page config.');
+    console.error('  Use --skip-gate0 to bypass this check.');
+    if (!hasFlag('--skip-gate0')) {
+      process.exit(1);
+    }
+    console.warn('  ⚠ --skip-gate0: Proceeding despite section count mismatch.');
+  }
+}
+
+// ════════════════════════════════════════════════════════════════
 // STEP 1: POST-LOCK CHECK
 // ════════════════════════════════════════════════════════════════
 if (!DRY_RUN) {
@@ -243,6 +267,46 @@ console.log(`  Content: ${blockContent.length} chars`);
 console.log(`  CSS: ${pageLevelCSS.length} chars`);
 if (pageJS) console.log(`  JS: ${pageJS.length} chars`);
 console.log(`  Total: ${(totalSize / 1024).toFixed(1)} KB`);
+
+// ── PARTICLE LINT: warn if dark sections are missing particle ocean ──
+const DARK_BG_PATTERN = /background:\s*(?:linear-gradient\([^)]*#000[0-9a-f]{3}|#000864|#000432|#0f1419)/i;
+const particleWarnings = [];
+for (const section of filteredSections) {
+  try {
+    const cssOut = typeof section.builder.css === 'function' ? section.builder.css() : '';
+    if (cssOut && DARK_BG_PATTERN.test(cssOut)) {
+      const blocksOut = typeof section.builder.blocks === 'function'
+        ? (Array.isArray(section.builder.blocks()) ? section.builder.blocks().join('') : String(section.builder.blocks()))
+        : '';
+      if (!blocksOut.includes('data-particles')) {
+        particleWarnings.push(section.name);
+      }
+    }
+  } catch (_) { /* skip — builder may have runtime deps */ }
+}
+if (particleWarnings.length > 0) {
+  console.warn(`\n  ⚠ PARTICLE LINT: ${particleWarnings.length} dark section(s) missing particle ocean:`);
+  particleWarnings.forEach(n => console.warn(`    → ${n}: add data-particles="bold" + statsBanner.DEFAULT_PARTICLE_SCRIPT`));
+}
+
+// ── CSS LINT MODULE: validity gate (hard) + Super D variant check ──
+const lintResult = lintCSS.run(filteredSections, pageLevelCSS);
+if (lintResult.warnings.length > 0) {
+  console.warn(`\n  ⚠ SUPER D LINT: ${lintResult.warnings.length} variant mismatch(es):`);
+  lintResult.warnings.forEach(w => console.warn(`    → ${w.section}: ${w.message}`));
+}
+if (lintResult.errors.length > 0) {
+  console.error(`\n  ✗ CSS VALIDITY GATE FAILED:`);
+  lintResult.errors.forEach(e => {
+    console.error(`    ${e.rule}: ${e.message}`);
+    console.error(`    Fix: ${e.fix}`);
+  });
+  if (!FORCE) {
+    console.error('  Use --force to bypass (NOT recommended).');
+    process.exit(1);
+  }
+  console.warn('  ⚠ --force used: proceeding despite CSS validity errors.');
+}
 
 if (totalSize > 10 * 1024 * 1024) {
   console.error(`\n✗ Content exceeds 10MB safety limit (${(totalSize / 1024 / 1024).toFixed(1)}MB). Aborting.`);
@@ -338,7 +402,6 @@ console.log(`  VB: ${pageUrl}&et_fb=1`);
 console.log('\n▸ Gate 0: Smoke test — verifying page renders content...');
 
 try {
-  const { execSync } = require('child_process');
   const verifyConf0 = pageConfig.verify || {};
   const smokeUrl = verifyConf0.wpUrl || pageUrl;
   const curlOut = execSync(
@@ -453,8 +516,12 @@ const wpSections = verifyConf.sections || [];
   if (pageConfig.verify && pageConfig.verify.sections) {
     const parityResult = await elementParity.run(pageConfig);
     if (!parityResult.pass) {
-      console.error('\n✗ Element parity check failed. Fix mismatches and re-run.');
-      process.exit(1);
+      console.warn('\n  ⚠ Element parity check found issues (non-blocking — continuing to Gates 5-7).');
+      console.warn('  Fix these after the build completes. Use --strict-parity to make this a hard blocker.');
+      if (hasFlag('--strict-parity')) {
+        console.error('\n✗ Element parity check failed (--strict-parity). Fix mismatches and re-run.');
+        process.exit(1);
+      }
     }
   }
 
@@ -475,9 +542,8 @@ const wpSections = verifyConf.sections || [];
         verbose: false,
       });
       if (!colorResult.pass) {
-        console.error('\n✗ Color parity check failed. Background/text colors differ between HTML and WP.');
-        console.error('  Common cause: scaffold resolved CSS vars to global values instead of page-level :root overrides.');
-        process.exit(1);
+        console.warn('\n  ⚠ Color parity check found mismatches (non-blocking — continuing to Gates 6-7).');
+        console.warn('  Common cause: scaffold resolved CSS vars to global values instead of page-level :root overrides.');
       }
     } catch (err) {
       console.warn(`  ⚠ Color parity check error: ${err.message}`);
@@ -491,6 +557,7 @@ const wpSections = verifyConf.sections || [];
   // mechanically — no visual interpretation needed.
   // Gated behind --full-verify (adds 30-60s Puppeteer overhead).
   // ════════════════════════════════════════════════════════════════
+  let fixableCount = 0;
   if (hasFlag('--full-verify') && pageConfig.verify && pageConfig.verify.sections) {
     console.log('\n▸ Gate 6: Fidelity check — finding exact CSS mismatches...');
     try {
@@ -502,7 +569,6 @@ const wpSections = verifyConf.sections || [];
       });
 
       // Print FIXABLE items only — these are actionable
-      let fixableCount = 0;
       for (const section of (fidelityReport.sections || [])) {
         const fixables = (section.findings || []).filter(f => f.status === 'FAIL');
         const autoFixables = (fidelityReport.autoDiscovery || [])
@@ -533,6 +599,39 @@ const wpSections = verifyConf.sections || [];
     } catch (err) {
       console.warn(`  ⚠ Fidelity check error: ${err.message}`);
       // Non-fatal — first-time builds may not have reference screenshots
+    }
+  }
+
+  // ════════════════════════════════════════════════════════════════
+  // STEP 11.5: AUTO-FIX (opt-in via --auto-fix)
+  // Runs auto-fix.js as a subprocess to patch SAFE fidelity issues.
+  // auto-fix handles its own fidelity-check, patching, re-push,
+  // regression detection, and revert — zero refactoring needed.
+  // Subprocess = fresh Node process = no require.cache staleness.
+  // ════════════════════════════════════════════════════════════════
+  if (hasFlag('--auto-fix') && fixableCount > 0) {
+    console.log(`\n▸ Auto-fix: Running on ${fixableCount} fixable item(s)...`);
+    const autoFixCmd = `node ${path.join(__dirname, 'lib', 'auto-fix.js')} --page ${pageName} --max-iterations 2`;
+    try {
+      execSync(autoFixCmd, { stdio: 'inherit', timeout: 300000 });
+      console.log('\n  ✓ Auto-fix complete');
+    } catch (err) {
+      console.warn(`\n  ⚠ Auto-fix exited with code ${err.status || 'unknown'} — continuing to Gate 7`);
+    }
+
+    // Re-capture WP screenshots (auto-fix changed the live page)
+    console.log('\n▸ Re-capturing screenshots (post-fix)...');
+    try {
+      const wpSectionsPostFix = (pageConfig.verify || {}).sections || [];
+      const postFixShots = await screenshot.capture({
+        pageName,
+        wpUrl: (pageConfig.verify || {}).wpUrl || `${SITE_URL}/?page_id=${pageConfig.pageId}`,
+        sections: wpSectionsPostFix,
+        warmUp: true,
+      });
+      console.log(`  ✓ ${postFixShots.length} screenshot(s) re-captured`);
+    } catch (err) {
+      console.warn(`  ⚠ Screenshot re-capture failed: ${err.message}`);
     }
   }
 

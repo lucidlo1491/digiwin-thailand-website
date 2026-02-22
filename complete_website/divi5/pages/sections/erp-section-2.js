@@ -17,9 +17,9 @@ const P = 'sec'; // CSS prefix — customize if needed
 // ════════════════════════════════════════════════════════════════
 function blocks() {
   const html = `
-    <div class="dw-section" style="padding: 60px 0; background: #f8fafc;">
+    <div class="dw-section erp-faq-section" style="padding: 60px 0; background: #f8fafc;">
     <div style="max-width: 800px; margin: 0 auto; padding: 0 24px;">
-        <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 28px; font-weight: 700; color: #000864; margin-bottom: 32px; text-align: center;">Frequently Asked Questions</h2>
+        <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 28px; font-weight: 700; color: #000864; margin-bottom: 32px; text-align: center; line-height: 1.6; -webkit-font-smoothing: auto;">Frequently Asked Questions</h2>
         <div style="display: flex; flex-direction: column; gap: 12px;">
           <details style="border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
             <summary style="font-family: 'Noto Sans', sans-serif; font-size: 17px; font-weight: 600; color: #000864; padding: 16px 20px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: white; transition: background 0.2s ease;">What is the difference between T100 and iGP?<span style="font-size: 20px; color: #0369a1; transition: transform 0.2s ease; flex-shrink: 0; margin-left: 12px;">+</span></summary>
@@ -62,10 +62,10 @@ function blocks() {
 // ════════════════════════════════════════════════════════════════
 function css() {
   return `
-/* === SECTION 2 (S8) === */
-/* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
-
+/* === SECTION 2 (S8) — FAQ === */
+.erp-faq-section{-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto}
+.erp-faq-section p{padding-bottom:0 !important;-webkit-font-smoothing:auto !important}
+.erp-faq-section summary{-webkit-font-smoothing:auto !important}
 
 /* TODO: PSEUDO-ELEMENTS using global classes (port manually) */
 /* .dw-section--blue::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 50%);pointer-events:none} */

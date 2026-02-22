@@ -62,7 +62,7 @@ function css() {
   return `
 /* === CHALLENGES (S3) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .challenges-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 
 
 /* TODO: HOVER STATES using global classes (port manually) */

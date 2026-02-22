@@ -9,6 +9,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const superD = require('../../lib/super-d');
 
 const P = 'prod'; // CSS prefix — customize if needed
 
@@ -40,8 +41,10 @@ function blocks() {
 function css() {
   return `
 /* === PRODUCT DETAIL CTA (S10) === */
-/* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* Divi section padding reset */
+.et_pb_section:has(.product-detail-cta){padding:0}
+.product-detail-cta,.product-detail-cta *{-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto;line-height:1.6}
+.product-detail-cta p{margin:0;padding:0}
 @media (prefers-reduced-motion: reduce) {
             .product-box,
             .integration-node,
@@ -56,7 +59,7 @@ function css() {
         }
 
 /* === PSEUDO-ELEMENTS (auto-ported from styles.css) === */
-.${P}-cta::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);border-radius:50%}
+.product-detail-cta::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);border-radius:50%}
 /* TODO: HOVER STATES using global classes (port manually) */
 /* Buttons */
 .btn-white{background:#ffffff;color:#003CC8;padding:20px 40px;border-radius:14px;font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 4px 20px rgba(0, 0, 0, 0.15);display:inline-flex;align-items:center;gap:10px}
@@ -68,10 +71,12 @@ function css() {
  * .dw-wave-flow--top {
  *     display: none;
  * } */
+.dw-wave-flow{display:none}
 .product-detail-cta{padding:100px 0;background:linear-gradient(135deg, #00AFF0 0%, #003CC8 100%);position:relative;overflow:hidden}
+${superD.css('dw-d-bg', { variant: 'outline', position: 'right', modifiers: ['bold', 'glow'] })}
 .product-detail-cta-inner{max-width:800px;margin:0 auto;padding:0 24px;text-align:center;position:relative;z-index:1}
-.product-detail-cta-title{font-family:'Noto Sans', sans-serif;font-size:40px;font-weight:700;color:#ffffff;margin-bottom:16px}
-.product-detail-cta-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:rgba(255, 255, 255, 0.9);margin-bottom:36px}
+.product-detail-cta-title{font-family:'Noto Sans', sans-serif;font-size:40px;font-weight:700;color:#ffffff;margin:0 0 16px 0;padding:0;line-height:1.6}
+.product-detail-cta-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:rgba(255, 255, 255, 0.9);margin:0 0 36px 0 !important;padding:0;line-height:1.6}
 .product-detail-cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 @media (max-width:640px){.product-detail-cta-title{font-size:28px}.product-detail-cta-buttons{flex-direction:column}.product-detail-cta-buttons .btn-white,.product-detail-cta-buttons .btn-outline-white{width:100%;text-align:center}}
 

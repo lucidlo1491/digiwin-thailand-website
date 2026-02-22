@@ -2389,7 +2389,96 @@ async function runDecoPresenceAudit(htmlPage, wpPage, section, pageConfig, verbo
         fix: `Check width/min-height on .${label} — may need explicit sizing`,
       });
     }
+
+    // Check 4: SVG variant comparison — decode Base64 and compare content
+    if (hHasBg && wHasBg) {
+      const extractB64Content = (bgStr) => {
+        const m = bgStr.match(/data:image\/svg\+xml;base64,([A-Za-z0-9+/=]+)/);
+        if (!m) return null;
+        try { return Buffer.from(m[1], 'base64').toString('utf8').substring(0, 200); }
+        catch (_) { return null; }
+      };
+      const htmlSvg = extractB64Content(hd.bgImage);
+      const wpSvg = extractB64Content(wd.bgImage);
+      if (htmlSvg && wpSvg && htmlSvg !== wpSvg) {
+        // Identify variants by distinctive SVG content
+        const identifyVariant = (svgSnippet) => {
+          if (svgSnippet.includes('gradient')) return 'gradient';
+          if (svgSnippet.includes('particle') || svgSnippet.includes('circle')) return 'particle';
+          return 'outline';
+        };
+        const htmlVariant = identifyVariant(htmlSvg);
+        const wpVariant = identifyVariant(wpSvg);
+        result.fixable.push({
+          category: 'DECORATION_SVG_VARIANT_MISMATCH',
+          element: label,
+          note: `SVG content differs: HTML uses '${htmlVariant}' variant, WP uses '${wpVariant}'`,
+          fix: `Change variant in superD.css() call from '${wpVariant}' to '${htmlVariant}'`,
+          property: 'background-image',
+          htmlValue: `Super D ${htmlVariant}`,
+          wpValue: `Super D ${wpVariant}`,
+        });
+      }
+    }
   }
+
+  // Phase 3b: Pseudo-element auto-discovery on section wrapper
+  // Only checks the wrapper element itself (not all children — red team constraint)
+  const PSEUDO_DISCOVER_FN = function(wrapperSelector) {
+    const wrapper = document.querySelector(wrapperSelector);
+    if (!wrapper) return null;
+    const results = {};
+    for (const pseudo of ['::before', '::after']) {
+      const cs = window.getComputedStyle(wrapper, pseudo);
+      results[pseudo] = {
+        content: cs.content,
+        bgImage: cs.backgroundImage,
+        height: cs.height,
+        bgSize: cs.backgroundSize,
+        display: cs.display,
+        opacity: cs.opacity,
+      };
+    }
+    return results;
+  };
+
+  try {
+    const [htmlPseudos, wpPseudos] = await Promise.all([
+      htmlPage.evaluate(PSEUDO_DISCOVER_FN, htmlSelector),
+      wpPage.evaluate(PSEUDO_DISCOVER_FN, wpSelector),
+    ]);
+
+    if (htmlPseudos && wpPseudos) {
+      for (const pseudo of ['::before', '::after']) {
+        const hp = htmlPseudos[pseudo];
+        const wp = wpPseudos[pseudo];
+        if (!hp || !wp) continue;
+
+        const htmlHasContent = hp.content && hp.content !== 'none' && hp.content !== 'normal' && hp.content !== '""';
+        const wpHasContent = wp.content && wp.content !== 'none' && wp.content !== 'normal' && wp.content !== '""';
+        const htmlHasBg = hp.bgImage && hp.bgImage !== 'none';
+
+        // HTML has a visible pseudo-element but WP doesn't
+        if ((htmlHasContent || htmlHasBg) && !wpHasContent && !wp.bgImage?.includes('url(')) {
+          result.fixable.push({
+            category: 'PSEUDO_ELEMENT_MISSING',
+            element: `${section.name} wrapper${pseudo}`,
+            note: `HTML wrapper has ${pseudo} (content: ${hp.content}, bg: ${htmlHasBg ? 'yes' : 'no'}) but WP wrapper does not`,
+            fix: `Add ${pseudo} CSS for section wrapper — check for grain overlay, gradient stripe, or decorative bar`,
+          });
+        }
+        // Both have pseudo-elements — compare background-image if present
+        else if (htmlHasBg && wp.bgImage && wp.bgImage !== 'none') {
+          if (hp.bgImage !== wp.bgImage && hp.height !== wp.height) {
+            result.findings.push({
+              id: 'P3b', label: `Pseudo ${pseudo} style mismatch`, status: 'WARN',
+              note: `Wrapper ${pseudo} differs: HTML height=${hp.height}, WP height=${wp.height}`,
+            });
+          }
+        }
+      }
+    }
+  } catch (_) { /* Puppeteer evaluation can fail on some pages — non-fatal */ }
 
   // Check page-level decorationSelectors (explicit pseudo-element spot checks)
   const decoSelectors = (pageConfig.verify && pageConfig.verify.decorationSelectors) || [];

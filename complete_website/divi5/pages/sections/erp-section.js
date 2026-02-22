@@ -17,9 +17,9 @@ const P = 'sec'; // CSS prefix — customize if needed
 // ════════════════════════════════════════════════════════════════
 function blocks() {
   const html = `
-    <div class="dw-section" style="padding: 40px 0 0; text-align: center;">
+    <div class="dw-section erp-whatis-section" style="padding: 40px 0 0; text-align: center;">
     <div style="max-width: 800px; margin: 0 auto; padding: 0 24px;">
-        <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 22px; font-weight: 700; color: #000864; margin-bottom: 12px;">What is ERP (Enterprise Resource Planning)?</h2>
+        <h2 style="font-family: 'Noto Sans', sans-serif; font-size: 22px; font-weight: 700; color: #000864; margin-bottom: 12px; line-height: 1.6; -webkit-font-smoothing: auto;">What is ERP (Enterprise Resource Planning)?</h2>
         <p style="font-family: 'Noto Sans', sans-serif; font-size: 17px; line-height: 1.7; color: #333;">
           <strong>DigiWin ERP</strong> is a manufacturing-specific Enterprise Resource Planning system born from 44 years of serving factories across Taiwan, China, and Southeast Asia — regions where manufacturing isn't just an industry, it's the backbone of the economy. Available in two editions — <strong>T100</strong> for enterprise-scale multi-site operations (200+ employees) and <strong>iGP</strong> for growing single-site manufacturers (20–200 employees) — it provides real-time financial control, BOM (Bill of Materials) management, MRP (Material Requirements Planning) and LRP (Lot Requirements Planning), quality management, and complete production traceability. Backed by 50,000+ factory clients and 1,500+ R&amp;D engineers, DigiWin is the most widely deployed manufacturing ERP in Greater China and Southeast Asia — now serving Thai manufacturers directly with a full local team.
         </p>
@@ -33,10 +33,9 @@ function blocks() {
 // ════════════════════════════════════════════════════════════════
 function css() {
   return `
-/* === SECTION (S2) === */
-/* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
-
+/* === SECTION (S2) — What is ERP === */
+.erp-whatis-section{-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto}
+.erp-whatis-section p{padding-bottom:0 !important;-webkit-font-smoothing:auto !important}
 
 /* TODO: PSEUDO-ELEMENTS using global classes (port manually) */
 /* .dw-section--blue::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 50%);pointer-events:none} */

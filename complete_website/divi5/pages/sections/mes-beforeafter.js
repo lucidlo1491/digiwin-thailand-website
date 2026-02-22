@@ -89,7 +89,7 @@ function css() {
   return `
 /* === BEFOREAFTER (S3) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .beforeafter-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .beforeafter-section {
             padding: 80px 0;
             background: #ffffff;
@@ -133,7 +133,11 @@ function css() {
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-        }
+        
+            line-height: 22.4px !important;
+
+            -webkit-font-smoothing: auto !important;
+}
 .beforeafter-label.before {
             color: #dc2626;
         }
@@ -156,13 +160,19 @@ function css() {
             font-weight: 600;
             color: #000864;
             margin-bottom: 6px;
-        }
+        
+            line-height: 25.6px !important;
+
+            -webkit-font-smoothing: auto !important;
+}
 .beforeafter-item-desc {
             font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
             color: #5b6b80;
             line-height: 1.5;
-        }
+        
+            -webkit-font-smoothing: auto !important;
+}
 .beforeafter-arrow {
             display: flex;
             align-items: center;
@@ -170,7 +180,11 @@ function css() {
             font-size: 32px;
             color: #0369a1;
             padding-top: 150px;
-        }
+        
+            line-height: 51.2px;
+
+            -webkit-font-smoothing: auto;
+}
 @media (max-width: 1024px) {
             .beforeafter-grid {
                 grid-template-columns: 1fr;
@@ -219,6 +233,36 @@ function css() {
 @media (max-width:640px){.section-title{font-size:28px}.capabilities-grid{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto}.product-detail-cta-title{font-size:28px}.product-detail-cta-buttons{flex-direction:column}.product-detail-cta-buttons .btn-white,.product-detail-cta-buttons .btn-outline-white{width:100%;text-align:center}}
 
 
+
+.beforeafter-item-title {
+            line-height: 25.6px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.beforeafter-item-desc {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.beforeafter-item-title {
+            line-height: 25.6px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.beforeafter-item-desc {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.beforeafter-item-title {
+            line-height: 25.6px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.beforeafter-item-desc {
+            -webkit-font-smoothing: auto !important;
+        }
 `.trim();
 }
 

@@ -117,7 +117,7 @@ function css() {
   return `
 /* === CS GRID (S2) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .cs-grid-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .cs-grid-section {
             background: #fff;
             padding: 80px 24px 100px;

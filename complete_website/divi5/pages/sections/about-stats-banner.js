@@ -8,6 +8,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const statsBanner = require('../../lib/templates/stats-banner');
 
 const P = 'stab'; // CSS prefix — customize if needed
 
@@ -16,7 +17,7 @@ const P = 'stab'; // CSS prefix — customize if needed
 // ════════════════════════════════════════════════════════════════
 function blocks() {
   const html = `
-    <div class="stats-banner">
+    <div class="stats-banner" data-particles="bold">
     <div class="stats-banner-inner" style="position: relative; z-index: 2;">
                 <div class="stat-item">
                     <div class="stat-number"><span class="dw-years">44</span>+</div>
@@ -39,6 +40,7 @@ function blocks() {
                     <div class="stat-description">Shenzhen Stock Exchange Listed</div>
                 </div>
             </div>
+    ${statsBanner.DEFAULT_PARTICLE_SCRIPT}
     </div>
     `;
 

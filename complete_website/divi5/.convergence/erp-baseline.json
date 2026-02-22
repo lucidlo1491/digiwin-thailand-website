@@ -1,0 +1,56 @@
+{
+  "page": "erp",
+  "savedAt": "2026-02-22T03:43:34.576Z",
+  "sections": {
+    "fullpage": {
+      "diffPercent": 21.17,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "hero": {
+      "diffPercent": 1.45,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "what-is-erp": {
+      "diffPercent": 0,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "pain": {
+      "diffPercent": 0,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "products": {
+      "diffPercent": 2.4,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "capabilities": {
+      "diffPercent": 0.39,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "section-6": {
+      "diffPercent": 1.39,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "integration": {
+      "diffPercent": 4.3,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "faq": {
+      "diffPercent": 1.95,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "cta": {
+      "diffPercent": 1.09,
+      "verdict": "MATCH",
+      "skipped": false
+    }
+  }
+}

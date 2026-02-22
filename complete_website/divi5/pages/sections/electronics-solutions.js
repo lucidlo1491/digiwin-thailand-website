@@ -173,7 +173,7 @@ function css() {
   return `
 /* === SOLUTIONS (S4) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .solutions-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 
 
 /* TODO: HOVER STATES using global classes (port manually) */

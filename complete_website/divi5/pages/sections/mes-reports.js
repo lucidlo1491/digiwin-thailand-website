@@ -75,7 +75,7 @@ function css() {
   return `
 /* === REPORTS (S8) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .reports-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .reports-section {
             padding: 80px 0;
             background: #ffffff;
@@ -112,7 +112,11 @@ function css() {
             color: #ffffff;
             padding: 4px 12px;
             border-radius: 50px;
-        }
+        
+            line-height: 17.6px !important;
+
+            -webkit-font-smoothing: auto !important;
+}
 .reports-column-badge.sft {
             background: linear-gradient(135deg, #00AFF0, #003CC8);
         }
@@ -120,7 +124,11 @@ function css() {
             font-family: 'Noto Sans', sans-serif;
             font-size: 14px;
             color: #5b6b80;
-        }
+        
+            line-height: 22.4px !important;
+
+            -webkit-font-smoothing: auto !important;
+}
 .reports-list {
             list-style: none;
             padding: 0;
@@ -143,7 +151,9 @@ function css() {
             color: #00AFF0;
             flex-shrink: 0;
             font-size: 14px;
-        }
+        
+            -webkit-font-smoothing: auto !important;
+}
 @media (max-width: 1024px) {
             .beforeafter-grid {
                 grid-template-columns: 1fr;
@@ -192,6 +202,34 @@ function css() {
 @media (max-width:640px){.section-title{font-size:28px}.capabilities-grid{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto}.product-detail-cta-title{font-size:28px}.product-detail-cta-buttons{flex-direction:column}.product-detail-cta-buttons .btn-white,.product-detail-cta-buttons .btn-outline-white{width:100%;text-align:center}}
 ${base.diviListReset(P)}
 
+
+.report-icon {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.report-icon {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.report-icon {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.report-icon {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.report-icon {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.report-icon {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.report-icon {
+            -webkit-font-smoothing: auto !important;
+        }
 `.trim();
 }
 

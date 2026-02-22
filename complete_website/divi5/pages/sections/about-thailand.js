@@ -9,6 +9,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const superD = require('../../lib/super-d');
 
 const P = 'tha'; // CSS prefix — customize if needed
 
@@ -104,7 +105,7 @@ function css() {
   return `
 /* === THAILAND (S8) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .thailand-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 @keyframes bounce-down {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(6px); }
@@ -387,6 +388,9 @@ function css() {
 
 ${base.diviListReset(P)}
 ${base.reducedMotion('')}
+
+/* Super D decoration */
+${superD.css('dw-d-bg', { variant: 'outline', position: 'right' })}
 `.trim();
 }
 

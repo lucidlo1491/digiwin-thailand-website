@@ -9,6 +9,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const superD = require('../../lib/super-d');
 
 const P = 'pro'; // CSS prefix — customize if needed
 
@@ -49,7 +50,7 @@ function css() {
   return `
 /* === PROTOCOL (S7) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .protocol-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .protocol-section {
             padding: 80px 0;
             background: #fff;
@@ -100,6 +101,9 @@ function css() {
         }
 
 ${base.reducedMotion('')}
+
+/* Super D decoration */
+${superD.css('dw-d-bg', { variant: 'outline', position: 'right', modifiers: ['glow'] })}
 `.trim();
 }
 

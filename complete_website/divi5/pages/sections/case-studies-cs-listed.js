@@ -133,7 +133,7 @@ function css() {
   return `
 /* === CS LISTED (S8) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .cs-listed-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .cs-listed-section {
             background: #F5F7FA;
             padding: 80px 24px;

@@ -43,7 +43,7 @@ function css() {
   return `
 /* === ECONOMICS CTA (S5) === */
 .${P}-section{background:linear-gradient(135deg,#00AFF0 0%,#003CC8 50%,#001080 100%);padding:100px 24px;position:relative;overflow:hidden;${base.fontSmoothingReset(P)}font-size:16px}
-${superD.css(`${P}-d-bg`, { variant: 'gradient', position: 'right', modifiers: ['bold', 'glow'] })}
+${superD.css(`${P}-d-bg`, { variant: 'outline', position: 'right', modifiers: ['bold', 'glow'] })}
 .${P}-wave{position:absolute;bottom:0;left:0;right:0;height:160px;opacity:0.30;background:linear-gradient(180deg,transparent 0%,rgba(0,8,100,0.3) 100%);pointer-events:none;z-index:1}
 .${P}-dot-overlay{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.07'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none;z-index:1}
 .${P}-inner{max-width:800px;margin:0 auto;text-align:center;position:relative;z-index:3}

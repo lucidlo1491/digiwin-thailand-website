@@ -39,7 +39,7 @@ function css() {
   return `
 /* === CS CTA (S10) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .cs-cta-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .cs-cta-section {
             background: linear-gradient(135deg, #00AFF0 0%, #003CC8 50%, #001080 100%);
             padding: 100px 24px;

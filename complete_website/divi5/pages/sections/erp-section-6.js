@@ -9,6 +9,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const superD = require('../../lib/super-d');
 
 const P = 'sec6'; // CSS prefix — customize if needed
 
@@ -136,16 +137,16 @@ function blocks() {
                 
                 <div class="boi-callout-grid" style="margin-top: 48px; background: linear-gradient(135deg, #000864, #1e3a5f); border-radius: 20px; padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
                     <div>
-                        <p style="font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #0369a1; margin-bottom: 12px;">Proven Results</p>
+                        <p style="font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #00AFF0; margin-bottom: 12px;">Proven Results</p>
                         <h3 style="font-family: 'Noto Sans', sans-serif; font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 16px;">From 10M THB/Year to Zero in Supplementary Taxes</h3>
                         <p style="font-family: 'Noto Sans', sans-serif; font-size: 17px; color: rgba(255,255,255,0.85); line-height: 1.7;">When the BOI audited one of our clients, DigiWin's production-order-level reconciliation showed exact material consumption — no gaps, no guesswork. The result: supplementary taxes dropped from over 10 million baht annually to zero.</p>
-                        <a href="../blog/boi-compliance-jin-hai.html" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; font-family: 'Noto Sans', sans-serif; font-size: 15px; font-weight: 500; color: #0369a1; text-decoration: none;">Read the Full Story <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <a href="../blog/boi-compliance-jin-hai.html" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; font-family: 'Noto Sans', sans-serif; font-size: 15px; font-weight: 500; color: #00AFF0; text-decoration: none;">Read the Full Story <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                     </div>
                     <div style="text-align: center;">
-                        <div style="display: inline-block; background: rgba(3,105,161,0.15); border-radius: 20px; padding: 40px;">
-                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 56px; font-weight: 700; color: #0369a1;">10M+</div>
+                        <div style="display: inline-block; background: rgba(0,175,240,0.15); border-radius: 20px; padding: 40px;">
+                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 56px; font-weight: 700; color: #00AFF0;">10M+</div>
                             <div style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: rgba(255,255,255,0.75); margin-top: 8px;">THB/year saved</div>
-                            <div style="width: 40px; height: 2px; background: #0369a1; margin: 16px auto;"></div>
+                            <div style="width: 40px; height: 2px; background: #00AFF0; margin: 16px auto;"></div>
                             <div style="font-family: 'JetBrains Mono', monospace; font-size: 56px; font-weight: 700; color: #15803d;">Zero</div>
                             <div style="font-family: 'Noto Sans', sans-serif; font-size: 16px; color: rgba(255,255,255,0.75); margin-top: 8px;">supplementary taxes in 2025</div>
                         </div>
@@ -407,6 +408,9 @@ function css() {
 .tech-advantages-section li{list-style:none !important;line-height:1.5}
 .tech-advantages-section li::before{display:none !important}
 ${base.reducedMotion('')}
+
+/* Super D decoration */
+${superD.css('dw-d-bg', { variant: 'outline', position: 'right' })}
 `.trim();
 }
 

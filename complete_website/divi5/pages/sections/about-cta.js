@@ -10,6 +10,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const superD = require('../../lib/super-d');
 
 const P = 'cta'; // CSS prefix — customize if needed
 
@@ -154,6 +155,9 @@ function css() {
  *     display: none;
  * } */
 ${base.reducedMotion('')}
+
+/* Super D decoration */
+${superD.css('dw-d-bg', { variant: 'gradient', position: 'right' })}
 `.trim();
 }
 

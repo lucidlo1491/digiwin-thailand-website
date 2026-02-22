@@ -1,0 +1,66 @@
+{
+  "page": "mes",
+  "savedAt": "2026-02-22T15:46:49.946Z",
+  "sections": {
+    "fullpage": {
+      "diffPercent": 20.27,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "hero": {
+      "diffPercent": 4.09,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "section": {
+      "diffPercent": 4.39,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "beforeafter": {
+      "diffPercent": 2.59,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "products": {
+      "diffPercent": 5.91,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "capabilities": {
+      "diffPercent": 2.84,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "integration": {
+      "diffPercent": 3.52,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "results": {
+      "diffPercent": 2.42,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "reports": {
+      "diffPercent": 1.6,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "section-2": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "related-solutions": {
+      "diffPercent": 0.96,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "product-detail-cta": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    }
+  }
+}

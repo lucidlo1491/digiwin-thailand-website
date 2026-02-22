@@ -845,6 +845,14 @@ sectionData.forEach(section => {
 
   // Detect Super D decoration elements
   const hasSuperD = /dw-d-bg/.test(section.cleanHTML);
+  let superDCSSLine = '';
+  if (hasSuperD) {
+    const sdParticle = /dw-d-bg--particle/.test(section.outerHTML);
+    const sdGradient = /dw-d-bg--gradient/.test(section.outerHTML);
+    const sdVariant = sdParticle ? 'particle' : sdGradient ? 'gradient' : 'outline';
+    const sdPosition = /dw-d-bg--bottom/.test(section.outerHTML) ? 'bottom' : 'right';
+    superDCSSLine = `\\\${superD.css('dw-d-bg', { variant: '${sdVariant}', position: '${sdPosition}' })}`;
+  }
 
   // ── A3: Template suggestion heuristic ──
   const templateHint = suggestTemplate(section);
@@ -861,7 +869,7 @@ sectionData.forEach(section => {
  * Original classes: ${section.classNames.slice(0, 5).join(', ')}${section.classNames.length > 5 ? ` (+${section.classNames.length - 5} more)` : ''}
  */
 ${templateHint}
-const base = require('../../lib/templates/_base');
+const base = require('../../lib/templates/_base');${hasSuperD ? `\nconst superD = require('../../lib/super-d');` : ''}
 
 const P = '${section.prefix}'; // CSS prefix — customize if needed
 
@@ -887,7 +895,7 @@ function css() {
 .\${P}-section h2,.\${P}-section h3,.\${P}-section h4{margin:0;padding:0}
 ${escapeForTemplate(cssBody)}
 ${extReportEscaped}
-${hasSuperD ? `/* TODO: Replace url('assets/...') with Base64 — run: node divi5/lib/retrofit-sections.js --scope super-d --live */` : ''}
+${hasSuperD ? superDCSSLine : ''}
 ${hasList ? `\${base.diviListReset(P)}` : ''}
 ${hasTransition ? `\${base.reducedMotion('*{animation:none !important;transition:none !important}')}` : ''}
 \`.trim();

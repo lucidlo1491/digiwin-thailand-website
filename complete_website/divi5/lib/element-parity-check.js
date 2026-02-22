@@ -170,7 +170,35 @@ function extractSectionDOM(sectionSelector) {
     }
   }
 
-  // ── 6. SVG CONTAINERS (specific opacity check) ──────────
+  // ── 6. OVERFLOW CONTENT DETECTION ──────────────────────
+  // Find elements where content is clipped by overflow
+  const overflowCandidates = section.querySelectorAll('[style*="overflow"], *');
+  const overflowClipped = [];
+  const checked = new Set();
+  for (const el of overflowCandidates) {
+    if (checked.has(el)) continue;
+    checked.add(el);
+    const s = getComputedStyle(el);
+    if (s.overflowX === 'auto' || s.overflowX === 'hidden' || s.overflowX === 'scroll') {
+      const diff = el.scrollWidth - el.clientWidth;
+      if (diff > 20) {
+        const classes = el.className && typeof el.className === 'string'
+          ? '.' + el.className.trim().split(/\s+/).slice(0, 2).join('.')
+          : '';
+        const tag = el.tagName.toLowerCase();
+        overflowClipped.push({
+          selector: `${tag}${classes}`,
+          scrollWidth: el.scrollWidth,
+          clientWidth: el.clientWidth,
+          clippedPx: diff,
+          childCount: el.children.length,
+        });
+      }
+    }
+  }
+  result.overflowClipped = overflowClipped;
+
+  // ── 7. SVG CONTAINERS (specific opacity check) ──────────
   const svgDirectChildren = section.querySelectorAll('svg');
   for (const svg of svgDirectChildren) {
     // Only check SVGs that are likely decorative (large, positioned)
@@ -334,7 +362,19 @@ function compareSections(htmlData, wpData, sectionName) {
     }
   }
 
-  // ── 5. SVG CONTAINER OPACITY ────────────────────────────
+  // ── 5. OVERFLOW CONTENT DETECTION (WP only) ────────────
+  // If WP has overflow-clipped content, it means visible content is being cut off
+  if (wpData.overflowClipped) {
+    for (const clip of wpData.overflowClipped) {
+      issues.push({
+        severity: 'FAIL',
+        category: 'overflow',
+        msg: `Content clipped by overflow on ${clip.selector}: ${clip.clippedPx}px hidden (${clip.childCount} children, scrollWidth=${clip.scrollWidth}px > clientWidth=${clip.clientWidth}px). Visible content is being cut off.`,
+      });
+    }
+  }
+
+  // ── 6. SVG CONTAINER OPACITY ────────────────────────────
   for (let i = 0; i < Math.min(htmlData.svgContainers.length, wpData.svgContainers.length); i++) {
     const htmlSvg = htmlData.svgContainers[i];
     const wpSvg = wpData.svgContainers[i];

@@ -48,6 +48,8 @@ function css() {
             background: linear-gradient(135deg, #0369a1 0%, #003CC8 50%, #001080 100%);
             position: relative;
             overflow: hidden;
+            -webkit-font-smoothing: auto;
+            -moz-osx-font-smoothing: auto;
         }
 .erp-cta::before {
             content: '';
@@ -131,17 +133,9 @@ function css() {
         }
 
 /* Buttons */
-.btn-white{background:#ffffff;color:#003CC8;padding:20px 40px;border-radius:14px;font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 4px 20px rgba(0, 0, 0, 0.15);display:inline-flex;align-items:center;gap:10px
-            line-height: 25.6px !important;
-
-            -webkit-font-smoothing: auto !important;
-}
+.btn-white{background:#ffffff;color:#003CC8;padding:20px 40px;border-radius:14px;font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 4px 20px rgba(0, 0, 0, 0.15);display:inline-flex;align-items:center;gap:10px;line-height:25.6px !important;-webkit-font-smoothing:auto !important}
 .btn-white:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0, 0, 0, 0.2)}
-.btn-outline-white{background:transparent;color:#ffffff;padding:20px 40px;border-radius:14px;border:2px solid rgba(255, 255, 255, 0.5);font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.3s ease
-            line-height: 25.6px !important;
-
-            -webkit-font-smoothing: auto !important;
-}
+.btn-outline-white{background:transparent;color:#ffffff;padding:20px 40px;border-radius:14px;border:2px solid rgba(255, 255, 255, 0.5);font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.3s ease;line-height:25.6px !important;-webkit-font-smoothing:auto !important}
 .btn-outline-white:hover{background:rgba(255, 255, 255, 0.15);border-color:#ffffff}
 .dw-wave-flow{position:absolute;bottom:0;left:0;width:100%;pointer-events:none;overflow:hidden}
 .dw-d-bg{position:absolute;right:-10%;top:50%;transform:translateY(-50%);width:60%;min-height:60vh;background:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgNTA0IiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwNCIgZmlsbD0ibm9uZSI+CiAgPCEtLSBEaWdpV2luIFN1cGVyIEQgLSBPdXRsaW5lIHZhcmlhbnQgKHN0cm9rZS1vbmx5LCBmb3IgZGFyayBoZXJvIGJhY2tncm91bmRzKSAtLT4KICA8IS0tIFNjYWxlZCBmcm9tIGQtbWFyayAoMTYuNzPDlzE2Ljg5KSBieSB+MzB4IGZvciBiYWNrZ3JvdW5kIHVzZSAtLT4KICA8IS0tIEFyYyBzaGFwZSAtLT4KICA8cGF0aCBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIgZD0iTSAwIDUwNCBDIDAgNDUzLjggNDAuNyA0MTMuMyA5MC43IDQxMy4zIEwgMjQ3IDQxMy4zIEMgMzM2LjEgNDEzLjMgNDA4LjUgMzQxLjEgNDA4LjUgMjUyIEMgNDA4LjUgMTYyLjkgMzM2LjEgOTAuNyAyNDcgOTAuNyBMIDkwLjcgOTAuNyBDIDQwLjcgOTAuNyAwIDUwIDAgMCBMIDI0NyAwIEMgMzg2LjIgMCA0OTkgMTEyLjggNDk5IDI1MiBDIDQ5OSAzOTEuMiAzODYuMiA1MDQgMjQ3IDUwNCBaIi8+CiAgPCEtLSBDaXJjbGUvZG90IC0tPgogIDxwYXRoIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBkPSJNIDI2LjcgMjUyIEMgMjYuNyAyMTYuMSA1NS45IDE4Ni45IDkxLjggMTg2LjkgQyAxMjcuNiAxODYuOSAxNTYuOCAyMTYuMSAxNTYuOCAyNTIgQyAxNTYuOCAyODcuOCAxMjcuNiAzMTcgOTEuOCAzMTcgQyA1NS45IDMxNyAyNi43IDI4Ny44IDI2LjcgMjUyIi8+Cjwvc3ZnPgo=") no-repeat center right;background-size:contain;pointer-events:none;z-index:0;opacity:0.12}

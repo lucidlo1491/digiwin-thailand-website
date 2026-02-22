@@ -8,6 +8,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const statsBanner = require('../../lib/templates/stats-banner');
 
 const P = 'res'; // CSS prefix — customize if needed
 
@@ -16,7 +17,7 @@ const P = 'res'; // CSS prefix — customize if needed
 // ════════════════════════════════════════════════════════════════
 function blocks() {
   const html = `
-    <div class="results-section">
+    <div class="results-section" data-particles="bold">
     <div class="results-inner" style="position: relative; z-index: 2;">
                 <div class="results-header">
                     <p class="results-label">Measured Impact</p>
@@ -67,6 +68,7 @@ function blocks() {
     
                 <p class="results-attribution">Based on DigiWin implementation data across 50,000+ manufacturing clients</p>
             </div>
+    ${statsBanner.DEFAULT_PARTICLE_SCRIPT}
     </div>
     `;
 
@@ -80,7 +82,7 @@ function css() {
   return `
 /* === RESULTS (S7) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Add section container: .results-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .results-section {
             padding: 80px 0;
             background: linear-gradient(135deg, #000864 0%, #1a2d3d 100%);
@@ -101,7 +103,11 @@ function css() {
             text-transform: uppercase;
             letter-spacing: 0.15em;
             margin-bottom: 16px;
-        }
+        
+            line-height: 17.6px;
+
+            -webkit-font-smoothing: auto;
+}
 .results-title {
             font-family: 'Noto Sans', sans-serif;
             font-size: 36px;
@@ -116,7 +122,11 @@ function css() {
             letter-spacing: 0.1em;
             margin-bottom: 16px;
             padding-left: 4px;
-        }
+        
+            line-height: 17.6px !important;
+
+            -webkit-font-smoothing: auto !important;
+}
 .results-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -136,14 +146,18 @@ function css() {
             font-weight: 800;
             color: #00AFF0;
             line-height: 1;
-        }
+        
+            -webkit-font-smoothing: auto !important;
+}
 .result-label {
             font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
             color: rgba(255, 255, 255, 0.8);
             margin-top: 12px;
             line-height: 1.4;
-        }
+        
+            -webkit-font-smoothing: auto !important;
+}
 .results-shared {
             text-align: center;
             margin-top: 8px;
@@ -159,7 +173,11 @@ function css() {
             color: rgba(255, 255, 255, 0.75);
             text-align: center;
             margin-top: 16px;
-        }
+        
+            line-height: 20.8px;
+
+            -webkit-font-smoothing: auto;
+}
 @media (max-width: 1024px) {
             .beforeafter-grid {
                 grid-template-columns: 1fr;
@@ -217,6 +235,54 @@ function css() {
 
 
 
+
+.result-value {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.result-label {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.result-value {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.result-label {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.result-value {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.result-label {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.result-value {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.result-label {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.result-value {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.result-label {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.result-value {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.result-label {
+            -webkit-font-smoothing: auto !important;
+        }
 `.trim();
 }
 

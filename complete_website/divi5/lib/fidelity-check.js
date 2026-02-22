@@ -1,7 +1,7 @@
 /**
  * fidelity-check.js — Automated Divi ↔ HTML Fidelity Comparison
  *
- * Two-phase check:
+ * Four-phase check:
  *   Phase 1 (Manual): F1-F8 findings from hero debugging session
  *     F1: Font-smoothing (Divi antialiased vs HTML auto)
  *     F2: <p> padding injection (Divi adds padding-bottom: 1em)
@@ -16,6 +16,13 @@
  *     section, matches them between HTML and WP, and compares 40+ CSS properties.
  *     Catches issues like max-width, text-align, letter-spacing that manual
  *     styleMap entries might miss.
+ *
+ *   Phase 3 (Decorative): Checks Super D, grain, wave, particle presence.
+ *
+ *   Phase 4 (Visual Elements): Discovers non-text elements with visual presence
+ *     (gradients, backgrounds, shadows, borders, pseudo-elements). Matches by
+ *     class name overlap. Enhanced gradient/shadow comparison with parsed values.
+ *     Catches ~80% of issues that Phase 2 misses (cards, icons, sections).
  *
  * Opens HTML (temp server) + WP (live) in Puppeteer, runs getComputedStyle()
  * on matched element pairs from the page config's verify.sections[].styleMap,
@@ -148,12 +155,39 @@ function compareValues(prop, htmlVal, wpVal) {
     return { match: true, note: 'transition equivalent' };
   }
 
-  // Background-image: presence check (don't compare exact SVG data URIs)
+  // Background-image: gradient-aware comparison
+  // Parse angle + color stops for gradients; presence-only for data URIs
   if (prop === 'background-image') {
     const hHas = h !== 'none' && h !== '';
     const wHas = w !== 'none' && w !== '';
     if (!hHas && !wHas) return { match: true };
     if (hHas !== wHas) return { match: false, note: hHas ? 'HTML has bg-image, WP missing' : 'WP has bg-image, HTML missing' };
+    // In WP context, relative file paths (url('assets/...')) won't resolve
+    if (wHas && /url\(["'](?!data:|https?:)/.test(w)) {
+      return { match: false, note: 'WP has relative file path in background-image (won\'t resolve). Convert to Base64 via super-d.js' };
+    }
+    // Gradient comparison: parse angle + color stops
+    const hGrad = parseGradient(h);
+    const wGrad = parseGradient(w);
+    if (hGrad && wGrad) {
+      // Compare angle (±5deg)
+      if (Math.abs(hGrad.angle - wGrad.angle) > 5) {
+        return { match: false, note: `Gradient angle: HTML=${hGrad.angle}deg WP=${wGrad.angle}deg` };
+      }
+      // Compare color stops
+      const maxStops = Math.max(hGrad.stops.length, wGrad.stops.length);
+      for (let i = 0; i < maxStops; i++) {
+        const hs = hGrad.stops[i];
+        const ws = wGrad.stops[i];
+        if (!hs || !ws) return { match: false, note: `Gradient stop count differs: HTML=${hGrad.stops.length} WP=${wGrad.stops.length}` };
+        const dc = colorDistance(hs.color, ws.color);
+        if (dc > 5) return { match: false, note: `Gradient stop ${i}: color diff=${dc} (HTML=${hs.raw} WP=${ws.raw})` };
+      }
+      return { match: true, note: 'gradient match (parsed)' };
+    }
+    // One is gradient, other is flat color — FIXABLE
+    if (hGrad && !wGrad) return { match: false, note: 'HTML has gradient, WP has flat color or different bg-image' };
+    if (!hGrad && wGrad) return { match: false, note: 'WP has gradient, HTML has flat color or different bg-image' };
     return { match: true, note: 'both have background-image' };
   }
 
@@ -162,10 +196,24 @@ function compareValues(prop, htmlVal, wpVal) {
     if (!isNaN(hNum) && !isNaN(wNum) && Math.abs(hNum - wNum) < 0.05) return { match: true };
   }
 
-  // Box-shadow / text-shadow: presence check
+  // Box-shadow / text-shadow: parsed comparison (offset ±2px, blur ±2px, color ±5/channel)
   if (prop === 'box-shadow' || prop === 'text-shadow') {
     if (h === 'none' && w === 'none') return { match: true };
-    if ((h === 'none') !== (w === 'none')) return { match: false, note: `One has shadow, other doesn't` };
+    if ((h === 'none' || !h) && (w !== 'none' && w)) return { match: false, note: 'WP has shadow, HTML has none' };
+    if ((h !== 'none' && h) && (w === 'none' || !w)) return { match: false, note: 'HTML has shadow, WP has none' };
+    const hShadow = parseShadow(h);
+    const wShadow = parseShadow(w);
+    if (hShadow && wShadow) {
+      const dOx = Math.abs(hShadow.ox - wShadow.ox);
+      const dOy = Math.abs(hShadow.oy - wShadow.oy);
+      const dBlur = Math.abs(hShadow.blur - wShadow.blur);
+      const dSpread = Math.abs(hShadow.spread - wShadow.spread);
+      const dc = colorDistance(hShadow.color, wShadow.color);
+      if (dOx <= 2 && dOy <= 2 && dBlur <= 2 && dSpread <= 2 && dc <= 5) {
+        return { match: true, note: 'shadow match (parsed)' };
+      }
+      return { match: false, note: `Shadow diff: offset ±${Math.max(dOx,dOy)}px blur ±${dBlur}px color-dist=${dc}` };
+    }
   }
 
   // Color values: compare RGB components with ±5 tolerance
@@ -192,6 +240,75 @@ function parseColor(str) {
   const m = str.match(/rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*([\d.]+))?\s*\)/);
   if (m) return { r: +m[1], g: +m[2], b: +m[3], a: m[4] !== undefined ? +m[4] : 1, valid: true };
   return { valid: false };
+}
+
+/**
+ * Parse a CSS gradient string into angle + color stops.
+ * Supports: linear-gradient(135deg, #hex 0%, rgb(...) 50%, ...)
+ * @returns {{angle: number, stops: Array<{color: {r,g,b,a}, raw: string, pos: number}>} | null}
+ */
+function parseGradient(str) {
+  if (!str) return null;
+  const m = str.match(/linear-gradient\(\s*([\d.]+)deg\s*,\s*(.+)\s*\)/);
+  if (!m) return null;
+  const angle = parseFloat(m[1]);
+  const stopsStr = m[2];
+  const stops = [];
+  // Split on comma that's not inside parentheses
+  const parts = stopsStr.split(/,(?![^(]*\))/);
+  for (const part of parts) {
+    const trimmed = part.trim();
+    const posMatch = trimmed.match(/([\d.]+)%\s*$/);
+    const pos = posMatch ? parseFloat(posMatch[1]) : 0;
+    const colorStr = posMatch ? trimmed.substring(0, posMatch.index).trim() : trimmed;
+    const color = parseColor(colorStr.startsWith('#') ? hexToRgb(colorStr) : colorStr);
+    stops.push({ color, raw: colorStr, pos });
+  }
+  return { angle, stops };
+}
+
+/**
+ * Convert hex color to rgb() string for parseColor().
+ */
+function hexToRgb(hex) {
+  const h = hex.replace('#', '');
+  const full = h.length === 3 ? h.split('').map(c => c + c).join('') : h;
+  const r = parseInt(full.substring(0, 2), 16);
+  const g = parseInt(full.substring(2, 4), 16);
+  const b = parseInt(full.substring(4, 6), 16);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+/**
+ * Parse a CSS box-shadow string into components.
+ * @returns {{ox: number, oy: number, blur: number, spread: number, color: {r,g,b,a}}} | null
+ */
+function parseShadow(str) {
+  if (!str || str === 'none') return null;
+  // Extract color first (rgba/rgb at beginning or end)
+  const colorMatch = str.match(/rgba?\([^)]+\)/);
+  const color = colorMatch ? parseColor(colorMatch[0]) : { r: 0, g: 0, b: 0, a: 1, valid: true };
+  // Remove color to isolate numeric parts
+  const nums = str.replace(/rgba?\([^)]+\)/, '').trim().split(/\s+/).map(parseFloat).filter(n => !isNaN(n));
+  return {
+    ox: nums[0] || 0,
+    oy: nums[1] || 0,
+    blur: nums[2] || 0,
+    spread: nums[3] || 0,
+    color,
+  };
+}
+
+/**
+ * Compute max channel distance between two parsed colors.
+ */
+function colorDistance(a, b) {
+  if (!a || !a.valid || !b || !b.valid) return 999;
+  return Math.max(
+    Math.abs(a.r - b.r),
+    Math.abs(a.g - b.g),
+    Math.abs(a.b - b.b),
+  );
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -308,6 +425,355 @@ const AUTO_DISCOVER_FN = function(wrapperSelector, properties, tagList, noisePat
 
   return results;
 };
+
+// ═══════════════════════════════════════════════════════════
+// PHASE 4: VISUAL ELEMENT DISCOVERY
+// ═══════════════════════════════════════════════════════════
+
+/**
+ * VISUAL_DISCOVER_FN — finds elements with visual presence regardless of text.
+ * Discovers: backgrounds, gradients, shadows, borders, pseudo-elements.
+ * Runs inside page.evaluate() — must be self-contained.
+ *
+ * @param {string} wrapperSelector — CSS selector for section
+ * @param {string[]} properties — CSS properties to extract
+ * @param {string} noisePattern — regex source for Divi noise classes
+ * @returns {Array<{tag, className, selectorPath, styles, area, category}>}
+ */
+const VISUAL_DISCOVER_FN = function(wrapperSelector, properties, noisePattern) {
+  const wrapper = document.querySelector(wrapperSelector);
+  if (!wrapper) return [];
+
+  const noiseRe = new RegExp(noisePattern, 'i');
+  const results = [];
+  const MAX_ELEMENTS = 50;
+
+  // Query ALL elements inside the section wrapper
+  const allEls = wrapper.querySelectorAll('*');
+
+  for (const el of allEls) {
+    // Skip elements already checked by text discovery
+    if (el.hasAttribute('data-fidelity-auto')) continue;
+    if (el.hasAttribute('data-fidelity-manual')) continue;
+
+    // Skip hidden/zero-size
+    const cs = window.getComputedStyle(el);
+    if (cs.display === 'none') continue;
+    if (el.offsetWidth === 0 && el.offsetHeight === 0) continue;
+
+    // Skip aria-hidden ancestors
+    if (el.closest('[aria-hidden="true"]')) continue;
+
+    // Skip inside SVG
+    if (el.closest('svg')) continue;
+
+    // Skip Divi structural elements
+    if (noiseRe.test(el.className)) continue;
+
+    // Skip elements with opacity:0 (reveal-on-scroll targets)
+    if (cs.opacity === '0') continue;
+
+    // Determine visual presence category
+    let category = null;
+
+    const bgImage = cs.backgroundImage;
+    const bgColor = cs.backgroundColor;
+    const boxShadow = cs.boxShadow;
+    const borderTopWidth = parseFloat(cs.borderTopWidth) || 0;
+    const borderRightWidth = parseFloat(cs.borderRightWidth) || 0;
+    const borderBottomWidth = parseFloat(cs.borderBottomWidth) || 0;
+    const borderLeftWidth = parseFloat(cs.borderLeftWidth) || 0;
+    const hasBorder = (borderTopWidth + borderRightWidth + borderBottomWidth + borderLeftWidth) > 0;
+
+    // Check gradient/image background
+    if (bgImage && bgImage !== 'none') {
+      category = 'GRADIENT';
+    }
+
+    // Check non-transparent, non-white background color
+    if (!category && bgColor) {
+      const m = bgColor.match(/rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*([\d.]+))?\)/);
+      if (m) {
+        const r = +m[1], g = +m[2], b = +m[3], a = m[4] !== undefined ? +m[4] : 1;
+        // Skip transparent (a=0) and white/near-white (r>250,g>250,b>250)
+        if (a > 0.01 && !(r > 250 && g > 250 && b > 250)) {
+          category = 'BACKGROUND';
+        }
+      }
+    }
+
+    // Check box-shadow
+    if (!category && boxShadow && boxShadow !== 'none') {
+      category = 'SHADOW';
+    }
+
+    // Check border with non-transparent color
+    if (!category && hasBorder) {
+      const borderColor = cs.borderTopColor || cs.borderColor;
+      if (borderColor) {
+        const bm = borderColor.match(/rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*([\d.]+))?\)/);
+        if (bm) {
+          const ba = bm[4] !== undefined ? +bm[4] : 1;
+          if (ba > 0.01) category = 'BORDER';
+        }
+      }
+    }
+
+    // Check ::before and ::after pseudo-elements
+    if (!category) {
+      for (const pseudo of ['::before', '::after']) {
+        const pcs = window.getComputedStyle(el, pseudo);
+        const pContent = pcs.content;
+        if (pContent && pContent !== 'none' && pContent !== 'normal' && pContent !== '""') {
+          const pBg = pcs.backgroundImage;
+          const pBgColor = pcs.backgroundColor;
+          if ((pBg && pBg !== 'none') || (pBgColor && pBgColor !== 'rgba(0, 0, 0, 0)')) {
+            category = 'PSEUDO';
+            break;
+          }
+        }
+      }
+    }
+
+    if (!category) continue;
+
+    // Build selector path
+    const tag = el.tagName.toLowerCase();
+    const className = el.className && typeof el.className === 'string'
+      ? el.className.split(/\s+/).filter(c => c && !noiseRe.test(c)).join('.')
+      : '';
+    const selectorPath = className ? `${tag}.${className}` : tag;
+
+    // Calculate bounding rect area for sorting
+    const rect = el.getBoundingClientRect();
+    const area = rect.width * rect.height;
+
+    // Extract computed styles
+    const styles = {};
+    for (const p of properties) {
+      styles[p] = cs.getPropertyValue(p);
+    }
+
+    // Also extract pseudo-element styles if relevant
+    const pseudoStyles = {};
+    if (category === 'PSEUDO' || category === 'GRADIENT') {
+      for (const pseudo of ['::before', '::after']) {
+        const pcs = window.getComputedStyle(el, pseudo);
+        if (pcs.content && pcs.content !== 'none' && pcs.content !== 'normal') {
+          pseudoStyles[pseudo] = {};
+          for (const p of ['background-image', 'background-color', 'opacity', 'width', 'height']) {
+            pseudoStyles[pseudo][p] = pcs.getPropertyValue(p);
+          }
+        }
+      }
+    }
+
+    results.push({ tag, className: el.className || '', selectorPath, styles, area, category, pseudoStyles });
+  }
+
+  // Sort by area (largest first = highest visual impact) and cap
+  results.sort((a, b) => b.area - a.area);
+  return results.slice(0, MAX_ELEMENTS);
+};
+
+/**
+ * Match visual elements between HTML and WP sides.
+ * Tier 1: Exact class name match.
+ * Tier 2: >50% class token overlap (Jaccard) + same tag.
+ * Unmatched: reported as STRUCTURAL (not auto-FAIL).
+ */
+function matchVisualElements(htmlEls, wpEls) {
+  const matched = [];
+  const usedHtml = new Set();
+  const usedWp = new Set();
+  const warnings = [];
+
+  // Tier 1: Exact class name match
+  for (let wi = 0; wi < wpEls.length; wi++) {
+    if (usedWp.has(wi)) continue;
+    const wp = wpEls[wi];
+    if (!wp.className) continue;
+
+    for (let hi = 0; hi < htmlEls.length; hi++) {
+      if (usedHtml.has(hi)) continue;
+      const html = htmlEls[hi];
+      if (html.className === wp.className && html.tag === wp.tag) {
+        matched.push({ html, wp });
+        usedHtml.add(hi);
+        usedWp.add(wi);
+        break;
+      }
+    }
+  }
+
+  // Tier 2: Jaccard class overlap > 50% + same tag
+  for (let wi = 0; wi < wpEls.length; wi++) {
+    if (usedWp.has(wi)) continue;
+    const wp = wpEls[wi];
+    const wpTokens = new Set((wp.className || '').split(/\s+/).filter(Boolean));
+    if (wpTokens.size === 0) continue;
+
+    let bestIdx = -1;
+    let bestScore = 0;
+
+    for (let hi = 0; hi < htmlEls.length; hi++) {
+      if (usedHtml.has(hi)) continue;
+      const html = htmlEls[hi];
+      if (html.tag !== wp.tag) continue;
+      const htmlTokens = new Set((html.className || '').split(/\s+/).filter(Boolean));
+      if (htmlTokens.size === 0) continue;
+
+      const intersection = [...wpTokens].filter(t => htmlTokens.has(t)).length;
+      const union = new Set([...wpTokens, ...htmlTokens]).size;
+      const jaccard = intersection / union;
+
+      if (jaccard > 0.5 && jaccard > bestScore) {
+        bestScore = jaccard;
+        bestIdx = hi;
+      }
+    }
+
+    if (bestIdx >= 0) {
+      matched.push({ html: htmlEls[bestIdx], wp });
+      usedHtml.add(bestIdx);
+      usedWp.add(wi);
+    }
+  }
+
+  const unmatchedHtml = htmlEls.filter((_, i) => !usedHtml.has(i));
+  const unmatchedWp = wpEls.filter((_, i) => !usedWp.has(i));
+
+  return { matched, unmatchedHtml, unmatchedWp, warnings };
+}
+
+/**
+ * Properties specifically important for visual elements (in addition to ELEMENT_PROPERTIES).
+ */
+const VISUAL_PROPERTIES = [
+  'background-image', 'background-color', 'box-shadow',
+  'border-top-width', 'border-right-width', 'border-bottom-width', 'border-left-width',
+  'border-top-color', 'border-right-color', 'border-bottom-color', 'border-left-color',
+  'border-radius', 'opacity', 'backdrop-filter',
+];
+
+/** Combined property set for visual element checks */
+const VISUAL_CHECK_PROPERTIES = [...new Set([...VISUAL_PROPERTIES, 'padding', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left'])];
+
+/**
+ * Run Phase 4 visual element discovery for a single section.
+ *
+ * @param {Page} htmlPage
+ * @param {Page} wpPage
+ * @param {object} section
+ * @param {boolean} verbose
+ * @returns {{matched: number, fixable: Array, unmatched: {html: number, wp: number}, warnings: string[], totalDiscovered: {html: number, wp: number}}}
+ */
+async function runVisualElementAudit(htmlPage, wpPage, section, verbose) {
+  const result = {
+    matched: 0,
+    fixable: [],
+    unmatched: { html: 0, wp: 0 },
+    warnings: [],
+    totalDiscovered: { html: 0, wp: 0 },
+  };
+
+  const htmlSelector = section.htmlSelector;
+  const wpSelector = section.wpSelector;
+  if (!htmlSelector || !wpSelector) {
+    result.warnings.push('Missing htmlSelector or wpSelector — skipping visual discovery');
+    return result;
+  }
+
+  const noisePattern = DIVI_NOISE_RE.source;
+
+  const [htmlEls, wpEls] = await Promise.all([
+    htmlPage.evaluate(VISUAL_DISCOVER_FN, htmlSelector, VISUAL_CHECK_PROPERTIES, noisePattern),
+    wpPage.evaluate(VISUAL_DISCOVER_FN, wpSelector, VISUAL_CHECK_PROPERTIES, noisePattern),
+  ]);
+
+  result.totalDiscovered.html = htmlEls.length;
+  result.totalDiscovered.wp = wpEls.length;
+
+  if (htmlEls.length === 0 && wpEls.length === 0) {
+    return result;
+  }
+
+  // Match elements
+  const { matched, unmatchedHtml, unmatchedWp, warnings } = matchVisualElements(htmlEls, wpEls);
+  result.matched = matched.length;
+  result.unmatched.html = unmatchedHtml.length;
+  result.unmatched.wp = unmatchedWp.length;
+  result.warnings.push(...warnings);
+
+  // Compare visual properties on matched pairs
+  for (const pair of matched) {
+    for (const prop of VISUAL_CHECK_PROPERTIES) {
+      const htmlVal = pair.html.styles[prop] || '';
+      const wpVal = pair.wp.styles[prop] || '';
+      const cmp = compareValues(prop, htmlVal, wpVal);
+
+      if (cmp.match) continue;
+
+      // Classify via CSD
+      const synthLabel = `${pair.wp.selectorPath} [${pair.wp.category}]`;
+      const classification = csd.classifyMismatch({
+        label: synthLabel,
+        property: prop,
+        refValue: htmlVal,
+        wpValue: wpVal,
+      });
+
+      if (classification !== 'FIXABLE') continue;
+
+      // Suppress noise: border-color on 0-width borders
+      if (/^border-.*-color$/.test(prop)) {
+        const side = prop.replace('border-', '').replace('-color', '');
+        const wpBW = pair.wp.styles[`border-${side}-width`] || '0px';
+        const htmlBW = pair.html.styles[`border-${side}-width`] || '0px';
+        if (parseFloat(wpBW) === 0 && parseFloat(htmlBW) === 0) continue;
+      }
+
+      // Suppress: transparent/white bg on light sections
+      if (prop === 'background-color') {
+        const hc = parseColor(htmlVal);
+        const wc = parseColor(wpVal);
+        // Both transparent-ish
+        if (hc.valid && wc.valid && hc.a < 0.02 && wc.a < 0.02) continue;
+        // Both near-white
+        if (hc.valid && wc.valid && hc.r > 245 && hc.g > 245 && hc.b > 245 && wc.r > 245 && wc.g > 245 && wc.b > 245) continue;
+      }
+
+      const targetClass = pair.wp.className
+        ? '.' + (pair.wp.className || '').split(/\s+/).filter(c => c && !DIVI_NOISE_RE.test(c))[0]
+        : pair.wp.selectorPath;
+
+      result.fixable.push({
+        element: pair.wp.selectorPath,
+        className: pair.wp.className,
+        category: pair.wp.category,
+        property: prop,
+        htmlValue: htmlVal,
+        wpValue: wpVal,
+        note: cmp.note,
+        fix: `Set ${prop}:${htmlVal} on ${targetClass || pair.wp.selectorPath} in builder css()`,
+      });
+    }
+  }
+
+  // Report unmatched as structural warnings (not auto-FAIL)
+  for (const el of unmatchedHtml) {
+    if (verbose) {
+      result.warnings.push(`VISUAL_MISSING_IN_WP: <${el.tag}> ${el.selectorPath} [${el.category}]`);
+    }
+  }
+  for (const el of unmatchedWp) {
+    if (verbose) {
+      result.warnings.push(`VISUAL_EXTRA_IN_WP: <${el.tag}> ${el.selectorPath} [${el.category}]`);
+    }
+  }
+
+  return result;
+}
 
 /**
  * Match discovered elements between HTML and WP sides.
@@ -740,6 +1206,64 @@ async function run(opts) {
         });
       }
 
+      // ─────────────────────────────────────────────────────
+      // PHASE 3: DECORATIVE ELEMENT PRESENCE
+      // ─────────────────────────────────────────────────────
+
+      let decoResult = null;
+      if (!noAutodiscover) {
+        console.log(`\n  ── Decorative Audit: ${section.name} ──`);
+        decoResult = await runDecoPresenceAudit(htmlPage, wpPage, section, pageConfig, verbose);
+
+        if (decoResult.fixable.length > 0) {
+          for (const f of decoResult.fixable) {
+            console.log(`  ✗ [${f.category}] ${f.element}: ${f.note}`);
+            if (verbose) console.log(`    → ${f.fix}`);
+          }
+        } else {
+          console.log(`  ✓ No decoration issues found`);
+        }
+
+        for (const f of decoResult.findings) {
+          logFinding(f);
+        }
+
+        if (!report.decorativeAudit) report.decorativeAudit = [];
+        report.decorativeAudit.push({
+          section: section.name,
+          ...decoResult,
+        });
+      }
+
+      // ─────────────────────────────────────────────────────
+      // PHASE 4: VISUAL ELEMENT DISCOVERY
+      // ─────────────────────────────────────────────────────
+
+      let visualResult = null;
+      if (!noAutodiscover) {
+        console.log(`\n  ── Visual Elements: ${section.name} ──`);
+        visualResult = await runVisualElementAudit(htmlPage, wpPage, section, verbose);
+
+        console.log(`  Visual: HTML=${visualResult.totalDiscovered.html} WP=${visualResult.totalDiscovered.wp} | Matched=${visualResult.matched} | Fixable=${visualResult.fixable.length}`);
+
+        for (const w of visualResult.warnings) {
+          console.log(`  ⚠ ${w}`);
+        }
+
+        if (visualResult.fixable.length > 0) {
+          for (const f of visualResult.fixable) {
+            console.log(`  ✗ [${f.category}] ${f.element} → ${f.property}: expected "${f.htmlValue}", got "${f.wpValue}"`);
+            if (verbose) console.log(`    → ${f.fix}`);
+          }
+        }
+
+        if (!report.visualElements) report.visualElements = [];
+        report.visualElements.push({
+          section: section.name,
+          ...visualResult,
+        });
+      }
+
       // Count pass/fail/warn for manual checks
       const allFindings = [
         ...sectionReport.findings,
@@ -762,6 +1286,18 @@ async function run(opts) {
         sectionReport.failCount += adResult.fixable.length;
         sectionReport.warnCount += adResult.unmatched.html + adResult.unmatched.wp;
         sectionReport.warnCount += adResult.warnings.length;
+      }
+
+      // Count decorative audit fixable as FAIL
+      if (decoResult) {
+        sectionReport.failCount += decoResult.fixable.length;
+        sectionReport.warnCount += decoResult.findings.filter(f => f.status === 'WARN').length;
+      }
+
+      // Count visual element fixable as FAIL
+      if (visualResult) {
+        sectionReport.failCount += visualResult.fixable.length;
+        sectionReport.warnCount += visualResult.unmatched.html + visualResult.unmatched.wp;
       }
 
       report.summary.pass += sectionReport.passCount;
@@ -808,20 +1344,22 @@ async function run(opts) {
   if (hasAutoDiscovery) {
     // Table header
     const pad = (s, n) => String(s).padEnd(n);
-    console.log(`  ${pad('Section', 20)} | ${pad('Manual', 12)} | ${pad('Auto-Discover', 15)} | ${pad('Fixable', 9)} | Unmatched`);
-    console.log(`  ${'-'.repeat(20)}-+-${'-'.repeat(12)}-+-${'-'.repeat(15)}-+-${'-'.repeat(9)}-+-${'-'.repeat(18)}`);
+    console.log(`  ${pad('Section', 20)} | ${pad('Manual', 10)} | ${pad('Text', 10)} | ${pad('Visual', 10)} | ${pad('Fixable', 9)}`);
+    console.log(`  ${'-'.repeat(20)}-+-${'-'.repeat(10)}-+-${'-'.repeat(10)}-+-${'-'.repeat(10)}-+-${'-'.repeat(9)}`);
 
     for (const s of report.sections) {
       const ad = report.autoDiscovery.find(a => a.section === s.name);
-      const manualIcon = (s.failCount - (ad ? ad.fixable.length : 0)) === 0 ? '✓' : '✗';
+      const ve = (report.visualElements || []).find(v => v.section === s.name);
+      const totalFixable = (ad ? ad.fixable.length : 0) + (ve ? ve.fixable.length : 0);
+      const manualIcon = (s.failCount - totalFixable) <= 0 ? '✓' : '✗';
       const manualStr = s.elementChecks.length > 0
         ? `${s.elementChecks.reduce((a, e) => a + e.matchCount, 0)}/${s.elementChecks.reduce((a, e) => a + e.matchCount + e.mismatches.length, 0)} ${manualIcon}`
         : 'n/a';
-      const adStr = ad ? `${ad.matched} matched` : 'OFF';
-      const fixStr = ad && ad.fixable.length > 0 ? `${ad.fixable.length} ←` : ad ? '0' : '-';
-      const unmStr = ad ? `${ad.unmatched.html} HTML / ${ad.unmatched.wp} WP` : '-';
+      const adStr = ad ? `${ad.matched}m ${ad.fixable.length}f` : 'OFF';
+      const veStr = ve ? `${ve.matched}m ${ve.fixable.length}f` : 'OFF';
+      const fixStr = totalFixable > 0 ? `${totalFixable} ←` : '0';
 
-      console.log(`  ${pad(s.name, 20)} | ${pad(manualStr, 12)} | ${pad(adStr, 15)} | ${pad(fixStr, 9)} | ${unmStr}`);
+      console.log(`  ${pad(s.name, 20)} | ${pad(manualStr, 10)} | ${pad(adStr, 10)} | ${pad(veStr, 10)} | ${pad(fixStr, 9)}`);
     }
   } else {
     for (const s of report.sections) {
@@ -850,6 +1388,40 @@ async function run(opts) {
     }
   }
 
+  // Decorative element issues (Phase 3)
+  const allDecoFixable = [];
+  if (report.decorativeAudit) {
+    for (const da of report.decorativeAudit) {
+      for (const f of da.fixable) {
+        allDecoFixable.push({ section: da.section, ...f });
+      }
+    }
+  }
+  if (allDecoFixable.length > 0) {
+    console.log('\n  DECORATIVE issues (Super D / grain / wave fixes needed):');
+    for (const f of allDecoFixable) {
+      console.log(`    [${f.section}] [${f.category}] ${f.element}: ${f.note}`);
+      console.log(`      → ${f.fix}`);
+    }
+  }
+
+  // Visual element issues (Phase 4)
+  const allVisualFixable = [];
+  if (report.visualElements) {
+    for (const ve of report.visualElements) {
+      for (const f of ve.fixable) {
+        allVisualFixable.push({ section: ve.section, ...f });
+      }
+    }
+  }
+  if (allVisualFixable.length > 0) {
+    console.log('\n  VISUAL ELEMENT issues (gradients, shadows, borders, backgrounds):');
+    for (const f of allVisualFixable) {
+      console.log(`    [${f.section}] [${f.category}] ${f.element} → ${f.property}: expected "${f.htmlValue}", got "${f.wpValue}"`);
+      console.log(`      → ${f.fix}`);
+    }
+  }
+
   // Section gap issues (F9)
   const gapFailures = (report.sectionGaps || []).filter(g => g.status === 'FAIL');
   if (gapFailures.length > 0) {
@@ -860,7 +1432,7 @@ async function run(opts) {
   }
 
   // Manual action items (from F1-F8)
-  const manualFails = report.summary.fail - allFixable.length - gapFailures.length;
+  const manualFails = report.summary.fail - allFixable.length - allDecoFixable.length - gapFailures.length;
   if (manualFails > 0) {
     console.log('\n  Manual check action items:');
     for (const s of report.sections) {
@@ -1375,6 +1947,237 @@ async function checkContainerFontSize(htmlPage, wpPage, section) {
 }
 
 // ═══════════════════════════════════════════════════════════
+// PHASE 3: DECORATIVE ELEMENT PRESENCE AUDIT
+// ═══════════════════════════════════════════════════════════
+
+/** Selector pattern for decoration containers */
+const DECO_SELECTOR = '[class*="dw-d-bg"], [class*="grain"], [class*="particle"], [class*="wave"], [class*="scene"], [class*="deco"]';
+
+/**
+ * Browser-side function to scan for decorative elements within a section.
+ * Returns array of { selector, className, bgImage, opacity, display, width, height, hasContent }.
+ */
+const DECO_DISCOVER_FN = function(wrapperSelector, decoSelector) {
+  const wrapper = document.querySelector(wrapperSelector);
+  if (!wrapper) return [];
+  const els = wrapper.querySelectorAll(decoSelector);
+  const results = [];
+  for (const el of els) {
+    const cs = window.getComputedStyle(el);
+    const rect = el.getBoundingClientRect();
+    const beforeCs = window.getComputedStyle(el, '::before');
+    const afterCs = window.getComputedStyle(el, '::after');
+    results.push({
+      className: el.className || '',
+      bgImage: cs.backgroundImage,
+      opacity: cs.opacity,
+      display: cs.display,
+      width: rect.width,
+      height: rect.height,
+      beforeContent: beforeCs.content,
+      afterContent: afterCs.content,
+      beforeBgImage: beforeCs.backgroundImage,
+      afterBgImage: afterCs.backgroundImage,
+    });
+  }
+  return results;
+};
+
+/**
+ * Run Phase 3: Decorative element presence audit for a single section.
+ * Compares decoration containers between HTML and WP.
+ *
+ * @param {Page} htmlPage
+ * @param {Page} wpPage
+ * @param {object} section — verify config section
+ * @param {object} pageConfig — full page config (for decorationSelectors)
+ * @param {boolean} verbose
+ * @returns {{findings: Array, fixable: Array}}
+ */
+async function runDecoPresenceAudit(htmlPage, wpPage, section, pageConfig, verbose) {
+  const result = { findings: [], fixable: [] };
+  const htmlSelector = section.htmlSelector;
+  const wpSelector = section.wpSelector;
+  if (!htmlSelector || !wpSelector) return result;
+
+  const [htmlDecos, wpDecos] = await Promise.all([
+    htmlPage.evaluate(DECO_DISCOVER_FN, htmlSelector, DECO_SELECTOR),
+    wpPage.evaluate(DECO_DISCOVER_FN, wpSelector, DECO_SELECTOR),
+  ]);
+
+  // Match decoration elements by className similarity, then by structural role
+  const usedWp = new Set();
+  const matchedPairs = [];
+  const unmatchedHtmlDecos = [];
+
+  for (const hd of htmlDecos) {
+    const hClasses = new Set(hd.className.split(/\s+/).filter(Boolean));
+    let bestIdx = -1;
+    let bestScore = 0;
+    for (let i = 0; i < wpDecos.length; i++) {
+      if (usedWp.has(i)) continue;
+      const wClasses = new Set(wpDecos[i].className.split(/\s+/).filter(Boolean));
+      let overlap = 0;
+      for (const c of hClasses) if (wClasses.has(c)) overlap++;
+      if (overlap > bestScore) { bestScore = overlap; bestIdx = i; }
+    }
+    if (bestIdx >= 0 && bestScore > 0) {
+      matchedPairs.push({ html: hd, wp: wpDecos[bestIdx] });
+      usedWp.add(bestIdx);
+    } else {
+      unmatchedHtmlDecos.push(hd);
+    }
+  }
+
+  // Fallback: pair unmatched HTML decos with unmatched WP decos by structural role
+  // (both are decoration elements with similar bg-image/opacity patterns — e.g. dw-d-bg ↔ int-deco)
+  const unmatchedWpIdxs = [];
+  for (let i = 0; i < wpDecos.length; i++) {
+    if (!usedWp.has(i)) unmatchedWpIdxs.push(i);
+  }
+  const stillUnmatchedHtml = [];
+  const usedWpFallback = new Set();
+  for (const hd of unmatchedHtmlDecos) {
+    const hHasBg = hd.bgImage !== 'none' && hd.bgImage !== '';
+    let paired = false;
+    for (const wi of unmatchedWpIdxs) {
+      if (usedWpFallback.has(wi)) continue;
+      const wd = wpDecos[wi];
+      const wHasBg = wd.bgImage !== 'none' && wd.bgImage !== '';
+      // Both have background-image → likely same decoration with different class names
+      if (hHasBg && wHasBg) {
+        matchedPairs.push({ html: hd, wp: wd });
+        usedWp.add(wi);
+        usedWpFallback.add(wi);
+        paired = true;
+        break;
+      }
+    }
+    if (!paired) stillUnmatchedHtml.push(hd);
+  }
+
+  for (const hd of stillUnmatchedHtml) {
+    // Skip intentionally hidden elements (display:none, wave-flow with 0 height)
+    if (hd.display === 'none' || (hd.width === 0 && hd.height === 0)) continue;
+    result.fixable.push({
+      category: 'DECORATION_MISSING',
+      element: hd.className,
+      note: `HTML has decoration .${hd.className.split(/\s+/)[0]} but WP section has no match`,
+      fix: `Add decoration element to builder blocks() — use superD.html() for Super D, or add wave/grain markup`,
+    });
+  }
+
+  // WP has decoration but HTML doesn't
+  for (let i = 0; i < wpDecos.length; i++) {
+    if (usedWp.has(i)) continue;
+    const wd = wpDecos[i];
+    if (wd.display === 'none' || (wd.width === 0 && wd.height === 0)) continue;
+    result.findings.push({
+      id: 'P3', label: `Extra WP decoration: ${wd.className}`, status: 'WARN',
+      note: `WP has .${wd.className.split(/\s+/)[0]} but HTML section doesn't — may be intentional`,
+    });
+  }
+
+  // Check matched pairs
+  for (const pair of matchedPairs) {
+    const { html: hd, wp: wd } = pair;
+    const label = hd.className.split(/\s+/)[0] || 'decoration';
+
+    // Check 1: background-image resolvability
+    const hHasBg = hd.bgImage !== 'none' && hd.bgImage !== '';
+    const wHasBg = wd.bgImage !== 'none' && wd.bgImage !== '';
+    if (hHasBg && !wHasBg) {
+      result.fixable.push({
+        category: 'DECORATION_BG_MISSING',
+        element: label,
+        note: `HTML .${label} has background-image but WP version shows none`,
+        fix: `Convert file reference to Base64 via super-d.js — use superD.css('${label}', {...})`,
+      });
+    } else if (wHasBg && /url\(["'](?!data:|https?:)/.test(wd.bgImage)) {
+      result.fixable.push({
+        category: 'DECORATION_BG_UNRESOLVABLE',
+        element: label,
+        note: `WP .${label} has relative file path in background-image (won't resolve on WordPress)`,
+        fix: `Convert to Base64 via super-d.js — relative paths like url('assets/...') don't work in WP Code Modules`,
+      });
+    }
+
+    // Check 2: visibility (opacity > 0, display !== none, non-zero area)
+    if (parseFloat(wd.opacity) === 0 && parseFloat(hd.opacity) > 0) {
+      result.fixable.push({
+        category: 'DECORATION_INVISIBLE',
+        element: label,
+        note: `WP .${label} has opacity:0 but HTML version has opacity:${hd.opacity}`,
+        fix: `Set opacity:${hd.opacity} on .${label} in builder css()`,
+      });
+    }
+    if (wd.display === 'none' && hd.display !== 'none') {
+      result.fixable.push({
+        category: 'DECORATION_HIDDEN',
+        element: label,
+        note: `WP .${label} has display:none but HTML version is visible`,
+        fix: `Remove display:none from .${label} in builder css()`,
+      });
+    }
+    if (wd.width === 0 && wd.height === 0 && (hd.width > 0 || hd.height > 0)) {
+      result.fixable.push({
+        category: 'DECORATION_ZERO_SIZE',
+        element: label,
+        note: `WP .${label} has zero dimensions (${wd.width}x${wd.height}) but HTML is ${hd.width}x${hd.height}`,
+        fix: `Check width/min-height on .${label} — may need explicit sizing`,
+      });
+    }
+  }
+
+  // Check page-level decorationSelectors (explicit pseudo-element spot checks)
+  const decoSelectors = (pageConfig.verify && pageConfig.verify.decorationSelectors) || [];
+  for (const ds of decoSelectors) {
+    // Check if this selector's section matches current section
+    // Only run if the selector is within the current section's scope
+    const [htmlExists, wpExists] = await Promise.all([
+      htmlPage.evaluate((wrapSel, sel) => {
+        const wrapper = document.querySelector(wrapSel);
+        if (!wrapper) return false;
+        return !!wrapper.querySelector(sel);
+      }, htmlSelector, ds.selector),
+      wpPage.evaluate((wrapSel, sel) => {
+        const wrapper = document.querySelector(wrapSel);
+        if (!wrapper) return false;
+        return !!wrapper.querySelector(sel);
+      }, wpSelector, ds.selector),
+    ]);
+
+    if (htmlExists && !wpExists) {
+      result.fixable.push({
+        category: 'DECORATION_MISSING',
+        element: ds.label || ds.selector,
+        note: `${ds.label || ds.selector} exists in HTML but missing in WP`,
+        fix: `Add ${ds.selector} element to builder blocks() with proper Super D Base64 injection`,
+      });
+    } else if (htmlExists && wpExists && ds.minOpacity !== undefined) {
+      // Check opacity meets minimum
+      const wpOpacity = await wpPage.evaluate((wrapSel, sel) => {
+        const wrapper = document.querySelector(wrapSel);
+        if (!wrapper) return null;
+        const el = wrapper.querySelector(sel);
+        if (!el) return null;
+        return window.getComputedStyle(el).opacity;
+      }, wpSelector, ds.selector);
+      if (wpOpacity !== null && parseFloat(wpOpacity) < ds.minOpacity) {
+        result.fixable.push({
+          category: 'DECORATION_LOW_OPACITY',
+          element: ds.label || ds.selector,
+          note: `${ds.label} opacity ${wpOpacity} is below minimum ${ds.minOpacity}`,
+          fix: `Set opacity >= ${ds.minOpacity} on ${ds.selector}`,
+        });
+      }
+    }
+  }
+
+  return result;
+}
+
+// ═══════════════════════════════════════════════════════════
 // OUTPUT HELPERS
 // ═══════════════════════════════════════════════════════════
 
@@ -1404,11 +2207,27 @@ if (require.main === module) {
   console.log(`╚${'═'.repeat(58)}╝`);
   console.log(`  Mode: ${mode} | Properties: ${ELEMENT_PROPERTIES.length}`);
   if (!noAutodiscover) {
-    console.log(`  Auto-discovery: ON — finds ALL visible text elements per section`);
+    console.log(`  Phase 2: Auto-discovery ON — finds ALL visible text elements per section`);
+    console.log(`  Phase 3: Decorative audit ON — checks Super D, grain, wave, particle presence`);
+    console.log(`  Phase 4: Visual elements ON — checks gradients, shadows, borders, backgrounds`);
   }
 
+  const autoFix = args.includes('--auto-fix');
+
   run({ pageName, sectionFilter, verbose, noAutodiscover, autodiscoverOnly })
-    .then((report) => {
+    .then(async (report) => {
+      if (autoFix && report.summary.fail > 0) {
+        console.log('\n  ── Auto-fix triggered (--auto-fix flag) ──');
+        const { execSync } = require('child_process');
+        const fixArgs = ['--page', pageName];
+        if (sectionFilter) fixArgs.push('--section', sectionFilter);
+        fixArgs.push('--max-iterations', '2');
+        try {
+          execSync(`node ${path.join(__dirname, 'auto-fix.js')} ${fixArgs.join(' ')}`, { stdio: 'inherit', timeout: 600000 });
+        } catch (e) {
+          // auto-fix handles its own exit codes
+        }
+      }
       process.exit(report.summary.fail > 0 ? 1 : 0);
     })
     .catch((err) => {

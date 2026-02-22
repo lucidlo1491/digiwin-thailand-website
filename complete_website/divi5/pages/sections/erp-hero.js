@@ -183,7 +183,11 @@ ${superD.css('erp-super-d', { variant: 'gradient', position: 'center', opacity: 
             text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-bottom: 24px;
-        }
+        
+            line-height: 17.6px;
+
+            -webkit-font-smoothing: auto;
+}
 .erp-hero-badge::before {
             content: '';
             width: 8px;
@@ -202,14 +206,18 @@ ${superD.css('erp-super-d', { variant: 'gradient', position: 'center', opacity: 
         }
 .erp-hero h1 .highlight {
             color: #0369a1;
-        }
+        
+            -webkit-font-smoothing: auto;
+}
 .erp-hero-subtitle {
             font-family: 'Noto Sans', sans-serif;
             font-size: 19px;
             color: rgba(255, 255, 255, 0.8);
             line-height: 1.7;
             margin-bottom: 36px;
-        }
+        
+            -webkit-font-smoothing: auto;
+}
 .erp-hero-ctas {
             display: flex;
             gap: 16px;
@@ -231,7 +239,11 @@ ${superD.css('erp-super-d', { variant: 'gradient', position: 'center', opacity: 
             font-weight: 800;
             color: #0369a1;
             letter-spacing: -0.02em;
-        }
+        
+            line-height: 51.2px !important!important;
+
+            -webkit-font-smoothing: auto !important!important;
+}
 .erp-hero-stat-label {
             font-family: 'JetBrains Mono', monospace;
             font-size: 10px;
@@ -239,7 +251,11 @@ ${superD.css('erp-super-d', { variant: 'gradient', position: 'center', opacity: 
             text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-top: 4px;
-        }
+        
+            line-height: 16px !important!important;
+
+            -webkit-font-smoothing: auto !important!important;
+}
 .erp-hero-visual {
             position: relative;
         }
@@ -272,7 +288,11 @@ ${superD.css('erp-super-d', { variant: 'gradient', position: 'center', opacity: 
             font-size: 20px;
             font-weight: 700;
             color: #ffffff;
-        }
+        
+            line-height: 32px !important!important;
+
+            -webkit-font-smoothing: auto !important!important;
+}
 .mockup-card-value.green { color: #02D28C; }
 .mockup-card-value.blue { color: #0369a1; }
 .mockup-chart {
@@ -393,9 +413,17 @@ ${superD.css('erp-super-d', { variant: 'gradient', position: 'center', opacity: 
         }
 
 /* Buttons */
-.btn-white{background:#ffffff;color:#003CC8;padding:20px 40px;border-radius:14px;font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 4px 20px rgba(0, 0, 0, 0.15);display:inline-flex;align-items:center;gap:10px}
+.btn-white{background:#ffffff;color:#003CC8;padding:20px 40px;border-radius:14px;font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 4px 20px rgba(0, 0, 0, 0.15);display:inline-flex;align-items:center;gap:10px
+            line-height: 25.6px !important!important;
+
+            -webkit-font-smoothing: auto;
+}
 .btn-white:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0, 0, 0, 0.2)}
-.btn-outline-white{background:transparent;color:#ffffff;padding:20px 40px;border-radius:14px;border:2px solid rgba(255, 255, 255, 0.5);font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.3s ease}
+.btn-outline-white{background:transparent;color:#ffffff;padding:20px 40px;border-radius:14px;border:2px solid rgba(255, 255, 255, 0.5);font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.3s ease
+            line-height: 25.6px !important!important;
+
+            -webkit-font-smoothing: auto;
+}
 .btn-outline-white:hover{background:rgba(255, 255, 255, 0.15);border-color:#ffffff}
 /* Dashboard mockup */
 .mockup-header{display:flex;gap:8px;margin-bottom:16px}
@@ -404,13 +432,83 @@ ${superD.css('erp-super-d', { variant: 'gradient', position: 'center', opacity: 
 .mockup-dot:nth-child(2){background:#ffbd2e}
 .mockup-dot:nth-child(3){background:#28ca42}
 .mockup-nav{display:flex;gap:16px;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid rgba(255, 255, 255, 0.1)}
-.mockup-nav-item{font-family:'JetBrains Mono', monospace;font-size:10px;color:rgba(255, 255, 255, 0.85);text-transform:uppercase;letter-spacing:0.05em}
+.mockup-nav-item{font-family:'JetBrains Mono', monospace;font-size:10px;color:rgb(0, 175, 240) !important;text-transform:uppercase;letter-spacing:0.05em
+            line-height: 16px !important!important;
+
+            -webkit-font-smoothing: auto !important!important;
+}
 .mockup-nav-item.active{color:#0369a1}
-.mockup-card-label{font-family:'JetBrains Mono', monospace;font-size:9px;color:rgba(255, 255, 255, 0.85);text-transform:uppercase;margin-bottom:8px}
-.mockup-bar{flex:1;background:#0369a1;border-radius:4px 4px 0 0;opacity:0.6}
+.mockup-card-label{font-family:'JetBrains Mono', monospace;font-size:9px;color:rgba(255, 255, 255, 0.85);text-transform:uppercase;margin-bottom:8px
+            line-height: 14.4px !important!important;
+
+            -webkit-font-smoothing: auto !important!important;
+}
+.mockup-bar{flex:1;background:rgb(0, 175, 240) !important!important;border-radius:4px 4px 0 0;opacity:0.6}
 .mockup-bar.active{opacity:1;background:#10b981}
 
 \${base.reducedMotion(\`\`)}
+
+.mockup-nav-item {
+            line-height: 16px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.erp-hero-stat-label {
+            line-height: 16px !important!important;
+        
+            -webkit-font-smoothing: auto !important!important;
+}
+
+.erp-hero-stat-number {
+            line-height: 51.2px !important!important;
+        
+            -webkit-font-smoothing: auto !important!important;
+}
+
+.erp-hero-stat-label {
+            line-height: 16px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.mockup-card-label {
+            line-height: 14.4px !important!important;
+        
+            margin-bottom: 8px !important!important;
+
+            -webkit-font-smoothing: auto !important!important;
+}
+
+.mockup-card-value {
+            line-height: 32px !important!important;
+        
+            -webkit-font-smoothing: auto !important!important;
+}
+
+.mockup-card-label {
+            line-height: 14.4px !important;
+        
+            -webkit-font-smoothing: auto !important;
+
+            margin-bottom: 8px !important!important;
+}
+
+.erp-hero-stat-number {
+            line-height: 51.2px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.mockup-card-value {
+            line-height: 32px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.mockup-card-label {
+            margin-bottom: 8px !important;
+        }
 `.trim();
 }
 

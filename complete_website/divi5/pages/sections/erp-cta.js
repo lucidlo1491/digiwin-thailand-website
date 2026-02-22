@@ -79,7 +79,9 @@ function css() {
             color: rgba(255, 255, 255, 0.9);
             margin: 0 0 40px 0;
             line-height: 1.6;
-        }
+        
+            -webkit-font-smoothing: auto;
+}
 .erp-cta-buttons {
             display: flex;
             gap: 20px;
@@ -129,9 +131,17 @@ function css() {
         }
 
 /* Buttons */
-.btn-white{background:#ffffff;color:#003CC8;padding:20px 40px;border-radius:14px;font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 4px 20px rgba(0, 0, 0, 0.15);display:inline-flex;align-items:center;gap:10px}
+.btn-white{background:#ffffff;color:#003CC8;padding:20px 40px;border-radius:14px;font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 4px 20px rgba(0, 0, 0, 0.15);display:inline-flex;align-items:center;gap:10px
+            line-height: 25.6px !important!important;
+
+            -webkit-font-smoothing: auto !important;
+}
 .btn-white:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0, 0, 0, 0.2)}
-.btn-outline-white{background:transparent;color:#ffffff;padding:20px 40px;border-radius:14px;border:2px solid rgba(255, 255, 255, 0.5);font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.3s ease}
+.btn-outline-white{background:transparent;color:#ffffff;padding:20px 40px;border-radius:14px;border:2px solid rgba(255, 255, 255, 0.5);font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.3s ease
+            line-height: 25.6px !important!important;
+
+            -webkit-font-smoothing: auto !important;
+}
 .btn-outline-white:hover{background:rgba(255, 255, 255, 0.15);border-color:#ffffff}
 .dw-wave-flow{position:absolute;bottom:0;left:0;width:100%;pointer-events:none;overflow:hidden}
 .dw-d-bg{position:absolute;right:-10%;top:50%;transform:translateY(-50%);width:60%;min-height:60vh;background:url('assets/digiwin-d-outline.svg') no-repeat center right;background-size:contain;pointer-events:none;z-index:0;opacity:0.12}
@@ -139,6 +149,14 @@ function css() {
 .dw-d-bg--medium{opacity:0.14 !important}
 
 \${base.reducedMotion(\`\`)}
+
+.btn-white {
+            line-height: 25.6px !important;
+        }
+
+.btn-outline-white {
+            line-height: 25.6px !important;
+        }
 `.trim();
 }
 

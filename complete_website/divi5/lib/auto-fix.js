@@ -356,9 +356,29 @@ function extractSelector(fixable) {
 }
 
 /**
+ * Check if fileContent contains more-specific selectors targeting the same class.
+ * E.g., `.parent > :nth-child(N) .myClass` overrides `.myClass`
+ */
+function hasMoreSpecificSelector(fileContent, selector) {
+  const escSel = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // Look for patterns like `something .selector{` or `something > something .selector{`
+  // that are NOT just `.selector{` alone
+  const moreSpecificRe = new RegExp(`[\\w>:()\\s]+\\s+${escSel}\\s*\\{`, 'g');
+  const matches = fileContent.match(moreSpecificRe);
+  return matches && matches.length > 0;
+}
+
+/** CSS shorthand → longhand mapping for background */
+const BG_LONGHAND_TO_SHORT = {
+  'background-image': 'background',
+  'background-color': 'background',
+};
+
+/**
  * Patch a CSS value in a section builder file's css() template literal.
  *
  * Strategy:
+ *   0. Background shorthand: if property is background-image, also try background:
  *   1. If selector + property exists → replace value
  *   2. If selector exists but property missing → insert before closing }
  *   3. If selector doesn't exist → append new rule
@@ -368,76 +388,90 @@ function extractSelector(fixable) {
  * @returns {{ patched: boolean, action: string }}
  */
 function patchCSS(fileContent, selector, property, newValue) {
-  // Escape selector for regex
+  // Try the exact property first, then the shorthand fallback
+  const propsToTry = [property];
+  if (BG_LONGHAND_TO_SHORT[property]) {
+    propsToTry.push(BG_LONGHAND_TO_SHORT[property]);
+  }
+
+  for (const prop of propsToTry) {
+    const result = _patchCSSProperty(fileContent, selector, prop, newValue);
+    if (result.patched) {
+      return result;
+    }
+  }
+
+  // Nothing found for any property variant — try insert/append with the original property
+  return _patchCSSInsertOrAppend(fileContent, selector, property, newValue);
+}
+
+/** Check if position is inside a ${} interpolation */
+function isInsideInterpolation(fileContent, pos) {
+  const before = fileContent.substring(0, pos);
+  const lastDollarBrace = before.lastIndexOf('${');
+  const lastCloseBrace = before.lastIndexOf('}');
+  return lastDollarBrace > lastCloseBrace;
+}
+
+/** Try to find and replace an existing selector + property value */
+function _patchCSSProperty(fileContent, selector, property, newValue) {
   const escSel = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const escProp = property.replace(/[-]/g, '\\-');
 
-  // Strategy 1: Find existing selector + property and replace value
-  // Match: .selector { ... property: oldValue; ... }
-  // But be careful with template literal interpolations ${}
-
-  // Find the selector block
   const selectorBlockRe = new RegExp(
-    `(${escSel}\\s*\\{[^}]*?)` +   // selector + opening content
-    `(${property.replace(/[-]/g, '\\-')}\\s*:\\s*)` +  // property:
-    `([^;!}]+)` +                    // current value
-    `(\\s*(?:!important)?\\s*[;}])`, // ; or }
+    `(${escSel}\\s*\\{[^}]*?)` +
+    `(${escProp}\\s*:\\s*)` +
+    `([^;!}]+)` +
+    `(\\s*(?:!important)?\\s*[;}])`,
     'g'
   );
 
-  let match = null;
-  let bestMatch = null;
-
-  // Find all matches, skip any inside ${} interpolations
+  let match;
   while ((match = selectorBlockRe.exec(fileContent)) !== null) {
-    const before = fileContent.substring(0, match.index);
-    // Count open ${ vs } to check we're not inside an interpolation
-    const openInterp = (before.match(/\$\{/g) || []).length;
-    const closeInterp = (before.match(/\}/g) || []).length - (before.match(/\$\{[^}]*\}/g) || []).length;
-    // Simple check: if the match is right after a ${ without a closing }, skip
-    const lastDollarBrace = before.lastIndexOf('${');
-    const lastCloseBrace = before.lastIndexOf('}');
-    if (lastDollarBrace > lastCloseBrace) continue; // Inside interpolation
+    if (isInsideInterpolation(fileContent, match.index)) continue;
 
-    bestMatch = match;
-    break; // Take first valid match
+    const prefix = match[1] + match[2];
+    const suffix = match[4];
+    return {
+      patched: true, action: 'replaced',
+      content: fileContent.substring(0, match.index) + prefix + newValue + suffix + fileContent.substring(match.index + match[0].length),
+    };
   }
 
-  if (bestMatch) {
-    const prefix = bestMatch[1] + bestMatch[2];
-    const suffix = bestMatch[4];
-    const newContent =
-      fileContent.substring(0, bestMatch.index) +
-      prefix + newValue + suffix +
-      fileContent.substring(bestMatch.index + bestMatch[0].length);
-    return { patched: true, action: 'replaced', content: newContent };
-  }
+  return { patched: false, action: 'not-found', content: fileContent };
+}
+
+/** Insert property into existing selector block, or append new selector */
+function _patchCSSInsertOrAppend(fileContent, selector, property, newValue) {
+  const escSel = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const escProp = property.replace(/[-]/g, '\\-');
+
+  // Also check shorthand for insert: if inserting background-image, check if background: exists
+  const shortProp = BG_LONGHAND_TO_SHORT[property];
+  const shortEscProp = shortProp ? shortProp.replace(/[-]/g, '\\-') : null;
 
   // Strategy 2: Selector exists but property is missing — insert before }
-  const selectorOnlyRe = new RegExp(
-    `(${escSel}\\s*\\{)([^}]*)(\\})`,
-    'g'
-  );
+  const selectorOnlyRe = new RegExp(`(${escSel}\\s*\\{)([^}]*)(\\})`, 'g');
 
-  let selectorMatch = null;
+  let selectorMatch;
   while ((selectorMatch = selectorOnlyRe.exec(fileContent)) !== null) {
-    const before = fileContent.substring(0, selectorMatch.index);
-    const lastDollarBrace = before.lastIndexOf('${');
-    const lastCloseBrace = before.lastIndexOf('}');
-    if (lastDollarBrace > lastCloseBrace) continue;
+    if (isInsideInterpolation(fileContent, selectorMatch.index)) continue;
 
-    // Check this block doesn't already have the property (shouldn't reach here if it did, but safety)
     const blockContent = selectorMatch[2];
-    const propRe = new RegExp(`${property.replace(/[-]/g, '\\-')}\\s*:`);
-    if (propRe.test(blockContent)) continue;
+    // Skip if the property already exists (exact or shorthand)
+    if (new RegExp(`${escProp}\\s*:`).test(blockContent)) continue;
+    if (shortEscProp && new RegExp(`${shortEscProp}\\s*:`).test(blockContent)) {
+      // Block has the shorthand (e.g., `background:`) — patch THAT instead
+      return _patchCSSProperty(fileContent, selector, shortProp, newValue);
+    }
 
     const insertionPoint = selectorMatch.index + selectorMatch[1].length + selectorMatch[2].length;
     const indent = blockContent.match(/\n(\s+)/)?.[1] || '            ';
     const newRule = `${indent}${property}: ${newValue};\n`;
-    const newContent =
-      fileContent.substring(0, insertionPoint) +
-      '\n' + newRule +
-      fileContent.substring(insertionPoint);
-    return { patched: true, action: 'inserted', content: newContent };
+    return {
+      patched: true, action: 'inserted',
+      content: fileContent.substring(0, insertionPoint) + '\n' + newRule + fileContent.substring(insertionPoint),
+    };
   }
 
   // Strategy 3: Selector doesn't exist — append new rule before final backtick
@@ -447,11 +481,10 @@ function patchCSS(fileContent, selector, property, newValue) {
   }
 
   const newRule = `\n${selector} {\n            ${property}: ${newValue};\n        }\n`;
-  const newContent =
-    fileContent.substring(0, lastBacktick) +
-    newRule +
-    fileContent.substring(lastBacktick);
-  return { patched: true, action: 'appended', content: newContent };
+  return {
+    patched: true, action: 'appended',
+    content: fileContent.substring(0, lastBacktick) + newRule + fileContent.substring(lastBacktick),
+  };
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -531,6 +564,9 @@ async function main() {
     console.error('  No builder files found. Cannot patch.');
     process.exit(1);
   }
+
+  // Track fixes attempted in previous iterations — escalate to !important if they didn't stick
+  const previouslyAttempted = new Set();
 
   for (let iteration = 1; iteration <= maxIterations; iteration++) {
     console.log(`\n  ── Iteration ${iteration}/${maxIterations} ──`);
@@ -669,13 +705,26 @@ async function main() {
           continue;
         }
 
-        const result = patchCSS(content, sel, f.property, f.htmlValue);
+        // Skip if more-specific selectors (nth-child, etc.) would override this fix
+        if (f.property === 'background-image' && hasMoreSpecificSelector(content, sel)) {
+          console.log(`    ⚠ ${sel} has nth-child/specific overrides — per-element rules take priority`);
+          continue;
+        }
+
+        // Escalate to !important if this fix was attempted before but didn't stick
+        const fixKey = `${sel}|${f.property}`;
+        const needsImportant = previouslyAttempted.has(fixKey);
+        const patchValue = needsImportant ? `${f.htmlValue} !important` : f.htmlValue;
+        previouslyAttempted.add(fixKey);
+
+        const result = patchCSS(content, sel, f.property, patchValue);
         if (result.patched) {
           content = result.content;
           patchCount++;
           const tokenNote = colorToToken(f.htmlValue);
+          const escalateNote = needsImportant ? ' [!important]' : '';
           applied.push(f);
-          console.log(`    ✓ ${sel}  ${f.property}: ${f.wpValue} → ${f.htmlValue}${tokenNote ? ` [${tokenNote}]` : ''}  (${result.action}, ${f.classification.ruleId})`);
+          console.log(`    ✓ ${sel}  ${f.property}: ${f.wpValue} → ${f.htmlValue}${tokenNote ? ` [${tokenNote}]` : ''}${escalateNote}  (${result.action}, ${f.classification.ruleId})`);
         } else {
           console.log(`    ⚠ Could not patch ${sel} ${f.property} — ${result.action}`);
         }

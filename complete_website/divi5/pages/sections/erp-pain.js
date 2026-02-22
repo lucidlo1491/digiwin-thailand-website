@@ -131,7 +131,11 @@ function css() {
             text-transform: uppercase;
             letter-spacing: 0.15em;
             margin-bottom: 16px;
-        }
+        
+            line-height: 17.6px;
+
+            -webkit-font-smoothing: auto;
+}
 .pain-title {
             font-family: 'Noto Sans', sans-serif;
             font-size: 40px;
@@ -146,7 +150,11 @@ function css() {
             color: #5b6b80;
             max-width: 600px;
             margin: 0 auto;
-        }
+        
+            line-height: 28.8px;
+
+            -webkit-font-smoothing: auto;
+}
 .pain-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -202,7 +210,11 @@ function css() {
             text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-bottom: 10px;
-        }
+        
+            line-height: 16px !important!important;
+
+            -webkit-font-smoothing: auto !important!important;
+}
 .pain-card-label.problem { color: #DC2626; }
 .pain-card-label.solution { color: #02D28C; }
 .pain-card-title {
@@ -212,20 +224,26 @@ function css() {
             color: #000864;
             margin-bottom: 10px;
             line-height: 1.4;
-        }
+        
+            -webkit-font-smoothing: auto !important!important;
+}
 .pain-card-desc {
             font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
             color: #5b6b80;
             line-height: 1.65;
-        }
+        
+            -webkit-font-smoothing: auto !important!important;
+}
 .pain-card-solution-title {
             font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             font-weight: 600;
             color: #000864;
             margin-bottom: 8px;
-        }
+        
+            -webkit-font-smoothing: auto !important!important;
+}
 @media (max-width: 1024px) {
             .erp-hero-inner {
                 grid-template-columns: 1fr;
@@ -326,6 +344,44 @@ function css() {
 /* @media (max-width:640px){.auto-hero, .elec-hero, .metal-hero{padding:120px 0 80px}.auto-hero h1, .elec-hero h1, .metal-hero h1{font-size:32px}.auto-hero-subtitle, .elec-hero-subtitle, .metal-hero-subtitle{font-size:17px}.auto-hero-stats, .elec-hero-stats, .metal-hero-stats{flex-direction:column;gap:24px}.auto-hero-stat-value, .elec-hero-stat-value, .metal-hero-stat-value{font-size:36px}.stake-card, .challenge-card{padding:32px 24px}.solution-card{padding:32px}.cta-section h2{font-size:28px}.cta-buttons{flex-direction:column}} */
 
 \${base.reducedMotion(\`\`)}
+
+.pain-card-label {
+            line-height: 16px !important!important;
+        
+            -webkit-font-smoothing: auto !important!important;
+}
+
+.pain-card-desc {
+            -webkit-font-smoothing: auto !important!important;
+        }
+
+.pain-card-label {
+            line-height: 16px !important!important;
+        
+            -webkit-font-smoothing: auto !important!important;
+}
+
+.pain-card-desc {
+            -webkit-font-smoothing: auto !important!important;
+        }
+
+.pain-card-title {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.pain-card-label {
+            line-height: 16px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.pain-card-solution-title {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.pain-card-desc {
+            -webkit-font-smoothing: auto !important;
+        }
 `.trim();
 }
 

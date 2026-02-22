@@ -177,7 +177,7 @@ function css() {
             color: #000864;
             margin-bottom: 4px;
         
-            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important;
 
             -webkit-font-smoothing: auto !important;}
 .capability-box-tagline {
@@ -185,7 +185,7 @@ function css() {
             font-size: 15px;
             color: #5b6b80;
         
-            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important;
 
             -webkit-font-smoothing: auto !important;}
 .capability-box-desc {
@@ -195,7 +195,7 @@ function css() {
             line-height: 1.7;
             margin-bottom: 20px;
         
-            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important;
 
             -webkit-font-smoothing: auto !important;}
 .capability-features {
@@ -224,19 +224,19 @@ function css() {
             flex-shrink: 0;
             margin-top: 2px;
         
-            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important;
 
-            -webkit-font-smoothing: auto !important!important;
-            -webkit-font-smoothing: auto !important!important;
-            -webkit-font-smoothing: auto !important!important;
-            -webkit-font-smoothing: auto !important!important;
-            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important;
+            -webkit-font-smoothing: auto !important;
+            -webkit-font-smoothing: auto !important;
+            -webkit-font-smoothing: auto !important;
+            -webkit-font-smoothing: auto !important;
             -webkit-font-smoothing: auto !important;}
 .step-list--after li .check {
             color: #22c55e;
             font-weight: bold;
         
-            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important;
 }
 @media (max-width: 1024px) {
             .problems-grid {

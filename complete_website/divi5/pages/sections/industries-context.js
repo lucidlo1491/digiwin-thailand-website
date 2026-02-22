@@ -55,8 +55,8 @@ function blocks() {
 function css() {
   return `
 /* === CONTEXT (S2) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .context-section {
             padding: 120px 0;
             background: #ffffff;
@@ -184,14 +184,13 @@ function css() {
             .challenges-grid { grid-template-columns: 1fr; }
         }
 
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
 .context-section{padding:100px 0;background:#fff}
 .context-inner{max-width:900px;margin:0 auto;padding:0 24px;text-align:center}
 .context-inner h2{font-family:'Noto Sans', sans-serif;font-size:36px;color:#000864;margin-bottom:24px}
 .context-inner p{font-size:18px;color:#5b6b80;line-height:1.8}
 .context-inner p strong{color:#000864}
 
-\${base.reducedMotion('')}
+${base.reducedMotion('')}
 `.trim();
 }
 

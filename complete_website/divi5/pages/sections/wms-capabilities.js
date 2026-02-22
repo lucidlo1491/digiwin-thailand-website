@@ -115,8 +115,8 @@ function blocks() {
 function css() {
   return `
 /* === CAPABILITIES (S4) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .wms-capabilities-section {
             padding: 100px 0;
             background: #F5F7FA;
@@ -267,13 +267,6 @@ function css() {
             }
         }
 
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
-/* .pp-card-features .check{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0} */
-/* .pp-card-features .check svg{width:12px;height:12px;stroke:#ffffff;stroke-width:3;fill:none} */
-/* .pp-card--erp .pp-card-features .check{background:linear-gradient(135deg, #00AFF0, #003CC8)} */
-/* .pp-card--mes .pp-card-features .check{background:linear-gradient(135deg, #10b981, #02D28C)} */
-/* .pp-card--wms .pp-card-features .check{background:linear-gradient(135deg, #f59e0b, #d97706)} */
-/* .pp-card--aiot .pp-card-features .check{background:linear-gradient(135deg, #8b5cf6, #7c3aed)} */
 .section-header{text-align:center;margin-bottom:48px}
 .section-title{font-family:'Noto Sans', sans-serif;font-size:36px;font-weight:700;color:#000864;margin-bottom:16px}
 .section-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:#5b6b80;max-width:600px;margin:0 auto}
@@ -281,7 +274,7 @@ function css() {
 /* .capabilities-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:24px} */
 /* @media (max-width:1024px){.capabilities-grid{grid-template-columns:repeat(2, 1fr)}} */
 @media (max-width:640px){.section-title{font-size:28px}.capabilities-grid{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto}.product-detail-cta-title{font-size:28px}.product-detail-cta-buttons{flex-direction:column}.product-detail-cta-buttons .btn-white,.product-detail-cta-buttons .btn-outline-white{width:100%;text-align:center}}
-\${base.diviListReset(P)}
+${base.diviListReset(P)}
 \
 /* Defensive SVG sizing */
 svg:not([width]):not([class]){max-width:48px;max-height:48px}

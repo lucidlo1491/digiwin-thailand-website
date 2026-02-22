@@ -62,20 +62,19 @@ function blocks() {
 function css() {
   return `
 /* === PRODUCTS (S5) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 
 
 /* === PSEUDO-ELEMENTS (auto-ported from styles.css) === */
-.\${P}-grid-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg, transparent, #00AFF0, transparent)}
-.\${P}-section-label::before,.\${P}-section-label::after{content:'';width:40px;height:1px;background:linear-gradient(90deg, transparent, #00AFF0)}
-.\${P}-section-label::after{background:linear-gradient(90deg, #00AFF0, transparent)}
+.${P}-grid-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg, transparent, #00AFF0, transparent)}
+.${P}-section-label::before,.${P}-section-label::after{content:'';width:40px;height:1px;background:linear-gradient(90deg, transparent, #00AFF0)}
+.${P}-section-label::after{background:linear-gradient(90deg, #00AFF0, transparent)}
 /* TODO: HOVER STATES using global classes (port manually) */
 .product-card:hover{border-color:#00AFF0;transform:translateY(-4px);box-shadow:0 12px 40px rgba(0, 175, 240, 0.12)}
 .product-card:hover .product-card-icon{background:linear-gradient(135deg, #00AFF0, #003CC8)}
 .product-card:hover .product-card-icon svg{stroke:#fff}
 .product-card:hover .product-card-link{gap:10px}
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
 .products-section{padding:100px 0;background:#fff}
 .products-inner{max-width:1100px;margin:0 auto;padding:0 24px}
 .products-header{text-align:center;margin-bottom:60px}

@@ -108,8 +108,8 @@ function blocks() {
 function css() {
   return `
 /* === PAIN (S3) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .pain-section {
             padding: 100px 0;
             background: #ffffff;
@@ -211,9 +211,9 @@ function css() {
             letter-spacing: 0.1em;
             margin-bottom: 10px;
         
-            line-height: 16px !important!important;
+            line-height: 16px !important;
 
-            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important;
 }
 .pain-card-label.problem { color: #DC2626; }
 .pain-card-label.solution { color: #02D28C; }
@@ -225,7 +225,7 @@ function css() {
             margin-bottom: 10px;
             line-height: 1.4;
         
-            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important;
 }
 .pain-card-desc {
             font-family: 'Noto Sans', sans-serif;
@@ -233,7 +233,7 @@ function css() {
             color: #5b6b80;
             line-height: 1.65;
         
-            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important;
 }
 .pain-card-solution-title {
             font-family: 'Noto Sans', sans-serif;
@@ -242,7 +242,7 @@ function css() {
             color: #000864;
             margin-bottom: 8px;
         
-            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important;
 }
 @media (max-width: 1024px) {
             .erp-hero-inner {
@@ -332,8 +332,6 @@ function css() {
 /* .solution-card:hover{border-color:#0369a1;box-shadow:0 12px 40px rgba(3, 105, 161, 0.12)} */
 /* .solution-card:hover .solution-icon{background:linear-gradient(135deg, #0369a1, #003CC8)} */
 /* .solution-card:hover .solution-icon svg{stroke:#fff} */
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
-/* .solution-card{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:40px;transition:all 0.3s ease} */
 .solution-icon{width:64px;height:64px;background:linear-gradient(135deg, rgba(3, 105, 161, 0.15), rgba(3, 105, 161, 0.05));border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;transition:all 0.4s ease}
 .solution-icon svg{width:28px;height:28px;stroke:#0369a1;stroke-width:1.5;fill:none}
 /* .solution-card h3{font-family:'Noto Sans', sans-serif;font-size:22px;color:#000864;margin-bottom:12px} */
@@ -343,26 +341,26 @@ function css() {
 .solution-feature svg{width:18px;height:18px;color:#0369a1;flex-shrink:0}
 /* @media (max-width:640px){.auto-hero, .elec-hero, .metal-hero{padding:120px 0 80px}.auto-hero h1, .elec-hero h1, .metal-hero h1{font-size:32px}.auto-hero-subtitle, .elec-hero-subtitle, .metal-hero-subtitle{font-size:17px}.auto-hero-stats, .elec-hero-stats, .metal-hero-stats{flex-direction:column;gap:24px}.auto-hero-stat-value, .elec-hero-stat-value, .metal-hero-stat-value{font-size:36px}.stake-card, .challenge-card{padding:32px 24px}.solution-card{padding:32px}.cta-section h2{font-size:28px}.cta-buttons{flex-direction:column}} */
 
-\${base.reducedMotion(\`\`)}
+${base.reducedMotion('')}
 
 .pain-card-label {
-            line-height: 16px !important!important;
+            line-height: 16px !important;
         
-            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important;
 }
 
 .pain-card-desc {
-            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important;
         }
 
 .pain-card-label {
-            line-height: 16px !important!important;
+            line-height: 16px !important;
         
-            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important;
 }
 
 .pain-card-desc {
-            -webkit-font-smoothing: auto !important!important;
+            -webkit-font-smoothing: auto !important;
         }
 
 .pain-card-title {

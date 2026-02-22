@@ -172,17 +172,14 @@ function blocks() {
 function css() {
   return `
 /* === SOLUTIONS (S4) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 
 
 /* TODO: HOVER STATES using global classes (port manually) */
 /* .solution-card:hover{border-color:#00AFF0;box-shadow:0 12px 40px rgba(0, 175, 240, 0.12)} */
 /* .solution-card:hover .solution-icon{background:linear-gradient(135deg, #00AFF0, #003CC8)} */
 /* .solution-card:hover .solution-icon svg{stroke:#fff} */
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
-/* .dw-section-scene{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden} */
-/* .dw-section-scene svg{width:100%;height:100%;opacity:0.20} */
 .fade-in{opacity:1;transform:none}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 .fade-in.no-delay{opacity:1;transform:none;transition:none}

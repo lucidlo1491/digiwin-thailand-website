@@ -34,11 +34,10 @@ function blocks() {
 function css() {
   return `
 /* === CONTEXT (S2) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 
 
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
 .context-section{padding:100px 0;background:#fff}
 .context-inner{max-width:900px;margin:0 auto;padding:0 24px;text-align:center}
 .context-inner h2{font-family:'Noto Sans', sans-serif;font-size:36px;color:#000864;margin-bottom:24px}

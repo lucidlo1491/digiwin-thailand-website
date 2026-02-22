@@ -81,8 +81,8 @@ function blocks() {
 function css() {
   return `
 /* === DATAFLOW (S4) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .dataflow-section {
             padding: 100px 0;
             background: #F5F7FA;

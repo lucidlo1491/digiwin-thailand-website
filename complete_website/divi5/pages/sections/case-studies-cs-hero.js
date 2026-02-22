@@ -49,8 +49,8 @@ function blocks() {
 function css() {
   return `
 /* === CS HERO (S1) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .cs-hero {
             background: linear-gradient(165deg, #000432 0%, #000864 40%, #001080 100%);
             padding: 140px 24px 80px;
@@ -185,10 +185,6 @@ function css() {
 
 /* TODO: PSEUDO-ELEMENTS using global classes (port manually) */
 /* .dw-grain-overlay::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none;animation:grain 8s steps(10) infinite;z-index:1} */
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
-/* .dw-grain-overlay{position:relative} */
-
-
 `.trim();
 }
 

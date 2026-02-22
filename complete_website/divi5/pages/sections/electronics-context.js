@@ -34,11 +34,10 @@ function blocks() {
 function css() {
   return `
 /* === CONTEXT (S2) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 
 
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
 .fade-in{opacity:1;transform:none}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 .fade-in.no-delay{opacity:1;transform:none;transition:none}
@@ -49,7 +48,7 @@ function css() {
 .context-inner p{font-size:18px;color:#5b6b80;line-height:1.8}
 .context-inner p strong{color:#000864}
 
-\${base.reducedMotion('')}
+${base.reducedMotion('')}
 `.trim();
 }
 

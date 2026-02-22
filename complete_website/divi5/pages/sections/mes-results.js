@@ -79,8 +79,8 @@ function blocks() {
 function css() {
   return `
 /* === RESULTS (S7) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .results-section {
             padding: 80px 0;
             background: linear-gradient(135deg, #000864 0%, #1a2d3d 100%);

@@ -171,8 +171,8 @@ function blocks() {
 function css() {
   return `
 /* === PRODUCTS (S4) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .products-section {
             padding: 100px 0;
             background: #F5F7FA;
@@ -511,17 +511,17 @@ ${bestForCSS('.product-best-for')}
         }
 
 /* === HOVER STATES (auto-ported from styles.css) === */
-.\${P}-card:hover{border-color:#0369a1;transform:translateY(-4px);box-shadow:0 12px 40px rgba(3, 105, 161, 0.12)}
-.\${P}-card:hover .\${P}-card-icon{background:linear-gradient(135deg, #0369a1, #003CC8)}
-.\${P}-card:hover .\${P}-card-icon svg{stroke:#fff}
-.\${P}-card:hover .\${P}-card-link{gap:10px}
+.${P}-card:hover{border-color:#0369a1;transform:translateY(-4px);box-shadow:0 12px 40px rgba(3, 105, 161, 0.12)}
+.${P}-card:hover .${P}-card-icon{background:linear-gradient(135deg, #0369a1, #003CC8)}
+.${P}-card:hover .${P}-card-icon svg{stroke:#fff}
+.${P}-card:hover .${P}-card-link{gap:10px}
 /* Products Hub page rules removed — this is the ERP product detail page */
 /* Divi list reset — scoped to actual wrapper class */
 .products-section ul,.products-section ol{list-style:none !important;padding:0 !important;margin:0 !important}
 .products-section li{list-style:none !important}
 .products-section li::before{display:none !important}
 /* line-height: 1.6 inherited from .products-section */
-\${base.reducedMotion(\`\`)}
+${base.reducedMotion('')}
 
 .product-best-for-label {
             line-height: 16px;

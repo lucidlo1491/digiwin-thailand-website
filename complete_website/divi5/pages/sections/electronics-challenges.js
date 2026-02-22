@@ -61,15 +61,13 @@ function blocks() {
 function css() {
   return `
 /* === CHALLENGES (S3) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 
 
 /* TODO: HOVER STATES using global classes (port manually) */
 /* .stake-card:hover .stake-icon, .challenge-card:hover .challenge-icon{background:linear-gradient(135deg, #00AFF0, #003CC8)} */
 /* .stake-card:hover .stake-icon svg, .challenge-card:hover .challenge-icon svg{stroke:#fff} */
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
-/* .dw-wave-vertical--right{right:-60px;left:auto} */
 .fade-in{opacity:1;transform:none}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 .fade-in.no-delay{opacity:1;transform:none;transition:none}

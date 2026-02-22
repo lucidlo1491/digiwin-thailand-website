@@ -128,8 +128,8 @@ function blocks() {
 function css() {
   return `
 /* === CAPABILITIES (S5) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .products-inner {
             max-width: 1200px;
             margin: 0 auto;
@@ -141,10 +141,7 @@ function css() {
         }
 
 /* === HOVER STATES (auto-ported from styles.css) === */
-.\${P}-card:hover{border-color:#00AFF0;box-shadow:0 8px 24px rgba(0, 175, 240, 0.1)}
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
-/* .dw-section-scene{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden} */
-/* .dw-section-scene svg{width:100%;height:100%;opacity:0.20} */
+.${P}-card:hover{border-color:#00AFF0;box-shadow:0 8px 24px rgba(0, 175, 240, 0.1)}
 .products-inner{max-width:1100px;margin:0 auto;padding:0 24px}
 .section-header{text-align:center;margin-bottom:48px}
 .section-title{font-family:'Noto Sans', sans-serif;font-size:36px;font-weight:700;color:#000864;margin-bottom:16px}

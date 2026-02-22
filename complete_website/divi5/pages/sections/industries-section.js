@@ -178,8 +178,8 @@ function blocks() {
 function css() {
   return `
 /* === SECTION (S3) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .industries-section {
             padding: 120px 0;
             background: #F5F7FA;
@@ -415,10 +415,6 @@ function css() {
             .industry-features { grid-template-columns: 1fr; }
             .challenges-grid { grid-template-columns: 1fr; }
         }
-
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
-/* .dw-section-scene{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden} */
-/* .dw-section-scene svg{width:100%;height:100%;opacity:0.20} */
 
 \
 /* Defensive SVG sizing */

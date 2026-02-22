@@ -78,8 +78,8 @@ function blocks() {
 function css() {
   return `
 /* === INTEGRATION (S8) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .integration-section {
             padding: 80px 0;
             background: #F5F7FA;
@@ -258,16 +258,15 @@ function css() {
         }
 
 /* === HOVER STATES (auto-ported from styles.css) === */
-.\${P}-node:hover{box-shadow:0 16px 48px rgba(0, 175, 240, 0.2)}
-.\${P}-node:hover .\${P}-node-icon{transform:none}
-.\${P}-node--erp:hover{border-color:#00AFF0}
-.\${P}-node--mes:hover{border-color:#10b981}
-.\${P}-node--wms:hover{border-color:#f59e0b}
-.\${P}-node--aiot:hover{border-color:#8b5cf6}
+.${P}-node:hover{box-shadow:0 16px 48px rgba(0, 175, 240, 0.2)}
+.${P}-node:hover .${P}-node-icon{transform:none}
+.${P}-node--erp:hover{border-color:#00AFF0}
+.${P}-node--mes:hover{border-color:#10b981}
+.${P}-node--wms:hover{border-color:#f59e0b}
+.${P}-node--aiot:hover{border-color:#8b5cf6}
 /* === PSEUDO-ELEMENTS (auto-ported from styles.css) === */
-.\${P}-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:linear-gradient(rgba(0, 175, 240, 0.03) 1px, transparent 1px),linear-gradient(90deg, rgba(0, 175, 240, 0.03) 1px, transparent 1px);background-size:50px 50px;pointer-events:none}
-.\${P}-message::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg, #00AFF0, #10b981, #f59e0b, #8b5cf6)}
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
+.${P}-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:linear-gradient(rgba(0, 175, 240, 0.03) 1px, transparent 1px),linear-gradient(90deg, rgba(0, 175, 240, 0.03) 1px, transparent 1px);background-size:50px 50px;pointer-events:none}
+.${P}-message::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg, #00AFF0, #10b981, #f59e0b, #8b5cf6)}
 .integration-section{padding:140px 0;background:linear-gradient(180deg, #F5F7FA 0%, #ffffff 100%);position:relative;overflow:hidden}
 .integration-header{text-align:center;margin-bottom:60px}
 .integration-diagram{position:relative;padding:80px 0;min-height:550px;display:flex;align-items:center;justify-content:center}

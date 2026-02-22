@@ -24,6 +24,11 @@
  *     class name overlap. Enhanced gradient/shadow comparison with parsed values.
  *     Catches ~80% of issues that Phase 2 misses (cards, icons, sections).
  *
+ *   Phase 5 (Sibling Consistency): Finds groups of sibling elements sharing the
+ *     same class, compares their dimensions. Catches "4 cards, 1 is bigger" issues
+ *     that per-element checks miss. Compares WP siblings against HTML reference —
+ *     only flags when HTML siblings ARE consistent but WP siblings differ.
+ *
  * Opens HTML (temp server) + WP (live) in Puppeteer, runs getComputedStyle()
  * on matched element pairs from the page config's verify.sections[].styleMap,
  * plus section-level wrapper checks, plus auto-discovered elements.
@@ -1264,6 +1269,38 @@ async function run(opts) {
         });
       }
 
+      // ─────────────────────────────────────────────────────
+      // PHASE 5: SIBLING CONSISTENCY CHECK
+      // ─────────────────────────────────────────────────────
+
+      let siblingResult = null;
+      if (!noAutodiscover && section.htmlSelector) {
+        console.log(`\n  ── Sibling Consistency: ${section.name} ──`);
+        siblingResult = await runSiblingConsistencyCheck(wpPage, htmlPage, section, verbose);
+
+        console.log(`  Siblings: ${siblingResult.groupsChecked} groups | Fixable=${siblingResult.fixable.length} | Warnings=${siblingResult.warnings.length}`);
+
+        for (const w of siblingResult.warnings) {
+          console.log(`  ⚠ ${w}`);
+        }
+
+        for (const f of siblingResult.fixable) {
+          console.log(`  ✗ [SIBLING] ${f.element} → ${f.property}: ${f.wpValue}`);
+          console.log(`    Expected: ${f.htmlValue}`);
+          if (f.outliers) {
+            for (const o of f.outliers) {
+              console.log(`    Outlier: ${o}`);
+            }
+          }
+        }
+
+        if (!report.siblingConsistency) report.siblingConsistency = [];
+        report.siblingConsistency.push({
+          section: section.name,
+          ...siblingResult,
+        });
+      }
+
       // Count pass/fail/warn for manual checks
       const allFindings = [
         ...sectionReport.findings,
@@ -1298,6 +1335,12 @@ async function run(opts) {
       if (visualResult) {
         sectionReport.failCount += visualResult.fixable.length;
         sectionReport.warnCount += visualResult.unmatched.html + visualResult.unmatched.wp;
+      }
+
+      // Count sibling consistency fixable as FAIL
+      if (siblingResult) {
+        sectionReport.failCount += siblingResult.fixable.length;
+        sectionReport.warnCount += siblingResult.warnings.length;
       }
 
       report.summary.pass += sectionReport.passCount;
@@ -1419,6 +1462,23 @@ async function run(opts) {
     for (const f of allVisualFixable) {
       console.log(`    [${f.section}] [${f.category}] ${f.element} → ${f.property}: expected "${f.htmlValue}", got "${f.wpValue}"`);
       console.log(`      → ${f.fix}`);
+    }
+  }
+
+  // Sibling consistency issues (Phase 5)
+  const allSiblingFixable = [];
+  if (report.siblingConsistency) {
+    for (const sc of report.siblingConsistency) {
+      for (const f of sc.fixable) {
+        allSiblingFixable.push({ section: sc.section, ...f });
+      }
+    }
+  }
+  if (allSiblingFixable.length > 0) {
+    console.log('\n  SIBLING CONSISTENCY issues (elements that should match but differ):');
+    for (const f of allSiblingFixable) {
+      console.log(`    [${f.section}] ${f.element} → ${f.property}: ${f.wpValue}`);
+      console.log(`      Expected: ${f.htmlValue}`);
     }
   }
 
@@ -1757,6 +1817,208 @@ async function checkUnicodeCharacters(htmlPage, wpPage, section) {
   return results;
 }
 
+// ═══════════════════════════════════════════════════════════
+// PHASE 5: SIBLING CONSISTENCY CHECK
+// ═══════════════════════════════════════════════════════════
+
+/**
+ * Phase 5: Check that sibling elements sharing the same class have consistent dimensions.
+ * Catches the "4 cards, 1 is bigger" problem that per-element fidelity checks miss.
+ *
+ * Finds groups of 2+ elements sharing a class under the WP section wrapper,
+ * then compares their widths, heights, paddings. If any differ by >TOLERANCE,
+ * reports as fixable with the expected (most common) value.
+ */
+const SIBLING_TOLERANCE = 4; // px — siblings within ±4px are acceptable
+const SIBLING_PROPERTIES = [
+  'width', 'height',
+  'padding-top', 'padding-right', 'padding-bottom', 'padding-left',
+  'border-top-width', 'border-right-width', 'border-bottom-width', 'border-left-width',
+  'margin-top', 'margin-right', 'margin-bottom', 'margin-left',
+];
+
+async function runSiblingConsistencyCheck(wpPage, htmlPage, section, verbose) {
+  const wpSel = section.wpSelector;
+  const htmlSel = section.htmlSelector;
+
+  // Discover sibling groups on WP side
+  const wpGroups = await wpPage.evaluate((containerSel, props) => {
+    const container = document.querySelector(containerSel);
+    if (!container) return [];
+
+    // Collect all elements with classes, group by class
+    const classMap = new Map(); // className -> elements[]
+    const allEls = container.querySelectorAll('*');
+
+    for (const el of allEls) {
+      // Skip invisible elements
+      const style = getComputedStyle(el);
+      if (style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0') continue;
+
+      for (const cls of el.classList) {
+        // Skip noise classes
+        if (/^et_pb_|^_module|^divi-|^wp-block/i.test(cls)) continue;
+        if (!classMap.has(cls)) classMap.set(cls, []);
+        classMap.get(cls).push(el);
+      }
+    }
+
+    // Only keep groups with 2+ siblings that share a parent
+    const results = [];
+    for (const [cls, els] of classMap) {
+      if (els.length < 2) continue;
+
+      // Group by parent
+      const byParent = new Map();
+      for (const el of els) {
+        const parentId = el.parentElement ? (el.parentElement.className || 'root') : 'root';
+        if (!byParent.has(parentId)) byParent.set(parentId, []);
+        byParent.get(parentId).push(el);
+      }
+
+      for (const [, siblings] of byParent) {
+        if (siblings.length < 2) continue;
+
+        const measurements = siblings.map(el => {
+          const cs = getComputedStyle(el);
+          const rect = el.getBoundingClientRect();
+          const vals = {};
+          for (const p of props) {
+            vals[p] = p === 'width' ? rect.width : p === 'height' ? rect.height : parseFloat(cs.getPropertyValue(p)) || 0;
+          }
+          vals._text = (el.textContent || '').trim().substring(0, 30);
+          vals._classes = el.className;
+          return vals;
+        });
+
+        results.push({ className: cls, count: siblings.length, measurements });
+      }
+    }
+
+    return results;
+  }, wpSel, SIBLING_PROPERTIES);
+
+  // Also get HTML side for comparison
+  const htmlGroups = await htmlPage.evaluate((containerSel, props) => {
+    const container = document.querySelector(containerSel);
+    if (!container) return [];
+
+    const classMap = new Map();
+    const allEls = container.querySelectorAll('*');
+
+    for (const el of allEls) {
+      const style = getComputedStyle(el);
+      if (style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0') continue;
+
+      for (const cls of el.classList) {
+        if (!classMap.has(cls)) classMap.set(cls, []);
+        classMap.get(cls).push(el);
+      }
+    }
+
+    const results = [];
+    for (const [cls, els] of classMap) {
+      if (els.length < 2) continue;
+
+      const byParent = new Map();
+      for (const el of els) {
+        const parentId = el.parentElement ? (el.parentElement.className || 'root') : 'root';
+        if (!byParent.has(parentId)) byParent.set(parentId, []);
+        byParent.get(parentId).push(el);
+      }
+
+      for (const [, siblings] of byParent) {
+        if (siblings.length < 2) continue;
+
+        const measurements = siblings.map(el => {
+          const cs = getComputedStyle(el);
+          const rect = el.getBoundingClientRect();
+          const vals = {};
+          for (const p of props) {
+            vals[p] = p === 'width' ? rect.width : p === 'height' ? rect.height : parseFloat(cs.getPropertyValue(p)) || 0;
+          }
+          vals._text = (el.textContent || '').trim().substring(0, 30);
+          return vals;
+        });
+
+        results.push({ className: cls, count: siblings.length, measurements });
+      }
+    }
+    return results;
+  }, htmlSel, SIBLING_PROPERTIES);
+
+  // Analyze WP sibling groups for inconsistencies
+  const fixable = [];
+  const warnings = [];
+
+  for (const group of wpGroups) {
+    const { className, measurements } = group;
+    if (measurements.length < 2) continue;
+
+    // Check if the HTML reference also has this group — and if HTML siblings are consistent
+    const htmlGroup = htmlGroups.find(g => g.className === className);
+    const htmlConsistent = htmlGroup ? checkGroupConsistency(htmlGroup.measurements) : null;
+
+    for (const prop of SIBLING_PROPERTIES) {
+      const values = measurements.map(m => m[prop]);
+      const max = Math.max(...values);
+      const min = Math.min(...values);
+      const diff = max - min;
+
+      if (diff <= SIBLING_TOLERANCE) continue;
+
+      // Check if HTML side is consistent for this property
+      if (htmlGroup && htmlConsistent && htmlConsistent[prop] && htmlConsistent[prop].consistent) {
+        // HTML siblings ARE consistent, WP siblings are NOT → fixable
+        const expectedValue = htmlConsistent[prop].mode;
+        const outliers = measurements
+          .filter(m => Math.abs(m[prop] - expectedValue) > SIBLING_TOLERANCE)
+          .map(m => `"${m._text}" (${m[prop].toFixed(1)}px, classes: ${m._classes})`);
+
+        if (outliers.length > 0) {
+          fixable.push({
+            element: `.${className}`,
+            className,
+            property: prop,
+            htmlValue: `${expectedValue.toFixed(1)}px (consistent across ${htmlGroup.measurements.length} siblings)`,
+            wpValue: `varies: ${min.toFixed(1)}px–${max.toFixed(1)}px`,
+            fix: `SIBLING_CONSISTENCY: Set .${className} { ${prop}: ${expectedValue.toFixed(0)}px } — ${outliers.length} of ${measurements.length} siblings differ`,
+            category: 'SIBLING',
+            section: section.name,
+            outliers,
+          });
+        }
+      } else {
+        // HTML also has variation or doesn't have this group — just warn
+        warnings.push(`${className}: ${prop} varies ${min.toFixed(1)}–${max.toFixed(1)}px across ${measurements.length} siblings`);
+      }
+    }
+  }
+
+  return { fixable, warnings, groupsChecked: wpGroups.length };
+}
+
+/**
+ * Check consistency across a group of sibling measurements.
+ * Returns per-property: { consistent: bool, mode: number }
+ */
+function checkGroupConsistency(measurements) {
+  const result = {};
+  for (const prop of SIBLING_PROPERTIES) {
+    const values = measurements.map(m => m[prop]);
+    const max = Math.max(...values);
+    const min = Math.min(...values);
+    const consistent = (max - min) <= SIBLING_TOLERANCE;
+    // Mode = most common value (round to nearest px)
+    const rounded = values.map(v => Math.round(v));
+    const freq = {};
+    for (const v of rounded) freq[v] = (freq[v] || 0) + 1;
+    const mode = Number(Object.entries(freq).sort((a, b) => b[1] - a[1])[0][0]);
+    result[prop] = { consistent, mode, min, max };
+  }
+  return result;
+}
+
 /**
  * F9: Check inter-section gaps.
  * Measures the pixel gap between consecutive section wrappers on both HTML and WP.
@@ -2091,14 +2353,14 @@ async function runDecoPresenceAudit(htmlPage, wpPage, section, pageConfig, verbo
         category: 'DECORATION_BG_MISSING',
         element: label,
         note: `HTML .${label} has background-image but WP version shows none`,
-        fix: `Convert file reference to Base64 via super-d.js — use superD.css('${label}', {...})`,
+        fix: `Convert to Base64: run \`node divi5/lib/retrofit-sections.js --scope super-d --live\` or use superD.css('${label}', {...})`,
       });
     } else if (wHasBg && /url\(["'](?!data:|https?:)/.test(wd.bgImage)) {
       result.fixable.push({
         category: 'DECORATION_BG_UNRESOLVABLE',
         element: label,
         note: `WP .${label} has relative file path in background-image (won't resolve on WordPress)`,
-        fix: `Convert to Base64 via super-d.js — relative paths like url('assets/...') don't work in WP Code Modules`,
+        fix: `Convert to Base64: run \`node divi5/lib/retrofit-sections.js --scope super-d --live\` — relative url('assets/...') paths don't work in WP Code Modules`,
       });
     }
 

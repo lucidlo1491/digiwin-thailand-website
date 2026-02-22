@@ -77,8 +77,8 @@ function blocks() {
 function css() {
   return `
 /* === INTEGRATION (S8) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .wms-mockup-cell.active {
             background: rgba(16, 185, 129, 0.3);
             border-color: #10b981;
@@ -243,24 +243,19 @@ function css() {
         }
 
 /* === HOVER STATES (auto-ported from styles.css) === */
-.\${P}-node:hover{box-shadow:0 16px 48px rgba(0, 175, 240, 0.2)}
-.\${P}-node:hover .\${P}-node-icon{transform:none}
-.\${P}-node--erp:hover{border-color:#00AFF0}
-.\${P}-node--mes:hover{border-color:#10b981}
-.\${P}-node--wms:hover{border-color:#f59e0b}
-.\${P}-node--aiot:hover{border-color:#8b5cf6}
+.${P}-node:hover{box-shadow:0 16px 48px rgba(0, 175, 240, 0.2)}
+.${P}-node:hover .${P}-node-icon{transform:none}
+.${P}-node--erp:hover{border-color:#00AFF0}
+.${P}-node--mes:hover{border-color:#10b981}
+.${P}-node--wms:hover{border-color:#f59e0b}
+.${P}-node--aiot:hover{border-color:#8b5cf6}
 /* === PSEUDO-ELEMENTS (auto-ported from styles.css) === */
-.\${P}-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:linear-gradient(rgba(0, 175, 240, 0.03) 1px, transparent 1px),linear-gradient(90deg, rgba(0, 175, 240, 0.03) 1px, transparent 1px);background-size:50px 50px;pointer-events:none}
-.\${P}-message::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg, #00AFF0, #10b981, #f59e0b, #8b5cf6)}
+.${P}-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:linear-gradient(rgba(0, 175, 240, 0.03) 1px, transparent 1px),linear-gradient(90deg, rgba(0, 175, 240, 0.03) 1px, transparent 1px);background-size:50px 50px;pointer-events:none}
+.${P}-message::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg, #00AFF0, #10b981, #f59e0b, #8b5cf6)}
 /* TODO: HOVER STATES using global classes (port manually) */
 /* .dw-nav-item.active .dw-nav-link svg,.dw-nav-item:hover .dw-nav-link svg{transform:rotate(180deg)} */
 /* TODO: PSEUDO-ELEMENTS using global classes (port manually) */
 /* .dw-nav-item.active .dw-nav-link::after{transform:scaleX(1)} */
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
-/* .dw-mega-menu.active{opacity:1;visibility:visible;transform:translateY(0)} */
-/* .blog-hub-filter-tab.active{background:#006dac;color:#ffffff;box-shadow:0 2px 8px rgba(0, 175, 240, 0.3)} */
-/* @media (max-width:1024px){.dw-header-inner{padding:0 24px;height:70px}.dw-logo-img--desktop{display:none}.dw-logo-img--mobile{display:block}.dw-nav{display:none;position:fixed;top:70px;left:0;width:100%;height:calc(100vh - 70px);height:calc(100dvh - 70px);background:#fff;flex-direction:column;overflow-y:auto;padding:8px 0 100px;z-index:999998;box-shadow:0 8px 32px rgba(37, 59, 80, 0.15)}.dw-nav.dw-nav--open{display:flex}.dw-nav-item{width:100%;border-bottom:1px solid rgba(37, 59, 80, 0.06)}.dw-nav-link{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;font-size:16px;font-weight:500;color:#000864;width:100%}.dw-nav-link::after{display:none}.dw-nav-link svg{width:20px;height:20px;transition:transform 0.3s ease}.dw-nav-item.active .dw-nav-link svg{transform:rotate(180deg)}/* Mobile mega menu — slide down as accordion */.dw-mega-menu{position:static;opacity:1;visibility:visible;transform:none;display:none;box-shadow:none;border-radius:0;background:#f8fafc;padding:0;width:100%}.dw-mega-menu.active{display:block}.dw-mega-inner{display:flex;flex-direction:column;padding:8px 0;gap:0}.dw-mega-column{padding:0;border:none}.dw-mega-column-title{padding:12px 32px 4px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#5b6b80}.dw-mega-item{padding:12px 32px;border-radius:0;gap:12px}.dw-mega-item:hover{background:rgba(0, 175, 240, 0.06)}.dw-mega-icon{width:32px;height:32px;min-width:32px}.dw-mega-title{font-size:14px}.dw-mega-desc{font-size:12px}.dw-mega-viewall{padding:12px 32px;border-radius:0;font-size:13px}/* Hide featured panel on mobile to save space */.dw-mega-featured{display:none}/* Mobile CTA at bottom of menu */.dw-nav::after{content:'';display:block;padding:16px 24px}/* Hamburger toggle */.dw-menu-toggle{display:flex;position:relative;z-index:999999}/* Animate to X when open */.dw-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px, 5px)}.dw-menu-toggle.active span:nth-child(2){opacity:0}.dw-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(5px, -5px)}.dw-header-cta{display:none}.dw-main{padding-top:70px}.dw-hero-split{grid-template-columns:1fr}.dw-hero-panel{min-height:70vh;padding:60px 40px}.dw-section{padding:60px 40px}.dw-grid-2,.dw-grid-3,.dw-grid-4{grid-template-columns:repeat(2, 1fr)}.dw-stats-grid{grid-template-columns:repeat(2, 1fr)}.dw-footer-grid{grid-template-columns:1fr 1fr}.dw-footer-brand{grid-column:1 / -1;padding-right:0}} */
-/* .event-register-success.active{display:block} */
 .integration-section{padding:140px 0;background:linear-gradient(180deg, #F5F7FA 0%, #ffffff 100%);position:relative;overflow:hidden}
 .integration-inner{max-width:1100px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
 /* .integration-node{position:absolute;width:100px;height:100px;background:#ffffff;border:2px solid #e8eef3;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:all 0.4s ease;box-shadow:0 8px 32px rgba(0, 0, 0, 0.08);cursor:default} */

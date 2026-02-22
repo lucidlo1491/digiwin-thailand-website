@@ -124,28 +124,14 @@ function blocks() {
 function css() {
   return `
 /* === SOLUTIONS (S4) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 
 
 /* TODO: HOVER STATES using global classes (port manually) */
 /* .solution-card:hover{border-color:#00AFF0;box-shadow:0 12px 40px rgba(0, 175, 240, 0.12)} */
 /* .solution-card:hover .solution-icon{background:linear-gradient(135deg, #00AFF0, #003CC8)} */
 /* .solution-card:hover .solution-icon svg{stroke:#fff} */
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
-/* .dw-d-bg{position:absolute;right:-10%;top:50%;transform:translateY(-50%);width:60%;min-height:60vh;background:url('assets/digiwin-d-outline.svg') no-repeat center right;background-size:contain;pointer-events:none;z-index:0;opacity:0.12} */
-/* .dw-d-bg--gradient{background-image:url('assets/digiwin-d-gradient.svg');opacity:0.15} */
-/* .dw-d-bg--particle{background-image:url('assets/digiwin-d-particle.svg');opacity:0.2} */
-/* .dw-d-bg--left{right:auto;left:-15%;background-position:center left} */
-/* .dw-d-bg--bottom{top:auto;bottom:-20%;transform:none;background-position:center bottom} */
-/* .dw-d-bg--top{top:-20%;transform:none;background-position:center top} */
-/* .dw-d-bg--center{right:auto;left:50%;transform:translate(-50%, -50%);width:80%;min-height:80vh;background-position:center center} */
-/* .dw-d-bg--corner{width:30%;min-height:30vh} */
-/* .dw-d-bg--corner-tl{right:auto;left:-5%;top:-5%;transform:none} */
-/* .dw-d-bg--corner-br{top:auto;bottom:-5%;right:-5%;transform:none} */
-/* .dw-d-bg--bold{opacity:0.22 !important} */
-/* .dw-d-bg--medium{opacity:0.14 !important} */
-/* .dw-d-bg--subtle{opacity:0.06 !important} */
 .solutions-section{padding:100px 0;background:#fff}
 .solutions-inner{max-width:1100px;margin:0 auto;padding:0 24px}
 .solutions-header{text-align:center;margin-bottom:60px}

@@ -38,8 +38,8 @@ function blocks() {
 function css() {
   return `
 /* === CS CTA (S10) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .cs-cta-section {
             background: linear-gradient(135deg, #00AFF0 0%, #003CC8 50%, #001080 100%);
             padding: 100px 24px;
@@ -88,11 +88,7 @@ function css() {
 .btn-white:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0, 0, 0, 0.2)}
 .btn-outline-white{background:transparent;color:#ffffff;padding:20px 40px;border-radius:14px;border:2px solid rgba(255, 255, 255, 0.5);font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.3s ease}
 .btn-outline-white:hover{background:rgba(255, 255, 255, 0.15);border-color:#ffffff}
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
-/* @media (max-width:640px){.products-hero{padding:120px 0 60px;min-height:auto}.products-hero h1{font-size:28px}.products-hero-stats{flex-direction:column;gap:20px;align-items:center}.products-hero-stat{text-align:center}.products-section-title,.integration-title,.why-title{font-size:32px}.pp-card{padding:32px}.pp-card-header{flex-direction:column;gap:16px}.pp-card-features{grid-template-columns:1fr}.integration-orbit{width:280px;height:280px}.integration-hub{width:100px;height:100px}.integration-hub-icon{width:36px;height:36px}.integration-node{width:75px;height:75px;border-radius:16px}.integration-node-icon{width:36px;height:36px;margin-bottom:6px}.integration-node-name{font-size:11px}.integration-node--erp{top:-25px}.integration-node--wms{bottom:-25px}.integration-node--mes{right:-25px}.integration-node--aiot{left:-25px}.integration-diagram{min-height:400px;padding:60px 0}.integration-message{padding:32px 24px}.products-cta-title{font-size:28px}.products-cta-buttons{flex-direction:column}.btn-white, .btn-outline-white{width:100%;text-align:center;justify-content:center}} */
-/* @media (max-width:640px){.section-title{font-size:28px}.capabilities-grid{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto}.product-detail-cta-title{font-size:28px}.product-detail-cta-buttons{flex-direction:column}.product-detail-cta-buttons .btn-white,.product-detail-cta-buttons .btn-outline-white{width:100%;text-align:center}} */
-
-\${base.reducedMotion(\`\`)}
+${base.reducedMotion('')}
 `.trim();
 }
 

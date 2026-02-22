@@ -406,7 +406,7 @@ function css() {
 .tech-advantages-section ul,.tech-advantages-section ol{list-style:none !important;padding:0 !important;margin:0 !important}
 .tech-advantages-section li{list-style:none !important;line-height:1.5}
 .tech-advantages-section li::before{display:none !important}
-\${base.reducedMotion(\`\`)}
+${base.reducedMotion('')}
 `.trim();
 }
 

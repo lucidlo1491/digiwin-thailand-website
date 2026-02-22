@@ -460,8 +460,8 @@ function blocks() {
 function css() {
   return `
 /* === ASIA PRESENCE (S9) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 @keyframes bounce-down {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(6px); }
@@ -1088,7 +1088,7 @@ function css() {
         }
 
 
-\${base.reducedMotion(\`\`)}
+${base.reducedMotion('')}
 `.trim();
 }
 

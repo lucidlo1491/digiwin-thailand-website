@@ -89,8 +89,8 @@ function blocks() {
 function css() {
   return `
 /* === CHALLENGES (S4) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .challenges-section {
             padding: 100px 0;
             background: #fff;
@@ -212,9 +212,6 @@ function css() {
 /* TODO: HOVER STATES using global classes (port manually) */
 /* .stake-card:hover .stake-icon, .challenge-card:hover .challenge-icon{background:linear-gradient(135deg, #00AFF0, #003CC8)} */
 /* .stake-card:hover .stake-icon svg, .challenge-card:hover .challenge-icon svg{stroke:#fff} */
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
-/* .dw-section-scene{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden} */
-/* .dw-section-scene svg{width:100%;height:100%;opacity:0.20} */
 .stakes-section, .challenges-section{padding:100px 0;background:#F5F7FA}
 .stakes-inner, .challenges-inner{max-width:1100px;margin:0 auto;padding:0 24px}
 .stakes-header, .challenges-header{text-align:center;margin-bottom:60px}

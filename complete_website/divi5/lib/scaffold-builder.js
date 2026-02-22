@@ -843,6 +843,9 @@ sectionData.forEach(section => {
   const hasSVG = /<svg\b/i.test(section.cleanHTML);
   const svgNote = hasSVG ? '\n// NOTE: Contains inline SVGs — may need Base64 JS injection if wp_kses strips elements.' : '';
 
+  // Detect Super D decoration elements
+  const hasSuperD = /dw-d-bg/.test(section.cleanHTML);
+
   // ── A3: Template suggestion heuristic ──
   const templateHint = suggestTemplate(section);
 
@@ -879,13 +882,14 @@ function css() {
   return \`
 /* === ${adminLabel.toUpperCase()} (S${section.index + 1}) === */
 /* Divi 5 section boilerplate (font-smoothing, p padding, heading resets) */
-.\\\${P}-section{position:relative;overflow:hidden;\\\${base.fontSmoothingReset(P)}font-size:16px}
-.\\\${P}-section p{padding-bottom:0;line-height:1.6}
-.\\\${P}-section h2,.\\\${P}-section h3,.\\\${P}-section h4{margin:0;padding:0}
+.\${P}-section{position:relative;overflow:hidden;\${base.fontSmoothingReset(P)}font-size:16px}
+.\${P}-section p{padding-bottom:0;line-height:1.6}
+.\${P}-section h2,.\${P}-section h3,.\${P}-section h4{margin:0;padding:0}
 ${escapeForTemplate(cssBody)}
 ${extReportEscaped}
-${hasList ? `\\\${base.diviListReset(P)}` : ''}
-${hasTransition ? `\\\${base.reducedMotion('*{animation:none !important;transition:none !important}')}` : ''}
+${hasSuperD ? `/* TODO: Replace url('assets/...') with Base64 — run: node divi5/lib/retrofit-sections.js --scope super-d --live */` : ''}
+${hasList ? `\${base.diviListReset(P)}` : ''}
+${hasTransition ? `\${base.reducedMotion('*{animation:none !important;transition:none !important}')}` : ''}
 \`.trim();
 }
 

@@ -52,26 +52,12 @@ function blocks() {
 function css() {
   return `
 /* === ELEC HERO (S1) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 
 
 /* TODO: PSEUDO-ELEMENTS using global classes (port manually) */
 .auto-hero::before, .elec-hero::before, .metal-hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233798E4' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");opacity:0.5}
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
-/* .dw-d-bg{position:absolute;right:-10%;top:50%;transform:translateY(-50%);width:60%;min-height:60vh;background:url('assets/digiwin-d-outline.svg') no-repeat center right;background-size:contain;pointer-events:none;z-index:0;opacity:0.12} */
-/* .dw-d-bg--gradient{background-image:url('assets/digiwin-d-gradient.svg');opacity:0.15} */
-/* .dw-d-bg--particle{background-image:url('assets/digiwin-d-particle.svg');opacity:0.2} */
-/* .dw-d-bg--left{right:auto;left:-15%;background-position:center left} */
-/* .dw-d-bg--bottom{top:auto;bottom:-20%;transform:none;background-position:center bottom} */
-/* .dw-d-bg--top{top:-20%;transform:none;background-position:center top} */
-/* .dw-d-bg--center{right:auto;left:50%;transform:translate(-50%, -50%);width:80%;min-height:80vh;background-position:center center} */
-/* .dw-d-bg--corner{width:30%;min-height:30vh} */
-/* .dw-d-bg--corner-tl{right:auto;left:-5%;top:-5%;transform:none} */
-/* .dw-d-bg--corner-br{top:auto;bottom:-5%;right:-5%;transform:none} */
-/* .dw-d-bg--bold{opacity:0.22 !important} */
-/* .dw-d-bg--medium{opacity:0.14 !important} */
-/* .dw-d-bg--subtle{opacity:0.06 !important} */
 .auto-hero, .elec-hero, .metal-hero{background:linear-gradient(135deg, #000432 0%, #000864 50%, #001080 100%);padding:140px 0 100px;position:relative;overflow:hidden}
 .auto-hero-inner, .elec-hero-inner, .metal-hero-inner{max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:1;text-align:center}
 .auto-hero-badge, .elec-hero-badge, .metal-hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0, 175, 240, 0.2);border:1px solid rgba(0, 175, 240, 0.3);padding:8px 20px;border-radius:50px;color:#7EC8F2;font-size:14px;font-weight:500;margin-bottom:24px}
@@ -86,7 +72,7 @@ function css() {
 @media (max-width:640px){.auto-hero, .elec-hero, .metal-hero{padding:120px 0 80px}.auto-hero h1, .elec-hero h1, .metal-hero h1{font-size:32px}.auto-hero-subtitle, .elec-hero-subtitle, .metal-hero-subtitle{font-size:17px}.auto-hero-stats, .elec-hero-stats, .metal-hero-stats{flex-direction:column;gap:24px}.auto-hero-stat-value, .elec-hero-stat-value, .metal-hero-stat-value{font-size:36px}.stake-card, .challenge-card{padding:32px 24px}.solution-card{padding:32px}.cta-section h2{font-size:28px}.cta-buttons{flex-direction:column}}
 /* @media (prefers-reduced-motion:reduce){.products-hero-content,.hero-stack-visual,.products-hero::before,.products-hero-badge::before,.stack-layer,.stack-layer::before,.data-particle,.ecosystem-node,.ecosystem-line,.ecosystem-ring,.data-flow-line,.data-flow-dot,.integration-hub::before,.integration-hub::after,.pp-card,.why-card,.why-card-icon,.pp-card-icon,.products-cta-glow,.dw-d-parallax,.dw-wave-flow,.dw-d-bg{animation:none !important;transition:none !important}.pp-card.visible{opacity:1;transform:none}} */
 
-\${base.reducedMotion('')}
+${base.reducedMotion('')}
 `.trim();
 }
 

@@ -52,8 +52,8 @@ function blocks() {
 function css() {
   return `
 /* === APPROACH (S5) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .approach-section {
             padding: 100px 0;
             background: linear-gradient(135deg, #000864 0%, #0f1419 100%);

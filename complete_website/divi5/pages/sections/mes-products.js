@@ -192,8 +192,8 @@ function blocks() {
 function css() {
   return `
 /* === PRODUCTS (S4) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .products-section {
             padding: 80px 0;
             background: #F5F7FA;
@@ -519,7 +519,6 @@ function css() {
 /* .products-grid-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg, transparent, #00AFF0, transparent)} */
 /* .products-section-label::before,.products-section-label::after{content:'';width:40px;height:1px;background:linear-gradient(90deg, transparent, #00AFF0)} */
 /* .products-section-label::after{background:linear-gradient(90deg, #00AFF0, transparent)} */
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
 .products-section{padding:100px 0;background:#fff}
 .products-inner{max-width:1100px;margin:0 auto;padding:0 24px}
 /* .products-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:24px} */
@@ -541,7 +540,7 @@ function css() {
 .section-title{font-family:'Noto Sans', sans-serif;font-size:36px;font-weight:700;color:#000864;margin-bottom:16px}
 .section-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:#5b6b80;max-width:600px;margin:0 auto}
 @media (max-width:640px){.section-title{font-size:28px}.capabilities-grid{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto}.product-detail-cta-title{font-size:28px}.product-detail-cta-buttons{flex-direction:column}.product-detail-cta-buttons .btn-white,.product-detail-cta-buttons .btn-outline-white{width:100%;text-align:center}}
-\${base.diviListReset(P)}
+${base.diviListReset(P)}
 \
 /* Defensive SVG sizing */
 svg:not([width]):not([class]){max-width:48px;max-height:48px}

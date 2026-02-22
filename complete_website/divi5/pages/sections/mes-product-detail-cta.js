@@ -40,8 +40,8 @@ function blocks() {
 function css() {
   return `
 /* === PRODUCT DETAIL CTA (S10) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 @media (prefers-reduced-motion: reduce) {
             .product-box,
             .integration-node,
@@ -56,7 +56,7 @@ function css() {
         }
 
 /* === PSEUDO-ELEMENTS (auto-ported from styles.css) === */
-.\${P}-cta::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);border-radius:50%}
+.${P}-cta::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);border-radius:50%}
 /* TODO: HOVER STATES using global classes (port manually) */
 /* Buttons */
 .btn-white{background:#ffffff;color:#003CC8;padding:20px 40px;border-radius:14px;font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 4px 20px rgba(0, 0, 0, 0.15);display:inline-flex;align-items:center;gap:10px}
@@ -68,25 +68,6 @@ function css() {
  * .dw-wave-flow--top {
  *     display: none;
  * } */
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
-/* .dw-d-bg{position:absolute;right:-10%;top:50%;transform:translateY(-50%);width:60%;min-height:60vh;background:url('assets/digiwin-d-outline.svg') no-repeat center right;background-size:contain;pointer-events:none;z-index:0;opacity:0.12} */
-/* .dw-d-bg--gradient{background-image:url('assets/digiwin-d-gradient.svg');opacity:0.15} */
-/* .dw-d-bg--particle{background-image:url('assets/digiwin-d-particle.svg');opacity:0.2} */
-/* .dw-d-bg--left{right:auto;left:-15%;background-position:center left} */
-/* .dw-d-bg--bottom{top:auto;bottom:-20%;transform:none;background-position:center bottom} */
-/* .dw-d-bg--top{top:-20%;transform:none;background-position:center top} */
-/* .dw-d-bg--center{right:auto;left:50%;transform:translate(-50%, -50%);width:80%;min-height:80vh;background-position:center center} */
-/* .dw-d-bg--corner{width:30%;min-height:30vh} */
-/* .dw-d-bg--corner-tl{right:auto;left:-5%;top:-5%;transform:none} */
-/* .dw-d-bg--corner-br{top:auto;bottom:-5%;right:-5%;transform:none} */
-/* .dw-d-bg--bold{opacity:0.22 !important} */
-/* .dw-d-bg--medium{opacity:0.14 !important} */
-/* .dw-d-bg--subtle{opacity:0.06 !important} */
-/* .dw-wave-flow--top{bottom:auto;top:0;transform:scaleY(-1)} */
-/* .dw-d-glow{animation:dw-d-glow 3s ease-in-out infinite} */
-/* @media (prefers-reduced-motion:reduce){.dw-wave-flow{animation:none;width:100%;background-size:100% 100%}.dw-d-glow{animation:none}.dw-d-draw path{stroke-dashoffset:0}.dw-wave-reveal circle{transform:scale(1)}} */
-/* @media (max-width:640px){.products-hero{padding:120px 0 60px;min-height:auto}.products-hero h1{font-size:28px}.products-hero-stats{flex-direction:column;gap:20px;align-items:center}.products-hero-stat{text-align:center}.products-section-title,.integration-title,.why-title{font-size:32px}.pp-card{padding:32px}.pp-card-header{flex-direction:column;gap:16px}.pp-card-features{grid-template-columns:1fr}.integration-orbit{width:280px;height:280px}.integration-hub{width:100px;height:100px}.integration-hub-icon{width:36px;height:36px}.integration-node{width:75px;height:75px;border-radius:16px}.integration-node-icon{width:36px;height:36px;margin-bottom:6px}.integration-node-name{font-size:11px}.integration-node--erp{top:-25px}.integration-node--wms{bottom:-25px}.integration-node--mes{right:-25px}.integration-node--aiot{left:-25px}.integration-diagram{min-height:400px;padding:60px 0}.integration-message{padding:32px 24px}.products-cta-title{font-size:28px}.products-cta-buttons{flex-direction:column}.btn-white, .btn-outline-white{width:100%;text-align:center;justify-content:center}} */
-/* @media (prefers-reduced-motion:reduce){.products-hero-content,.hero-stack-visual,.products-hero::before,.products-hero-badge::before,.stack-layer,.stack-layer::before,.data-particle,.ecosystem-node,.ecosystem-line,.ecosystem-ring,.data-flow-line,.data-flow-dot,.integration-hub::before,.integration-hub::after,.pp-card,.why-card,.why-card-icon,.pp-card-icon,.products-cta-glow,.dw-d-parallax,.dw-wave-flow,.dw-d-bg{animation:none !important;transition:none !important}.pp-card.visible{opacity:1;transform:none}} */
 .product-detail-cta{padding:100px 0;background:linear-gradient(135deg, #00AFF0 0%, #003CC8 100%);position:relative;overflow:hidden}
 .product-detail-cta-inner{max-width:800px;margin:0 auto;padding:0 24px;text-align:center;position:relative;z-index:1}
 .product-detail-cta-title{font-family:'Noto Sans', sans-serif;font-size:40px;font-weight:700;color:#ffffff;margin-bottom:16px}
@@ -94,7 +75,7 @@ function css() {
 .product-detail-cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 @media (max-width:640px){.product-detail-cta-title{font-size:28px}.product-detail-cta-buttons{flex-direction:column}.product-detail-cta-buttons .btn-white,.product-detail-cta-buttons .btn-outline-white{width:100%;text-align:center}}
 
-\${base.reducedMotion('')}
+${base.reducedMotion('')}
 `.trim();
 }
 

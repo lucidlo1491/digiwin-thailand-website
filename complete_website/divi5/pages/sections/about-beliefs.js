@@ -86,8 +86,8 @@ function blocks() {
 function css() {
   return `
 /* === BELIEFS (S6) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 @keyframes bounce-down {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(6px); }
@@ -218,11 +218,7 @@ function css() {
             }
         }
 
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
-/* .dw-section-scene{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden} */
-/* .dw-section-scene svg{width:100%;height:100%;opacity:0.20} */
-
-\${base.reducedMotion(\`\`)}
+${base.reducedMotion('')}
 `.trim();
 }
 

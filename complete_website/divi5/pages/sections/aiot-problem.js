@@ -98,8 +98,8 @@ function blocks() {
 function css() {
   return `
 /* === PROBLEM (S3) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .problem-section {
             padding: 100px 0;
             background: #fff;
@@ -214,10 +214,6 @@ function css() {
                 transition: none !important;
             }
         }
-
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
-/* .dw-section-scene{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden} */
-/* .dw-section-scene svg{width:100%;height:100%;opacity:0.20} */
 
 \
 /* Defensive SVG sizing */

@@ -66,11 +66,10 @@ function blocks() {
 function css() {
   return `
 /* === EQUIPMENT (S5) === */
-/* TODO: Review and remap class selectors to use \${P} prefix */
-/* TODO: Add section container: .\${P}-section{...;\${base.fontSmoothingReset(P)}font-size:16px} */
+/* TODO: Review and remap class selectors to use ${P} prefix */
+/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 
 
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
 .fade-in{opacity:1;transform:none}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 .fade-in.no-delay{opacity:1;transform:none;transition:none}
@@ -81,7 +80,7 @@ function css() {
 .oem-logos, .equipment-logos, .processes-logos{display:flex;flex-wrap:wrap;justify-content:center;gap:24px}
 .oem-logo, .equipment-logo, .process-logo{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px 32px;font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;color:#475569}
 
-\${base.reducedMotion('')}
+${base.reducedMotion('')}
 `.trim();
 }
 

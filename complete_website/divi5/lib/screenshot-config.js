@@ -24,7 +24,7 @@ module.exports = {
     }
     .dw-clients-track { animation: none !important; }
     .dw-particle-wave, [data-particles] canvas { display: none !important; }
-    .fade-in { opacity: 1 !important; transform: none !important; }
+    .fade-in, .fade-in-section { opacity: 1 !important; transform: none !important; }
   `,
 
   // ═══════════════════════════════════════════════════════
@@ -72,7 +72,7 @@ module.exports = {
     '.dw-check-card', '.checks-card', '.pchecks-card',
     '.dw-result-card', '.results-card',
     '.dw-value-prop', '.products-card',
-    '.fade-in', '.cs-animate',
+    '.fade-in', '.fade-in-section', '.cs-animate',
   ].join(', '),
 
   /** Header hiding — HTML side */

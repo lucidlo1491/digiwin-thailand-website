@@ -1,0 +1,41 @@
+{
+  "page": "news",
+  "savedAt": "2026-02-23T15:33:33.078Z",
+  "sections": {
+    "fullpage": {
+      "diffPercent": 4.3,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "hero": {
+      "diffPercent": 0,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "featured": {
+      "diffPercent": 1.34,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "upcoming": {
+      "diffPercent": 4.87,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "series": {
+      "diffPercent": 2.4,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "past": {
+      "diffPercent": 4.59,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "cta": {
+      "diffPercent": 1.59,
+      "verdict": "MATCH",
+      "skipped": false
+    }
+  }
+}

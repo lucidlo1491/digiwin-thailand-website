@@ -142,7 +142,17 @@ function css() {
 @media(max-width:${base.BREAKPOINTS.mobile}px){
   .${P}-section{padding:80px 20px}
 }
-${base.reducedMotion(`.${P}-card{transition:none !important}`)}`.trim();
+${base.reducedMotion(`.${P}-card{transition:none !important}`)}
+.et_pb_section .prot-label {
+            line-height: 19.2px !important;
+        
+            margin-bottom: 12px;
+}
+
+.et_pb_section .prot-proof {
+            line-height: 20.8px !important;
+        }
+`.trim();
 }
 
 module.exports = { blocks, css };

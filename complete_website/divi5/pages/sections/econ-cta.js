@@ -55,7 +55,10 @@ ${base.buttonLightCSS(P)}
   .${P}-title{font-size:32px}
   .${P}-btn-row{flex-direction:column;align-items:center}
 }
-${base.reducedMotion(`.${P}-btn{transition:none !important}`)}`.trim();
+${base.reducedMotion(`.${P}-btn{transition:none !important}`)}
+/* Divi overrides for CTA buttons */
+.et_pb_section .${P}-btn--ghost{color:#fff !important}
+`.trim();
 }
 
 module.exports = { blocks, css };

@@ -88,7 +88,15 @@ ${superD.css(`${P}-d-bg`, { variant: 'particle', position: 'bottom', opacity: 0.
   .${P}-proof{grid-template-columns:1fr 1fr;gap:16px}
   .${P}-proof-value{font-size:24px}
 }
-${base.reducedMotion(`.${P}-breadcrumb a{transition:none !important}`)}`.trim();
+${base.reducedMotion(`.${P}-breadcrumb a{transition:none !important}`)}
+.et_pb_section .econ-hero-proof-label {
+            line-height: 19.2px !important;
+        }
+
+.et_pb_section .econ-hero-proof-value {
+            line-height: 51.2px !important;
+        }
+`.trim();
 }
 
 module.exports = { blocks, css };

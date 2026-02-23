@@ -157,9 +157,9 @@ function css() {
 .${P}-scene-wrap{position:absolute;inset:0;pointer-events:none;z-index:0}
 .${P}-scene-wrap svg{width:100%;height:100%;position:absolute;top:0;left:0;opacity:0.20}
 .${P}-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2}
-.${P}-phase-header{text-align:center;margin-bottom:60px}
-.${P}-activity-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.2em;color:#0369a1;display:block;margin-bottom:16px}
-.${P}-summary-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,3.5vw,44px);font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
+.${P}-header{text-align:center;margin-bottom:60px}
+.${P}-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.2em;color:#0369a1;display:block;margin-bottom:16px}
+.${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
 .${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto;padding:0}
 
 /* Year Cards Grid */
@@ -221,7 +221,19 @@ function css() {
   .${P}-summary{padding:32px 24px 64px}
   .${P}-bars{height:150px}
 }
-${base.reducedMotion(`.${P}-phase{transition:none !important}`)}`.trim();
+${base.reducedMotion(`.${P}-phase{transition:none !important}`)}
+/* Divi line-height + styling overrides */
+.et_pb_section .${P}-label{line-height:19.2px !important;font-size:12px;color:#0369a1}
+.et_pb_section .${P}-title{font-size:40px !important;font-weight:700 !important;line-height:64px !important;color:#000864 !important;margin-bottom:16px !important}
+.et_pb_section .${P}-badge{line-height:17.6px !important}
+.et_pb_section .${P}-status{line-height:20.8px !important}
+.et_pb_section .${P}-activity-label{font-weight:400 !important;line-height:19.2px !important}
+.et_pb_section .${P}-activity-value{line-height:22.4px !important}
+.et_pb_section .${P}-math-value{line-height:22.4px !important}
+.et_pb_section .${P}-math-total-value{line-height:28.8px !important}
+.et_pb_section .${P}-bar-value{line-height:28.8px !important}
+.et_pb_section .${P}-bar-label{line-height:20.8px !important}
+`.trim();
 }
 
 module.exports = { blocks, css };

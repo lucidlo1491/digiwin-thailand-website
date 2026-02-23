@@ -163,11 +163,11 @@ function css() {
 .${P}-scene-wrap svg{width:100%;height:100%;position:absolute;top:0;left:0;opacity:0.20}
 .${P}-wave-top{position:absolute;top:0;left:0;right:0;height:120px;opacity:0.10;background:linear-gradient(180deg,rgba(0,175,240,0.15) 0%,transparent 100%);pointer-events:none;z-index:1}
 .${P}-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2}
-.${P}-stream-header{text-align:center;margin-bottom:60px}
+.${P}-header{text-align:center;margin-bottom:60px}
 .${P}-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.2em;color:#0369a1;display:block;margin-bottom:16px}
-.${P}-title{font-family:'Noto Sans',sans-serif;font-size:clamp(32px,3.5vw,44px);font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
+.${P}-title{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
 .${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:#5b6b80;line-height:1.6;max-width:600px;margin:0 auto;padding:0}
-.${P}-margin-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.${P}-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
 .${P}-stream{background:#fff;border:1px solid #e2e8f0;border-radius:20px;overflow:hidden;transition:all 0.3s ease}
 .${P}-stream:hover{box-shadow:0 12px 40px rgba(0,0,0,0.08);border-color:#cbd5e1}
 .${P}-stream-header{background:linear-gradient(135deg,#000864 0%,#000432 100%);padding:24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
@@ -184,13 +184,22 @@ function css() {
 .${P}-margin-value.highlight{color:#15803d}
 .${P}-stream-note{font-family:'Noto Sans',sans-serif;font-size:14px;color:#666666;font-style:italic;margin:0;padding:0}
 @media(max-width:${base.BREAKPOINTS.tablet}px){
+  .${P}-grid{grid-template-columns:1fr}
   .${P}-margin-grid{grid-template-columns:1fr}
 }
 @media(max-width:${base.BREAKPOINTS.mobile}px){
   .${P}-section{padding:80px 20px}
   .${P}-margin-grid{grid-template-columns:1fr}
 }
-${base.reducedMotion(`.${P}-stream{transition:none !important}`)}`.trim();
+${base.reducedMotion(`.${P}-stream{transition:none !important}`)}
+/* Divi line-height overrides */
+.et_pb_section .${P}-label{line-height:19.2px !important;margin-bottom:12px}
+.et_pb_section .${P}-title{line-height:64px !important}
+.et_pb_section .${P}-stream-tag{line-height:16px !important}
+.et_pb_section .${P}-margin-level{line-height:19.2px !important}
+.et_pb_section .${P}-margin-value{line-height:28.8px !important}
+.et_pb_section .${P}-stream-note{line-height:22.4px !important}
+`.trim();
 }
 
 module.exports = { blocks, css, getGrowthSVG };

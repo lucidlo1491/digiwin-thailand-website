@@ -36,11 +36,11 @@ module.exports = {
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],
-    maxHtmlBlocks: 1,
+    maxHtmlBlocks: 10,
   },
 
   verify: {
-    wpUrl: 'https://digiwin-thailand.local/?page_id=100559',
+    wpUrl: 'https://digiwin-thailand.local/partner-program/economics/',
     sections: [
       {
         name: 'hero', wpSelector: '.et_pb_section_0', htmlSelector: '.dw-partner-hero',

@@ -41,10 +41,58 @@ const sectionFilter = getArg('--section');
 const DRY_RUN = hasFlag('--dry-run');
 const FORCE = hasFlag('--force');
 const restoreFile = getArg('--restore');
+const PREFLIGHT_ALL = hasFlag('--preflight-all');
+const CHECK_DRIFT = hasFlag('--check-drift');
+
+// ════════════════════════════════════════════════════════════════
+// PREFLIGHT-ALL: verify all page IDs exist in WordPress
+// ════════════════════════════════════════════════════════════════
+if (PREFLIGHT_ALL) {
+  const pagesDir = path.join(__dirname, 'pages');
+  const pageFiles = fs.readdirSync(pagesDir)
+    .filter(f => f.endsWith('.js') && !f.startsWith('sections'));
+
+  const configs = [];
+  for (const file of pageFiles) {
+    try {
+      const src = fs.readFileSync(path.join(pagesDir, file), 'utf8');
+      const idMatch = src.match(/pageId:\s*(\d+)/);
+      if (idMatch) configs.push({ name: file.replace('.js', ''), pageId: parseInt(idMatch[1]) });
+    } catch (_) { /* skip */ }
+  }
+
+  console.log(`\nChecking all ${configs.length} page IDs in WordPress...`);
+  const ids = configs.map(c => c.pageId);
+  try {
+    const result = mysql.query(`SELECT ID, post_status FROM wp_posts WHERE ID IN (${ids.join(',')});`);
+    const found = new Map();
+    for (const line of result.trim().split('\n').slice(1)) {
+      const [id, status] = line.split('\t');
+      found.set(parseInt(id), status);
+    }
+    let failures = 0;
+    for (const c of configs.sort((a, b) => a.name.localeCompare(b.name))) {
+      const status = found.get(c.pageId);
+      if (!status) {
+        console.log(`  ${c.name} (${c.pageId}): NOT FOUND`);
+        failures++;
+      } else {
+        console.log(`  ${c.name} (${c.pageId}): ${status} ✓`);
+      }
+    }
+    console.log(failures === 0 ? `\nAll ${configs.length} pages valid.` : `\n${failures} page(s) missing.`);
+    process.exit(failures > 0 ? 1 : 0);
+  } catch (err) {
+    console.error(`MySQL error: ${err.message}`);
+    process.exit(1);
+  }
+}
 
 if (!pageName) {
   console.error('Usage: node build-page.js --page <name> [--section <name>] [--dry-run] [--force]');
   console.error('       node build-page.js --page <name> --restore <backup-file>');
+  console.error('       node build-page.js --preflight-all');
+  console.error('       node build-page.js --page <name> --check-drift');
   console.error('\nAvailable pages: home');
   process.exit(1);
 }
@@ -92,6 +140,17 @@ if (!sectionFilter) {
   } else {
     console.log(`  ✓ Section coverage: ${buildSections.length}/${buildSections.length} sections have verify entries`);
   }
+}
+
+// ════════════════════════════════════════════════════════════════
+// PRE-FLIGHT: DUPLICATE SECTION NAME GUARD
+// ════════════════════════════════════════════════════════════════
+const sectionNames = (pageConfig.sections || []).map(s => s.name);
+const dupes = sectionNames.filter((n, i) => sectionNames.indexOf(n) !== i);
+if (dupes.length > 0) {
+  console.error(`\n✗ FATAL: Duplicate section names: ${[...new Set(dupes)].join(', ')}`);
+  console.error('  Each section must have a unique name. Fix pages/' + pageName + '.js');
+  process.exit(1);
 }
 
 // ════════════════════════════════════════════════════════════════
@@ -180,7 +239,7 @@ if (pageConfig.prototypePath) {
 // ════════════════════════════════════════════════════════════════
 // STEP 1: POST-LOCK CHECK
 // ════════════════════════════════════════════════════════════════
-if (!DRY_RUN) {
+if (!DRY_RUN && !CHECK_DRIFT) {
   const lock = mysql.checkPostLock(pageConfig.pageId);
   if (lock.locked && !FORCE) {
     console.error(`\n✗ Page ${pageConfig.pageId} is locked by user ${lock.user} (${lock.lockAge}s ago).`);
@@ -203,7 +262,7 @@ if (!DRY_RUN) {
 // ════════════════════════════════════════════════════════════════
 // STEP 2: BACKUP
 // ════════════════════════════════════════════════════════════════
-if (!DRY_RUN) {
+if (!DRY_RUN && !CHECK_DRIFT) {
   console.log('\n▸ Backing up current content...');
   const backupFile = mysql.backup(pageConfig.pageId);
   console.log(`  ✓ Backup saved: ${backupFile}`);
@@ -338,6 +397,62 @@ if (DRY_RUN) {
   const classes = pageLevelCSS.match(/\.[a-z][\w-]*/g) || [];
   [...new Set(classes)].sort().forEach(c => console.log('  ' + c));
 
+  process.exit(0);
+}
+
+// ════════════════════════════════════════════════════════════════
+// CHECK-DRIFT: compare assembled content hash vs MySQL (early exit)
+// ════════════════════════════════════════════════════════════════
+if (CHECK_DRIFT) {
+  const crypto = require('crypto');
+  console.log(`\nDrift check for ${pageName} (ID: ${pageConfig.pageId})...`);
+
+  if (sectionFilter) {
+    console.warn('  ⚠ Partial build (--section) detected — drift check skipped (would give false positives).');
+    process.exit(0);
+  }
+
+  try {
+    const localHash = crypto.createHash('md5').update(blockContent + pageLevelCSS).digest('hex');
+
+    const dbContent = mysql.query(
+      `SELECT post_content FROM wp_posts WHERE ID = ${pageConfig.pageId};`
+    );
+    // Strip CLI header row (first line is column name)
+    const dbBody = dbContent.split('\n').slice(1).join('\n').trim();
+    const dbHash = crypto.createHash('md5').update(dbBody).digest('hex');
+
+    // Also check CSS meta
+    const dbCSS = mysql.query(
+      `SELECT meta_value FROM wp_postmeta WHERE post_id = ${pageConfig.pageId} AND meta_key = '_et_builder_page_level_css';`
+    );
+    const dbCSSBody = dbCSS.split('\n').slice(1).join('\n').trim();
+
+    // Compare content
+    if (localHash === dbHash) {
+      console.log('  Content: CLEAN (hash match)');
+    } else {
+      console.log('  Content: DRIFT DETECTED');
+      console.log(`    Local:  ${localHash}`);
+      console.log(`    DB:     ${dbHash}`);
+      console.log('    Someone may have edited this page in Visual Builder.');
+    }
+
+    // Compare CSS (simpler — just check if non-empty and roughly matches)
+    const localCSSHash = crypto.createHash('md5').update(pageLevelCSS).digest('hex');
+    const dbCSSHash = crypto.createHash('md5').update(dbCSSBody).digest('hex');
+    if (localCSSHash === dbCSSHash) {
+      console.log('  CSS:     CLEAN (hash match)');
+    } else {
+      console.log('  CSS:     DRIFT DETECTED');
+      console.log(`    Local:  ${localCSSHash}`);
+      console.log(`    DB:     ${dbCSSHash}`);
+    }
+  } catch (err) {
+    console.error(`  ✗ Drift check failed: ${err.message}`);
+    console.error('  Is MySQL running? Check LocalWP.');
+    process.exit(1);
+  }
   process.exit(0);
 }
 

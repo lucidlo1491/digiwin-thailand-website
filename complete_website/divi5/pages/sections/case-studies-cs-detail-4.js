@@ -170,13 +170,8 @@ function css() {
             line-height: 1.4;
         }
 .cs-animate {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-.cs-animate.dw-visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: none;
         }
 @media (max-width: 640px) {
             .cs-hero {
@@ -231,6 +226,26 @@ function css() {
 
 ${base.diviListReset(P)}
 ${base.reducedMotion('')}
+
+.et_pb_section .cs-detail-badge {
+            line-height: 17.6px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .cs-company-desc {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.et_pb_section .cs-detail-product-tag {
+            line-height: 17.6px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .cs-detail-metric-value {
+            -webkit-font-smoothing: auto !important;
+        }
 `.trim();
 }
 

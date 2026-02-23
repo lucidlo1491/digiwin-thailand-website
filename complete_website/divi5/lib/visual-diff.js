@@ -65,8 +65,11 @@ function loadPNG(filePath) {
 function findLatestWPScreenshot(pageName, sectionName) {
   if (!fs.existsSync(WP_DIR)) return null;
 
+  // Use regex to avoid greedy prefix match (e.g. 'cs-detail-' matching 'cs-detail-2-')
+  // Timestamps start with 4 digits (year), so match sectionName followed by -YYYY
+  const sectionPattern = new RegExp(`^${pageName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}-${sectionName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}-\\d{4}-.*\\.png$`);
   const files = fs.readdirSync(WP_DIR)
-    .filter(f => f.startsWith(`${pageName}-${sectionName}-`) && f.endsWith('.png'))
+    .filter(f => sectionPattern.test(f))
     .sort()
     .reverse();
 

@@ -249,13 +249,8 @@ function css() {
             outline-offset: 3px;
         }
 .cs-animate {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-.cs-animate.dw-visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: none;
         }
 @media (max-width: 1024px) {
             .cs-card-grid {
@@ -330,6 +325,54 @@ function css() {
 .mockup-bar.active{opacity:1;background:#10b981}
 
 ${base.reducedMotion('')}
+
+.et_pb_section .cs-filter-btn {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.et_pb_section .cs-card {
+            line-height: 25.6px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .cs-card-badge {
+            line-height: 16px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .cs-card-summary {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.et_pb_section .cs-card-metric {
+            line-height: 38.4px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .cs-card-metric-label {
+            line-height: 20.8px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .cs-card-product-tag {
+            line-height: 16px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .cs-card-link {
+            line-height: 22.4px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .cs-card-company {
+            -webkit-font-smoothing: auto !important;
+        }
 `.trim();
 }
 

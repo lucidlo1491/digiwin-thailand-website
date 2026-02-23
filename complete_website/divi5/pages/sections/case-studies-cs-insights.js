@@ -110,13 +110,8 @@ function css() {
             color: #fff;
         }
 .cs-animate {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-.cs-animate.dw-visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: none;
         }
 @media (max-width: 640px) {
             .cs-hero {
@@ -172,6 +167,18 @@ function css() {
 /* TODO: PSEUDO-ELEMENTS using global classes (port manually) */
 /* .dw-grain-overlay::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none;animation:grain 8s steps(10) infinite;z-index:1} */
 ${base.reducedMotion('')}
+
+.et_pb_section .cs-insight-stat-value {
+            line-height: 76.8px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .cs-insight-stat-label {
+            line-height: 17.6px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
 `.trim();
 }
 

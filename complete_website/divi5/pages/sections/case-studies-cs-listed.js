@@ -279,13 +279,8 @@ function css() {
             text-decoration: underline;
         }
 .cs-animate {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-.cs-animate.dw-visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: none;
         }
 @media (max-width: 1024px) {
             .cs-card-grid {
@@ -354,6 +349,44 @@ function css() {
 
 
 ${base.reducedMotion('')}
+
+.et_pb_section .cs-section-label {
+            line-height: 17.6px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .cs-section-subtitle {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.et_pb_section .cs-listed-card-company {
+            line-height: 25.6px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .cs-listed-card-industry {
+            line-height: 20.8px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .cs-listed-card-link {
+            line-height: 20.8px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .cs-placeholder-text {
+            -webkit-font-smoothing: auto !important;
+        }
+
+.et_pb_section .cs-placeholder-cta {
+            line-height: 20.8px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
 `.trim();
 }
 

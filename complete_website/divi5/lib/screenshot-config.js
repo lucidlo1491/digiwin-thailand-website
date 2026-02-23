@@ -72,7 +72,7 @@ module.exports = {
     '.dw-check-card', '.checks-card', '.pchecks-card',
     '.dw-result-card', '.results-card',
     '.dw-value-prop', '.products-card',
-    '.fade-in',
+    '.fade-in', '.cs-animate',
   ].join(', '),
 
   /** Header hiding — HTML side */

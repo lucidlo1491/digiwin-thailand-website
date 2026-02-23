@@ -1,9 +1,9 @@
 {
   "page": "news",
-  "savedAt": "2026-02-23T15:33:33.078Z",
+  "savedAt": "2026-02-23T15:38:36.770Z",
   "sections": {
     "fullpage": {
-      "diffPercent": 4.3,
+      "diffPercent": 4.32,
       "verdict": "REVIEW",
       "skipped": false
     },
@@ -33,7 +33,7 @@
       "skipped": false
     },
     "cta": {
-      "diffPercent": 1.59,
+      "diffPercent": 1.68,
       "verdict": "MATCH",
       "skipped": false
     }

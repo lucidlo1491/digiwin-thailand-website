@@ -228,7 +228,7 @@ function css() {
 /* .dw-d-bg--bold{opacity:0.22 !important} */
 /* .dw-d-bg--medium{opacity:0.14 !important} */
 /* .dw-d-bg--subtle{opacity:0.06 !important} */
-\${superD.css('dw-d-bg', { variant: 'outline', position: 'right' })}
+${superD.css('dw-d-bg', { variant: 'outline', position: 'corner-tl' })}
 
 
 
@@ -299,8 +299,30 @@ function css() {
   -webkit-font-smoothing: auto !important;
 }
 
+.et_pb_section .dw-d-bg {
+  position: absolute !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
 .et_pb_section .hero-illustration {
+  position: absolute !important;
+  bottom: 0 !important;
+  right: 0 !important;
   width: 600px !important;
+  height: 100% !important;
+  pointer-events: none !important;
+  overflow: hidden !important;
+  z-index: 0 !important;
+}
+
+.et_pb_section .hero-illustration svg {
+  position: absolute !important;
+  bottom: -20px !important;
+  right: -40px !important;
+  width: 560px !important;
+  height: 480px !important;
+  opacity: 0.12 !important;
 }
 
 .et_pb_section .hero-inner h1 {

@@ -291,7 +291,7 @@ function css() {
 /* .event-link{display:inline-flex;align-items:center;gap:6px;color:var(--dw-blue-text);font-family:'Noto Sans', sans-serif;font-weight:600;font-size:14px;text-decoration:none;transition:all 0.3s ease} */
 /* .mockup-nav-item.active{color:var(--dw-blue)} */
 /* .mockup-bar.active{opacity:1;background:#10b981} */
-\${superD.css('dw-d-bg', { variant: 'outline', position: 'right' })}
+${superD.css('dw-d-bg', { variant: 'outline', position: 'corner-br' })}
 
 ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
 

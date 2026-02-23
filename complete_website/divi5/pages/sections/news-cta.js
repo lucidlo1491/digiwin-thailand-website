@@ -167,7 +167,7 @@ function css() {
 /* .dw-d-bg--medium{opacity:0.14 !important} */
 /* .dw-d-bg--subtle{opacity:0.06 !important} */
 /* .dw-wave-flow--top{bottom:auto;top:0;transform:scaleY(-1)} */
-\${superD.css('dw-d-bg', { variant: 'outline', position: 'right' })}
+${superD.css('dw-d-bg', { variant: 'outline', position: 'left' })}
 
 ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
 

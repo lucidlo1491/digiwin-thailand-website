@@ -417,6 +417,21 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
 .et_pb_section:has(.featured-inner) {
   background: #fff !important;
   padding: 100px 24px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Particle Ocean approximation (CSS dot grid) */
+.et_pb_section:has(.featured-inner)::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background-image: radial-gradient(circle, rgba(0,175,240,0.18) 1px, transparent 1px) !important;
+  background-size: 18px 18px !important;
+  mask-image: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.15) 40%, transparent 65%) !important;
+  -webkit-mask-image: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.15) 40%, transparent 65%) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
 }
 
 .et_pb_section:has(.featured-inner) .et_pb_row {

@@ -18,7 +18,7 @@ const DATA = {
     { text: 'Get in Touch', href: '/demo.html', style: 'primary' },
     { text: 'View Other Industries', href: '/industries.html', style: 'ghost' },
   ],
-  superD: { variant: 'gradient', position: 'center', opacity: 0.10 },
+  superD: { variant: 'gradient', position: 'left', opacity: 0.12 },
   waveFlow: { height: '170px', opacity: 0.08 },
 };
 

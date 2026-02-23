@@ -10,7 +10,7 @@ const ctaGradient = require('../../lib/templates/cta-gradient');
 const DATA = {
   adminLabel: 'CTA: Want Results Like These?',
   sectionPrefix: 'cs-cta',
-  background: 'linear-gradient(135deg, #00AFF0 0%, #003CC8 50%, #001080 100%)',
+  background: 'linear-gradient(135deg, #00AFF0 0%, #003CC8 100%)',
   padding: '100px 24px',
   maxWidth: '640px',
   title: 'Want Results Like These?',

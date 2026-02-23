@@ -15,7 +15,7 @@ const P = 'pp-cta';
 const DATA = {
   adminLabel: 'Final CTA: Ready to Discuss',
   sectionPrefix: P,
-  background: 'linear-gradient(135deg, #00AFF0 0%, #003CC8 50%, #001080 100%)',
+  background: 'linear-gradient(135deg, #00AFF0 0%, #003CC8 100%)',
   padding: '100px 24px',
   title: 'Ready to Discuss Your Territory?',
   subtitle: 'A straightforward conversation about <em>your</em> margins, <em>your</em> market, and whether the partnership math works for both sides.',
@@ -23,7 +23,7 @@ const DATA = {
     { text: "Let\u2019s Talk Partnership", href: '/demo.html', style: 'primary' },
     { text: 'See the Math First', href: '/partner-program/economics.html', style: 'ghost' },
   ],
-  superD: { variant: 'outline', position: 'left', opacity: 0.12 },
+  superD: { variant: 'gradient', position: 'center', opacity: 0.12, modifiers: ['glow'] },
   waveFlow: { height: '160px', opacity: 0.30 },
 };
 

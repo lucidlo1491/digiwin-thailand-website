@@ -76,6 +76,12 @@ const positions = {
     backgroundPosition: 'center right',
     transform: 'none',
   },
+  'corner-tl': {
+    left: '-5%', top: '-5%', right: 'auto', bottom: 'auto',
+    width: '30%', minHeight: '30vh',
+    backgroundPosition: 'center left',
+    transform: 'none',
+  },
   'corner-tr': {
     right: '-5%', top: '-5%', bottom: 'auto', left: 'auto',
     width: '30%', minHeight: '30vh',

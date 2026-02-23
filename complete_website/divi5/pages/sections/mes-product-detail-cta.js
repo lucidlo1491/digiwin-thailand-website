@@ -18,7 +18,7 @@ const DATA = {
     { text: 'Get in Touch', href: '/demo.html', style: 'primary' },
     { text: 'View by Industry', href: '/industries.html', style: 'ghost' },
   ],
-  superD: { variant: 'outline', position: 'right', opacity: 0.16 },
+  superD: { variant: 'gradient', position: 'corner-br', modifiers: ['bold', 'glow'] },
 };
 
 module.exports = {

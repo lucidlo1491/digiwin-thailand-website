@@ -363,11 +363,6 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
   -webkit-font-smoothing: auto !important;
 }
 
-/* Force fade-in-section visible (no JS scroll observer in WP) */
-.et_pb_section .fade-in-section {
-  opacity: 1 !important;
-  transform: none !important;
-}
 `.trim();
 }
 

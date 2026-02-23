@@ -32,7 +32,40 @@ function blocks() {
                     <button type="submit" class="${P}-btn">Subscribe</button>
                 </form>
                 <a href="demo.html" class="cta-secondary-link">Or Let's Talk Directly <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-            </div>`;
+            </div>
+            <script>
+            (function(){
+              /* ── Fade-in scroll observer ── */
+              var els = document.querySelectorAll('.fade-in-section');
+              if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && els.length) {
+                var io = new IntersectionObserver(function(entries){
+                  entries.forEach(function(e){
+                    if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}
+                  });
+                }, {threshold:0.15});
+                els.forEach(function(el){io.observe(el);});
+              } else {
+                els.forEach(function(el){el.classList.add('is-visible');});
+              }
+              /* ── Past Events filter tabs ── */
+              var tabs = document.querySelectorAll('.filter-tab');
+              var cards = document.querySelectorAll('.past-card');
+              tabs.forEach(function(tab){
+                tab.addEventListener('click', function(){
+                  tabs.forEach(function(t){t.classList.remove('active');});
+                  tab.classList.add('active');
+                  var f = tab.getAttribute('data-filter');
+                  cards.forEach(function(c){
+                    if(f==='all'||c.getAttribute('data-type')===f){
+                      c.style.display='';
+                      c.classList.remove('is-visible');
+                      setTimeout(function(){c.classList.add('is-visible');},50);
+                    } else {c.style.display='none';}
+                  });
+                });
+              });
+            })();
+            </script>`;
 
   return base.wrapInDiviSection('Cta', html, 'Cta: Content');
 }
@@ -167,7 +200,7 @@ function css() {
 /* .dw-d-bg--medium{opacity:0.14 !important} */
 /* .dw-d-bg--subtle{opacity:0.06 !important} */
 /* .dw-wave-flow--top{bottom:auto;top:0;transform:scaleY(-1)} */
-${superD.css('dw-d-bg', { variant: 'outline', position: 'left' })}
+${superD.css('dw-d-bg', { variant: 'gradient', position: 'left' })}
 
 ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
 
@@ -178,9 +211,21 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
 }
 
 /* Divi section-level overrides */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 .et_pb_section:has(.news-cta-inner) {
   background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #000864 100%) !important;
-  padding: 100px 24px !important;
+  padding: 80px 24px !important;
   position: relative !important;
   overflow: hidden !important;
 }
@@ -202,12 +247,6 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
 
 .et_pb_section:has(.news-cta-inner) .et_pb_column {
   padding: 0 !important;
-}
-
-/* Force fade-in-section visible (no JS scroll observer in WP) */
-.et_pb_section .fade-in-section {
-  opacity: 1 !important;
-  transform: none !important;
 }
 
 .et_pb_section .news-cta-inner {
@@ -232,7 +271,7 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
 .et_pb_section .news-cta-inner p {
   font-size: 18px !important;
   color: rgba(255,255,255,0.85) !important;
-  margin-bottom: 40px !important;
+  margin-bottom: 32px !important;
   line-height: 1.7 !important;
   -webkit-font-smoothing: auto !important;
   padding-bottom: 0 !important;

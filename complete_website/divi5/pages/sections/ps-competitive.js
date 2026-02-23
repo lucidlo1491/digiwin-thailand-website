@@ -133,6 +133,12 @@ function css() {
   .${P}-ace{padding:32px 24px}
   .${P}-ace-quote{font-size:16px}
 }
+/* Divi line-height overrides */
+.et_pb_section .${P}-label{line-height:19.2px !important}
+.et_pb_section .${P}-tag{line-height:17.6px !important}
+.et_pb_section .${P}-use-when{line-height:19.2px !important}
+.et_pb_section .${P}-use-when strong{line-height:19.2px !important}
+.et_pb_section .${P}-ace-label{line-height:19.2px !important}
 ${base.reducedMotion(`.${P}-card{transition:none !important}`)}`.trim();
 }
 

@@ -1,35 +1,35 @@
 {
   "page": "partner-solutions",
-  "savedAt": "2026-02-23T03:59:35.083Z",
+  "savedAt": "2026-02-23T05:16:49.826Z",
   "sections": {
     "hero": {
-      "diffPercent": 100,
-      "verdict": "FAIL",
+      "diffPercent": 1.39,
+      "verdict": "MATCH",
       "skipped": false
     },
     "products": {
-      "diffPercent": 100,
-      "verdict": "FAIL",
+      "diffPercent": 3.5,
+      "verdict": "REVIEW",
       "skipped": false
     },
     "lifecycle": {
-      "diffPercent": 100,
-      "verdict": "FAIL",
+      "diffPercent": 0.58,
+      "verdict": "MATCH",
       "skipped": false
     },
     "reverse-cut": {
-      "diffPercent": 100,
-      "verdict": "FAIL",
+      "diffPercent": 2.43,
+      "verdict": "REVIEW",
       "skipped": false
     },
     "competitive": {
-      "diffPercent": 100,
-      "verdict": "FAIL",
+      "diffPercent": 2.75,
+      "verdict": "REVIEW",
       "skipped": false
     },
     "cta": {
-      "diffPercent": 100,
-      "verdict": "FAIL",
+      "diffPercent": 1.5,
+      "verdict": "MATCH",
       "skipped": false
     }
   }

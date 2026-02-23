@@ -139,6 +139,11 @@ function css() {
   .${P}-title{font-size:32px}
   .${P}-comparison{padding:24px}
 }
+/* Divi line-height + color overrides */
+.et_pb_section .${P}-label{line-height:19.2px !important}
+.et_pb_section .${P}-tag{line-height:17.6px !important}
+.et_pb_section .${P}-exp-label{line-height:19.2px !important}
+.et_pb_section .${P}-phase p strong{color:#5b6b80 !important}
 ${base.reducedMotion(``)}`.trim();
 }
 

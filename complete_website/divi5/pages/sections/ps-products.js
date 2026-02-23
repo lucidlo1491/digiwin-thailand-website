@@ -216,6 +216,15 @@ ${base.diviListReset(P)}
   .${P}-card{padding:32px 24px}
   .${P}-title{font-size:32px}
 }
+/* Divi line-height + color overrides */
+.et_pb_section .${P}-subtitle{max-width:600px !important}
+.et_pb_section .${P}-desc strong{color:#5b6b80 !important}
+.et_pb_section .${P}-features li span{line-height:24px !important}
+.et_pb_section .${P}-features li span strong{color:#475569 !important;line-height:24px !important}
+.et_pb_section .${P}-badge{line-height:20.8px !important}
+.et_pb_section .${P}-metrics-title{line-height:25.6px !important}
+.et_pb_section .${P}-metric-label{line-height:22.4px !important}
+.et_pb_section .${P}-metric-value{line-height:28.8px !important}
 ${base.reducedMotion(`.${P}-card{transition:none !important}.${P}-link svg{transition:none !important}`)}`.trim();
 }
 

@@ -122,6 +122,12 @@ function css() {
   .${P}-section{padding:80px 20px}
   .${P}-title{font-size:32px}
 }
+/* Divi line-height + color overrides */
+.et_pb_section .${P}-label{line-height:19.2px !important}
+.et_pb_section .${P}-products{line-height:19.2px !important}
+.et_pb_section .${P}-revenue{line-height:17.6px !important}
+.et_pb_section .${P}-num{line-height:28.8px !important}
+.et_pb_section .${P}-proof strong{color:rgba(255,255,255,0.9) !important}
 ${base.reducedMotion(`.${P}-phase{transition:none !important}`)}`.trim();
 }
 

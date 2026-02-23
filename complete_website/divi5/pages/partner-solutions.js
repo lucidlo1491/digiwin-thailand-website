@@ -23,7 +23,7 @@ module.exports = {
   title: 'Partner Solution Stack: ERP, MES, WMS, AIoT — DigiWin Thailand',
   siteUrl: 'https://digiwin-thailand.local',
   specPath: path.join(__dirname, '..', '..', 'docs', 'content-specs', 'ContentSpec_PartnerSolutions_Divi5_2.0.md'),
-  prototypePath: path.join(__dirname, '..', 'partner-program', 'solutions.html'),
+  prototypePath: path.join(__dirname, '..', '..', 'partner-program', 'solutions.html'),
   protoFile: 'partner-program/solutions.html',
 
   // Sections in page order (top to bottom)

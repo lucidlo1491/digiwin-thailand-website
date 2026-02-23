@@ -21,8 +21,6 @@ const P = 'cta'; // CSS prefix — customize if needed
 function blocks() {
   const html = `
     <div class="dw-d-bg dw-d-bg--left" style="opacity: 0.12;"></div>
-            
-            <div class="dw-wave-flow" style="height: 160px; opacity: 0.3; z-index: 1;"></div>
             <div class="news-cta-inner fade-in-section" style="position: relative; z-index: 3;">
                 <h2>Don't Miss the Next Event</h2>
                 <p>Join 500+ Thai manufacturing professionals who stay informed about industry trends, compliance updates, and technology opportunities.</p>
@@ -225,7 +223,8 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
 
 .et_pb_section:has(.news-cta-inner) {
   background: linear-gradient(165deg, #0f1419 0%, #1a2632 40%, #000864 100%) !important;
-  padding: 80px 24px !important;
+  padding: 100px 24px !important;
+  min-height: auto !important;
   position: relative !important;
   overflow: hidden !important;
 }
@@ -243,6 +242,7 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
   max-width: 100% !important;
   width: 100% !important;
   padding: 0 !important;
+  margin: 0 auto !important;
 }
 
 .et_pb_section:has(.news-cta-inner) .et_pb_column {

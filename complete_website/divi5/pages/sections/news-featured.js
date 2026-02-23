@@ -578,7 +578,7 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
   font-size: 16px !important;
   font-weight: 500 !important;
   color: #0369a1 !important;
-  letter-spacing: 2px !important;
+  letter-spacing: 4px !important;
   text-transform: uppercase !important;
   margin-bottom: 4px !important;
 }
@@ -595,7 +595,7 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
 .et_pb_section .fea-year {
   font-family: 'JetBrains Mono', monospace !important;
   font-size: 14px !important;
-  color: rgba(255,255,255,0.6) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
   letter-spacing: 3px !important;
 }
 
@@ -647,7 +647,7 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
   gap: 8px !important;
   background: linear-gradient(135deg, #00AFF0, #003CC8) !important;
   color: #fff !important;
-  padding: 14px 28px !important;
+  padding: 16px 32px !important;
   border-radius: 12px !important;
   font-weight: 600 !important;
   font-size: 15px !important;

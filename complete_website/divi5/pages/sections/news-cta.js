@@ -200,7 +200,7 @@ function css() {
 /* .dw-d-bg--medium{opacity:0.14 !important} */
 /* .dw-d-bg--subtle{opacity:0.06 !important} */
 /* .dw-wave-flow--top{bottom:auto;top:0;transform:scaleY(-1)} */
-${superD.css('dw-d-bg', { variant: 'gradient', position: 'left' })}
+${superD.css('dw-d-bg', { variant: 'outline', position: 'left', opacity: 0.12 })}
 
 ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
 
@@ -271,7 +271,7 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
 .et_pb_section .news-cta-inner p {
   font-size: 18px !important;
   color: rgba(255,255,255,0.85) !important;
-  margin-bottom: 32px !important;
+  margin-bottom: 40px !important;
   line-height: 1.7 !important;
   -webkit-font-smoothing: auto !important;
   padding-bottom: 0 !important;

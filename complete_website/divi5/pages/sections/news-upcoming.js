@@ -382,6 +382,10 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
   -webkit-font-smoothing: auto !important;
 }
 
+.et_pb_section .upc-header h2 {
+  line-height: 64px !important;
+}
+
 `.trim();
 }
 

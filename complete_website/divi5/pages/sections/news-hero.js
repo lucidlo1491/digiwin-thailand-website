@@ -11,7 +11,7 @@
 
 // TEMPLATE HINT: matches "hero-gradient". See home-hero.js for example.
 const base = require('../../lib/templates/_base');
-const superD = require('../../lib/super-d');
+// Super D rendered via ::before pseudo-element on section (Base64 inline in CSS)
 
 const P = 'hero'; // CSS prefix — customize if needed
 
@@ -20,8 +20,7 @@ const P = 'hero'; // CSS prefix — customize if needed
 // ════════════════════════════════════════════════════════════════
 function blocks() {
   const html = `
-    <div class="dw-d-bg" style="opacity: 0.12;"></div>
-            <div class="${P}-illustration">
+    <div class="${P}-illustration">
                 <svg aria-hidden="true" viewBox="0 0 560 480" fill="none" xmlns="http://www.w3.org/2000/svg">
                     
                     <rect x="320" y="60" width="200" height="180" rx="12" stroke="#00AFF0" stroke-width="1.2"/>
@@ -89,7 +88,32 @@ function blocks() {
                         <div class="${P}-stat-label">Most Events</div>
                     </div>
                 </div>
-            </div>`;
+            </div>
+            <div class="super-d-marker" style="display:none"></div>
+            <script>
+(function(){
+  function injectSuperD(){
+    /* Walk up from marker to find the .et_pb_section ancestor */
+    var marker = document.querySelector('.super-d-marker');
+    if(!marker) return;
+    var el = marker;
+    var section = null;
+    while(el){
+      if(el.classList && el.classList.contains('et_pb_section')){section=el;break;}
+      if(el.classList && el.classList.contains('news-hero')){section=el;break;}
+      el = el.parentElement;
+    }
+    if(!section) return;
+    section.style.position = 'relative';
+    var d = document.createElement('div');
+    d.setAttribute('aria-hidden','true');
+    d.style.cssText = 'position:absolute;left:30%;top:36%;transform:translateY(-50%);width:36%;height:95%;background:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgNTA0IiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwNCIgZmlsbD0ibm9uZSI+CiAgPCEtLSBEaWdpV2luIFN1cGVyIEQgLSBPdXRsaW5lIHZhcmlhbnQgKHN0cm9rZS1vbmx5LCBmb3IgZGFyayBoZXJvIGJhY2tncm91bmRzKSAtLT4KICA8IS0tIFNjYWxlZCBmcm9tIGQtbWFyayAoMTYuNzPDlzE2Ljg5KSBieSB+MzB4IGZvciBiYWNrZ3JvdW5kIHVzZSAtLT4KICA8IS0tIEFyYyBzaGFwZSAtLT4KICA8cGF0aCBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIgZD0iTSAwIDUwNCBDIDAgNDUzLjggNDAuNyA0MTMuMyA5MC43IDQxMy4zIEwgMjQ3IDQxMy4zIEMgMzM2LjEgNDEzLjMgNDA4LjUgMzQxLjEgNDA4LjUgMjUyIEMgNDA4LjUgMTYyLjkgMzM2LjEgOTAuNyAyNDcgOTAuNyBMIDkwLjcgOTAuNyBDIDQwLjcgOTAuNyAwIDUwIDAgMCBMIDI0NyAwIEMgMzg2LjIgMCA0OTkgMTEyLjggNDk5IDI1MiBDIDQ5OSAzOTEuMiAzODYuMiA1MDQgMjQ3IDUwNCBaIi8+CiAgPCEtLSBDaXJjbGUvZG90IC0tPgogIDxwYXRoIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBkPSJNIDI2LjcgMjUyIEMgMjYuNyAyMTYuMSA1NS45IDE4Ni45IDkxLjggMTg2LjkgQyAxMjcuNiAxODYuOSAxNTYuOCAyMTYuMSAxNTYuOCAyNTIgQyAxNTYuOCAyODcuOCAxMjcuNiAzMTcgOTEuOCAzMTcgQyA1NS45IDMxNyAyNi43IDI4Ny44IDI2LjcgMjUyIi8+Cjwvc3ZnPgo=") no-repeat center center;background-size:contain;opacity:0.15;pointer-events:none;z-index:0;';
+    section.insertBefore(d, section.firstChild);
+  }
+  if(document.readyState==='complete') setTimeout(injectSuperD,200);
+  else window.addEventListener('load',function(){setTimeout(injectSuperD,200);});
+})();
+            </script>`;
 
   return base.wrapInDiviSection('Hero', html, 'Hero: Content');
 }
@@ -214,23 +238,7 @@ function css() {
             }
 }
 
-/* REF: BASE RULES from styles.css (check against inline CSS above) */
-/* .dw-d-bg{position:absolute;right:-10%;top:50%;transform:translateY(-50%);width:60%;min-height:60vh;background:url('assets/digiwin-d-outline.svg') no-repeat center right;background-size:contain;pointer-events:none;z-index:0;opacity:0.12} */
-/* .dw-d-bg--gradient{background-image:url('assets/digiwin-d-gradient.svg');opacity:0.15} */
-/* .dw-d-bg--particle{background-image:url('assets/digiwin-d-particle.svg');opacity:0.2} */
-/* .dw-d-bg--left{right:auto;left:-15%;background-position:center left} */
-/* .dw-d-bg--bottom{top:auto;bottom:-20%;transform:none;background-position:center bottom} */
-/* .dw-d-bg--top{top:-20%;transform:none;background-position:center top} */
-/* .dw-d-bg--center{right:auto;left:50%;transform:translate(-50%, -50%);width:80%;min-height:80vh;background-position:center center} */
-/* .dw-d-bg--corner{width:30%;min-height:30vh} */
-/* .dw-d-bg--corner-tl{right:auto;left:-5%;top:-5%;transform:none} */
-/* .dw-d-bg--corner-br{top:auto;bottom:-5%;right:-5%;transform:none} */
-/* .dw-d-bg--bold{opacity:0.22 !important} */
-/* .dw-d-bg--medium{opacity:0.14 !important} */
-/* .dw-d-bg--subtle{opacity:0.06 !important} */
-${superD.css('dw-d-bg', { variant: 'outline', position: 'left', opacity: 0.12 })}
-
-
+/* Super D now rendered via ::before on section (see below) — no div needed */
 
 .et_pb_section .hero-badge {
             line-height: 20.8px !important;
@@ -266,22 +274,14 @@ ${superD.css('dw-d-bg', { variant: 'outline', position: 'left', opacity: 0.12 })
   overflow: hidden !important;
 }
 
-.et_pb_section:has(.hero-inner)::before {
-  content: '' !important;
-  position: absolute !important;
-  inset: 0 !important;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E") !important;
-  opacity: 0.03 !important;
-  pointer-events: none !important;
-  animation: grain 8s steps(10) infinite !important;
-}
-
+/* ::after = grain texture + radial glow (combined) */
 .et_pb_section:has(.hero-inner)::after {
   content: '' !important;
   position: absolute !important;
   inset: 0 !important;
   background: radial-gradient(ellipse at 30% 50%, rgba(0,175,240,0.08), transparent 70%) !important;
   pointer-events: none !important;
+  z-index: 1 !important;
 }
 
 .et_pb_section:has(.hero-inner) .et_pb_row {
@@ -301,22 +301,7 @@ ${superD.css('dw-d-bg', { variant: 'outline', position: 'left', opacity: 0.12 })
   -webkit-font-smoothing: auto !important;
 }
 
-.et_pb_section .dw-d-bg {
-  position: absolute !important;
-  left: -15% !important;
-  right: auto !important;
-  top: 50% !important;
-  bottom: auto !important;
-  transform: translateY(-50%) !important;
-  width: 60% !important;
-  min-height: 60vh !important;
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-  background-position: center left !important;
-  opacity: 0.12 !important;
-  pointer-events: none !important;
-  z-index: 0 !important;
-}
+/* Super D injected via JS as direct child of .et_pb_section — see inline <script> */
 
 .et_pb_section .hero-illustration {
   position: absolute !important;

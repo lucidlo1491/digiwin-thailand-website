@@ -269,10 +269,10 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
 
 .et_pb_section .series-step h3 {
   font-size: 18px !important;
-  font-weight: 600 !important;
-  color: #000864 !important;
-  margin-bottom: 12px !important;
-  line-height: 1.3 !important;
+  font-weight: 700 !important;
+  color: #333 !important;
+  margin-bottom: 0 !important;
+  line-height: 29.952px !important;
   -webkit-font-smoothing: auto !important;
 }
 

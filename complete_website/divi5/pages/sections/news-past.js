@@ -346,12 +346,19 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
 
 .et_pb_section .past-inner h2 {
   padding: 0 !important;
+  line-height: 64px !important;
   -webkit-font-smoothing: auto !important;
 }
 
 .et_pb_section .past-inner h3 {
   padding: 0 !important;
   -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .past-card h3 {
+  font-size: 18.72px !important;
+  font-weight: 700 !important;
+  line-height: 29.952px !important;
 }
 
 .et_pb_section .past-inner p {

@@ -380,6 +380,14 @@ ${base.reducedMotion('')}
 
 /* Super D decoration */
 ${superD.css('dw-d-bg', { variant: 'particle', position: 'bottom', modifiers: ['glow'] })}
+
+.et_pb_section .btn-white {
+            line-height: 25.6px !important;
+        }
+
+.et_pb_section .btn-outline-white {
+            line-height: 25.6px !important;
+        }
 `.trim();
 }
 

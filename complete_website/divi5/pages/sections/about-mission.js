@@ -35,7 +35,7 @@ function blocks() {
                 </div>
                 <div class="mission-visual">
                     <div class="mission-image">
-                        <img src="images/about-mission.jpg" alt="Smart factory floor with digital manufacturing technology" loading="lazy">
+                        <img src="/wp-content/uploads/2026/02/about-mission.jpg" alt="Smart factory floor with digital manufacturing technology" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -51,15 +51,11 @@ function blocks() {
 function css() {
   return `
 /* === MISSION (S2) === */
-/* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .mission-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
-@keyframes bounce-down {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
-        }
 .mission-section {
             padding: 100px 24px;
             background: #fff;
+            -webkit-font-smoothing: auto;
+            -moz-osx-font-smoothing: auto;
         }
 .mission-inner {
             max-width: 1100px;
@@ -99,12 +95,14 @@ function css() {
             font-weight: 700;
             color: #000864;
             margin-bottom: 8px;
+            line-height: 51.2px;
         }
 .mission-origin-pinyin {
             font-family: 'JetBrains Mono', monospace;
             font-size: 14px;
             color: #5b6b80;
             margin-bottom: 12px;
+            line-height: 22.4px;
         }
 .mission-origin-meaning {
             font-size: 15px;
@@ -127,102 +125,22 @@ function css() {
             object-fit: cover;
         }
 @media (max-width: 1024px) {
-            .about-hero-inner, .story-grid, .thailand-content, .mission-inner, .outcomes-inner {
-                grid-template-columns: 1fr;
-                gap: 48px;
-            }
-            .beliefs-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-banner-inner {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .about-hero-stats {
-                max-width: 400px;
-                margin: 0 auto;
-            }
-            .why-cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .global-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .asean-timeline {
-                flex-direction: column;
-            }
-            .asean-arrow {
-                transform: rotate(90deg);
-            }
-        }
+  .mission-inner{grid-template-columns:1fr;gap:48px}
+}
 @media (max-width: 640px) {
-            .about-hero {
-                padding: 120px 20px 80px;
-            }
-            .about-hero-content h1 {
-                font-size: 28px;
-            }
-            .about-hero-stats {
-                grid-template-columns: 1fr;
-            }
-            .why-cards {
-                grid-template-columns: 1fr;
-            }
-            .global-stats {
-                grid-template-columns: 1fr;
-            }
-            .thailand-proof-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-banner-inner {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
-            }
-            .stat-number {
-                font-size: 40px;
-            }
-            .mission-image {
-                height: 280px;
-            }
-            .outcomes-image {
-                height: 320px;
-            }
-            .mission-content h2, .outcomes-content h2 {
-                font-size: 28px;
-            }
-            .asia-map-visual {
-                display: none;
-            }
-            .asia-map-mobile {
-                display: block;
-            }
-            .region-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-@media (prefers-reduced-motion: reduce) {
-            .hero-scroll-cta svg,
-            .milestone-card,
-            .region-block,
-            .belief-card,
-            .why-card,
-            .award-card,
-            .contact-cta,
-            .asean-year,
-            .region-cities span.more,
-            .region-cities span.less,
-            .dw-d-parallax,
-            .dw-wave-flow,
-            .dw-wave-fade,
-            .dw-d-bg {
-                animation: none !important;
-                transition: none !important;
-            }
-        }
+  .mission-image{height:280px}
+  .mission-content h2{font-size:28px}
+}
+
+/* Divi overrides */
+.et_pb_section .mission-content h2{font-weight:700 !important;line-height:1.2 !important}
+.et_pb_section .mission-content p{padding-bottom:0 !important;line-height:30.6px !important}
+.et_pb_section .mission-origin-meaning{line-height:24px !important;padding-bottom:0 !important}
 
 ${base.reducedMotion('')}
 
 /* Super D decoration */
-${superD.css('dw-d-bg', { variant: 'outline', position: 'right' })}
+${superD.css('dw-d-bg', { variant: 'outline', position: 'center', opacity: 0.06 })}
 `.trim();
 }
 

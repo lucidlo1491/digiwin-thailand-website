@@ -461,25 +461,11 @@ function blocks() {
 function css() {
   return `
 /* === ASIA PRESENCE (S9) === */
-/* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
-@keyframes bounce-down {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
-        }
-.section-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 500;
-            color: #15803d;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            display: block;
-        }
 .asia-presence {
             padding: 100px 24px;
             background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+            -webkit-font-smoothing: auto;
+            -moz-osx-font-smoothing: auto;
         }
 .asia-presence-inner {
             max-width: 1200px;
@@ -781,7 +767,7 @@ function css() {
         }
 .asean-arrow {
             color: rgba(255,255,255,0.75);
-            font-size: 20px;
+            font-size: 24px !important;
         }
 .presence-stats {
             display: grid;
@@ -804,105 +790,6 @@ function css() {
             font-size: 13px;
             color: rgba(255,255,255,0.75);
             margin-top: 4px;
-        }
-.section-label-light {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 500;
-            color: #15803d;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            display: block;
-        }
-.asean-year.featured {
-            background: rgba(0, 175, 240, 0.2);
-            border-color: #00AFF0;
-        }
-.asean-year.featured .asean-date {
-            color: #fff;
-        }
-.asean-arrow {
-            font-size: 24px;
-            color: rgba(255,255,255,0.75);
-        }
-.thailand-section {
-            padding: 100px 24px;
-            background: #fff;
-        }
-.thailand-inner {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-.thailand-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-.thailand-header h2 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: #000864;
-            margin-bottom: 16px;
-        }
-.thailand-header p {
-            font-size: 18px;
-            color: #5b6b80;
-        }
-.thailand-content {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 48px;
-            align-items: center;
-        }
-.thailand-text {
-            font-size: 17px;
-            color: #475569;
-            line-height: 1.8;
-        }
-.thailand-text p {
-            margin-bottom: 24px;
-        }
-.thailand-highlights {
-            list-style: none;
-            padding: 0;
-            margin: 24px 0 0 0;
-        }
-.thailand-highlights li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 12px 0;
-        }
-.thailand-highlights li svg {
-            width: 20px;
-            height: 20px;
-            stroke: #00AFF0;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-.thailand-highlights li span {
-            font-size: 15px;
-            color: #475569;
-        }
-.thailand-proof-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-.thailand-proof {
-            background: linear-gradient(135deg, #eff6ff, #dbeafe);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-        }
-.thailand-text h4 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            color: #000864;
-            margin: 24px 0 12px;
         }
 .asia-map-mobile {
             display: none;
@@ -995,99 +882,32 @@ function css() {
                 padding: 12px 16px;
             }
         }
-@media (max-width: 1024px) {
-            .about-hero-inner, .story-grid, .thailand-content, .mission-inner, .outcomes-inner {
-                grid-template-columns: 1fr;
-                gap: 48px;
-            }
-            .beliefs-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-banner-inner {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .about-hero-stats {
-                max-width: 400px;
-                margin: 0 auto;
-            }
-            .why-cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .global-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .asean-timeline {
-                flex-direction: column;
-            }
-            .asean-arrow {
-                transform: rotate(90deg);
-            }
-        }
-@media (max-width: 640px) {
-            .about-hero {
-                padding: 120px 20px 80px;
-            }
-            .about-hero-content h1 {
-                font-size: 28px;
-            }
-            .about-hero-stats {
-                grid-template-columns: 1fr;
-            }
-            .why-cards {
-                grid-template-columns: 1fr;
-            }
-            .global-stats {
-                grid-template-columns: 1fr;
-            }
-            .thailand-proof-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-banner-inner {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
-            }
-            .stat-number {
-                font-size: 40px;
-            }
-            .mission-image {
-                height: 280px;
-            }
-            .outcomes-image {
-                height: 320px;
-            }
-            .mission-content h2, .outcomes-content h2 {
-                font-size: 28px;
-            }
-            .asia-map-visual {
-                display: none;
-            }
-            .asia-map-mobile {
-                display: block;
-            }
-            .region-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-@media (prefers-reduced-motion: reduce) {
-            .hero-scroll-cta svg,
-            .milestone-card,
-            .region-block,
-            .belief-card,
-            .why-card,
-            .award-card,
-            .contact-cta,
-            .asean-year,
-            .region-cities span.more,
-            .region-cities span.less,
-            .dw-d-parallax,
-            .dw-wave-flow,
-            .dw-wave-fade,
-            .dw-d-bg {
-                animation: none !important;
-                transition: none !important;
-            }
-        }
+@media(max-width:640px){.asia-map-visual{display:none}.asia-map-mobile{display:block}.region-grid{grid-template-columns:1fr}}
 
+/* Divi overrides */
+.et_pb_section .asia-header h2{font-weight:700 !important;line-height:1.2 !important}
+.et_pb_section .asia-header p{padding-bottom:0 !important;line-height:28.8px !important}
+.et_pb_section .asean-expansion h3{font-weight:600 !important;line-height:32px !important}
+.asia-presence .section-label{color:rgb(21,128,61);line-height:19.2px}
+.asia-presence .legend-item{line-height:19.2px}
+.asia-presence .region-flag{line-height:38.4px}
+.asia-presence .region-title{line-height:28.8px}
+.asia-presence .region-badge{line-height:17.6px}
+.asia-presence .hq-name{line-height:25.6px}
+.asia-presence .hq-label{line-height:19.2px}
+.asia-presence .more,.asia-presence .less{line-height:19.2px}
+.asia-presence .region-cities span{line-height:19.2px}
+.asia-presence .country-name{line-height:22.4px}
+.asia-presence .country-year{line-height:17.6px}
+.asia-presence .country-flag{line-height:32px}
+.asia-presence .asean-stop-year{line-height:38.4px}
+.asia-presence .asean-stop-country{line-height:20.8px}
+.asia-presence .asean-arrow{line-height:38.4px}
+.asia-presence .presence-stat-value{line-height:51.2px}
+.asia-presence .presence-stat-label{line-height:20.8px}
+.asia-presence .thailand-details p{line-height:20.8px;padding-bottom:0 !important}
+.asia-presence .corridor-info strong{line-height:24px}
+.asia-presence .corridor-info span{line-height:17.6px}
 
 ${base.reducedMotion('')}
 

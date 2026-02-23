@@ -106,30 +106,6 @@ function css() {
 /* === THAILAND (S8) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
 /* TODO: Add section container: .thailand-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
-@keyframes bounce-down {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
-        }
-.section-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 500;
-            color: #15803d;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            display: block;
-        }
-.section-label-light {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 500;
-            color: #15803d;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            display: block;
-        }
 .thailand-section {
             padding: 100px 24px;
             background: #fff;
@@ -293,98 +269,14 @@ function css() {
             font-weight: 600;
             color: #000864;
         }
-@media (max-width: 1024px) {
-            .about-hero-inner, .story-grid, .thailand-content, .mission-inner, .outcomes-inner {
-                grid-template-columns: 1fr;
-                gap: 48px;
-            }
-            .beliefs-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-banner-inner {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .about-hero-stats {
-                max-width: 400px;
-                margin: 0 auto;
-            }
-            .why-cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .global-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .asean-timeline {
-                flex-direction: column;
-            }
-            .asean-arrow {
-                transform: rotate(90deg);
-            }
-        }
-@media (max-width: 640px) {
-            .about-hero {
-                padding: 120px 20px 80px;
-            }
-            .about-hero-content h1 {
-                font-size: 28px;
-            }
-            .about-hero-stats {
-                grid-template-columns: 1fr;
-            }
-            .why-cards {
-                grid-template-columns: 1fr;
-            }
-            .global-stats {
-                grid-template-columns: 1fr;
-            }
-            .thailand-proof-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-banner-inner {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
-            }
-            .stat-number {
-                font-size: 40px;
-            }
-            .mission-image {
-                height: 280px;
-            }
-            .outcomes-image {
-                height: 320px;
-            }
-            .mission-content h2, .outcomes-content h2 {
-                font-size: 28px;
-            }
-            .asia-map-visual {
-                display: none;
-            }
-            .asia-map-mobile {
-                display: block;
-            }
-            .region-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-@media (prefers-reduced-motion: reduce) {
-            .hero-scroll-cta svg,
-            .milestone-card,
-            .region-block,
-            .belief-card,
-            .why-card,
-            .award-card,
-            .contact-cta,
-            .asean-year,
-            .region-cities span.more,
-            .region-cities span.less,
-            .dw-d-parallax,
-            .dw-wave-flow,
-            .dw-wave-fade,
-            .dw-d-bg {
-                animation: none !important;
-                transition: none !important;
-            }
-        }
+@media(max-width:1024px){.thailand-content{grid-template-columns:1fr;gap:48px}}
+@media(max-width:640px){.thailand-proof-grid{grid-template-columns:1fr}}
+
+/* Divi overrides */
+.et_pb_section .thailand-header h2{font-weight:700 !important;line-height:1.2 !important}
+.et_pb_section .thailand-header p{padding-bottom:0 !important}
+.et_pb_section .contact-card h3{line-height:1.3 !important}
+.thailand-section .section-label{color:#0369a1}
 
 ${base.diviListReset(P)}
 ${base.reducedMotion('')}

@@ -21,7 +21,7 @@ function blocks() {
     <div class="outcomes-inner">
                 <div class="outcomes-visual">
                     <div class="outcomes-image">
-                        <img src="images/about-outcomes.jpg" alt="Team collaborating in modern manufacturing workspace" loading="lazy">
+                        <img src="/wp-content/uploads/2026/02/about-outcomes.jpg" alt="Team collaborating in modern manufacturing workspace" loading="lazy">
                     </div>
                 </div>
                 <div class="outcomes-content">
@@ -100,15 +100,11 @@ function blocks() {
 function css() {
   return `
 /* === OUTCOMES (S7) === */
-/* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .outcomes-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
-@keyframes bounce-down {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
-        }
 .outcomes-section {
             padding: 100px 24px;
             background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+            -webkit-font-smoothing: auto;
+            -moz-osx-font-smoothing: auto;
         }
 .outcomes-inner {
             max-width: 1200px;
@@ -172,94 +168,27 @@ function css() {
             stroke: #fff;
             fill: none;
         }
-.outcome-text h4 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 17px;
-            font-weight: 600;
-            color: #000864;
-            margin-bottom: 6px;
+.outcome-text h3 {
+            font-size: 18.72px;
+            font-weight: 700;
+            color: rgb(51, 51, 51);
+            margin-bottom: 0;
+            line-height: 29.952px;
         }
 .outcome-text p {
             font-size: 14px;
             color: #5b6b80;
             line-height: 1.6;
         }
-@media (max-width: 1024px) {
-            .about-hero-inner, .story-grid, .thailand-content, .mission-inner, .outcomes-inner {
-                grid-template-columns: 1fr;
-                gap: 48px;
-            }
-            .beliefs-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-banner-inner {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .about-hero-stats {
-                max-width: 400px;
-                margin: 0 auto;
-            }
-            .why-cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .global-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .asean-timeline {
-                flex-direction: column;
-            }
-            .asean-arrow {
-                transform: rotate(90deg);
-            }
-        }
-@media (max-width: 640px) {
-            .about-hero {
-                padding: 120px 20px 80px;
-            }
-            .about-hero-content h1 {
-                font-size: 28px;
-            }
-            .about-hero-stats {
-                grid-template-columns: 1fr;
-            }
-            .why-cards {
-                grid-template-columns: 1fr;
-            }
-            .global-stats {
-                grid-template-columns: 1fr;
-            }
-            .thailand-proof-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-banner-inner {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
-            }
-            .stat-number {
-                font-size: 40px;
-            }
-            .mission-image {
-                height: 280px;
-            }
-            .outcomes-image {
-                height: 320px;
-            }
-            .mission-content h2, .outcomes-content h2 {
-                font-size: 28px;
-            }
-            .asia-map-visual {
-                display: none;
-            }
-            .asia-map-mobile {
-                display: block;
-            }
-            .region-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+@media(max-width:1024px){.outcomes-inner{grid-template-columns:1fr;gap:48px}}
+@media(max-width:640px){.outcomes-image{height:320px}.outcomes-content h2{font-size:28px}}
 
+/* Divi overrides */
+.et_pb_section .outcomes-content h2{font-weight:700 !important;line-height:1.2 !important}
+.et_pb_section .outcome-text h3{line-height:29.952px !important;font-weight:700 !important}
+.et_pb_section .outcome-text p{padding-bottom:0 !important}
 
-
+${base.reducedMotion('')}
 `.trim();
 }
 

@@ -1,6 +1,6 @@
 {
   "page": "about",
-  "savedAt": "2026-02-23T03:59:03.212Z",
+  "savedAt": "2026-02-23T09:49:33.723Z",
   "sections": {
     "fullpage": {
       "diffPercent": 30.8,
@@ -8,12 +8,57 @@
       "skipped": false
     },
     "hero": {
-      "diffPercent": 1.74,
+      "diffPercent": 2.08,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "mission": {
+      "diffPercent": 6.78,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "timeline": {
+      "diffPercent": 3.31,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "stats-banner": {
+      "diffPercent": 0.91,
       "verdict": "MATCH",
       "skipped": false
     },
+    "market-leadership": {
+      "diffPercent": 3.07,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "beliefs": {
+      "diffPercent": 3.74,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "outcomes": {
+      "diffPercent": 9.02,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "thailand": {
+      "diffPercent": 3.52,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "asia-presence": {
+      "diffPercent": 9.93,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "awards": {
+      "diffPercent": 5.15,
+      "verdict": "FAIL",
+      "skipped": false
+    },
     "cta": {
-      "diffPercent": 6.69,
+      "diffPercent": 72.14,
       "verdict": "FAIL",
       "skipped": false
     }

@@ -51,20 +51,6 @@ function css() {
   return `
 /* === MARKET LEADERSHIP (S5) === */
 .et_pb_section:has(.market-leadership){padding:0 !important;background:transparent !important}
-@keyframes bounce-down {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
-        }
-.section-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 500;
-            color: #15803d;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            display: block;
-        }
 .market-leadership {
             padding: 80px 24px;
             background: linear-gradient(135deg, #000864 0%, #000432 100%);
@@ -134,16 +120,6 @@ function css() {
             color: rgba(255,255,255,0.75);
             letter-spacing: 0.5px;
         }
-.section-label-light {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 500;
-            color: #15803d;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            display: block;
-        }
 @media (max-width: 768px) {
             .market-leadership-grid {
                 grid-template-columns: 1fr;
@@ -157,6 +133,10 @@ function css() {
             }
         }
 
+/* Divi overrides */
+.et_pb_section .market-leadership-header h2{font-weight:700 !important;line-height:1.2 !important}
+.et_pb_section .market-stat-label{padding-bottom:0 !important}
+.market-leadership .section-label{color:#00AFF0}
 
 ${base.reducedMotion('')}
 `.trim();

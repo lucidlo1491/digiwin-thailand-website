@@ -163,40 +163,6 @@ function blocks() {
 function css() {
   return `
 /* === AWARDS (S10) === */
-/* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
-@keyframes bounce-down {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
-        }
-.section-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 500;
-            color: #15803d;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            display: block;
-        }
-.milestone-badge.gold {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            color: #fff;
-        }
-.milestone-badge.gold {
-            background: linear-gradient(135deg, #F59E0B, #FFD700);
-            color: #fff;
-        }
-.section-label-light {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 500;
-            color: #15803d;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            display: block;
-        }
 .awards-section {
             padding: 100px 24px;
             background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
@@ -270,13 +236,12 @@ function css() {
             color: #0369a1;
             margin-bottom: 8px;
         }
-.award-card h4 {
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
-            color: #000864;
-            margin-bottom: 8px;
-            line-height: 1.3;
+.award-card h3 {
+            font-size: 18.72px;
+            font-weight: 700;
+            color: rgb(51, 51, 51);
+            margin-bottom: 0;
+            line-height: 29.952px;
         }
 .award-card p {
             font-size: 13px;
@@ -324,25 +289,15 @@ function css() {
                 gap: 24px;
             }
         }
-@media (prefers-reduced-motion: reduce) {
-            .hero-scroll-cta svg,
-            .milestone-card,
-            .region-block,
-            .belief-card,
-            .why-card,
-            .award-card,
-            .contact-cta,
-            .asean-year,
-            .region-cities span.more,
-            .region-cities span.less,
-            .dw-d-parallax,
-            .dw-wave-flow,
-            .dw-wave-fade,
-            .dw-d-bg {
-                animation: none !important;
-                transition: none !important;
-            }
-        }
+/* SVG scene positioning */
+.dw-section-scene{position:relative}
+.dw-section-scene svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
+
+/* Divi overrides */
+.et_pb_section .awards-header h2{font-weight:700 !important;line-height:1.2 !important}
+.et_pb_section .award-card h3{line-height:29.952px !important;font-weight:700 !important;font-size:18.72px !important;color:rgb(51,51,51) !important}
+.et_pb_section .award-card p{padding-bottom:0 !important}
+.awards-section .section-label{color:#0369a1}
 
 ${base.reducedMotion('')}
 

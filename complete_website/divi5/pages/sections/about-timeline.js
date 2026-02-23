@@ -172,10 +172,6 @@ function css() {
 /* === TIMELINE (S3) === */
 /* TODO: Review and remap class selectors to use ${P} prefix */
 /* TODO: Add section container: .timeline-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
-@keyframes bounce-down {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
-        }
 .timeline-section {
             padding: 80px 24px;
             background: linear-gradient(180deg, #000864 0%, #000432 100%);
@@ -203,7 +199,7 @@ function css() {
             font-family: 'JetBrains Mono', monospace;
             font-size: 12px;
             font-weight: 500;
-            color: #15803d;
+            color: #00AFF0;
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 16px;
@@ -379,10 +375,6 @@ function css() {
             background: linear-gradient(135deg, #10b981, #02D28C);
             color: #fff;
         }
-.milestone-badge.gold {
-            background: linear-gradient(135deg, #F59E0B, #FFD700);
-            color: #fff;
-        }
 .scroll-hint {
             text-align: center;
             margin-top: -8px;
@@ -390,22 +382,6 @@ function css() {
             font-size: 11px;
             color: rgba(255,255,255,0.75);
             letter-spacing: 1px;
-        }
-.section-label-light {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 500;
-            color: #15803d;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            display: block;
-        }
-.award-icon.gold {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-        }
-.award-icon.gold svg {
-            stroke: #d97706;
         }
 @media (max-width: 768px) {
             .timeline-scroll-container::before,
@@ -467,26 +443,10 @@ function css() {
                 display: none;
             }
         }
-@media (prefers-reduced-motion: reduce) {
-            .hero-scroll-cta svg,
-            .milestone-card,
-            .region-block,
-            .belief-card,
-            .why-card,
-            .award-card,
-            .contact-cta,
-            .asean-year,
-            .region-cities span.more,
-            .region-cities span.less,
-            .dw-d-parallax,
-            .dw-wave-flow,
-            .dw-wave-fade,
-            .dw-d-bg {
-                animation: none !important;
-                transition: none !important;
-            }
-        }
-
+/* Divi overrides */
+.et_pb_section .timeline-header h2{font-weight:700 !important;line-height:1.2 !important}
+.et_pb_section .milestone-title{line-height:1.3 !important}
+.et_pb_section .milestone-desc{padding-bottom:0 !important}
 
 ${base.reducedMotion('')}
 

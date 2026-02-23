@@ -151,102 +151,27 @@ function css() {
             color: rgba(255,255,255,0.75);
         }
 @media (max-width: 1024px) {
-            .about-hero-inner, .story-grid, .thailand-content, .mission-inner, .outcomes-inner {
-                grid-template-columns: 1fr;
-                gap: 48px;
-            }
-            .beliefs-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-banner-inner {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .about-hero-stats {
-                max-width: 400px;
-                margin: 0 auto;
-            }
-            .why-cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .global-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .asean-timeline {
-                flex-direction: column;
-            }
-            .asean-arrow {
-                transform: rotate(90deg);
-            }
-        }
+  .about-hero-inner{grid-template-columns:1fr;gap:48px}
+  .about-hero-stats{max-width:400px;margin:0 auto}
+}
 @media (max-width: 640px) {
-            .about-hero {
-                padding: 120px 20px 80px;
-            }
-            .about-hero-content h1 {
-                font-size: 28px;
-            }
-            .about-hero-stats {
-                grid-template-columns: 1fr;
-            }
-            .why-cards {
-                grid-template-columns: 1fr;
-            }
-            .global-stats {
-                grid-template-columns: 1fr;
-            }
-            .thailand-proof-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-banner-inner {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
-            }
-            .stat-number {
-                font-size: 40px;
-            }
-            .mission-image {
-                height: 280px;
-            }
-            .outcomes-image {
-                height: 320px;
-            }
-            .mission-content h2, .outcomes-content h2 {
-                font-size: 28px;
-            }
-            .asia-map-visual {
-                display: none;
-            }
-            .asia-map-mobile {
-                display: block;
-            }
-            .region-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-@media (prefers-reduced-motion: reduce) {
-            .hero-scroll-cta svg,
-            .milestone-card,
-            .region-block,
-            .belief-card,
-            .why-card,
-            .award-card,
-            .contact-cta,
-            .asean-year,
-            .region-cities span.more,
-            .region-cities span.less,
-            .dw-d-parallax,
-            .dw-wave-flow,
-            .dw-wave-fade,
-            .dw-d-bg {
-                animation: none !important;
-                transition: none !important;
-            }
-        }
+  .about-hero{padding:120px 20px 80px}
+  .about-hero-content h1{font-size:28px}
+  .about-hero-stats{grid-template-columns:1fr}
+}
 
+/* Divi overrides */
+.et_pb_section .about-hero-content h1{font-weight:700 !important;line-height:1.15 !important}
+.et_pb_section .about-hero-content p{padding-bottom:0 !important;line-height:30.6px !important}
+.et_pb_section .hero-stat-value{line-height:48px !important;color:#00AFF0 !important}
+.et_pb_section .hero-stat-label{line-height:22.4px !important}
+
+/* Defensive SVG sizing */
+svg:not([width]):not([class]){max-width:48px;max-height:48px}
 ${base.reducedMotion('')}
 
 /* Super D decoration */
-${superD.css('dw-d-bg', { variant: 'gradient', position: 'right' })}
+${superD.css('dw-d-bg', { variant: 'gradient', position: 'right', opacity: 0.16 })}
 `.trim();
 }
 

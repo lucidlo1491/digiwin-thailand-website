@@ -44,19 +44,23 @@ function blocks() {
     `</div>`;
 
   templateBlocks[3] = templateBlocks[3].replace(
-    '</div>\\n    </div>\\n    </div>',
-    '</div>\\n    ' + contactHTML + '\\n    </div>\\n    </div>'
+    '</div>\n    </div>\n    </div>',
+    '</div>\n    ' + contactHTML + '\n    </div>\n    </div>'
   );
   return templateBlocks;
 }
 
 function css() {
   return ctaGradient.css(DATA) + `
-.${P}-btn--primary{color:#00AFF0}
+.${P}-btn--primary{color:rgb(3,105,161) !important;box-shadow:rgba(0,0,0,0.15) 0px 4px 14px 0px !important}
+.${P}-btn--ghost{padding:20px 40px !important;border-color:rgba(255,255,255,0.5) !important;border-radius:14px !important}
+.${P}-subtitle{line-height:28.8px !important}
+.${P}-subtitle .dw-years{line-height:28.8px !important}
 .${P}-contact-info{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-top:40px;position:relative;z-index:3}
 .${P}-contact-item{display:flex;align-items:center;gap:10px;font-family:'Noto Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.85)}
-.${P}-contact-item svg{width:18px;height:18px;flex-shrink:0}
-.${P}-contact-item a{color:#fff;text-decoration:none}
+.${P}-contact-item svg{width:18px;height:18px;flex-shrink:0;stroke:rgba(255,255,255,0.85)}
+.${P}-contact-item span{color:rgba(255,255,255,0.85) !important}
+.${P}-contact-item a{color:#fff !important;text-decoration:none}
 .${P}-contact-item a:hover{text-decoration:underline}`;
 }
 

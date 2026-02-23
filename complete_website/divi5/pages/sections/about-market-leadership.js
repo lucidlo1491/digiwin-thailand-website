@@ -50,8 +50,7 @@ function blocks() {
 function css() {
   return `
 /* === MARKET LEADERSHIP (S5) === */
-/* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
+.et_pb_section:has(.market-leadership){padding:0 !important;background:transparent !important}
 @keyframes bounce-down {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(6px); }

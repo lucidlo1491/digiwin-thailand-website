@@ -105,7 +105,9 @@ const GLOBAL_THEME_RESET = `
 .et_pb_column:not([class*='tb_body']){padding:0 !important;margin:0 !important;gap:0 !important}
 .et_pb_section .et_pb_row .et_pb_column .et_pb_text.et_pb_module{margin:0 !important;padding:0 !important}
 .section-title{line-height:1.6;-webkit-font-smoothing:auto}
-.section-subtitle{margin-left:auto;margin-right:auto;line-height:1.6}`;
+.section-subtitle{margin-left:auto;margin-right:auto;line-height:1.6}
+/* fade-in / scroll-fade-in: always visible (no JS scroll observer in Divi) */
+.fade-in,.scroll-fade-in{opacity:1 !important;transform:none !important}`;
 
 /**
  * Keyframes shared across sections
@@ -123,10 +125,22 @@ const SHARED_KEYFRAMES = `
  * before they reach WordPress.
  * @param {string[]} sections - Array of CSS strings, one per section
  */
+/**
+ * TB body wrapper reset — MUST come AFTER all section CSS to beat :has() rules.
+ * The TB body wrapper (.et_pb_section_0_tb_body) is a .et_pb_section that contains
+ * ALL page sections. Every :has() selector matches it, causing the LAST section's
+ * background/padding to bleed onto the page-level wrapper.
+ */
+const TB_BODY_RESET = `
+/* === TB BODY WRAPPER RESET (must be last — specificity 0,4,0 beats all :has() rules at 0,3,0) === */
+.et-l--body .et_pb_section[class*="tb_body"].et_section_regular{background:transparent !important;background-image:none !important;padding:0 !important;margin:0 !important}
+.et-l--body .et_pb_row[class*="tb_body"]{max-width:100% !important;width:100% !important;padding:0 !important;margin:0 !important}
+.et-l--body .et_pb_column[class*="tb_body"]{padding:0 !important;margin:0 !important}`;
+
 function assemble(sections) {
   const { sanitizeSectionCSS } = require('./lint-css');
   const cleaned = sections.map(s => sanitizeSectionCSS(s));
-  return [GLOBAL_THEME_RESET, SHARED_KEYFRAMES, ...cleaned].join('\n').trim();
+  return [GLOBAL_THEME_RESET, SHARED_KEYFRAMES, ...cleaned, TB_BODY_RESET].join('\n').trim();
 }
 
 module.exports = {

@@ -1,0 +1,61 @@
+{
+  "page": "metal-plastics",
+  "savedAt": "2026-02-23T07:02:29.865Z",
+  "sections": {
+    "metal-hero": {
+      "diffPercent": 1.51,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "context": {
+      "diffPercent": 0.46,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "challenges": {
+      "diffPercent": 2.95,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "solutions": {
+      "diffPercent": 2.11,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "specialized-erp": {
+      "diffPercent": 1.8,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "metal-case-study": {
+      "diffPercent": 1.14,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "processes": {
+      "diffPercent": 0.12,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "products": {
+      "diffPercent": 1.43,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "metal-faq": {
+      "diffPercent": 2.02,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "cta": {
+      "diffPercent": 3.91,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "related-solutions": {
+      "diffPercent": 0.31,
+      "verdict": "MATCH",
+      "skipped": false
+    }
+  }
+}

@@ -17,6 +17,8 @@ const logoMarquee = require('./logo-marquee');
 const footerOcean = require('./footer-ocean');
 const resultCards = require('./result-cards');
 const tabContent = require('./tab-content');
+const relatedSolutions = require('./related-solutions');
+const faqAccordion = require('./faq-accordion');
 
 // Registry: name → template module
 const templates = {
@@ -29,6 +31,8 @@ const templates = {
   'footer-ocean': footerOcean,
   'result-cards': resultCards,
   'tab-content': tabContent,
+  'related-solutions': relatedSolutions,
+  'faq-accordion': faqAccordion,
 };
 
 /**

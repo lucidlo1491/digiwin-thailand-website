@@ -229,68 +229,9 @@ function css() {
             font-weight: 700;
         }
 @media (max-width: 640px) {
-            .aiot-hero { padding: 120px 0 80px; }
-            .aiot-hero h1 { font-size: 32px; }
-            .aiot-hero-subtitle { font-size: 17px; }
-            .aiot-hero-stats { flex-direction: column; gap: 24px; }
-            .aiot-hero-stat-value { font-size: 36px; }
-            .problem-grid { grid-template-columns: 1fr; }
-            .dataflow-stages { flex-direction: column; }
-            .capability-features { grid-template-columns: 1fr; }
-            .metrics-grid { grid-template-columns: 1fr; }
             .integration-diagram { flex-direction: column; }
             .integration-arrow { transform: rotate(90deg); }
         }
-@media (prefers-reduced-motion: reduce) {
-            .aiot-live-dot,
-            .problem-card,
-            .problem-icon,
-            .capability-card,
-            .capability-icon,
-            .integration-node,
-            .integration-link,
-            .dw-d-bg,
-            .dw-d-parallax,
-            .dw-wave-flow,
-            .dw-d-glow {
-                animation: none !important;
-                transition: none !important;
-            }
-        }
-
-/* === HOVER STATES (auto-ported from styles.css) === */
-.integration-node:hover{box-shadow:0 16px 48px rgba(0, 175, 240, 0.2)}
-.integration-node:hover .integration-node-icon{transform:none}
-.integration-node--erp:hover{border-color:#00AFF0}
-.integration-node--mes:hover{border-color:#10b981}
-.integration-node--wms:hover{border-color:#f59e0b}
-.integration-node--aiot:hover{border-color:#8b5cf6}
-/* === PSEUDO-ELEMENTS (auto-ported from styles.css) === */
-.integration-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:linear-gradient(rgba(0, 175, 240, 0.03) 1px, transparent 1px),linear-gradient(90deg, rgba(0, 175, 240, 0.03) 1px, transparent 1px);background-size:50px 50px;pointer-events:none}
-.integration-message::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg, #00AFF0, #10b981, #f59e0b, #8b5cf6)}
-.integration-section{padding:140px 0;background:linear-gradient(180deg, #F5F7FA 0%, #ffffff 100%);position:relative;overflow:hidden}
-.integration-header{text-align:center;margin-bottom:60px}
-.integration-diagram{position:relative;padding:80px 0;min-height:550px;display:flex;align-items:center;justify-content:center}
-.integration-node{position:absolute;width:100px;height:100px;background:#ffffff;border:2px solid #e8eef3;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:all 0.4s ease;box-shadow:0 8px 32px rgba(0, 0, 0, 0.08);cursor:default}
-/* .integration-node-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;transition:transform 0.3s ease} */
-/* .integration-node-icon svg{width:26px;height:26px;stroke:#ffffff;fill:none;stroke-width:1.5} */
-/* .integration-node-name{font-family:'Noto Sans', sans-serif;font-size:15px;font-weight:600;color:#000864} */
-/* .integration-node--erp{top:-30px;left:50%;transform:translateX(-50%)} */
-/* .integration-node--erp .integration-node-icon{background:linear-gradient(135deg, #00AFF0 0%, #003CC8 100%)} */
-/* .integration-node--mes{top:50%;right:-30px;transform:translateY(-50%)} */
-/* .integration-node--mes .integration-node-icon{background:linear-gradient(135deg, #10b981 0%, #02D28C 100%)} */
-/* .integration-node--wms{bottom:-30px;left:50%;transform:translateX(-50%)} */
-/* .integration-node--wms .integration-node-icon{background:linear-gradient(135deg, #f59e0b 0%, #d97706 100%)} */
-/* .integration-node--aiot{top:50%;left:-30px;transform:translateY(-50%)} */
-/* .integration-node--aiot .integration-node-icon{background:linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)} */
-/* .integration-message{max-width:800px;margin:80px auto 0;background:#ffffff;border-radius:24px;padding:48px 64px;box-shadow:0 12px 48px rgba(0, 0, 0, 0.08);border:1px solid #e8eef3;position:relative;overflow:hidden} */
-/* .integration-message-quote{position:absolute;top:24px;left:36px;font-family:'Noto Sans', sans-serif;font-size:100px;color:#00AFF0;opacity:0.08;line-height:1} */
-/* .integration-message p{font-family:'Noto Sans', sans-serif;font-size:18px;color:#000864;line-height:1.85;margin:0;position:relative} */
-/* .integration-message strong{color:#00AFF0;font-weight:600} */
-@media (max-width:1024px){.products-hero-inner{grid-template-columns:1fr;text-align:center;gap:40px}.products-hero-subtitle{margin-left:auto;margin-right:auto}.products-hero-stats{justify-content:center}/* Hide stack visual on tablet/mobile - doesn't serve its purpose at this size */.hero-stack-visual{display:none}.pp-grid{grid-template-columns:1fr;max-width:600px}.integration-orbit{width:300px;height:300px}.integration-hub{width:110px;height:110px}.integration-node{width:80px;height:80px}.integration-node-icon{width:32px;height:32px}.integration-node-name{font-size:11px}.integration-node--erp,.integration-node--wms{left:50%;transform:translateX(-50%)}.integration-node--erp{top:-25px}.integration-node--wms{bottom:-25px}.integration-node--mes{right:-25px}.integration-node--aiot{left:-25px}.why-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto}}
-@media (max-width:640px){.products-hero{padding:120px 0 60px;min-height:auto}.products-hero h1{font-size:28px}.products-hero-stats{flex-direction:column;gap:20px;align-items:center}.products-hero-stat{text-align:center}.products-section-title,.integration-title,.why-title{font-size:32px}.pp-card{padding:32px}.pp-card-header{flex-direction:column;gap:16px}.pp-card-features{grid-template-columns:1fr}.integration-orbit{width:280px;height:280px}.integration-hub{width:100px;height:100px}.integration-hub-icon{width:36px;height:36px}.integration-node{width:75px;height:75px;border-radius:16px}.integration-node-icon{width:36px;height:36px;margin-bottom:6px}.integration-node-name{font-size:11px}.integration-node--erp{top:-25px}.integration-node--wms{bottom:-25px}.integration-node--mes{right:-25px}.integration-node--aiot{left:-25px}.integration-diagram{min-height:400px;padding:60px 0}.integration-message{padding:32px 24px}.products-cta-title{font-size:28px}.products-cta-buttons{flex-direction:column}.btn-white, .btn-outline-white{width:100%;text-align:center;justify-content:center}}
-
-\
 /* Defensive SVG sizing */
 svg:not([width]):not([class]){max-width:48px;max-height:48px}
 ${base.reducedMotion('')}

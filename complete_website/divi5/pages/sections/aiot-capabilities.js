@@ -230,58 +230,11 @@ function css() {
             flex-shrink: 0;
         }
 @media (max-width: 1024px) {
-            .aiot-hero-grid { grid-template-columns: 1fr; gap: 40px; }
-            .aiot-hero-content { text-align: center; }
-            .aiot-sensor-dashboard { max-width: 400px; margin: 0 auto; }
-            .aiot-hero h1 { font-size: 40px; }
-            .aiot-hero-stats { gap: 40px; justify-content: center; }
-            .problem-grid { grid-template-columns: repeat(2, 1fr); }
-            .dataflow-stages { flex-wrap: wrap; }
-            .dataflow-stage:not(:last-child)::after { display: none; }
             .capabilities-grid { grid-template-columns: 1fr; }
-            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
         }
 @media (max-width: 640px) {
-            .aiot-hero { padding: 120px 0 80px; }
-            .aiot-hero h1 { font-size: 32px; }
-            .aiot-hero-subtitle { font-size: 17px; }
-            .aiot-hero-stats { flex-direction: column; gap: 24px; }
-            .aiot-hero-stat-value { font-size: 36px; }
-            .problem-grid { grid-template-columns: 1fr; }
-            .dataflow-stages { flex-direction: column; }
             .capability-features { grid-template-columns: 1fr; }
-            .metrics-grid { grid-template-columns: 1fr; }
-            .integration-diagram { flex-direction: column; }
-            .integration-arrow { transform: rotate(90deg); }
         }
-@media (prefers-reduced-motion: reduce) {
-            .aiot-live-dot,
-            .problem-card,
-            .problem-icon,
-            .capability-card,
-            .capability-icon,
-            .integration-node,
-            .integration-link,
-            .dw-d-bg,
-            .dw-d-parallax,
-            .dw-wave-flow,
-            .dw-d-glow {
-                animation: none !important;
-                transition: none !important;
-            }
-        }
-
-/* === HOVER STATES (auto-ported from styles.css) === */
-.capability-card:hover{border-color:#00AFF0;box-shadow:0 8px 24px rgba(0, 175, 240, 0.1)}
-.capabilities-section{padding:80px 0;background:#F5F7FA}
-.capabilities-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:24px}
-.capability-card{text-align:center;padding:32px 24px;background:#ffffff;border-radius:16px;border:1px solid #e8eef3;transition:all 0.3s ease}
-.capability-icon{width:64px;height:64px;background:linear-gradient(135deg, rgba(0, 175, 240, 0.1), rgba(0, 175, 240, 0.05));border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
-.capability-icon svg{width:28px;height:28px;stroke:#00AFF0;stroke-width:1.5;fill:none}
-@media (max-width:1024px){.capabilities-grid{grid-template-columns:repeat(2, 1fr)}}
-@media (max-width:640px){.section-title{font-size:28px}.capabilities-grid{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto}.product-detail-cta-title{font-size:28px}.product-detail-cta-buttons{flex-direction:column}.product-detail-cta-buttons .btn-white,.product-detail-cta-buttons .btn-outline-white{width:100%;text-align:center}}
-
-\
 /* Defensive SVG sizing */
 svg:not([width]):not([class]){max-width:48px;max-height:48px}
 ${base.reducedMotion('')}

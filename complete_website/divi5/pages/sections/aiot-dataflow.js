@@ -171,33 +171,12 @@ function css() {
             color: #475569;
         }
 @media (max-width: 1024px) {
-            .aiot-hero-grid { grid-template-columns: 1fr; gap: 40px; }
-            .aiot-hero-content { text-align: center; }
-            .aiot-sensor-dashboard { max-width: 400px; margin: 0 auto; }
-            .aiot-hero h1 { font-size: 40px; }
-            .aiot-hero-stats { gap: 40px; justify-content: center; }
-            .problem-grid { grid-template-columns: repeat(2, 1fr); }
             .dataflow-stages { flex-wrap: wrap; }
             .dataflow-stage:not(:last-child)::after { display: none; }
-            .capabilities-grid { grid-template-columns: 1fr; }
-            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
         }
 @media (max-width: 640px) {
-            .aiot-hero { padding: 120px 0 80px; }
-            .aiot-hero h1 { font-size: 32px; }
-            .aiot-hero-subtitle { font-size: 17px; }
-            .aiot-hero-stats { flex-direction: column; gap: 24px; }
-            .aiot-hero-stat-value { font-size: 36px; }
-            .problem-grid { grid-template-columns: 1fr; }
             .dataflow-stages { flex-direction: column; }
-            .capability-features { grid-template-columns: 1fr; }
-            .metrics-grid { grid-template-columns: 1fr; }
-            .integration-diagram { flex-direction: column; }
-            .integration-arrow { transform: rotate(90deg); }
         }
-
-
-
 `.trim();
 }
 

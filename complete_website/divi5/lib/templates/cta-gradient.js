@@ -1,7 +1,7 @@
 /**
  * cta-gradient.js — Full-width CTA with gradient background
  *
- * Used by: home-final-cta
+ * Used by: 10 pages (home, wms, mes, erp, aiot, automotive, electronics, industries, case-studies, partner-program)
  * Bright gradient, cross pattern overlay, two CTAs (primary + ghost).
  * Optional decorative overlays: Super D brand mark + wave-flow element.
  *
@@ -11,6 +11,7 @@
  *   sectionPrefix: string,
  *   background: string,            // CSS gradient
  *   padding?: string,
+ *   maxWidth?: string,             // default '800px'
  *   title: string,
  *   subtitle: string,
  *   buttons: [{ text, href, style: 'primary'|'ghost' }],
@@ -83,12 +84,11 @@ function css(data) {
 .${p}-section::after{content:'';position:absolute;bottom:-20%;right:-10%;width:80%;height:80%;background:radial-gradient(ellipse at center,rgba(255,255,255,0.1) 0%,transparent 70%);pointer-events:none;z-index:1}
 ${superDCss}
 ${waveFlowCss}
-.${p}-container{position:relative;z-index:3;max-width:800px;margin:0 auto;text-align:center}
+.${p}-container{position:relative;z-index:3;max-width:${data.maxWidth || '800px'};margin:0 auto;text-align:center}
 .${p}-title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:clamp(36px,4.5vw,52px);color:#fff;letter-spacing:-0.02em;line-height:1.15;margin:0 0 20px}
 .${p}-subtitle{font-family:'Noto Sans',sans-serif;font-size:20px;color:rgba(255,255,255,0.9);line-height:1.65;margin:0 0 48px}
 ${base.buttonLightCSS(p)}
-.${p}-btn{position:static;overflow:visible;display:inline-flex;align-items:center;gap:8px;line-height:1.6}
-.${p}-btn--ghost{padding:20px 40px;border-radius:14px;line-height:1.6}
+.${p}-btn{position:static;overflow:visible;display:inline-flex;align-items:center;gap:8px;padding:20px 40px;border-radius:14px;line-height:1.6}
 @media(max-width:767px){
   .${p}-title{font-size:clamp(28px,8vw,36px);margin-bottom:20px}
   .${p}-subtitle{font-size:16px;margin-bottom:36px}

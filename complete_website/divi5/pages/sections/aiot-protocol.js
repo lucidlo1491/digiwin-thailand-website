@@ -83,23 +83,6 @@ function css() {
             color: #475569;
             font-weight: 500;
         }
-@media (prefers-reduced-motion: reduce) {
-            .aiot-live-dot,
-            .problem-card,
-            .problem-icon,
-            .capability-card,
-            .capability-icon,
-            .integration-node,
-            .integration-link,
-            .dw-d-bg,
-            .dw-d-parallax,
-            .dw-wave-flow,
-            .dw-d-glow {
-                animation: none !important;
-                transition: none !important;
-            }
-        }
-
 ${base.reducedMotion('')}
 
 /* Super D decoration */

@@ -109,10 +109,10 @@ module.exports = {
         ],
       },
       {
-        name: 'section-2', wpSelector: '.et_pb_section_8', htmlSelector: '.dw-section',
+        name: 'section-2', wpSelector: '.et_pb_section_8', htmlSelector: '.wms-faq',
         pixelThreshold: 0.1,
         styleMap: [
-          { label: 'Section Title', htmlSel: '.dw-section h2', wpSel: '.et_pb_section_8 h2' },
+          { label: 'FAQ Title', htmlSel: '.wms-faq h2', wpSel: '.et_pb_section_8 h2' },
         ],
       },
       {

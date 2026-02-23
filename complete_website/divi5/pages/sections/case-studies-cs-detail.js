@@ -321,25 +321,22 @@ function css() {
             margin: 0;
             line-height: 1.4;
         }
-.cs-detail-location {
-            font-size: 0.9375rem;
-            color: #666;
-            margin: 0 0 8px;
-        }
-.cs-detail h3 {
+.cs-detail-section h3 {
             font-family: 'Noto Sans', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 700;
+            font-size: 18.72px;
+            font-weight: bold;
             color: #000864;
-            margin: 40px 0 16px;
+            margin: 0;
+            padding: 0;
+            line-height: 29.952px;
         }
-.cs-detail p,
 .cs-detail-section p {
             font-family: 'Noto Sans', sans-serif;
-            font-size: 1rem;
+            font-size: 16px;
             color: #333;
-            line-height: 1.7;
-            margin: 0 0 16px;
+            line-height: 25.6px;
+            margin: 0;
+            padding: 0;
         }
 .cs-animate {
             opacity: 1;
@@ -414,20 +411,20 @@ ${base.diviListReset(P)}
 ${base.reducedMotion('')}
 
 .et_pb_section .cs-detail-section h3 {
-            margin: 40px 0 16px !important;
+            margin: 0 !important;
             padding: 0 !important;
-            font-size: 1.25rem !important;
-            font-weight: 700 !important;
+            font-size: 18.72px !important;
+            font-weight: bold !important;
             color: #000864 !important;
-            line-height: 1.3 !important;
+            line-height: 29.952px !important;
             -webkit-font-smoothing: auto !important;
 }
 
 .et_pb_section .cs-detail-section p {
             padding-bottom: 0 !important;
-            margin: 0 0 16px !important;
-            line-height: 1.7 !important;
-            font-size: 1rem !important;
+            margin: 0 !important;
+            line-height: 25.6px !important;
+            font-size: 16px !important;
             -webkit-font-smoothing: auto !important;
 }
 
@@ -436,17 +433,28 @@ ${base.reducedMotion('')}
 }
 
 .et_pb_section .cs-detail-company {
-            font-size: clamp(1.5rem, 3vw, 2.25rem) !important;
+            font-size: 36px !important;
             font-weight: 800 !important;
-            margin: 0 0 8px !important;
+            margin: 0 0 4px !important;
             padding: 0 !important;
-            line-height: 1.2 !important;
+            line-height: 57.6px !important;
             -webkit-font-smoothing: auto !important;
 }
 
-.et_pb_section .cs-detail-location {
-            line-height: 24px !important;
+.et_pb_section .cs-detail-section p.cs-company-desc {
+            margin: 0 !important;
+            padding: 0 !important;
+            font-size: 14px !important;
+            line-height: 19.6px !important;
             -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .cs-detail-section {
+            line-height: 25.6px !important;
+}
+
+.et_pb_section .cs-detail-inner {
+            line-height: 25.6px !important;
 }
 
 .et_pb_section .cs-detail-badge {
@@ -455,9 +463,7 @@ ${base.reducedMotion('')}
             -webkit-font-smoothing: auto !important;
 }
 
-.et_pb_section .cs-company-desc {
-            -webkit-font-smoothing: auto !important;
-        }
+/* cs-company-desc override moved to end for specificity */
 
 .et_pb_section .cs-detail-product-tag {
             line-height: 17.6px !important;

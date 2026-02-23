@@ -161,10 +161,8 @@ function css() {
             font-weight: bold;
             flex-shrink: 0;
             margin-top: 2px;
-        
-            -webkit-font-smoothing: auto !important;
-
-            -webkit-font-smoothing: auto !important;}
+            -webkit-font-smoothing: auto;
+        }
 .transformation-section {
             padding: 100px 0;
             background: #ffffff;
@@ -255,11 +253,9 @@ function css() {
             font-size: 16px;
             font-weight: 600;
             color: #000864;
-        
-            line-height: 25.6px !important;
-
-            -webkit-font-smoothing: auto !important;
-}
+            line-height: 1.6;
+            -webkit-font-smoothing: auto;
+        }
 .step-reduction-numbers {
             display: flex;
             align-items: center;
@@ -271,9 +267,8 @@ function css() {
             font-size: 48px;
             font-weight: 700;
             line-height: 1;
-        
-            -webkit-font-smoothing: auto !important;
-}
+            -webkit-font-smoothing: auto;
+        }
 .step-number--before {
             color: #DC2626;
             text-decoration: line-through;
@@ -298,13 +293,9 @@ function css() {
             letter-spacing: 0.1em;
             margin-bottom: 12px;
             font-weight: 500;
-        
-            line-height: 17.6px !important;
-
-            -webkit-font-smoothing: auto !important;
-
-            line-height: 17.6px !important;
-            -webkit-font-smoothing: auto !important;}
+            line-height: 1.6;
+            -webkit-font-smoothing: auto;
+        }
 .step-col-label--before { color: #DC2626; }
 .step-col-label--after { color: #00AFF0; }
 .step-list {
@@ -331,9 +322,8 @@ function css() {
 .step-list--after li .check {
             color: #22c55e;
             font-weight: bold;
-        
-            -webkit-font-smoothing: auto !important;
-}
+            -webkit-font-smoothing: auto;
+        }
 .transformation-source {
             text-align: center;
             margin-top: 24px;
@@ -341,11 +331,9 @@ function css() {
             font-size: 11px;
             color: #5b6b80;
             letter-spacing: 0.02em;
-        
-            line-height: 17.6px;
-
+            line-height: 1.6;
             -webkit-font-smoothing: auto;
-}
+        }
 @media (max-width: 1024px) {
             .problems-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -404,9 +392,7 @@ function css() {
             }
             .step-number {
                 font-size: 36px;
-            
-                -webkit-font-smoothing: auto !important;
-}
+            }
         }
 @media (prefers-reduced-motion: reduce) {
             .capability-box,
@@ -430,10 +416,9 @@ ${base.reducedMotion('')}
 ${superD.css('dw-d-bg', { variant: 'outline', position: 'right', modifiers: ['glow'] })}
 
 .section-subtitle {
-            line-height: 28.8px !important;
-        
-            -webkit-font-smoothing: auto !important;
-}
+            line-height: 1.6;
+            -webkit-font-smoothing: auto;
+        }
 `.trim();
 }
 

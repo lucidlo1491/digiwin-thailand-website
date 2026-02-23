@@ -63,17 +63,9 @@ function css() {
 .product-detail-cta::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);border-radius:50%}
 /* TODO: HOVER STATES using global classes (port manually) */
 /* Buttons */
-.btn-white{background:#ffffff;color:#003CC8;padding:20px 40px;border-radius:14px;font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 4px 20px rgba(0, 0, 0, 0.15);display:inline-flex;align-items:center;gap:10px
-            line-height: 25.6px !important;
-
-            -webkit-font-smoothing: auto !important;
-}
+.btn-white{background:#ffffff;color:#003CC8;padding:20px 40px;border-radius:14px;font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 4px 20px rgba(0, 0, 0, 0.15);display:inline-flex;align-items:center;gap:10px;line-height:1.6;-webkit-font-smoothing:auto}
 .btn-white:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0, 0, 0, 0.2)}
-.btn-outline-white{background:transparent;color:#ffffff;padding:20px 40px;border-radius:14px;border:2px solid rgba(255, 255, 255, 0.5);font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.3s ease
-            line-height: 25.6px !important;
-
-            -webkit-font-smoothing: auto !important;
-}
+.btn-outline-white{background:transparent;color:#ffffff;padding:20px 40px;border-radius:14px;border:2px solid rgba(255, 255, 255, 0.5);font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.3s ease;line-height:1.6;-webkit-font-smoothing:auto}
 .btn-outline-white:hover{background:rgba(255, 255, 255, 0.15);border-color:#ffffff}
 /* WARNING: HIDDEN in styles.css (display:none) — DO NOT include in builder HTML */
 /* .dw-wave-flow,
@@ -83,11 +75,7 @@ function css() {
 .product-detail-cta{padding:100px 0;background:linear-gradient(135deg, #00AFF0 0%, #003CC8 100%);position:relative;overflow:hidden}
 .product-detail-cta-inner{max-width:800px;margin:0 auto;padding:0 24px;text-align:center;position:relative;z-index:1}
 .product-detail-cta-title{font-family:'Noto Sans', sans-serif;font-size:40px;font-weight:700;color:#ffffff;margin-bottom:16px}
-.product-detail-cta-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:rgba(255, 255, 255, 0.9);margin-bottom:36px
-            line-height: 28.8px;
-
-            -webkit-font-smoothing: auto;
-}
+.product-detail-cta-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:rgba(255, 255, 255, 0.9);margin-bottom:36px;line-height:1.6;-webkit-font-smoothing:auto}
 .product-detail-cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 @media (max-width:640px){.product-detail-cta-title{font-size:28px}.product-detail-cta-buttons{flex-direction:column}.product-detail-cta-buttons .btn-white,.product-detail-cta-buttons .btn-outline-white{width:100%;text-align:center}}
 

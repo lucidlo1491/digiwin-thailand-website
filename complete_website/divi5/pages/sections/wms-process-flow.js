@@ -125,11 +125,9 @@ function css() {
             flex-shrink: 0;
             min-width: 100px;
             text-align: center;
-        
-            line-height: 17.6px !important;
-
-            -webkit-font-smoothing: auto !important;
-}
+            line-height: 1.6;
+            -webkit-font-smoothing: auto;
+        }
 .process-stream-badge--blue {
             background: rgba(0, 175, 240, 0.12);
             color: #00AFF0;
@@ -156,46 +154,30 @@ function css() {
             padding: 8px 16px;
             border-radius: 8px;
             white-space: nowrap;
-        
-            line-height: 22.4px !important;
-
-            -webkit-font-smoothing: auto !important;
-
-            line-height: 22.4px !important;
-            -webkit-font-smoothing: auto !important;
-            line-height: 22.4px !important;
-            -webkit-font-smoothing: auto !important;
-            line-height: 22.4px !important;
-            -webkit-font-smoothing: auto !important;
-            line-height: 22.4px !important;
-            -webkit-font-smoothing: auto !important;}
+            line-height: 1.6;
+            -webkit-font-smoothing: auto;
+        }
 .process-stream--blue .process-stream-step {
             background: rgba(0, 175, 240, 0.08);
             color: #000864;
             border: 1px solid rgba(0, 175, 240, 0.2);
-        
-            line-height: 22.4px !important;
-
-            -webkit-font-smoothing: auto !important;
-}
+            line-height: 1.6;
+            -webkit-font-smoothing: auto;
+        }
 .process-stream--green .process-stream-step {
             background: rgba(2, 210, 140, 0.08);
             color: #000864;
             border: 1px solid rgba(2, 210, 140, 0.2);
-        
-            line-height: 22.4px !important;
-
-            -webkit-font-smoothing: auto !important;
-}
+            line-height: 1.6;
+            -webkit-font-smoothing: auto;
+        }
 .process-stream--amber .process-stream-step {
             background: rgba(245, 158, 11, 0.08);
             color: #000864;
             border: 1px solid rgba(245, 158, 11, 0.2);
-        
-            line-height: 22.4px !important;
-
-            -webkit-font-smoothing: auto !important;
-}
+            line-height: 1.6;
+            -webkit-font-smoothing: auto;
+        }
 .process-stream-arrow {
             color: #b0bec5;
             font-size: 16px;
@@ -240,10 +222,7 @@ function css() {
 
 .section-header{text-align:center;margin-bottom:48px}
 .section-title{font-family:'Noto Sans', sans-serif;font-size:36px;font-weight:700;color:#000864;margin-bottom:16px}
-.section-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:#5b6b80;max-width:600px;margin:0 auto
-            line-height: 28.8px !important;
-
-            -webkit-font-smoothing: auto !important;
+.section-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:#5b6b80;max-width:600px;margin:0 auto;line-height:1.6;-webkit-font-smoothing:auto
 }
 @media (max-width:640px){.section-title{font-size:28px}.capabilities-grid{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto}.product-detail-cta-title{font-size:28px}.product-detail-cta-buttons{flex-direction:column}.product-detail-cta-buttons .btn-white,.product-detail-cta-buttons .btn-outline-white{width:100%;text-align:center}}
 

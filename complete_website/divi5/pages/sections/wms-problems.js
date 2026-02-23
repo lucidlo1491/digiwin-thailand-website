@@ -157,15 +157,9 @@ function css() {
             letter-spacing: 0.1em;
             color: #00AFF0;
             margin-bottom: 8px;
-        
-            line-height: 17.6px !important;
-
-            -webkit-font-smoothing: auto !important;
-
-            line-height: 17.6px !important;
-            -webkit-font-smoothing: auto !important;
-            line-height: 17.6px !important;
-            -webkit-font-smoothing: auto !important;}
+            line-height: 1.6;
+            -webkit-font-smoothing: auto;
+        }
 .problem-icon {
             width: 64px;
             height: 64px;
@@ -189,21 +183,15 @@ function css() {
             font-weight: 600;
             color: #000864;
             margin-bottom: 12px;
-        
-            -webkit-font-smoothing: auto !important;
-
-            -webkit-font-smoothing: auto !important;
-            -webkit-font-smoothing: auto !important;}
+            -webkit-font-smoothing: auto;
+        }
 .problem-desc {
             font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
             color: #5b6b80;
             line-height: 1.6;
-        
-            -webkit-font-smoothing: auto !important;
-
-            -webkit-font-smoothing: auto !important;
-            -webkit-font-smoothing: auto !important;}
+            -webkit-font-smoothing: auto;
+        }
 @media (max-width: 1024px) {
             .problems-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -281,14 +269,10 @@ function css() {
 
 .section-header{text-align:center;margin-bottom:48px}
 .section-title{font-family:'Noto Sans', sans-serif;font-size:36px;font-weight:700;color:#000864;margin-bottom:16px}
-/* .section-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:#5b6b80;max-width:600px;margin:0 auto
-            line-height: 28.8px;
-
-            -webkit-font-smoothing: auto;
+/* .section-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:#5b6b80;max-width:600px;margin:0 auto;line-height:1.6;-webkit-font-smoothing:auto
 } */
 @media (max-width:640px){.section-title{font-size:28px}.capabilities-grid{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto}.product-detail-cta-title{font-size:28px}.product-detail-cta-buttons{flex-direction:column}.product-detail-cta-buttons .btn-white,.product-detail-cta-buttons .btn-outline-white{width:100%;text-align:center}}
 
-\
 /* Defensive SVG sizing */
 svg:not([width]):not([class]){max-width:48px;max-height:48px}
 ${base.reducedMotion('')}

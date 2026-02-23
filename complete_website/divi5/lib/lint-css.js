@@ -128,6 +128,251 @@ function checkSuperDVariants(sections) {
 }
 
 // ════════════════════════════════════════════════════════════════
+// LINT 3: CROSS-CONTAMINATION DETECTOR
+// ════════════════════════════════════════════════════════════════
+
+/**
+ * Detect CSS selectors in a section that reference classes NOT used in
+ * that section's HTML. This catches scaffold-builder artifacts where
+ * media queries pulled in rules for other sections.
+ *
+ * Allowlist: generic classes that legitimately appear in CSS without HTML
+ * (e.g., .et_pb_section, .sr-only, Divi overrides, Super D, _base helpers).
+ */
+const CROSS_CONTAM_ALLOWLIST = new Set([
+  // Divi infrastructure
+  'et_pb_section', 'et_pb_row', 'et_pb_column', 'et_pb_code', 'et_pb_code_inner',
+  'et_pb_text', 'et_pb_text_inner', 'et_pb_module', 'et_pb_all_tabs',
+  // Shared helpers from _base.js and css-assembler.js
+  'sr-only', 'dw-d-bg', 'dw-d-parallax', 'dw-d-glow', 'dw-wave-flow',
+  'section-title', 'section-subtitle', 'section-header',
+  // Reduced-motion targets (commonly in prefers-reduced-motion blocks)
+  'capability-box', 'integration-node', 'integration-link', 'problem-card', 'mobile-module',
+  'css', // artifact from template literal interpolation
+]);
+
+function checkCrossContamination(sections) {
+  const warnings = [];
+
+  for (const section of sections) {
+    const builder = section.builder;
+
+    // Get blocks HTML
+    let blocksOut;
+    try {
+      const raw = typeof builder.blocks === 'function' ? builder.blocks() : '';
+      blocksOut = Array.isArray(raw) ? raw.join('') : String(raw);
+    } catch (_) { continue; }
+
+    // Get CSS output
+    let cssOut;
+    try {
+      cssOut = typeof builder.css === 'function' ? builder.css() : '';
+    } catch (_) { continue; }
+    if (!cssOut) continue;
+
+    // Extract class names from HTML
+    const htmlClasses = new Set();
+    const classRe = /class="([^"]*)"/g;
+    let m;
+    while ((m = classRe.exec(blocksOut)) !== null) {
+      m[1].split(/\s+/).filter(Boolean).forEach(c => htmlClasses.add(c));
+    }
+
+    // Extract class selectors from CSS (only top-level selectors, not inside values)
+    const foreignClasses = [];
+    const selectorRe = /([^{}@]+)\{/g;
+    let sm;
+    while ((sm = selectorRe.exec(cssOut)) !== null) {
+      const selector = sm[1];
+      const classRefs = selector.match(/\.[\w-]+/g) || [];
+      for (const ref of classRefs) {
+        const cls = ref.substring(1); // strip dot
+        if (!htmlClasses.has(cls)
+            && !CROSS_CONTAM_ALLOWLIST.has(cls)
+            && !cls.startsWith('et_pb_')
+            && !cls.startsWith('dw-d-')
+            && !cls.startsWith('dw-wave')) {
+          foreignClasses.push(cls);
+        }
+      }
+    }
+
+    // Deduplicate
+    const unique = [...new Set(foreignClasses)];
+
+    // Cross-reference against OTHER sections on the same page to confirm contamination.
+    // A class is "confirmed foreign" if it appears in another section's blocks() HTML.
+    const confirmedForeign = unique.filter(cls => {
+      for (const other of sections) {
+        if (other.name === section.name) continue;
+        try {
+          const otherRaw = typeof other.builder.blocks === 'function' ? other.builder.blocks() : '';
+          const otherHTML = Array.isArray(otherRaw) ? otherRaw.join('') : String(otherRaw);
+          if (otherHTML.includes(cls)) return true;
+        } catch (_) { /* skip */ }
+      }
+      return false;
+    });
+
+    if (confirmedForeign.length > 3) {
+      warnings.push({
+        rule: 'CROSS_CONTAMINATION',
+        section: section.name,
+        foreignClasses: confirmedForeign,
+        message: `Section "${section.name}": CSS has ${confirmedForeign.length} selectors from OTHER sections: ${confirmedForeign.slice(0, 6).map(c => '.'+c).join(', ')}${confirmedForeign.length > 6 ? '...' : ''}`,
+        fix: `Remove selectors belonging to other sections from this section's css().`,
+      });
+    }
+  }
+
+  return warnings;
+}
+
+// ════════════════════════════════════════════════════════════════
+// LINT 4: REFERENCE PATTERN MATCHER
+// ════════════════════════════════════════════════════════════════
+
+/**
+ * Known section patterns that have clean, hand-tuned reference files.
+ * Each pattern has HTML fingerprints (strings that identify the pattern)
+ * and a reference file to use instead of scaffold output.
+ *
+ * When a section matches a pattern, warn the developer to use the reference.
+ */
+const REFERENCE_PATTERNS = [
+  {
+    name: 'integration-hub',
+    fingerprints: ['integration-visual', 'integration-node', 'integration-arrow'],
+    minMatches: 3,
+    reference: 'mes-integration.js',
+    description: 'Integration hub with node icons and arrows',
+  },
+  {
+    name: 'product-detail-cta',
+    fingerprints: ['product-detail-cta', 'product-detail-cta-title', 'product-detail-cta-buttons'],
+    minMatches: 2,
+    reference: 'erp-product-detail-cta.js',
+    description: 'Product page bottom CTA with gradient background',
+  },
+  {
+    name: 'capability-grid',
+    fingerprints: ['capability-box', 'capability-box-icon', 'capability-features', 'capability-box-title'],
+    minMatches: 3,
+    reference: 'wms-capabilities.js',
+    description: 'Capability cards with icons and feature lists',
+  },
+  {
+    name: 'problems-grid',
+    fingerprints: ['problem-card', 'problem-icon', 'problem-title', 'problems-grid'],
+    minMatches: 3,
+    reference: 'wms-problems.js',
+    description: 'Problem cards grid showing pain points',
+  },
+];
+
+function checkReferencePatterns(sections) {
+  const warnings = [];
+
+  for (const section of sections) {
+    const builder = section.builder;
+
+    let blocksOut;
+    try {
+      const raw = typeof builder.blocks === 'function' ? builder.blocks() : '';
+      blocksOut = Array.isArray(raw) ? raw.join('') : String(raw);
+    } catch (_) { continue; }
+
+    let cssOut;
+    try {
+      cssOut = typeof builder.css === 'function' ? builder.css() : '';
+    } catch (_) { continue; }
+
+    const cssLines = cssOut.split('\n').length;
+    const hasAutoGenComment = cssOut.includes('AUTO-GENERATED') || cssOut.includes('TODO: Review');
+
+    for (const pattern of REFERENCE_PATTERNS) {
+      // Only match fingerprints in blocks() HTML — not CSS (contaminated CSS gives false positives)
+      const matches = pattern.fingerprints.filter(f => blocksOut.includes(f));
+      if (matches.length >= pattern.minMatches) {
+        // Skip if this section IS the reference (clean CSS, name matches ref tail)
+        const refBaseName = pattern.reference.replace('.js', '');
+        if (refBaseName === section.name || refBaseName.endsWith('-' + section.name)) {
+          if (!hasAutoGenComment && cssLines <= 150) continue;
+        }
+
+        if (hasAutoGenComment || cssLines > 150) {
+          warnings.push({
+            rule: 'REFERENCE_PATTERN',
+            section: section.name,
+            pattern: pattern.name,
+            reference: pattern.reference,
+            message: `Section "${section.name}" matches "${pattern.name}" pattern. Use ${pattern.reference} as reference (${pattern.description}).`,
+            fix: `Rewrite css() following the clean pattern in ${pattern.reference}. Don't incrementally patch scaffold output.`,
+          });
+        }
+      }
+    }
+  }
+
+  return warnings;
+}
+
+// ════════════════════════════════════════════════════════════════
+// LINT 5: CSS SANITIZER — fixes known scaffold/auto-fix artifacts
+// ════════════════════════════════════════════════════════════════
+
+/**
+ * Sanitize a section's CSS string, fixing known artifact patterns
+ * from scaffold-builder and batch fix scripts.
+ *
+ * Runs during assembly (before push), so artifacts never reach WordPress.
+ *
+ * Patterns fixed:
+ *   1. Missing semicolon: ` ;property:value` → proper declaration
+ *   2. Stacked duplicate -webkit-font-smoothing (2+ occurrences → 1)
+ *   3. Stacked duplicate line-height !important (2+ occurrences → 1)
+ *   4. Stray backslash on its own line
+ *   5. Trailing semicolons before opening brace: `value ;\n{` → `value;\n{`
+ */
+function sanitizeSectionCSS(css) {
+  if (!css) return css;
+  let out = css;
+
+  // 1. Fix ` ;property:value` — missing semicolon before injected properties
+  //    Pattern: `<existing-value>\n ;line-height:` or `<existing-value>\n ;-webkit-font-smoothing:`
+  out = out.replace(/\n\s*;([\w-]+\s*:)/g, ';\n            $1');
+
+  // 2. Collapse stacked duplicate `-webkit-font-smoothing` lines (keep last)
+  //    Matches 2+ consecutive `-webkit-font-smoothing: auto [!important];` with optional whitespace
+  out = out.replace(
+    /(\s*-webkit-font-smoothing:\s*auto\s*(?:!important)?\s*;?\s*\n\s*){2,}/g,
+    '\n            -webkit-font-smoothing: auto;\n'
+  );
+
+  // 3. Collapse stacked duplicate `line-height` with !important (keep last)
+  //    Pattern: multiple `line-height: Xpx !important;` lines in a row
+  out = out.replace(
+    /(\s*line-height:\s*[\d.]+(?:px)?\s*!important\s*;\s*\n\s*){2,}/g,
+    (match) => {
+      // Extract the LAST line-height value from the stack
+      const lastMatch = match.match(/line-height:\s*([\d.]+(?:px)?)\s*!important/g);
+      const lastVal = lastMatch ? lastMatch[lastMatch.length - 1] : 'line-height: 1.6 !important';
+      return `\n            ${lastVal};\n`;
+    }
+  );
+
+  // 4. Remove stray backslash on its own line (scaffold artifact)
+  out = out.replace(/^\s*\\\s*$/gm, '');
+
+  // 5. Remove empty lines between property and closing brace that have only whitespace
+  //    (cleanup after other fixes)
+  out = out.replace(/;\s*\n\s*\n\s*}/g, ';\n        }');
+
+  return out;
+}
+
+// ════════════════════════════════════════════════════════════════
 // PUBLIC API
 // ════════════════════════════════════════════════════════════════
 
@@ -139,11 +384,15 @@ function checkSuperDVariants(sections) {
  */
 function run(sections, pageLevelCSS) {
   const errors = checkValidity(pageLevelCSS);
-  const warnings = checkSuperDVariants(sections);
+  const warnings = [
+    ...checkSuperDVariants(sections),
+    ...checkCrossContamination(sections),
+    ...checkReferencePatterns(sections),
+  ];
   return { errors, warnings };
 }
 
-module.exports = { run, checkValidity, checkSuperDVariants };
+module.exports = { run, checkValidity, checkSuperDVariants, checkCrossContamination, checkReferencePatterns, sanitizeSectionCSS };
 
 // ════════════════════════════════════════════════════════════════
 // CLI

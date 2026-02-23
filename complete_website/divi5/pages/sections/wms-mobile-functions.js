@@ -190,26 +190,18 @@ function css() {
             font-size: 16px;
             font-weight: 600;
             color: #000864;
-        
-            line-height: 25.6px !important;
-
-            -webkit-font-smoothing: auto !important;
-
-            line-height: 25.6px !important;
-            -webkit-font-smoothing: auto !important;}
+            line-height: 1.6;
+            -webkit-font-smoothing: auto;
+        }
 .mobile-module-count {
             font-family: 'JetBrains Mono', monospace;
             font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             color: #5b6b80;
-        
-            line-height: 16px !important;
-
-            -webkit-font-smoothing: auto !important;
-
-            line-height: 16px !important;
-            -webkit-font-smoothing: auto !important;}
+            line-height: 1.6;
+            -webkit-font-smoothing: auto;
+        }
 .mobile-function-list {
             list-style: none;
             padding: 0;
@@ -246,11 +238,9 @@ function css() {
             font-size: 13px;
             color: #5b6b80;
             letter-spacing: 0.02em;
-        
-            line-height: 20.8px;
-
+            line-height: 1.6;
             -webkit-font-smoothing: auto;
-}
+        }
 @media (max-width: 1024px) {
             .problems-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -336,10 +326,9 @@ ${base.reducedMotion('')}
 ${superD.css('dw-d-bg', { variant: 'outline', position: 'right', modifiers: ['glow'] })}
 
 .section-subtitle {
-            line-height: 28.8px !important;
-        
-            -webkit-font-smoothing: auto !important;
-}
+            line-height: 1.6;
+            -webkit-font-smoothing: auto;
+        }
 `.trim();
 }
 

@@ -176,28 +176,22 @@ function css() {
             font-weight: 600;
             color: #000864;
             margin-bottom: 4px;
-        
-            -webkit-font-smoothing: auto !important;
-
-            -webkit-font-smoothing: auto !important;}
+            -webkit-font-smoothing: auto;
+        }
 .capability-box-tagline {
             font-family: 'Noto Sans', sans-serif;
             font-size: 15px;
             color: #5b6b80;
-        
-            -webkit-font-smoothing: auto !important;
-
-            -webkit-font-smoothing: auto !important;}
+            -webkit-font-smoothing: auto;
+        }
 .capability-box-desc {
             font-family: 'Noto Sans', sans-serif;
             font-size: 16px;
             color: #000864;
             line-height: 1.7;
             margin-bottom: 20px;
-        
-            -webkit-font-smoothing: auto !important;
-
-            -webkit-font-smoothing: auto !important;}
+            -webkit-font-smoothing: auto;
+        }
 .capability-features {
             list-style: none;
             padding: 0;
@@ -223,21 +217,13 @@ function css() {
             font-weight: bold;
             flex-shrink: 0;
             margin-top: 2px;
-        
-            -webkit-font-smoothing: auto !important;
-
-            -webkit-font-smoothing: auto !important;
-            -webkit-font-smoothing: auto !important;
-            -webkit-font-smoothing: auto !important;
-            -webkit-font-smoothing: auto !important;
-            -webkit-font-smoothing: auto !important;
-            -webkit-font-smoothing: auto !important;}
+            -webkit-font-smoothing: auto;
+        }
 .step-list--after li .check {
             color: #22c55e;
             font-weight: bold;
-        
-            -webkit-font-smoothing: auto !important;
-}
+            -webkit-font-smoothing: auto;
+        }
 @media (max-width: 1024px) {
             .problems-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -291,10 +277,7 @@ function css() {
 
 .section-header{text-align:center;margin-bottom:48px}
 .section-title{font-family:'Noto Sans', sans-serif;font-size:36px;font-weight:700;color:#000864;margin-bottom:16px}
-.section-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:#5b6b80;max-width:600px;margin:0 auto
-            line-height: 28.8px !important;
-
-            -webkit-font-smoothing: auto !important;
+.section-subtitle{font-family:'Noto Sans', sans-serif;font-size:18px;color:#5b6b80;max-width:600px;margin:0 auto;line-height:1.6;-webkit-font-smoothing:auto
 }
 .capabilities-inner{max-width:1200px;margin:0 auto;padding:0 24px}
 /* .capabilities-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:24px} */

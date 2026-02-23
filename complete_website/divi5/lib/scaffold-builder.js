@@ -220,8 +220,41 @@ function extractClassNames(html) {
 }
 
 /**
+ * Filter individual CSS rules from a block, keeping only those whose selectors
+ * match the given regex. Used to scope media query contents to section-only selectors.
+ */
+function filterMatchingRules(cssBlock, selectorRegex) {
+  const matching = [];
+  let j = 0;
+  while (j < cssBlock.length) {
+    const ws = cssBlock.substring(j).match(/^\s+/);
+    if (ws) { j += ws[0].length; continue; }
+    const comment = cssBlock.substring(j).match(/^\/\*[\s\S]*?\*\//);
+    if (comment) { j += comment[0].length; continue; }
+    const rule = cssBlock.substring(j).match(/^([^{}]+)\{/);
+    if (rule) {
+      const selector = rule[1].trim();
+      const ruleStart = j;
+      j += rule[0].length;
+      let depth = 1;
+      while (depth > 0 && j < cssBlock.length) {
+        if (cssBlock[j] === '{') depth++;
+        else if (cssBlock[j] === '}') depth--;
+        j++;
+      }
+      if (selectorRegex.test(selector)) {
+        matching.push(cssBlock.substring(ruleStart, j).trim());
+      }
+      continue;
+    }
+    j++;
+  }
+  return matching;
+}
+
+/**
  * Extract CSS rules from a stylesheet string that match any of the given class names.
- * Preserves media queries and their contents.
+ * Preserves media queries — but only includes matching rules inside each media block.
  */
 function extractMatchingCSS(styleBlock, classNames) {
   if (!styleBlock || classNames.length === 0) return { rules: [], mediaQueries: [] };
@@ -247,8 +280,9 @@ function extractMatchingCSS(styleBlock, classNames) {
     if (commentMatch) { i += commentMatch[0].length; continue; }
 
     // Check for @media
-    const mediaMatch = styleBlock.substring(i).match(/^@media\s*\([^)]*\)\s*\{/);
+    const mediaMatch = styleBlock.substring(i).match(/^@media\s*(\([^)]*\))\s*\{/);
     if (mediaMatch) {
+      const mediaCondition = mediaMatch[1];
       const mediaStart = i;
       i += mediaMatch[0].length;
       let depth = 1;
@@ -257,10 +291,14 @@ function extractMatchingCSS(styleBlock, classNames) {
         else if (styleBlock[i] === '}') depth--;
         i++;
       }
-      const mediaBlock = styleBlock.substring(mediaStart, i).trim();
-      // Check if any rules inside match our classes
-      if (selectorRegex.test(mediaBlock)) {
-        mediaQueries.push(mediaBlock);
+      // Skip prefers-reduced-motion — _base.js provides reducedMotion()
+      if (/prefers-reduced-motion/.test(mediaCondition)) continue;
+
+      // Extract only MATCHING rules from inside the media block (not the whole block)
+      const innerCSS = styleBlock.substring(mediaStart + mediaMatch[0].length, i - 1);
+      const matchingInner = filterMatchingRules(innerCSS, selectorRegex);
+      if (matchingInner.length > 0) {
+        mediaQueries.push(`@media ${mediaCondition} {\n${matchingInner.join('\n')}\n}`);
       }
       continue;
     }
@@ -351,9 +389,10 @@ function extractExternalCSS(stylesheet, classNames) {
     const commentMatch = stylesheet.substring(i).match(/^\/\*[\s\S]*?\*\//);
     if (commentMatch) { i += commentMatch[0].length; continue; }
 
-    // @media block
-    const mediaMatch = stylesheet.substring(i).match(/^@media\s*\([^)]*\)\s*\{/);
+    // @media block — extract only matching rules inside (not the whole block)
+    const mediaMatch = stylesheet.substring(i).match(/^@media\s*(\([^)]*\))\s*\{/);
     if (mediaMatch) {
+      const mediaCondition = mediaMatch[1];
       const start = i;
       i += mediaMatch[0].length;
       let depth = 1;
@@ -362,9 +401,13 @@ function extractExternalCSS(stylesheet, classNames) {
         else if (stylesheet[i] === '}') depth--;
         i++;
       }
-      const block = stylesheet.substring(start, i).trim();
-      if (selectorRegex.test(block)) {
-        result.base.push(block);
+      // Skip prefers-reduced-motion — _base.js provides reducedMotion()
+      if (/prefers-reduced-motion/.test(mediaCondition)) continue;
+
+      const innerCSS = stylesheet.substring(start + mediaMatch[0].length, i - 1);
+      const matchingInner = filterMatchingRules(innerCSS, selectorRegex);
+      if (matchingInner.length > 0) {
+        result.base.push(`@media ${mediaCondition} {\n${matchingInner.join('\n')}\n}`);
       }
       continue;
     }

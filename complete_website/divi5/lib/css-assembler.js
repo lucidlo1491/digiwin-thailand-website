@@ -119,10 +119,14 @@ const SHARED_KEYFRAMES = `
 
 /**
  * Assemble page-level CSS from section CSS arrays
+ * Runs sanitizeSectionCSS on each section to fix known scaffold/auto-fix artifacts
+ * before they reach WordPress.
  * @param {string[]} sections - Array of CSS strings, one per section
  */
 function assemble(sections) {
-  return [GLOBAL_THEME_RESET, SHARED_KEYFRAMES, ...sections].join('\n').trim();
+  const { sanitizeSectionCSS } = require('./lint-css');
+  const cleaned = sections.map(s => sanitizeSectionCSS(s));
+  return [GLOBAL_THEME_RESET, SHARED_KEYFRAMES, ...cleaned].join('\n').trim();
 }
 
 module.exports = {

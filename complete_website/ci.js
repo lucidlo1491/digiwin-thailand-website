@@ -24,6 +24,7 @@ const steps = [
     { name: 'Build', cmd: 'node build.js', always: true },
     { name: 'Page Audit (6 checks × all pages)', cmd: 'node audit.js', always: true },
     { name: 'Brand Compliance (92 tests)', cmd: 'node test-styles.js', always: true },
+    { name: 'Divi 5 Pipeline (44 tests)', cmd: 'node divi5/test-pipeline.js', always: true },
     { name: 'Link & Image Check', cmd: 'node check-links.js', always: false },
     { name: 'Stat Extraction', cmd: 'node extract-stats.js', always: false, noFail: true },
     { name: 'AI Content (llms.txt + Markdown)', cmd: 'node generate-ai-content.js', always: false, noFail: true },

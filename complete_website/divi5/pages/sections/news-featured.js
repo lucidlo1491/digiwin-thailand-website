@@ -19,7 +19,8 @@ const P = 'fea'; // CSS prefix — customize if needed
 // ════════════════════════════════════════════════════════════════
 function blocks() {
   const html = `
-    <div class="featured-inner" style="position: relative; z-index: 2;">
+    <div class="particle-ocean-host" data-particles style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden;"></div>
+            <div class="featured-inner" style="position: relative; z-index: 2;">
                 <span class="featured-label">Featured Event</span>
                 <div class="featured-card">
                     <div class="featured-image">
@@ -63,7 +64,80 @@ function blocks() {
                         </a>
                     </div>
                 </div>
-            </div>`;
+            </div>
+            <script>
+(function(){
+'use strict';
+var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var PI2=Math.PI*2;
+var BLUE=[0,175,240],CYAN=[0,230,255];
+var PRESET={frontOpacity:0.30,backOpacity:0.04,frontRadius:4.5,backRadius:0.6,color:BLUE,colorAlt:CYAN,altRatio:0.12};
+function lerp(a,b,t){return a+(b-a)*t;}
+
+function DataOcean(section){
+this.el=section;this.canvas=null;this.ctx=null;this.w=0;this.h=0;
+this.dpr=Math.min(window.devicePixelRatio||1,2);this.visible=false;this.raf=null;this.time=0;this.resizeTimer=null;this.colors=null;
+this.opts=PRESET;this._setup();this._buildColors();this._observe();
+if(!rm){this._loop();}else{this.visible=true;this._draw(0);}
+}
+
+DataOcean.prototype._setup=function(){
+var c=document.createElement('canvas');c.setAttribute('aria-hidden','true');
+c.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;';
+this.el.style.position='relative';
+this.el.style.overflow='hidden';
+this.el.insertBefore(c,this.el.firstChild);
+this.canvas=c;this.ctx=c.getContext('2d');this._resize();
+var self=this;window.addEventListener('resize',function(){clearTimeout(self.resizeTimer);self.resizeTimer=setTimeout(function(){self._resize();self._buildColors();},200);});
+};
+
+DataOcean.prototype._resize=function(){
+/* Use clientHeight — the CSS box size, not scroll or content height */
+this.w=this.el.clientWidth;this.h=this.el.clientHeight;
+this.canvas.width=this.w*this.dpr;this.canvas.height=this.h*this.dpr;
+this.ctx.setTransform(this.dpr,0,0,this.dpr,0,0);
+};
+
+DataOcean.prototype._buildColors=function(){var cols=Math.min(65,Math.ceil(this.w/22)+4);var rows=35;this._cols=cols;this._rows=rows;var n=cols*rows;this.colors=new Array(n);var alt=this.opts.altRatio;for(var i=0;i<n;i++){this.colors[i]=Math.random()<alt?this.opts.colorAlt:this.opts.color;}};
+DataOcean.prototype._observe=function(){var self=this;if('IntersectionObserver' in window){this._obs=new IntersectionObserver(function(e){self.visible=e[0].isIntersecting;},{rootMargin:'150px 0px'});this._obs.observe(this.el);}else{this.visible=true;}};
+DataOcean.prototype._loop=function(){var self=this;var last=0;(function tick(ts){self.raf=requestAnimationFrame(tick);if(!self.visible)return;if(ts-last<30)return;last=ts;self.time+=0.006;self._draw(self.time);})(0);};
+
+DataOcean.prototype._draw=function(t){
+var ctx=this.ctx,w=this.w,h=this.h,opts=this.opts,cols=this._cols,rows=this._rows;
+ctx.clearRect(0,0,w,h);
+var ground=h+10,horizon=h*0.35,totalSpan=ground-horizon,idx=0;
+for(var row=rows-1;row>=0;row--){
+var depth=row/(rows-1),mappedDepth=Math.pow(depth,0.55),baseY=ground-mappedDepth*totalSpan;
+var dotR=lerp(opts.frontRadius,opts.backRadius,depth),dotA=lerp(opts.frontOpacity,opts.backOpacity,depth);
+var colSpacing=lerp(w/(cols-4),w/(cols+15),depth),rowShift=depth*w*0.12;
+var waveScale=(1-depth*0.75),amp1=70*waveScale,amp2=25*waveScale;
+for(var col=0;col<cols;col++){
+var screenX=col*colSpacing-rowShift+colSpacing*0.5;
+if(screenX<-30||screenX>w+30){idx++;continue;}
+var worldX=col*24,worldZ=row*18;
+var wave=amp1*Math.sin(worldX*0.0065+worldZ*0.012+t*0.9);
+wave+=amp2*Math.sin(worldX*0.013-worldZ*0.008+t*0.55+1.8);
+var screenY=baseY-wave;if(screenY<-15||screenY>h+15){idx++;continue;}
+var c=this.colors[idx%this.colors.length];
+ctx.beginPath();ctx.arc(screenX,screenY,dotR,0,PI2);
+ctx.fillStyle='rgba('+c[0]+','+c[1]+','+c[2]+','+dotA+')';ctx.fill();idx++;
+}}};
+
+/* Init: walk up from marker to .et_pb_section, insert canvas there */
+function init(){
+var marker=document.querySelector('.particle-ocean-host');
+if(!marker)return;
+var section=marker.closest('.et_pb_section');
+if(!section){section=marker.closest('.featured-section');} /* HTML fallback */
+if(!section)return;
+marker.remove(); /* clean up — canvas goes on section */
+new DataOcean(section);
+}
+/* Delay to ensure Divi CSS has loaded and section is properly sized */
+if(document.readyState==='complete'){setTimeout(init,200);}
+else{window.addEventListener('load',function(){setTimeout(init,200);});}
+})();
+            </script>`;
 
   return base.wrapInDiviSection('Featured', html, 'Featured: Content');
 }
@@ -421,27 +495,18 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
   overflow: hidden !important;
 }
 
-/* Particle Ocean approximation (CSS dot grid) */
-.et_pb_section:has(.featured-inner)::before {
-  content: '' !important;
-  position: absolute !important;
-  inset: 0 !important;
-  background-image: radial-gradient(circle, rgba(0,175,240,0.35) 1.5px, transparent 1.5px) !important;
-  background-size: 14px 14px !important;
-  mask-image: linear-gradient(160deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.1) 55%, transparent 75%) !important;
-  -webkit-mask-image: linear-gradient(160deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.1) 55%, transparent 75%) !important;
-  pointer-events: none !important;
-  z-index: 0 !important;
-}
-
 .et_pb_section:has(.featured-inner) .et_pb_row {
   max-width: 100% !important;
   width: 100% !important;
   padding: 0 !important;
+  background: transparent !important;
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 .et_pb_section:has(.featured-inner) .et_pb_column {
   padding: 0 !important;
+  background: transparent !important;
 }
 
 .et_pb_section .featured-inner {

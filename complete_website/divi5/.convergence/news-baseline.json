@@ -1,14 +1,14 @@
 {
   "page": "news",
-  "savedAt": "2026-02-23T15:43:26.377Z",
+  "savedAt": "2026-02-23T16:05:55.447Z",
   "sections": {
     "fullpage": {
-      "diffPercent": 4.41,
+      "diffPercent": 4.57,
       "verdict": "REVIEW",
       "skipped": false
     },
     "hero": {
-      "diffPercent": 0,
+      "diffPercent": 1.19,
       "verdict": "MATCH",
       "skipped": false
     },

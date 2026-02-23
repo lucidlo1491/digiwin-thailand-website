@@ -20,7 +20,7 @@ const P = 'hero'; // CSS prefix — customize if needed
 // ════════════════════════════════════════════════════════════════
 function blocks() {
   const html = `
-    <div class="dw-d-bg dw-d-bg--corner-tl" style="opacity: 0.18;"></div>
+    <div class="dw-d-bg" style="opacity: 0.12;"></div>
             <div class="${P}-illustration">
                 <svg aria-hidden="true" viewBox="0 0 560 480" fill="none" xmlns="http://www.w3.org/2000/svg">
                     
@@ -228,7 +228,7 @@ function css() {
 /* .dw-d-bg--bold{opacity:0.22 !important} */
 /* .dw-d-bg--medium{opacity:0.14 !important} */
 /* .dw-d-bg--subtle{opacity:0.06 !important} */
-${superD.css('dw-d-bg', { variant: 'outline', position: 'corner-tl', width: '60%', minHeight: '60vh', opacity: 0.18 })}
+${superD.css('dw-d-bg', { variant: 'outline', position: 'left', opacity: 0.12 })}
 
 
 
@@ -288,10 +288,12 @@ ${superD.css('dw-d-bg', { variant: 'outline', position: 'corner-tl', width: '60%
   max-width: 100% !important;
   width: 100% !important;
   padding: 0 !important;
+  position: static !important;
 }
 
 .et_pb_section:has(.hero-inner) .et_pb_column {
   padding: 0 !important;
+  position: static !important;
 }
 
 .et_pb_section .hero-inner {
@@ -301,6 +303,17 @@ ${superD.css('dw-d-bg', { variant: 'outline', position: 'corner-tl', width: '60%
 
 .et_pb_section .dw-d-bg {
   position: absolute !important;
+  left: -15% !important;
+  right: auto !important;
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+  width: 60% !important;
+  min-height: 60vh !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center left !important;
+  opacity: 0.12 !important;
   pointer-events: none !important;
   z-index: 0 !important;
 }

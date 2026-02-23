@@ -20,7 +20,7 @@ const P = 'hero'; // CSS prefix — customize if needed
 function blocks() {
   const html = `
     <div class="about-hero">
-    <div class="dw-d-bg dw-d-bg--left dw-d-bg--gradient dw-d-parallax" style="opacity: 0.16;"></div>
+    <div class="hero-deco" aria-hidden="true"></div>
             <div class="about-hero-inner">
                 <div class="about-hero-content">
                     <h1><span class="dw-years">44</span> Years of Manufacturing Intelligence</h1>
@@ -170,8 +170,8 @@ function css() {
 svg:not([width]):not([class]){max-width:48px;max-height:48px}
 ${base.reducedMotion('')}
 
-/* Super D decoration */
-${superD.css('dw-d-bg', { variant: 'gradient', position: 'right', opacity: 0.16 })}
+/* Super D decoration — unique class to avoid cascade conflict with other sections' dw-d-bg */
+${superD.css('hero-deco', { variant: 'gradient', position: 'left', opacity: 0.16 })}
 `.trim();
 }
 

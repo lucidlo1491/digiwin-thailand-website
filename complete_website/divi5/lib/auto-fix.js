@@ -431,7 +431,14 @@ function _patchCSSProperty(fileContent, selector, property, newValue) {
     if (isInsideInterpolation(fileContent, match.index)) continue;
 
     const prefix = match[1] + match[2];
-    const suffix = match[4];
+    let suffix = match[4];
+
+    // Guard: if newValue already contains !important, strip !important from suffix
+    // to prevent !important!important
+    if (newValue.includes('!important') && suffix.includes('!important')) {
+      suffix = suffix.replace(/\s*!important/, '');
+    }
+
     return {
       patched: true, action: 'replaced',
       content: fileContent.substring(0, match.index) + prefix + newValue + suffix + fileContent.substring(match.index + match[0].length),
@@ -465,13 +472,29 @@ function _patchCSSInsertOrAppend(fileContent, selector, property, newValue) {
       return _patchCSSProperty(fileContent, selector, shortProp, newValue);
     }
 
+    // Detect if this is a single-line (minified) rule vs multi-line
+    const isMinified = !blockContent.includes('\n');
     const insertionPoint = selectorMatch.index + selectorMatch[1].length + selectorMatch[2].length;
-    const indent = blockContent.match(/\n(\s+)/)?.[1] || '            ';
-    const newRule = `${indent}${property}: ${newValue};\n`;
-    return {
-      patched: true, action: 'inserted',
-      content: fileContent.substring(0, insertionPoint) + '\n' + newRule + fileContent.substring(insertionPoint),
-    };
+
+    if (isMinified) {
+      // Minified: `.foo{a:1;b:2}` → `.foo{a:1;b:2;new-prop:val}`
+      // Ensure the last property ends with semicolon
+      const trimmed = blockContent.trimEnd();
+      const needsSemicolon = trimmed.length > 0 && !trimmed.endsWith(';');
+      const insertion = `${needsSemicolon ? ';' : ''}${property}:${newValue}`;
+      return {
+        patched: true, action: 'inserted',
+        content: fileContent.substring(0, insertionPoint) + insertion + fileContent.substring(insertionPoint),
+      };
+    } else {
+      // Multi-line: add on new line with matching indentation
+      const indent = blockContent.match(/\n(\s+)/)?.[1] || '            ';
+      const newRule = `${indent}${property}: ${newValue};\n`;
+      return {
+        patched: true, action: 'inserted',
+        content: fileContent.substring(0, insertionPoint) + '\n' + newRule + fileContent.substring(insertionPoint),
+      };
+    }
   }
 
   // Strategy 3: Append new rule — but first check for duplicate selector
@@ -733,6 +756,9 @@ async function main() {
       let content = originalContent;
       let patchCount = 0;
 
+      // Divi default rule IDs — these need .et_pb_section override selectors
+      const DIVI_DEFAULT_IDS = new Set(['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S13']);
+
       for (const f of fixes) {
         const sel = extractSelector(f);
         if (!sel) {
@@ -752,23 +778,46 @@ async function main() {
           continue;
         }
 
-        // Escalate to !important if this fix was attempted before but didn't stick
-        const fixKey = `${sel}|${f.property}`;
-        const needsImportant = previouslyAttempted.has(fixKey);
-        const patchValue = needsImportant ? `${f.htmlValue} !important` : f.htmlValue;
-        previouslyAttempted.add(fixKey);
+        // Determine selector and !important strategy based on rule type
+        const isDiviDefault = DIVI_DEFAULT_IDS.has(f.classification.ruleId);
+        let patchSel, patchValue;
 
-        const result = patchCSS(content, sel, f.property, patchValue);
+        if (isDiviDefault) {
+          // Divi defaults: ALWAYS use .et_pb_section override selector + !important
+          // This ensures the fix wins against Divi's cascade
+          patchSel = `.et_pb_section ${sel}`;
+          patchValue = `${f.htmlValue} !important`;
+        } else {
+          // Non-Divi fixes: patch the base selector, escalate only if previously attempted
+          patchSel = sel;
+          const fixKey = `${sel}|${f.property}`;
+          const needsImportant = previouslyAttempted.has(fixKey);
+          // Guard: strip any trailing !important from htmlValue before adding
+          const cleanValue = f.htmlValue.replace(/\s*!important\s*$/, '');
+          patchValue = needsImportant ? `${cleanValue} !important` : cleanValue;
+          previouslyAttempted.add(fixKey);
+        }
+
+        const result = patchCSS(content, patchSel, f.property, patchValue);
         if (result.patched) {
           content = result.content;
           patchCount++;
           const tokenNote = colorToToken(f.htmlValue);
-          const escalateNote = needsImportant ? ' [!important]' : '';
+          const diviNote = isDiviDefault ? ' [divi-override]' : '';
           applied.push(f);
-          console.log(`    ✓ ${sel}  ${f.property}: ${f.wpValue} → ${f.htmlValue}${tokenNote ? ` [${tokenNote}]` : ''}${escalateNote}  (${result.action}, ${f.classification.ruleId})`);
+          console.log(`    ✓ ${patchSel}  ${f.property}: ${f.wpValue} → ${f.htmlValue}${tokenNote ? ` [${tokenNote}]` : ''}${diviNote}  (${result.action}, ${f.classification.ruleId})`);
         } else {
-          console.log(`    ⚠ Could not patch ${sel} ${f.property} — ${result.action}`);
+          console.log(`    ⚠ Could not patch ${patchSel} ${f.property} — ${result.action}`);
         }
+      }
+
+      // OUTPUT VALIDATION: Reject !important!important before writing
+      if (patchCount > 0 && content.includes('!important!important')) {
+        const count = (content.match(/!important!important/g) || []).length;
+        console.error(`    ✗ OUTPUT VALIDATION FAILED: ${count} instance(s) of !important!important detected`);
+        console.error('      Reverting this file — fixes would corrupt CSS');
+        content = originalContent;
+        patchCount = 0;
       }
 
       if (patchCount > 0) {

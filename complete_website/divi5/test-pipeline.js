@@ -414,6 +414,39 @@ console.log('\n\x1b[36m▸ Regression Guards (fixed bugs)\x1b[0m');
   assert(output.includes('font-size:14px;'), 'Regression: semicolon added after existing value');
 }
 
+// 8d. Auto-fix inserts into minified CSS without breaking syntax (Feb 23, 2026)
+// Bug: auto-fix inserted newline + property into single-line rule, missing semicolon
+{
+  const autoFix = require('./lib/auto-fix');
+  const input = '`.product-card{background:#fff;border:2px solid #e2e8f0;display:block}\n`.trim()';
+  const result = autoFix.patchCSS(input, '.product-card', 'line-height', '25.6px');
+  assert(result.patched, 'Auto-fix: patches minified CSS rule');
+  assert(result.content.includes('display:block;line-height:25.6px}'), 'Auto-fix: adds semicolon before inserted property in minified rule');
+  assert(!result.content.includes('\n            line-height'), 'Auto-fix: no multi-line injection into minified rule');
+}
+
+// 8e. Auto-fix patchCSS prevents !important!important (Feb 23, 2026)
+// Bug: when newValue has !important and existing rule has !important, result doubled
+{
+  const autoFix = require('./lib/auto-fix');
+  const input = '.foo{color:red !important}';
+  const result = autoFix.patchCSS(input, '.foo', 'color', 'blue !important');
+  assert(result.patched, 'Auto-fix: replaces value with !important');
+  assert(!result.content.includes('!important!important'), 'Auto-fix: no doubled !important in replaced value');
+  assert(result.content.includes('blue !important'), 'Auto-fix: final value has single !important');
+}
+
+// 8f. Auto-fix classify identifies Divi defaults correctly
+{
+  const autoFix = require('./lib/auto-fix');
+  const s5 = autoFix.classify({ property: 'line-height', wpValue: '23.8px', htmlValue: '25.6px' });
+  assertEqual(s5.ruleId, 'S5', 'Auto-fix: line-height 23.8px classified as S5');
+  const s1 = autoFix.classify({ property: '-webkit-font-smoothing', wpValue: 'antialiased', htmlValue: 'auto' });
+  assertEqual(s1.ruleId, 'S1', 'Auto-fix: font-smoothing classified as S1');
+  const s4 = autoFix.classify({ property: 'font-weight', wpValue: '500', htmlValue: '400' });
+  assertEqual(s4.ruleId, 'S4', 'Auto-fix: font-weight 500→400 classified as S4');
+}
+
 // ─────────────────────────────────────────────
 // RESULTS
 // ─────────────────────────────────────────────

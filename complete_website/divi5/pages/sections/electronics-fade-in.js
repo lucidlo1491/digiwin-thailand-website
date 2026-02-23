@@ -37,16 +37,11 @@ function blocks() {
 // ════════════════════════════════════════════════════════════════
 function css() {
   return `
-/* === FADE IN (S6) === */
-/* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .${P}-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
-
-
-.fade-in{opacity:1;transform:none}
-.fade-in.visible{opacity:1;transform:translateY(0)}
-.fade-in.no-delay{opacity:1;transform:none;transition:none}
-@media (prefers-reduced-motion:reduce){.fade-in{opacity:1;transform:none;transition:none}}
-
+/* === FADE IN / CASE STUDY CALLOUT (S6) === */
+.fade-in{opacity:1;transform:none;padding:60px 0;${base.fontSmoothingReset('fadi')}font-size:16px}
+/* Divi overrides for inline-styled elements */
+.et_pb_section .fade-in h3{line-height:38.4px !important;margin-bottom:16px !important}
+.et_pb_section .fade-in p{line-height:27.2px !important;padding-bottom:0 !important}
 ${base.reducedMotion('')}
 `.trim();
 }

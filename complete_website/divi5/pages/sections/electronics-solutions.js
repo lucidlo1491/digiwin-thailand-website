@@ -172,39 +172,39 @@ function blocks() {
 function css() {
   return `
 /* === SOLUTIONS (S4) === */
-/* TODO: Review and remap class selectors to use ${P} prefix */
-/* TODO: Add section container: .solutions-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
-
-
-/* TODO: HOVER STATES using global classes (port manually) */
-/* .solution-card:hover{border-color:#00AFF0;box-shadow:0 12px 40px rgba(0, 175, 240, 0.12)} */
-/* .solution-card:hover .solution-icon{background:linear-gradient(135deg, #00AFF0, #003CC8)} */
-/* .solution-card:hover .solution-icon svg{stroke:#fff} */
-.fade-in{opacity:1;transform:none}
-.fade-in.visible{opacity:1;transform:translateY(0)}
-.fade-in.no-delay{opacity:1;transform:none;transition:none}
-@media (prefers-reduced-motion:reduce){.fade-in{opacity:1;transform:none;transition:none}}
-.solutions-section{padding:100px 0;background:#fff}
+.solutions-section{padding:100px 0;background:#fff;position:relative;overflow:hidden;${base.fontSmoothingReset('solutions')}font-size:16px}
+.dw-section-scene{position:absolute;inset:0;pointer-events:none;z-index:0}
+.dw-section-scene svg{width:100%;height:100%;position:absolute;top:0;left:0}
 .solutions-inner{max-width:1100px;margin:0 auto;padding:0 24px}
 .solutions-header{text-align:center;margin-bottom:60px}
-.solutions-header h2{font-family:'Noto Sans', sans-serif;font-size:36px;color:#000864;margin-bottom:16px}
-.solutions-header p{font-size:18px;color:#5b6b80}
-/* .solutions-grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:32px} */
-/* .solution-card{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:40px;transition:all 0.3s ease} */
-/* .solution-icon{width:64px;height:64px;background:linear-gradient(135deg, rgba(0, 175, 240, 0.15), rgba(0, 175, 240, 0.05));border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;transition:all 0.4s ease} */
-/* .solution-icon svg{width:28px;height:28px;stroke:#00AFF0;stroke-width:1.5;fill:none} */
-/* .solution-card h3{font-family:'Noto Sans', sans-serif;font-size:22px;color:#000864;margin-bottom:12px} */
-/* .solution-card > p{font-size:15px;color:#5b6b80;line-height:1.7;margin-bottom:20px} */
-/* .solution-features{display:flex;flex-direction:column;gap:10px} */
-/* .solution-feature{display:flex;align-items:center;gap:10px;font-size:14px;color:#475569} */
-/* .solution-feature svg{width:18px;height:18px;color:#00AFF0;flex-shrink:0} */
-/* @media (max-width:1024px){.auto-hero h1, .elec-hero h1, .metal-hero h1{font-size:40px}.auto-hero-stats, .elec-hero-stats, .metal-hero-stats{gap:40px}.stakes-grid, .challenges-grid{grid-template-columns:1fr}.solutions-grid{grid-template-columns:1fr}.products-grid{grid-template-columns:1fr}} */
-/* @media (max-width:640px){.auto-hero, .elec-hero, .metal-hero{padding:120px 0 80px}.auto-hero h1, .elec-hero h1, .metal-hero h1{font-size:32px}.auto-hero-subtitle, .elec-hero-subtitle, .metal-hero-subtitle{font-size:17px}.auto-hero-stats, .elec-hero-stats, .metal-hero-stats{flex-direction:column;gap:24px}.auto-hero-stat-value, .elec-hero-stat-value, .metal-hero-stat-value{font-size:36px}.stake-card, .challenge-card{padding:32px 24px}.solution-card{padding:32px}.cta-section h2{font-size:28px}.cta-buttons{flex-direction:column}} */
-
-\
-/* Defensive SVG sizing */
-svg:not([width]):not([class]){max-width:48px;max-height:48px}
-${base.reducedMotion('')}
+.solutions-header h2{font-family:'Noto Sans',sans-serif;font-size:36px;font-weight:700;color:#000864;line-height:1.6;margin:0 0 16px;padding:0}
+.solutions-header p{font-family:'Noto Sans',sans-serif;font-size:18px;color:#5b6b80;line-height:1.6;margin:0;padding:0}
+.solutions-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.solution-card{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:40px;transition:all 0.3s ease}
+.solution-card:hover{border-color:#00AFF0;box-shadow:0 12px 40px rgba(0,175,240,0.12)}
+.solution-icon{width:64px;height:64px;background:linear-gradient(135deg,rgba(0,175,240,0.15),rgba(0,175,240,0.05));border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;transition:all 0.4s ease}
+.solution-icon svg{width:28px;height:28px;stroke:#00AFF0;stroke-width:1.5;fill:none}
+.solution-card:hover .solution-icon{background:linear-gradient(135deg,#00AFF0,#003CC8)}
+.solution-card:hover .solution-icon svg{stroke:#fff}
+.solution-card h3{font-family:'Noto Sans',sans-serif;font-size:22px;font-weight:700;color:#000864;line-height:1.6;margin:0 0 12px;padding:0}
+.solution-card>p{font-family:'Noto Sans',sans-serif;font-size:15px;color:#5b6b80;line-height:1.7;margin:0 0 20px;padding:0}
+.solution-features{display:flex;flex-direction:column;gap:10px}
+.solution-feature{display:flex;align-items:center;gap:10px;font-size:14px;color:#475569}
+.solution-feature svg{width:18px;height:18px;color:#00AFF0;flex-shrink:0}
+@media(max-width:${base.BREAKPOINTS.tablet}px){
+  .solutions-grid{grid-template-columns:1fr}
+}
+@media(max-width:${base.BREAKPOINTS.mobile}px){
+  .solutions-section{padding:80px 0}
+  .solution-card{padding:32px}
+}
+${base.reducedMotion(`.solution-card{transition:none !important}.solution-icon{transition:none !important}`)}
+/* Divi line-height overrides */
+.et_pb_section .solutions-header h2{line-height:57.6px !important}
+.et_pb_section .solutions-header p{line-height:28.8px !important}
+.et_pb_section .solution-card h3{line-height:35.2px !important}
+.et_pb_section .solution-card>p{line-height:25.5px !important}
+.et_pb_section .solution-feature span{line-height:22.4px !important}
 `.trim();
 }
 

@@ -81,6 +81,12 @@ function css() {
 .oem-logo, .equipment-logo, .process-logo{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px 32px;font-family:'Noto Sans', sans-serif;font-size:16px;font-weight:600;color:#475569}
 
 ${base.reducedMotion('')}
+
+.et_pb_section .equipment-logo {
+            line-height: 25.6px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
 `.trim();
 }
 

@@ -103,6 +103,18 @@ function css() {
 /* Defensive SVG sizing */
 svg:not([width]):not([class]){max-width:48px;max-height:48px}
 ${base.reducedMotion('')}
+
+.et_pb_section .product-card {
+            line-height: 25.6px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .product-card-link {
+            line-height: 22.4px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
 `.trim();
 }
 

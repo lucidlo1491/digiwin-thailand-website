@@ -86,10 +86,10 @@ module.exports = {
         ],
       },
       {
-        name: 'fade-in', wpSelector: '.et_pb_section_5', htmlSelector: '.fade-in',
+        name: 'fade-in', wpSelector: '.et_pb_section_5', htmlSelector: '.case-reference',
         pixelThreshold: 0.1,
         styleMap: [
-          { label: 'Section Title', htmlSel: '.fade-in h2', wpSel: '.et_pb_section_5 h2' },
+          { label: 'Case Title', htmlSel: '.case-reference h3', wpSel: '.et_pb_section_5 h3' },
         ],
       },
       {

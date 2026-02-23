@@ -77,6 +77,32 @@ ${base.reducedMotion('')}
 
 /* Super D decoration */
 ${superD.css('dw-d-bg', { variant: 'outline', position: 'right' })}
+
+.elec-hero-subtitle {
+            font-size: 20px;
+        }
+
+.et_pb_section .elec-hero-subtitle {
+            line-height: 32px !important;
+        
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .elec-hero-stat-value {
+            line-height: 67.2px !important;
+        
+            color: rgb(0, 175, 240) !important;
+
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .elec-hero-stat-label {
+            line-height: 22.4px !important;
+        
+            margin-top: 4px !important;
+
+            -webkit-font-smoothing: auto !important;
+}
 `.trim();
 }
 

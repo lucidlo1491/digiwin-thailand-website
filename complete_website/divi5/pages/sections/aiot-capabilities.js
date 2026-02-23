@@ -10,7 +10,6 @@
  */
 
 const base = require('../../lib/templates/_base');
-const superD = require('../../lib/super-d');
 
 const P = 'cap'; // CSS prefix — customize if needed
 
@@ -235,12 +234,14 @@ function css() {
 @media (max-width: 640px) {
             .capability-features { grid-template-columns: 1fr; }
         }
+/* Divi overrides */
+.et_pb_section .capabilities-header h2{font-weight:700 !important;line-height:1.3 !important;font-size:36px !important}
+.et_pb_section .capabilities-header p{font-weight:400 !important;padding-bottom:0 !important}
+.et_pb_section .capability-card h3{font-weight:600 !important;line-height:1.3 !important}
+.et_pb_section .capability-card > p{padding-bottom:0 !important;line-height:1.6 !important}
 /* Defensive SVG sizing */
 svg:not([width]):not([class]){max-width:48px;max-height:48px}
 ${base.reducedMotion('')}
-
-/* Super D decoration */
-${superD.css('dw-d-bg', { variant: 'outline', position: 'right', modifiers: ['glow'] })}
 `.trim();
 }
 

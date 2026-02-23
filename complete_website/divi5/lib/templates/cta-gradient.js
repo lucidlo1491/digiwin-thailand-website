@@ -84,14 +84,18 @@ function css(data) {
 .${p}-section::after{content:'';position:absolute;bottom:-20%;right:-10%;width:80%;height:80%;background:radial-gradient(ellipse at center,rgba(255,255,255,0.1) 0%,transparent 70%);pointer-events:none;z-index:1}
 ${superDCss}
 ${waveFlowCss}
-.${p}-container{position:relative;z-index:3;max-width:${data.maxWidth || '800px'};margin:0 auto;text-align:center}
-.${p}-title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:clamp(36px,4.5vw,52px);color:#fff;letter-spacing:-0.02em;line-height:1.15;margin:0 0 20px}
-.${p}-subtitle{font-family:'Noto Sans',sans-serif;font-size:20px;color:rgba(255,255,255,0.9);line-height:1.65;margin:0 0 48px}
+.${p}-container{position:relative;z-index:3;max-width:${data.maxWidth || '700px'};margin:0 auto;text-align:center}
+.${p}-title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:${data.titleFontSize || '40px'};color:#fff;line-height:1.6;margin:0 0 16px}
+.${p}-subtitle{font-family:'Noto Sans',sans-serif;font-size:20px;color:rgba(255,255,255,0.9);margin:0 0 40px}
+/* Divi overrides — ensure font properties survive Divi cascade */
+.et_pb_section .${p}-title{font-weight:700 !important;font-size:${data.titleFontSize || '40px'} !important;line-height:1.6 !important;color:#fff !important}
+.et_pb_section .${p}-subtitle{font-weight:400 !important;padding-bottom:0 !important}
+.et_pb_section .${p}-container p{padding-bottom:0 !important}
 ${base.buttonLightCSS(p)}
-.${p}-btn{position:static;overflow:visible;display:inline-flex;align-items:center;gap:8px;padding:20px 40px;border-radius:14px;line-height:1.6}
+.${p}-btn{position:static;overflow:visible;display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border-radius:8px;line-height:1.6}
 @media(max-width:767px){
-  .${p}-title{font-size:clamp(28px,8vw,36px);margin-bottom:20px}
-  .${p}-subtitle{font-size:16px;margin-bottom:36px}
+  .${p}-title{font-size:28px;margin-bottom:16px}
+  .${p}-subtitle{font-size:16px;margin-bottom:32px}
   .${p}-btn-row{flex-direction:column;align-items:stretch;gap:16px}
   .${p}-btn{width:100%;max-width:300px;margin:0 auto;text-align:center}
 }

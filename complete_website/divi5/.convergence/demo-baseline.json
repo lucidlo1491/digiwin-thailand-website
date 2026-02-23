@@ -1,0 +1,26 @@
+{
+  "page": "demo",
+  "savedAt": "2026-02-23T03:59:14.754Z",
+  "sections": {
+    "fullpage": {
+      "diffPercent": 12.23,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "hero": {
+      "diffPercent": 3.65,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "form": {
+      "diffPercent": 7.61,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "expect": {
+      "diffPercent": 3.76,
+      "verdict": "REVIEW",
+      "skipped": false
+    }
+  }
+}

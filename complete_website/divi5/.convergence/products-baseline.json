@@ -1,0 +1,36 @@
+{
+  "page": "products",
+  "savedAt": "2026-02-23T03:59:40.076Z",
+  "sections": {
+    "fullpage": {
+      "diffPercent": 7.34,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "hero": {
+      "diffPercent": 4.42,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "grid": {
+      "diffPercent": 4.91,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "integration": {
+      "diffPercent": 0.11,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "why": {
+      "diffPercent": 1.71,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "cta": {
+      "diffPercent": 0.45,
+      "verdict": "MATCH",
+      "skipped": false
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "page": "aiot",
+  "savedAt": "2026-02-23T04:10:11.741Z",
+  "sections": {
+    "fullpage": {
+      "diffPercent": 12.69,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "hero": {
+      "diffPercent": 4.95,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "section": {
+      "diffPercent": 4.49,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "problem": {
+      "diffPercent": 2.64,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "dataflow": {
+      "diffPercent": 2.79,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "capabilities": {
+      "diffPercent": 2.31,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "metrics": {
+      "diffPercent": 3.89,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "protocol": {
+      "diffPercent": 1.58,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "integration": {
+      "diffPercent": 2.79,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "section-2": {
+      "diffPercent": 4.43,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "cta": {
+      "diffPercent": 9.03,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "related-solutions": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "page": "case-studies",
+  "savedAt": "2026-02-23T03:59:12.278Z",
+  "sections": {
+    "fullpage": {
+      "diffPercent": 5.54,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "cs-hero": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "cs-cta": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    }
+  }
+}

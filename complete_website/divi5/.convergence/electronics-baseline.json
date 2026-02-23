@@ -1,0 +1,61 @@
+{
+  "page": "electronics",
+  "savedAt": "2026-02-23T04:10:21.608Z",
+  "sections": {
+    "fullpage": {
+      "diffPercent": 16.54,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "elec-hero": {
+      "diffPercent": 3.31,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "context": {
+      "diffPercent": 3.65,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "challenges": {
+      "diffPercent": 4.86,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "solutions": {
+      "diffPercent": 3.96,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "equipment": {
+      "diffPercent": 1.1,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "fade-in": {
+      "diffPercent": 6.82,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "products": {
+      "diffPercent": 3.39,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "section": {
+      "diffPercent": 2.59,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "cta": {
+      "diffPercent": 5.62,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "related-solutions": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    }
+  }
+}

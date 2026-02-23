@@ -1,0 +1,51 @@
+{
+  "page": "partner-business-model",
+  "savedAt": "2026-02-23T03:59:29.736Z",
+  "sections": {
+    "fullpage": {
+      "diffPercent": 0.87,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "hero": {
+      "diffPercent": 0.68,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "pattern": {
+      "diffPercent": 0.05,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "evidence-row1": {
+      "diffPercent": 0.38,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "evidence-row2": {
+      "diffPercent": 0.2,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "futures": {
+      "diffPercent": 0.71,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "solution": {
+      "diffPercent": 0.18,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "compare": {
+      "diffPercent": 0,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "cta": {
+      "diffPercent": 1.26,
+      "verdict": "MATCH",
+      "skipped": false
+    }
+  }
+}

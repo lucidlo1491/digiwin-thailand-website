@@ -1,6 +1,6 @@
 {
   "page": "erp",
-  "savedAt": "2026-02-22T03:43:34.576Z",
+  "savedAt": "2026-02-23T04:10:06.152Z",
   "sections": {
     "fullpage": {
       "diffPercent": 21.17,
@@ -8,7 +8,7 @@
       "skipped": false
     },
     "hero": {
-      "diffPercent": 1.45,
+      "diffPercent": 0.17,
       "verdict": "MATCH",
       "skipped": false
     },
@@ -23,32 +23,37 @@
       "skipped": false
     },
     "products": {
-      "diffPercent": 2.4,
+      "diffPercent": 2.28,
       "verdict": "REVIEW",
       "skipped": false
     },
     "capabilities": {
-      "diffPercent": 0.39,
+      "diffPercent": 1.69,
       "verdict": "MATCH",
       "skipped": false
     },
     "section-6": {
-      "diffPercent": 1.39,
+      "diffPercent": 1.33,
       "verdict": "MATCH",
       "skipped": false
     },
     "integration": {
-      "diffPercent": 4.3,
+      "diffPercent": 4.6,
       "verdict": "REVIEW",
       "skipped": false
     },
     "faq": {
-      "diffPercent": 1.95,
+      "diffPercent": 1.94,
       "verdict": "MATCH",
       "skipped": false
     },
     "cta": {
-      "diffPercent": 1.09,
+      "diffPercent": 7.01,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "related-solutions": {
+      "diffPercent": 0.28,
       "verdict": "MATCH",
       "skipped": false
     }

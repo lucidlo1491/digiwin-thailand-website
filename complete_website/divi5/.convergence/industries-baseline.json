@@ -1,0 +1,41 @@
+{
+  "page": "industries",
+  "savedAt": "2026-02-23T03:59:24.412Z",
+  "sections": {
+    "fullpage": {
+      "diffPercent": 8.59,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "hero": {
+      "diffPercent": 36.54,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "context": {
+      "diffPercent": 3.31,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "section": {
+      "diffPercent": 0.48,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "challenges": {
+      "diffPercent": 2.69,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "approach": {
+      "diffPercent": 5.05,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "cta": {
+      "diffPercent": 3.93,
+      "verdict": "REVIEW",
+      "skipped": false
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "page": "about",
+  "savedAt": "2026-02-23T03:59:03.212Z",
+  "sections": {
+    "fullpage": {
+      "diffPercent": 30.8,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "hero": {
+      "diffPercent": 1.74,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "cta": {
+      "diffPercent": 6.69,
+      "verdict": "FAIL",
+      "skipped": false
+    }
+  }
+}

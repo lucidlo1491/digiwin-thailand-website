@@ -177,6 +177,12 @@ function css() {
 @media (max-width: 640px) {
             .dataflow-stages { flex-direction: column; }
         }
+/* Divi overrides */
+.et_pb_section .dataflow-header h2{font-weight:700 !important;line-height:1.3 !important;font-size:36px !important}
+.et_pb_section .dataflow-header p{font-weight:400 !important;padding-bottom:0 !important}
+.et_pb_section .dataflow-stage h3{font-weight:600 !important;line-height:1.3 !important}
+.et_pb_section .dataflow-stage p{padding-bottom:0 !important;line-height:1.5 !important}
+.et_pb_section .dataflow-stage-number{font-weight:600 !important}
 `.trim();
 }
 

@@ -1,0 +1,36 @@
+{
+  "page": "partner-economics",
+  "savedAt": "2026-02-23T03:59:35.009Z",
+  "sections": {
+    "fullpage": {
+      "diffPercent": 6.01,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "hero": {
+      "diffPercent": 0.09,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "revenue": {
+      "diffPercent": 5.82,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "journey": {
+      "diffPercent": 5.45,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "protection": {
+      "diffPercent": 5.26,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "cta": {
+      "diffPercent": 1.3,
+      "verdict": "MATCH",
+      "skipped": false
+    }
+  }
+}

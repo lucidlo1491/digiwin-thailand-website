@@ -1,65 +1,65 @@
 {
-  "page": "mes",
-  "savedAt": "2026-02-23T04:09:56.902Z",
+  "page": "wms",
+  "savedAt": "2026-02-23T04:09:48.373Z",
   "sections": {
     "fullpage": {
-      "diffPercent": 20.27,
+      "diffPercent": 9.76,
       "verdict": "FAIL",
       "skipped": false
     },
     "hero": {
-      "diffPercent": 1.81,
+      "diffPercent": 0.34,
       "verdict": "MATCH",
       "skipped": false
     },
     "section": {
-      "diffPercent": 0.44,
-      "verdict": "MATCH",
-      "skipped": false
-    },
-    "beforeafter": {
-      "diffPercent": 2.61,
+      "diffPercent": 4.04,
       "verdict": "REVIEW",
       "skipped": false
     },
-    "products": {
-      "diffPercent": 6.5,
-      "verdict": "FAIL",
+    "problems": {
+      "diffPercent": 3.17,
+      "verdict": "REVIEW",
       "skipped": false
     },
     "capabilities": {
-      "diffPercent": 2.85,
+      "diffPercent": 2.9,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "mobile-functions": {
+      "diffPercent": 2.58,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "process-flow": {
+      "diffPercent": 2.17,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "transformation": {
+      "diffPercent": 4.25,
       "verdict": "REVIEW",
       "skipped": false
     },
     "integration": {
-      "diffPercent": 3.05,
+      "diffPercent": 4.55,
       "verdict": "REVIEW",
-      "skipped": false
-    },
-    "results": {
-      "diffPercent": 2.01,
-      "verdict": "REVIEW",
-      "skipped": false
-    },
-    "reports": {
-      "diffPercent": 1.61,
-      "verdict": "MATCH",
       "skipped": false
     },
     "section-2": {
-      "diffPercent": 2.12,
-      "verdict": "REVIEW",
+      "diffPercent": 100,
+      "verdict": "FAIL",
       "skipped": false
     },
     "product-detail-cta": {
-      "diffPercent": 10,
+      "diffPercent": 9.33,
       "verdict": "FAIL",
       "skipped": false
     },
     "related-solutions": {
-      "diffPercent": 0.96,
-      "verdict": "MATCH",
+      "diffPercent": 100,
+      "verdict": "FAIL",
       "skipped": false
     }
   }

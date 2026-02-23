@@ -10,7 +10,6 @@
  */
 
 const base = require('../../lib/templates/_base');
-const superD = require('../../lib/super-d');
 
 const P = 'int'; // CSS prefix — customize if needed
 
@@ -59,6 +58,7 @@ function blocks() {
             </div>
     
             <div class="integration-message">
+                <div class="integration-gradient-bar" aria-hidden="true"></div>
                 <p>Machine data flows from sensors to dashboards in real time. AIoT feeds OEE to MES, triggers maintenance in ERP, and validates inventory in WMS. <strong>One connected factory. Zero blind spots.</strong></p>
             </div>
     
@@ -232,12 +232,16 @@ function css() {
             .integration-diagram { flex-direction: column; }
             .integration-arrow { transform: rotate(90deg); }
         }
+/* Rainbow gradient bar above message */
+.integration-gradient-bar{height:4px;border-radius:4px 4px 0 0;background:linear-gradient(90deg,#00AFF0,#003CC8,#644CE6,#FF6E82,#FFD700,#02D28C);margin:-1px 0 0}
+/* Divi overrides */
+.et_pb_section .integration-header h2{font-weight:700 !important;line-height:1.3 !important;font-size:36px !important}
+.et_pb_section .integration-header p{font-weight:400 !important;padding-bottom:0 !important}
+.et_pb_section .integration-message p{font-weight:400 !important;padding-bottom:0 !important;line-height:1.8 !important}
+.et_pb_section .node-title{font-weight:600 !important}
 /* Defensive SVG sizing */
 svg:not([width]):not([class]){max-width:48px;max-height:48px}
 ${base.reducedMotion('')}
-
-/* Super D decoration */
-${superD.css('dw-d-bg', { variant: 'outline', position: 'right', modifiers: ['glow'] })}
 `.trim();
 }
 

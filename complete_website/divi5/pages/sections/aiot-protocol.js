@@ -9,7 +9,6 @@
  */
 
 const base = require('../../lib/templates/_base');
-const superD = require('../../lib/super-d');
 
 const P = 'pro'; // CSS prefix — customize if needed
 
@@ -83,10 +82,12 @@ function css() {
             color: #475569;
             font-weight: 500;
         }
+/* Divi overrides */
+.et_pb_section .protocol-inner h3{font-weight:700 !important;line-height:1.3 !important;font-size:24px !important}
+.et_pb_section .protocol-tag{font-weight:500 !important;padding-bottom:0 !important}
 ${base.reducedMotion('')}
 
-/* Super D decoration */
-${superD.css('dw-d-bg', { variant: 'outline', position: 'right', modifiers: ['glow'] })}
+/* Super D: HTML has corner-tl at 0.10 opacity (barely visible). corner-tl not in super-d presets — omitted for fidelity. */
 `.trim();
 }
 

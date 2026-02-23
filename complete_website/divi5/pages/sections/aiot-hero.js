@@ -341,12 +341,23 @@ function css() {
             .aiot-hero-stats { flex-direction: column; gap: 24px; }
             .aiot-hero-stat-value { font-size: 36px; }
         }
+/* Divi overrides — reset defaults that conflict with hero styles */
+.et_pb_section .aiot-hero h1{font-weight:700 !important;line-height:1.15 !important;font-size:52px !important}
+.et_pb_section .aiot-hero h1 span{color:#00AFF0 !important}
+.et_pb_section .aiot-hero-subtitle{font-weight:400 !important;line-height:1.6 !important;font-size:20px !important}
+.et_pb_section .aiot-hero-stat-value{font-weight:700 !important;font-size:42px !important;line-height:1 !important}
+.et_pb_section .aiot-hero-stat-label{font-size:10px !important;line-height:1.4 !important}
+.et_pb_section .aiot-hero-badge span{font-size:11px !important;font-weight:500 !important}
+.et_pb_section .aiot-sensor-value{font-weight:600 !important;font-size:22px !important}
+.et_pb_section .aiot-dashboard-title{font-size:11px !important}
+.et_pb_section .aiot-hero-inner p{padding-bottom:0 !important}
 /* Defensive SVG sizing */
 svg:not([width]):not([class]){max-width:48px;max-height:48px}
 ${base.reducedMotion('')}
 
-/* Super D decoration */
-${superD.css('dw-d-bg', { variant: 'particle', position: 'right', modifiers: ['glow'] })}
+/* Super D decoration — matches HTML: center + particle, opacity 0.12 */
+${superD.css('dw-d-bg', { variant: 'particle', position: 'center' })}
+.dw-d-bg{opacity:0.12 !important}
 `.trim();
 }
 

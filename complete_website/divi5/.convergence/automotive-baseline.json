@@ -1,0 +1,61 @@
+{
+  "page": "automotive",
+  "savedAt": "2026-02-23T04:10:16.456Z",
+  "sections": {
+    "fullpage": {
+      "diffPercent": 11.83,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "auto-hero": {
+      "diffPercent": 7,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "context": {
+      "diffPercent": 3.38,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "stakes": {
+      "diffPercent": 5.67,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "solutions": {
+      "diffPercent": 2.49,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "products": {
+      "diffPercent": 3.01,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "section": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "section-2": {
+      "diffPercent": 4.66,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "section-3": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "cta": {
+      "diffPercent": 5.48,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "related-solutions": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    }
+  }
+}

@@ -109,6 +109,11 @@ function css() {
 @media (max-width: 640px) {
             .metrics-grid { grid-template-columns: 1fr; }
         }
+/* Divi overrides */
+.et_pb_section .metrics-header h2{font-weight:700 !important;line-height:1.3 !important;font-size:36px !important;color:#fff !important}
+.et_pb_section .metrics-header p{font-weight:400 !important;padding-bottom:0 !important}
+.et_pb_section .metric-value{font-weight:700 !important;font-size:48px !important;line-height:1 !important}
+.et_pb_section .metric-label{padding-bottom:0 !important;line-height:1.4 !important}
 `.trim();
 }
 

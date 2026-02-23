@@ -1,0 +1,36 @@
+{
+  "page": "partner-solutions",
+  "savedAt": "2026-02-23T03:59:35.083Z",
+  "sections": {
+    "hero": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "products": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "lifecycle": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "reverse-cut": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "competitive": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "cta": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    }
+  }
+}

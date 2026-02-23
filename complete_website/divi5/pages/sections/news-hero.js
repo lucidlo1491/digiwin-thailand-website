@@ -228,7 +228,7 @@ function css() {
 /* .dw-d-bg--bold{opacity:0.22 !important} */
 /* .dw-d-bg--medium{opacity:0.14 !important} */
 /* .dw-d-bg--subtle{opacity:0.06 !important} */
-${superD.css('dw-d-bg', { variant: 'outline', position: 'left' })}
+${superD.css('dw-d-bg', { variant: 'outline', position: 'corner-tl', width: '60%', minHeight: '60vh', opacity: 0.10 })}
 
 
 

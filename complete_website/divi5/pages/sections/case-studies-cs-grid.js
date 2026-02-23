@@ -105,6 +105,40 @@ function blocks() {
                 </div>
             </div>
     </div>
+    <script>
+    (function(){
+      var filterBtns = document.querySelectorAll('.cs-filter-btn');
+      var cards = document.querySelectorAll('.cs-card');
+      filterBtns.forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var filter = this.getAttribute('data-filter');
+          filterBtns.forEach(function(b){
+            b.classList.remove('active');
+            b.setAttribute('aria-pressed','false');
+          });
+          this.classList.add('active');
+          this.setAttribute('aria-pressed','true');
+          cards.forEach(function(card){
+            if(filter==='all'||card.getAttribute('data-industry')===filter){
+              card.style.display='';
+            }else{
+              card.style.display='none';
+            }
+          });
+        });
+      });
+      document.querySelectorAll('.cs-card').forEach(function(card){
+        card.addEventListener('click', function(e){
+          var href = this.getAttribute('href');
+          if(href && href.startsWith('#')){
+            e.preventDefault();
+            var target = document.querySelector(href);
+            if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+          }
+        });
+      });
+    })();
+    </script>
     `;
 
   return base.wrapInDiviSection('Cs Grid', html, 'Cs Grid: Content');

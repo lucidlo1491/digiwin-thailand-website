@@ -9,7 +9,7 @@
  */
 
 const base = require('../../lib/templates/_base');
-const superD = require('../../lib/super-d');
+
 
 const P = 'hero'; // CSS prefix — customize if needed
 
@@ -19,7 +19,7 @@ const P = 'hero'; // CSS prefix — customize if needed
 function blocks() {
   const html = `
     <div class="mes-hero">
-    <div class="dw-d-bg dw-d-bg--bottom dw-d-bg--particle dw-d-parallax" style="opacity: 0.15;"></div>
+
             <div class="mes-hero-inner">
                 <div class="mes-hero-grid">
                     <div class="mes-hero-content">
@@ -238,6 +238,29 @@ function css() {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 6px;
         }
+.mockup-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+.mockup-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+.mockup-dot:nth-child(1) { background: #ff5f57; }
+.mockup-dot:nth-child(2) { background: #ffbd2e; }
+.mockup-dot:nth-child(3) { background: #28ca42; }
+.mockup-bar {
+            flex: 1;
+            background: #00AFF0;
+            border-radius: 4px 4px 0 0;
+            opacity: 0.6;
+        }
+.mockup-bar.active {
+            opacity: 1;
+            background: #10b981;
+        }
 .mes-hero h1 {
             font-family: 'Noto Sans', sans-serif;
             font-size: 48px;
@@ -299,10 +322,7 @@ function css() {
             .product-box,
             .integration-node,
             .integration-link,
-            .dw-d-bg,
-            .dw-d-parallax,
-            .dw-wave-flow,
-            .dw-d-glow {
+            .dw-wave-flow {
                 animation: none !important;
                 transition: none !important;
             }
@@ -378,8 +398,6 @@ ${base.reducedMotion('')}
             -webkit-font-smoothing: auto !important;
 }
 
-/* Super D decoration */
-${superD.css('dw-d-bg', { variant: 'particle', position: 'bottom', modifiers: ['glow'] })}
 
 .et_pb_section .btn-white {
             line-height: 25.6px !important;

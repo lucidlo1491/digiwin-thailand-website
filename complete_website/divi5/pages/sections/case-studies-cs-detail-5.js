@@ -16,7 +16,7 @@ const P = 'csd'; // CSS prefix — customize if needed
 // ════════════════════════════════════════════════════════════════
 function blocks() {
   const html = `
-    <div class="cs-detail-section">
+    <div class="cs-detail-section" style="background:#F5F7FA">
     <div class="cs-detail-inner">
                 <div class="cs-detail-header cs-animate">
                     <div class="cs-detail-badge">Fasteners</div>
@@ -83,12 +83,7 @@ function css() {
 /* TODO: Add section container: .cs-detail-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .cs-detail-section {
             padding: 80px 24px;
-        }
-.cs-detail-section:nth-child(odd) {
             background: #F5F7FA;
-        }
-.cs-detail-section:nth-child(even) {
-            background: #fff;
         }
 .cs-detail-inner {
             max-width: 900px;

@@ -17,7 +17,7 @@ const P = 'csd'; // CSS prefix — customize if needed
 // ════════════════════════════════════════════════════════════════
 function blocks() {
   const html = `
-    <div class="cs-detail-section">
+    <div class="cs-detail-section" style="background:#F5F7FA">
     <div class="cs-detail-inner">
                 <div class="cs-detail-header cs-animate">
                     <div class="cs-detail-badge">Metal Stamping</div>
@@ -117,12 +117,7 @@ function css() {
 /* TODO: Add section container: .cs-detail-section{...;${base.fontSmoothingReset(P)}font-size:16px} */
 .cs-detail-section {
             padding: 80px 24px;
-        }
-.cs-detail-section:nth-child(odd) {
             background: #F5F7FA;
-        }
-.cs-detail-section:nth-child(even) {
-            background: #fff;
         }
 .cs-detail-inner {
             max-width: 900px;
@@ -326,6 +321,26 @@ function css() {
             margin: 0;
             line-height: 1.4;
         }
+.cs-detail-location {
+            font-size: 0.9375rem;
+            color: #666;
+            margin: 0 0 8px;
+        }
+.cs-detail h3 {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #000864;
+            margin: 40px 0 16px;
+        }
+.cs-detail p,
+.cs-detail-section p {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.7;
+            margin: 0 0 16px;
+        }
 .cs-animate {
             opacity: 1;
             transform: none;
@@ -397,6 +412,42 @@ function css() {
 
 ${base.diviListReset(P)}
 ${base.reducedMotion('')}
+
+.et_pb_section .cs-detail-section h3 {
+            margin: 40px 0 16px !important;
+            padding: 0 !important;
+            font-size: 1.25rem !important;
+            font-weight: 700 !important;
+            color: #000864 !important;
+            line-height: 1.3 !important;
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .cs-detail-section p {
+            padding-bottom: 0 !important;
+            margin: 0 0 16px !important;
+            line-height: 1.7 !important;
+            font-size: 1rem !important;
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .cs-detail-header {
+            margin-bottom: 40px !important;
+}
+
+.et_pb_section .cs-detail-company {
+            font-size: clamp(1.5rem, 3vw, 2.25rem) !important;
+            font-weight: 800 !important;
+            margin: 0 0 8px !important;
+            padding: 0 !important;
+            line-height: 1.2 !important;
+            -webkit-font-smoothing: auto !important;
+}
+
+.et_pb_section .cs-detail-location {
+            line-height: 24px !important;
+            -webkit-font-smoothing: auto !important;
+}
 
 .et_pb_section .cs-detail-badge {
             line-height: 17.6px !important;

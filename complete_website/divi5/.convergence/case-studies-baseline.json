@@ -1,6 +1,6 @@
 {
   "page": "case-studies",
-  "savedAt": "2026-02-23T10:48:47.208Z",
+  "savedAt": "2026-02-23T10:59:11.270Z",
   "sections": {
     "fullpage": {
       "diffPercent": 5.54,
@@ -18,7 +18,7 @@
       "skipped": false
     },
     "cs-detail": {
-      "diffPercent": 2.28,
+      "diffPercent": 2.25,
       "verdict": "REVIEW",
       "skipped": false
     },
@@ -28,22 +28,22 @@
       "skipped": false
     },
     "cs-detail-3": {
-      "diffPercent": 2.33,
+      "diffPercent": 2.29,
       "verdict": "REVIEW",
       "skipped": false
     },
     "cs-detail-4": {
-      "diffPercent": 1.85,
+      "diffPercent": 1.83,
       "verdict": "MATCH",
       "skipped": false
     },
     "cs-detail-5": {
-      "diffPercent": 3.4,
+      "diffPercent": 3.43,
       "verdict": "REVIEW",
       "skipped": false
     },
     "cs-listed": {
-      "diffPercent": 3.38,
+      "diffPercent": 3.57,
       "verdict": "REVIEW",
       "skipped": false
     },
@@ -53,8 +53,8 @@
       "skipped": false
     },
     "cs-cta": {
-      "diffPercent": 5.62,
-      "verdict": "FAIL",
+      "diffPercent": 4.14,
+      "verdict": "REVIEW",
       "skipped": false
     }
   }

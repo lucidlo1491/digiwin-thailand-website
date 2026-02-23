@@ -36,8 +36,8 @@ module.exports = {
     { name: 'section-6', builder: section6Builder },
     { name: 'integration', builder: integrationBuilder },
     { name: 'faq', builder: section2Builder },
-    { name: 'related-solutions', builder: relatedBuilder },
     { name: 'cta', builder: ctaBuilder },
+    { name: 'related-solutions', builder: relatedBuilder },
   ],
 
   editabilityRules: {
@@ -61,10 +61,10 @@ module.exports = {
       { name: 'integration', wpSelector: '.et_pb_section_6', htmlSelector: '.integration-section', pixelThreshold: 0.1,
         styleMap: [{ label: 'Integration Title', htmlSel: '.integration-section h2', wpSel: '.et_pb_section_6 h2' }] },
       { name: 'faq', wpSelector: '.et_pb_section_7', htmlSelector: 'section:nth-of-type(8)', pixelThreshold: 0.15 },
-      { name: 'related-solutions', wpSelector: '.et_pb_section_8', htmlSelector: '.related-solutions', pixelThreshold: 0.1,
-        styleMap: [{ label: 'Related Title', htmlSel: '.related-solutions h2', wpSel: '.et_pb_section_8 h2' }] },
-      { name: 'cta', wpSelector: '.et_pb_section_9', htmlSelector: '.erp-cta', pixelThreshold: 0.1,
-        styleMap: [{ label: 'CTA Title', htmlSel: '.erp-cta h2', wpSel: '.et_pb_section_9 h2' }] },
+      { name: 'cta', wpSelector: '.et_pb_section_8', htmlSelector: '.erp-cta', pixelThreshold: 0.1,
+        styleMap: [{ label: 'CTA Title', htmlSel: '.erp-cta h2', wpSel: '.et_pb_section_8 h2' }] },
+      { name: 'related-solutions', wpSelector: '.et_pb_section_9', htmlSelector: '.related-solutions', pixelThreshold: 0.1,
+        styleMap: [{ label: 'Related Title', htmlSel: '.related-solutions h2', wpSel: '.et_pb_section_9 h2' }] },
     ],
   },
 };

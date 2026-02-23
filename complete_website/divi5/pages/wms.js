@@ -40,8 +40,8 @@ module.exports = {
     { name: 'transformation', builder: transformationBuilder },
     { name: 'integration', builder: integrationBuilder },
     { name: 'section-2', builder: section2Builder },
-    { name: 'related-solutions', builder: relatedBuilder },
     { name: 'product-detail-cta', builder: productDetailCtaBuilder },
+    { name: 'related-solutions', builder: relatedBuilder },
   ],
 
   editabilityRules: {
@@ -116,17 +116,17 @@ module.exports = {
         ],
       },
       {
-        name: 'related-solutions', wpSelector: '.et_pb_section_9', htmlSelector: '.related-solutions',
+        name: 'product-detail-cta', wpSelector: '.et_pb_section_9', htmlSelector: '.product-detail-cta',
         pixelThreshold: 0.1,
         styleMap: [
-          { label: 'Related Title', htmlSel: '.related-solutions h2', wpSel: '.et_pb_section_9 h2' },
+          { label: 'Section Title', htmlSel: '.product-detail-cta h2', wpSel: '.et_pb_section_9 h2' },
         ],
       },
       {
-        name: 'product-detail-cta', wpSelector: '.et_pb_section_10', htmlSelector: '.product-detail-cta',
+        name: 'related-solutions', wpSelector: '.et_pb_section_10', htmlSelector: '.related-solutions',
         pixelThreshold: 0.1,
         styleMap: [
-          { label: 'Section Title', htmlSel: '.product-detail-cta h2', wpSel: '.et_pb_section_10 h2' },
+          { label: 'Related Title', htmlSel: '.related-solutions h2', wpSel: '.et_pb_section_10 h2' },
         ],
       },
     ],

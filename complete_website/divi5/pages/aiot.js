@@ -40,8 +40,8 @@ module.exports = {
     { name: 'protocol', builder: protocolBuilder },
     { name: 'integration', builder: integrationBuilder },
     { name: 'section-2', builder: section2Builder },
-    { name: 'related-solutions', builder: relatedBuilder },
     { name: 'cta', builder: ctaBuilder },
+    { name: 'related-solutions', builder: relatedBuilder },
   ],
 
   editabilityRules: {
@@ -116,17 +116,17 @@ module.exports = {
         ],
       },
       {
-        name: 'related-solutions', wpSelector: '.et_pb_section_9', htmlSelector: '.related-solutions',
+        name: 'cta', wpSelector: '.et_pb_section_9', htmlSelector: '.cta-section',
         pixelThreshold: 0.1,
         styleMap: [
-          { label: 'Related Title', htmlSel: '.related-solutions h2', wpSel: '.et_pb_section_9 h2' },
+          { label: 'Section Title', htmlSel: '.cta-section h2', wpSel: '.et_pb_section_9 h2' },
         ],
       },
       {
-        name: 'cta', wpSelector: '.et_pb_section_10', htmlSelector: '.cta-section',
+        name: 'related-solutions', wpSelector: '.et_pb_section_10', htmlSelector: '.related-solutions',
         pixelThreshold: 0.1,
         styleMap: [
-          { label: 'Section Title', htmlSel: '.cta-section h2', wpSel: '.et_pb_section_10 h2' },
+          { label: 'Related Title', htmlSel: '.related-solutions h2', wpSel: '.et_pb_section_10 h2' },
         ],
       },
     ],

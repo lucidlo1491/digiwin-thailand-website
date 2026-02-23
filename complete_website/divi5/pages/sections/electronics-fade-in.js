@@ -38,10 +38,12 @@ function blocks() {
 function css() {
   return `
 /* === FADE IN / CASE STUDY CALLOUT (S6) === */
-.fade-in{opacity:1;transform:none;padding:60px 0;${base.fontSmoothingReset('fadi')}font-size:16px}
+.fade-in{opacity:1;transform:none;padding:80px 0;${base.fontSmoothingReset('fadi')}font-size:16px}
 /* Divi overrides for inline-styled elements */
 .et_pb_section .fade-in h3{line-height:38.4px !important;margin-bottom:16px !important}
-.et_pb_section .fade-in p{line-height:27.2px !important;padding-bottom:0 !important}
+.et_pb_section .fade-in p{padding-bottom:0 !important}
+.et_pb_section .fade-in p:first-of-type{line-height:27.2px !important}
+.et_pb_section .fade-in p:last-of-type{line-height:22.4px !important}
 ${base.reducedMotion('')}
 `.trim();
 }

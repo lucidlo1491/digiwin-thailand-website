@@ -47,6 +47,9 @@ function css() {
 .context-inner h2{font-family:'Noto Sans', sans-serif;font-size:36px;color:#000864;margin-bottom:24px}
 .context-inner p{font-size:18px;color:#5b6b80;line-height:1.8}
 .context-inner p strong{color:#000864}
+/* Divi overrides */
+.et_pb_section .context-inner h2{font-weight:700 !important;line-height:1.6 !important}
+.et_pb_section .context-inner p{padding-bottom:0 !important;line-height:1.8 !important}
 
 ${base.reducedMotion('')}
 `.trim();

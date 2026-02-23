@@ -64,11 +64,11 @@ function css() {
 .auto-hero-badge, .elec-hero-badge, .metal-hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0, 175, 240, 0.2);border:1px solid rgba(0, 175, 240, 0.3);padding:8px 20px;border-radius:50px;color:#7EC8F2;font-size:14px;font-weight:500;margin-bottom:24px}
 .auto-hero h1, .elec-hero h1, .metal-hero h1{font-family:'Noto Sans', sans-serif;font-size:52px;font-weight:700;color:#fff;margin-bottom:20px;line-height:1.15}
 .auto-hero h1 span, .elec-hero h1 span, .metal-hero h1 span{color:#00AFF0}
-/* .auto-hero-subtitle, .elec-hero-subtitle, .metal-hero-subtitle{font-family:'Noto Sans', sans-serif;font-size:20px;color:rgba(255,255,255,0.85);max-width:700px;margin:0 auto 50px;line-height:1.6} */
-/* .auto-hero-stats, .elec-hero-stats, .metal-hero-stats{display:flex;justify-content:center;gap:60px} */
-/* .auto-hero-stat, .elec-hero-stat, .metal-hero-stat{text-align:center} */
-/* .auto-hero-stat-value, .elec-hero-stat-value, .metal-hero-stat-value{font-family:'Noto Sans', sans-serif;font-size:42px;font-weight:700;color:#00AFF0} */
-/* .auto-hero-stat-label, .elec-hero-stat-label, .metal-hero-stat-label{font-size:14px;color:rgba(255,255,255,0.85);margin-top:4px} */
+.elec-hero-subtitle{font-family:'Noto Sans',sans-serif;font-size:20px;color:rgba(255,255,255,0.85);max-width:700px;margin:0 auto 50px;line-height:1.6}
+.elec-hero-stats{display:flex;justify-content:center;gap:60px}
+.elec-hero-stat{text-align:center}
+.elec-hero-stat-value{font-family:'Noto Sans',sans-serif;font-size:42px;font-weight:700;color:#00AFF0}
+.elec-hero-stat-label{font-size:14px;color:rgba(255,255,255,0.85);margin-top:4px}
 @media (max-width:1024px){.auto-hero h1, .elec-hero h1, .metal-hero h1{font-size:40px}.auto-hero-stats, .elec-hero-stats, .metal-hero-stats{gap:40px}.stakes-grid, .challenges-grid{grid-template-columns:1fr}.solutions-grid{grid-template-columns:1fr}.products-grid{grid-template-columns:1fr}}
 @media (max-width:640px){.auto-hero, .elec-hero, .metal-hero{padding:120px 0 80px}.auto-hero h1, .elec-hero h1, .metal-hero h1{font-size:32px}.auto-hero-subtitle, .elec-hero-subtitle, .metal-hero-subtitle{font-size:17px}.auto-hero-stats, .elec-hero-stats, .metal-hero-stats{flex-direction:column;gap:24px}.auto-hero-stat-value, .elec-hero-stat-value, .metal-hero-stat-value{font-size:36px}.stake-card, .challenge-card{padding:32px 24px}.solution-card{padding:32px}.cta-section h2{font-size:28px}.cta-buttons{flex-direction:column}}
 /* @media (prefers-reduced-motion:reduce){.products-hero-content,.hero-stack-visual,.products-hero::before,.products-hero-badge::before,.stack-layer,.stack-layer::before,.data-particle,.ecosystem-node,.ecosystem-line,.ecosystem-ring,.data-flow-line,.data-flow-dot,.integration-hub::before,.integration-hub::after,.pp-card,.why-card,.why-card-icon,.pp-card-icon,.products-cta-glow,.dw-d-parallax,.dw-wave-flow,.dw-d-bg{animation:none !important;transition:none !important}.pp-card.visible{opacity:1;transform:none}} */
@@ -76,17 +76,11 @@ function css() {
 ${base.reducedMotion('')}
 
 /* Super D decoration */
-${superD.css('dw-d-bg', { variant: 'outline', position: 'right' })}
+${superD.css('dw-d-bg', { variant: 'outline', position: 'top', opacity: 0.12 })}
 
-.elec-hero-subtitle {
-            font-size: 20px;
-        }
-
-.et_pb_section .elec-hero-subtitle {
-            line-height: 32px !important;
-        
-            -webkit-font-smoothing: auto !important;
-}
+/* Divi overrides */
+.et_pb_section .elec-hero h1{font-weight:700 !important;line-height:1.15 !important}
+.et_pb_section .elec-hero-subtitle{line-height:32px !important;-webkit-font-smoothing:auto !important;padding-bottom:0 !important}
 
 .et_pb_section .elec-hero-stat-value {
             line-height: 67.2px !important;

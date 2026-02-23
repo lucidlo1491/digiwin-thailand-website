@@ -77,14 +77,20 @@ function css() {
 .stakes-header, .challenges-header{text-align:center;margin-bottom:60px}
 .stakes-header h2, .challenges-header h2{font-family:'Noto Sans', sans-serif;font-size:36px;color:#000864;margin-bottom:16px}
 .stakes-header p, .challenges-header p{font-size:18px;color:#5b6b80}
-/* .stakes-grid, .challenges-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:32px} */
-/* .stake-card, .challenge-card{background:linear-gradient(145deg, #fef2f2 0%, #fee2e2 100%);border:1px solid #fecaca;border-radius:20px;padding:40px 32px;text-align:center} */
-/* .stake-icon, .challenge-icon{width:72px;height:72px;background:linear-gradient(135deg, #fee2e2, #fecaca);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;transition:all 0.4s ease} */
-/* .stake-icon svg, .challenge-icon svg{width:32px;height:32px;stroke:#b91c1c;stroke-width:1.5;fill:none} */
-/* .stake-card h3, .challenge-card h3{font-family:'Noto Sans', sans-serif;font-size:22px;color:#991b1b;margin-bottom:16px} */
-/* .stake-card p, .challenge-card p{font-size:15px;color:#b91c1c;line-height:1.7} */
-/* @media (max-width:1024px){.auto-hero h1, .elec-hero h1, .metal-hero h1{font-size:40px}.auto-hero-stats, .elec-hero-stats, .metal-hero-stats{gap:40px}.stakes-grid, .challenges-grid{grid-template-columns:1fr}.solutions-grid{grid-template-columns:1fr}.products-grid{grid-template-columns:1fr}} */
-/* @media (max-width:640px){.auto-hero, .elec-hero, .metal-hero{padding:120px 0 80px}.auto-hero h1, .elec-hero h1, .metal-hero h1{font-size:32px}.auto-hero-subtitle, .elec-hero-subtitle, .metal-hero-subtitle{font-size:17px}.auto-hero-stats, .elec-hero-stats, .metal-hero-stats{flex-direction:column;gap:24px}.auto-hero-stat-value, .elec-hero-stat-value, .metal-hero-stat-value{font-size:36px}.stake-card, .challenge-card{padding:32px 24px}.solution-card{padding:32px}.cta-section h2{font-size:28px}.cta-buttons{flex-direction:column}} */
+.challenges-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.challenge-card{background:linear-gradient(145deg,#fef2f2 0%,#fee2e2 100%);border:1px solid #fecaca;border-radius:20px;padding:40px 32px;text-align:center}
+.challenge-icon{width:72px;height:72px;background:linear-gradient(135deg,#fee2e2,#fecaca);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;transition:all 0.4s ease}
+.challenge-icon svg{width:32px;height:32px;stroke:#b91c1c;stroke-width:1.5;fill:none}
+.challenge-card h3{font-family:'Noto Sans',sans-serif;font-size:22px;color:#991b1b;margin-bottom:16px}
+.challenge-card p{font-size:15px;color:#b91c1c;line-height:1.7}
+.challenge-card:hover .challenge-icon{background:linear-gradient(135deg,#00AFF0,#003CC8)}
+.challenge-card:hover .challenge-icon svg{stroke:#fff}
+/* Divi overrides */
+.et_pb_section .challenges-header h2{font-weight:700 !important;line-height:1.6 !important}
+.et_pb_section .challenge-card h3{line-height:35.2px !important}
+.et_pb_section .challenge-card p{line-height:25.5px !important;padding-bottom:0 !important}
+@media(max-width:1024px){.challenges-grid{grid-template-columns:1fr}}
+@media(max-width:640px){.challenge-card{padding:32px 24px}}
 
 \
 /* Defensive SVG sizing */

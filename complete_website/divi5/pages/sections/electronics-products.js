@@ -84,12 +84,20 @@ function css() {
 .products-header{text-align:center;margin-bottom:60px}
 .products-header h2{font-family:'Noto Sans', sans-serif;font-size:36px;color:#000864;margin-bottom:16px}
 .products-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:24px}
-/* .product-card{background:#fff;border:2px solid #e2e8f0;border-radius:16px;padding:32px;text-decoration:none;transition:all 0.3s ease} */
-/* .product-card-icon{width:56px;height:56px;background:linear-gradient(135deg, rgba(0, 175, 240, 0.1), rgba(0, 175, 240, 0.05));border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:all 0.4s ease} */
-/* .product-card-icon svg{width:28px;height:28px;stroke:#00AFF0;stroke-width:1.5;fill:none} */
-/* .product-card h3{font-family:'Noto Sans', sans-serif;font-size:20px;color:#000864;margin-bottom:12px} */
-/* .product-card p{font-size:14px;color:#5b6b80;line-height:1.6;margin-bottom:16px} */
-/* .product-card-link{display:inline-flex;align-items:center;gap:6px;color:#00AFF0;font-family:'Noto Sans', sans-serif;font-weight:600;font-size:14px} */
+.product-card{background:#fff;border:2px solid #e2e8f0;border-radius:16px;padding:32px;text-decoration:none;transition:all 0.3s ease;display:block}
+.product-card-icon{width:56px;height:56px;background:linear-gradient(135deg,rgba(0,175,240,0.1),rgba(0,175,240,0.05));border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:all 0.4s ease}
+.product-card-icon svg{width:28px;height:28px;stroke:#00AFF0;stroke-width:1.5;fill:none}
+.product-card h3{font-family:'Noto Sans',sans-serif;font-size:20px;color:#000864;margin-bottom:12px}
+.product-card p{font-size:14px;color:#5b6b80;line-height:1.6;margin-bottom:16px}
+.product-card-link{display:inline-flex;align-items:center;gap:6px;color:rgb(3, 105, 161) !important;font-family:'Noto Sans',sans-serif;font-weight:600;font-size:14px}
+.product-card:hover{border-color:#00AFF0;transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,175,240,0.12)}
+.product-card:hover .product-card-icon{background:linear-gradient(135deg,#00AFF0,#003CC8)}
+.product-card:hover .product-card-icon svg{stroke:#fff}
+.product-card:hover .product-card-link{gap:10px}
+/* Divi overrides */
+.et_pb_section .products-header h2{font-weight:700 !important;line-height:1.6 !important}
+.et_pb_section .product-card h3{line-height:32px !important}
+.et_pb_section .product-card p{padding-bottom:0 !important}
 @media (max-width:1024px){.auto-hero h1, .elec-hero h1, .metal-hero h1{font-size:40px}.auto-hero-stats, .elec-hero-stats, .metal-hero-stats{gap:40px}.stakes-grid, .challenges-grid{grid-template-columns:1fr}.solutions-grid{grid-template-columns:1fr}.products-grid{grid-template-columns:1fr}}
 /* .products-grid-section{padding:120px 0;background:linear-gradient(180deg, #f8fafc 0%, #ffffff 30%, #ffffff 70%, #f8fafc 100%);position:relative;overflow:hidden} */
 /* .products-grid-section .grid-pattern{position:absolute;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(circle, rgba(0, 175, 240, 0.03) 1px, transparent 1px);background-size:30px 30px;pointer-events:none} */

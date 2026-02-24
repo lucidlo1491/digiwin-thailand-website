@@ -330,6 +330,45 @@ function diviListReset(prefix) {
 }
 
 // ────────────────────────────────────────────────────────────────
+// EVENT COLOR SURFACE — computes all color variants from a hex
+// ────────────────────────────────────────────────────────────────
+
+/**
+ * Convert hex color to [r, g, b].
+ * @param {string} hex — e.g. '#15803d'
+ * @returns {number[]} [r, g, b]
+ */
+function hexToRgb(hex) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return [r, g, b];
+}
+
+/**
+ * Compute all color surface variants needed by event templates.
+ * @param {string} hex — accent color (e.g. '#15803d')
+ * @returns {object} { hex, rgb, hover, bg10, bg12, bg15, bg30, shadow30, shadow40 }
+ */
+function eventColorSurface(hex) {
+  const [r, g, b] = hexToRgb(hex);
+  const hr = Math.round(r + (255 - r) * 0.2);
+  const hg = Math.round(g + (255 - g) * 0.2);
+  const hb = Math.round(b + (255 - b) * 0.2);
+  return {
+    hex,
+    rgb: `${r},${g},${b}`,
+    hover: `rgb(${hr},${hg},${hb})`,
+    bg10: `rgba(${r},${g},${b},0.1)`,
+    bg12: `rgba(${r},${g},${b},0.12)`,
+    bg15: `rgba(${r},${g},${b},0.15)`,
+    bg30: `rgba(${r},${g},${b},0.3)`,
+    shadow30: `rgba(${r},${g},${b},0.3)`,
+    shadow40: `rgba(${r},${g},${b},0.4)`,
+  };
+}
+
+// ────────────────────────────────────────────────────────────────
 // PARTICLE OCEAN — shared inline script injection
 // ────────────────────────────────────────────────────────────────
 
@@ -372,4 +411,6 @@ module.exports = {
   diviListReset,
   diviListLineHeight,
   particleOceanScript,
+  hexToRgb,
+  eventColorSurface,
 };

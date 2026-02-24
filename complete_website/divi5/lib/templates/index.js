@@ -19,6 +19,15 @@ const resultCards = require('./result-cards');
 const tabContent = require('./tab-content');
 const relatedSolutions = require('./related-solutions');
 const faqAccordion = require('./faq-accordion');
+const eventHero = require('./event-hero');
+const eventProblem = require('./event-problem');
+const eventOutcomes = require('./event-outcomes');
+const eventAgenda = require('./event-agenda');
+const eventPersonas = require('./event-personas');
+const eventProof = require('./event-proof');
+const eventLogistics = require('./event-logistics');
+const eventRegister = require('./event-register');
+const eventRelated = require('./event-related');
 
 // Registry: name → template module
 const templates = {
@@ -33,6 +42,15 @@ const templates = {
   'tab-content': tabContent,
   'related-solutions': relatedSolutions,
   'faq-accordion': faqAccordion,
+  'event-hero': eventHero,
+  'event-problem': eventProblem,
+  'event-outcomes': eventOutcomes,
+  'event-agenda': eventAgenda,
+  'event-personas': eventPersonas,
+  'event-proof': eventProof,
+  'event-logistics': eventLogistics,
+  'event-register': eventRegister,
+  'event-related': eventRelated,
 };
 
 /**

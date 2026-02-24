@@ -155,7 +155,7 @@ function getFooterHTML() {
       <p class="dw-footer-copyright">&copy; <span class="dw-footer-year">2026</span> DigiWin Thailand. All rights reserved.</p>
       <div class="dw-footer-legal">
         <a href="/privacy-policy/">Privacy Policy</a>
-        <a href="/terms-of-service/">Terms of Service</a>
+        <a href="/terms/">Terms of Service</a>
         <a href="/about-us/">About Us</a>
       </div>
     </div>

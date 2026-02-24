@@ -767,11 +767,11 @@ function remapHTMLClasses(html, classNames) {
   // Remap SVG id/url() references to prevent cross-section collisions
   result = result.replace(
     new RegExp('id="(' + escaped + '[-\\w]*)"', 'g'),
-    (m, id) => `id="\\${P}-${id.replace(new RegExp('^' + escaped), '').replace(/^-/, '')}"`
+    (m, id) => 'id="' + '${P}-' + id.replace(new RegExp('^' + escaped), '').replace(/^-/, '') + '"'
   );
   result = result.replace(
     new RegExp('url\\(#(' + escaped + '[-\\w]*)\\)', 'g'),
-    (m, id) => `url(#\\${P}-${id.replace(new RegExp('^' + escaped), '').replace(/^-/, '')})`
+    (m, id) => 'url(#' + '${P}-' + id.replace(new RegExp('^' + escaped), '').replace(/^-/, '') + ')'
   );
 
   return result;

@@ -53,20 +53,24 @@ function css() {
 /* === WHO SHOULD ATTEND (S5) === */
 .${P}-section{background:#F5F7FA;padding:80px 24px;${base.fontSmoothingReset(P)}font-size:16px}
 .${P}-inner{max-width:1100px;margin:0 auto}
-.${P}-label{display:block;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:#22C55E;margin-bottom:16px}
-.${P}-title{font-family:'Noto Sans',sans-serif;font-size:36px;font-weight:700;color:#000864;text-align:center;line-height:1.3;margin:0 0 48px;padding:0}
+.${P}-label{display:block;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:#15803d;margin-bottom:16px}
+.${P}-title{font-family:'Noto Sans',sans-serif;font-size:36px;font-weight:700;color:#000864;text-align:center;line-height:1.25;margin:0 0 16px;padding:0}
 .${P}-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .${P}-card{background:#fff;border-radius:16px;overflow:hidden;transition:transform 0.3s ease,box-shadow 0.3s ease}
 .${P}-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.08)}
-.${P}-accent{height:4px;background:#22C55E}
+.${P}-accent{height:4px;background:#15803d}
 .${P}-body{padding:28px}
-.${P}-role{font-family:'Noto Sans',sans-serif;font-size:20px;font-weight:600;color:#000864;margin-bottom:8px}
-.${P}-size{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:#22C55E;background:rgba(34,197,94,0.1);padding:4px 10px;border-radius:4px;margin-bottom:16px}
-.${P}-desc{font-family:'Noto Sans',sans-serif;font-size:15px;font-weight:400;color:#64748b;line-height:1.6;margin:0 0 16px;padding:0}
-.${P}-quote{font-family:'Noto Sans',sans-serif;font-size:14px;font-weight:400;color:#94a3b8;font-style:italic;line-height:1.5;margin:0;padding:12px 0 0;border-top:1px solid #f0f0f0}
+.${P}-role{font-family:'Noto Sans',sans-serif;font-size:20px;font-weight:600;color:#000864;line-height:1.6;margin-bottom:8px}
+.${P}-size{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:#15803d;background:rgba(21,128,61,0.1);padding:4px 10px;border-radius:4px;margin-bottom:16px}
+.${P}-desc{font-family:'Noto Sans',sans-serif;font-size:15px;font-weight:400;color:#5b6b80;line-height:1.6;margin:0 0 16px;padding:0}
+.${P}-quote{font-family:'Noto Sans',sans-serif;font-size:14px;font-weight:400;color:#5b6b80;font-style:italic;line-height:1.6;margin:0;padding:16px 0 0;border-top:1px solid #f1f5f9}
 
-.et_pb_section .${P}-title{-webkit-font-smoothing:auto !important;line-height:1.3 !important;margin:0 0 48px !important;padding:0 !important}
-.et_pb_section .${P}-desc,.et_pb_section .${P}-quote{-webkit-font-smoothing:auto !important;padding-bottom:0 !important}
+.et_pb_section .${P}-title{-webkit-font-smoothing:auto !important;line-height:1.25 !important;margin:0 0 16px !important;padding:0 !important}
+.et_pb_section .${P}-label{-webkit-font-smoothing:auto !important;line-height:19.2px !important}
+.et_pb_section .${P}-role{-webkit-font-smoothing:auto !important;line-height:32px !important}
+.et_pb_section .${P}-size{-webkit-font-smoothing:auto !important;line-height:17.6px !important}
+.et_pb_section .${P}-desc{-webkit-font-smoothing:auto !important;padding-bottom:0 !important}
+.et_pb_section .${P}-quote{-webkit-font-smoothing:auto !important;padding-bottom:0 !important;line-height:22.4px !important}
 
 @media(max-width:1024px){
   .${P}-grid{grid-template-columns:1fr}

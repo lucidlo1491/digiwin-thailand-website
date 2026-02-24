@@ -1,0 +1,51 @@
+{
+  "page": "boi-compliance-workshop",
+  "savedAt": "2026-02-24T03:30:37.709Z",
+  "sections": {
+    "event-hero": {
+      "diffPercent": 1.73,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "event-problem": {
+      "diffPercent": 9.75,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "event-outcomes": {
+      "diffPercent": 2.4,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "event-agenda": {
+      "diffPercent": 2.28,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "event-personas": {
+      "diffPercent": 3.07,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "event-proof": {
+      "diffPercent": 10.34,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "event-logistics": {
+      "diffPercent": 1.62,
+      "verdict": "MATCH",
+      "skipped": false
+    },
+    "event-register": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "event-related": {
+      "diffPercent": 2.38,
+      "verdict": "REVIEW",
+      "skipped": false
+    }
+  }
+}

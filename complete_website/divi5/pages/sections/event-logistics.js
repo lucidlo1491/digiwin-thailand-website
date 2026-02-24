@@ -58,16 +58,17 @@ function css() {
 /* === LOGISTICS (S7) === */
 .${P}-section{background:#F5F7FA;padding:80px 24px;${base.fontSmoothingReset(P)}font-size:16px}
 .${P}-inner{max-width:900px;margin:0 auto}
-.${P}-label{display:block;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:#22C55E;margin-bottom:16px}
-.${P}-title{font-family:'Noto Sans',sans-serif;font-size:36px;font-weight:700;color:#000864;text-align:center;line-height:1.3;margin:0 0 48px;padding:0}
+.${P}-label{display:block;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:#15803d;margin-bottom:16px}
+.${P}-title{font-family:'Noto Sans',sans-serif;font-size:36px;font-weight:700;color:#000864;text-align:center;line-height:1.25;margin:0 0 16px;padding:0}
 .${P}-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 .${P}-item{display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:12px;padding:20px}
-.${P}-icon{width:40px;height:40px;border-radius:8px;background:rgba(34,197,94,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.${P}-icon svg{stroke:#22C55E}
+.${P}-icon{width:40px;height:40px;border-radius:8px;background:rgba(21,128,61,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.${P}-icon svg{stroke:#15803d}
 .${P}-item-label{font-family:'Noto Sans',sans-serif;font-size:14px;font-weight:600;color:#000864;margin-bottom:2px}
 .${P}-item-value{font-family:'Noto Sans',sans-serif;font-size:15px;font-weight:400;color:#333;line-height:1.5}
 
-.et_pb_section .${P}-title{-webkit-font-smoothing:auto !important;line-height:1.3 !important;margin:0 0 48px !important;padding:0 !important}
+.et_pb_section .${P}-title{-webkit-font-smoothing:auto !important;line-height:1.25 !important;margin:0 0 16px !important;padding:0 !important}
+.et_pb_section .${P}-label{-webkit-font-smoothing:auto !important;line-height:19.2px !important}
 .et_pb_section .${P}-item-label,.et_pb_section .${P}-item-value{-webkit-font-smoothing:auto !important}
 
 @media(max-width:768px){

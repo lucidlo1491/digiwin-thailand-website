@@ -20,7 +20,8 @@ const SECTIONS_DIR = path.join(__dirname, 'pages/sections');
 
 const SCAFFOLD_PREFIXES = [
   'erp-', 'case-studies-', 'about-', 'industries-',
-  'mes-', 'automotive-', 'wms-', 'aiot-', 'electronics-'
+  'mes-', 'automotive-', 'wms-', 'aiot-', 'electronics-',
+  'metal-plastics-'
 ];
 
 // Global/navigation classes — never uncomment these (they come from header/footer)

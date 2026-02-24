@@ -59,7 +59,7 @@ function blocks() {
                             </div>
                         </div>
                         <p>Learn how production-order-level material tracking eliminates BOI supplementary taxes. Featuring the Jin Hai case study: from 10M THB/year to zero.</p>
-                        <a href="events/boi-compliance-workshop.html" class="event-cta">Register Now
+                        <a href="/news/events/boi-compliance-workshop/" class="event-cta">Register Now
                             <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </a>
                     </div>

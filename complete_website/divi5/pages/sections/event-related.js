@@ -27,8 +27,8 @@ const EVENTS = [
     date: 'April 24, 2026',
     location: 'Bangkok, Thailand',
     href: '/events/shop-floor-data-workshop/',
-    color: '#22C55E',
-    colorBg: 'rgba(34,197,94,0.12)',
+    color: '#15803d',
+    colorBg: 'rgba(21,128,61,0.12)',
   },
   {
     type: 'factory-visit',
@@ -91,8 +91,8 @@ function css() {
 /* === RELATED EVENTS (S9) === */
 .${P}-section{background:#F5F7FA;padding:80px 24px;${base.fontSmoothingReset(P)}font-size:16px}
 .${P}-inner{max-width:1100px;margin:0 auto}
-.${P}-label{display:block;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:#22C55E;margin-bottom:16px}
-.${P}-title{font-family:'Noto Sans',sans-serif;font-size:36px;font-weight:700;color:#000864;text-align:center;line-height:1.3;margin:0 0 48px;padding:0}
+.${P}-label{display:block;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:#15803d;margin-bottom:16px}
+.${P}-title{font-family:'Noto Sans',sans-serif;font-size:36px;font-weight:700;color:#000864;text-align:center;line-height:1.25;margin:0 0 16px;padding:0}
 .${P}-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .${P}-card{background:#fff;border-radius:16px;overflow:hidden;transition:transform 0.3s ease,box-shadow 0.3s ease}
 .${P}-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.08)}
@@ -101,12 +101,13 @@ function css() {
 .${P}-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;padding:4px 12px;border-radius:50px;margin-bottom:12px}
 .${P}-card h3{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:600;color:#000864;line-height:1.4;margin:0 0 16px;padding:0}
 .${P}-meta{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
-.${P}-meta-item{display:flex;align-items:center;gap:6px;font-family:'Noto Sans',sans-serif;font-size:14px;color:#64748b}
+.${P}-meta-item{display:flex;align-items:center;gap:6px;font-family:'Noto Sans',sans-serif;font-size:14px;color:#5b6b80}
 .${P}-meta-item svg{flex-shrink:0;stroke:#94a3b8}
 .${P}-link{display:inline-flex;align-items:center;gap:4px;font-family:'Noto Sans',sans-serif;font-size:14px;font-weight:600;text-decoration:none;transition:opacity 0.3s ease}
 .${P}-link:hover{opacity:0.8}
 
-.et_pb_section .${P}-title{-webkit-font-smoothing:auto !important;line-height:1.3 !important;margin:0 0 48px !important;padding:0 !important}
+.et_pb_section .${P}-title{-webkit-font-smoothing:auto !important;line-height:1.25 !important;margin:0 0 16px !important;padding:0 !important}
+.et_pb_section .${P}-label{-webkit-font-smoothing:auto !important;line-height:19.2px !important}
 .et_pb_section .${P}-card h3{-webkit-font-smoothing:auto !important;margin:0 0 16px !important;padding:0 !important}
 
 @media(max-width:768px){

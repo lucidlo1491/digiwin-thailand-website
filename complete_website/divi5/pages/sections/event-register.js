@@ -42,13 +42,14 @@ function css() {
 .${P}-section>*{position:relative;z-index:2}
 .${P}-section h2{font-family:'Noto Sans',sans-serif;font-size:40px;font-weight:700;color:#fff;margin:0 0 16px;padding:0}
 .${P}-meta{font-family:'Noto Sans',sans-serif;font-size:18px;color:rgba(255,255,255,0.85);margin:0 0 32px;padding:0}
-.${P}-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:600;color:#fff;background:#22C55E;padding:20px 48px;border-radius:8px;text-decoration:none;transition:all 0.3s ease;box-shadow:0 4px 14px rgba(34,197,94,0.35)}
+.${P}-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:600;color:#fff;background:#15803d;padding:20px 48px;border-radius:12px;text-decoration:none;transition:all 0.3s ease;box-shadow:0 4px 20px rgba(21,128,61,0.4)}
 .${P}-cta:hover{background:#16a34a;transform:translateY(-2px);box-shadow:0 8px 24px rgba(34,197,94,0.3)}
 .${P}-secondary{font-family:'Noto Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.6);margin-top:24px;padding:0}
 .${P}-secondary a{color:rgba(255,255,255,0.8);text-decoration:underline;transition:color 0.3s ease}
 .${P}-secondary a:hover{color:#fff}
 
-.et_pb_section .${P}-section h2{-webkit-font-smoothing:auto !important;line-height:1.3 !important;margin:0 0 16px !important;padding:0 !important}
+.et_pb_section .${P}-section h2{-webkit-font-smoothing:auto !important;line-height:1.25 !important;margin:0 0 16px !important;padding:0 !important}
+.et_pb_section .${P}-cta{-webkit-font-smoothing:auto !important;line-height:28.8px !important}
 .et_pb_section .${P}-meta,.et_pb_section .${P}-secondary{-webkit-font-smoothing:auto !important;padding-bottom:0 !important}
 
 @media(max-width:768px){

@@ -6,6 +6,7 @@
  */
 
 const base = require('../../lib/templates/_base');
+const superD = require('../../lib/super-d');
 
 const P = 'evt-hero';
 
@@ -15,7 +16,7 @@ const P = 'evt-hero';
 function blocks() {
   const html = `
 <div class="${P}-section">
-  ${base.grainCSS(`.${P}-section`) ? '' : ''}
+  ${superD.html('evt-hero-superd')}
   <a href="/news/" class="${P}-back">
     <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
     Back to News &amp; Events
@@ -74,23 +75,28 @@ function css() {
 .${P}-section{background:linear-gradient(165deg,#0f1419 0%,#1a2632 40%,#000864 100%);padding:140px 24px 80px;text-align:center;position:relative;overflow:hidden;${base.fontSmoothingReset(P)}font-size:16px}
 .${P}-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.03;pointer-events:none;z-index:1}
 .${P}-section>*{position:relative;z-index:2}
-.${P}-back{display:inline-flex;align-items:center;gap:8px;font-family:'Noto Sans',sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,0.6);text-decoration:none;margin-bottom:32px;transition:color 0.3s ease}
+.${P}-back{display:inline-flex;align-items:center;gap:6px;font-family:'Noto Sans',sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,0.85);text-decoration:none;margin-bottom:24px;transition:color 0.3s ease}
 .${P}-back:hover{color:rgba(255,255,255,0.9)}
-.${P}-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:#22C55E;background:rgba(34,197,94,0.15);padding:8px 20px;border-radius:50px;margin-bottom:24px}
-.${P}-section h1{font-family:'Noto Sans',sans-serif;font-size:clamp(28px,4.5vw,44px);font-weight:700;color:#fff;line-height:1.3;max-width:800px;margin:0 auto 20px;padding:0}
+.${P}-badge{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:#15803d;background:rgba(21,128,61,0.15);padding:6px 18px;border:1px solid rgba(21,128,61,0.3);border-radius:50px;margin-bottom:20px}
+.${P}-section h1{font-family:'Noto Sans',sans-serif;font-size:clamp(28px,4.5vw,44px);font-weight:700;color:#fff;line-height:1.2;max-width:800px;margin:0 auto 20px;padding:0}
 .${P}-subtitle{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:400;color:rgba(255,255,255,0.85);line-height:1.7;max-width:700px;margin:0 auto 40px;padding:0}
 .${P}-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:700px;margin:0 auto 40px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px}
 .${P}-fact{text-align:center}
 .${P}-fact-icon{margin-bottom:8px}
-.${P}-fact-icon svg{stroke:#22C55E}
+.${P}-fact-icon svg{stroke:#15803d}
 .${P}-fact-value{font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;color:#fff}
-.${P}-fact-label{font-family:'Noto Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.6)}
-.${P}-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;color:#fff;background:#22C55E;padding:16px 32px;border-radius:8px;text-decoration:none;transition:all 0.3s ease;box-shadow:0 4px 14px rgba(34,197,94,0.35)}
+.${P}-fact-label{font-family:'Noto Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.85)}
+.${P}-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;color:#fff;background:#15803d;padding:16px 40px;border-radius:12px;text-decoration:none;transition:all 0.3s ease;box-shadow:0 4px 20px rgba(21,128,61,0.4)}
 .${P}-cta:hover{background:#16a34a;transform:translateY(-2px);box-shadow:0 8px 24px rgba(34,197,94,0.3)}
 
-.et_pb_section .${P}-section h1{-webkit-font-smoothing:auto !important;line-height:1.3 !important;margin:0 auto 20px !important;padding:0 !important}
+.et_pb_section .${P}-section h1{-webkit-font-smoothing:auto !important;line-height:1.2 !important;max-width:800px !important;margin:0 auto 20px !important;padding:0 !important}
 .et_pb_section .${P}-subtitle{-webkit-font-smoothing:auto !important}
-.et_pb_section .${P}-fact-value,.et_pb_section .${P}-fact-label{-webkit-font-smoothing:auto !important}
+.et_pb_section .${P}-fact-value{-webkit-font-smoothing:auto !important;line-height:25.6px !important;margin-bottom:4px !important}
+.et_pb_section .${P}-fact-label{-webkit-font-smoothing:auto !important;line-height:20.8px !important}
+.et_pb_section .${P}-badge{-webkit-font-smoothing:auto !important;line-height:19.2px !important}
+.et_pb_section .${P}-cta{-webkit-font-smoothing:auto !important;line-height:25.6px !important}
+.et_pb_section .${P}-back{-webkit-font-smoothing:auto !important}
+${superD.css('evt-hero-superd', { variant: 'particle', position: 'corner-br', opacity: 0.15 })}
 
 @media(max-width:768px){
   .${P}-section{padding:120px 20px 60px}

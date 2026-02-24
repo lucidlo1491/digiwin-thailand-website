@@ -127,13 +127,27 @@ function blocks() {
           });
         });
       });
+      function smoothScrollTo(el, duration){
+        var start = window.pageYOffset;
+        var end = el.getBoundingClientRect().top + start;
+        var dist = end - start;
+        var startTime = null;
+        function step(ts){
+          if(!startTime) startTime = ts;
+          var t = Math.min((ts - startTime) / duration, 1);
+          var ease = t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+          window.scrollTo(0, start + dist * ease);
+          if(t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
       document.querySelectorAll('.cs-card').forEach(function(card){
         card.addEventListener('click', function(e){
           var href = this.getAttribute('href');
           if(href && href.startsWith('#')){
             e.preventDefault();
             var target = document.querySelector(href);
-            if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+            if(target) smoothScrollTo(target, 800);
           }
         });
       });

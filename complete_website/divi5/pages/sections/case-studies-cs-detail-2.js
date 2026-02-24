@@ -16,7 +16,7 @@ const P = 'csd'; // CSS prefix — customize if needed
 // ════════════════════════════════════════════════════════════════
 function blocks() {
   const html = `
-    <div class="cs-detail-section" style="background:#fff">
+    <div class="cs-detail-section" id="case-thai-alpha" style="background:#fff">
     <div class="cs-detail-inner">
                 <div class="cs-detail-header cs-animate">
                     <div class="cs-detail-badge">Plastics Manufacturing</div>

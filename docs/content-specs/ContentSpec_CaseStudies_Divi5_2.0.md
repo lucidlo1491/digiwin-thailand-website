@@ -4,7 +4,7 @@
 **PRD Reference:** Section 4, Page 7.0
 **Playbook Reference:** Section 2 (Track A Emotional Arc — Empathetic to Confident), Section 3 (Proof Patterns)
 **Status:** v2.0 — Reverse-engineered from HTML build + mapped to Divi 5 modules
-**Last Updated:** February 14, 2026
+**Last Updated:** February 24, 2026
 **Platform:** WordPress + Divi 5
 
 ---
@@ -93,7 +93,7 @@ Value: Noto Sans 800, 2rem, #00AFF0. Label: JetBrains Mono, 10px, uppercase, 0.1
 
 ## Section 2: Filter + Card Grid
 
-**Purpose:** Quick-scan overview of all 5 case studies with industry filtering. Clicking a card scrolls to the detailed section.
+**Purpose:** Quick-scan overview of all 5 case studies with industry filtering. Clicking a card triggers a **smooth scroll animation** to the corresponding detail section (not an instant jump).
 
 ### Divi 5 Implementation
 
@@ -469,6 +469,13 @@ Value: Noto Sans 800, 3rem, #00AFF0. Label: JetBrains Mono 11px, uppercase, 0.1e
 | Listed cards | Scroll → Fade In Up | Duration: 400ms, stagger: 70ms |
 | Insight stats | Scroll → Fade In Up | Duration: 400ms, stagger: 100ms |
 | Hero badge dot | CSS pulse animation | `pulse-dot 2s ease-in-out infinite` |
+
+### Navigation Interactions
+
+| Element | Behavior | Settings |
+|---------|----------|----------|
+| Case study cards → detail sections | Click card → smooth scroll to matching `#case-{id}` anchor | Custom `smoothScrollTo()` with **800ms duration**, ease-in-out curve (`2t² / -1+4t-2t²`), `requestAnimationFrame` loop. Prevents default anchor jump. Cards are `<a href="#case-{id}">` elements. Fixed duration ensures consistent scroll feel regardless of page height. |
+| Industry filter buttons | Click → show/hide cards matching `data-industry` attribute | Active state toggled via `.active` class + `aria-pressed`. "All" filter shows all cards. |
 
 ### Hover Interactions
 

@@ -16,7 +16,7 @@ const P = 'csd'; // CSS prefix — customize if needed
 // ════════════════════════════════════════════════════════════════
 function blocks() {
   const html = `
-    <div class="cs-detail-section" style="background:#F5F7FA">
+    <div class="cs-detail-section" id="case-taiyo" style="background:#F5F7FA">
     <div class="cs-detail-inner">
                 <div class="cs-detail-header cs-animate">
                     <div class="cs-detail-badge">Fasteners</div>

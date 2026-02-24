@@ -13,7 +13,7 @@ const ALL_EVENTS = {
     typeBadge: 'Workshop',
     date: 'March 15, 2026',
     location: 'Bangkok, Thailand',
-    href: '/events/boi-compliance-workshop/',
+    href: '/news/events/boi-compliance-workshop/',
     color: '#15803d',
   },
   'factory-tour-mes': {
@@ -23,7 +23,7 @@ const ALL_EVENTS = {
     typeBadge: 'Factory Visit',
     date: 'May 8, 2026',
     location: 'EEC Industrial Zone',
-    href: '/news/', // TODO: update when event page is built
+    href: '/news/events/factory-tour-mes/',
     color: '#b45309',
   },
   'manufacturing-expo-2026': {
@@ -31,9 +31,9 @@ const ALL_EVENTS = {
     title: 'Manufacturing Expo 2026: DigiWin Thailand Booth',
     shortTitle: 'Manufacturing Expo 2026',
     typeBadge: 'Trade Show',
-    date: 'June 19–22, 2026',
+    date: 'May 20–22, 2026',
     location: 'BITEC, Bangkok',
-    href: '/news/', // TODO: update when event page is built
+    href: '/news/events/manufacturing-expo-2026/',
     color: '#6d28d9',
   },
   'production-transparency-seminar': {
@@ -43,7 +43,7 @@ const ALL_EVENTS = {
     typeBadge: 'Seminar',
     date: 'April 10, 2026',
     location: 'Bangkok, Thailand',
-    href: '/events/production-transparency-seminar/',
+    href: '/news/events/production-transparency-seminar/',
     color: '#0369a1',
   },
   'shop-floor-data-workshop': {
@@ -53,7 +53,7 @@ const ALL_EVENTS = {
     typeBadge: 'Workshop',
     date: 'April 24, 2026',
     location: 'Bangkok, Thailand',
-    href: '/news/', // TODO: update when event page is built
+    href: '/news/events/shop-floor-data-workshop/',
     color: '#15803d',
   },
 };

@@ -28,6 +28,7 @@ const eventProof = require('./event-proof');
 const eventLogistics = require('./event-logistics');
 const eventRegister = require('./event-register');
 const eventRelated = require('./event-related');
+const blogPost = require('./blog-post');
 
 // Registry: name → template module
 const templates = {
@@ -51,6 +52,7 @@ const templates = {
   'event-logistics': eventLogistics,
   'event-register': eventRegister,
   'event-related': eventRelated,
+  'blog-post': blogPost,
 };
 
 /**

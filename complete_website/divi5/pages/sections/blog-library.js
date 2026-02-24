@@ -33,7 +33,7 @@ function blocks() {
                             <div class="${P}-group-indicator ${P}-group-indicator--boi"></div>
                             <h3>BOI & Compliance</h3>
                         </div>
-                        <a href="blog/boi-compliance-jin-hai.html" class="${P}-item">
+                        <a href="/blog/boi-compliance-jin-hai/" class="${P}-item">
                             <span class="${P}-item-title">How One Factory Saved 10M THB/Year in BOI Supplementary Taxes</span>
                             <div class="${P}-item-meta">
                                 <span class="${P}-item-time">8 min</span>
@@ -48,21 +48,21 @@ function blocks() {
                             <div class="${P}-group-indicator ${P}-group-indicator--production"></div>
                             <h3>Production Planning</h3>
                         </div>
-                        <a href="blog/lrp-vs-mrp.html" class="${P}-item">
+                        <a href="/blog/lrp-vs-mrp/" class="${P}-item">
                             <span class="${P}-item-title">LRP vs MRP: Why Your Production Planning Takes Hours Instead of Minutes</span>
                             <div class="${P}-item-meta">
                                 <span class="${P}-item-time">6 min</span>
                                 <span class="${P}-item-arrow">&rarr;</span>
                             </div>
                         </a>
-                        <a href="blog/feature-codes.html" class="${P}-item">
+                        <a href="/blog/feature-codes/" class="${P}-item">
                             <span class="${P}-item-title">Feature Codes: How to Turn 27 SKUs Into 1 Product</span>
                             <div class="${P}-item-meta">
                                 <span class="${P}-item-time">6 min</span>
                                 <span class="${P}-item-arrow">&rarr;</span>
                             </div>
                         </a>
-                        <a href="blog/amrp-capacity-planning.html" class="${P}-item">
+                        <a href="/blog/amrp-capacity-planning/" class="${P}-item">
                             <span class="${P}-item-title">AMRP: Why You Don't Need a Separate APS System</span>
                             <div class="${P}-item-meta">
                                 <span class="${P}-item-time">5 min</span>
@@ -77,14 +77,14 @@ function blocks() {
                             <div class="${P}-group-indicator ${P}-group-indicator--cost"></div>
                             <h3>Cost Management</h3>
                         </div>
-                        <a href="blog/co-product-cost-accounting.html" class="${P}-item">
+                        <a href="/blog/co-product-cost-accounting/" class="${P}-item">
                             <span class="${P}-item-title">Co-Product Cost Accounting: The Problem Most ERPs Cannot Solve</span>
                             <div class="${P}-item-meta">
                                 <span class="${P}-item-time">7 min</span>
                                 <span class="${P}-item-arrow">&rarr;</span>
                             </div>
                         </a>
-                        <a href="blog/dual-units.html" class="${P}-item">
+                        <a href="/blog/dual-units/" class="${P}-item">
                             <span class="${P}-item-title">Dual Units: Why Your ERP Should Show Both Kilograms AND Pieces</span>
                             <div class="${P}-item-meta">
                                 <span class="${P}-item-time">5 min</span>
@@ -99,14 +99,14 @@ function blocks() {
                             <div class="${P}-group-indicator ${P}-group-indicator--smart"></div>
                             <h3>Smart Factory</h3>
                         </div>
-                        <a href="blog/shop-floor-scheduling.html" class="${P}-item">
+                        <a href="/blog/shop-floor-scheduling/" class="${P}-item">
                             <span class="${P}-item-title">Shop Floor Mini-Scheduling: When Plans Meet Reality</span>
                             <div class="${P}-item-meta">
                                 <span class="${P}-item-time">5 min</span>
                                 <span class="${P}-item-arrow">&rarr;</span>
                             </div>
                         </a>
-                        <a href="blog/production-transparency.html" class="${P}-item">
+                        <a href="/blog/production-transparency/" class="${P}-item">
                             <span class="${P}-item-title">From Paper Reports to Production Transparency: A Practical Guide</span>
                             <div class="${P}-item-meta">
                                 <span class="${P}-item-time">6 min</span>
@@ -121,14 +121,14 @@ function blocks() {
                             <div class="${P}-group-indicator ${P}-group-indicator--industry"></div>
                             <h3>Industry Insights</h3>
                         </div>
-                        <a href="blog/five-pain-points.html" class="${P}-item">
+                        <a href="/blog/five-pain-points/" class="${P}-item">
                             <span class="${P}-item-title">The 5 Universal Pain Points Every Thai Factory Owner Faces</span>
                             <div class="${P}-item-meta">
                                 <span class="${P}-item-time">5 min</span>
                                 <span class="${P}-item-arrow">&rarr;</span>
                             </div>
                         </a>
-                        <a href="blog/sap-ecc-end-of-life.html" class="${P}-item">
+                        <a href="/blog/sap-ecc-end-of-life/" class="${P}-item">
                             <span class="${P}-item-title">SAP ECC End-of-Life 2027: What Thai Manufacturers Need to Know</span>
                             <div class="${P}-item-meta">
                                 <span class="${P}-item-time">5 min</span>

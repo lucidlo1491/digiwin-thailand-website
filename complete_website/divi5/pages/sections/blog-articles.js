@@ -43,7 +43,7 @@ function blocks() {
                 <div class="articles-grid">
     
                     
-                    <a href="blog/boi-compliance-jin-hai.html" class="${P}-card" data-category="boi">
+                    <a href="/blog/boi-compliance-jin-hai/" class="${P}-card" data-category="boi">
                         <div class="${P}-card-image ${P}-card-image--boi">
                             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                         </div>
@@ -59,7 +59,7 @@ function blocks() {
                     </a>
     
                     
-                    <a href="blog/lrp-vs-mrp.html" class="${P}-card" data-category="production">
+                    <a href="/blog/lrp-vs-mrp/" class="${P}-card" data-category="production">
                         <div class="${P}-card-image ${P}-card-image--production">
                             <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                         </div>
@@ -75,7 +75,7 @@ function blocks() {
                     </a>
     
                     
-                    <a href="blog/co-product-cost-accounting.html" class="${P}-card" data-category="cost">
+                    <a href="/blog/co-product-cost-accounting/" class="${P}-card" data-category="cost">
                         <div class="${P}-card-image ${P}-card-image--cost">
                             <svg aria-hidden="true" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                         </div>
@@ -91,7 +91,7 @@ function blocks() {
                     </a>
     
                     
-                    <a href="blog/feature-codes.html" class="${P}-card" data-category="production">
+                    <a href="/blog/feature-codes/" class="${P}-card" data-category="production">
                         <div class="${P}-card-image ${P}-card-image--production">
                             <svg aria-hidden="true" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                         </div>
@@ -107,7 +107,7 @@ function blocks() {
                     </a>
     
                     
-                    <a href="blog/amrp-capacity-planning.html" class="${P}-card" data-category="production">
+                    <a href="/blog/amrp-capacity-planning/" class="${P}-card" data-category="production">
                         <div class="${P}-card-image ${P}-card-image--production">
                             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
                         </div>
@@ -123,7 +123,7 @@ function blocks() {
                     </a>
     
                     
-                    <a href="blog/five-pain-points.html" class="${P}-card" data-category="industry">
+                    <a href="/blog/five-pain-points/" class="${P}-card" data-category="industry">
                         <div class="${P}-card-image ${P}-card-image--industry">
                             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                         </div>
@@ -139,7 +139,7 @@ function blocks() {
                     </a>
     
                     
-                    <a href="blog/sap-ecc-end-of-life.html" class="${P}-card" data-category="industry">
+                    <a href="/blog/sap-ecc-end-of-life/" class="${P}-card" data-category="industry">
                         <div class="${P}-card-image ${P}-card-image--industry">
                             <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         </div>
@@ -155,7 +155,7 @@ function blocks() {
                     </a>
     
                     
-                    <a href="blog/dual-units.html" class="${P}-card" data-category="cost">
+                    <a href="/blog/dual-units/" class="${P}-card" data-category="cost">
                         <div class="${P}-card-image ${P}-card-image--cost">
                             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
                         </div>
@@ -171,7 +171,7 @@ function blocks() {
                     </a>
     
                     
-                    <a href="blog/shop-floor-scheduling.html" class="${P}-card" data-category="smart">
+                    <a href="/blog/shop-floor-scheduling/" class="${P}-card" data-category="smart">
                         <div class="${P}-card-image ${P}-card-image--smart">
                             <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                         </div>
@@ -187,7 +187,7 @@ function blocks() {
                     </a>
     
                     
-                    <a href="blog/production-transparency.html" class="${P}-card" data-category="smart">
+                    <a href="/blog/production-transparency/" class="${P}-card" data-category="smart">
                         <div class="${P}-card-image ${P}-card-image--smart">
                             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                         </div>

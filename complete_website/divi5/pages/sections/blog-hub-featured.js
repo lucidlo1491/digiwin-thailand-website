@@ -38,7 +38,7 @@ function blocks() {
                         <h2>How One Factory Saved 10M THB/Year in BOI Supplementary Taxes</h2>
                         <p>When the BOI board audited Jin Hai's production records, the gap between imported materials and actual consumption had been costing them over 10 million baht annually. Here's how production-order-level reconciliation eliminated it completely.</p>
                         <div class="${P}-featured-meta">8 min read</div>
-                        <a href="blog/boi-compliance-jin-hai.html" class="${P}-featured-link">Read the Full Story <span>&rarr;</span></a>
+                        <a href="/blog/boi-compliance-jin-hai/" class="${P}-featured-link">Read the Full Story <span>&rarr;</span></a>
                     </div>
                 </div>
             </div>`;

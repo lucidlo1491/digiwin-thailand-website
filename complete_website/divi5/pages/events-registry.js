@@ -43,7 +43,7 @@ const ALL_EVENTS = {
     typeBadge: 'Seminar',
     date: 'April 10, 2026',
     location: 'Bangkok, Thailand',
-    href: '/news/', // TODO: update when event page is built
+    href: '/events/production-transparency-seminar/',
     color: '#0369a1',
   },
   'shop-floor-data-workshop': {

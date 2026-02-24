@@ -1,0 +1,36 @@
+{
+  "page": "blog",
+  "savedAt": "2026-02-23T23:51:18.601Z",
+  "sections": {
+    "fullpage": {
+      "diffPercent": 10.48,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "hub-hero": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "hub-featured": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "articles": {
+      "diffPercent": 25.67,
+      "verdict": "FAIL",
+      "skipped": false
+    },
+    "library": {
+      "diffPercent": 3.01,
+      "verdict": "REVIEW",
+      "skipped": false
+    },
+    "hub-cta": {
+      "diffPercent": 100,
+      "verdict": "FAIL",
+      "skipped": false
+    }
+  }
+}

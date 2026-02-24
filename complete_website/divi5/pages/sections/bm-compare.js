@@ -8,16 +8,9 @@
  * Source: business-model.html lines 1015-1066
  */
 
-const fs = require('fs');
-const path = require('path');
 const base = require('../../lib/templates/_base');
 
 const P = 'cmp'; // CSS prefix
-
-// Read particle-ocean.js for inline injection
-const PARTICLE_JS = fs.readFileSync(
-  path.join(__dirname, '..', '..', '..', 'particle-ocean.js'), 'utf8'
-);
 
 // ════════════════════════════════════════════════════════════════
 // DATA
@@ -63,7 +56,7 @@ function blocks() {
         </table>
       </div>
     </div>
-    <script>${PARTICLE_JS}</script>`;
+    ${base.particleOceanScript()}`;
 
   return base.wrapInDiviSection('Comparison: Side-by-Side', html, 'Comparison: Content');
 }

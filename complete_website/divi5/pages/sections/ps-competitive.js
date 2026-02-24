@@ -8,16 +8,9 @@
  * Source: solutions.html lines 1409-1481
  */
 
-const fs = require('fs');
-const path = require('path');
 const base = require('../../lib/templates/_base');
 
 const P = 'ps-comp'; // CSS prefix
-
-// Read particle-ocean.js for inline injection (matches HTML prototype data-particles attribute)
-const PARTICLE_JS = fs.readFileSync(
-  path.join(__dirname, '..', '..', '..', 'particle-ocean.js'), 'utf8'
-);
 
 // ════════════════════════════════════════════════════════════════
 // DATA
@@ -90,7 +83,7 @@ function blocks() {
         </div>
       </div>
     </div>
-    <script>${PARTICLE_JS}</script>`;
+    ${base.particleOceanScript()}`;
 
   return base.wrapInDiviSection('Competitive Positioning', html, 'Competitive: Content');
 }

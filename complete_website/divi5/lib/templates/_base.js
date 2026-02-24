@@ -329,6 +329,30 @@ function diviListReset(prefix) {
     `.${prefix} li::before{display:none !important}`;
 }
 
+// ────────────────────────────────────────────────────────────────
+// PARTICLE OCEAN — shared inline script injection
+// ────────────────────────────────────────────────────────────────
+
+const _particleCache = { js: null };
+
+/**
+ * Return `<script>` block for particle ocean animation.
+ * Add `data-particles` (or `data-particles="bold"`) to the target element.
+ * Reads particle-ocean.js once and caches it.
+ *
+ * @returns {string} `<script>...</script>` ready to inject into HTML blocks
+ */
+function particleOceanScript() {
+  if (!_particleCache.js) {
+    const fs = require('fs');
+    const p = require('path');
+    _particleCache.js = fs.readFileSync(
+      p.join(__dirname, '..', '..', '..', 'particle-ocean.js'), 'utf8'
+    );
+  }
+  return `<script>${_particleCache.js}</script>`;
+}
+
 module.exports = {
   BREAKPOINTS,
   COLORS,
@@ -347,4 +371,5 @@ module.exports = {
   svgSceneCSS,
   diviListReset,
   diviListLineHeight,
+  particleOceanScript,
 };

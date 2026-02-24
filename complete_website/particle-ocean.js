@@ -25,6 +25,15 @@
 
     // ── Presets ─────────────────────────────────────────────────────
     var PRESETS = {
+        light: {
+            frontOpacity: 0.18,   // visible but not distracting on white/light backgrounds
+            backOpacity: 0.03,
+            frontRadius: 3.5,
+            backRadius: 0.5,
+            color: BLUE,
+            colorAlt: CYAN,
+            altRatio: 0.10
+        },
         subtle: {
             frontOpacity: 0.30,   // foreground dot opacity
             backOpacity: 0.04,    // distant dot opacity

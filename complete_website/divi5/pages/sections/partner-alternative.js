@@ -7,16 +7,9 @@
  * Source: partner-program.html lines 1201-1293
  */
 
-const fs = require('fs');
-const path = require('path');
 const base = require('../../lib/templates/_base');
 
 const P = 'alt'; // CSS prefix
-
-// Read particle-ocean.js for inline injection (wp_kses strips <canvas> but script runs after parse)
-const PARTICLE_JS = fs.readFileSync(
-  path.join(__dirname, '..', '..', '..', 'particle-ocean.js'), 'utf8'
-);
 
 // ════════════════════════════════════════════════════════════════
 // ICONS
@@ -126,7 +119,7 @@ function blocks() {
         </div>
       </div>
     </div>
-    <script>${PARTICLE_JS}</script>`;
+    ${base.particleOceanScript()}`;
 
   return base.wrapInDiviSection('Alternative Model: Partner-First', html, 'Alternative Model: Content');
 }

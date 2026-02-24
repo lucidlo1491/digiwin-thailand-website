@@ -8,16 +8,9 @@
  * Source: economics.html lines 1181-1273
  */
 
-const fs = require('fs');
-const path = require('path');
 const base = require('../../lib/templates/_base');
 
 const P = 'prot'; // CSS prefix
-
-// Read particle-ocean.js for inline injection (S7 pattern from bm-compare.js)
-const PARTICLE_JS = fs.readFileSync(
-  path.join(__dirname, '..', '..', '..', 'particle-ocean.js'), 'utf8'
-);
 
 // ════════════════════════════════════════════════════════════════
 // ICON SVGs
@@ -107,7 +100,7 @@ function blocks() {
         </div>
       </div>
     </div>
-    <script>${PARTICLE_JS}</script>`;
+    ${base.particleOceanScript()}`;
 
   return base.wrapInDiviSection('Protection: Risk Mitigation', html, 'Protection: Content');
 }

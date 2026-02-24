@@ -87,6 +87,7 @@ module.exports = {
 
   FONT_FAMILIES: [
     { family: 'Noto Sans', weights: ['400', '700'] },
+    { family: 'Noto Sans Thai', weights: ['400', '700'] },
     { family: 'JetBrains Mono', weights: ['400', '700'] },
   ],
 

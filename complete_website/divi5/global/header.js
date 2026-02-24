@@ -114,6 +114,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M83NQFRQ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 ${mainCSS}
 /* Header responsive — must be inline (Divi strips @media from _et_pb_custom_css in Theme Builder templates) */
@@ -152,9 +155,10 @@ ${mainCSS}
   .dw-menu-toggle.active span:nth-child(2){opacity:0}
   .dw-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
   .dw-header-cta{display:none}
+  .dw-lang-toggle{margin-left:auto;margin-right:8px}
 }
 @media(prefers-reduced-motion:reduce){
-  .dw-header,.dw-header-cta,.dw-mega-menu,.dw-nav-link,.dw-nav-link::after,.dw-mega-item,.dw-mega-icon,.dw-mega-featured-cta,.dw-mega-viewall svg,.dw-logo,.dw-logo-since,.dw-menu-toggle span,.dw-nav-link svg{transition:none !important}
+  .dw-header,.dw-header-cta,.dw-mega-menu,.dw-nav-link,.dw-nav-link::after,.dw-mega-item,.dw-mega-icon,.dw-mega-featured-cta,.dw-mega-viewall svg,.dw-logo,.dw-logo-since,.dw-menu-toggle span,.dw-nav-link svg,.dw-lang-option{transition:none !important}
   .dw-header-cta::before{transition:none !important}
   .dw-header-cta:hover,.dw-mega-featured-cta:hover,.dw-logo:hover{transform:none !important}
 }
@@ -331,6 +335,11 @@ ${mainCSS}
       <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;margin-right:8px;vertical-align:middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       <span style="vertical-align:middle;">Let's Talk</span>
     </a>
+    <div class="dw-lang-toggle" aria-label="Language">
+      <a href="/" class="dw-lang-option" data-lang="en" hreflang="en">EN</a>
+      <span class="dw-lang-sep">|</span>
+      <a href="/th/" class="dw-lang-option" data-lang="th" hreflang="th">\u0e44\u0e17\u0e22</a>
+    </div>
     <button class="dw-menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -353,6 +362,24 @@ ${mainCSS}
     tog.addEventListener('click',function(){var o=nav.classList.toggle('dw-nav--open');tog.classList.toggle('active',o);document.body.style.overflow=o?'hidden':''});
     nav.querySelectorAll('a.dw-nav-link,.dw-mega-item,.dw-mega-viewall').forEach(function(l){l.addEventListener('click',function(){nav.classList.remove('dw-nav--open');tog.classList.remove('active');document.body.style.overflow=''})});
   }
+  // Language toggle — safe fallback logic
+  var langMap={'/':'/th/'};  // English→Thai URL pairs (extensible)
+  var revMap={};for(var k in langMap)revMap[langMap[k]]=k;
+  var curPath=window.location.pathname;
+  var isThai=curPath.indexOf('/th/')===0||curPath==='/th';
+  var langOpts=document.querySelectorAll('.dw-lang-option');
+  langOpts.forEach(function(el){
+    var lang=el.getAttribute('data-lang');
+    if(lang==='en'&&!isThai)el.classList.add('active');
+    if(lang==='th'&&isThai)el.classList.add('active');
+    // Set correct href based on current page
+    if(lang==='th'&&!isThai){
+      el.href=langMap[curPath]||'/th/';  // fallback to Thai homepage
+    }
+    if(lang==='en'&&isThai){
+      el.href=revMap[curPath]||curPath.replace(/^\/th\/?/,'/');
+    }
+  });
 })();
 </script>`;
 }
@@ -454,6 +481,13 @@ function headerCss() {
 .dw-mega-viewall svg{width:16px;height:16px;stroke:currentColor;stroke-width:2;fill:none;transition:transform 0.2s ease}
 .dw-mega-viewall:hover svg{transform:translateX(4px)}
 .dw-mega-header,.dw-mega-content-wrap,.dw-mega-hub{display:none}
+
+/* Language toggle */
+.dw-lang-toggle{display:flex;align-items:center;gap:6px;margin-left:16px;font-family:${SPEC.nav.fontFamily};font-size:13px;font-weight:600}
+.dw-lang-option{color:${SPEC.nav.color};text-decoration:none;padding:4px 6px;border-radius:4px;transition:all ${SPEC.animation.transition};opacity:0.5}
+.dw-lang-option:hover{opacity:0.8}
+.dw-lang-option.active{opacity:1;color:${SPEC.nav.hoverColor}}
+.dw-lang-sep{color:rgba(37,59,80,0.3);font-weight:400;user-select:none}
 
 /* CTA button */
 .dw-header-cta{font-family:${SPEC.nav.fontFamily};font-size:${SPEC.cta.fontSize};font-weight:${SPEC.cta.fontWeight};background:${SPEC.cta.background};color:${SPEC.cta.color} !important;padding:${SPEC.cta.padding};border-radius:${SPEC.cta.borderRadius};text-decoration:none;transition:all ${SPEC.animation.cubicBezier};box-shadow:${SPEC.cta.shadow};position:relative;overflow:hidden;display:inline-flex}

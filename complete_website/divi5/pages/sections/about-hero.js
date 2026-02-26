@@ -154,6 +154,9 @@ function css() {
   .about-hero-inner{grid-template-columns:1fr;gap:48px}
   .about-hero-stats{max-width:400px;margin:0 auto}
 }
+@media (max-width: 768px) {
+  .hero-scroll-cta{min-height:44px}
+}
 @media (max-width: 640px) {
   .about-hero{padding:120px 20px 80px}
   .about-hero-content h1{font-size:28px}

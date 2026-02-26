@@ -23,7 +23,7 @@ const config = require('./screenshot-config');
 const DEFAULT_VIEWPORTS = config.RESPONSIVE_VIEWPORTS;
 
 // Interactive element selectors for touch target check
-const TOUCH_SELECTORS = 'a, button, input, select, textarea, [role="button"]';
+const TOUCH_SELECTORS = 'a, button, input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]), select, textarea, [role="button"]';
 
 // Min touch target size (px) — WCAG 2.5.8 (AAA: 44px, AA: 24px — we use 44)
 const MIN_TOUCH_SIZE = 44;

@@ -107,7 +107,15 @@ const GLOBAL_THEME_RESET = `
 .section-title{line-height:1.6;-webkit-font-smoothing:auto}
 .section-subtitle{margin-left:auto;margin-right:auto;line-height:1.6}
 /* fade-in / scroll-fade-in: always visible (no JS scroll observer in Divi) */
-.fade-in,.scroll-fade-in{opacity:1 !important;transform:none !important}`;
+.fade-in,.scroll-fade-in{opacity:1 !important;transform:none !important}
+/* === MOBILE TOUCH TARGET RESET (WCAG 2.5.8 — 44px minimum) === */
+@media(max-width:768px){
+  a:not(.dw-logo):not(.dw-nav-link):not([class*="btn"]):not([class*="cta"]):not([class*="Cta"]),
+  input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]),
+  select,textarea{min-height:44px}
+  a:not(.dw-logo):not(.dw-nav-link):not([class*="btn"]):not([class*="cta"]):not([class*="Cta"]){display:inline-flex;align-items:center}
+  input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]){min-height:44px}
+}`;
 
 /**
  * Keyframes shared across sections

@@ -162,6 +162,12 @@ ${mainCSS}
   .dw-header-cta::before{transition:none !important}
   .dw-header-cta:hover,.dw-mega-featured-cta:hover,.dw-logo:hover{transform:none !important}
 }
+/* === GLOBAL MOBILE TOUCH TARGET RESET (WCAG 2.5.8 — 44px minimum) === */
+/* Injected via header so it applies to ALL pages without per-page rebuild */
+@media(max-width:768px){
+  a:not(.dw-logo):not(.dw-nav-link):not(.dw-mega-item):not(.dw-mega-viewall):not([class*="btn"]):not([class*="cta"]):not([class*="Cta"]){min-height:44px;display:inline-flex;align-items:center}
+  input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]),select,textarea{min-height:44px}
+}
 </style>
 <header class="dw-header">
   <div class="dw-header-inner">

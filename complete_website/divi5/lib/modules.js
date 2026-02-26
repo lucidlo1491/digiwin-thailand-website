@@ -224,6 +224,124 @@ function placeholderWrap(blocks) {
   ].join('\n');
 }
 
+// ── Native Divi dynamic modules (for Theme Builder body layouts) ──
+
+/**
+ * Generate a wp:divi/post-title block
+ * Used in body layouts to render the current post's title dynamically.
+ */
+function postTitleModule(opts = {}) {
+  const json = {
+    featuredImage: { advanced: { enabled: { desktop: { value: 'off' } } } },
+    title: {
+      decoration: {
+        font: {
+          font: {
+            desktop: { value: { family: opts.family || 'Noto Sans', weight: opts.weight || '700', size: opts.size || '42px', lineHeight: opts.lineHeight || '1.2em', color: opts.color || '#FFFFFF' } },
+            tablet: { value: { size: opts.tabletSize || '32px' } },
+            phone: { value: { size: opts.phoneSize || '24px' } },
+          },
+        },
+      },
+    },
+    meta: {
+      decoration: {
+        font: {
+          font: {
+            desktop: { value: { family: opts.metaFamily || 'Noto Sans', weight: '400', color: opts.metaColor || 'rgba(255,255,255,0.8)', size: '14px' } },
+          },
+        },
+      },
+      advanced: {
+        showAuthor: { desktop: { value: opts.showAuthor || 'off' } },
+        showDate: { desktop: { value: opts.showDate || 'on' } },
+        showCategories: { desktop: { value: opts.showCategories || 'on' } },
+        showComments: { desktop: { value: opts.showComments || 'off' } },
+      },
+    },
+    module: {
+      meta: { adminLabel: { desktop: { value: opts.adminLabel || 'Post Title' } } },
+      advanced: { text: { text: { desktop: { value: { orientation: opts.align || 'left' } } } } },
+    },
+    builderVersion: BUILDER_VERSION,
+  };
+  return `<!-- wp:divi/post-title ${JSON.stringify(json)} --><!-- /wp:divi/post-title -->`;
+}
+
+/**
+ * Generate a wp:divi/post-content block
+ * Used in body layouts to render the current post's content dynamically.
+ */
+function postContentModule(opts = {}) {
+  const json = {
+    module: {
+      meta: { adminLabel: { desktop: { value: opts.adminLabel || 'Post Content' } } },
+      decoration: {
+        bodyFont: {
+          body: {
+            font: {
+              desktop: { value: { family: opts.family || 'Noto Sans', weight: '400', size: opts.size || '16px', lineHeight: opts.lineHeight || '1.8em', color: opts.color || '#333333' } },
+              tablet: { value: { size: '15px' } },
+              phone: { value: { size: '14px' } },
+            },
+          },
+        },
+        headingFont: {
+          h2: { font: { desktop: { value: { family: 'Noto Sans', weight: '600', size: '28px', lineHeight: '1.3em', color: '#000864' } } } },
+          h3: { font: { desktop: { value: { family: 'Noto Sans', weight: '600', size: '22px', lineHeight: '1.35em', color: '#000864' } } } },
+          h4: { font: { desktop: { value: { family: 'Noto Sans', weight: '600', size: '18px', lineHeight: '1.4em', color: '#000864' } } } },
+        },
+      },
+    },
+    builderVersion: BUILDER_VERSION,
+  };
+  return `<!-- wp:divi/post-content ${JSON.stringify(json)} --><!-- /wp:divi/post-content -->`;
+}
+
+/**
+ * Generate a wp:divi/blog block
+ * Used in body layouts to show related posts dynamically.
+ */
+function blogModule(opts = {}) {
+  const json = {
+    fullwidth: { advanced: { enable: { desktop: { value: 'off' } } } },
+    readMore: {
+      advanced: { enable: { desktop: { value: 'on' } } },
+      decoration: { font: { font: { desktop: { value: { family: 'Noto Sans', weight: '600', color: '#00AFF0' } } } } },
+    },
+    meta: {
+      advanced: { showAuthor: { desktop: { value: 'off' } } },
+      decoration: { font: { font: { desktop: { value: { color: '#666666', family: 'Noto Sans', weight: '400' } } } } },
+    },
+    title: {
+      decoration: {
+        font: {
+          font: {
+            desktop: { value: { size: '18px', lineHeight: '1.4em', family: 'Noto Sans', weight: '600', color: '#000864' } },
+            tablet: { value: { size: '16px' } },
+            phone: { value: { size: '15px' } },
+          },
+        },
+      },
+    },
+    post: {
+      decoration: {
+        border: { desktop: { value: { radius: { sync: 'on', topLeft: '12px', topRight: '12px', bottomRight: '12px', bottomLeft: '12px' } } } },
+      },
+      advanced: {
+        number: { desktop: { value: String(opts.count || 3) } },
+        categories: { desktop: { value: opts.categories || ['all'] } },
+        offset: { desktop: { value: '0' } },
+      },
+    },
+    module: {
+      meta: { adminLabel: { desktop: { value: opts.adminLabel || 'Related Posts' } } },
+    },
+    builderVersion: BUILDER_VERSION,
+  };
+  return `<!-- wp:divi/blog ${JSON.stringify(json)} --><!-- /wp:divi/blog -->`;
+}
+
 module.exports = {
   BUILDER_VERSION,
   textModule,
@@ -236,4 +354,7 @@ module.exports = {
   columnOpen,
   columnClose,
   placeholderWrap,
+  postTitleModule,
+  postContentModule,
+  blogModule,
 };

@@ -28,7 +28,7 @@ function getArg(flag) {
 
 const DRY_RUN = hasFlag('--dry-run');
 const FORCE = hasFlag('--force');
-const ONLY = getArg('--only'); // 'header' or 'footer'
+const ONLY = getArg('--only'); // 'header', 'footer', or 'body-single'
 
 // ════════════════════════════════════════════════════════════════
 // GLOBAL LAYOUT CONFIG
@@ -48,6 +48,13 @@ const LAYOUTS = [
     title: 'DigiWin Global Footer',
     builder: require('./global/footer'),
   },
+  {
+    name: 'body-single',
+    postId: 100440,
+    postType: 'et_body_layout',
+    title: 'DigiWin Blog Single Template',
+    builder: require('./global/blog-single'),
+  },
 ];
 
 const layouts = ONLY
@@ -55,7 +62,7 @@ const layouts = ONLY
   : LAYOUTS;
 
 if (layouts.length === 0) {
-  console.error(`Unknown layout: ${ONLY}. Available: header, footer`);
+  console.error(`Unknown layout: ${ONLY}. Available: header, footer, body-single`);
   process.exit(1);
 }
 

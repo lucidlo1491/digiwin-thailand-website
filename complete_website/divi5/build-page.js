@@ -113,9 +113,24 @@ if (!fs.existsSync(configPath)) {
 const pageConfig = require(configPath);
 const SITE_URL = pageConfig.siteUrl || 'https://digiwin-thailand.local';
 
+// ════════════════════════════════════════════════════════════════
+// MANAGED-BY SAFETY CHECK
+// Pages flagged as managedBy: 'marketing' (or other teams) are
+// maintained via the WordPress editor, not the build pipeline.
+// Prevents accidental overwrite of marketing-edited content.
+// ════════════════════════════════════════════════════════════════
+if (pageConfig.managedBy && !hasFlag('--force-managed') && !DRY_RUN) {
+  console.error(`\n✗ MANAGED PAGE — ${pageConfig.title || pageName}`);
+  console.error(`  This page is managed by: ${pageConfig.managedBy}`);
+  console.error(`  The build pipeline will NOT overwrite content edited in WordPress.`);
+  console.error(`  Use --force-managed to override (content will be replaced).`);
+  process.exit(1);
+}
+
 console.log(`\n▸ Building: ${pageConfig.title || pageName}`);
 console.log(`  Page ID: ${pageConfig.pageId}`);
 console.log(`  Site: ${SITE_URL}`);
+if (pageConfig.managedBy) console.log(`  ${'\x1b[33m'}⚠ Managed by: ${pageConfig.managedBy} (--force-managed used)${'\x1b[0m'}`);
 
 // ════════════════════════════════════════════════════════════════
 // PRE-FLIGHT: SECTION COVERAGE GATE

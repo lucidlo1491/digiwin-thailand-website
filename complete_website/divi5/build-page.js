@@ -316,6 +316,13 @@ if (sectionFilter && sections.length > filteredSections.length) {
   blockContent = placeholderWrap(allBlocks);
 }
 
+// Append page-level extra CSS (e.g. Thai typography overrides)
+if (typeof pageConfig.extraCSS === 'function') {
+  allCSS.push(pageConfig.extraCSS());
+} else if (typeof pageConfig.extraCSS === 'string') {
+  allCSS.push(pageConfig.extraCSS);
+}
+
 const pageLevelCSS = cssAssembler.assemble(allCSS);
 
 // If page config has a pageJS function (for JS script blocks), include it

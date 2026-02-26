@@ -161,17 +161,23 @@ body, .et_pb_section, .et_pb_code, .et_pb_code_inner {
 }
 
 /* Thai-specific line heights (Thai script is taller) */
-[lang="th"] p, [lang="th"] li, [lang="th"] .et_pb_text_inner {
-  line-height: 1.8;
-}
-[lang="th"] h1, [lang="th"] h2, [lang="th"] h3,
-[lang="th"] h4, [lang="th"] h5, [lang="th"] h6 {
-  line-height: 1.4;
+p, li, .et_pb_text_inner { line-height: 1.8; }
+h1, h2, h3, h4, h5, h6 { line-height: 1.4; }
+
+/* Thai label override: JetBrains Mono doesn't have Thai glyphs.
+   letter-spacing breaks Thai script (chars within words must stay connected).
+   text-transform:uppercase is meaningless for Thai. */
+[class*="-label"] {
+  font-family: 'Noto Sans Thai', 'Noto Sans', sans-serif !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
 }
 
-/* Ensure Thai renders in labels too */
-[lang="th"] [class*="-label"] {
-  font-family: 'Noto Sans Thai', 'JetBrains Mono', monospace !important;
+/* Also fix any monospace elements that might contain Thai text */
+[class*="-source"], [class*="-company"] {
+  font-family: 'Noto Sans Thai', 'Noto Sans', sans-serif !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
 }
 `;
 }

@@ -8,6 +8,7 @@
  */
 
 const path = require('path');
+const { thaiTypographyCSS } = require('../lib/css-assembler');
 
 // Thai section builders (all 10 — merge or deep-merge patterns)
 const thHeroBuilder = require('./sections/th-home-hero');
@@ -41,6 +42,9 @@ module.exports = {
     { name: 'proven-results',  builder: thProvenResultsBuilder },
     { name: 'final-cta',       builder: thFinalCtaBuilder },
   ],
+
+  // Thai typography: Noto Sans Thai font + label letter-spacing fix
+  extraCSS: () => thaiTypographyCSS(),
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

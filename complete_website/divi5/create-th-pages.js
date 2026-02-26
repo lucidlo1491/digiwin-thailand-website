@@ -128,6 +128,42 @@ const PAGES = {
     parent: 'news',
     configName: 'th-events-listing',
   },
+  // ── Batch 6: Events (5 pages) + Legal (2 pages) ──────────────
+  'boi-compliance-workshop': {
+    title: 'เวิร์กช็อป BOI Compliance — DigiWin Thailand',
+    parent: 'events',
+    configName: 'th-boi-compliance-workshop',
+  },
+  'factory-tour-mes': {
+    title: 'ทัวร์โรงงาน: ดู MES ใช้งานจริง — DigiWin Thailand',
+    parent: 'events',
+    configName: 'th-factory-tour-mes',
+  },
+  'manufacturing-expo-2026': {
+    title: 'Manufacturing Expo 2026 — DigiWin Thailand',
+    parent: 'events',
+    configName: 'th-manufacturing-expo-2026',
+  },
+  'production-transparency-seminar': {
+    title: 'สัมมนา Production Transparency — DigiWin Thailand',
+    parent: 'events',
+    configName: 'th-production-transparency-seminar',
+  },
+  'shop-floor-data-workshop': {
+    title: 'เวิร์กช็อป Shop Floor Data — DigiWin Thailand',
+    parent: 'events',
+    configName: 'th-shop-floor-data-workshop',
+  },
+  'privacy-policy': {
+    title: 'นโยบายความเป็นส่วนตัว — DigiWin Thailand',
+    parent: 'th',
+    configName: 'th-privacy-policy',
+  },
+  'terms-of-service': {
+    title: 'ข้อกำหนดการใช้งาน — DigiWin Thailand',
+    parent: 'th',
+    configName: 'th-terms',
+  },
 };
 
 // ── Load existing IDs ──────────────────────────────────────────

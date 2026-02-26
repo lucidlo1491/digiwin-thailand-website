@@ -48,6 +48,7 @@ const DATA = {
 };
 
 module.exports = {
+  DATA,
   blocks: () => logoMarquee.blocks(DATA),
   css: () => logoMarquee.css(DATA),
 };

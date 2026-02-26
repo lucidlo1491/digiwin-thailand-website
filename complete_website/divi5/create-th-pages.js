@@ -1,0 +1,141 @@
+#!/usr/bin/env node
+/**
+ * create-th-pages.js — Create Thai (/th/) WordPress pages
+ *
+ * Creates a /th/ parent page and all Thai child pages with correct hierarchy.
+ * Records IDs to th-page-ids.json for use by build-page.js configs.
+ *
+ * Usage:
+ *   node complete_website/divi5/create-th-pages.js [--dry-run]
+ *   node complete_website/divi5/create-th-pages.js --page home   # create single page
+ *
+ * Re-runnable: skips pages that already exist (checks by slug).
+ */
+
+const fs = require('fs');
+const path = require('path');
+const mysql = require('./lib/mysql');
+
+const DRY_RUN = process.argv.includes('--dry-run');
+const SINGLE = process.argv.find((a, i) => process.argv[i - 1] === '--page');
+
+const IDS_FILE = path.join(__dirname, 'th-page-ids.json');
+
+// ── Thai page definitions ─────────────────────────────────────
+// slug → { title, parent (slug of parent, or null for /th/ root) }
+const PAGES = {
+  'th': {
+    title: 'ภาษาไทย',
+    parent: null,
+    note: 'Parent container for all Thai pages',
+  },
+  'th-home': {
+    title: 'DigiWin Thailand \u2014 ซอฟต์แวร์อัจฉริยะสำหรับโรงงานผลิตไทย',
+    parent: 'th',
+    existingId: 100771, // POC page already exists
+  },
+  // Future pages — uncomment as batches are built:
+  // 'th-products':        { title: 'โซลูชัน — DigiWin Thailand', parent: 'th' },
+  // 'th-erp':             { title: 'ERP — DigiWin Thailand', parent: 'th' },
+  // 'th-mes':             { title: 'MES — DigiWin Thailand', parent: 'th' },
+  // 'th-wms':             { title: 'WMS — DigiWin Thailand', parent: 'th' },
+  // 'th-aiot':            { title: 'AIoT — DigiWin Thailand', parent: 'th' },
+  // 'th-partner-program': { title: 'โปรแกรมพันธมิตร — DigiWin Thailand', parent: 'th' },
+  // 'th-about':           { title: 'เกี่ยวกับเรา — DigiWin Thailand', parent: 'th' },
+  // 'th-contact':         { title: 'ติดต่อเรา — DigiWin Thailand', parent: 'th' },
+  // 'th-case-studies':    { title: 'กรณีศึกษา — DigiWin Thailand', parent: 'th' },
+};
+
+// ── Load existing IDs ──────────────────────────────────────────
+let ids = {};
+if (fs.existsSync(IDS_FILE)) {
+  ids = JSON.parse(fs.readFileSync(IDS_FILE, 'utf8'));
+}
+
+// ── Check if page already exists by slug ───────────────────────
+function pageExistsBySlug(slug) {
+  try {
+    const result = mysql.query(
+      `SELECT ID FROM wp_posts WHERE post_name = '${mysql.escape(slug)}' AND post_type = 'page' AND post_status != 'trash';`
+    );
+    const lines = result.trim().split('\n');
+    if (lines.length >= 2) {
+      return parseInt(lines[1].trim(), 10);
+    }
+    return null;
+  } catch (e) {
+    return null;
+  }
+}
+
+// ── Main ───────────────────────────────────────────────────────
+function run() {
+  console.log(DRY_RUN ? '=== DRY RUN ===' : '=== Creating Thai pages ===');
+  console.log('');
+
+  const slugsToCreate = SINGLE
+    ? [SINGLE]
+    : Object.keys(PAGES);
+
+  for (const slug of slugsToCreate) {
+    const def = PAGES[slug];
+    if (!def) {
+      console.log(`  ⚠ Unknown page: ${slug}`);
+      continue;
+    }
+
+    // Check if already exists
+    if (def.existingId) {
+      ids[slug] = def.existingId;
+      console.log(`  ✓ ${slug} — already exists (ID: ${def.existingId})`);
+      continue;
+    }
+
+    const existingId = pageExistsBySlug(slug);
+    if (existingId) {
+      ids[slug] = existingId;
+      console.log(`  ✓ ${slug} — already exists in WP (ID: ${existingId})`);
+      continue;
+    }
+
+    // Resolve parent ID
+    let parentId = 0;
+    if (def.parent) {
+      parentId = ids[def.parent];
+      if (!parentId) {
+        console.log(`  ✗ ${slug} — parent '${def.parent}' not yet created, skipping`);
+        continue;
+      }
+    }
+
+    if (DRY_RUN) {
+      console.log(`  → Would create: ${slug} (parent: ${parentId || 'none'}) — "${def.title}"`);
+      continue;
+    }
+
+    // Create the page
+    try {
+      const newId = mysql.createPage({
+        title: def.title,
+        slug: slug,
+        parentId: parentId,
+        status: 'publish',
+      });
+      ids[slug] = newId;
+      console.log(`  ✓ Created: ${slug} → ID ${newId} (parent: ${parentId || 'none'})`);
+    } catch (e) {
+      console.error(`  ✗ Failed to create ${slug}: ${e.message}`);
+    }
+  }
+
+  // Save IDs
+  if (!DRY_RUN) {
+    fs.writeFileSync(IDS_FILE, JSON.stringify(ids, null, 2), 'utf8');
+    console.log(`\n  Saved IDs to ${path.basename(IDS_FILE)}`);
+  }
+
+  console.log('\n=== Done ===');
+  console.log('IDs:', JSON.stringify(ids, null, 2));
+}
+
+run();

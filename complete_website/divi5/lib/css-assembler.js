@@ -143,6 +143,39 @@ function assemble(sections) {
   return [GLOBAL_THEME_RESET, SHARED_KEYFRAMES, ...cleaned, TB_BODY_RESET].join('\n').trim();
 }
 
+/**
+ * Thai typography CSS — Google Fonts import + font stack override
+ * Applied at page-level for all Thai (/th/) pages.
+ * Includes Noto Sans Thai at weights 400, 500, 600, 700.
+ */
+const THAI_FONT_IMPORT = "@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&display=swap');";
+
+function thaiTypographyCSS() {
+  return `
+/* === THAI TYPOGRAPHY === */
+${THAI_FONT_IMPORT}
+
+/* Thai font stack for all body text */
+body, .et_pb_section, .et_pb_code, .et_pb_code_inner {
+  font-family: 'Noto Sans Thai', 'Noto Sans', sans-serif !important;
+}
+
+/* Thai-specific line heights (Thai script is taller) */
+[lang="th"] p, [lang="th"] li, [lang="th"] .et_pb_text_inner {
+  line-height: 1.8;
+}
+[lang="th"] h1, [lang="th"] h2, [lang="th"] h3,
+[lang="th"] h4, [lang="th"] h5, [lang="th"] h6 {
+  line-height: 1.4;
+}
+
+/* Ensure Thai renders in labels too */
+[lang="th"] [class*="-label"] {
+  font-family: 'Noto Sans Thai', 'JetBrains Mono', monospace !important;
+}
+`;
+}
+
 module.exports = {
   themeBuilderReset,
   columnGapReset,
@@ -151,5 +184,7 @@ module.exports = {
   cardCSS,
   statsCSS,
   assemble,
+  thaiTypographyCSS,
+  THAI_FONT_IMPORT,
   SHARED_KEYFRAMES,
 };

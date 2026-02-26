@@ -69,6 +69,7 @@ const DATA = {
 };
 
 module.exports = {
+  DATA,
   blocks: () => darkGrid.blocks(DATA),
   css: () => darkGrid.css(DATA),
 };

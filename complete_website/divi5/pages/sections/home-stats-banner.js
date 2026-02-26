@@ -45,6 +45,7 @@ const DATA = {
 };
 
 module.exports = {
+  DATA,
   blocks: () => statsBanner.blocks(DATA),
   css: () => statsBanner.css(DATA),
 };

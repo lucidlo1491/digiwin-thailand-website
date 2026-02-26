@@ -179,6 +179,9 @@ const DATA = {
 };
 
 module.exports = {
+  DATA,
+  getFactorySVGRaw,
+  getPartnerSVGRaw,
   blocks: () => heroGradient.blocks(DATA),
   css: () => heroGradient.css(DATA),
 };

@@ -100,6 +100,7 @@ const DATA = {
 };
 
 module.exports = {
+  DATA,
   blocks: () => cardGrid.blocks(DATA),
   css: () => cardGrid.css(DATA),
 };

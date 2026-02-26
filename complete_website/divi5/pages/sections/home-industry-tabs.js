@@ -82,6 +82,8 @@ const DATA = {
 };
 
 module.exports = {
+  DATA,
+  extractIndustrySVG,
   blocks: () => tabContent.blocks(DATA),
   css: () => tabContent.css(DATA),
 };

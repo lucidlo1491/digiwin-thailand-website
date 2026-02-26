@@ -32,6 +32,7 @@ const DATA = {
 };
 
 module.exports = {
+  DATA,
   blocks: () => resultCards.blocks(DATA),
   css: () => resultCards.css(DATA),
 };

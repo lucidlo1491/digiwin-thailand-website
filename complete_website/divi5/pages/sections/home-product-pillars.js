@@ -78,6 +78,7 @@ const DATA = {
 };
 
 module.exports = {
+  DATA,
   blocks: () => cardGridLight.blocks(DATA),
   css: () => cardGridLight.css(DATA),
 };

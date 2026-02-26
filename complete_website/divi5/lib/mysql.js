@@ -188,6 +188,41 @@ function restore(pageId, backupFile, opts = {}) {
   console.log('Note: Manual restore — read the backup file and re-push via build script.');
 }
 
+/**
+ * Create a new WordPress page and return its ID
+ * Used for Thai language pages (i18n)
+ */
+function createPage({ title, slug, parentId = 0, status = 'publish', opts = {} } = {}) {
+  const sql = `INSERT INTO wp_posts (
+    post_author, post_date, post_date_gmt, post_content, post_title,
+    post_excerpt, post_status, comment_status, ping_status, post_password,
+    post_name, to_ping, pinged, post_modified, post_modified_gmt,
+    post_content_filtered, post_parent, guid, menu_order, post_type,
+    post_mime_type, comment_count
+  ) VALUES (
+    1, NOW(), UTC_TIMESTAMP(), '', '${escape(title)}',
+    '', '${escape(status)}', 'closed', 'closed', '',
+    '${escape(slug)}', '', '', NOW(), UTC_TIMESTAMP(),
+    '', ${parseInt(parentId, 10)}, '', 0, 'page',
+    '', 0
+  );
+  SELECT LAST_INSERT_ID() as new_id;`;
+
+  const result = query(sql, opts);
+  const lines = result.trim().split('\n');
+  const idLine = lines[lines.length - 1].trim();
+  const newId = parseInt(idLine, 10);
+
+  if (isNaN(newId) || newId === 0) {
+    throw new Error(`createPage failed — could not get new ID. Raw result: ${result}`);
+  }
+
+  // Set GUID (WordPress convention: site_url/?page_id=ID)
+  query(`UPDATE wp_posts SET guid = 'https://digiwin-thailand.local/?page_id=${newId}' WHERE ID = ${newId};`, opts);
+
+  return newId;
+}
+
 module.exports = {
   escape,
   query,
@@ -197,5 +232,6 @@ module.exports = {
   pushPage,
   verifyPush,
   restore,
+  createPage,
   DEFAULTS,
 };

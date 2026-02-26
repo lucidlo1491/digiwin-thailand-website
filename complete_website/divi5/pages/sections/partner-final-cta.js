@@ -61,4 +61,4 @@ function css() {
   return templateCSS + overrideCSS + footerCSS;
 }
 
-module.exports = { blocks, css };
+module.exports = { blocks, css, DATA };

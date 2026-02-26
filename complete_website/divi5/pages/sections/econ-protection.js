@@ -148,4 +148,4 @@ ${base.reducedMotion(`.${P}-card{transition:none !important}`)}
 `.trim();
 }
 
-module.exports = { blocks, css };
+module.exports = { blocks, css, CARDS };

@@ -169,4 +169,8 @@ module.exports = {
     blocks: () => buildSection(TIER_CONFIG),
     css: () => '', // CSS already emitted by journeyResearch
   },
+  RESEARCH_CONFIG,
+  RESEARCH_STEPS,
+  TIER_CONFIG,
+  TIER_STEPS,
 };

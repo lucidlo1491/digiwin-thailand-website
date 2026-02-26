@@ -94,4 +94,4 @@ function css() {
 }`.trim();
 }
 
-module.exports = { blocks, css };
+module.exports = { blocks, css, ROWS };

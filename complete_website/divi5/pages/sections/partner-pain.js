@@ -225,4 +225,6 @@ module.exports = {
     blocks: () => buildSection(OPERATIONAL_CONFIG),
     css: () => '', // CSS already emitted by painRevenue
   },
+  REVENUE_CONFIG,
+  OPERATIONAL_CONFIG,
 };

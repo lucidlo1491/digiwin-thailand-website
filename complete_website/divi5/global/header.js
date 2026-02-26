@@ -377,7 +377,7 @@ ${mainCSS}
       el.href=langMap[curPath]||'/th/';  // fallback to Thai homepage
     }
     if(lang==='en'&&isThai){
-      el.href=revMap[curPath]||curPath.replace(/^\/th\/?/,'/');
+      var enPath=revMap[curPath]||(curPath.indexOf('/th/')===0?curPath.slice(3):'/');el.href=enPath||'/';
     }
   });
 })();
@@ -418,6 +418,8 @@ function headerCss() {
   // and exposes mobile-only rules at desktop width.
   return `
 /* ===== HEADER ===== */
+/* Divi section wrapper: override overflow:hidden so mega-menu dropdowns are visible */
+.et_pb_section.et_pb_section_0_tb_header{overflow:visible !important}
 /* Reset Divi's inherited line-height (23.8px from 1.49em×16px) and <p> padding on all header elements */
 .dw-header,.dw-header *{line-height:1.6;-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto}
 .dw-header p,.dw-header h1,.dw-header h2,.dw-header h3{margin:0;padding:0}

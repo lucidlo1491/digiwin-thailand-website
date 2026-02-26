@@ -202,4 +202,4 @@ ${base.reducedMotion(`.${P}-stream{transition:none !important}`)}
 `.trim();
 }
 
-module.exports = { blocks, css, getGrowthSVG };
+module.exports = { blocks, css, getGrowthSVG, STREAMS };

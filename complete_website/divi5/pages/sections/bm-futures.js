@@ -135,4 +135,4 @@ function css() {
 ${base.reducedMotion(`.${P}-path,.${P}-insight{transition:none !important}`)}`.trim();
 }
 
-module.exports = { blocks, css };
+module.exports = { blocks, css, PATHS };

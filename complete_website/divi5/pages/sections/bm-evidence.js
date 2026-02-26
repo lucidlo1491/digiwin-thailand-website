@@ -195,4 +195,4 @@ ${base.svgSceneCSS(P)}
 }`.trim();
 }
 
-module.exports = { evidenceRow1, evidenceRow2 };
+module.exports = { evidenceRow1, evidenceRow2, ROW1_CARDS, ROW2_CARDS };

@@ -138,4 +138,4 @@ function css() {
 ${base.reducedMotion(`.${P}-card,.${P}-card-link svg{transition:none !important}`)}`.trim();
 }
 
-module.exports = { blocks, css };
+module.exports = { blocks, css, OFFERINGS, BENEFITS };

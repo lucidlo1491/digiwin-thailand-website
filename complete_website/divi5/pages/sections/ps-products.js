@@ -228,4 +228,4 @@ ${base.diviListReset(P)}
 ${base.reducedMotion(`.${P}-card{transition:none !important}.${P}-link svg{transition:none !important}`)}`.trim();
 }
 
-module.exports = { blocks, css };
+module.exports = { blocks, css, CARDS };

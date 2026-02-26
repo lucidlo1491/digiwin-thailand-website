@@ -34,13 +34,33 @@ const PAGES = {
     parent: 'th',
     existingId: 100771, // POC page already exists
   },
+  // ── Batch 1: Partner Program (4 pages) ──────────────────────
+  'partner-program': {
+    title: 'โปรแกรมพันธมิตร DigiWin — สร้างรายได้ต่อเนื่อง',
+    parent: 'th',
+    configName: 'th-partner-program',
+  },
+  'business-model': {
+    title: 'วิกฤตโมเดลธุรกิจ — DigiWin Thailand',
+    parent: 'partner-program',
+    configName: 'th-partner-business-model',
+  },
+  'solutions': {
+    title: 'ชุดโซลูชันพาร์ทเนอร์ — DigiWin Thailand',
+    parent: 'partner-program',
+    configName: 'th-partner-solutions',
+  },
+  'economics': {
+    title: 'เศรษฐศาสตร์พาร์ทเนอร์ — DigiWin Thailand',
+    parent: 'partner-program',
+    configName: 'th-partner-economics',
+  },
   // Future pages — uncomment as batches are built:
   // 'th-products':        { title: 'โซลูชัน — DigiWin Thailand', parent: 'th' },
   // 'th-erp':             { title: 'ERP — DigiWin Thailand', parent: 'th' },
   // 'th-mes':             { title: 'MES — DigiWin Thailand', parent: 'th' },
   // 'th-wms':             { title: 'WMS — DigiWin Thailand', parent: 'th' },
   // 'th-aiot':            { title: 'AIoT — DigiWin Thailand', parent: 'th' },
-  // 'th-partner-program': { title: 'โปรแกรมพันธมิตร — DigiWin Thailand', parent: 'th' },
   // 'th-about':           { title: 'เกี่ยวกับเรา — DigiWin Thailand', parent: 'th' },
   // 'th-contact':         { title: 'ติดต่อเรา — DigiWin Thailand', parent: 'th' },
   // 'th-case-studies':    { title: 'กรณีศึกษา — DigiWin Thailand', parent: 'th' },

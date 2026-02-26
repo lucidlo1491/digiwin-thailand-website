@@ -29,4 +29,5 @@ const DATA = {
 module.exports = {
   blocks: () => ctaGradient.blocks(DATA),
   css: () => ctaGradient.css(DATA) + `\n.et_pb_section .${P}-btn--ghost{color:#fff !important}`,
+  DATA,
 };

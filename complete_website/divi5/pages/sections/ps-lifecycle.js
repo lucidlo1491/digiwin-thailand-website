@@ -131,4 +131,4 @@ function css() {
 ${base.reducedMotion(`.${P}-phase{transition:none !important}`)}`.trim();
 }
 
-module.exports = { blocks, css };
+module.exports = { blocks, css, PHASES };

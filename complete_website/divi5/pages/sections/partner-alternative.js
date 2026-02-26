@@ -177,4 +177,4 @@ ${base.diviListReset(P + '-model')}
 ${base.reducedMotion(`.${P}-benefit,.${P}-cta-btn{transition:none !important}`)}`.trim();
 }
 
-module.exports = { blocks, css };
+module.exports = { blocks, css, OLD_MODEL, NEW_MODEL, BENEFITS };

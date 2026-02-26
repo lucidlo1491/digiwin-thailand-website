@@ -147,4 +147,4 @@ function css() {
 ${base.reducedMotion(``)}`.trim();
 }
 
-module.exports = { blocks, css };
+module.exports = { blocks, css, PHASES, TABLE_ROWS };

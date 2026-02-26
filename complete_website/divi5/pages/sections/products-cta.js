@@ -39,4 +39,5 @@ ${base.grainCSS(`.${P}-section`)}
 module.exports = {
   blocks: () => ctaGradient.blocks(DATA),
   css,
+  DATA,
 };

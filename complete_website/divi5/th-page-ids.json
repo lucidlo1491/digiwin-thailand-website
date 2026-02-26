@@ -4,5 +4,19 @@
   "th-partner-program": 100772,
   "th-partner-business-model": 100773,
   "th-partner-solutions": 100774,
-  "th-partner-economics": 100775
+  "th-partner-economics": 100775,
+  "partner-program": 100772,
+  "business-model": 100773,
+  "solutions": 100774,
+  "economics": 100775,
+  "products": 100776,
+  "th-products": 100776,
+  "erp": 100777,
+  "th-erp": 100777,
+  "mes": 100778,
+  "th-mes": 100778,
+  "wms": 100779,
+  "th-wms": 100779,
+  "aiot": 100780,
+  "th-aiot": 100780
 }

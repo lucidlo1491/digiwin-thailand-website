@@ -17,4 +17,4 @@ const data = {
   ],
 };
 
-module.exports = { blocks: () => template.blocks(data), css: () => template.css(data) };
+module.exports = { DATA: data, blocks: () => template.blocks(data), css: () => template.css(data) };

@@ -22,6 +22,7 @@ const DATA = {
 };
 
 module.exports = {
+  DATA,
   blocks: () => ctaGradient.blocks(DATA),
   css: () => ctaGradient.css(DATA),
 };

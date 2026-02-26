@@ -55,15 +55,36 @@ const PAGES = {
     parent: 'partner-program',
     configName: 'th-partner-economics',
   },
+  // ── Batch 2: Product Pages (5 pages) ──────────────────────
+  'products': {
+    title: 'โซลูชันซอฟต์แวร์ — DigiWin Thailand',
+    parent: 'th',
+    configName: 'th-products',
+  },
+  'erp': {
+    title: 'ERP (ระบบบริหารทรัพยากรองค์กร) — DigiWin Thailand',
+    parent: 'products',
+    configName: 'th-erp',
+  },
+  'mes': {
+    title: 'MES (ระบบบริหารการผลิต) — DigiWin Thailand',
+    parent: 'products',
+    configName: 'th-mes',
+  },
+  'wms': {
+    title: 'WMS (ระบบจัดการคลังสินค้า) — DigiWin Thailand',
+    parent: 'products',
+    configName: 'th-wms',
+  },
+  'aiot': {
+    title: 'AIoT & Smart Factory — DigiWin Thailand',
+    parent: 'products',
+    configName: 'th-aiot',
+  },
   // Future pages — uncomment as batches are built:
-  // 'th-products':        { title: 'โซลูชัน — DigiWin Thailand', parent: 'th' },
-  // 'th-erp':             { title: 'ERP — DigiWin Thailand', parent: 'th' },
-  // 'th-mes':             { title: 'MES — DigiWin Thailand', parent: 'th' },
-  // 'th-wms':             { title: 'WMS — DigiWin Thailand', parent: 'th' },
-  // 'th-aiot':            { title: 'AIoT — DigiWin Thailand', parent: 'th' },
-  // 'th-about':           { title: 'เกี่ยวกับเรา — DigiWin Thailand', parent: 'th' },
-  // 'th-contact':         { title: 'ติดต่อเรา — DigiWin Thailand', parent: 'th' },
-  // 'th-case-studies':    { title: 'กรณีศึกษา — DigiWin Thailand', parent: 'th' },
+  // 'about':           { title: 'เกี่ยวกับเรา — DigiWin Thailand', parent: 'th' },
+  // 'contact':         { title: 'ติดต่อเรา — DigiWin Thailand', parent: 'th' },
+  // 'case-studies':    { title: 'กรณีศึกษา — DigiWin Thailand', parent: 'th' },
 };
 
 // ── Load existing IDs ──────────────────────────────────────────
@@ -73,10 +94,11 @@ if (fs.existsSync(IDS_FILE)) {
 }
 
 // ── Check if page already exists by slug ───────────────────────
-function pageExistsBySlug(slug) {
+function pageExistsBySlug(slug, parentId) {
   try {
+    const parentClause = parentId ? ` AND post_parent = ${parentId}` : '';
     const result = mysql.query(
-      `SELECT ID FROM wp_posts WHERE post_name = '${mysql.escape(slug)}' AND post_type = 'page' AND post_status != 'trash';`
+      `SELECT ID FROM wp_posts WHERE post_name = '${mysql.escape(slug)}' AND post_type = 'page' AND post_status != 'trash'${parentClause};`
     );
     const lines = result.trim().split('\n');
     if (lines.length >= 2) {
@@ -107,18 +129,12 @@ function run() {
     // Check if already exists
     if (def.existingId) {
       ids[slug] = def.existingId;
+      if (def.configName) ids[def.configName] = def.existingId;
       console.log(`  ✓ ${slug} — already exists (ID: ${def.existingId})`);
       continue;
     }
 
-    const existingId = pageExistsBySlug(slug);
-    if (existingId) {
-      ids[slug] = existingId;
-      console.log(`  ✓ ${slug} — already exists in WP (ID: ${existingId})`);
-      continue;
-    }
-
-    // Resolve parent ID
+    // Resolve parent ID first (needed for slug uniqueness check)
     let parentId = 0;
     if (def.parent) {
       parentId = ids[def.parent];
@@ -126,6 +142,14 @@ function run() {
         console.log(`  ✗ ${slug} — parent '${def.parent}' not yet created, skipping`);
         continue;
       }
+    }
+
+    const existingId = pageExistsBySlug(slug, parentId || undefined);
+    if (existingId) {
+      ids[slug] = existingId;
+      if (def.configName) ids[def.configName] = existingId;
+      console.log(`  ✓ ${slug} — already exists in WP (ID: ${existingId})`);
+      continue;
     }
 
     if (DRY_RUN) {
@@ -142,6 +166,7 @@ function run() {
         status: 'publish',
       });
       ids[slug] = newId;
+      if (def.configName) ids[def.configName] = newId;
       console.log(`  ✓ Created: ${slug} → ID ${newId} (parent: ${parentId || 'none'})`);
     } catch (e) {
       console.error(`  ✗ Failed to create ${slug}: ${e.message}`);

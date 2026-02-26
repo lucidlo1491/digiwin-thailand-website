@@ -217,14 +217,39 @@ function css() {
 .et_pb_section { padding: 0 !important; }
 .et_pb_section .et_pb_row { max-width: 1200px !important; width: 100% !important; }
 
-/* --- Responsive --- */
+/* --- Responsive: 1024px tablet --- */
+@media (max-width: 1024px) {
+  .dw-blog-hero-wrap { padding: 100px 0 50px; }
+  .dw-blog-hero-wrap .et_pb_post_title .entry-title { font-size: 36px !important; }
+  .dw-blog-content-wrap { max-width: 640px; }
+  .dw-blog-content-wrap .et_pb_post_content h2 { font-size: 24px !important; }
+  .dw-blog-content-wrap .et_pb_post_content h3 { font-size: 20px !important; }
+  .dw-blog-related-wrap .et_pb_blog_grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .dw-blog-cta h2 { font-size: 32px; }
+}
+
+/* --- Responsive: 768px mobile --- */
 @media (max-width: 768px) {
   .dw-blog-hero-wrap { padding: 80px 0 40px; }
-  .dw-blog-content-wrap { padding: 40px 16px 60px; }
+  .dw-blog-hero-wrap .et_pb_post_title .entry-title { font-size: 28px !important; line-height: 1.3 !important; }
+  .dw-blog-content-wrap { max-width: 100%; padding: 40px 16px 60px; }
   .dw-blog-related-wrap { padding: 60px 0; }
   .dw-blog-related-heading { font-size: 24px; margin-bottom: 32px; }
+  .dw-blog-related-wrap .et_pb_blog_grid { grid-template-columns: 1fr !important; }
   .dw-blog-cta { padding: 60px 16px; }
   .dw-blog-cta h2 { font-size: 28px; }
+  .dw-blog-back-link { min-height: 44px; padding: 8px 0; }
+  .dw-blog-cta-btn { min-height: 48px; padding: 16px 40px; }
+}
+
+/* --- Responsive: 480px small --- */
+@media (max-width: 480px) {
+  .dw-blog-hero-wrap { padding: 72px 0 32px; }
+  .dw-blog-hero-wrap .et_pb_post_title .entry-title { font-size: 24px !important; }
+  .dw-blog-content-wrap .et_pb_post_content p { font-size: 15px !important; line-height: 1.75 !important; }
+  .dw-blog-content-wrap .et_pb_post_content blockquote { padding: 12px 16px; }
+  .dw-blog-cta-btn { display: block; width: 100%; text-align: center; }
+  .et_pb_section .et_pb_row { padding-left: 16px !important; padding-right: 16px !important; }
 }
 `.trim();
 }

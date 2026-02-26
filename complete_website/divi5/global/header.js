@@ -486,7 +486,7 @@ function headerCss() {
 
 /* Language toggle */
 .dw-lang-toggle{display:flex;align-items:center;gap:6px;margin-left:16px;font-family:${SPEC.nav.fontFamily};font-size:13px;font-weight:600}
-.dw-lang-option{color:${SPEC.nav.color};text-decoration:none;padding:4px 6px;border-radius:4px;transition:all ${SPEC.animation.transition};opacity:0.5}
+.dw-lang-option{color:${SPEC.nav.color};text-decoration:none;padding:4px 6px;border-radius:4px;transition:all ${SPEC.animation.transition};opacity:0.5;min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
 .dw-lang-option:hover{opacity:0.8}
 .dw-lang-option.active{opacity:1;color:${SPEC.nav.hoverColor}}
 .dw-lang-sep{color:rgba(37,59,80,0.3);font-weight:400;user-select:none}
@@ -498,7 +498,7 @@ function headerCss() {
 .dw-header-cta:hover{transform:translateY(-2px);box-shadow:${SPEC.cta.hoverShadow}}
 
 /* Hamburger */
-.dw-menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:12px;background:none;border:none;position:static;z-index:auto}
+.dw-menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:12px;background:none;border:none;position:static;z-index:auto;min-width:48px;min-height:44px;align-items:center;justify-content:center}
 .dw-menu-toggle span{width:24px;height:2px;background:${SPEC.nav.color};transition:all ${SPEC.animation.transition}}
 .dw-nav::after{content:none;display:none}
 

@@ -842,4 +842,33 @@ const wpSections = verifyConf.sections || [];
       // Non-fatal — reference screenshots may not exist yet
     }
   }
+
+  // ════════════════════════════════════════════════════════════════
+  // STEP 13: RESPONSIVE QA (Gate 8 — report-only by default)
+  // Runs 5 responsive checks at 4 viewports (desktop/tablet/mobile/small).
+  // --responsive: report-only mode (never blocks)
+  // --responsive --strict-responsive: P0 issues block the build
+  // ════════════════════════════════════════════════════════════════
+  if (hasFlag('--responsive')) {
+    console.log('\n▸ Gate 8: Responsive QA (4 viewports × 5 checks)...');
+    try {
+      const responsiveQA = require('./lib/responsive-qa');
+      const rqaReport = await responsiveQA.run({
+        pageName,
+        pageUrl: wpUrl,
+      });
+      responsiveQA.printReport(rqaReport);
+
+      if (rqaReport.overallVerdict === 'FAIL' && hasFlag('--strict-responsive')) {
+        console.error('\n✗ Gate 8 FAILED: P0 responsive issues found (--strict-responsive).');
+        console.error('  Fix horizontal overflow or touch targets, then re-run.');
+        process.exit(1);
+      } else if (rqaReport.overallVerdict === 'FAIL') {
+        console.warn('\n  ⚠ Gate 8: P0 responsive issues found (report-only — not blocking).');
+        console.warn('  Use --strict-responsive to make this a hard gate.');
+      }
+    } catch (err) {
+      console.warn(`  ⚠ Responsive QA error: ${err.message}`);
+    }
+  }
 })();

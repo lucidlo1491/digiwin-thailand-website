@@ -96,6 +96,14 @@ module.exports = {
   // ═══════════════════════════════════════════════════════
 
   VIEWPORT: { width: 1440, height: 900 },
+
+  /** Responsive viewports for multi-breakpoint QA (responsive-qa.js) */
+  RESPONSIVE_VIEWPORTS: [
+    { name: 'desktop', width: 1440, height: 900 },
+    { name: 'tablet',  width: 1024, height: 768 },
+    { name: 'mobile',  width: 768,  height: 1024 },
+    { name: 'small',   width: 480,  height: 800 },
+  ],
   WAIT_UNTIL: 'networkidle2',
   WARM_UP_WAIT_UNTIL: 'domcontentloaded',
   STABILIZATION_MS: 2000,

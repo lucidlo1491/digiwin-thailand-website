@@ -26,5 +26,15 @@
   "electronics": 100783,
   "th-electronics": 100783,
   "metal-plastics": 100784,
-  "th-metal-plastics": 100784
+  "th-metal-plastics": 100784,
+  "about-us": 100785,
+  "th-about": 100785,
+  "case-studies": 100786,
+  "th-case-studies": 100786,
+  "news": 100787,
+  "th-news": 100787,
+  "blog": 100788,
+  "th-blog": 100788,
+  "events": 100789,
+  "th-events-listing": 100789
 }

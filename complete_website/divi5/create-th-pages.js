@@ -102,10 +102,32 @@ const PAGES = {
     parent: 'industries',
     configName: 'th-metal-plastics',
   },
-  // Future pages — uncomment as batches are built:
-  // 'about':           { title: 'เกี่ยวกับเรา — DigiWin Thailand', parent: 'th' },
-  // 'contact':         { title: 'ติดต่อเรา — DigiWin Thailand', parent: 'th' },
-  // 'case-studies':    { title: 'กรณีศึกษา — DigiWin Thailand', parent: 'th' },
+  // ── Batch 4: Supporting Pages (5 pages) ─────────────────────
+  'about-us': {
+    title: 'เกี่ยวกับ DigiWin — 44 ปีแห่งความเชี่ยวชาญด้านการผลิต',
+    parent: 'th',
+    configName: 'th-about',
+  },
+  'case-studies': {
+    title: 'กรณีศึกษา — ผลลัพธ์จริงจากโรงงานผลิตไทย',
+    parent: 'th',
+    configName: 'th-case-studies',
+  },
+  'news': {
+    title: 'ข่าวสาร — DigiWin Thailand',
+    parent: 'th',
+    configName: 'th-news',
+  },
+  'blog': {
+    title: 'บทความ — DigiWin Thailand',
+    parent: 'th',
+    configName: 'th-blog',
+  },
+  'events': {
+    title: 'กิจกรรมและอีเวนต์ — DigiWin Thailand',
+    parent: 'news',
+    configName: 'th-events-listing',
+  },
 };
 
 // ── Load existing IDs ──────────────────────────────────────────

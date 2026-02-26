@@ -81,6 +81,27 @@ const PAGES = {
     parent: 'products',
     configName: 'th-aiot',
   },
+  // ── Batch 3: Industry Pages (4 pages) ──────────────────────
+  'industries': {
+    title: 'อุตสาหกรรมที่เราให้บริการ — DigiWin Thailand',
+    parent: 'th',
+    configName: 'th-industries',
+  },
+  'automotive': {
+    title: 'อุตสาหกรรมยานยนต์ — DigiWin Thailand',
+    parent: 'industries',
+    configName: 'th-automotive',
+  },
+  'electronics': {
+    title: 'อุตสาหกรรมอิเล็กทรอนิกส์ — DigiWin Thailand',
+    parent: 'industries',
+    configName: 'th-electronics',
+  },
+  'metal-plastics': {
+    title: 'อุตสาหกรรมโลหะและพลาสติก — DigiWin Thailand',
+    parent: 'industries',
+    configName: 'th-metal-plastics',
+  },
   // Future pages — uncomment as batches are built:
   // 'about':           { title: 'เกี่ยวกับเรา — DigiWin Thailand', parent: 'th' },
   // 'contact':         { title: 'ติดต่อเรา — DigiWin Thailand', parent: 'th' },

@@ -18,5 +18,13 @@
   "wms": 100779,
   "th-wms": 100779,
   "aiot": 100780,
-  "th-aiot": 100780
+  "th-aiot": 100780,
+  "industries": 100781,
+  "th-industries": 100781,
+  "automotive": 100782,
+  "th-automotive": 100782,
+  "electronics": 100783,
+  "th-electronics": 100783,
+  "metal-plastics": 100784,
+  "th-metal-plastics": 100784
 }

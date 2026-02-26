@@ -363,7 +363,7 @@ ${mainCSS}
     nav.querySelectorAll('a.dw-nav-link,.dw-mega-item,.dw-mega-viewall').forEach(function(l){l.addEventListener('click',function(){nav.classList.remove('dw-nav--open');tog.classList.remove('active');document.body.style.overflow=''})});
   }
   // Language toggle — safe fallback logic
-  var langMap={'/':'/th/','/partner-program/':'/th/partner-program/','/partner-program/business-model/':'/th/partner-program/business-model/','/partner-program/solutions/':'/th/partner-program/solutions/','/partner-program/economics/':'/th/partner-program/economics/','/products/':'/th/products/','/products/erp/':'/th/products/erp/','/products/mes/':'/th/products/mes/','/products/wms/':'/th/products/wms/','/products/aiot/':'/th/products/aiot/'};
+  var langMap={'/':'/th/','/partner-program/':'/th/partner-program/','/partner-program/business-model/':'/th/partner-program/business-model/','/partner-program/solutions/':'/th/partner-program/solutions/','/partner-program/economics/':'/th/partner-program/economics/','/products/':'/th/products/','/products/erp/':'/th/products/erp/','/products/mes/':'/th/products/mes/','/products/wms/':'/th/products/wms/','/products/aiot/':'/th/products/aiot/','/industries/':'/th/industries/','/industries/automotive/':'/th/industries/automotive/','/industries/electronics/':'/th/industries/electronics/','/industries/metal-plastics/':'/th/industries/metal-plastics/'};
   var revMap={};for(var k in langMap)revMap[langMap[k]]=k;
   var curPath=window.location.pathname;
   var isThai=curPath.indexOf('/th/')===0||curPath==='/th';

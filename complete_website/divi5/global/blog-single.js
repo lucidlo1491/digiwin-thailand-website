@@ -240,6 +240,14 @@ function css() {
   .dw-blog-cta h2 { font-size: 28px; }
   .dw-blog-back-link { min-height: 44px; padding: 8px 0; }
   .dw-blog-cta-btn { min-height: 48px; padding: 16px 40px; }
+  /* Touch targets: post meta links (category, comments) */
+  .et_pb_title_meta_container a { display: inline-flex !important; align-items: center !important; min-height: 44px !important; min-width: 44px !important; justify-content: center !important; padding: 0 8px !important; }
+  /* Touch targets: inline content links */
+  .et_pb_post_content a { display: inline-flex !important; align-items: center !important; min-height: 44px !important; }
+  /* Touch targets: related posts (category badges, Read More, pagination) */
+  .et_pb_posts .entry-categories a,
+  .et_pb_posts .more-link,
+  .pagination a { display: inline-flex !important; align-items: center !important; min-height: 44px !important; min-width: 44px !important; justify-content: center !important; padding: 0 8px !important; }
 }
 
 /* --- Responsive: 480px small --- */

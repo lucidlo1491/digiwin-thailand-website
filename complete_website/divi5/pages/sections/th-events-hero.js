@@ -9,7 +9,7 @@
  */
 
 const { codeModule, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../../lib/modules');
-const { ALL_EVENTS } = require('../events-registry');
+const { ALL_EVENTS } = require('../../lib/events-registry');
 const thEvents = require('../../i18n/th/events-listing');
 
 const P = 'evt-list';

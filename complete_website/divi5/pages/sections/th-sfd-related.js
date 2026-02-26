@@ -7,7 +7,7 @@
  */
 
 const template = require('../../lib/templates/event-related');
-const { pickRelated } = require('../events-registry');
+const { pickRelated } = require('../../lib/events-registry');
 const th = require('../../i18n/th/shop-floor-data-workshop');
 
 const related = pickRelated('shop-floor-data-workshop', 3);

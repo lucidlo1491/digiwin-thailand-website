@@ -10,7 +10,7 @@
 
 const path = require('path');
 const { codeModule, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../lib/modules');
-const { ALL_EVENTS } = require('./events-registry');
+const { ALL_EVENTS } = require('../lib/events-registry');
 
 const P = 'evt-list';
 

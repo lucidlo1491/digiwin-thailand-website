@@ -144,25 +144,23 @@ function assemble(sections) {
 }
 
 /**
- * Thai typography CSS — Google Fonts import + font stack override
- * Applied at page-level for all Thai (/th/) pages.
- * Includes Noto Sans Thai at weights 400, 500, 600, 700.
+ * Thai typography CSS — font stack override for Thai (/th/) pages.
+ * NOTE: @import is NOT used here — it would be invalid after other CSS rules.
+ * Noto Sans Thai is loaded via <link> tag in the global header (header.js line 119).
  */
-const THAI_FONT_IMPORT = "@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&display=swap');";
-
 function thaiTypographyCSS() {
   return `
 /* === THAI TYPOGRAPHY === */
-${THAI_FONT_IMPORT}
+/* Font loaded via <link> in header — do NOT use @import here (invalid after rules) */
 
 /* Thai font stack for all body text */
 body, .et_pb_section, .et_pb_code, .et_pb_code_inner {
   font-family: 'Noto Sans Thai', 'Noto Sans', sans-serif !important;
 }
 
-/* Thai-specific line heights (Thai script is taller) */
-p, li, .et_pb_text_inner { line-height: 1.8; }
-h1, h2, h3, h4, h5, h6 { line-height: 1.4; }
+/* Thai-specific line heights (Thai script is taller — needs !important to override Divi) */
+p, li, .et_pb_text_inner { line-height: 1.8 !important; }
+h1, h2, h3, h4, h5, h6 { line-height: 1.4 !important; }
 
 /* Thai label override: JetBrains Mono doesn't have Thai glyphs.
    letter-spacing breaks Thai script (chars within words must stay connected).
@@ -191,6 +189,5 @@ module.exports = {
   statsCSS,
   assemble,
   thaiTypographyCSS,
-  THAI_FONT_IMPORT,
   SHARED_KEYFRAMES,
 };

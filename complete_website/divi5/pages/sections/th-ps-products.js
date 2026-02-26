@@ -19,6 +19,7 @@ const CARDS = en.CARDS.map((card, i) => ({
   ...card,
   badge: th.products.cards[i].badge,
   title: th.products.cards[i].title,
+  link: th.products.cards[i].link || card.link,
   desc: th.products.cards[i].desc,
   features: th.products.cards[i].features,
   metricsTitle: th.products.cards[i].metricsTitle,

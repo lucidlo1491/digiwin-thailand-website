@@ -34,6 +34,7 @@ module.exports = {
       {
         badge: '"ทางเลือกระดับ Enterprise"',
         title: 'T100 Enterprise ERP',
+        link: { href: '/products/erp/', text: 'เรียนรู้เพิ่มเติมเกี่ยวกับ T100' },
         desc: 'ชนะบัญชี "ปลาใหญ่" — ซัพพลายเออร์ยานยนต์และอิเล็กทรอนิกส์หลายไซต์ — ที่ปกติเลือก ERP ระดับ Enterprise เสนอ <strong>ความสามารถ Tier-1 ในราคา Tier-2</strong> เจาะโรงงาน EV Supply Chain ที่ต้องการระบบสองภาษาและ Complex Costing',
         features: [
           'สถาปัตยกรรมหลายไซต์ หลายสกุลเงิน หลายบริษัท',
@@ -52,6 +53,7 @@ module.exports = {
       {
         badge: '"เครื่องยนต์ปริมาณ"',
         title: 'Workflow iGP Growth ERP',
+        link: { href: '/products/erp/', text: 'เรียนรู้เพิ่มเติมเกี่ยวกับ iGP' },
         desc: 'อาวุธ "Rapid Deployment" สำหรับ SME ไทย แก้ช่องว่าง Automation ขนาดใหญ่ ที่ซอฟต์แวร์บัญชีท้องถิ่นจัดการตรรกะการผลิตไม่ได้ แต่ ERP ระดับโลกแพงเกินไป <strong>พร้อม Localize สำหรับกรมสรรพากร (ได้รับการรับรอง)</strong>',
         features: [
           'Deploy ใน 3-6 เดือน — พลิกโปรเจกต์เร็ว เรียกเก็บเงินเร็ว',
@@ -70,6 +72,7 @@ module.exports = {
       {
         badge: '"อาวุธเจาะเข้า"',
         title: 'MES',
+        link: { href: '/products/mes/', text: 'เรียนรู้เพิ่มเติมเกี่ยวกับ MES' },
         desc: '<strong>กลยุทธ์ "Reverse Cut"</strong> ไม่ต้องรื้อถอน ERP เดิม — แม้จะเป็นแบรนด์ระดับโลก ขาย MES ในฐานะ "ผู้คุมพื้นที่การผลิต" ที่แก้ปัญหาความแม่นยำของข้อมูลการผลิต ดึงดูดเจ้าของที่เบื่อ "Shadow Excel" ต้องการ Real-time Visibility',
         features: [
           '"เก็บ ERP เดิมไว้ดูแลการเงิน ใช้ DigiWin สำหรับพื้นที่การผลิต"',
@@ -88,6 +91,7 @@ module.exports = {
       {
         badge: '"ตัวคูณมูลค่า"',
         title: 'AIoT & WMS: เลเยอร์ล็อคลูกค้า',
+        link: { href: '/products/aiot/', text: 'เรียนรู้เพิ่มเติมเกี่ยวกับ AIoT & WMS' },
         desc: '<strong>WMS — "สต็อกผีเป็นศูนย์":</strong> ขายให้เจ้าของที่กลัวการโจรกรรมหรือ Audit ล้มเหลว ดิจิทัลไลซ์การเคลื่อนย้ายสินค้า <strong>AIoT — "Future Proofing":</strong> แสดงให้เห็นว่าคุณมีความสามารถเชื่อมต่อเครื่องจักร (PLC) โดยตรงกับ ERP สร้างความแตกต่างจากสำนักงานบัญชี',
         features: [
           'โอกาสขายต่อ Hardware/Middleware (เครื่องสแกน, เซ็นเซอร์)',

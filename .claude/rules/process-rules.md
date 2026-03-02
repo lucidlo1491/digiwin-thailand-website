@@ -55,7 +55,7 @@ Run `node complete_website/audit.js` after every build. Checks: skip-to-content 
 
 ## Automated Build-Fix-Verify Pipeline (MANDATORY)
 When Peter asks to build or modify a Divi 5 page:
-1. Run `build-page.js --page <name> --full-verify --auto-fix`
+1. Run `build-page.js --page <name>` (Gates 6-7 + auto-fix are DEFAULT ON; use `--skip-verify`/`--skip-autofix` only for quick iteration)
 2. Pipeline handles: build → push → screenshots → Gates 1-6 → auto-fix → re-push → re-screenshots → Gate 7
 3. Present to Peter: what auto-fix resolved, what remains (AMBIGUOUS), visual diff verdicts
 4. Peter reviews and flags what automation missed

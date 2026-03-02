@@ -7,7 +7,11 @@
  *
  * Usage:
  *   node complete_website/divi5/build-page.js --page home [--section hero] [--dry-run] [--force]
+ *   node complete_website/divi5/build-page.js --page home --skip-verify --skip-autofix  (quick iteration)
  *   node complete_website/divi5/build-page.js --page home --restore backups/page-100684-*.sql
+ *
+ * Gates 6-7 (fidelity check + visual diff) and auto-fix run by DEFAULT.
+ * Use --skip-verify to skip Gates 6-7, --skip-autofix to skip auto-fix.
  *
  * Available pages: home (more coming)
  */
@@ -187,11 +191,12 @@ if (!DRY_RUN) {
       process.exit(1);
     }
     const [id, postType, status] = lines[1].split('\t');
-    if (postType !== 'page') {
-      console.error(`\n✗ Post ${pageConfig.pageId} is type "${postType}", not "page". Check your pageId.`);
+    const allowedTypes = pageConfig.postType === 'post' ? ['post'] : ['page'];
+    if (!allowedTypes.includes(postType)) {
+      console.error(`\n✗ Post ${pageConfig.pageId} is type "${postType}", expected "${allowedTypes[0]}". Check your pageId.`);
       process.exit(1);
     }
-    console.log(`  ✓ Page verified: ID=${id}, type=${postType}, status=${status}`);
+    console.log(`  ✓ Post verified: ID=${id}, type=${postType}, status=${status}`);
   } catch (err) {
     console.error(`\n✗ Cannot verify pageId: ${err.message}`);
     process.exit(1);
@@ -338,7 +343,7 @@ if (typeof pageConfig.extraCSS === 'function') {
   allCSS.push(pageConfig.extraCSS);
 }
 
-const pageLevelCSS = cssAssembler.assemble(allCSS);
+const pageLevelCSS = cssAssembler.assemble(allCSS, { vbNative: pageConfig.vbNative });
 
 // If page config has a pageJS function (for JS script blocks), include it
 const pageJS = typeof pageConfig.pageJS === 'function' ? pageConfig.pageJS() : '';
@@ -692,10 +697,10 @@ const wpSections = verifyConf.sections || [];
   // Runs fidelity-check.js to find exact CSS property mismatches.
   // Outputs FIXABLE items as structured data Claude can act on
   // mechanically — no visual interpretation needed.
-  // Gated behind --full-verify (adds 30-60s Puppeteer overhead).
+  // DEFAULT ON — use --skip-verify to bypass (e.g., quick iteration).
   // ════════════════════════════════════════════════════════════════
   let fixableCount = 0;
-  if (hasFlag('--full-verify') && pageConfig.verify && pageConfig.verify.sections) {
+  if (!hasFlag('--skip-verify') && pageConfig.verify && pageConfig.verify.sections) {
     console.log('\n▸ Gate 6: Fidelity check — finding exact CSS mismatches...');
     try {
       const fidelityCheck = require('./lib/fidelity-check');
@@ -740,13 +745,13 @@ const wpSections = verifyConf.sections || [];
   }
 
   // ════════════════════════════════════════════════════════════════
-  // STEP 11.5: AUTO-FIX (opt-in via --auto-fix)
+  // STEP 11.5: AUTO-FIX (default ON — use --skip-autofix to bypass)
   // Runs auto-fix.js as a subprocess to patch SAFE fidelity issues.
   // auto-fix handles its own fidelity-check, patching, re-push,
   // regression detection, and revert — zero refactoring needed.
   // Subprocess = fresh Node process = no require.cache staleness.
   // ════════════════════════════════════════════════════════════════
-  if (hasFlag('--auto-fix') && fixableCount > 0) {
+  if (!hasFlag('--skip-autofix') && fixableCount > 0) {
     console.log(`\n▸ Auto-fix: Running on ${fixableCount} fixable item(s)...`);
     const autoFixCmd = `node ${path.join(__dirname, 'lib', 'auto-fix.js')} --page ${pageName} --max-iterations 2`;
     try {
@@ -776,9 +781,9 @@ const wpSections = verifyConf.sections || [];
   // STEP 12: VISUAL DIFF + REGRESSION CHECK (Gate 7)
   // Runs visual-diff to get per-section diff% and check for regressions.
   // On FAIL sections (>5%), auto-runs computed-style-diff for fix recipes.
-  // Gated behind --full-verify.
+  // DEFAULT ON — use --skip-verify to bypass.
   // ════════════════════════════════════════════════════════════════
-  if (hasFlag('--full-verify') && pageConfig.verify && pageConfig.verify.sections) {
+  if (!hasFlag('--skip-verify') && pageConfig.verify && pageConfig.verify.sections) {
     console.log('\n▸ Gate 7: Visual diff + regression check...');
     try {
       const visualDiff = require('./lib/visual-diff');

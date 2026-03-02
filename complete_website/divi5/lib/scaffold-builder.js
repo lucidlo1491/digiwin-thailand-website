@@ -636,9 +636,24 @@ function formatExternalCSSReport(extCSS, classNames) {
     extCSS.hidden.forEach(r => sections.push('/* ' + esc(r).replace(/\n/g, '\n * ') + ' */'));
   }
 
-  if (extCSS.base.length > 0) {
-    sections.push('/* REF: BASE RULES from styles.css (check against inline CSS above) */');
-    extCSS.base.forEach(r => sections.push('/* ' + esc(minifyRule(r)) + ' */'));
+  // Split base rules: auto-remappable → live CSS, global classes → reference comments
+  const autoBase = [];
+  const manualBase = [];
+  extCSS.base.forEach(r => {
+    if (canAutoRemap(r, classNames)) autoBase.push(r);
+    else manualBase.push(r);
+  });
+
+  if (autoBase.length > 0) {
+    sections.push('/* === BASE RULES (auto-ported from styles.css) === */');
+    autoBase.forEach(r => {
+      sections.push(minifyRule(remapClassesToPrefix(r, classNames)));
+    });
+  }
+
+  if (manualBase.length > 0) {
+    sections.push('/* REF: BASE RULES using global/shared classes (port manually from styles.css) */');
+    manualBase.forEach(r => sections.push('/* ' + esc(minifyRule(r)) + ' */'));
   }
 
   return sections.join('\n');
@@ -670,11 +685,17 @@ function generatePrefix(sectionName) {
  * - Remove HTML comments
  * - Normalize indentation
  * - Strip data-* attributes that won't work in Divi
+ * - Remap internal .html links to WordPress slug format
  */
 function cleanInnerHTML(html) {
   return html
     .replace(/<!--[\s\S]*?-->/g, '')  // Remove comments
     .replace(/\s+data-(?:scroll|parallax|aos)[^"]*"[^"]*"/g, '')  // Strip animation data attrs
+    .replace(/href="([^"]*?)\.html"/g, (match, slug) => {
+      // Remap .html links to WordPress slug format (relative path)
+      const name = slug.replace(/^\.?\/?/, '').replace(/^index$/, '');
+      return name ? `href="/${name}/"` : `href="/"`;
+    })
     .trim();
 }
 

@@ -436,6 +436,27 @@ VALUES ('Page Title', 'page-slug', 'page', 'publish', '', 1);
 
 ---
 
+## PRESENTATION GATE (MANDATORY)
+
+Claude MUST NOT present results to Peter if ANY of these are true:
+- Any section has FAIL verdict (>5% pixel diff) AND FIXABLE items remain in fidelity-check
+- Content parity gate failed (wrong text)
+- Any dark section lacks `!important` color overrides
+
+Claude must self-correct (apply fixes → rebuild → re-verify) until:
+(a) All sections are MATCH or REVIEW, OR
+(b) Only AMBIGUOUS/STRUCTURAL items remain, OR
+(c) 3 iterations reached with no pixel improvement.
+
+When presenting, Claude MUST include:
+- Screenshot of every section (Read tool on each .png)
+- Explicit list of remaining AMBIGUOUS items with remediation options
+- Confidence: "X/Y sections MATCH, Z REVIEW, W unresolvable"
+
+Claude NEVER says "done" or "verified" — presents data and lets Peter judge.
+
+---
+
 ## Rules (NON-NEGOTIABLE)
 
 1. **ALWAYS show Peter screenshots.** Read composite PNGs and describe what you see.

@@ -13,6 +13,11 @@ const BUILDER_VERSION = '5.0.0-public-beta.8';
  * Generate a wp:divi/text block (self-closing)
  * Use for: plain body text, subtitles, paragraphs — inline VB editing
  *
+ * FONT FAMILY (D46 fix): Pass bare font name only — e.g. 'Noto Sans', NOT 'Noto Sans, sans-serif'.
+ * Divi's Font.php (line 196) wraps the value in quotes and adds its own fallback stack
+ * via _get_websafe_font_stack(). Passing a fallback stack creates an invalid font name
+ * like 'Noto Sans, sans-serif' (entire string treated as one font name).
+ *
  * @param {string} content - Plain text or simple HTML (no spans with styles)
  * @param {object} fontOpts - { color, size, weight, family, lineHeight, letterSpacing, textTransform }
  * @param {object} moduleOpts - { adminLabel, marginBottom, marginTop }
@@ -342,6 +347,219 @@ function blogModule(opts = {}) {
   return `<!-- wp:divi/blog ${JSON.stringify(json)} --><!-- /wp:divi/blog -->`;
 }
 
+// ── Native Divi 5 modules (non-dynamic) ──
+
+/**
+ * Generate a wp:divi/divider block (self-closing)
+ * Use for: visual separators between content sections
+ *
+ * @param {object} opts - { color, style, weight, width, adminLabel, marginTop, marginBottom }
+ */
+function dividerModule(opts = {}) {
+  const json = {
+    divider: {
+      advanced: {
+        line: {
+          desktop: {
+            value: {
+              show: 'on',
+              color: opts.color || '#000864',
+              style: opts.style || 'solid',
+              position: opts.position || 'center',
+              weight: opts.weight || '3px',
+            },
+          },
+        },
+      },
+    },
+    module: {
+      meta: { adminLabel: { desktop: { value: opts.adminLabel || 'Divider' } } },
+      decoration: {
+        sizing: { desktop: { value: { width: opts.width || '48px' } } },
+        spacing: {
+          desktop: {
+            value: {
+              margin: {
+                top: opts.marginTop || '40px',
+                bottom: opts.marginBottom || '40px',
+                syncVertical: 'off',
+                syncHorizontal: 'off',
+              },
+            },
+          },
+        },
+      },
+    },
+    builderVersion: BUILDER_VERSION,
+  };
+  return `<!-- wp:divi/divider ${JSON.stringify(json)} /-->`;
+}
+
+/**
+ * Generate a wp:divi/button block (wrapping, empty inner)
+ * Use for: CTA buttons — fully styled natively, click-to-edit in VB
+ *
+ * @param {string} text - Button label
+ * @param {string} url - Link destination
+ * @param {object} opts - { bg, color, family, weight, size, letterSpacing, radius, paddingV, paddingH, alignment, adminLabel, hoverBg, hoverColor }
+ */
+function buttonModule(text, url, opts = {}) {
+  const json = {
+    button: {
+      innerContent: {
+        desktop: { value: { text, linkUrl: url || '#' } },
+      },
+      decoration: {
+        background: { desktop: { value: { color: opts.bg || '#00AFF0' } } },
+        font: {
+          font: {
+            desktop: {
+              value: {
+                family: opts.family || 'Noto Sans',
+                weight: opts.weight || '600',
+                size: opts.size || '16px',
+                color: opts.color || '#FFFFFF',
+                letterSpacing: opts.letterSpacing || '0px',
+              },
+            },
+          },
+        },
+        border: {
+          desktop: {
+            value: {
+              radius: { sync: 'on', topLeft: opts.radius || '8px' },
+            },
+          },
+        },
+        spacing: {
+          desktop: {
+            value: {
+              padding: {
+                top: opts.paddingV || '14px',
+                bottom: opts.paddingV || '14px',
+                left: opts.paddingH || '36px',
+                right: opts.paddingH || '36px',
+              },
+            },
+          },
+        },
+        boxShadow: {
+          desktop: {
+            value: {
+              style: 'preset3',
+              horizontal: '0px',
+              vertical: '4px',
+              blur: '20px',
+              spread: '0px',
+              color: 'rgba(0,0,0,0.15)',
+            },
+          },
+        },
+      },
+    },
+    module: {
+      meta: { adminLabel: { desktop: { value: opts.adminLabel || 'Button' } } },
+      advanced: {
+        alignment: { desktop: { value: opts.alignment || 'center' } },
+      },
+    },
+    builderVersion: BUILDER_VERSION,
+  };
+  return `<!-- wp:divi/button ${JSON.stringify(json)} --><!-- /wp:divi/button -->`;
+}
+
+/**
+ * Generate a wp:divi/accordion block (wrapping — contains accordion-items)
+ * Use for: FAQ sections — each item is individually editable in VB
+ *
+ * @param {object} opts - { adminLabel, titleFont, bodyFont }
+ */
+function accordionOpen(opts = {}) {
+  const json = {
+    module: {
+      meta: { adminLabel: { desktop: { value: opts.adminLabel || 'Accordion' } } },
+    },
+    title: {
+      decoration: {
+        font: {
+          font: {
+            desktop: {
+              value: {
+                family: (opts.titleFont && opts.titleFont.family) || 'Noto Sans',
+                weight: (opts.titleFont && opts.titleFont.weight) || '600',
+                size: (opts.titleFont && opts.titleFont.size) || '17px',
+                color: (opts.titleFont && opts.titleFont.color) || '#000864',
+              },
+            },
+          },
+        },
+      },
+    },
+    content: {
+      decoration: {
+        bodyFont: {
+          body: {
+            font: {
+              desktop: {
+                value: {
+                  family: (opts.bodyFont && opts.bodyFont.family) || 'Noto Sans',
+                  weight: (opts.bodyFont && opts.bodyFont.weight) || '400',
+                  size: (opts.bodyFont && opts.bodyFont.size) || '15px',
+                  lineHeight: (opts.bodyFont && opts.bodyFont.lineHeight) || '1.7em',
+                  color: (opts.bodyFont && opts.bodyFont.color) || '#333333',
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    builderVersion: BUILDER_VERSION,
+  };
+
+  if (opts.css) {
+    json.css = { desktop: { value: { freeForm: opts.css } } };
+  }
+
+  return `<!-- wp:divi/accordion ${JSON.stringify(json)} -->`;
+}
+
+function accordionClose() {
+  return '<!-- /wp:divi/accordion -->';
+}
+
+/**
+ * Generate a wp:divi/accordion-item block (self-closing, inside accordion)
+ *
+ * @param {string} title - Question text
+ * @param {string} content - Answer HTML
+ * @param {object} opts - { open, adminLabel }
+ */
+function accordionItem(title, content, opts = {}) {
+  const json = {
+    title: {
+      innerContent: { desktop: { value: title } },
+    },
+    content: {
+      innerContent: { desktop: { value: content } },
+    },
+    builderVersion: BUILDER_VERSION,
+  };
+
+  if (opts.open) {
+    json.module = {
+      advanced: { open: { desktop: { value: 'on' } } },
+    };
+  }
+
+  if (opts.adminLabel) {
+    json.module = json.module || {};
+    json.module.meta = { adminLabel: { desktop: { value: opts.adminLabel } } };
+  }
+
+  return `<!-- wp:divi/accordion-item ${JSON.stringify(json)} /-->`;
+}
+
 module.exports = {
   BUILDER_VERSION,
   textModule,
@@ -357,4 +575,9 @@ module.exports = {
   postTitleModule,
   postContentModule,
   blogModule,
+  dividerModule,
+  buttonModule,
+  accordionOpen,
+  accordionClose,
+  accordionItem,
 };

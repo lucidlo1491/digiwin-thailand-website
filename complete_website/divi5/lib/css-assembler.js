@@ -92,6 +92,29 @@ function statsCSS(prefix, opts = {}) {
 }
 
 /**
+ * Minimal structural reset for VB-native pages.
+ * When vbNative: true, we trust Divi's native module JSON for all visual properties
+ * (color, font-size, font-weight, font-family, line-height). CSS is only used for:
+ *   - Structural overrides (overflow, margin on sections)
+ *   - Scroll animation visibility (no JS observer in Divi)
+ *   - Mobile touch targets (WCAG 2.5.8)
+ *
+ * Pages WITHOUT vbNative still use GLOBAL_THEME_RESET (all 63 existing pages unaffected).
+ */
+const MINIMAL_STRUCTURAL_RESET = `
+/* === MINIMAL STRUCTURAL RESET (vbNative — Divi modules handle all visual properties) === */
+.et_pb_section:not([class*='tb_body']){overflow:hidden;margin:0}
+.fade-in,.scroll-fade-in{opacity:1 !important;transform:none !important}
+/* === MOBILE TOUCH TARGET RESET (WCAG 2.5.8 — 44px minimum) === */
+@media(max-width:768px){
+  a:not(.dw-logo):not(.dw-nav-link):not([class*="btn"]):not([class*="cta"]):not([class*="Cta"]),
+  input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]),
+  select,textarea{min-height:44px}
+  a:not(.dw-logo):not(.dw-nav-link):not([class*="btn"]):not([class*="cta"]):not([class*="Cta"]){display:inline-flex;align-items:center}
+  input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]){min-height:44px}
+}`;
+
+/**
  * Global Divi theme default overrides
  * Divi 5 defaults: Open Sans, weight 500, color #666666, heading padding-bottom 10px
  * These bleed through to Code Module content unless explicitly overridden.
@@ -145,10 +168,11 @@ const TB_BODY_RESET = `
 .et-l--body .et_pb_row[class*="tb_body"]{max-width:100% !important;width:100% !important;padding:0 !important;margin:0 !important}
 .et-l--body .et_pb_column[class*="tb_body"]{padding:0 !important;margin:0 !important}`;
 
-function assemble(sections) {
+function assemble(sections, opts = {}) {
   const { sanitizeSectionCSS } = require('./lint-css');
   const cleaned = sections.map(s => sanitizeSectionCSS(s));
-  return [GLOBAL_THEME_RESET, SHARED_KEYFRAMES, ...cleaned, TB_BODY_RESET].join('\n').trim();
+  const reset = opts.vbNative ? MINIMAL_STRUCTURAL_RESET : GLOBAL_THEME_RESET;
+  return [reset, SHARED_KEYFRAMES, ...cleaned, TB_BODY_RESET].join('\n').trim();
 }
 
 /**
@@ -198,4 +222,5 @@ module.exports = {
   assemble,
   thaiTypographyCSS,
   SHARED_KEYFRAMES,
+  MINIMAL_STRUCTURAL_RESET,
 };

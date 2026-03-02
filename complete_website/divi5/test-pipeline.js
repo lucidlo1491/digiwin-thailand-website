@@ -339,6 +339,42 @@ console.log('\n\x1b[36m▸ CSS Assembler — Sanitizer Integration\x1b[0m');
 }
 
 // ═════════════════════════════════════════════
+// 6b. CSS ASSEMBLER — vbNative MODE
+// ═════════════════════════════════════════════
+console.log('\n\x1b[36m▸ CSS Assembler — vbNative Mode\x1b[0m');
+
+// 6b-a. vbNative: true uses MINIMAL_STRUCTURAL_RESET (no GLOBAL_THEME_RESET)
+{
+  const result = cssAssembler.assemble(['.test{color:red}'], { vbNative: true });
+  assert(result.includes('MINIMAL STRUCTURAL RESET'), 'vbNative assembly includes MINIMAL_STRUCTURAL_RESET');
+  assert(!result.includes('GLOBAL DIVI THEME RESET'), 'vbNative assembly excludes GLOBAL_THEME_RESET');
+  assert(result.includes('.test{color:red}'), 'vbNative assembly preserves section CSS');
+  assert(result.includes('@keyframes fadeIn'), 'vbNative assembly includes shared keyframes');
+}
+
+// 6b-b. Default (no vbNative) still uses GLOBAL_THEME_RESET
+{
+  const result = cssAssembler.assemble(['.test{color:blue}']);
+  assert(result.includes('GLOBAL DIVI THEME RESET'), 'Default assembly includes GLOBAL_THEME_RESET');
+  assert(!result.includes('MINIMAL STRUCTURAL RESET'), 'Default assembly excludes MINIMAL_STRUCTURAL_RESET');
+}
+
+// 6b-c. vbNative: false explicitly still uses GLOBAL_THEME_RESET
+{
+  const result = cssAssembler.assemble(['.test{color:green}'], { vbNative: false });
+  assert(result.includes('GLOBAL DIVI THEME RESET'), 'Explicit vbNative:false uses GLOBAL_THEME_RESET');
+}
+
+// 6b-d. MINIMAL_STRUCTURAL_RESET has touch target CSS but not font/color overrides
+{
+  const reset = cssAssembler.MINIMAL_STRUCTURAL_RESET;
+  assert(reset.includes('min-height:44px'), 'MINIMAL_STRUCTURAL_RESET has touch target reset');
+  assert(reset.includes('overflow:hidden'), 'MINIMAL_STRUCTURAL_RESET has structural overflow');
+  assert(!reset.includes('font-family'), 'MINIMAL_STRUCTURAL_RESET has no font-family override');
+  assert(!reset.includes('color:#333'), 'MINIMAL_STRUCTURAL_RESET has no color override');
+}
+
+// ═════════════════════════════════════════════
 // 7. FULL RUN — INTEGRATION TEST
 // ═════════════════════════════════════════════
 console.log('\n\x1b[36m▸ Full Lint Run — Integration\x1b[0m');

@@ -138,7 +138,7 @@ function runAll(pageConfig, opts = {}) {
       // Fetch rendered Divi 5 page (follow redirects — WP 301s page_id to slug)
       const renderedHtml = execSync(
         `curl -skL "${pageConfig.siteUrl}/?page_id=${pageConfig.pageId}" 2>/dev/null`,
-        { encoding: 'utf8', timeout: 15000 }
+        { encoding: 'utf8', timeout: 15000, maxBuffer: 10 * 1024 * 1024 }
       );
 
       gates[1] = contentParity.compare(protoHtml, renderedHtml);

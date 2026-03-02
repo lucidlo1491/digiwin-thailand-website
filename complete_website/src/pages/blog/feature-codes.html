@@ -109,11 +109,13 @@
     <section class="blog-hero" style="position: relative; overflow: hidden;">
         <div class="dw-d-bg dw-d-bg--corner-br" style="opacity: 0.06;"></div>
         <div class="blog-hero-inner" style="position: relative; z-index: 2;">
-            <a href="{{basePath}}blog.html" class="blog-back-link">
-                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                Back to Insights
-            </a>
-            <div class="blog-category-badge">PRODUCTION PLANNING</div>
+            <div class="blog-nav-row">
+                <a href="{{basePath}}blog.html" class="blog-back-link">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Back to Insights
+                </a>
+                <span class="blog-category-badge">PRODUCTION PLANNING</span>
+            </div>
             <h1>Feature Codes: How to Turn 27 SKUs Into 1 Product</h1>
             <div class="blog-meta">
                 <span>7 min read</span>
@@ -124,6 +126,7 @@
     </section>
 
     <!-- Article Body -->
+    <div class="blog-content-section">
     <article class="blog-body">
 
         <!-- Opening -->
@@ -293,6 +296,7 @@
         </p>
 
     </article>
+    </div>
 
     <!-- FAQ Section -->
     <section class="dw-section" style="padding: 60px 0; background: #f8fafc;">
@@ -321,36 +325,29 @@
       </div>
     </section>
 
-    <!-- Related Articles -->
-    <section class="blog-related" style="position: relative; overflow: hidden;">
-        <div class="dw-wave-circles" style="opacity: 0.04;"></div>
-        <div class="blog-related-inner" style="position: relative; z-index: 2;">
+    <!-- Related Articles (matches Divi 5 native blogModule layout) -->
+    <section class="blog-related">
+        <div class="blog-related-inner">
             <h2 class="fade-in">Related Articles</h2>
             <div class="blog-related-grid">
-                <a href="{{basePath}}blog/lrp-vs-mrp.html" class="blog-related-card fade-in">
-                    <div class="blog-related-card-category">PRODUCTION PLANNING</div>
-                    <h3>LRP vs MRP: Which Planning Method Fits Your Factory?</h3>
-                    <span class="blog-related-card-link">
-                        Read article
-                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </span>
-                </a>
-                <a href="{{basePath}}blog/amrp-capacity-planning.html" class="blog-related-card fade-in">
-                    <div class="blog-related-card-category">PRODUCTION PLANNING</div>
-                    <h3>AMRP: Why You Don't Need a Separate APS System</h3>
-                    <span class="blog-related-card-link">
-                        Read article
-                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </span>
-                </a>
-                <a href="{{basePath}}blog/dual-units.html" class="blog-related-card fade-in">
-                    <div class="blog-related-card-category">COST MANAGEMENT</div>
-                    <h3>Dual Units: Why Your ERP Should Show Both Kilograms AND Pieces</h3>
-                    <span class="blog-related-card-link">
-                        Read article
-                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </span>
-                </a>
+                <div class="blog-related-card fade-in">
+                    <h3><a href="{{basePath}}blog/feature-codes.html">Feature Codes: How to Turn 27 SKUs Into 1 Product</a></h3>
+                    <p class="blog-related-meta">Feb 26, 2026 | ERP</p>
+                    <p class="blog-related-excerpt">Your factory makes a shirt. Three sizes (S, M, L), three colors (red, blue, white), three collar types (V-neck, round, crew). That is 27 separate item codes. Each needs its own Bill of Ma</p>
+                    <a href="{{basePath}}blog/feature-codes.html" class="blog-related-readmore">Read More</a>
+                </div>
+                <div class="blog-related-card fade-in">
+                    <h3><a href="{{basePath}}blog/production-transparency.html">From Paper Reports to Production Transparency: A Practical Guide</a></h3>
+                    <p class="blog-related-meta">Feb 26, 2026 | MES</p>
+                    <p class="blog-related-excerpt">Walk into most Thai factories, and you will see the same thing. Operators filling out paper forms at the end of their shift. Supervisors collecting those forms and entering numbers into s</p>
+                    <a href="{{basePath}}blog/production-transparency.html" class="blog-related-readmore">Read More</a>
+                </div>
+                <div class="blog-related-card fade-in">
+                    <h3><a href="{{basePath}}blog/boi-compliance-jin-hai.html">How One Factory Saved 10M THB/Year in BOI Supplementary Taxes</a></h3>
+                    <p class="blog-related-meta">Feb 26, 2026 | Case Study</p>
+                    <p class="blog-related-excerpt">If you operate a BOI-certified factory in Thailand, you know the drill. Once a year, the Board of Investment audits your operations. They compare what you imported under duty-free...</p>
+                    <a href="{{basePath}}blog/boi-compliance-jin-hai.html" class="blog-related-readmore">Read More</a>
+                </div>
             </div>
         </div>
     </section>

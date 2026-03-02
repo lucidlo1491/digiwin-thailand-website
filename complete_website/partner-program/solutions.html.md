@@ -264,7 +264,7 @@ vs. Mid-Market ERP Systems
 
 vs. Enterprise ERP Giants 
 
-### "Tier-1 Capability, Built for the Floor"
+### "Tier-1 Capability, No German Logic"
 
 **Agility vs. Rigidity:** Enterprise ERP systems often enforce rigid, linear processes that break when rush orders arrive or machines fail. Digiwin T100 handles urgent order splitting and mid-production changes without rolling back schedules.
 

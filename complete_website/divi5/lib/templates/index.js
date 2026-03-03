@@ -28,6 +28,7 @@ const eventProof = require('./event-proof');
 const eventLogistics = require('./event-logistics');
 const eventRegister = require('./event-register');
 const eventRelated = require('./event-related');
+const eventHeroVb = require('./event-hero-vb');
 const blogPost = require('./blog-post');
 const legalPage = require('./legal-page');
 
@@ -53,6 +54,7 @@ const templates = {
   'event-logistics': eventLogistics,
   'event-register': eventRegister,
   'event-related': eventRelated,
+  'event-hero-vb': eventHeroVb,
   'blog-post': blogPost,
   'legal-page': legalPage,
 };

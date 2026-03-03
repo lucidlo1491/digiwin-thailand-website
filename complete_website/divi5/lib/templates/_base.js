@@ -339,6 +339,9 @@ function diviListReset(prefix) {
  * @returns {number[]} [r, g, b]
  */
 function hexToRgb(hex) {
+  if (typeof hex !== 'string' || !/^#[0-9a-fA-F]{6}$/.test(hex)) {
+    throw new Error(`hexToRgb: expected "#RRGGBB" hex string, got "${hex}". Pass a hex code like '#00AFF0', not a CSS color name.`);
+  }
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
@@ -346,17 +349,54 @@ function hexToRgb(hex) {
 }
 
 /**
+ * Relative luminance per WCAG 2.1 (used for contrast ratio calculation)
+ */
+function relativeLuminance(r, g, b) {
+  const [rs, gs, bs] = [r, g, b].map(c => {
+    c = c / 255;
+    return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  });
+  return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+}
+
+/**
+ * Darken a color until it achieves targetRatio contrast with white.
+ * Returns darkened [r, g, b]. Used for WCAG-safe CTA button backgrounds.
+ */
+function darkenForContrast(r, g, b, targetRatio = 4.5) {
+  const whiteLum = 1.0;
+  let factor = 1.0;
+  while (factor > 0.3) {
+    const dr = Math.round(r * factor);
+    const dg = Math.round(g * factor);
+    const db = Math.round(b * factor);
+    const lum = relativeLuminance(dr, dg, db);
+    const ratio = (whiteLum + 0.05) / (lum + 0.05);
+    if (ratio >= targetRatio) return [dr, dg, db];
+    factor -= 0.05;
+  }
+  return [Math.round(r * 0.3), Math.round(g * 0.3), Math.round(b * 0.3)];
+}
+
+/**
  * Compute all color surface variants needed by event templates.
  * @param {string} hex — accent color (e.g. '#15803d')
- * @returns {object} { hex, rgb, hover, bg10, bg12, bg15, bg30, shadow30, shadow40 }
+ * @returns {object} { hex, ctaBg, ctaHover, rgb, hover, bg10-bg30, shadow30, shadow40 }
  */
 function eventColorSurface(hex) {
   const [r, g, b] = hexToRgb(hex);
   const hr = Math.round(r + (255 - r) * 0.2);
   const hg = Math.round(g + (255 - g) * 0.2);
   const hb = Math.round(b + (255 - b) * 0.2);
+  // WCAG-safe CTA background (4.5:1 with white text)
+  const [cr, cg, cb] = darkenForContrast(r, g, b, 4.5);
+  const chr = Math.round(cr + (255 - cr) * 0.15);
+  const chg = Math.round(cg + (255 - cg) * 0.15);
+  const chb = Math.round(cb + (255 - cb) * 0.15);
   return {
     hex,
+    ctaBg: `rgb(${cr},${cg},${cb})`,
+    ctaHover: `rgb(${chr},${chg},${chb})`,
     rgb: `${r},${g},${b}`,
     hover: `rgb(${hr},${hg},${hb})`,
     bg10: `rgba(${r},${g},${b},0.1)`,

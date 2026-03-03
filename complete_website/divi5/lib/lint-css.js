@@ -373,6 +373,50 @@ function sanitizeSectionCSS(css) {
 }
 
 // ════════════════════════════════════════════════════════════════
+// LINT 6: FREEFORM CSS VALIDATOR (for VB templates)
+// ════════════════════════════════════════════════════════════════
+
+/**
+ * Validate freeForm CSS from VB templates (Layout Library).
+ * VB templates bypass the normal page build pipeline, so this
+ * standalone check ensures their CSS is valid before push.
+ *
+ * Checks:
+ *   1. CSS validity (brace balance, double !important)
+ *   2. Selector scoping (all rules must use `selector` prefix)
+ *   3. No hardcoded section IDs (e.g. .et_pb_section_5)
+ *
+ * @param {string} css — freeForm CSS string
+ * @returns {{ errors: Array, warnings: Array }}
+ */
+function checkFreeFormValidity(css) {
+  const errors = checkValidity(css);
+  const warnings = [];
+
+  // Check for hardcoded section/row/column IDs (fragile — breaks on reuse)
+  const hardcodedIds = css.match(/\.et_pb_(?:section|row|column)_\d+/g);
+  if (hardcodedIds) {
+    const unique = [...new Set(hardcodedIds)];
+    warnings.push({
+      rule: 'HARDCODED_SECTION_ID',
+      message: `FreeForm CSS contains ${unique.length} hardcoded selector(s): ${unique.slice(0, 3).join(', ')}. Use \`selector\` prefix instead for Library portability.`,
+      fix: 'Replace .et_pb_section_N with `selector` in all CSS rules.',
+    });
+  }
+
+  // Check that at least some rules use `selector` prefix (expected for VB templates)
+  if (css.length > 100 && !css.includes('selector')) {
+    warnings.push({
+      rule: 'MISSING_SELECTOR_PREFIX',
+      message: 'FreeForm CSS does not use `selector` prefix. VB templates should scope all rules via `selector`.',
+      fix: 'Prefix CSS rules with `selector` so Divi resolves them to the section scope.',
+    });
+  }
+
+  return { errors, warnings };
+}
+
+// ════════════════════════════════════════════════════════════════
 // PUBLIC API
 // ════════════════════════════════════════════════════════════════
 
@@ -392,7 +436,7 @@ function run(sections, pageLevelCSS) {
   return { errors, warnings };
 }
 
-module.exports = { run, checkValidity, checkSuperDVariants, checkCrossContamination, checkReferencePatterns, sanitizeSectionCSS };
+module.exports = { run, checkValidity, checkFreeFormValidity, checkSuperDVariants, checkCrossContamination, checkReferencePatterns, sanitizeSectionCSS };
 
 // ════════════════════════════════════════════════════════════════
 // CLI

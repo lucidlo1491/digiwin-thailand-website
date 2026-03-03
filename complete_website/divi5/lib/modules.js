@@ -46,7 +46,7 @@ function textModule(content, fontOpts = {}, moduleOpts = {}, cssOpts = '') {
     },
   };
 
-  if (moduleOpts.adminLabel || moduleOpts.marginBottom || moduleOpts.marginTop) {
+  if (moduleOpts.adminLabel || moduleOpts.marginBottom || moduleOpts.marginTop || moduleOpts.cssClass || moduleOpts.bgLayout) {
     json.module = {};
     if (moduleOpts.adminLabel) {
       json.module.meta = { adminLabel: { desktop: { value: moduleOpts.adminLabel } } };
@@ -55,6 +55,15 @@ function textModule(content, fontOpts = {}, moduleOpts = {}, cssOpts = '') {
       json.module.decoration = { spacing: { desktop: { value: { margin: {} } } } };
       if (moduleOpts.marginBottom) json.module.decoration.spacing.desktop.value.margin.bottom = moduleOpts.marginBottom;
       if (moduleOpts.marginTop) json.module.decoration.spacing.desktop.value.margin.top = moduleOpts.marginTop;
+    }
+    if (moduleOpts.cssClass || moduleOpts.bgLayout) {
+      if (!json.module.advanced) json.module.advanced = {};
+      if (moduleOpts.cssClass) {
+        json.module.advanced.htmlAttributes = { desktop: { value: { class: moduleOpts.cssClass } } };
+      }
+      if (moduleOpts.bgLayout) {
+        json.module.advanced.text = { text: { desktop: { value: { color: moduleOpts.bgLayout } } } };
+      }
     }
   }
 
@@ -77,7 +86,7 @@ function textModule(content, fontOpts = {}, moduleOpts = {}, cssOpts = '') {
  * @param {string} content - HTML content
  * @param {string} adminLabel - Label shown in VB Layers panel
  */
-function codeModule(content, adminLabel) {
+function codeModule(content, adminLabel, opts = {}) {
   const json = {
     content: {
       innerContent: { desktop: { value: content } },
@@ -86,6 +95,14 @@ function codeModule(content, adminLabel) {
       meta: { adminLabel: { desktop: { value: adminLabel || 'Code Module' } } },
     },
   };
+  if (opts.bgLayout) {
+    json.module.advanced = json.module.advanced || {};
+    json.module.advanced.text = { text: { desktop: { value: { color: opts.bgLayout } } } };
+  }
+  if (opts.cssClass) {
+    json.module.advanced = json.module.advanced || {};
+    json.module.advanced.htmlAttributes = { desktop: { value: { class: opts.cssClass } } };
+  }
   return `<!-- wp:divi/code ${JSON.stringify(json)} /-->`;
 }
 
@@ -118,6 +135,13 @@ function sectionOpen(opts = {}) {
     builderVersion: BUILDER_VERSION,
   };
 
+  // bgLayout: 'dark' → white text on dark bg (et_pb_bg_layout_dark class)
+  // bgLayout: 'light' → dark text on light bg (default, et_pb_bg_layout_light class)
+  if (opts.bgLayout) {
+    json.module.advanced = json.module.advanced || {};
+    json.module.advanced.text = { text: { desktop: { value: { color: opts.bgLayout } } } };
+  }
+
   if (opts.background) {
     json.module.decoration.background = { desktop: { value: opts.background } };
   }
@@ -140,9 +164,15 @@ function sectionClose() {
 
 /**
  * Generate a wp:divi/row block (opening tag)
- * @param {object} opts - { adminLabel, columns, css, layout, sizing, extraJson }
+ * @param {object} opts - { adminLabel, columns, css, tabletCss, layout, sizing, padding, margin, background, border, extraJson }
  */
 function rowOpen(opts = {}) {
+  // Build spacing — padding + optional margin
+  const spacing = {};
+  const pad = opts.padding || { top: '0px', bottom: '0px', left: '0px', right: '0px' };
+  spacing.padding = pad;
+  if (opts.margin) spacing.margin = opts.margin;
+
   const json = {
     module: {
       meta: { adminLabel: { desktop: { value: opts.adminLabel || 'Row' } } },
@@ -157,12 +187,22 @@ function rowOpen(opts = {}) {
           desktop: { value: opts.sizing || { width: '100%', maxWidth: 'none' } },
         },
         spacing: {
-          desktop: { value: { padding: { top: '0px', bottom: '0px', left: '0px', right: '0px' } } },
+          desktop: { value: spacing },
         },
       },
     },
     builderVersion: BUILDER_VERSION,
   };
+
+  // Native background (e.g. { color: 'rgba(...)' })
+  if (opts.background) {
+    json.module.decoration.background = { desktop: { value: opts.background } };
+  }
+
+  // Native border (e.g. { radius: { sync: 'on', topLeft: '16px' }, width: '1px', style: 'solid', color: '...' })
+  if (opts.border) {
+    json.module.decoration.border = { desktop: { value: opts.border } };
+  }
 
   if (opts.css) {
     json.css = { desktop: { value: { freeForm: opts.css } } };
@@ -426,9 +466,14 @@ function buttonModule(text, url, opts = {}) {
         },
         border: {
           desktop: {
-            value: {
-              radius: { sync: 'on', topLeft: opts.radius || '8px' },
-            },
+            value: Object.assign(
+              // D85: sync: 'on' is BUGGED in beta.8 — only applies topLeft.
+              // Must specify all 4 corners explicitly.
+              { radius: { topLeft: opts.radius || '8px', topRight: opts.radius || '8px', bottomRight: opts.radius || '8px', bottomLeft: opts.radius || '8px' } },
+              opts.borderWidth != null ? { width: opts.borderWidth } : {},
+              opts.borderStyle != null ? { style: opts.borderStyle } : {},
+              opts.borderColor != null ? { color: opts.borderColor } : {},
+            ),
           },
         },
         spacing: {
@@ -455,6 +500,16 @@ function buttonModule(text, url, opts = {}) {
             },
           },
         },
+        // "Use Custom Styles For Button" toggle — gates ALL custom styling above.
+        // Without enable:'on', Divi renders default outlined button regardless of other props.
+        button: {
+          desktop: {
+            value: {
+              enable: 'on',
+              icon: { enable: 'off', placement: 'right', onHover: 'off' },
+            },
+          },
+        },
       },
     },
     module: {
@@ -465,6 +520,16 @@ function buttonModule(text, url, opts = {}) {
     },
     builderVersion: BUILDER_VERSION,
   };
+
+  // Module-level freeForm CSS — 'selector' resolves to this button's own selector
+  if (opts.css) {
+    json.css = {
+      desktop: { value: { freeForm: opts.css } },
+      tablet: { value: { freeForm: opts.css } },
+      phone: { value: { freeForm: opts.css } },
+    };
+  }
+
   return `<!-- wp:divi/button ${JSON.stringify(json)} --><!-- /wp:divi/button -->`;
 }
 
@@ -560,6 +625,97 @@ function accordionItem(title, content, opts = {}) {
   return `<!-- wp:divi/accordion-item ${JSON.stringify(json)} /-->`;
 }
 
+/**
+ * Generate a wp:divi/blurb block (self-closing)
+ * Use for: icon + title + body cards — fully VB-editable (icon, text, colors)
+ *
+ * Icon types: 'divi' (ETmodules), 'fa' (FontAwesome)
+ * Common FA unicodes: calendar &#xf073;, clock &#xf017;, map-marker &#xf3c5;, users &#xf0c0;
+ *
+ * @param {object} opts - { iconUnicode, iconType, iconColor, iconSize, iconPlacement,
+ *   title, titleColor, titleFamily, titleWeight, titleSize, titleLineHeight, headingLevel,
+ *   body, bodyColor, bodyFamily, bodyWeight, bodySize, bodyLineHeight,
+ *   adminLabel, css }
+ */
+function blurbModule(opts = {}) {
+  const json = {
+    imageIcon: {
+      innerContent: {
+        desktop: {
+          value: {
+            useIcon: 'on',
+            icon: {
+              unicode: opts.iconUnicode || '&#xe04e;',
+              type: opts.iconType || 'divi',
+              weight: '400',
+            },
+          },
+        },
+      },
+      advanced: {
+        color: { desktop: { value: opts.iconColor || '#00AFF0' } },
+        placement: { desktop: { value: opts.iconPlacement || 'top' } },
+        width: { desktop: { value: { icon: opts.iconSize || '48px' } } },
+      },
+    },
+    title: {
+      innerContent: { desktop: { value: { text: opts.title || '' } } },
+      decoration: {
+        font: {
+          font: {
+            desktop: {
+              value: {
+                headingLevel: opts.headingLevel || 'h4',
+                family: opts.titleFamily || 'Noto Sans',
+                weight: opts.titleWeight || '600',
+                size: opts.titleSize || '16px',
+                color: opts.titleColor || '#000864',
+                lineHeight: opts.titleLineHeight || '1.4em',
+              },
+            },
+          },
+        },
+      },
+    },
+    content: {
+      innerContent: { desktop: { value: opts.body ? `<p>${opts.body}</p>` : '' } },
+      decoration: {
+        bodyFont: {
+          body: {
+            font: {
+              desktop: {
+                value: {
+                  family: opts.bodyFamily || 'Noto Sans',
+                  weight: opts.bodyWeight || '400',
+                  size: opts.bodySize || '13px',
+                  color: opts.bodyColor || '#666666',
+                  lineHeight: opts.bodyLineHeight || '1.5em',
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    module: {
+      meta: { adminLabel: { desktop: { value: opts.adminLabel || 'Blurb' } } },
+    },
+    builderVersion: BUILDER_VERSION,
+  };
+
+  // bgLayout: 'dark' → white text on dark bg (et_pb_bg_layout_dark class)
+  if (opts.bgLayout) {
+    json.module.advanced = json.module.advanced || {};
+    json.module.advanced.text = { text: { desktop: { value: { color: opts.bgLayout } } } };
+  }
+
+  if (opts.css) {
+    json.css = { desktop: { value: { freeForm: opts.css } } };
+  }
+
+  return `<!-- wp:divi/blurb ${JSON.stringify(json)} /-->`;
+}
+
 module.exports = {
   BUILDER_VERSION,
   textModule,
@@ -577,6 +733,7 @@ module.exports = {
   blogModule,
   dividerModule,
   buttonModule,
+  blurbModule,
   accordionOpen,
   accordionClose,
   accordionItem,

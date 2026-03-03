@@ -12,7 +12,10 @@
  */
 
 const mysql = require('./mysql');
+const { codeModule } = require('./modules');
 const { templates, list } = require('./templates/index');
+const { checkValidity } = require('./lint-css');
+const { flushAll } = require('./cache-flush');
 
 // ────────────────────────────────────────────────────────────────
 // EXAMPLE DATA — placeholder content for Layout Library preview
@@ -172,6 +175,23 @@ const EXAMPLE_DATA = {
       },
     ],
   },
+  'event-hero-vb': {
+    adminLabel: 'DigiWin — Event Hero (VB)',
+    sectionPrefix: 'tpl-evt-hero',
+    color: '#15803d',
+    badge: 'Workshop',
+    title: 'Smart Manufacturing Workshop: From Shop Floor to Dashboard',
+    subtitle: 'Join us for a hands-on workshop exploring how Thai manufacturers are transforming their operations with real-time data visibility.',
+    backLink: { text: 'Back to News & Events', href: '/news/' },
+    facts: [
+      { icon: '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>', value: 'March 15, 2026', label: 'Date' },
+      { icon: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>', value: '13:00 – 17:00', label: 'Time' },
+      { icon: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>', value: 'Bangkok', label: 'Location' },
+      { icon: '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>', value: '40 Seats', label: 'Capacity' },
+    ],
+    cta: { text: 'Register Now', href: '#register' },
+    superD: { variant: 'particle', position: 'corner-br', opacity: 0.15 },
+  },
 };
 
 // ────────────────────────────────────────────────────────────────
@@ -220,13 +240,29 @@ function pushTemplate(name, tmpl, dryRun = false) {
     return null;
   }
 
+  // Lint freeForm CSS before push (RT-4 fix: no lint bypass)
+  if (typeof tmpl.lintableCSS === 'function') {
+    const freeFormCSS = tmpl.lintableCSS(data);
+    const lintErrors = checkValidity(freeFormCSS);
+    if (lintErrors.length > 0) {
+      console.error(`  [LINT FAIL] Template "${name}" has CSS errors:`);
+      lintErrors.forEach(e => console.error(`    ${e.rule}: ${e.message}`));
+      return null;
+    }
+    console.log(`  ✓ CSS lint passed`);
+  }
+
   // Generate blocks and CSS
   const blocksArr = tmpl.blocks(data);
   const content = Array.isArray(blocksArr) ? blocksArr.join('\n') : blocksArr;
   const cssContent = tmpl.css(data);
 
-  // Combine: blocks + style tag with CSS
-  const fullContent = `${content}\n<!-- wp:html --><style>${cssContent}</style><!-- /wp:html -->`;
+  // Combine: blocks + CSS (if any) in a codeModule
+  // NOTE: For Library portability, CSS should be in sectionOpen({ css }) freeForm instead.
+  // codeModule <style> is a fallback for templates that haven't migrated yet.
+  const fullContent = cssContent.trim()
+    ? `${content}\n${codeModule('<style>' + cssContent + '</style>', 'Template Styles')}`
+    : content;
 
   const title = data.adminLabel || `DigiWin — ${name}`;
   const escapedTitle = mysql.escape(title);
@@ -300,11 +336,15 @@ SELECT LAST_INSERT_ID() AS id;`;
   }
 
   // Assign taxonomy terms
-  const sectionTermId = getTermTaxonomyId('layout_type', 'section', 'Section');
+  // layout_type must be 'layout' (not 'section') for VB "Your Saved Layouts" tab
+  // Divi 5 Library.php line 530: filters by layout_type matching the API 'type' param
+  const sectionTermId = getTermTaxonomyId('layout_type', 'layout', 'Layout');
   const notGlobalTermId = getTermTaxonomyId('scope', 'not_global', 'Not Global');
   const categoryTermId = getTermTaxonomyId('layout_category', 'digiwin-templates', 'DigiWin Templates');
+  // D83: module_width = regular required for VB Library display (found by layout-library agent)
+  const moduleWidthTermId = getTermTaxonomyId('module_width', 'regular', 'Regular');
 
-  for (const ttId of [sectionTermId, notGlobalTermId, categoryTermId]) {
+  for (const ttId of [sectionTermId, notGlobalTermId, categoryTermId, moduleWidthTermId]) {
     const checkRel = `SELECT object_id FROM wp_term_relationships WHERE object_id=${postId} AND term_taxonomy_id=${ttId} LIMIT 1;`;
     const relResult = mysql.query(checkRel).trim();
     if (!relResult || relResult.split('\n').length <= 1) {
@@ -360,6 +400,13 @@ function main() {
     console.log(`\n  Processing: ${name}`);
     pushTemplate(name, tmpl, dryRun);
     pushed++;
+  }
+
+  // Flush Divi CSS cache so VB serves updated templates immediately
+  if (!dryRun && pushed > 0) {
+    console.log('\n  Flushing Divi CSS cache...');
+    flushAll({ quiet: true });
+    console.log('  ✓ Cache flushed');
   }
 
   console.log(`\n${'─'.repeat(50)}`);

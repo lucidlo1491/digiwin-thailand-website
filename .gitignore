@@ -9,8 +9,10 @@ screenshots/
 .DS_Store
 Thumbs.db
 
-# Environment variables (API keys)
+# Environment variables (API keys, DB credentials)
 .env
+complete_website/divi5/lib/mysql-config.local.js
+complete_website/divi5/da-push.local.js
 
 # Node
 node_modules/

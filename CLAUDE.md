@@ -4,7 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-DigiWin Thailand website redesign project (digiwin.co.th). WordPress + DIVI Page Builder (via direct MySQL pipeline).
+DigiWin Thailand website (digiwin.co.th) — **LIVE in production**. WordPress + Divi 5 Page Builder via direct MySQL pipeline.
+**Scale:** 68 page configs (35 EN + 26 TH + 7 event/blog), 434 section builders, 25 reusable templates.
 **Target Audiences:** Thai manufacturing factory operators (Track A) and distributor/consulting prospects (Track B)
 
 ## Project Structure
@@ -12,15 +13,26 @@ DigiWin Thailand website redesign project (digiwin.co.th). WordPress + DIVI Page
 ```
 digiwin_webpage_2026/
 ├── .claude/                          # Claude Code config + rules (auto-loaded)
-│   └── rules/                        #   process-rules.md, design-system.md, session-protocol.md
+│   ├── rules/                        #   process-rules.md, design-system.md, session-protocol.md
+│   ├── agents/                       #   Agent definitions (geo-auditor.md)
+│   ├── commands/                     #   Slash commands (6: divi5-build, scaffold, inventory, autopilot, battle-test, geo-audit)
+│   └── skills/                       #   Custom skills (entity-optimizer, geo-content-optimizer) + 41 symlinked
 ├── docs/
 │   ├── strategy/                     # Layer 1 + 2: Strategy documents
 │   ├── content-specs/                # Layer 3: Divi5 v2.0 specs (v1.0 archived)
 │   ├── build/                        # Build workflow, tracker, acceptance criteria
+│   ├── geo-audits/                   # GEO + CORE-EEAT audit results per page
 │   └── guides/                       # Process guides
-├── complete_website/                 # HTML site + ALL scripts (18 JS)
+├── complete_website/                 # HTML site + ALL scripts
 │   ├── src/pages/ + partials/        #   Source templates (edit here, not root HTML)
-│   ├── divi5/                        #   Divi 5 build framework (lib/, pages/, build-page.js)
+│   ├── divi5/                        #   Divi 5 build framework (68 pages, 434 sections)
+│   │   ├── lib/                      #     15 core modules + 25 templates
+│   │   ├── pages/                    #     Page configs + sections/ builders
+│   │   ├── theme/                    #     Design tokens + component factories
+│   │   ├── global/                   #     Header, footer, blog body layout
+│   │   ├── i18n/th/                  #     Thai translation data (26 pages)
+│   │   ├── phpmyadmin-export/        #     SQL exports for production push (~100 files)
+│   │   └── assets/                   #     SVG/image assets for Base64 injection
 │   ├── golden-refs/                  #   Visual regression baselines
 │   └── [35 HTML + 18 JS scripts]    #   Built output + build/verify tools
 ├── divi5-builds/                     # Active Divi 5 exports (sections/ + code-modules/)
@@ -53,7 +65,7 @@ digiwin_webpage_2026/
 - Ground claims in specifics: "44 years," "50,000+ clients," "100+ Thai implementations"
 - Never name competitors directly
 - Every unspoken fear addressed within page copy (not FAQ sections)
-- English v1 first; Thai localization planned but not started
+- **Bilingual site LIVE:** 35 EN + 26 TH pages with language toggle, hreflang, and cross-locale sync
 
 ## Business Constraints
 
@@ -94,6 +106,34 @@ Claude = Senior Technical Mentor. Peter = Business Leader. Claude pushes back wh
 
 **Welcoming Over Salesy:**
 - Approachable, conversational tone. Avoid pushy conversion language.
+
+## Production Deployment
+
+**Site is LIVE at digiwin.co.th** (since Mar 4, 2026).
+
+**Two deployment paths:**
+1. **Local (default):** `build-page.js --page <name>` → pushes to LocalWP via MySQL socket (wp_ prefix)
+2. **Production:** `build-page.js --page <name> --target production` → pushes via SSH tunnel (dgwthl_ prefix)
+   - Requires: `ssh-tunnel.sh start` + credentials in `mysql-config.local.js`
+   - Alternative: `da-push.js` pushes SQL via DirectAdmin API (no SSH needed)
+   - SQL exports: `phpmyadmin-export/` directory has ~100 pre-built SQL files
+
+**WordPress mu-plugins (4):** Deployed to production
+- `digiwin-redirects.php` — 64 explicit + 6 regex catch-all 301 redirects
+- `digiwin-hreflang.php` — 27 EN/TH page pairs + `lang="th"` filter
+- `digiwin-font-preload.php` — Noto Sans + JetBrains Mono preload, CLS fix
+- `digiwin-schema.php` — JSON-LD structured data (Organization+WebSite global, per-page postmeta)
+
+**Global elements:** Header (100437), Footer (100438), Blog Body Layout (100440) — via `build-global.js`
+
+## Event Page Workflow
+
+New events use `create-event-page.js` — automated 5-step scaffolding:
+1. Adds event to `lib/events-registry.js`
+2. Generates 16 section builders (8 EN + 8 TH) from templates
+3. Creates page configs with language toggle
+4. Registers hreflang mapping
+5. CLI: `node create-event-page.js --slug <name> --title "..." --date "..." --location "..." --color "#hex"`
 
 ## Reference Documents
 

@@ -31,7 +31,7 @@ const CARDS = [
       'Chinese/Thai/English bilingual out of the box',
       '<strong>Cross-sell path:</strong> T100 \u2192 MES \u2192 WMS \u2192 AIoT \u2192 BPM',
     ],
-    link: { href: '/products/erp.html', text: 'Learn more about T100' },
+    link: { href: '/products/erp/', text: 'Learn more about T100' },
     metricsTitle: 'Your Revenue Model: High-Value Project',
     metrics: [
       { label: 'Target Customer', value: '200+ employees', highlight: false },
@@ -50,7 +50,7 @@ const CARDS = [
       'Thai taxation certified\u2014easy sell to Finance Directors',
       '<strong>Cross-sell path:</strong> iGP \u2192 MES \u2192 WMS \u2192 AIoT',
     ],
-    link: { href: '/products/erp.html', text: 'Learn more about iGP' },
+    link: { href: '/products/erp/', text: 'Learn more about iGP' },
     metricsTitle: 'Your Revenue Model: Cash Flow Engine',
     metrics: [
       { label: 'Target Customer', value: '20-200 employees', highlight: false },
@@ -69,7 +69,7 @@ const CARDS = [
       'Once you control shop floor data, client cannot leave',
       '<strong>\u201CTrojan Horse\u201D:</strong> MES \u2192 WMS \u2192 AIoT \u2192 T100/iGP',
     ],
-    link: { href: '/products/mes.html', text: 'Learn more about MES' },
+    link: { href: '/products/mes/', text: 'Learn more about MES' },
     metricsTitle: 'Your Revenue Model: Sticky Recurring',
     metrics: [
       { label: 'Entry Point', value: '~1M THB (vs. 5M+ ERP)', highlight: true },
@@ -88,7 +88,7 @@ const CARDS = [
       'Solves \u201Csystem says 100, shelf has 50\u201D problem',
       '<strong>Physical lock-in:</strong> Scanners & sensors = 10+ year relationships',
     ],
-    link: { href: '/products/aiot.html', text: 'Learn more about AIoT & WMS' },
+    link: { href: '/products/aiot/', text: 'Learn more about AIoT & WMS' },
     metricsTitle: 'Your Revenue Model: Differentiation',
     metrics: [
       { label: 'Physical Integration', value: 'Ultimate lock-in', highlight: true },

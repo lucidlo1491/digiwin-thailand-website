@@ -17,6 +17,7 @@ const futuresBuilder = require('./sections/bm-futures');
 const solutionBuilder = require('./sections/bm-solution');
 const compareBuilder = require('./sections/bm-compare');
 const ctaBuilder = require('./sections/bm-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100558,
@@ -38,6 +39,17 @@ module.exports = {
     { name: 'compare',        builder: compareBuilder },
     { name: 'cta',            builder: ctaBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'Partner Program', url: '/partner-program/' },
+        { name: 'Business Model', url: '/partner-program/business-model/' },
+      ]),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

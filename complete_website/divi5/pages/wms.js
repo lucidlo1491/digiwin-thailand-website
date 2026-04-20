@@ -21,6 +21,7 @@ const integrationBuilder = require('./sections/wms-integration');
 const section2Builder = require('./sections/wms-section-2');
 const productDetailCtaBuilder = require('./sections/wms-product-detail-cta');
 const relatedBuilder = require('./sections/wms-related-solutions');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100563, // TODO: Create WP page and set page ID
@@ -43,6 +44,31 @@ module.exports = {
     { name: 'product-detail-cta', builder: productDetailCtaBuilder },
     { name: 'related-solutions', builder: relatedBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'Products', url: '/products/' },
+        { name: 'WMS: sFLS', url: '/wms/' },
+      ]),
+      schema.softwareApplication({
+        name: 'DigiWin WMS (sFLS)',
+        subCategory: 'Warehouse Management System',
+        description: 'Smart warehouse management for manufacturing. Barcode and RFID tracking, FIFO/FEFO automation, wave picking, and real-time inventory accuracy for Thai factories.',
+        url: '/wms/',
+        featureList: 'Location intelligence, Barcode & RFID tracking, FIFO/FEFO automation, Wave picking optimization, Real-time inventory accuracy, Lot & serial tracking, Putaway optimization, Cycle counting',
+      }),
+      schema.faqPage([
+        { question: 'What is a Warehouse Management System (WMS)?', answer: 'A Warehouse Management System (WMS) is software that controls and optimizes warehouse operations \u2014 from receiving and putaway to picking, packing, and shipping. Unlike distribution-focused WMS solutions, DigiWin WMS (sFLS) is designed specifically for manufacturing warehouses, handling raw materials, WIP inventory, and finished goods with production-linked workflows.' },
+        { question: 'How is DigiWin WMS different from generic WMS solutions?', answer: 'DigiWin WMS (sFLS) is built for manufacturing, not distribution. It includes production material kitting, shop floor delivery integration, WIP location tracking, and quality hold management \u2014 features that generic WMS solutions designed for e-commerce fulfillment simply don\'t offer. It also shares one database with DigiWin ERP and MES, eliminating integration complexity.' },
+        { question: 'Can DigiWin WMS work with my existing ERP?', answer: 'Yes. DigiWin WMS can operate standalone or integrate with any existing ERP system via standard APIs. It works natively with DigiWin ERP (T100/iGP) through a shared database, but also connects to SAP, Oracle, and other ERP platforms for inventory synchronization and order management.' },
+        { question: 'What hardware do I need for DigiWin WMS?', answer: 'DigiWin WMS works with standard Android or iOS mobile devices for barcode scanning, plus optional RFID readers for high-volume environments. You will need barcode label printers for location and item labeling. The system runs on standard server infrastructure or cloud deployment \u2014 no specialized hardware beyond mobile scanners is required.' },
+        { question: 'How long does WMS implementation take?', answer: 'A typical DigiWin WMS implementation takes 2\u20134 months, depending on warehouse complexity and the number of locations. Basic implementations with core receiving, putaway, and picking can go live in as little as 6 weeks. The phased approach lets you start with high-impact areas and expand coverage over time.' },
+      ]),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

@@ -32,7 +32,7 @@ function blocks() {
                         <div class="cs-listed-info">
                             <div class="cs-listed-card-company">DIMET (SIAM)</div>
                             <div class="cs-listed-card-industry">Manufacturing · Thailand</div>
-                            <a href="demo.html" class="cs-listed-card-link">Ask Us About This Case →</a>
+                            <a href="/demo/" class="cs-listed-card-link">Ask Us About This Case →</a>
                         </div>
                     </div>
                     <div class="cs-listed-card cs-animate">
@@ -42,7 +42,7 @@ function blocks() {
                         <div class="cs-listed-info">
                             <div class="cs-listed-card-company">Lotus Pack</div>
                             <div class="cs-listed-card-industry">Packaging · Workflow ERP</div>
-                            <a href="demo.html" class="cs-listed-card-link">Ask Us About This Case →</a>
+                            <a href="/demo/" class="cs-listed-card-link">Ask Us About This Case →</a>
                         </div>
                     </div>
                     <div class="cs-listed-card cs-animate">
@@ -52,7 +52,7 @@ function blocks() {
                         <div class="cs-listed-info">
                             <div class="cs-listed-card-company">Mr. Ken</div>
                             <div class="cs-listed-card-industry">Ceiling fans · Thailand</div>
-                            <a href="demo.html" class="cs-listed-card-link">Ask Us About This Case →</a>
+                            <a href="/demo/" class="cs-listed-card-link">Ask Us About This Case →</a>
                         </div>
                     </div>
                     <div class="cs-listed-card cs-animate">
@@ -62,7 +62,7 @@ function blocks() {
                         <div class="cs-listed-info">
                             <div class="cs-listed-card-company">Hoo Chin Electronics</div>
                             <div class="cs-listed-card-industry">Electronics · Thailand · 和慶電子</div>
-                            <a href="demo.html" class="cs-listed-card-link">Ask Us About This Case →</a>
+                            <a href="/demo/" class="cs-listed-card-link">Ask Us About This Case →</a>
                         </div>
                     </div>
                     <div class="cs-listed-card cs-animate">
@@ -72,7 +72,7 @@ function blocks() {
                         <div class="cs-listed-info">
                             <div class="cs-listed-card-company">SRANG SERN</div>
                             <div class="cs-listed-card-industry">Rubber machinery · Thailand · 上昇</div>
-                            <a href="demo.html" class="cs-listed-card-link">Ask Us About This Case →</a>
+                            <a href="/demo/" class="cs-listed-card-link">Ask Us About This Case →</a>
                         </div>
                     </div>
                     <div class="cs-listed-card cs-animate">
@@ -82,7 +82,7 @@ function blocks() {
                         <div class="cs-listed-info">
                             <div class="cs-listed-card-company">De Poen Pneumatic</div>
                             <div class="cs-listed-card-industry">Pneumatic tools · Taiwan · TWSE: 1570</div>
-                            <a href="demo.html" class="cs-listed-card-link">Ask Us About This Case →</a>
+                            <a href="/demo/" class="cs-listed-card-link">Ask Us About This Case →</a>
                         </div>
                     </div>
                 </div>
@@ -95,28 +95,28 @@ function blocks() {
                             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                         </div>
                         <p class="cs-placeholder-text">Looking for automotive references? We have them.</p>
-                        <a href="demo.html" class="cs-placeholder-cta">Contact for References →</a>
+                        <a href="/demo/" class="cs-placeholder-cta">Contact for References →</a>
                     </div>
                     <div class="cs-placeholder-card cs-animate">
                         <div class="cs-placeholder-icon">
                             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
                         </div>
                         <p class="cs-placeholder-text">Electronics manufacturers — ask about our Thai implementations.</p>
-                        <a href="demo.html" class="cs-placeholder-cta">Contact for References →</a>
+                        <a href="/demo/" class="cs-placeholder-cta">Contact for References →</a>
                     </div>
                     <div class="cs-placeholder-card cs-animate">
                         <div class="cs-placeholder-icon">
                             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                         </div>
                         <p class="cs-placeholder-text">Food-grade compliance? We've done it.</p>
-                        <a href="demo.html" class="cs-placeholder-cta">Contact for References →</a>
+                        <a href="/demo/" class="cs-placeholder-cta">Contact for References →</a>
                     </div>
                     <div class="cs-placeholder-card cs-animate">
                         <div class="cs-placeholder-icon">
                             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
                         </div>
                         <p class="cs-placeholder-text">Textile manufacturers — ask about production tracking results.</p>
-                        <a href="demo.html" class="cs-placeholder-cta">Contact for References →</a>
+                        <a href="/demo/" class="cs-placeholder-cta">Contact for References →</a>
                     </div>
                 </div>
             </div>

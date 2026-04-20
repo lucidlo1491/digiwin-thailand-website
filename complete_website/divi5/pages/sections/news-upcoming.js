@@ -18,96 +18,17 @@ const P = 'upc'; // CSS prefix — customize if needed
 // BLOCKS
 // ════════════════════════════════════════════════════════════════
 function blocks() {
+  // Cards are populated here when real events are confirmed.
+  // To add events, copy a card template block into the grid div.
   const html = `
     <div class="${P}-inner" style="position: relative; z-index: 2;">
                 <div class="${P}-header fade-in-section">
                     <span class="section-label">Upcoming Events</span>
                     <h2>What's Next</h2>
                 </div>
-                <div class="${P}-grid">
-                    
-                    <div class="${P}-card fade-in-section">
-                        <div class="${P}-card-border seminar"></div>
-                        <div class="${P}-card-body">
-                            <span class="event-type-badge seminar">Seminar</span>
-                            <h3>Production Transparency: From Paper Reports to Real-Time Dashboards</h3>
-                            <div class="event-meta">
-                                <div class="event-meta-item">
-                                    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                                    April 10, 2026 | 1:00 PM -- 5:00 PM
-                                </div>
-                                <div class="event-meta-item">
-                                    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                    Bangkok, Thailand
-                                </div>
-                            </div>
-                            <p>Discover how factories replace paper-based reporting with live production dashboards that surface issues before they become costly delays.</p>
-                            <a href="/news/events/production-transparency-seminar/" class="event-link">Learn More <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-                        </div>
-                    </div>
-    
-                    
-                    <div class="${P}-card fade-in-section">
-                        <div class="${P}-card-border workshop"></div>
-                        <div class="${P}-card-body">
-                            <span class="event-type-badge workshop">Workshop</span>
-                            <h3>Hands-On: Setting Up Shop Floor Data Collection with MES</h3>
-                            <div class="event-meta">
-                                <div class="event-meta-item">
-                                    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                                    April 24, 2026 | 9:00 AM -- 4:00 PM
-                                </div>
-                                <div class="event-meta-item">
-                                    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                    Bangkok, Thailand
-                                </div>
-                            </div>
-                            <p>A hands-on workshop where you configure real MES modules, connect shop floor devices, and see live OEE data flow from machine to dashboard.</p>
-                            <a href="/news/events/shop-floor-data-workshop/" class="event-link">Learn More <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-                        </div>
-                    </div>
-    
-                    
-                    <div class="${P}-card fade-in-section">
-                        <div class="${P}-card-border factory-visit"></div>
-                        <div class="${P}-card-body">
-                            <span class="event-type-badge factory-visit">Factory Visit</span>
-                            <h3>Live Factory Tour: See DigiWin MES in Action</h3>
-                            <div class="event-meta">
-                                <div class="event-meta-item">
-                                    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                                    May 8, 2026 | 10:00 AM -- 3:00 PM
-                                </div>
-                                <div class="event-meta-item">
-                                    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                    EEC Industrial Zone, Thailand
-                                </div>
-                            </div>
-                            <p>Walk the shop floor of a real factory running DigiWin MES. See how production data flows from machines to management dashboards in real time.</p>
-                            <a href="/news/events/factory-tour-mes/" class="event-link">Learn More <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-                        </div>
-                    </div>
-    
-                    
-                    <div class="${P}-card fade-in-section">
-                        <div class="${P}-card-border trade-show"></div>
-                        <div class="${P}-card-body">
-                            <span class="event-type-badge trade-show">Trade Show</span>
-                            <h3>Manufacturing Expo Thailand 2026</h3>
-                            <div class="event-meta">
-                                <div class="event-meta-item">
-                                    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                                    May 20-22, 2026
-                                </div>
-                                <div class="event-meta-item">
-                                    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                    BITEC, Bangkok
-                                </div>
-                            </div>
-                            <p>Visit us at Booth A12. Live demos of ERP, MES, WMS, and AIoT solutions. Meet our Thai team and see the full manufacturing intelligence stack in action.</p>
-                            <a href="/news/events/manufacturing-expo-2026/" class="event-link">Learn More <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-                        </div>
-                    </div>
+                <div class="${P}-empty">
+                    <p>New events are being planned. Follow us to stay updated.</p>
+                    <a href="/demo/" class="event-link">Get in Touch <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
                 </div>
             </div>`;
 
@@ -203,10 +124,28 @@ function css() {
             color: #000864;
             margin-bottom: 0;
         }
+.upc-empty {
+            text-align: center;
+            padding: 48px 24px;
+            color: #5b6b80;
+            font-size: 16px;
+        }
+.upc-empty p {
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: #5b6b80;
+        }
+.upc-empty .event-link {
+            justify-content: center;
+        }
 .upc-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
+        }
+.upc-grid .upc-card:first-child {
+            grid-column: span 1;
+            border-color: #22C55E;
         }
 .upc-card {
             background: #fff;

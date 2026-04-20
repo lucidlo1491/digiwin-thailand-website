@@ -22,6 +22,7 @@ const reportsBuilder = require('./sections/th-mes-reports');
 const section2Builder = require('./sections/th-mes-section-2');
 const productDetailCtaBuilder = require('./sections/th-mes-product-detail-cta');
 const relatedBuilder = require('./sections/th-mes-related-solutions');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100778,
@@ -46,6 +47,24 @@ module.exports = {
 
   // Thai typography: Noto Sans Thai + line-height adjustments
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E1C\u0E25\u0E34\u0E15\u0E20\u0E31\u0E13\u0E11\u0E4C', url: '/th/products/' },
+        { name: 'MES', url: '/th/mes/' },
+      ])),
+      schema.thaiVariant(schema.softwareApplication({
+        name: 'DigiWin MES',
+        subCategory: 'Manufacturing Execution System',
+        description: 'Real-time shop floor visibility for Thai factories. Three tiers \u2014 MES for full production execution, SFT for lightweight tracking, AIoT Cloud for entry-level monitoring.',
+        url: '/th/mes/',
+        featureList: 'OEE monitoring, Quality data capture, Lot-level traceability, Work order management, Real-time production dashboards, SPC analysis, Machine downtime tracking, Paperless shop floor',
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

@@ -23,7 +23,7 @@ const DATA = {
   gridGap: '24px',
   cards: [
     {
-      href: '/products/erp.html',
+      href: '/products/erp/',
       title: 'ERP Core',
       fullName: 'Enterprise Resource Planning',
       tagline: 'The central brain of your business',
@@ -36,7 +36,7 @@ const DATA = {
       benefit: 'Replace scattered spreadsheets with one source of truth.',
     },
     {
-      href: '/products/mes.html',
+      href: '/products/mes/',
       title: 'MES',
       fullName: 'Manufacturing Execution System',
       tagline: 'Your digital eyes on the production floor',
@@ -49,7 +49,7 @@ const DATA = {
       benefit: 'Answer \u201Cwhich batch was my order?\u201D in seconds.',
     },
     {
-      href: '/products/wms.html',
+      href: '/products/wms/',
       title: 'WMS',
       fullName: 'Warehouse Management System',
       tagline: 'Never lose track of inventory again',
@@ -62,7 +62,7 @@ const DATA = {
       benefit: 'Faster fulfillment, fewer mistakes, accurate stock.',
     },
     {
-      href: '/products/aiot.html',
+      href: '/products/aiot/',
       title: 'AIoT',
       fullName: 'AI + Internet of Things',
       tagline: 'Connect your machines to the digital world',

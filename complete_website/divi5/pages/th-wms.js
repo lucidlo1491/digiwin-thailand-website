@@ -22,6 +22,7 @@ const thIntegrationBuilder = require('./sections/th-wms-integration');
 const thSection2Builder = require('./sections/th-wms-section-2');
 const thProductDetailCtaBuilder = require('./sections/th-wms-product-detail-cta');
 const thRelatedBuilder = require('./sections/th-wms-related-solutions');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100779,
@@ -47,6 +48,24 @@ module.exports = {
 
   // Thai typography: Noto Sans Thai font + label letter-spacing fix
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E1C\u0E25\u0E34\u0E15\u0E20\u0E31\u0E13\u0E11\u0E4C', url: '/th/products/' },
+        { name: 'WMS', url: '/th/wms/' },
+      ])),
+      schema.thaiVariant(schema.softwareApplication({
+        name: 'DigiWin WMS (sFLS)',
+        subCategory: 'Warehouse Management System',
+        description: 'Smart warehouse management for manufacturing. Barcode and RFID tracking, FIFO/FEFO automation, wave picking, and real-time inventory accuracy for Thai factories.',
+        url: '/th/wms/',
+        featureList: 'Location intelligence, Barcode & RFID tracking, FIFO/FEFO automation, Wave picking optimization, Real-time inventory accuracy, Lot & serial tracking, Putaway optimization, Cycle counting',
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

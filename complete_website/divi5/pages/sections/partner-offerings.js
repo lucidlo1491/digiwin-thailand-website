@@ -27,13 +27,13 @@ const OFFERINGS = [
     icon: ICON_TARGET,
     title: 'The Solution Stack',
     body: 'Proven products to resell: ERP, MES, WMS, AIoT. <span class="dw-years">44</span> years of development. 50,000+ installations worldwide. Products that work in real factories.',
-    link: { text: 'View Product Portfolio', href: '/partner-program/solutions.html' },
+    link: { text: 'View Product Portfolio', href: '/partner-program/solutions/' },
   },
   {
     icon: ICON_DOLLAR,
     title: 'Partner Economics',
     body: 'Transparent margins, predictable revenue share, and multi-year projections that show how partnership compounds your business value over time.',
-    link: { text: 'See the Numbers', href: '/partner-program/economics.html' },
+    link: { text: 'See the Numbers', href: '/partner-program/economics/' },
   },
 ];
 

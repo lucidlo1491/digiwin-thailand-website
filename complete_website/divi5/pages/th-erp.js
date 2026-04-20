@@ -21,6 +21,7 @@ const thIntegration = require('./sections/th-erp-integration');
 const thFaq = require('./sections/th-erp-faq');
 const thCta = require('./sections/th-erp-cta');
 const thRelated = require('./sections/th-erp-related-solutions');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100777,
@@ -43,6 +44,24 @@ module.exports = {
   ],
 
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E1C\u0E25\u0E34\u0E15\u0E20\u0E31\u0E13\u0E11\u0E4C', url: '/th/products/' },
+        { name: 'ERP', url: '/th/erp/' },
+      ])),
+      schema.thaiVariant(schema.softwareApplication({
+        name: 'DigiWin ERP (T100 & iGP)',
+        subCategory: 'Enterprise Resource Planning',
+        description: 'Manufacturing-specific ERP system for Thai factories. T100 for enterprise-scale multi-site operations, iGP for growing single-site manufacturers. Financial control, BOM management, MRP planning, and production traceability.',
+        url: '/th/erp/',
+        featureList: 'Financial management, BOM management, MRP planning, Production traceability, Multi-site operations, Thai tax & WHT compliance, BOI reporting, e-Tax integration, Inventory control, Purchase management',
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

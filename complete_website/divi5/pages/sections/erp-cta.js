@@ -2,7 +2,7 @@
  * erp-cta.js — ERP CTA Section (S9)
  *
  * REFACTORED: Uses cta-gradient template (157 -> ~25 lines)
- * Source: erp.html — "Ready to See What's Possible?"
+ * Source: /products/erp/ — "Ready to See What's Possible?"
  */
 
 const ctaGradient = require('../../lib/templates/cta-gradient');
@@ -15,8 +15,8 @@ const DATA = {
   title: "Ready to See What\u2019s Possible?",
   subtitle: 'Fill out the form and our team will reach out to discuss your specific manufacturing challenges.',
   buttons: [
-    { text: 'Get in Touch', href: '/demo.html', style: 'primary' },
-    { text: 'View by Industry', href: '/industries.html', style: 'ghost' },
+    { text: 'Get in Touch', href: '/demo/', style: 'primary' },
+    { text: 'View by Industry', href: '/industries/', style: 'ghost' },
   ],
   superD: { variant: 'gradient', position: 'corner-tl', opacity: 0.14 },
   waveFlow: { height: '180px', opacity: 0.35 },

@@ -19,6 +19,7 @@ const integrationBuilder = require('./sections/erp-integration');
 const section2Builder = require('./sections/erp-section-2');
 const ctaBuilder = require('./sections/erp-cta');
 const relatedBuilder = require('./sections/erp-related-solutions');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100561,
@@ -39,6 +40,31 @@ module.exports = {
     { name: 'cta', builder: ctaBuilder },
     { name: 'related-solutions', builder: relatedBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'Products', url: '/products/' },
+        { name: 'ERP: T100 & iGP', url: '/erp/' },
+      ]),
+      schema.softwareApplication({
+        name: 'DigiWin ERP (T100 & iGP)',
+        subCategory: 'Enterprise Resource Planning',
+        description: 'Manufacturing-specific ERP system for Thai factories. T100 for enterprise-scale multi-site operations, iGP for growing single-site manufacturers. Financial control, BOM management, MRP planning, and production traceability.',
+        url: '/erp/',
+        featureList: 'Financial management, BOM management, MRP planning, Production traceability, Multi-site operations, Thai tax & WHT compliance, BOI reporting, e-Tax integration, Inventory control, Purchase management',
+      }),
+      schema.faqPage([
+        { question: 'What is the difference between T100 and iGP?', answer: 'T100 is DigiWin\'s enterprise-tier ERP designed for manufacturers with 200+ employees, multiple sites, and complex multi-company structures. iGP (also known as Workflow ERP) is the growth-tier ERP for single-site manufacturers with 20\u2013200 employees, offering modular purchasing and faster 3\u20136 month deployments. Both share the same manufacturing DNA and can scale.' },
+        { question: 'Is DigiWin ERP certified for Thai tax and BOI compliance?', answer: 'Yes. DigiWin ERP is certified by the Thai Revenue Department for e-Tax filing and includes built-in withholding tax (WHT) workflows, VAT handling, and BOI (Board of Investment) compliance features. The system tracks actual material consumption at the production order level so your BOI reports match what auditors expect. One customer eliminated over 10 million THB per year in supplementary tax penalties.' },
+        { question: 'How long does a DigiWin ERP implementation take?', answer: 'iGP implementations typically take 3\u20136 months for a single-site factory. T100 enterprise implementations take 6\u20139 months for multi-site operations, significantly faster than comparable enterprise ERPs (often 12\u201318 months). This speed comes from DigiWin\'s pre-built manufacturing templates refined across 50,000+ factory deployments and 44 years of process knowledge.' },
+        { question: 'How does DigiWin ERP compare to SAP, Oracle, or Infor for manufacturing?', answer: 'DigiWin ERP delivers approximately 90% of Tier-1 ERP capability at roughly 70% of the cost. Unlike horizontal ERPs, DigiWin is built exclusively for manufacturing with native BOM management, shop floor scheduling, quality control, and production costing.' },
+        { question: 'Does DigiWin ERP integrate with MES, WMS, and AIoT?', answer: 'Yes. All DigiWin products are built on the same platform with one shared database \u2014 zero integration tax. Production data flows from shop floor machines through MES into ERP financials automatically.' },
+      ]),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

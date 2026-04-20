@@ -21,6 +21,7 @@ const reportsBuilder = require('./sections/mes-reports');
 const section2Builder = require('./sections/mes-section-2');
 const productDetailCtaBuilder = require('./sections/mes-product-detail-cta');
 const relatedBuilder = require('./sections/mes-related-solutions');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100562, // TODO: Create WP page and set page ID
@@ -43,6 +44,31 @@ module.exports = {
     { name: 'product-detail-cta', builder: productDetailCtaBuilder },
     { name: 'related-solutions', builder: relatedBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'Products', url: '/products/' },
+        { name: 'MES', url: '/mes/' },
+      ]),
+      schema.softwareApplication({
+        name: 'DigiWin MES',
+        subCategory: 'Manufacturing Execution System',
+        description: 'Real-time shop floor visibility for Thai factories. Three tiers \u2014 MES for full production execution, SFT for lightweight tracking, AIoT Cloud for entry-level monitoring. OEE monitoring, quality data capture, and lot-level traceability.',
+        url: '/mes/',
+        featureList: 'OEE monitoring, Quality data capture, Lot-level traceability, Work order management, Real-time production dashboards, SPC analysis, Machine downtime tracking, Paperless shop floor',
+      }),
+      schema.faqPage([
+        { question: 'What is a Manufacturing Execution System (MES)?', answer: 'A Manufacturing Execution System (MES) is software that tracks, monitors, and controls production on the factory floor in real time. It bridges the gap between ERP planning and actual shop floor execution \u2014 showing you what\'s happening on every machine and workstation right now, not what happened yesterday.' },
+        { question: 'What is the difference between MES, SFT, and AIoT Cloud?', answer: 'MES is DigiWin\'s full-featured manufacturing execution system for comprehensive production management \u2014 work order tracking, quality control, material traceability, and OEE analytics. SFT (Shop Floor Tracking) is a mid-tier option that can be deployed in 2-4 weeks, focusing on production reporting and machine status monitoring. AIoT Cloud is the entry-level tier \u2014 cloud-based production monitoring with mobile apps and subscription pricing, ideal for factories starting their digitalization journey.' },
+        { question: 'Do I need ERP before implementing MES?', answer: 'No. DigiWin MES connects to any ERP system through standard web services. Many manufacturers start with MES first to get immediate shop floor visibility, then add or upgrade ERP later. This approach lets you see ROI faster than a full ERP replacement.' },
+        { question: 'What results can I expect with DigiWin MES?', answer: 'Based on implementation data across 50,000+ manufacturing clients, DigiWin MES customers report 45% reduction in production cycle time, 70% reduction in quality failures, and 26% improvement in operational efficiency. SFT users typically achieve 92% production transparency and 86% on-time delivery rate.' },
+        { question: 'How does DigiWin MES connect to machines on the shop floor?', answer: 'DigiWin MES connects to shop floor equipment through DigiWin\'s AIoT platform, which supports 50+ industrial protocols including OPC-UA, Modbus, MQTT, and direct CNC/PLC connections. For machines without digital interfaces, barcode scanning and tablet-based operator input provide the data bridge.' },
+      ]),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

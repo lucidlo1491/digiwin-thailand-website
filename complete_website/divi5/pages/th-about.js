@@ -23,6 +23,7 @@ const thThailand = require('./sections/th-about-thailand');
 const thAsiaPresence = require('./sections/th-about-asia-presence');
 const thAwards = require('./sections/th-about-awards');
 const thCta = require('./sections/th-about-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100785,
@@ -46,6 +47,22 @@ module.exports = {
   ],
 
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E40\u0E01\u0E35\u0E48\u0E22\u0E27\u0E01\u0E31\u0E1A\u0E40\u0E23\u0E32', url: '/th/about/' },
+      ])),
+      schema.thaiVariant(schema.webPage({
+        type: 'AboutPage',
+        name: 'About DigiWin Thailand',
+        description: '44 years of manufacturing-only ERP expertise. 50,000+ factory clients worldwide. Serving Thai manufacturers with ERP, MES, WMS, and AIoT.',
+        url: '/th/about/',
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

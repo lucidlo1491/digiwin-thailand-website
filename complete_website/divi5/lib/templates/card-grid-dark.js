@@ -210,7 +210,7 @@ ${hasBgIcon ? `/* Background Icons */
 .${p}-card:hover .${p}-bg-icon{opacity:0.12;transform:scale(1.05) rotate(5deg)}` : ''}
 
 ${hasBadge ? `/* Badges */
-.${p}-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#0369a1;background:rgba(0,175,240,0.15);border:1px solid rgba(0,175,240,0.25);padding:5px 12px;border-radius:6px;letter-spacing:0.05em;line-height:1.6;margin-bottom:14px;position:relative;z-index:2}` : ''}
+.${p}-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#7dd3fc;background:rgba(0,175,240,0.15);border:1px solid rgba(0,175,240,0.25);padding:5px 12px;border-radius:6px;letter-spacing:0.05em;line-height:1.6;margin-bottom:14px;position:relative;z-index:2}` : ''}
 
 ${data.cards.some(c => c.icon) ? `/* Card Icons */
 .${p}-card-icon{width:48px;height:48px;background:rgba(0,175,240,0.15);border:1px solid rgba(0,175,240,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative;z-index:2}` : ''}
@@ -220,7 +220,7 @@ ${hasHeadline ? `/* Headlines */
 
 ${hasDetail ? `/* Details */
 .${p}-detail{font-family:'Noto Sans',sans-serif;font-weight:400;font-size:13px;color:rgba(255,255,255,0.75);line-height:1.65;margin:0;padding:0}
-.${p}-detail a{color:#0369a1;text-decoration:none;transition:color 0.3s ease}
+.${p}-detail a{color:#7dd3fc;text-decoration:none;transition:color 0.3s ease}
 .${p}-detail a:hover{color:#00AFF0;text-decoration:underline}` : ''}
 
 ${data.cardGrain ? `/* Card Grain Texture */

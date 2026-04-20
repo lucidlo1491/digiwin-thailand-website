@@ -21,6 +21,7 @@ const thStatsBannerBuilder = require('./sections/th-home-stats-banner');
 const thTrustAnchorsBuilder = require('./sections/th-home-trust-anchors');
 const thProvenResultsBuilder = require('./sections/th-home-proven-results');
 const thFinalCtaBuilder = require('./sections/th-home-final-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100771,
@@ -45,6 +46,15 @@ module.exports = {
 
   // Thai typography: Noto Sans Thai font + label letter-spacing fix
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+      ])),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

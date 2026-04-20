@@ -15,6 +15,7 @@ const hubFeaturedBuilder = require('./sections/blog-hub-featured');
 const articlesBuilder = require('./sections/blog-articles');
 const libraryBuilder = require('./sections/blog-library');
 const hubCtaBuilder = require('./sections/blog-hub-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100570,
@@ -31,6 +32,22 @@ module.exports = {
     { name: 'library', builder: libraryBuilder },
     { name: 'hub-cta', builder: hubCtaBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'Blog', url: '/blog/' },
+      ]),
+      schema.webPage({
+        type: 'CollectionPage',
+        name: 'DigiWin Thailand Blog - Manufacturing Insights',
+        description: 'Technical guides, compliance insights, and real implementation stories for Thai manufacturers.',
+        url: '/blog/',
+      }),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

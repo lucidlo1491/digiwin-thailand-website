@@ -16,6 +16,7 @@ const thHubFeatured = require('./sections/th-blog-hub-featured');
 const thArticles = require('./sections/th-blog-articles');
 const thLibrary = require('./sections/th-blog-library');
 const thHubCta = require('./sections/th-blog-hub-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100788,
@@ -33,6 +34,22 @@ module.exports = {
   ],
 
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E1A\u0E17\u0E04\u0E27\u0E32\u0E21', url: '/th/blog/' },
+      ])),
+      schema.thaiVariant(schema.webPage({
+        type: 'CollectionPage',
+        name: 'DigiWin Thailand Blog',
+        description: 'Technical guides, compliance insights, and real implementation stories for Thai manufacturers.',
+        url: '/th/blog/',
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

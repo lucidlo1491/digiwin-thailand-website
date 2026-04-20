@@ -10,6 +10,7 @@
 const path = require('path');
 const { thaiTypographyCSS } = require('../lib/css-assembler');
 const thTermsBuilder = require('./sections/th-legal-terms');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100796,
@@ -23,6 +24,21 @@ module.exports = {
 
   // Thai typography: Noto Sans Thai font + label letter-spacing fix
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E02\u0E49\u0E2D\u0E01\u0E33\u0E2B\u0E19\u0E14\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E1A\u0E23\u0E34\u0E01\u0E32\u0E23', url: '/th/terms/' },
+      ])),
+      schema.thaiVariant(schema.webPage({
+        name: 'Terms of Service',
+        description: 'Terms of Service for DigiWin Thailand website.',
+        url: '/th/terms/',
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

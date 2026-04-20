@@ -16,6 +16,8 @@
 
 const base = require('./_base');
 
+const schemaLib = require('../schema');
+
 const schema = {
   description: 'FAQ accordion with collapsible details/summary items',
   category: 'content',
@@ -61,4 +63,13 @@ function css(data) {
 ${base.reducedMotion('')}`.trim();
 }
 
-module.exports = { blocks, css, schema };
+/**
+ * Generate FAQPage JSON-LD schema from the same data used for blocks()
+ * @param {object} data — same shape as blocks() input: { items: [{ question, answer }] }
+ * @returns {object} FAQPage schema object (pass to schema.serialize())
+ */
+function faqSchema(data) {
+  return schemaLib.faqPage(data.items);
+}
+
+module.exports = { blocks, css, schema, faqSchema };

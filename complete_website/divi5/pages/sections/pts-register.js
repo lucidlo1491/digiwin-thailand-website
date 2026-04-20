@@ -11,8 +11,8 @@ const DATA = {
   color: '#0369a1',
   title: 'Reserve Your Seat',
   meta: 'Thursday, April 10, 2026 &middot; Bangkok &middot; Limited to 50 participants',
-  cta: { text: 'Reserve Your Seat', href: '/contact/' },
-  secondary: { text: "Can't make this date?", linkText: 'Register your interest', href: '/contact/' },
+  cta: { text: 'Reserve Your Seat', href: '/demo/' },
+  secondary: { text: "Can't make this date?", linkText: 'Register your interest', href: '/demo/' },
 };
 
 module.exports = {

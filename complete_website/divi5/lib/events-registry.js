@@ -56,6 +56,16 @@ const ALL_EVENTS = {
     href: '/news/events/shop-floor-data-workshop/',
     color: '#15803d',
   },
+  'intelligent-asia-2026': {
+    slug: 'intelligent-asia-2026',
+    title: 'Intelligent Asia Thailand 2026: DigiWin Smart Electronics Manufacturing',
+    shortTitle: 'Intelligent Asia Thailand 2026',
+    typeBadge: 'Trade Show',
+    date: 'March 11–13, 2026',
+    location: 'BITEC Bangkok, EH 98 Hall',
+    href: '/news/events/intelligent-asia-2026/',
+    color: '#0891b2',
+  },
 };
 
 /**

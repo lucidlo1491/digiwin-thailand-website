@@ -110,7 +110,7 @@ function blocks() {
         </div>
 
         <div class="${P}-cta-wrapper">
-          <a href="/contact/" class="${P}-cta">Let\u2019s Talk About Your Factory</a>
+          <a href="/demo/" class="${P}-cta">Let\u2019s Talk About Your Factory</a>
         </div>
       </div>
     </div>`;

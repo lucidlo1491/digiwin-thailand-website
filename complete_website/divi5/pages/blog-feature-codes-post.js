@@ -18,6 +18,7 @@ const path = require('path');
 
 const contentBuilder = require('./sections/blog-fc-post-content');
 const faqBuilder = require('./sections/blog-fc-post-faq');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100802,
@@ -32,6 +33,24 @@ module.exports = {
     { name: 'content', builder: contentBuilder },
     { name: 'faq',     builder: faqBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'Blog', url: '/blog/' },
+        { name: 'Feature Codes: SKU Reduction', url: '/feature-codes/' },
+      ]),
+      schema.blogPosting({
+        headline: 'Feature Codes: How to Turn 27 SKUs Into 1 Product',
+        description: 'Learn how product feature codes reduce SKU explosion by 90%+ \u2014 managing size, color, and variant combinations under a single item code instead of dozens.',
+        datePublished: '2026-02-08',
+        dateModified: '2026-02-08',
+        url: '/feature-codes/',
+      }),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/group'],

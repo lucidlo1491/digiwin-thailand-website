@@ -107,7 +107,7 @@ function blocks() {
   const ctaHTML = `<div class="blog-fc-cta-inner">
   <h2>Managing Product Complexity?</h2>
   <p>Our team helps Thai manufacturers simplify their product data without losing visibility.</p>
-  <a href="/contact/" class="blog-fc-cta-btn">
+  <a href="/demo/" class="blog-fc-cta-btn">
     <svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
     Let's Talk
   </a>

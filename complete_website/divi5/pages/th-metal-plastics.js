@@ -22,6 +22,7 @@ const thProducts = require('./sections/th-metal-plastics-products');
 const thFaq = require('./sections/th-metal-plastics-metal-faq');
 const thCta = require('./sections/th-metal-plastics-cta');
 const thRelated = require('./sections/th-metal-plastics-related-solutions');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100784,
@@ -45,6 +46,22 @@ module.exports = {
   ],
 
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E2D\u0E38\u0E15\u0E2A\u0E32\u0E2B\u0E01\u0E23\u0E23\u0E21', url: '/th/industries/' },
+        { name: '\u0E42\u0E25\u0E2B\u0E30\u0E41\u0E25\u0E30\u0E1E\u0E25\u0E32\u0E2A\u0E15\u0E34\u0E01', url: '/th/industries/metal-plastics/' },
+      ])),
+      schema.thaiVariant(schema.webPage({
+        name: 'Metal & Plastics Processing Solutions',
+        description: 'ERP and MES for metal stamping, injection molding, die casting, and CNC machining in Thailand.',
+        url: '/th/industries/metal-plastics/',
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

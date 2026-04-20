@@ -1,7 +1,7 @@
 /**
  * erp-section-2.js — FAQ Section (S8)
  *
- * Source: erp.html line 2280
+ * Source: /products/erp/ line 2280
  */
 
 const template = require('../../lib/templates/faq-accordion');

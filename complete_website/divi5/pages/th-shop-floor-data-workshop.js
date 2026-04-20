@@ -22,6 +22,7 @@ const proofBuilder = require('./sections/th-sfd-proof');
 const logisticsBuilder = require('./sections/th-sfd-logistics');
 const registerBuilder = require('./sections/th-sfd-register');
 const relatedBuilder = require('./sections/th-sfd-related');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100794,
@@ -44,6 +45,27 @@ module.exports = {
 
   // Thai typography: Noto Sans Thai font + line-height + label overrides
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E02\u0E48\u0E32\u0E27\u0E2A\u0E32\u0E23\u0E41\u0E25\u0E30\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21', url: '/th/news/' },
+        { name: 'Shop Floor Data Workshop', url: '/th/shop-floor-data-workshop/' },
+      ])),
+      schema.thaiVariant(schema.event({
+        name: 'Hands-On: Setting Up Shop Floor Data Collection with MES',
+        description: 'Full-day hands-on workshop configuring real MES modules, connecting shop floor devices, and seeing live OEE data flow from machine to dashboard.',
+        startDate: '2026-04-24T09:00:00+07:00',
+        endDate: '2026-04-24T16:00:00+07:00',
+        locationName: 'Bangkok, Thailand',
+        city: 'Bangkok',
+        country: 'TH',
+        isAccessibleForFree: true,
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

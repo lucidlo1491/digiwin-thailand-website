@@ -22,7 +22,7 @@ function blocks() {
                 <h2>${D.title}</h2>
                 <p>${D.subtitle}</p>
                 <div class="${P}-cta-buttons">
-                    <a href="/contact/" class="${P}-btn-white">${D.btnPrimary}</a>
+                    <a href="/demo/" class="${P}-btn-white">${D.btnPrimary}</a>
                     <a href="/products/" class="${P}-btn-outline">${D.btnSecondary}</a>
                 </div>
             </div>`;

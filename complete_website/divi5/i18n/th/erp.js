@@ -300,7 +300,7 @@ const cta = {
   title: 'พร้อมเห็นสิ่งที่เป็นไปได้หรือยัง?',
   subtitle: 'กรอกแบบฟอร์มแล้วทีมงานจะติดต่อกลับเพื่อพูดคุยเรื่องความท้าทายเฉพาะทางของโรงงานคุณ',
   buttons: [
-    { text: shared.cta.getInTouch, href: '/demo.html', style: 'primary' },
+    { text: shared.cta.getInTouch, href: '/th/demo/', style: 'primary' },
     { text: 'ดูตามอุตสาหกรรม', href: '/industries.html', style: 'ghost' },
   ],
 };

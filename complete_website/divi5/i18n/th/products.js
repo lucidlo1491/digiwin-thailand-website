@@ -131,7 +131,7 @@ module.exports = {
     title: 'ไม่แน่ใจว่าจะเริ่มจากตรงไหน?',
     subtitle: 'บอกเราเกี่ยวกับโรงงานของคุณ แล้วเราจะแนะนำโซลูชันที่เหมาะกับความต้องการ ไม่มีข้อผูกมัด ไม่มีแรงกดดัน\u2014แค่ความชัดเจน',
     buttons: [
-      { text: 'พูดคุยกับเรา', href: '/contact/', style: 'primary' },
+      { text: 'พูดคุยกับเรา', href: '/th/demo/', style: 'primary' },
       { text: 'ดูตามอุตสาหกรรม', href: '/industries/', style: 'ghost' },
     ],
   },

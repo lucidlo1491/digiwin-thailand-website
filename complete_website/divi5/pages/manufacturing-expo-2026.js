@@ -21,6 +21,7 @@ const proofBuilder = require('./sections/mex-proof');
 const logisticsBuilder = require('./sections/mex-logistics');
 const registerBuilder = require('./sections/mex-register');
 const relatedBuilder = require('./sections/mex-related');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100756,
@@ -40,6 +41,27 @@ module.exports = {
     { name: 'mex-register', builder: registerBuilder },
     { name: 'mex-related', builder: relatedBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'News & Events', url: '/news/' },
+        { name: 'Manufacturing Expo 2026', url: '/manufacturing-expo-2026/' },
+      ]),
+      schema.event({
+        name: 'Manufacturing Expo Thailand 2026 - DigiWin Booth A12',
+        description: 'Visit DigiWin at Booth A12, Manufacturing Expo Thailand 2026 at BITEC Bangkok. Live demos of ERP, MES, WMS, and AIoT.',
+        startDate: '2026-05-20T10:00:00+07:00',
+        endDate: '2026-05-22T18:00:00+07:00',
+        locationName: 'BITEC Bangna',
+        city: 'Bangkok',
+        country: 'TH',
+        isAccessibleForFree: true,
+      }),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

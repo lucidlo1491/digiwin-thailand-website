@@ -2,7 +2,7 @@
  * wms-integration.js — Integration Section (S8)
  *
  * Rewritten following MES integration pattern (clean reference).
- * Source: wms.html line 1826
+ * Source: /products/wms/ line 1826
  */
 
 const base = require('../../lib/templates/_base');
@@ -56,9 +56,9 @@ function blocks() {
                 </div>
 
                 <div class="integration-links">
-                    <a href="erp.html" class="integration-link">Explore ERP &rarr;</a>
-                    <a href="mes.html" class="integration-link">Explore MES &rarr;</a>
-                    <a href="aiot.html" class="integration-link">Explore AIoT &rarr;</a>
+                    <a href="/products/erp/" class="integration-link">Explore ERP &rarr;</a>
+                    <a href="/products/mes/" class="integration-link">Explore MES &rarr;</a>
+                    <a href="/products/aiot/" class="integration-link">Explore AIoT &rarr;</a>
                 </div>
             </div>
     </div>

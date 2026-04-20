@@ -56,9 +56,9 @@ function blocks() {
                 </div>
 
                 <div class="integration-links">
-                    <a href="mes.html" class="integration-link">${t.exploreMES} <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                    <a href="wms.html" class="integration-link">${t.exploreWMS} <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                    <a href="aiot.html" class="integration-link">${t.exploreAIoT} <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="/products/mes/" class="integration-link">${t.exploreMES} <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="/products/wms/" class="integration-link">${t.exploreWMS} <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="/products/aiot/" class="integration-link">${t.exploreAIoT} <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
             </div>
     </div>

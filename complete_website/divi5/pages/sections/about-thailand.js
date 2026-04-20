@@ -88,7 +88,7 @@ function blocks() {
                             <div class="contact-label">Email</div>
                             <div class="contact-value"><a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a></div>
                         </div>
-                        <a href="demo.html" class="contact-cta">Get in Touch →</a>
+                        <a href="/demo/" class="contact-cta">Get in Touch →</a>
                     </div>
                 </div>
             </div>

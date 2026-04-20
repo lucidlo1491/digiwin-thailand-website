@@ -17,6 +17,7 @@ const thUpcoming = require('./sections/th-news-upcoming');
 const thSeries = require('./sections/th-news-series');
 const thPast = require('./sections/th-news-past');
 const thCta = require('./sections/th-news-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100787,
@@ -35,6 +36,22 @@ module.exports = {
   ],
 
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E02\u0E48\u0E32\u0E27\u0E2A\u0E32\u0E23\u0E41\u0E25\u0E30\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21', url: '/th/news/' },
+      ])),
+      schema.thaiVariant(schema.webPage({
+        type: 'CollectionPage',
+        name: 'DigiWin Thailand News & Events',
+        description: 'Manufacturing workshops, seminars, factory tours, and trade shows for Thai manufacturers.',
+        url: '/th/news/',
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

@@ -20,6 +20,7 @@ const thProofBuilder = require('./sections/th-mex-proof');
 const thLogisticsBuilder = require('./sections/th-mex-logistics');
 const thRegisterBuilder = require('./sections/th-mex-register');
 const thRelatedBuilder = require('./sections/th-mex-related');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100792,
@@ -41,6 +42,27 @@ module.exports = {
   ],
 
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E02\u0E48\u0E32\u0E27\u0E2A\u0E32\u0E23\u0E41\u0E25\u0E30\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21', url: '/th/news/' },
+        { name: 'Manufacturing Expo 2026', url: '/th/manufacturing-expo-2026/' },
+      ])),
+      schema.thaiVariant(schema.event({
+        name: 'Manufacturing Expo Thailand 2026 - DigiWin Booth A12',
+        description: 'Visit DigiWin at Booth A12, Manufacturing Expo Thailand 2026 at BITEC Bangkok. Live demos of ERP, MES, WMS, and AIoT.',
+        startDate: '2026-05-20T10:00:00+07:00',
+        endDate: '2026-05-22T18:00:00+07:00',
+        locationName: 'BITEC Bangna',
+        city: 'Bangkok',
+        country: 'TH',
+        isAccessibleForFree: true,
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

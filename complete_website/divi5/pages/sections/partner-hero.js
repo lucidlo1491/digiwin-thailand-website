@@ -73,7 +73,7 @@ function blocks() {
         <h1 class="${P}-title">Tired of Selling <span class="${P}-hl">Man-Days?</span><br>The Problem Isn\u2019t Your Team.</h1>
         <p class="${P}-subtitle">You\u2019re fighting customization wars that burn out your best consultants and compress your margins every year. The problem isn\u2019t execution \u2014 it\u2019s your business model. We offer a different architecture.</p>
         <div class="${P}-ctas">
-          <a href="/contact/" class="${P}-btn ${P}-btn--primary">Let\u2019s Talk Partnership</a>
+          <a href="/demo/" class="${P}-btn ${P}-btn--primary">Let\u2019s Talk Partnership</a>
           <a href="/partner-program/economics/" class="${P}-btn ${P}-btn--ghost">See the Math First</a>
         </div>
         <div class="${P}-stats">
@@ -129,7 +129,7 @@ ${superD.css(`${P}-deco-right`, { variant: 'outline', position: 'right', opacity
 .${P}-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1)}
 .${P}-stat{text-align:center}
 .${P}-stat-value{font-family:'Noto Sans',sans-serif;font-size:42px;font-weight:700;color:#fff;line-height:1;margin-bottom:8px}
-.${P}-stat-label{font-family:'Noto Sans',sans-serif;font-size:14px;font-weight:400;color:rgba(255,255,255,0.75);line-height:1.4}
+.${P}-stat-label{font-family:'Noto Sans',sans-serif;font-size:14px;font-weight:400;color:rgba(255,255,255,0.85);line-height:1.4}
 @media(max-width:${base.BREAKPOINTS.tablet}px){
   .${P}-section{padding:120px 24px 80px}
   .${P}-stats{grid-template-columns:repeat(2,1fr);gap:24px}

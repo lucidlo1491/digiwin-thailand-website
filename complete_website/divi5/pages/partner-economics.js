@@ -16,6 +16,7 @@ const revenueBuilder = require('./sections/econ-revenue');
 const journeyBuilder = require('./sections/econ-journey');
 const protectionBuilder = require('./sections/econ-protection');
 const ctaBuilder = require('./sections/econ-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100559,
@@ -33,6 +34,17 @@ module.exports = {
     { name: 'protection', builder: protectionBuilder },
     { name: 'cta',        builder: ctaBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'Partner Program', url: '/partner-program/' },
+        { name: 'Partner Economics', url: '/partner-program/economics/' },
+      ]),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

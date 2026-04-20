@@ -26,8 +26,8 @@ function blocks() {
                 <h2>Have a Manufacturing Challenge?</h2>
                 <p>Our team has helped 100+ Thai factories solve production, compliance, and cost challenges. Let's talk about yours.</p>
                 <div class="${P}-cta-buttons">
-                    <a href="demo.html" class="${P}-btn-white">Let's Talk</a>
-                    <a href="products.html" class="${P}-btn-outline">Explore Products</a>
+                    <a href="/demo/" class="${P}-btn-white">Let's Talk</a>
+                    <a href="/products/" class="${P}-btn-outline">Explore Products</a>
                 </div>
             </div>`;
 

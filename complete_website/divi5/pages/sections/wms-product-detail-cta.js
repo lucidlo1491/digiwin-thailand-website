@@ -2,7 +2,7 @@
  * wms-product-detail-cta.js — WMS CTA Section (S10)
  *
  * REFACTORED: Uses cta-gradient template (91 -> ~25 lines)
- * Source: wms.html — "Ready to End the Warehouse Chaos?"
+ * Source: /products/wms/ — "Ready to End the Warehouse Chaos?"
  */
 
 const ctaGradient = require('../../lib/templates/cta-gradient');
@@ -15,8 +15,8 @@ const DATA = {
   title: 'Ready to End the Warehouse Chaos?',
   subtitle: 'Fill out the form and our team will reach out to discuss your specific warehouse challenges.',
   buttons: [
-    { text: 'Get in Touch', href: '/demo.html', style: 'primary' },
-    { text: 'View All Products', href: '/products.html', style: 'ghost' },
+    { text: 'Get in Touch', href: '/demo/', style: 'primary' },
+    { text: 'View All Products', href: '/products/', style: 'ghost' },
   ],
   superD: { variant: 'gradient', position: 'left', opacity: 0.14 },
   waveFlow: { height: '170px', opacity: 0.32 },

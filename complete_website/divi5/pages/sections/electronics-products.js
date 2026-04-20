@@ -24,7 +24,7 @@ function blocks() {
                     <h2>Recommended Products for Electronics</h2>
                 </div>
                 <div class="products-grid">
-                    <a href="../products/mes.html" class="product-card">
+                    <a href="../products/mes/" class="product-card">
                         <div class="product-card-icon">
                             <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/><circle cx="6" cy="12" r="1"/><circle cx="10" cy="12" r="1"/><circle cx="14" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg>
                         </div>
@@ -32,7 +32,7 @@ function blocks() {
                         <p>Component-level traceability, SMT integration, MSD management, and real-time quality tracking for electronics.</p>
                         <span class="product-card-link">Learn More <span>→</span></span>
                     </a>
-                    <a href="../products/wms.html" class="product-card">
+                    <a href="../products/wms/" class="product-card">
                         <div class="product-card-icon">
                             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg>
                         </div>
@@ -40,7 +40,7 @@ function blocks() {
                         <p>Reel management, moisture-sensitive handling, and kitting support for electronics warehouse operations.</p>
                         <span class="product-card-link">Learn More <span>→</span></span>
                     </a>
-                    <a href="../products/aiot.html" class="product-card">
+                    <a href="../products/aiot/" class="product-card">
                         <div class="product-card-icon">
                             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
                         </div>

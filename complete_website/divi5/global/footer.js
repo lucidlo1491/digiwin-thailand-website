@@ -166,6 +166,11 @@ function getFooterHTML() {
   var y=new Date().getFullYear();
   var ys=document.querySelector('.dw-years');if(ys)ys.textContent=y-1982;
   var yc=document.querySelector('.dw-footer-year');if(yc)yc.textContent=y;
+  /* Super D favicon */
+  var ico=document.querySelector('link[rel="icon"]');
+  var svg='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16.73 16.89%27%3E%3Cpath fill=%27%2300AFF0%27 d=%27M0 16.89C0 15.21 1.36 13.85 3.04 13.85h5.24c2.98 0 5.41-2.42 5.41-5.41 0-2.99-2.42-5.41-5.41-5.41H3.04C1.36 3.04 0 1.68 0 0h8.28c4.66 0 8.44 3.78 8.44 8.44s-3.78 8.45-8.44 8.45z%27/%3E%3Cpath fill=%27%2300AFF0%27 d=%27M.89 8.45a2.18 2.18 0 114.36 0 2.18 2.18 0 01-4.36 0%27/%3E%3C/svg%3E';
+  if(ico){ico.href=svg;ico.type='image/svg+xml';}
+  else{ico=document.createElement('link');ico.rel='icon';ico.type='image/svg+xml';ico.href=svg;document.head.appendChild(ico);}
 })();
 </script>`;
 }

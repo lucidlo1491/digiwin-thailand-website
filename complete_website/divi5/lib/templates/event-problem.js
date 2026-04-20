@@ -28,12 +28,13 @@ function blocks(data) {
   let cardHTML = '';
   if (data.dataCard) {
     const dc = data.dataCard;
+    const toHTML = dc.to ? `
+        <div class="${P}-data-arrow">&darr;</div>
+        <div class="${P}-data-number ${P}-data-number--success">${dc.to}</div>` : '';
     cardHTML = `
     <div class="${P}-data-card">
       <div class="${P}-data-content">
-        <div class="${P}-data-number">${dc.from}</div>
-        <div class="${P}-data-arrow">&darr;</div>
-        <div class="${P}-data-number ${P}-data-number--success">${dc.to}</div>
+        <div class="${P}-data-number">${dc.from}</div>${toHTML}
         <div class="${P}-data-label">${dc.label}</div>
       </div>
     </div>`;
@@ -80,7 +81,7 @@ function css(data) {
 .${P}-data-number{font-family:'JetBrains Mono',monospace;font-size:48px;font-weight:500;color:#00AFF0;line-height:1.2;margin-bottom:8px}
 .${P}-data-arrow{font-size:32px;color:rgba(255,255,255,0.85);line-height:1.6;margin:4px 0}
 .${P}-data-number--success{color:${c.hex}}
-.${P}-data-label{font-family:'Noto Sans',sans-serif;font-size:16px;color:rgba(255,255,255,0.85);margin-top:12px}
+.${P}-data-label{font-family:'Noto Sans',sans-serif;font-size:16px;color:rgba(255,255,255,0.9);margin-top:12px}
 .${P}-case-link{text-align:center;margin-top:32px}
 .${P}-case-link a{font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;color:${c.hex};text-decoration:none;transition:color 0.3s ease}
 .${P}-case-link a:hover{color:${c.hover}}

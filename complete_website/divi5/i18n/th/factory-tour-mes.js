@@ -255,8 +255,8 @@ const register = {
   adminLabel: 'Register CTA — Factory Tour MES (Thai)',
   title: 'ลงทะเบียนเยี่ยมชม',
   meta: 'วันพฤหัสบดีที่ 8 พฤษภาคม 2026 &middot; EEC Industrial Zone &middot; จำกัด 20 ท่าน',
-  cta: { text: 'ลงทะเบียนเยี่ยมชม', href: '/contact/' },
-  secondary: { text: 'มาวันนี้ไม่ได้?', linkText: 'ลงทะเบียนแสดงความสนใจ', href: '/contact/' },
+  cta: { text: 'ลงทะเบียนเยี่ยมชม', href: '/th/demo/' },
+  secondary: { text: 'มาวันนี้ไม่ได้?', linkText: 'ลงทะเบียนแสดงความสนใจ', href: '/th/demo/' },
 };
 
 // ══════════════════════════════════════════════════════════════

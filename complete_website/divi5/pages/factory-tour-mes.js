@@ -21,6 +21,7 @@ const proofBuilder = require('./sections/ftm-proof');
 const logisticsBuilder = require('./sections/ftm-logistics');
 const registerBuilder = require('./sections/ftm-register');
 const relatedBuilder = require('./sections/ftm-related');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100755,
@@ -40,6 +41,27 @@ module.exports = {
     { name: 'ftm-register', builder: registerBuilder },
     { name: 'ftm-related', builder: relatedBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'News & Events', url: '/news/' },
+        { name: 'Factory Tour: MES', url: '/factory-tour-mes/' },
+      ]),
+      schema.event({
+        name: 'Live Factory Tour: See DigiWin MES in Action',
+        description: 'Walk the shop floor of a real factory running DigiWin MES. See production data flow from machines to dashboards in real time.',
+        startDate: '2026-05-08T10:00:00+07:00',
+        endDate: '2026-05-08T15:00:00+07:00',
+        locationName: 'EEC Industrial Zone, Thailand',
+        city: 'Eastern Economic Corridor',
+        country: 'TH',
+        isAccessibleForFree: true,
+      }),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

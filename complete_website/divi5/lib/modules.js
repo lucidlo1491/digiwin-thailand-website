@@ -142,6 +142,11 @@ function sectionOpen(opts = {}) {
     json.module.advanced.text = { text: { desktop: { value: { color: opts.bgLayout } } } };
   }
 
+  if (opts.cssClass) {
+    json.module.advanced = json.module.advanced || {};
+    json.module.advanced.htmlAttributes = { desktop: { value: { class: opts.cssClass } } };
+  }
+
   if (opts.background) {
     json.module.decoration.background = { desktop: { value: opts.background } };
   }

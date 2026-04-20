@@ -19,6 +19,7 @@ const thJourneyResearch = require('./sections/th-partner-journey-research');
 const thJourneyTiers = require('./sections/th-partner-journey-tiers');
 const thMarketTiming = require('./sections/th-partner-market-timing');
 const thFinalCta = require('./sections/th-partner-final-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100772,
@@ -40,6 +41,21 @@ module.exports = {
   ],
 
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E42\u0E1B\u0E23\u0E41\u0E01\u0E23\u0E21\u0E1E\u0E32\u0E23\u0E4C\u0E17\u0E40\u0E19\u0E2D\u0E23\u0E4C', url: '/th/partner-program/' },
+      ])),
+      schema.thaiVariant(schema.webPage({
+        name: 'DigiWin Partner Program',
+        description: 'ERP partner program in Thailand. 30-40% license margins, 100% service fee retention, recurring maintenance revenue, 6-month lead lock protection.',
+        url: '/th/partner-program/',
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

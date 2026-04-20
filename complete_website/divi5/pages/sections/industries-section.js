@@ -59,7 +59,7 @@ function blocks() {
                 </div>
                 <div class="industry-cards">
                     
-                    <a href="industries/automotive.html" class="industry-card">
+                    <a href="/industries/automotive/" class="industry-card">
                         <div class="industry-card-visual">
                             <div class="industry-card-icon">
                                 <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/><path d="M5 15H3V9l2-4h10l4 4v6h-2"/><path d="M9 15h6"/><path d="M5 9h14"/></svg>
@@ -95,7 +95,7 @@ function blocks() {
                     </a>
     
                     
-                    <a href="industries/electronics.html" class="industry-card">
+                    <a href="/industries/electronics/" class="industry-card">
                         <div class="industry-card-visual">
                             <div class="industry-card-icon">
                                 <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -131,7 +131,7 @@ function blocks() {
                     </a>
     
                     
-                    <a href="industries/metal-plastics.html" class="industry-card">
+                    <a href="/industries/metal-plastics/" class="industry-card">
                         <div class="industry-card-visual">
                             <div class="industry-card-icon">
                                 <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>

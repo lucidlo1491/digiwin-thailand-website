@@ -59,7 +59,7 @@ function css() {
   return `
 /* === METAL CASE STUDY (S6) === */
 /* Divi wrapper override */
-.et-l--body .et_pb_section:has(.${P}){background:linear-gradient(135deg, #000864 0%, #001080 50%, #003CC8 100%) !important;padding:100px 0 !important;position:relative;overflow:hidden}
+.et_pb_section:has(.${P}){background:linear-gradient(135deg, #000864 0%, #001080 50%, #003CC8 100%) !important;padding:100px 0 !important;position:relative;overflow:hidden}
 .${P}{${base.fontSmoothingReset(P)}font-size:16px;position:relative;overflow:hidden}
 .${P} p{padding-bottom:0;line-height:1.6}
 .et_pb_section .${P} h2,.et_pb_section .${P} h3{margin:0;padding:0;line-height:1.6}

@@ -1,7 +1,7 @@
 /**
  * wms-section-2.js — FAQ Section (S9)
  *
- * Source: wms.html line 1875
+ * Source: /products/wms/ line 1875
  */
 
 const template = require('../../lib/templates/faq-accordion');

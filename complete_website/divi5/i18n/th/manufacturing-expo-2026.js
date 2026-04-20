@@ -178,7 +178,7 @@ const register = {
   adminLabel: 'Register CTA (Thai)',
   title: 'นัดพบ 1-on-1',
   meta: '20–22 พฤษภาคม 2026 &middot; BITEC Bangkok &middot; บูธ A12',
-  cta: { text: 'นัดพบ 1-on-1', href: '/th/contact/' },
+  cta: { text: 'นัดพบ 1-on-1', href: '/th/demo/' },
   secondary: { text: 'ไม่ต้องจองก็มาได้', linkText: 'แวะมาที่บูธ A12 ได้ตลอดเวลา', href: '/th/news/' },
 };
 

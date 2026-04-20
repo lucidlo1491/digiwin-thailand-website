@@ -2,18 +2,16 @@
  * mysql.js — MySQL connection, query, escape, backup, post-lock check
  *
  * Extracted from build-hero-divi5.js v30. All MySQL operations for Divi 5 builds.
+ * Supports local (socket) and production (TCP via SSH tunnel) connections.
  */
 
 const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const { getProfile, tbl } = require('./mysql-config');
 
-// LocalWP MySQL connection defaults
-const DEFAULTS = {
-  mysqlBin: '/Applications/Local.app/Contents/Resources/extraResources/lightning-services/mysql-8.0.35+4/bin/darwin-arm64/bin/mysql',
-  mysqlSocket: '/Users/peterlo/Library/Application Support/Local/run/M99oTun0_/mysql/mysqld.sock',
-  mysqlDb: 'local',
-};
+// Legacy DEFAULTS for backward compatibility (existing callers that don't pass opts)
+const DEFAULTS = getProfile('local');
 
 /**
  * MySQL-escape a string value for safe SQL insertion
@@ -30,19 +28,37 @@ function escape(str) {
 
 /**
  * Execute a MySQL query via command line
- * Uses temp file to avoid shell escaping issues with complex content
+ * Uses temp file to avoid shell escaping issues with complex content.
+ * Supports both socket (local) and TCP (production) modes.
  */
 function query(sql, opts = {}) {
   const bin = opts.mysqlBin || DEFAULTS.mysqlBin;
-  const socket = opts.mysqlSocket || DEFAULTS.mysqlSocket;
   const db = opts.mysqlDb || DEFAULTS.mysqlDb;
+  const timeout = opts.timeout || DEFAULTS.timeout;
+  const mode = opts.mode || DEFAULTS.mode;
+
+  // Build connection string based on mode
+  let connStr;
+  if (mode === 'tcp') {
+    const host = opts.mysqlHost || '127.0.0.1';
+    const port = opts.mysqlPort || 33306;
+    const user = opts.mysqlUser || '';
+    const pass = opts.mysqlPass || '';
+    if (!user) throw new Error('TCP mode requires mysqlUser. Set in mysql-config.local.js or PROD_MYSQL_USER env var.');
+    connStr = `"${bin}" -h ${host} -P ${port} -u ${user} -p'${pass}' ${db}`;
+  } else {
+    const socket = opts.mysqlSocket || DEFAULTS.mysqlSocket;
+    const user = opts.mysqlUser || 'root';
+    const pass = opts.mysqlPass || 'root';
+    connStr = `"${bin}" --socket="${socket}" -u ${user} -p${pass} ${db}`;
+  }
 
   const tmpFile = path.join(__dirname, '..', `.tmp-sql-${process.pid}-${Date.now()}.sql`);
   fs.writeFileSync(tmpFile, sql, 'utf8');
   try {
     const result = execSync(
-      `"${bin}" --socket="${socket}" -u root -proot ${db} < "${tmpFile}"`,
-      { encoding: 'utf8', timeout: 15000 }
+      `${connStr} < "${tmpFile}"`,
+      { encoding: 'utf8', timeout }
     );
     return result;
   } finally {
@@ -59,7 +75,7 @@ function backup(pageId, opts = {}) {
   if (!fs.existsSync(backupDir)) fs.mkdirSync(backupDir, { recursive: true });
 
   const result = query(
-    `SELECT post_content, post_title FROM wp_posts WHERE ID = ${pageId};`,
+    `SELECT post_content, post_title FROM ${tbl('posts', opts)} WHERE ID = ${pageId};`,
     opts
   );
 
@@ -72,7 +88,7 @@ function backup(pageId, opts = {}) {
 
   // Also get current meta
   const metaResult = query(
-    `SELECT meta_key, meta_value FROM wp_postmeta WHERE post_id = ${pageId} AND meta_key IN ('_et_pb_custom_css', '_et_pb_use_builder', '_et_pb_use_divi_5');`,
+    `SELECT meta_key, meta_value FROM ${tbl('postmeta', opts)} WHERE post_id = ${pageId} AND meta_key IN ('_et_pb_custom_css', '_et_pb_use_builder', '_et_pb_use_divi_5');`,
     opts
   );
 
@@ -94,7 +110,7 @@ function backup(pageId, opts = {}) {
 function checkPostLock(pageId, opts = {}) {
   try {
     const result = query(
-      `SELECT meta_value FROM wp_postmeta WHERE post_id = ${pageId} AND meta_key = '_edit_lock';`,
+      `SELECT meta_value FROM ${tbl('postmeta', opts)} WHERE post_id = ${pageId} AND meta_key = '_edit_lock';`,
       opts
     );
     const lines = result.trim().split('\n');
@@ -121,7 +137,7 @@ function checkPostLock(pageId, opts = {}) {
 function checkRecentModification(pageId, withinSeconds = 300, opts = {}) {
   try {
     const result = query(
-      `SELECT TIMESTAMPDIFF(SECOND, post_modified_gmt, UTC_TIMESTAMP()) as seconds_ago FROM wp_posts WHERE ID = ${pageId};`,
+      `SELECT TIMESTAMPDIFF(SECOND, post_modified_gmt, UTC_TIMESTAMP()) as seconds_ago FROM ${tbl('posts', opts)} WHERE ID = ${pageId};`,
       opts
     );
     const lines = result.trim().split('\n');
@@ -135,10 +151,13 @@ function checkRecentModification(pageId, withinSeconds = 300, opts = {}) {
 
 /**
  * Push post content + meta to WordPress via direct MySQL
+ * @param {number} pageId
+ * @param {object} options — { title, content, css, schemaMeta, opts }
+ *   schemaMeta: optional JSON string of schema.org JSON-LD array (from schema.js serialize())
  */
-function pushPage(pageId, { title, content, css, opts = {} } = {}) {
+function pushPage(pageId, { title, content, css, schemaMeta, opts = {} } = {}) {
   // 1. Update post content and title
-  const updateSQL = `UPDATE wp_posts SET
+  const updateSQL = `UPDATE ${tbl('posts', opts)} SET
   post_title = '${escape(title)}',
   post_content = '${escape(content)}',
   post_modified = NOW(),
@@ -156,9 +175,14 @@ WHERE ID = ${pageId};`;
     ['_wp_page_template', 'default'],
   ];
 
+  // 3. If schema metadata provided, include it in the push
+  if (schemaMeta) {
+    metaEntries.push(['_digiwin_schema', schemaMeta]);
+  }
+
   const metaSQL = metaEntries.map(([key, value]) => {
-    return `DELETE FROM wp_postmeta WHERE post_id = ${pageId} AND meta_key = '${escape(key)}';
-INSERT INTO wp_postmeta (post_id, meta_key, meta_value) VALUES (${pageId}, '${escape(key)}', '${escape(value)}');`;
+    return `DELETE FROM ${tbl('postmeta', opts)} WHERE post_id = ${pageId} AND meta_key = '${escape(key)}';
+INSERT INTO ${tbl('postmeta', opts)} (post_id, meta_key, meta_value) VALUES (${pageId}, '${escape(key)}', '${escape(value)}');`;
   }).join('\n');
 
   query(metaSQL, opts);
@@ -169,7 +193,7 @@ INSERT INTO wp_postmeta (post_id, meta_key, meta_value) VALUES (${pageId}, '${es
  */
 function verifyPush(pageId, opts = {}) {
   const result = query(
-    `SELECT post_title, LENGTH(post_content) as content_len, post_status FROM wp_posts WHERE ID = ${pageId};`,
+    `SELECT post_title, LENGTH(post_content) as content_len, post_status FROM ${tbl('posts', opts)} WHERE ID = ${pageId};`,
     opts
   );
   return result.trim();
@@ -193,7 +217,8 @@ function restore(pageId, backupFile, opts = {}) {
  * Used for Thai language pages (i18n)
  */
 function createPage({ title, slug, parentId = 0, status = 'publish', opts = {} } = {}) {
-  const sql = `INSERT INTO wp_posts (
+  const siteUrl = opts.siteUrl || DEFAULTS.siteUrl || 'https://digiwin-thailand.local';
+  const sql = `INSERT INTO ${tbl('posts', opts)} (
     post_author, post_date, post_date_gmt, post_content, post_title,
     post_excerpt, post_status, comment_status, ping_status, post_password,
     post_name, to_ping, pinged, post_modified, post_modified_gmt,
@@ -218,7 +243,7 @@ function createPage({ title, slug, parentId = 0, status = 'publish', opts = {} }
   }
 
   // Set GUID (WordPress convention: site_url/?page_id=ID)
-  query(`UPDATE wp_posts SET guid = 'https://digiwin-thailand.local/?page_id=${newId}' WHERE ID = ${newId};`, opts);
+  query(`UPDATE ${tbl('posts', opts)} SET guid = '${siteUrl}/?page_id=${newId}' WHERE ID = ${newId};`, opts);
 
   return newId;
 }
@@ -234,4 +259,5 @@ module.exports = {
   restore,
   createPage,
   DEFAULTS,
+  tbl,
 };

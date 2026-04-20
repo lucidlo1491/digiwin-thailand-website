@@ -307,6 +307,18 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
   -webkit-font-smoothing: auto !important;
 }
 
+@media (max-width: 1024px) {
+  .et_pb_section .series-timeline {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .et_pb_section .series-timeline {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 `.trim();
 }
 

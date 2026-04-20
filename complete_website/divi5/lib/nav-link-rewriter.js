@@ -13,6 +13,7 @@
 const fs = require('fs');
 const path = require('path');
 const mysql = require('./mysql');
+const { tbl } = require('./mysql-config');
 const cacheFlush = require('./cache-flush');
 
 const HEADER_ID = 100437;
@@ -54,7 +55,7 @@ function buildLinkMap() {
 
   const raw = mysql.query(
     `SELECT p.ID, p.post_name, p.post_parent, pp.post_name as parent_slug ` +
-    `FROM wp_posts p LEFT JOIN wp_posts pp ON p.post_parent = pp.ID ` +
+    `FROM ${tbl('posts')} p LEFT JOIN ${tbl('posts')} pp ON p.post_parent = pp.ID ` +
     `WHERE p.ID IN (${pageIds.join(',')}) AND p.post_status = 'publish';`
   );
 
@@ -110,7 +111,7 @@ function rewrite() {
 
     // Read current content
     const raw = mysql.query(
-      `SELECT post_content FROM wp_posts WHERE ID = ${postId};`
+      `SELECT post_content FROM ${tbl('posts')} WHERE ID = ${postId};`
     );
     const rows = parseTSV(raw);
     if (!rows || rows.length === 0) continue;
@@ -129,7 +130,7 @@ function rewrite() {
     if (changed) {
       const escaped = mysql.escape(content);
       mysql.query(
-        `UPDATE wp_posts SET post_content = '${escaped}' WHERE ID = ${postId};`
+        `UPDATE ${tbl('posts')} SET post_content = '${escaped}' WHERE ID = ${postId};`
       );
       anyChanged = true;
     }

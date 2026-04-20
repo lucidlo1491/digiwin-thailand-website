@@ -20,7 +20,7 @@ const DATA = {
   subtitleFontSize: '18px',
   subtitleMaxWidth: '600px',
   buttons: [
-    { text: "Let\u2019s Talk", href: '/contact/', style: 'primary' },
+    { text: "Let\u2019s Talk", href: '/demo/', style: 'primary' },
     { text: 'Back to Partner Overview', href: '/partner-program/', style: 'ghost' },
   ],
   superD: { variant: 'gradient', position: 'right', opacity: 0.18, modifiers: ['bold', 'glow'] },

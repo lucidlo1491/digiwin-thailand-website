@@ -17,6 +17,7 @@ const lifecycleBuilder  = require('./sections/ps-lifecycle');
 const reverseCutBuilder = require('./sections/ps-reverse-cut');
 const competitiveBuilder = require('./sections/ps-competitive');
 const ctaBuilder        = require('./sections/ps-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100560,
@@ -35,6 +36,17 @@ module.exports = {
     { name: 'competitive',  builder: competitiveBuilder },
     { name: 'cta',          builder: ctaBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'Partner Program', url: '/partner-program/' },
+        { name: 'Solution Stack', url: '/partner-program/solutions/' },
+      ]),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

@@ -32,7 +32,7 @@ function blocks() {
                         <h1>${h.title}</h1>
                         <p class="wms-hero-subtitle">${h.subtitle}</p>
                         <div class="wms-hero-ctas">
-                            <a href="../demo.html" class="btn-white">${h.ctas.letsTalk}</a>
+                            <a href="../demo/" class="btn-white">${h.ctas.letsTalk}</a>
                             <a href="#capabilities" class="btn-outline-white">${h.ctas.exploreSfls}</a>
                         </div>
                         <div class="wms-hero-stats">${statsHTML}

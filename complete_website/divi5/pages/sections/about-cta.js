@@ -20,8 +20,8 @@ const DATA = {
   subtitle: 'See how <span class="dw-years">44</span> years of manufacturing expertise\u2014backed by Foxconn FII\u2014can help you compete on the global stage.',
   subtitleFontSize: '18px',
   buttons: [
-    { text: "Let\u2019s Talk", href: '/demo.html', style: 'primary' },
-    { text: 'Become a Partner', href: '/partner-program.html', style: 'ghost' },
+    { text: "Let\u2019s Talk", href: '/demo/', style: 'primary' },
+    { text: 'Become a Partner', href: '/partner-program/', style: 'ghost' },
   ],
   superD: { variant: 'gradient', position: 'right', opacity: 0.12 },
   waveFlow: { height: '160px', opacity: 0.3 },

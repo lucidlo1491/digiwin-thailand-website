@@ -136,7 +136,7 @@ const DATA = {
       },
     },
   ],
-  cta: { text: 'Let\u2019s Talk About Your Factory', href: '/demo.html' },
+  cta: { text: 'Let\u2019s Talk About Your Factory', href: '/demo/' },
 };
 
 module.exports = {

@@ -16,6 +16,7 @@ const thGrid = require('./sections/th-products-grid');
 const thIntegration = require('./sections/th-products-integration');
 const thWhy = require('./sections/th-products-why');
 const thCta = require('./sections/th-products-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100776,
@@ -33,6 +34,22 @@ module.exports = {
   ],
 
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E1C\u0E25\u0E34\u0E15\u0E20\u0E31\u0E13\u0E11\u0E4C', url: '/th/products/' },
+      ])),
+      schema.thaiVariant(schema.webPage({
+        type: 'CollectionPage',
+        name: 'DigiWin Manufacturing Software Products',
+        description: 'Complete manufacturing software suite: ERP, MES, WMS, and AIoT. 44 years of manufacturing focus.',
+        url: '/th/products/',
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

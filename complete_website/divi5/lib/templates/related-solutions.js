@@ -29,7 +29,15 @@ function blocks(data) {
         <p class="${P}-card-desc">${c.desc}</p>
       </a>`).join('');
 
-  const html = `<div class="${P}-section">
+  // Inline <style> bypasses Divi's CSS compiler cache (proven pattern from blog-single.js)
+  const inlineCSS = `<style>
+.${P}-grid{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))!important;gap:24px!important;max-width:1200px!important;margin:0 auto!important}
+.${P}-card{display:block!important;padding:24px!important;background:#fff!important;border-radius:12px!important;text-decoration:none!important;border:1px solid #e5e7eb!important;color:#333!important;line-height:1.6!important}
+.${P}-card-title{font-size:18px!important;font-weight:600!important;color:#000864!important;margin:0 0 8px 0!important}
+.${P}-card-desc{font-size:14px!important;color:#666!important;margin:0!important}
+</style>`;
+
+  const html = `${inlineCSS}<div class="${P}-section">
     <h2 class="${P}-heading">${heading}</h2>
     <div class="${P}-grid">${cardsHTML}
     </div>

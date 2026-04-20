@@ -17,8 +17,8 @@ const DATA = {
   title: "Let\u2019s Start a Conversation",
   subtitle: "We\u2019re eager to understand your challenges and explore how we can help. No pressure, no sales pitch\u2014just a genuine conversation about your manufacturing operations.",
   buttons: [
-    { text: "Let\u2019s Talk", href: '/demo.html', style: 'primary' },
-    { text: 'Explore Partnership', href: '/partner-program.html', style: 'ghost' },
+    { text: "Let\u2019s Talk", href: '/demo/', style: 'primary' },
+    { text: 'Explore Partnership', href: '/partner-program/', style: 'ghost' },
   ],
   superD: { variant: 'gradient', position: 'left', opacity: 0.16 },
   waveFlow: { height: '220px', opacity: 0.45 },

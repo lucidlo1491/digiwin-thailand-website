@@ -18,7 +18,18 @@ const P = 'fea'; // CSS prefix — customize if needed
 // BLOCKS
 // ════════════════════════════════════════════════════════════════
 function blocks() {
+  // Inline <style> bypasses Divi CSS compiler cache for CTA buttons
+  const inlineCSS = `<style>
+.featured-cta-row{display:flex!important;gap:16px!important;align-items:center!important;flex-wrap:wrap!important;margin-top:auto!important}
+.event-cta{display:inline-flex!important;align-items:center!important;gap:8px!important;background:linear-gradient(135deg,#00AFF0,#003CC8)!important;color:#fff!important;padding:16px 32px!important;border-radius:12px!important;font-weight:600!important;font-size:15px!important;text-decoration:none!important;width:fit-content!important;font-family:'Noto Sans',sans-serif!important;transition:all 0.3s ease!important}
+.event-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,175,240,0.3)}
+.event-cta-secondary{display:inline-flex!important;align-items:center!important;gap:8px!important;background:transparent!important;color:#00AFF0!important;padding:16px 24px!important;border-radius:12px!important;border:1px solid rgba(0,175,240,0.3)!important;font-weight:600!important;font-size:15px!important;text-decoration:none!important;width:fit-content!important;font-family:'Noto Sans',sans-serif!important;transition:all 0.3s ease!important}
+.event-cta-secondary:hover{background:rgba(0,175,240,0.08)!important;border-color:#00AFF0!important}
+.event-cta svg,.event-cta-secondary svg{flex-shrink:0}
+</style>`;
+
   const html = `
+    ${inlineCSS}
     <div class="particle-ocean-host" data-particles style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden;"></div>
             <div class="featured-inner" style="position: relative; z-index: 2;">
                 <span class="featured-label">Featured Event</span>
@@ -26,42 +37,47 @@ function blocks() {
                     <div class="featured-image">
                         <div class="${P}">
                             <div class="${P}-month">Mar</div>
-                            <div class="${P}-day">15</div>
+                            <div class="${P}-day">11</div>
                             <div class="${P}-year">2026</div>
                             <div class="${P}-divider"></div>
                         </div>
                         <div class="${P}-meta">
                             <div class="${P}-meta-item">
                                 <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                                09:00 – 16:00
+                                10:00 – 18:00 (3 Days)
                             </div>
                             <div class="${P}-meta-item">
                                 <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                Bangkok, Thailand
+                                BITEC Bangkok, EH 98 Hall
                             </div>
                         </div>
-                        <span class="urgency-badge">
-                            <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v-2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-                            Limited to 30 Participants
+                        <span class="urgency-badge" style="background:rgba(8,145,178,0.15);border-color:rgba(8,145,178,0.3);color:#0891b2;">
+                            <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Booth I132, Open Entry
                         </span>
                     </div>
                     <div class="featured-content">
-                        <span class="event-type-badge workshop">Workshop</span>
-                        <h2>BOI Compliance Workshop: Production-Level Reconciliation That Passes Every Audit</h2>
+                        <span class="event-type-badge trade-show">Trade Show</span>
+                        <h2>Intelligent Asia Thailand 2026: DigiWin Smart Electronics Manufacturing</h2>
                         <div class="event-meta">
                             <div class="event-meta-item">
                                 <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                                March 15, 2026 | 09:00 – 16:00
+                                March 11–13, 2026 | 10:00 – 18:00
                             </div>
                             <div class="event-meta-item">
                                 <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                Bangkok, Thailand
+                                BITEC Bangkok, EH 98 Hall — Booth I132
                             </div>
                         </div>
-                        <p>Learn how production-order-level material tracking eliminates BOI supplementary taxes. Featuring the Jin Hai case study: from 10M THB/year to zero.</p>
-                        <a href="/news/events/boi-compliance-workshop/" class="event-cta">Register Now
-                            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                        </a>
+                        <p>DigiWin Thailand and Digihua Smart showcase e-Tax compliance, AI-powered smart manufacturing integration, and deep electronics industry solutions. Visit us at Booth I132.</p>
+                        <div class="featured-cta-row">
+                            <a href="/intelligent-asia-2026/" class="event-cta">Book a Meeting
+                                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </a>
+                            <a href="/intelligent-asia-thailand-20260311/" class="event-cta-secondary">Read Day 1 Coverage
+                                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -641,6 +657,14 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
   border-radius: 50px !important;
 }
 
+.et_pb_section .featured-cta-row {
+  display: flex !important;
+  gap: 12px !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  margin-top: auto !important;
+}
+
 .et_pb_section .event-cta {
   display: inline-flex !important;
   align-items: center !important;
@@ -652,8 +676,56 @@ ${base.reducedMotion('*{animation:none !important;transition:none !important}')}
   font-weight: 600 !important;
   font-size: 15px !important;
   text-decoration: none !important;
-  margin-top: auto !important;
   width: fit-content !important;
+}
+
+.et_pb_section .event-cta-secondary {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: transparent !important;
+  color: #00AFF0 !important;
+  padding: 16px 24px !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(0,175,240,0.3) !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  text-decoration: none !important;
+  width: fit-content !important;
+  transition: all 0.3s ease !important;
+}
+.et_pb_section .event-cta-secondary:hover {
+  background: rgba(0,175,240,0.08) !important;
+  border-color: #00AFF0 !important;
+}
+
+@media (max-width: 1024px) {
+  .et_pb_section .featured-card {
+    grid-template-columns: 1fr !important;
+  }
+  .et_pb_section .featured-image {
+    min-height: 240px !important;
+    padding: 36px 24px !important;
+  }
+  .et_pb_section .fea-day {
+    font-size: 64px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .et_pb_section .fea-day {
+    font-size: 56px !important;
+  }
+  .et_pb_section .featured-content {
+    padding: 28px !important;
+  }
+  .et_pb_section .featured-content h2 {
+    font-size: 22px !important;
+  }
+  .et_pb_section .event-cta {
+    width: 100% !important;
+    justify-content: center !important;
+  }
 }
 
 `.trim();

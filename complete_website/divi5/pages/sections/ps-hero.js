@@ -74,7 +74,7 @@ ${superD.css(`${P}-d-bg`, { variant: 'outline', position: 'center', opacity: 0.0
 .${P}-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1)}
 .${P}-stat{text-align:center}
 .${P}-stat-value{font-family:'Noto Sans',sans-serif;font-size:48px;font-weight:700;color:#0369a1;line-height:1;margin-bottom:8px}
-.${P}-stat-label{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.4}
+.${P}-stat-label{font-size:14px;color:rgba(255,255,255,0.85);line-height:1.4}
 @media(max-width:${base.BREAKPOINTS.tablet}px){
   .${P}-section{padding:120px 24px 80px}
   .${P}-stats{grid-template-columns:1fr;gap:24px}

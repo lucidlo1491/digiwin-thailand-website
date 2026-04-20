@@ -248,7 +248,7 @@ const cta = {
   title: 'เริ่มฟังเครื่องจักรของคุณ',
   subtitle: 'ดูว่าสายการผลิตของคุณเป็นอย่างไรจริงๆ',
   buttons: [
-    { text: shared.cta.getInTouch, href: '/demo.html', style: 'primary' },
+    { text: shared.cta.getInTouch, href: '/th/demo/', style: 'primary' },
     { text: shared.cta.exploreSolutions, href: '/products.html', style: 'ghost' },
   ],
 };

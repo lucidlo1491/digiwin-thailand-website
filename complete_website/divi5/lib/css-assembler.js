@@ -105,6 +105,10 @@ const MINIMAL_STRUCTURAL_RESET = `
 /* === MINIMAL STRUCTURAL RESET (vbNative — Divi modules handle all visual properties) === */
 .et_pb_section:not([class*='tb_body']){overflow:hidden;margin:0}
 .fade-in,.scroll-fade-in{opacity:1 !important;transform:none !important}
+/* === DIVI MOBILE ROW PADDING OVERRIDE === */
+@media(max-width:640px){
+  .et_pb_section .et_pb_row.et_pb_row{padding:0 !important}
+}
 /* === MOBILE TOUCH TARGET RESET (WCAG 2.5.8 — 44px minimum) === */
 @media(max-width:768px){
   a:not(.dw-logo):not(.dw-nav-link):not([class*="btn"]):not([class*="cta"]):not([class*="Cta"]),
@@ -131,6 +135,13 @@ const GLOBAL_THEME_RESET = `
 .section-subtitle{margin-left:auto;margin-right:auto;line-height:1.6}
 /* fade-in / scroll-fade-in: always visible (no JS scroll observer in Divi) */
 .fade-in,.scroll-fade-in{opacity:1 !important;transform:none !important}
+/* === DIVI MOBILE ROW PADDING OVERRIDE === */
+/* Divi injects: @media(max-width:640px){.et_pb_section .et_pb_row{padding:0 24px !important}}
+   Specificity 0,2,0. We use .et_pb_row.et_pb_row (0,2,0 doubled = 0,2,0 still, but
+   .et_pb_section prefix pushes us to 0,3,0) to beat it. */
+@media(max-width:640px){
+  .et_pb_section .et_pb_row.et_pb_row{padding:0 !important}
+}
 /* === MOBILE TOUCH TARGET RESET (WCAG 2.5.8 — 44px minimum) === */
 @media(max-width:768px){
   a:not(.dw-logo):not(.dw-nav-link):not([class*="btn"]):not([class*="cta"]):not([class*="Cta"]),
@@ -163,10 +174,14 @@ const SHARED_KEYFRAMES = `
  * background/padding to bleed onto the page-level wrapper.
  */
 const TB_BODY_RESET = `
-/* === TB BODY WRAPPER RESET (must be last — specificity 0,4,0 beats all :has() rules at 0,3,0) === */
-.et-l--body .et_pb_section[class*="tb_body"].et_section_regular{background:transparent !important;background-image:none !important;padding:0 !important;margin:0 !important}
-.et-l--body .et_pb_row[class*="tb_body"]{max-width:100% !important;width:100% !important;padding:0 !important;margin:0 !important}
-.et-l--body .et_pb_column[class*="tb_body"]{padding:0 !important;margin:0 !important}`;
+/* === TB BODY WRAPPER RESET (must be last — beats :has() rules and Divi mobile padding) === */
+/* .et-l--body doesn't exist on all WP/Divi versions — use [class*="tb_body"] directly */
+.et_pb_section[class*="tb_body"].et_section_regular{background:transparent !important;background-image:none !important;padding:0 !important;margin:0 !important}
+.et_pb_row[class*="tb_body"].et_pb_row{max-width:100% !important;width:100% !important;padding:0 !important;margin:0 !important}
+.et_pb_column[class*="tb_body"]{padding:0 !important;margin:0 !important}
+@media(max-width:640px){
+  .et_pb_section .et_pb_row[class*="tb_body"].et_pb_row{padding:0 !important}
+}`;
 
 function assemble(sections, opts = {}) {
   const { sanitizeSectionCSS } = require('./lint-css');

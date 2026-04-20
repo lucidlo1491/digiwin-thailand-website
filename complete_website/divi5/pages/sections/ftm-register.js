@@ -11,8 +11,8 @@ const DATA = {
   color: '#b45309',
   title: "Request Your Visit",
   meta: 'Thursday, May 8, 2026 &middot; EEC Industrial Zone &middot; Limited to 20 visitors',
-  cta: {"text":"Request Your Visit","href":"/contact/"},
-  secondary: {"text":"Can't make this date?","linkText":"Register your interest","href":"/contact/"},
+  cta: {"text":"Request Your Visit","href":"/demo/"},
+  secondary: {"text":"Can't make this date?","linkText":"Register your interest","href":"/demo/"},
 };
 
 module.exports = {

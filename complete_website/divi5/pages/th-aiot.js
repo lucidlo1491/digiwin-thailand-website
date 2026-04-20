@@ -23,6 +23,7 @@ const thIntegration = require('./sections/th-aiot-integration');
 const thSection2 = require('./sections/th-aiot-section-2');
 const thCta = require('./sections/th-aiot-cta');
 const thRelated = require('./sections/th-aiot-related-solutions');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100780,
@@ -46,6 +47,24 @@ module.exports = {
   ],
 
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E1C\u0E25\u0E34\u0E15\u0E20\u0E31\u0E13\u0E11\u0E4C', url: '/th/products/' },
+        { name: 'AIoT', url: '/th/aiot/' },
+      ])),
+      schema.thaiVariant(schema.softwareApplication({
+        name: 'DigiWin AIoT Smart Factory Platform',
+        subCategory: 'Industrial Internet of Things',
+        description: 'Industrial AIoT platform connecting any machine, any protocol. Real-time OEE monitoring, predictive maintenance, energy management. 50+ protocols supported for Thai factories.',
+        url: '/th/aiot/',
+        featureList: 'Machine connectivity (50+ protocols), Real-time OEE monitoring, Predictive maintenance, Energy management, Edge computing, Equipment status dashboards, Anomaly detection, Protocol-agnostic integration',
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

@@ -21,7 +21,7 @@ const DATA = {
   subtitle: "Tell us about your factory and we\u2019ll recommend the right solution for your needs. No obligation, no pressure\u2014just clarity.",
   subtitleFontSize: '20px',
   buttons: [
-    { text: "Let\u2019s Talk", href: '/contact/', style: 'primary' },
+    { text: "Let\u2019s Talk", href: '/demo/', style: 'primary' },
     { text: 'View by Industry', href: '/industries/', style: 'ghost' },
   ],
   superD: { variant: 'particle', position: 'bottom', modifiers: ['bold'] },

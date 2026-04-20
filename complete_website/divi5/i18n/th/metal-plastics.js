@@ -248,7 +248,7 @@ const cta = {
   title: 'เพิ่มผลผลิต ลดของเสีย',
   subtitle: 'ดูว่า DigiWin ช่วยผู้ผลิตแบบกระบวนการอย่างไร',
   buttons: [
-    { text: shared.cta.getInTouch, href: '/demo.html', style: 'primary' },
+    { text: shared.cta.getInTouch, href: '/th/demo/', style: 'primary' },
     { text: 'ดูอุตสาหกรรมอื่นๆ', href: '/industries.html', style: 'ghost' },
   ],
 };

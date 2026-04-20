@@ -15,8 +15,8 @@ const DATA = {
   title: "Let\u2019s Talk About Your Factory",
   subtitle: 'Every factory is different. Let us understand yours.',
   buttons: [
-    { text: 'Get in Touch', href: '/demo.html', style: 'primary' },
-    { text: 'View Products', href: '/products.html', style: 'ghost' },
+    { text: 'Get in Touch', href: '/demo/', style: 'primary' },
+    { text: 'View Products', href: '/products/', style: 'ghost' },
   ],
   superD: { variant: 'gradient', position: 'bottom', opacity: 0.10 },
   waveFlow: { height: '160px', opacity: 0.30 },

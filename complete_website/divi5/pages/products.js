@@ -16,6 +16,7 @@ const gridBuilder = require('./sections/products-grid');
 const integrationBuilder = require('./sections/products-integration');
 const whyBuilder = require('./sections/products-why');
 const ctaBuilder = require('./sections/products-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100556,
@@ -32,6 +33,22 @@ module.exports = {
     { name: 'why', builder: whyBuilder },
     { name: 'cta', builder: ctaBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'Products', url: '/products/' },
+      ]),
+      schema.webPage({
+        type: 'CollectionPage',
+        name: 'DigiWin Manufacturing Software Products',
+        description: 'Complete manufacturing software suite: ERP, MES, WMS, and AIoT. 44 years of manufacturing focus.',
+        url: '/products/',
+      }),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

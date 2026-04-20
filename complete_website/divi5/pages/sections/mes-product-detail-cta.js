@@ -2,7 +2,7 @@
  * mes-product-detail-cta.js — MES CTA Section (S10)
  *
  * REFACTORED: Uses cta-gradient template (89 -> ~22 lines)
- * Source: mes.html — "Ready to See Your Shop Floor Clearly?"
+ * Source: /products/mes/ — "Ready to See Your Shop Floor Clearly?"
  */
 
 const ctaGradient = require('../../lib/templates/cta-gradient');
@@ -15,8 +15,8 @@ const DATA = {
   title: 'Ready to See Your Shop Floor Clearly?',
   subtitle: 'Fill out the form and our team will reach out to discuss your specific production visibility challenges.',
   buttons: [
-    { text: 'Get in Touch', href: '/demo.html', style: 'primary' },
-    { text: 'View by Industry', href: '/industries.html', style: 'ghost' },
+    { text: 'Get in Touch', href: '/demo/', style: 'primary' },
+    { text: 'View by Industry', href: '/industries/', style: 'ghost' },
   ],
   superD: { variant: 'gradient', position: 'corner-br', modifiers: ['bold', 'glow'] },
 };

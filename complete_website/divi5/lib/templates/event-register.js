@@ -59,8 +59,8 @@ function css(data) {
 .${P}-meta{font-family:'Noto Sans',sans-serif;font-size:18px;color:rgba(255,255,255,0.85);margin:0 0 32px;padding:0}
 .${P}-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:600;color:#fff;background:${c.hex};padding:20px 48px;border-radius:12px;text-decoration:none;transition:all 0.3s ease;box-shadow:0 4px 20px ${c.shadow40}}
 .${P}-cta:hover{background:${c.hover};transform:translateY(-2px);box-shadow:0 8px 24px ${c.shadow30}}
-.${P}-secondary{font-family:'Noto Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.6);margin-top:24px;padding:0}
-.${P}-secondary a{color:rgba(255,255,255,0.8);text-decoration:underline;transition:color 0.3s ease}
+.${P}-secondary{font-family:'Noto Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.85);margin-top:24px;padding:0}
+.${P}-secondary a{color:#fff;text-decoration:underline;transition:color 0.3s ease}
 .${P}-secondary a:hover{color:#fff}
 
 .et_pb_section .${P}-section h2{-webkit-font-smoothing:auto !important;line-height:1.25 !important;margin:0 0 16px !important;padding:0 !important}

@@ -15,6 +15,7 @@
 const fs = require('fs');
 const path = require('path');
 const mysql = require('./lib/mysql');
+const { tbl } = require('./lib/mysql-config');
 
 const DRY_RUN = process.argv.includes('--dry-run');
 const SINGLE = process.argv.find((a, i) => process.argv[i - 1] === '--page');
@@ -177,7 +178,7 @@ function pageExistsBySlug(slug, parentId) {
   try {
     const parentClause = parentId ? ` AND post_parent = ${parentId}` : '';
     const result = mysql.query(
-      `SELECT ID FROM wp_posts WHERE post_name = '${mysql.escape(slug)}' AND post_type = 'page' AND post_status != 'trash'${parentClause};`
+      `SELECT ID FROM ${tbl('posts')} WHERE post_name = '${mysql.escape(slug)}' AND post_type = 'page' AND post_status != 'trash'${parentClause};`
     );
     const lines = result.trim().split('\n');
     if (lines.length >= 2) {

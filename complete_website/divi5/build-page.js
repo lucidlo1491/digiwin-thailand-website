@@ -20,6 +20,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const mysql = require('./lib/mysql');
+const { tbl, getProfile, parseTarget } = require('./lib/mysql-config');
 const cacheFlush = require('./lib/cache-flush');
 const verifyRunner = require('./lib/verify-runner');
 const elementParity = require('./lib/element-parity-check');
@@ -48,6 +49,14 @@ const restoreFile = getArg('--restore');
 const PREFLIGHT_ALL = hasFlag('--preflight-all');
 const CHECK_DRIFT = hasFlag('--check-drift');
 
+// Target profile: 'local' (default) or 'production' (via SSH tunnel)
+const TARGET = parseTarget();
+const PROFILE = getProfile(TARGET);
+const IS_PRODUCTION = TARGET === 'production';
+
+// All mysql/cache calls use PROFILE as opts
+const dbOpts = PROFILE;
+
 // ════════════════════════════════════════════════════════════════
 // PREFLIGHT-ALL: verify all page IDs exist in WordPress
 // ════════════════════════════════════════════════════════════════
@@ -68,7 +77,7 @@ if (PREFLIGHT_ALL) {
   console.log(`\nChecking all ${configs.length} page IDs in WordPress...`);
   const ids = configs.map(c => c.pageId);
   try {
-    const result = mysql.query(`SELECT ID, post_status FROM wp_posts WHERE ID IN (${ids.join(',')});`);
+    const result = mysql.query(`SELECT ID, post_status FROM ${tbl('posts', dbOpts)} WHERE ID IN (${ids.join(',')});`, dbOpts);
     const found = new Map();
     for (const line of result.trim().split('\n').slice(1)) {
       const [id, status] = line.split('\t');
@@ -115,7 +124,7 @@ if (!fs.existsSync(configPath)) {
 }
 
 const pageConfig = require(configPath);
-const SITE_URL = pageConfig.siteUrl || 'https://digiwin-thailand.local';
+const SITE_URL = IS_PRODUCTION ? PROFILE.siteUrl : (pageConfig.siteUrl || 'https://digiwin-thailand.local');
 
 // ════════════════════════════════════════════════════════════════
 // MANAGED-BY SAFETY CHECK
@@ -133,6 +142,7 @@ if (pageConfig.managedBy && !hasFlag('--force-managed') && !DRY_RUN) {
 
 console.log(`\n▸ Building: ${pageConfig.title || pageName}`);
 console.log(`  Page ID: ${pageConfig.pageId}`);
+console.log(`  Target: ${TARGET}${IS_PRODUCTION ? ' (PRODUCTION)' : ''}`);
 console.log(`  Site: ${SITE_URL}`);
 if (pageConfig.managedBy) console.log(`  ${'\x1b[33m'}⚠ Managed by: ${pageConfig.managedBy} (--force-managed used)${'\x1b[0m'}`);
 
@@ -183,11 +193,11 @@ if (!pageConfig.pageId || pageConfig.pageId <= 0) {
 if (!DRY_RUN) {
   try {
     const pageCheck = mysql.query(
-      `SELECT ID, post_type, post_status FROM wp_posts WHERE ID = ${pageConfig.pageId};`
+      `SELECT ID, post_type, post_status FROM ${tbl('posts', dbOpts)} WHERE ID = ${pageConfig.pageId};`, dbOpts
     );
     const lines = pageCheck.trim().split('\n');
     if (lines.length < 2) {
-      console.error(`\n✗ Page ID ${pageConfig.pageId} not found in wp_posts. Create the page first.`);
+      console.error(`\n✗ Page ID ${pageConfig.pageId} not found in database. Create the page first.`);
       process.exit(1);
     }
     const [id, postType, status] = lines[1].split('\t');
@@ -210,7 +220,7 @@ if (!DRY_RUN) {
   try {
     const { BUILDER_VERSION } = require('./lib/modules');
     const versionResult = mysql.query(
-      `SELECT option_value FROM wp_options WHERE option_name = 'et_divi_version';`
+      `SELECT option_value FROM ${tbl('options', dbOpts)} WHERE option_name = 'et_divi_version';`, dbOpts
     );
     const vLines = versionResult.trim().split('\n');
     if (vLines.length >= 2) {
@@ -231,7 +241,7 @@ if (!DRY_RUN) {
 // ════════════════════════════════════════════════════════════════
 if (restoreFile) {
   console.log(`\n▸ Restoring from: ${restoreFile}`);
-  mysql.restore(pageConfig.pageId, restoreFile);
+  mysql.restore(pageConfig.pageId, restoreFile, dbOpts);
   process.exit(0);
 }
 
@@ -260,7 +270,7 @@ if (pageConfig.prototypePath) {
 // STEP 1: POST-LOCK CHECK
 // ════════════════════════════════════════════════════════════════
 if (!DRY_RUN && !CHECK_DRIFT) {
-  const lock = mysql.checkPostLock(pageConfig.pageId);
+  const lock = mysql.checkPostLock(pageConfig.pageId, dbOpts);
   if (lock.locked && !FORCE) {
     console.error(`\n✗ Page ${pageConfig.pageId} is locked by user ${lock.user} (${lock.lockAge}s ago).`);
     console.error('  Someone has this page open in Visual Builder.');
@@ -272,7 +282,7 @@ if (!DRY_RUN && !CHECK_DRIFT) {
   }
 
   // Check recent modification
-  const mod = mysql.checkRecentModification(pageConfig.pageId);
+  const mod = mysql.checkRecentModification(pageConfig.pageId, 300, dbOpts);
   if (mod.recent && !FORCE) {
     console.warn(`⚠ Page was modified ${mod.secondsAgo}s ago. Someone may be editing.`);
     console.warn('  Use --force to proceed anyway.');
@@ -284,7 +294,7 @@ if (!DRY_RUN && !CHECK_DRIFT) {
 // ════════════════════════════════════════════════════════════════
 if (!DRY_RUN && !CHECK_DRIFT) {
   console.log('\n▸ Backing up current content...');
-  const backupFile = mysql.backup(pageConfig.pageId);
+  const backupFile = mysql.backup(pageConfig.pageId, dbOpts);
   console.log(`  ✓ Backup saved: ${backupFile}`);
 }
 
@@ -344,6 +354,16 @@ if (typeof pageConfig.extraCSS === 'function') {
 }
 
 const pageLevelCSS = cssAssembler.assemble(allCSS, { vbNative: pageConfig.vbNative });
+
+// Inject page-level CSS as inline <style> in post_content to bypass Divi's CSS compiler cache.
+// Divi 5 beta.8's CSS compiler unreliably strips CSS from _et_pb_custom_css postmeta.
+// Inline <style> in HTML is never compiled — it reaches the browser intact.
+// We still write _et_pb_custom_css for VB editor compatibility.
+const inlineCSSBlock = `<!-- wp:html --><style>${pageLevelCSS}</style><!-- /wp:html -->`;
+blockContent = blockContent.replace(
+  '<!-- wp:divi/placeholder -->',
+  `<!-- wp:divi/placeholder -->\n${inlineCSSBlock}`
+);
 
 // If page config has a pageJS function (for JS script blocks), include it
 const pageJS = typeof pageConfig.pageJS === 'function' ? pageConfig.pageJS() : '';
@@ -443,7 +463,7 @@ if (CHECK_DRIFT) {
     const localHash = crypto.createHash('md5').update(blockContent + pageLevelCSS).digest('hex');
 
     const dbContent = mysql.query(
-      `SELECT post_content FROM wp_posts WHERE ID = ${pageConfig.pageId};`
+      `SELECT post_content FROM ${tbl('posts', dbOpts)} WHERE ID = ${pageConfig.pageId};`, dbOpts
     );
     // Strip CLI header row (first line is column name)
     const dbBody = dbContent.split('\n').slice(1).join('\n').trim();
@@ -451,7 +471,7 @@ if (CHECK_DRIFT) {
 
     // Also check CSS meta
     const dbCSS = mysql.query(
-      `SELECT meta_value FROM wp_postmeta WHERE post_id = ${pageConfig.pageId} AND meta_key = '_et_builder_page_level_css';`
+      `SELECT meta_value FROM ${tbl('postmeta', dbOpts)} WHERE post_id = ${pageConfig.pageId} AND meta_key = '_et_builder_page_level_css';`, dbOpts
     );
     const dbCSSBody = dbCSS.split('\n').slice(1).join('\n').trim();
 
@@ -490,16 +510,35 @@ console.log('\n▸ Pushing to WordPress via MySQL...');
 
 const title = pageConfig.title || `${pageName} — Divi 5 Build`;
 
+// ── Schema metadata (JSON-LD for SEO/GEO) ──
+let schemaMeta = null;
+if (typeof pageConfig.schema === 'function') {
+  try {
+    const schemaLib = require('./lib/schema');
+    const schemas = pageConfig.schema();
+    if (Array.isArray(schemas) && schemas.length > 0) {
+      schemaMeta = schemaLib.serialize(schemas);
+      const types = schemas.map(s => s['@type']).join(', ');
+      console.log(`  Schema: ${schemas.length} block(s) (${types})`);
+    }
+  } catch (err) {
+    console.warn(`  ⚠ Schema generation error: ${err.message}`);
+  }
+}
+
 try {
   mysql.pushPage(pageConfig.pageId, {
     title,
     content: blockContent,
     css: pageLevelCSS,
+    schemaMeta,
+    opts: dbOpts,
   });
   console.log('  ✓ Post content updated');
   console.log('  ✓ Post meta updated');
+  if (schemaMeta) console.log('  ✓ Schema metadata updated');
 
-  const verify = mysql.verifyPush(pageConfig.pageId);
+  const verify = mysql.verifyPush(pageConfig.pageId, dbOpts);
   console.log('  ✓ Verification:', verify);
 } catch (err) {
   console.error(`  ✗ MySQL error: ${err.message}`);
@@ -510,7 +549,7 @@ try {
 // STEP 6: CACHE FLUSH
 // ════════════════════════════════════════════════════════════════
 console.log('\n▸ Flushing Divi CSS cache...');
-const cacheResult = cacheFlush.flushPage(pageConfig.pageId, { includeDb: true });
+const cacheResult = cacheFlush.flushPage(pageConfig.pageId, dbOpts);
 if (cacheResult.disk) console.log('  ✓ Disk cache flushed');
 if (cacheResult.db) console.log('  ✓ DB cache flushed');
 

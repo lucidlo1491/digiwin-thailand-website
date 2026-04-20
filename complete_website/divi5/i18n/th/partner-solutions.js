@@ -208,7 +208,7 @@ module.exports = {
     subtitle: 'คุณเห็นคลังอาวุธแล้ว ตอนนี้มาดูตัวเลข — มาร์จิน รายได้ต่อเนื่อง และการประมาณการหลายปีสำหรับธุรกิจของคุณ',
     buttons: [
       { text: 'ดูเศรษฐศาสตร์พาร์ทเนอร์ →', href: '/partner-program/economics/', style: 'primary' },
-      { text: 'พูดคุยกับเรา', href: '/contact/', style: 'ghost' },
+      { text: 'พูดคุยกับเรา', href: '/th/demo/', style: 'ghost' },
     ],
   },
 };

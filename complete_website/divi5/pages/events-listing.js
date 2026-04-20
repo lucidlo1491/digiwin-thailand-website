@@ -11,6 +11,7 @@
 const path = require('path');
 const { codeModule, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../lib/modules');
 const { ALL_EVENTS } = require('../lib/events-registry');
+const schema = require('../lib/schema');
 
 const P = 'evt-list';
 
@@ -87,6 +88,17 @@ module.exports = {
   sections: [
     { name: 'hero', builder: { blocks: heroBlocks, css: () => '' } },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'News & Events', url: '/news/' },
+        { name: 'Events', url: '/news/events/' },
+      ]),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button'],

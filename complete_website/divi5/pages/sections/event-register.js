@@ -11,8 +11,8 @@ const DATA = {
   color: '#15803d',
   title: 'Secure Your Spot',
   meta: 'Saturday, March 15, 2026 &middot; Bangkok &middot; Limited to 30 participants',
-  cta: { text: 'Register Now', href: '/contact/' },
-  secondary: { text: "Can't make this date?", linkText: 'Register your interest', href: '/contact/' },
+  cta: { text: 'Register Now', href: '/demo/' },
+  secondary: { text: "Can't make this date?", linkText: 'Register your interest', href: '/demo/' },
 };
 
 module.exports = {

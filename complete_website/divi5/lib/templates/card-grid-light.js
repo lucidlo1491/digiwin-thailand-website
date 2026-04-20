@@ -142,7 +142,7 @@ ${headerCSS}
 .${p}-grid{display:grid;grid-template-columns:repeat(${cols},1fr);gap:${data.gridGap || '24px'};margin-top:60px}
 
 /* Cards */
-.${p}-card{position:relative;background:#ffffff;border-radius:20px;padding:${data.cardPadding || '40px 28px'};text-align:center;box-shadow:0 4px 24px rgba(0,0,0,0.04);border:1px solid #f1f5f9;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);${isLink ? 'text-decoration:none;display:block;color:#333333;' : ''}line-height:1.6;overflow:hidden}
+.${p}-card{position:relative;background:#ffffff;border-radius:20px;padding:${data.cardPadding || '40px 28px'} !important;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,0.04);border:1px solid #f1f5f9;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);${isLink ? 'text-decoration:none;display:block;color:#333333;' : ''}line-height:1.6;overflow:hidden}
 .${p}-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00AFF0,#003CC8);transform:scaleX(0);transform-origin:left;transition:transform 0.4s ease}
 .${p}-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,175,240,0.12);border-color:transparent}
 .${p}-card:hover::before{transform:scaleX(1)}
@@ -151,11 +151,11 @@ ${headerCSS}
 .${p}-card__title{font-family:'Noto Sans',sans-serif;font-weight:700;font-size:20px;line-height:1.6;color:#000864;margin:0 0 10px 0;padding:0}
 
 ${hasIcons ? `/* Card Icon */
-.${p}-card__icon{width:80px;height:80px;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#000864,#1e3a5f);border-radius:24px;transition:all 0.4s ease;position:relative}
+.${p}-card__icon{width:80px !important;height:80px !important;margin:0 auto 24px;display:flex !important;align-items:center !important;justify-content:center !important;background:linear-gradient(145deg,#000864,#1e3a5f);border-radius:24px;transition:all 0.4s ease;position:relative}
 .${p}-card__icon::after{content:'';position:absolute;inset:-2px;border-radius:26px;background:linear-gradient(135deg,#00AFF0,transparent);opacity:0;transition:opacity 0.4s ease;z-index:-1}
 .${p}-card:hover .${p}-card__icon{transform:scale(1.05) rotate(-3deg)}
 .${p}-card:hover .${p}-card__icon::after{opacity:1}
-.${p}-card__icon svg{filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1))}` : ''}
+.${p}-card__icon svg{filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1));width:36px;height:36px;flex-shrink:0}` : ''}
 
 ${hasFullName ? `/* Full Product Name */
 .${p}-card__full-name{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:#0369a1;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px;text-align:left}` : ''}
@@ -174,17 +174,26 @@ ${hasBenefit ? `/* Benefit Line */
 
 /* Responsive */
 @media(max-width:${base.BREAKPOINTS.tablet}px){
+  .${p}-section{padding:80px 40px}
   .${p}-grid{grid-template-columns:repeat(2,1fr);gap:20px}
-  .${p}-card{padding:32px 24px}
+  .${p}-card{padding:32px 24px !important}
 }
-@media(max-width:640px){
+@media(max-width:${base.BREAKPOINTS.mobile}px){
+  .${p}-section{padding:60px 24px}
   .${p}-grid{grid-template-columns:1fr;gap:16px;margin-top:40px}
-  .${p}-card{padding:28px 20px}
-  ${hasIcons ? `.${p}-card__icon{width:64px;height:64px;margin-bottom:20px}\n  .${p}-card__icon svg{width:28px;height:28px}` : ''}
+  .${p}-card{padding:28px 20px !important;display:flex !important;flex-direction:column !important;align-items:center !important;text-align:center !important}
+  .${p}-card>*:not(.${p}-card__icon){display:block !important;width:100% !important;box-sizing:border-box !important}
+  ${hasIcons ? `.${p}-card__icon{width:64px !important;height:64px !important;margin-bottom:20px !important;flex-shrink:0;display:flex !important;align-items:center !important;justify-content:center !important}\n  .${p}-card__icon svg{width:28px;height:28px}` : ''}
   .${p}-card__title{font-size:18px}
-  ${hasTagline ? `.${p}-card__tagline{font-size:14px}` : ''}
-  ${hasFeatures ? `.${p}-card__features li{font-size:12px}` : ''}
-  ${hasBenefit ? `.${p}-card__benefit{font-size:12px}` : ''}
+  ${hasFullName ? `.${p}-card__full-name{text-align:center}` : ''}
+  ${hasTagline ? `.${p}-card__tagline{font-size:14px;text-align:center}` : ''}
+  ${hasFeatures ? `.${p}-card__features{text-align:left}\n  .${p}-card__features li{font-size:14px}` : ''}
+  ${hasBenefit ? `.${p}-card__benefit{font-size:13px;text-align:left}` : ''}
+  .${p}-header .${p}-title{font-size:28px}
+  .${p}-subtitle{font-size:16px}
+}
+@media(max-width:${base.BREAKPOINTS.small}px){
+  .${p}-section{padding:40px 16px}
 }
 
 /* Reduced Motion */

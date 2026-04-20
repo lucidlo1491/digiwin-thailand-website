@@ -28,7 +28,7 @@ const DATA = {
       detail: 'Gross profit improved from 23% to 34% with ERP + SFT (Shop Floor Tracking) \u2014 even during the COVID period when competitors contracted.',
     },
   ],
-  cta: { text: 'See all case studies \u2192', href: '/case-studies.html' },
+  cta: { text: 'See all case studies \u2192', href: '/case-studies/' },
 };
 
 module.exports = {

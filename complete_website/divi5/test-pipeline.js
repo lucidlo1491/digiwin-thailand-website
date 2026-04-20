@@ -484,6 +484,64 @@ console.log('\n\x1b[36m▸ Regression Guards (fixed bugs)\x1b[0m');
 }
 
 // ─────────────────────────────────────────────
+// 9. Template Layout QC — Regression guards for shared templates
+// ─────────────────────────────────────────────
+console.log('\n\x1b[1m9. Template Layout QC\x1b[0m');
+
+// 9a. related-solutions: cards must be display:block, grid must be auto-fit
+{
+  const tpl = require('./lib/templates/related-solutions');
+  const testData = {
+    sectionPrefix: 'test-rel',
+    cards: [
+      { title: 'A', href: '/a/', desc: 'Desc A' },
+      { title: 'B', href: '/b/', desc: 'Desc B' },
+    ],
+  };
+  const css = tpl.css(testData);
+  const blocks = tpl.blocks(testData);
+  const html = blocks.map(b => typeof b === 'string' ? b : '').join('');
+
+  // CSS checks
+  assert(css.includes('.test-rel-card{display:block'), 'related-solutions: card display:block in CSS');
+  assert(css.includes('grid-template-columns:repeat(auto-fit,minmax(280px,1fr))'), 'related-solutions: grid uses auto-fit minmax(280px)');
+  assert(!css.includes('flex-direction'), 'related-solutions: no flex-direction (cards are block, not flex)');
+  assert(css.includes('gap:24px'), 'related-solutions: grid gap is 24px');
+
+  // HTML checks — cards use <h3> + <p>, not <span> or <div>
+  assert(html.includes('<h3 class="test-rel-card-title">'), 'related-solutions: card titles are <h3>');
+  assert(html.includes('<p class="test-rel-card-desc">'), 'related-solutions: card descriptions are <p>');
+  assert(!html.includes('flex-direction'), 'related-solutions: no inline flex-direction in HTML');
+
+  // Inline style override present (Divi CSS cache bypass)
+  assert(html.includes('<style>'), 'related-solutions: inline <style> present for Divi cache bypass');
+  assert(html.includes('display:block!important'), 'related-solutions: inline style enforces display:block');
+}
+
+// 9b. related-solutions: all 14 section files use the template (not custom HTML)
+{
+  const fs = require('fs');
+  const sectionDir = path.join(__dirname, 'pages', 'sections');
+  const expectedFiles = [
+    'erp-related-solutions.js', 'mes-related-solutions.js', 'wms-related-solutions.js',
+    'aiot-related-solutions.js', 'automotive-related-solutions.js', 'electronics-related-solutions.js',
+    'metal-plastics-related-solutions.js',
+    'th-erp-related-solutions.js', 'th-mes-related-solutions.js', 'th-wms-related-solutions.js',
+    'th-aiot-related-solutions.js', 'th-auto-related-solutions.js', 'th-elec-related-solutions.js',
+    'th-metal-plastics-related-solutions.js',
+  ];
+  let allUseTemplate = true;
+  const missing = [];
+  for (const f of expectedFiles) {
+    const fp = path.join(sectionDir, f);
+    if (!fs.existsSync(fp)) { missing.push(f); allUseTemplate = false; continue; }
+    const src = fs.readFileSync(fp, 'utf8');
+    if (!src.includes('related-solutions')) { missing.push(f + ' (no template ref)'); allUseTemplate = false; }
+  }
+  assert(allUseTemplate, `related-solutions: all 14 section files reference template${missing.length ? ' (missing: ' + missing.join(', ') + ')' : ''}`);
+}
+
+// ─────────────────────────────────────────────
 // RESULTS
 // ─────────────────────────────────────────────
 console.log(`\n\x1b[1m━━━ Pipeline Tests ━━━\x1b[0m`);

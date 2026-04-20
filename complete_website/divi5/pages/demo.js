@@ -12,6 +12,7 @@ const path = require('path');
 const heroBuilder = require('./sections/demo-hero');
 const formBuilder = require('./sections/demo-form');
 const expectBuilder = require('./sections/demo-expect');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100569,
@@ -25,6 +26,22 @@ module.exports = {
     { name: 'form', builder: formBuilder },
     { name: 'expect', builder: expectBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'Contact', url: '/demo/' },
+      ]),
+      schema.webPage({
+        type: 'ContactPage',
+        name: 'Contact DigiWin Thailand',
+        description: 'Get a free manufacturing ERP consultation from DigiWin Thailand.',
+        url: '/demo/',
+      }),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

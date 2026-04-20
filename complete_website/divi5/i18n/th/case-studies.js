@@ -327,7 +327,7 @@ const cta = {
   title: 'ต้องการผลลัพธ์แบบนี้?',
   subtitle: 'ทุกโรงงานไม่เหมือนกัน บอกเราเกี่ยวกับโรงงานของคุณ แล้วเราจะแบ่งปันกรณีศึกษาที่เกี่ยวข้องกับอุตสาหกรรมของคุณ',
   buttons: [
-    { text: shared.cta.letsTalk, href: '/demo.html', style: 'primary' },
+    { text: shared.cta.letsTalk, href: '/th/demo/', style: 'primary' },
     { text: 'ดูผลิตภัณฑ์', href: '/products.html', style: 'ghost' },
   ],
 };

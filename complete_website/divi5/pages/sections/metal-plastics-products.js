@@ -24,7 +24,7 @@ function blocks() {
                     <h2>Recommended Products for Metal & Plastics</h2>
                 </div>
                 <div class="${P}-grid">
-                    <a href="../products/aiot.html" class="product-card">
+                    <a href="../products/aiot/" class="product-card">
                         <div class="product-card-icon">
                             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
                         </div>
@@ -32,7 +32,7 @@ function blocks() {
                         <p>Machine connectivity for presses, injection molders, and CNC machines. Real-time OEE and process parameter capture.</p>
                         <span class="product-card-link">Learn More <span>→</span></span>
                     </a>
-                    <a href="../products/mes.html" class="product-card">
+                    <a href="../products/mes/" class="product-card">
                         <div class="product-card-icon">
                             <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/><circle cx="6" cy="12" r="1"/><circle cx="10" cy="12" r="1"/><circle cx="14" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg>
                         </div>
@@ -40,7 +40,7 @@ function blocks() {
                         <p>Production tracking, quality data collection, scrap analysis, and die/mold management for process manufacturing.</p>
                         <span class="product-card-link">Learn More <span>→</span></span>
                     </a>
-                    <a href="../products/erp.html" class="product-card">
+                    <a href="../products/erp/" class="product-card">
                         <div class="product-card-icon">
                             <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
                         </div>

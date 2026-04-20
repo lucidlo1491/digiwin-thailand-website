@@ -21,6 +21,7 @@ const thDetail5 = require('./sections/th-cs-detail-5');
 const thListed = require('./sections/th-cs-listed');
 const thInsights = require('./sections/th-cs-insights');
 const thCta = require('./sections/th-cs-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100786,
@@ -43,6 +44,16 @@ module.exports = {
   ],
 
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E01\u0E23\u0E13\u0E35\u0E28\u0E36\u0E01\u0E29\u0E32', url: '/th/case-studies/' },
+      ])),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

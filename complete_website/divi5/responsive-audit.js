@@ -34,7 +34,7 @@ const viewportArg = getArg('--viewport');
 const SAVE_BASELINE = hasFlag('--save-baseline');
 const VERBOSE = hasFlag('--verbose');
 
-const SITE_URL = 'https://digiwin-thailand.local';
+const SITE_URL = getArg('--url') || 'https://digiwin-thailand.local';
 const BROWSER_RECYCLE_INTERVAL = 15;
 const BASELINE_DIR = path.join(__dirname, '.convergence', 'responsive');
 

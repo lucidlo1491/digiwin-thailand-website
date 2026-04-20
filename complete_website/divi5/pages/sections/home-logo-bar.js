@@ -17,7 +17,7 @@ const DATA = {
     { name: 'Cal-Comp Electronics', subtitle: 'SET: CCET', initials: 'CC', color: '#0369a1', logo: 'calcomp.png' },
     { name: 'TTS Plastic', subtitle: 'Injection Molding', initials: 'TTS', color: '#dc2626', logo: 'tts-plastic.png' },
     { name: 'Yeong Guan Energy', subtitle: 'TWSE: 1589', initials: 'YG', color: '#059669', logo: 'yeong-guan.jpg' },
-    { name: 'S.T.K. Steel', subtitle: 'Stainless Steel', initials: 'STK', color: '#7c3aed', logo: 'stk-steel.png' },
+    { name: 'TSK Steel', subtitle: 'Steel Processing', initials: 'TSK', color: '#7c3aed', logo: 'tsk-steel.png' },
     { name: 'Goldensea Hi-Tech', subtitle: 'Specialty Chemicals', initials: 'GH', color: '#ea580c', logo: 'goldensea.png' },
     { name: 'Chelic Corporation', subtitle: 'TWSE: 4555', initials: 'CHE', color: '#0891b2', logo: 'chelic.png' },
     { name: 'Chung Tai Rubber', subtitle: 'Vibration Control', initials: 'CTR', color: '#475569', logo: 'ctr.png' },

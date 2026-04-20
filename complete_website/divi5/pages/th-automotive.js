@@ -21,6 +21,7 @@ const thSection2 = require('./sections/th-auto-section-2');
 const thSection3 = require('./sections/th-auto-section-3');
 const thCta = require('./sections/th-auto-cta');
 const thRelated = require('./sections/th-auto-related-solutions');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100782,
@@ -43,6 +44,22 @@ module.exports = {
   ],
 
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E2D\u0E38\u0E15\u0E2A\u0E32\u0E2B\u0E01\u0E23\u0E23\u0E21', url: '/th/industries/' },
+        { name: '\u0E0A\u0E34\u0E49\u0E19\u0E2A\u0E48\u0E27\u0E19\u0E22\u0E32\u0E19\u0E22\u0E19\u0E15\u0E4C', url: '/th/industries/automotive/' },
+      ])),
+      schema.thaiVariant(schema.webPage({
+        name: 'Automotive Parts Manufacturing Solutions',
+        description: 'ERP and MES solutions for automotive parts manufacturers in Thailand. JIT scheduling, EDI integration, IATF 16949 compliance.',
+        url: '/th/industries/automotive/',
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

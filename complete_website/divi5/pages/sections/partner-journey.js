@@ -22,21 +22,21 @@ const RESEARCH_STEPS = [
     gradient: 'linear-gradient(135deg, #00AFF0, #003CC8)',
     title: 'Deepen the \u201CWhy\u201D',
     body: 'Understand why your margin erosion is <em>structural</em>, not circumstantial. See if the diagnosis matches your reality.',
-    cta: { text: 'The Evolving Business Model \u2192', href: '/partner-program/business-model.html' },
+    cta: { text: 'The Evolving Business Model \u2192', href: '/partner-program/business-model/' },
   },
   {
     number: '2',
     gradient: 'linear-gradient(135deg, #00AFF0, #003CC8)',
     title: 'Evaluate the \u201CWeapon\u201D',
     body: 'See if DigiWin gives you a better weapon to fight the price war against low-cost ERP vendors and specialized MES providers.',
-    cta: { text: 'The Solution Stack \u2192', href: '/partner-program/solutions.html' },
+    cta: { text: 'The Solution Stack \u2192', href: '/partner-program/solutions/' },
   },
   {
     number: '3',
     gradient: 'linear-gradient(135deg, #00AFF0, #003CC8)',
     title: 'Verify the \u201CMath\u201D',
     body: 'Run the numbers yourself. Realistic projections in Thai Baht, conservative scenarios, and the actual margin structure.',
-    cta: { text: 'Partner Economics \u2192', href: '/partner-program/economics.html' },
+    cta: { text: 'Partner Economics \u2192', href: '/partner-program/economics/' },
   },
 ];
 

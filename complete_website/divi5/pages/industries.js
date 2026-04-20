@@ -16,6 +16,7 @@ const sectionBuilder = require('./sections/industries-section');
 const challengesBuilder = require('./sections/industries-challenges');
 const approachBuilder = require('./sections/industries-approach');
 const ctaBuilder = require('./sections/industries-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100557, // TODO: Create WP page and set page ID
@@ -33,6 +34,22 @@ module.exports = {
     { name: 'approach', builder: approachBuilder },
     { name: 'cta', builder: ctaBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'Industries', url: '/industries/' },
+      ]),
+      schema.webPage({
+        type: 'CollectionPage',
+        name: 'Industry Solutions - DigiWin Thailand',
+        description: 'Industry-specific ERP, MES, and WMS solutions for automotive parts, electronics assembly, and metal & plastics manufacturing in Thailand.',
+        url: '/industries/',
+      }),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

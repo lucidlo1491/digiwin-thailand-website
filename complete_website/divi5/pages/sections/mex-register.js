@@ -11,7 +11,7 @@ const DATA = {
   color: '#6d28d9',
   title: "Book a 1-on-1 Meeting",
   meta: 'May 20–22, 2026 &middot; BITEC Bangkok &middot; Booth A12',
-  cta: {"text":"Book a 1-on-1 Meeting","href":"/contact/"},
+  cta: {"text":"Book a 1-on-1 Meeting","href":"/demo/"},
   secondary: {"text":"No booking needed to visit","linkText":"Walk up to Booth A12 anytime","href":"/news/"},
 };
 

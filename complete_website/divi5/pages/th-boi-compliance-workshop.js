@@ -21,6 +21,7 @@ const thProofBuilder = require('./sections/th-event-proof');
 const thLogisticsBuilder = require('./sections/th-event-logistics');
 const thRegisterBuilder = require('./sections/th-event-register');
 const thRelatedBuilder = require('./sections/th-event-related');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100790,
@@ -43,6 +44,27 @@ module.exports = {
 
   // Thai typography: Noto Sans Thai font + label letter-spacing fix
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E02\u0E48\u0E32\u0E27\u0E2A\u0E32\u0E23\u0E41\u0E25\u0E30\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21', url: '/th/news/' },
+        { name: 'BOI Compliance Workshop', url: '/th/boi-compliance-workshop/' },
+      ])),
+      schema.thaiVariant(schema.event({
+        name: 'BOI Compliance Workshop: Production-Level Reconciliation',
+        description: 'Full-day hands-on workshop on BOI compliance. Learn production-order-level material tracking that eliminates supplementary taxes.',
+        startDate: '2026-03-15T09:00:00+07:00',
+        endDate: '2026-03-15T16:00:00+07:00',
+        locationName: 'Bangkok, Thailand',
+        city: 'Bangkok',
+        country: 'TH',
+        isAccessibleForFree: true,
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

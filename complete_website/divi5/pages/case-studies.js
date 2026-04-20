@@ -19,6 +19,7 @@ const csDetail5Builder = require('./sections/case-studies-cs-detail-5');
 const csListedBuilder = require('./sections/case-studies-cs-listed');
 const csInsightsBuilder = require('./sections/case-studies-cs-insights');
 const csCtaBuilder = require('./sections/case-studies-cs-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100749,
@@ -39,6 +40,16 @@ module.exports = {
     { name: 'cs-insights', builder: csInsightsBuilder },
     { name: 'cs-cta', builder: csCtaBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'Case Studies', url: '/case-studies/' },
+      ]),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

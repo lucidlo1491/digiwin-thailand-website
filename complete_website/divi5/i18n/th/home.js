@@ -30,7 +30,7 @@ const hero = {
       title: 'ต้นทุนที่แท้จริงของคุณ <span class="hl-blue">มองไม่เห็น</span>',
       subtitle: 'ไฟล์ Excel ลับๆ เข้ามาแทนที่ขั้นตอนการทำงานมาตรฐานของคุณแล้ว สินค้าผี — ระบบบอก 100 ชั้นจริงมี 50 เราแก้ปัญหานี้ได้\u2014เพราะเราทำซอฟต์แวร์โรงงานมา <span data-dw-years>44</span> ปีแล้ว',
       buttons: [
-        { text: shared.cta.letsTalk, href: '/demo.html', style: 'primary' },
+        { text: shared.cta.letsTalk, href: '/th/demo/', style: 'primary' },
         { text: shared.cta.exploreSolutions, href: '/products.html', style: 'ghost' },
       ],
       stats: [
@@ -118,7 +118,7 @@ const factoryChecks = {
       description: 'สถานะการส่งมอบแบบเรียลไทม์ควรเป็นแค่คลิกเดียว ไม่ใช่การสืบค้น 20 นาที ทุกครั้งที่วางสาย คุณสูญเสียความน่าเชื่อถือกับลูกค้าที่สำคัญที่สุด',
     },
   ],
-  cta: { text: 'พูดคุยเรื่องโรงงานของคุณ', href: '/demo.html' },
+  cta: { text: 'พูดคุยเรื่องโรงงานของคุณ', href: '/th/demo/' },
 };
 
 // ══════════════════════════════════════════════════════════════
@@ -141,7 +141,7 @@ const partnerChecks = {
     },
     {
       number: '02',
-      title: '\u201Cวงจรอุบาทว์ Customize\u201D',
+      title: '\u201Cวงจรที่ถอนตัวไม่ได้ Customize\u201D',
       quote: '\u201Cคุณรับงาน Customize เพื่อปิดดีล แต่หลังจากนั้นคุณก็ติดกับโค้ดนั้นตลอดไป\u201D',
       description: 'อัปเกรดลูกค้าที่ใช้โค้ด Custom ไม่ได้ งานซัพพอร์ตกลายเป็นฝันร้ายของชั่วโมงที่เรียกเก็บเงินไม่ได้ กำไรหายไปตั้งแต่วินาทีที่คุณตอบ \u201Cได้\u201D กับคำขอที่ไม่เป็นมาตรฐาน',
     },
@@ -367,7 +367,7 @@ const finalCta = {
   title: 'มาเริ่มพูดคุยกัน',
   subtitle: 'เรายินดีรับฟังความท้าทายของคุณ และร่วมหาทางออกที่เหมาะสม ไม่มีแรงกดดัน ไม่มีการขาย\u2014เพียงบทสนทนาจริงๆ เกี่ยวกับการดำเนินงานโรงงานของคุณ',
   buttons: [
-    { text: shared.cta.letsTalk, href: '/demo.html', style: 'primary' },
+    { text: shared.cta.letsTalk, href: '/th/demo/', style: 'primary' },
     { text: shared.cta.explorePartnership, href: '/partner-program.html', style: 'ghost' },
   ],
 };

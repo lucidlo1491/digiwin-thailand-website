@@ -17,7 +17,24 @@ const P = 'eleh'; // CSS prefix — customize if needed
 // BLOCKS
 // ════════════════════════════════════════════════════════════════
 function blocks() {
-  const html = `
+  // Inline <style> bypasses Divi's CSS compiler cache (proven pattern)
+  const inlineCSS = `<style>
+.elec-hero{background:linear-gradient(135deg,#000432 0%,#000864 50%,#001080 100%)!important;padding:140px 0 100px;position:relative;overflow:hidden}
+.elec-hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233798E4' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");opacity:0.5}
+.elec-hero-inner{max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:1;text-align:center}
+.elec-hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,175,240,0.2);border:1px solid rgba(0,175,240,0.3);padding:8px 20px;border-radius:50px;color:#7EC8F2;font-size:14px;font-weight:500;margin-bottom:24px}
+.elec-hero h1{font-family:'Noto Sans',sans-serif!important;font-size:52px!important;font-weight:700!important;color:#fff!important;margin-bottom:20px;line-height:1.15!important}
+.elec-hero h1 span{color:#00AFF0!important}
+.elec-hero-subtitle{font-family:'Noto Sans',sans-serif;font-size:20px!important;color:rgba(255,255,255,0.85)!important;max-width:700px;margin:0 auto 50px;line-height:32px!important}
+.elec-hero-stats{display:flex;justify-content:center;gap:60px}
+.elec-hero-stat{text-align:center}
+.elec-hero-stat-value{font-family:'Noto Sans',sans-serif;font-size:42px;font-weight:700;color:#00AFF0!important;line-height:67.2px!important}
+.elec-hero-stat-label{font-size:14px;color:rgba(255,255,255,0.85);margin-top:4px!important;line-height:22.4px!important}
+@media(max-width:1024px){.elec-hero h1{font-size:40px!important}.elec-hero-stats{gap:40px}}
+@media(max-width:640px){.elec-hero{padding:120px 0 80px}.elec-hero h1{font-size:32px!important}.elec-hero-subtitle{font-size:17px!important}.elec-hero-stats{flex-direction:column;gap:24px}.elec-hero-stat-value{font-size:36px}}
+</style>`;
+
+  const html = `${inlineCSS}
     <div class="elec-hero">
     <div class="dw-d-bg dw-d-bg--top" style="opacity: 0.12;"></div>
             <div class="elec-hero-inner" style="position: relative; z-index: 2;">

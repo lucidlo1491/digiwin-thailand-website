@@ -115,7 +115,7 @@ function blocks() {
           <p class="${P}-subtitle">${D.subtitle}</p>
 
           <div class="${P}-btn-wrap">
-            <a href="/contact/" class="${P}-cta">${D.cta}</a>
+            <a href="/demo/" class="${P}-cta">${D.cta}</a>
           </div>
 
           <div class="${P}-stats">

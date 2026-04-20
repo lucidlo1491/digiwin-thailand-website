@@ -8,6 +8,7 @@
  */
 
 const path = require('path');
+const schema = require('../lib/schema');
 
 // Section builders (header/footer are global — see divi5/global/)
 const heroBuilder = require('./sections/home-hero');
@@ -42,6 +43,16 @@ module.exports = {
     { name: 'proven-results',  builder: provenResultsBuilder },
     { name: 'final-cta',       builder: finalCtaBuilder },
   ],
+
+  // JSON-LD structured data (pushed to _digiwin_schema postmeta)
+  // Organization + WebSite are global via mu-plugin — homepage only needs BreadcrumbList
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+      ]),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

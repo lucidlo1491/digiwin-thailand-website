@@ -22,7 +22,7 @@ const DATA = {
   subtitleMaxWidth: '600px',
   buttons: [
     { text: 'See Partner Economics \u2192', href: '/partner-program/economics/', style: 'primary' },
-    { text: "Let\u2019s Talk", href: '/contact/', style: 'ghost' },
+    { text: "Let\u2019s Talk", href: '/demo/', style: 'ghost' },
   ],
   superD: { variant: 'particle', position: 'left', opacity: 0.14 },
   waveFlow: { height: '160px', opacity: 0.30 },

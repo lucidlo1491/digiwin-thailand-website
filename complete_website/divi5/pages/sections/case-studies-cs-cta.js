@@ -18,8 +18,8 @@ const DATA = {
   title: 'Want Results Like These?',
   subtitle: "Every factory is different. Tell us about yours and we\u2019ll share relevant case studies from your industry.",
   buttons: [
-    { text: "Let\u2019s Talk", href: '/demo.html', style: 'primary' },
-    { text: 'Explore Products', href: '/products.html', style: 'ghost' },
+    { text: "Let\u2019s Talk", href: '/demo/', style: 'primary' },
+    { text: 'Explore Products', href: '/products/', style: 'ghost' },
   ],
 };
 

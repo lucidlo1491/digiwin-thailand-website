@@ -222,7 +222,7 @@ function rewriteLinks(html) {
   return html
     .replace(/href="\.\.\/(blog\/[^"]+)\.html"/g, (_, p) => `href="/${p}/"`)
     .replace(/href="\.\.\/blog\.html"/g, 'href="/blog/"')
-    .replace(/href="\.\.\/demo\.html"/g, 'href="/contact/"')
+    .replace(/href="\.\.\/demo\.html"/g, 'href="/demo/"')
     .replace(/href="\.\.\/products\/([^"]+)\.html"/g, (_, p) => `href="/products/${p}/"`)
     .replace(/href="\.\.\/([^"]+)\.html"/g, (_, p) => `href="/${p}/"`);
 }

@@ -12,6 +12,7 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const mysql = require('./mysql');
+const { tbl } = require('./mysql-config');
 
 /**
  * Gate 3: VB Editability check via raw post_content
@@ -24,7 +25,7 @@ function checkEditability(pageId, rules = {}, opts = {}) {
 
   // Get raw post_content from MySQL
   const rawResult = mysql.query(
-    `SELECT post_content FROM wp_posts WHERE ID = ${pageId};`,
+    `SELECT post_content FROM ${tbl('posts', opts)} WHERE ID = ${pageId};`,
     opts
   );
   const content = rawResult.split('\n').slice(1).join('\n'); // skip header
@@ -91,7 +92,7 @@ function checkEditability(pageId, rules = {}, opts = {}) {
 
   // Check page status
   const statusResult = mysql.query(
-    `SELECT post_status FROM wp_posts WHERE ID = ${pageId};`,
+    `SELECT post_status FROM ${tbl('posts', opts)} WHERE ID = ${pageId};`,
     opts
   );
   const status = statusResult.split('\n').slice(1).join('').trim();

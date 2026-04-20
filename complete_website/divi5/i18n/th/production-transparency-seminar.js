@@ -117,8 +117,8 @@ const register = {
   adminLabel: 'PTS Register (Thai)',
   title: 'ลงทะเบียนสำรองที่นั่ง',
   meta: 'วันพฤหัสบดีที่ 10 เมษายน 2569 &middot; กรุงเทพฯ &middot; จำกัด 50 ท่าน',
-  cta: { text: 'ลงทะเบียนสำรองที่นั่ง', href: '/th/contact/' },
-  secondary: { text: 'ไม่ว่างวันนี้?', linkText: 'ลงทะเบียนแจ้งความสนใจ', href: '/th/contact/' },
+  cta: { text: 'ลงทะเบียนสำรองที่นั่ง', href: '/th/demo/' },
+  secondary: { text: 'ไม่ว่างวันนี้?', linkText: 'ลงทะเบียนแจ้งความสนใจ', href: '/th/demo/' },
 };
 
 // ── S9: Related Events ───────────────────────────────────────────

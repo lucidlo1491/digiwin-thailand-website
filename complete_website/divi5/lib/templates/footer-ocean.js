@@ -194,10 +194,10 @@ function css(data) {
 .${p}-logo img{display:block;max-width:140px;height:auto}
 
 /* ── Tagline ── */
-.${p}-tagline{font-family:'Noto Sans',sans-serif;font-size:16px;color:rgba(255,255,255,0.85);line-height:1.6;margin:0 0 24px 0 !important;padding:0 !important}
+.${p}-tagline{font-family:'Noto Sans',sans-serif;font-size:16px;color:rgba(255,255,255,0.9);line-height:1.6;margin:0 0 24px 0 !important;padding:0 !important}
 
 /* ── Stock ticker ── */
-.${p}-stock{font-family:'Noto Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.85);text-transform:uppercase;letter-spacing:0.05em;margin:0 !important;padding:0 !important}
+.${p}-stock{font-family:'Noto Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.9);text-transform:uppercase;letter-spacing:0.05em;margin:0 !important;padding:0 !important}
 .${p}-stock strong{color:#00AFF0;font-weight:600}
 
 /* ── Column headings ── */
@@ -207,11 +207,11 @@ function css(data) {
 .${p}-links{list-style:none !important;padding:0 !important;margin:0 !important}
 .${p}-links li{list-style:none !important;margin-bottom:12px}
 .${p}-links li::before{display:none !important}
-.${p}-links a{font-family:'Noto Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.85);text-decoration:none;transition:color 0.2s ease;display:inline-flex;align-items:center;min-height:44px;line-height:1.6}
+.${p}-links a{font-family:'Noto Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.9);text-decoration:none;transition:color 0.2s ease;display:inline-flex;align-items:center;min-height:44px;line-height:1.6}
 .${p}-links a:hover{color:#00AFF0}
 
 /* ── Contact block — D-Q2 fix: Divi injects <p> margins ── */
-.${p}-contact p{font-family:'Noto Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.85);line-height:1.6;margin:0 0 16px 0 !important;padding:0 !important}
+.${p}-contact p{font-family:'Noto Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.9);line-height:1.6;margin:0 0 16px 0 !important;padding:0 !important}
 .${p}-contact strong{color:#ffffff;font-weight:600}
 .${p}-contact a{color:#00AFF0;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;transition:color 0.2s ease}
 .${p}-contact a:hover{color:#ffffff}
@@ -223,9 +223,9 @@ function css(data) {
 
 /* ── Bottom legal bar ── */
 .${p}-bottom{padding:24px 0;display:flex;justify-content:space-between;align-items:center}
-.${p}-copyright{font-family:'Noto Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.85);margin:0 !important;padding:0 !important;line-height:1.6}
+.${p}-copyright{font-family:'Noto Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.9);margin:0 !important;padding:0 !important;line-height:1.6}
 .${p}-legal{display:flex;gap:24px}
-.${p}-legal a{font-family:'Noto Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.85);text-decoration:none;transition:color 0.2s ease;padding:15px 0;line-height:1.6}
+.${p}-legal a{font-family:'Noto Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.9);text-decoration:none;transition:color 0.2s ease;padding:15px 0;line-height:1.6}
 .${p}-legal a:hover{color:#00AFF0}
 
 /* ── Responsive: tablet (≤1024px) — 2-column grid, brand spans full width ── */

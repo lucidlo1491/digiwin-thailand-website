@@ -122,7 +122,7 @@ function blocks() {
           <p class="${P}-subtitle">From ERP to shop floor, one integrated ecosystem designed by manufacturers, for manufacturers. <span class="dw-years">44</span> years of focus on one industry means we understand your factory.</p>
 
           <div class="${P}-btn-wrap">
-            <a href="/contact/" class="${P}-cta">Let\u2019s Talk</a>
+            <a href="/demo/" class="${P}-cta">Let\u2019s Talk</a>
           </div>
 
           <div class="${P}-stats">

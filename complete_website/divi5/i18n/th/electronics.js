@@ -200,7 +200,7 @@ const cta = {
   title: 'จัดการความซับซ้อนของอิเล็กทรอนิกส์',
   subtitle: 'ดูว่า DigiWin รองรับการผลิตแบบ High-Mix อย่างไร',
   buttons: [
-    { text: shared.cta.getInTouch, href: '/demo.html', style: 'primary' },
+    { text: shared.cta.getInTouch, href: '/th/demo/', style: 'primary' },
     { text: 'ดูอุตสาหกรรมอื่นๆ', href: '/industries.html', style: 'ghost' },
   ],
 };

@@ -65,7 +65,7 @@ ${complianceHTML}
                             <div class="contact-label">${D.emailLabel}</div>
                             <div class="contact-value"><a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a></div>
                         </div>
-                        <a href="demo.html" class="contact-cta">${D.contactCta}</a>
+                        <a href="/demo/" class="contact-cta">${D.contactCta}</a>
                     </div>
                 </div>
             </div>

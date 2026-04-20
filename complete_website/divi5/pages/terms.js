@@ -8,8 +8,27 @@
 const path = require('path');
 const legalPage = require('../lib/templates/legal-page');
 
-module.exports = legalPage.pageConfig({
+const schema = require('../lib/schema');
+
+const _config = legalPage.pageConfig({
   prefix: 'lp-tos',
   slug: 'terms',
   protoFile: path.join(__dirname, '..', '..', 'terms.html'),
 }, { pageId: 100769 });
+
+_config.schema = function() {
+
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'Terms of Service', url: '/terms/' },
+      ]),
+      schema.webPage({
+        name: 'Terms of Service',
+        description: 'Terms of Service for DigiWin Thailand website.',
+        url: '/terms/',
+      }),
+    ];
+};
+
+module.exports = _config;

@@ -46,7 +46,7 @@ function blocks() {
                     <h1>${t.h1}</h1>
                     <p class="erp-hero-subtitle">${t.subtitle}</p>
                     <div class="erp-hero-ctas">
-                        <a href="../demo.html" class="btn-white">${t.ctaPrimary}</a>
+                        <a href="../demo/" class="btn-white">${t.ctaPrimary}</a>
                         <a href="#products" class="btn-outline-white">${t.ctaSecondary}</a>
                     </div>
                     <div class="erp-hero-stats">

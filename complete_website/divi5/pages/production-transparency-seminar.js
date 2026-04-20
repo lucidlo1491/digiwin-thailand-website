@@ -21,6 +21,7 @@ const proofBuilder = require('./sections/pts-proof');
 const logisticsBuilder = require('./sections/pts-logistics');
 const registerBuilder = require('./sections/pts-register');
 const relatedBuilder = require('./sections/pts-related');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100753,
@@ -40,6 +41,27 @@ module.exports = {
     { name: 'pts-register', builder: registerBuilder },
     { name: 'pts-related', builder: relatedBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'News & Events', url: '/news/' },
+        { name: 'Production Transparency Seminar', url: '/production-transparency-seminar/' },
+      ]),
+      schema.event({
+        name: 'Production Transparency: From Paper Reports to Real-Time Dashboards',
+        description: 'Half-day seminar on replacing paper-based production reporting with real-time MES dashboards. Learn how factories surface issues before they become costly delays.',
+        startDate: '2026-04-10T13:00:00+07:00',
+        endDate: '2026-04-10T17:00:00+07:00',
+        locationName: 'Bangkok, Thailand',
+        city: 'Bangkok',
+        country: 'TH',
+        isAccessibleForFree: true,
+      }),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

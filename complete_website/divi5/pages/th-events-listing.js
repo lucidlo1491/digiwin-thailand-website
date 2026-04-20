@@ -13,6 +13,7 @@ const { thaiTypographyCSS } = require('../lib/css-assembler');
 
 // Thai section builder
 const thHero = require('./sections/th-events-hero');
+const schema = require('../lib/schema');
 
 const P = 'evt-list';
 
@@ -28,6 +29,17 @@ module.exports = {
   ],
 
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E02\u0E48\u0E32\u0E27\u0E2A\u0E32\u0E23\u0E41\u0E25\u0E30\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21', url: '/th/news/' },
+        { name: '\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21', url: '/th/news/events/' },
+      ])),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button'],

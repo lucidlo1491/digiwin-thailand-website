@@ -21,7 +21,7 @@ function blocks() {
                         <h1>${h.title}</h1>
                         <p class="mes-hero-subtitle">${h.subtitle}</p>
                         <div class="mes-hero-ctas">
-                            <a href="../demo.html" class="btn-white">${h.ctaPrimary}</a>
+                            <a href="../demo/" class="btn-white">${h.ctaPrimary}</a>
                             <a href="#compare" class="btn-outline-white">${h.ctaSecondary}</a>
                         </div>
                         <div class="mes-hero-stats">

@@ -15,61 +15,7 @@ function blocks() {
     <div class="demo-form-section">
     <div class="demo-form-inner" style="position:relative;z-index:2;">
       <div class="demo-form-container">
-        <div class="demo-form-header">
-          <h2>Request a Consultation</h2>
-          <p>Tell us about your situation. We'll respond within 1 business day.</p>
-        </div>
-        <form action="#" method="POST">
-          <div class="form-group">
-            <label class="form-label" for="demo-name">Your Name *</label>
-            <input type="text" required class="form-input" id="demo-name" placeholder="Khun Somchai">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="demo-email">Email *</label>
-            <input type="email" required class="form-input" id="demo-email" placeholder="somchai@company.co.th">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="demo-company">Company *</label>
-            <input type="text" required class="form-input" id="demo-company" placeholder="Your company name">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="demo-phone">Phone</label>
-            <input type="tel" class="form-input" id="demo-phone" placeholder="+66">
-          </div>
-          <div class="form-group">
-            <label class="form-label">I'm interested in:</label>
-            <div class="form-checkbox-group">
-              <label class="form-checkbox-label">
-                <input type="checkbox" name="interest" value="factory">
-                <div class="checkbox-content">
-                  <h3>Solutions for My Factory</h3>
-                  <p>I own or manage a manufacturing facility</p>
-                </div>
-              </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" name="interest" value="partner">
-                <div class="checkbox-content">
-                  <h3>Becoming a DigiWin Partner</h3>
-                  <p>I run a software/consulting firm</p>
-                </div>
-              </label>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="demo-situation">Tell us about your current situation</label>
-            <textarea class="form-input form-textarea" id="demo-situation" placeholder="What challenges are you facing? What systems do you currently use?"></textarea>
-          </div>
-          <div class="form-group">
-            <label class="form-checkbox-label" style="border-color:#e2e8f0;background:#f8fafc;">
-              <input type="checkbox" name="pdpa_consent" required id="demo-pdpa">
-              <div class="checkbox-content">
-                <p style="color:#333;font-size:14px;line-height:1.5;">I agree to the processing of my personal data per DigiWin's <a href="/privacy-policy/" style="color:#00AFF0;text-decoration:underline;">Privacy Policy</a> *</p>
-              </div>
-            </label>
-          </div>
-          <button type="submit" class="form-submit">Start the Conversation</button>
-          <p style="text-align:center;font-size:13px;color:#5b6b80;margin-top:12px;line-height:1.5;">No sales pressure. We'll listen to your situation first.</p>
-        </form>
+        [contact-form-7 id="3ede9be" title="DigiWin Contact Form"]
         <div class="form-alternative">
           <p>Prefer to email directly?</p>
           <a href="mailto:info@digiwin.co.th">info@digiwin.co.th</a>
@@ -154,22 +100,37 @@ function css() {
 .demo-form-section{padding:80px 24px;background:#fff;${base.fontSmoothingReset()}font-size:16px}
 .demo-form-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px}
 .demo-form-container{background:#fff;border:1px solid #e2e8f0;border-radius:24px;padding:48px;box-shadow:0 4px 24px rgba(0,0,0,0.06)}
-.demo-form-header{margin-bottom:32px}
-.demo-form-header h2{font-family:'Noto Sans',sans-serif;font-size:28px;font-weight:700;color:#000864;margin-bottom:8px}
-.demo-form-header p{font-size:15px;color:#5b6b80;margin:0}
-.form-group{margin-bottom:24px}
-.form-label{display:block;font-weight:600;color:#000864;margin-bottom:8px;font-size:14px}
-.form-input{width:100%;padding:14px 16px;border:1px solid #e2e8f0;border-radius:12px;font-size:16px;font-family:'Noto Sans',sans-serif;transition:all 0.2s;box-sizing:border-box}
-.form-input:focus{outline:none;border-color:#00AFF0;box-shadow:0 0 0 3px rgba(0,175,240,0.1)}
-.form-textarea{resize:vertical;min-height:100px}
-.form-checkbox-group{display:flex;flex-direction:column;gap:12px}
-.form-checkbox-label{display:flex;align-items:center;gap:12px;cursor:pointer;padding:16px;border:1px solid #e2e8f0;border-radius:12px;transition:all 0.2s}
-.form-checkbox-label:hover{border-color:#00AFF0;background:#f8fafc}
-.form-checkbox-label input[type="checkbox"]{width:20px;height:20px;accent-color:#00AFF0}
-.checkbox-content h3{font-family:'Noto Sans',sans-serif;font-size:15px;font-weight:600;color:#000864;margin:0 0 2px}
-.checkbox-content p{font-size:13px;color:#5b6b80;margin:0}
-.form-submit{width:100%;padding:16px;background:linear-gradient(135deg,#00AFF0,#003CC8);color:#fff;border:none;border-radius:12px;font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;cursor:pointer;transition:all 0.3s}
-.form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,175,240,0.3)}
+/* CF7 form header */
+.demo-form-container .demo-form-header{margin-bottom:32px}
+.demo-form-container .demo-form-header h2{font-family:'Noto Sans',sans-serif;font-size:28px;font-weight:700;color:#000864;margin-bottom:8px}
+.demo-form-container .demo-form-header p{font-size:15px;color:#5b6b80;margin:0}
+/* CF7 form fields */
+.demo-form-container .form-group{margin-bottom:24px}
+.demo-form-container .form-label{display:block;font-weight:600;color:#000864;margin-bottom:8px;font-size:14px}
+.demo-form-container .wpcf7 input[type="text"],
+.demo-form-container .wpcf7 input[type="email"],
+.demo-form-container .wpcf7 input[type="tel"],
+.demo-form-container .wpcf7 textarea{width:100%;padding:14px 16px;border:1px solid #e2e8f0;border-radius:12px;font-size:16px;font-family:'Noto Sans',sans-serif;transition:all 0.2s;box-sizing:border-box}
+.demo-form-container .wpcf7 input:focus,
+.demo-form-container .wpcf7 textarea:focus{outline:none;border-color:#00AFF0;box-shadow:0 0 0 3px rgba(0,175,240,0.1)}
+.demo-form-container .wpcf7 textarea{resize:vertical;min-height:100px}
+/* CF7 checkboxes */
+.demo-form-container .wpcf7-checkbox .wpcf7-list-item{display:block;margin:0 0 8px}
+.demo-form-container .wpcf7-checkbox input[type="checkbox"]{width:18px;height:18px;accent-color:#00AFF0;margin-right:8px}
+/* CF7 acceptance */
+.demo-form-container .wpcf7-acceptance input[type="checkbox"]{width:18px;height:18px;accent-color:#00AFF0;margin-right:8px}
+.demo-form-container .wpcf7-acceptance a{color:#00AFF0;text-decoration:underline}
+/* CF7 submit button */
+.demo-form-container .wpcf7 .form-submit,
+.demo-form-container .wpcf7 input[type="submit"]{width:100%;padding:16px;background:linear-gradient(135deg,#00AFF0,#003CC8);color:#fff;border:none;border-radius:12px;font-family:'Noto Sans',sans-serif;font-size:16px;font-weight:600;cursor:pointer;transition:all 0.3s}
+.demo-form-container .wpcf7 .form-submit:hover,
+.demo-form-container .wpcf7 input[type="submit"]:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,175,240,0.3)}
+/* CF7 response messages */
+.demo-form-container .wpcf7-response-output{border-radius:12px;padding:16px;margin:16px 0 0;font-size:14px}
+.demo-form-container .wpcf7-mail-sent-ok{border-color:#02D28C;color:#059669;background:#f0fdf4}
+.demo-form-container .wpcf7-validation-errors{border-color:#dc2626;color:#dc2626;background:#fef2f2}
+.demo-form-container .wpcf7 .wpcf7-not-valid-tip{color:#dc2626;font-size:13px;margin-top:4px}
+.demo-form-container .wpcf7 .wpcf7-spinner{display:none}
 .form-alternative{margin-top:24px;padding-top:24px;border-top:1px solid #e2e8f0;text-align:center}
 .form-alternative p{font-size:14px;color:#5b6b80;margin-bottom:4px}
 .form-alternative a{color:#0369a1;font-weight:600;text-decoration:none}
@@ -186,7 +147,7 @@ function css() {
 .demo-proof-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .proof-stat{text-align:center;padding:16px;background:rgba(255,255,255,0.05);border-radius:12px}
 .proof-stat-value{font-family:'Noto Sans',sans-serif;font-size:24px;font-weight:700;color:#00AFF0;display:block}
-.proof-stat-label{font-size:12px;color:rgba(255,255,255,0.75)}
+.proof-stat-label{font-size:12px;color:rgba(255,255,255,0.85)}
 @media(max-width:1024px){.demo-form-inner{grid-template-columns:1fr;gap:48px}}
 @media(max-width:640px){.demo-form-container{padding:32px 24px}.demo-proof-stats{grid-template-columns:1fr}}
 ${base.reducedMotion(`.form-input,.form-checkbox-label,.form-submit{animation:none !important;transition:none !important}`)}

@@ -315,7 +315,7 @@ const cta = {
   title: 'พร้อมยุติความวุ่นวายในคลังสินค้าหรือยัง?',
   subtitle: 'กรอกแบบฟอร์ม ทีมงานของเราจะติดต่อกลับเพื่อพูดคุยเกี่ยวกับความท้าทายเฉพาะของคลังสินค้าคุณ',
   buttons: [
-    { text: shared.cta.getInTouch, href: '/demo.html', style: 'primary' },
+    { text: shared.cta.getInTouch, href: '/th/demo/', style: 'primary' },
     { text: 'ดูผลิตภัณฑ์ทั้งหมด', href: '/products.html', style: 'ghost' },
   ],
 };

@@ -279,7 +279,7 @@ ${mainCSS}
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">Become a Partner</p></div>
               </a>
-              <a href="/contact/" class="dw-mega-item">
+              <a href="/demo/" class="dw-mega-item">
                 <div class="dw-mega-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
                 <div class="dw-mega-info"><p class="dw-mega-title">Let's Talk</p></div>
               </a>
@@ -337,7 +337,7 @@ ${mainCSS}
       <!-- About -->
       <div class="dw-nav-item"><a href="/about-us/" class="dw-nav-link">About</a></div>
     </nav>
-    <a href="/contact/" class="dw-header-cta">
+    <a href="/demo/" class="dw-header-cta">
       <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;margin-right:8px;vertical-align:middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       <span style="vertical-align:middle;">Let's Talk</span>
     </a>
@@ -369,10 +369,10 @@ ${mainCSS}
     nav.querySelectorAll('a.dw-nav-link,.dw-mega-item,.dw-mega-viewall').forEach(function(l){l.addEventListener('click',function(){nav.classList.remove('dw-nav--open');tog.classList.remove('active');document.body.style.overflow=''})});
   }
   // Language toggle — safe fallback logic
-  var langMap={'/':'/th/','/partner-program/':'/th/partner-program/','/partner-program/business-model/':'/th/partner-program/business-model/','/partner-program/solutions/':'/th/partner-program/solutions/','/partner-program/economics/':'/th/partner-program/economics/','/products/':'/th/products/','/products/erp/':'/th/products/erp/','/products/mes/':'/th/products/mes/','/products/wms/':'/th/products/wms/','/products/aiot/':'/th/products/aiot/','/industries/':'/th/industries/','/industries/automotive/':'/th/industries/automotive/','/industries/electronics/':'/th/industries/electronics/','/industries/metal-plastics/':'/th/industries/metal-plastics/','/about-us/':'/th/about-us/','/case-studies/':'/th/case-studies/','/news/':'/th/news/','/blog/':'/th/blog/','/news/events/':'/th/news/events/','/news/events/boi-compliance-workshop/':'/th/news/events/boi-compliance-workshop/','/news/events/factory-tour-mes/':'/th/news/events/factory-tour-mes/','/news/events/manufacturing-expo-2026/':'/th/news/events/manufacturing-expo-2026/','/news/events/production-transparency-seminar/':'/th/news/events/production-transparency-seminar/','/news/events/shop-floor-data-workshop/':'/th/news/events/shop-floor-data-workshop/','/privacy-policy/':'/th/privacy-policy-th/','/terms/':'/th/terms-of-service-th/'};
+  var langMap={'/':'/th/','/partner-program/':'/th/partner-program/','/partner-program/business-model/':'/th/partner-program/business-model/','/partner-program/solutions/':'/th/partner-program/solutions/','/partner-program/economics/':'/th/partner-program/economics/','/products/':'/th/products/','/products/erp/':'/th/products/erp/','/products/mes/':'/th/products/mes/','/products/wms/':'/th/products/wms/','/products/aiot/':'/th/products/aiot/','/industries/':'/th/industries/','/industries/automotive/':'/th/industries/automotive/','/industries/electronics/':'/th/industries/electronics/','/industries/metal-plastics/':'/th/industries/metal-plastics/','/about-us/':'/th/about-us/','/case-studies/':'/th/case-studies/','/news/':'/th/news/','/blog/':'/th/blog/','/news/events/':'/th/news/events/','/news/events/boi-compliance-workshop/':'/th/news/events/boi-compliance-workshop/','/news/events/factory-tour-mes/':'/th/news/events/factory-tour-mes/','/news/events/manufacturing-expo-2026/':'/th/news/events/manufacturing-expo-2026/','/news/events/production-transparency-seminar/':'/th/news/events/production-transparency-seminar/','/news/events/shop-floor-data-workshop/':'/th/news/events/shop-floor-data-workshop/','/news/events/intelligent-asia-2026/':'/th/news/events/intelligent-asia-2026/','/demo/':'/th/demo/','/privacy-policy/':'/th/privacy-policy-th/','/terms/':'/th/terms-of-service-th/','/intelligent-asia-thailand-20260311/':'/intelligent-asia-thailand-20260311-th/'};
   var revMap={};for(var k in langMap)revMap[langMap[k]]=k;
   var curPath=window.location.pathname;
-  var isThai=curPath.indexOf('/th/')===0||curPath==='/th';
+  var isThai=curPath.indexOf('/th/')===0||curPath==='/th'||!!revMap[curPath];
   var langOpts=document.querySelectorAll('.dw-lang-option');
   langOpts.forEach(function(el){
     var lang=el.getAttribute('data-lang');
@@ -386,6 +386,13 @@ ${mainCSS}
       var enPath=revMap[curPath]||(curPath.indexOf('/th/')===0?curPath.slice(3):'/');el.href=enPath||'/';
     }
   });
+  // Rewrite header CTA + mega links on Thai pages
+  if(isThai){
+    document.querySelectorAll('.dw-header-cta, .dw-mega-item').forEach(function(el){
+      var h=el.getAttribute('href');
+      if(h&&h.indexOf('/th/')!==0&&langMap[h])el.setAttribute('href',langMap[h]);
+    });
+  }
 })();
 </script>`;
 }
@@ -429,7 +436,7 @@ function headerCss() {
 /* Reset Divi's inherited line-height (23.8px from 1.49em×16px) and <p> padding on all header elements */
 .dw-header,.dw-header *{line-height:1.6;-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto}
 .dw-header p,.dw-header h1,.dw-header h2,.dw-header h3{margin:0;padding:0}
-.dw-header{background:${SPEC.header.background};backdrop-filter:blur(${SPEC.header.backdropBlur});-webkit-backdrop-filter:blur(${SPEC.header.backdropBlur});box-shadow:0 1px 0 rgba(37,59,80,0.08);position:fixed;top:0;left:0;right:0;z-index:${SPEC.header.zIndex};transition:all ${SPEC.animation.transition}}
+.dw-header{background:${SPEC.header.background};backdrop-filter:blur(${SPEC.header.backdropBlur});-webkit-backdrop-filter:blur(${SPEC.header.backdropBlur});box-shadow:none;position:fixed;top:0;left:0;right:0;z-index:${SPEC.header.zIndex};transition:all ${SPEC.animation.transition}}
 .dw-header.scrolled{box-shadow:${SPEC.header.scrollShadow}}
 .dw-header-inner{max-width:${SPEC.header.maxWidth};margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:${SPEC.header.height}}
 

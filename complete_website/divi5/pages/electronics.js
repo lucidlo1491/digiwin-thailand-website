@@ -20,6 +20,7 @@ const productsBuilder = require('./sections/electronics-products');
 const sectionBuilder = require('./sections/electronics-section');
 const ctaBuilder = require('./sections/electronics-cta');
 const relatedBuilder = require('./sections/electronics-related-solutions');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100566, // TODO: Create WP page and set page ID
@@ -41,6 +42,29 @@ module.exports = {
     { name: 'cta', builder: ctaBuilder },
     { name: 'related-solutions', builder: relatedBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'Industries', url: '/industries/' },
+        { name: 'Electronics Assembly', url: '/industries/electronics/' },
+      ]),
+      schema.webPage({
+        name: 'Electronics Assembly Manufacturing Solutions',
+        description: 'MES and ERP for electronics assembly factories in Thailand. SMT integration, MSD tracking, component-level traceability.',
+        url: '/industries/electronics/',
+      }),
+      schema.faqPage([
+        { question: 'What MES system works best for electronics assembly in Thailand?', answer: 'DigiWin MES is purpose-built for the complexity of electronics assembly, with native SMT machine integration that generic MES platforms cannot match. The system handles high-mix, low-volume production with thousands of unique component types, tracking every reel to every board position. It is deployed across Thailand\'s electronics ecosystem, which exports over $40 billion in electronics annually, from hard disk drives to automotive electronics.' },
+        { question: 'Can DigiWin MES integrate with Fuji and Panasonic SMT machines?', answer: 'Yes. DigiWin provides direct machine connectivity with all major SMT equipment brands including Fuji, Panasonic, Yamaha, Juki, and ASM pick-and-place machines, as well as AOI and ICT inspection systems from Koh Young, Omron, and Keysight. This integration enables reel verification at the feeder, wrong-part prevention, and automated program downloads, eliminating the manual data entry that causes costly component placement errors.' },
+        { question: 'How does DigiWin handle moisture-sensitive component (MSD) tracking?', answer: 'DigiWin automates the entire floor-life management process for moisture-sensitive devices. The system starts an automatic countdown the moment an MSD package is opened and exposed to floor conditions, tracks bake-out cycles for components that need reconditioning, and sends expiry alerts that block expired components from being used on the line. This automated approach has achieved a 45% reduction in MSD-related scrap compared to manual tracking methods.' },
+        { question: 'Does DigiWin support BOI compliance for electronics factories?', answer: 'Yes. DigiWin provides production-order-level material reconciliation specifically designed for BOI audits in electronics manufacturing. The system tracks actual component consumption per assembly order, which is critical for bonded electronic components that require precise import duty reconciliation. Electronics factories using DigiWin for BOI compliance have reported savings of over 10 million THB per year through accurate duty drawback claims and BOI-ready audit reports.' },
+        { question: 'What pick accuracy can I achieve with DigiWin WMS?', answer: 'DigiWin sFLS WMS delivers 99.9% pick accuracy for electronics warehouse operations. The system manages reel-level inventory with precise moisture-sensitive component handling, automated kitting support for production orders, and barcode-driven verification at every step. For electronics factories managing hundreds of unique parts per product and thousands of reels in inventory, this level of accuracy prevents the costly errors where one wrong component placed can result in an entire batch being scrapped.' },
+      ]),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

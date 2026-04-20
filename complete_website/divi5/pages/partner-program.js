@@ -17,6 +17,7 @@ const offeringsBuilder = require('./sections/partner-offerings');
 const journeyBuilder = require('./sections/partner-journey');
 const marketTimingBuilder = require('./sections/partner-market-timing');
 const finalCtaBuilder = require('./sections/partner-final-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100555,
@@ -40,6 +41,21 @@ module.exports = {
     { name: 'market-timing',    builder: marketTimingBuilder },
     { name: 'final-cta',        builder: finalCtaBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'Partner Program', url: '/partner-program/' },
+      ]),
+      schema.webPage({
+        name: 'DigiWin Partner Program',
+        description: 'ERP partner program in Thailand. 30-40% license margins, 100% service fee retention, recurring maintenance revenue, 6-month lead lock protection.',
+        url: '/partner-program/',
+      }),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

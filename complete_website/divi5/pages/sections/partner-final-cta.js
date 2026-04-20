@@ -20,8 +20,8 @@ const DATA = {
   title: 'Ready to Discuss Your Territory?',
   subtitle: 'A straightforward conversation about <em>your</em> margins, <em>your</em> market, and whether the partnership math works for both sides.',
   buttons: [
-    { text: "Let\u2019s Talk Partnership", href: '/demo.html', style: 'primary' },
-    { text: 'See the Math First', href: '/partner-program/economics.html', style: 'ghost' },
+    { text: "Let\u2019s Talk Partnership", href: '/demo/', style: 'primary' },
+    { text: 'See the Math First', href: '/partner-program/economics/', style: 'ghost' },
   ],
   superD: { variant: 'gradient', position: 'center', opacity: 0.12, modifiers: ['glow'] },
   waveFlow: { height: '160px', opacity: 0.30 },
@@ -32,7 +32,7 @@ function blocks() {
 
   // Inject footer text into the code module HTML (index 3 = code module with section HTML)
   // Content is JSON-encoded inside the block, so newlines are \\n literals
-  const footerHTML = `<p class=\\"${P}-footer-text\\"><strong>Not ready to talk?</strong> Start with the <a href=\\"/partner-program/economics.html\\">Partner Economics</a> page \\u2014 validate the numbers privately before reaching out.</p>`;
+  const footerHTML = `<p class=\\"${P}-footer-text\\"><strong>Not ready to talk?</strong> Start with the <a href=\\"/partner-program/economics/\\">Partner Economics</a> page \\u2014 validate the numbers privately before reaching out.</p>`;
   // Insert before last two closing divs (container + section wrapper)
   templateBlocks[3] = templateBlocks[3].replace(
     '</div>\\n    </div>\\n    </div>',
@@ -53,7 +53,7 @@ function css() {
 
   // Add footer text styling
   const footerCSS = `
-.${P}-footer-text{text-align:center;max-width:600px;margin:24px auto 20px;font-family:'Noto Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.75);position:relative;z-index:3}
+.${P}-footer-text{text-align:center;max-width:600px;margin:24px auto 20px;font-family:'Noto Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.85);position:relative;z-index:3}
 .${P}-footer-text strong{font-weight:600;color:rgba(255,255,255,0.9)}
 .${P}-footer-text a{color:#7EC8F2;text-decoration:underline;transition:color 0.2s}
 .${P}-footer-text a:hover{color:#fff}`;

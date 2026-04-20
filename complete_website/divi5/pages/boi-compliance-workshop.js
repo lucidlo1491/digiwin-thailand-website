@@ -21,6 +21,7 @@ const proofBuilder = require('./sections/event-proof');
 const logisticsBuilder = require('./sections/event-logistics');
 const registerBuilder = require('./sections/event-register');
 const relatedBuilder = require('./sections/event-related');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100751,
@@ -40,6 +41,27 @@ module.exports = {
     { name: 'event-register', builder: registerBuilder },
     { name: 'event-related', builder: relatedBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'News & Events', url: '/news/' },
+        { name: 'BOI Compliance Workshop', url: '/boi-compliance-workshop/' },
+      ]),
+      schema.event({
+        name: 'BOI Compliance Workshop: Production-Level Reconciliation',
+        description: 'Full-day hands-on workshop on BOI compliance. Learn production-order-level material tracking that eliminates supplementary taxes.',
+        startDate: '2026-03-15T09:00:00+07:00',
+        endDate: '2026-03-15T16:00:00+07:00',
+        locationName: 'Bangkok, Thailand',
+        city: 'Bangkok',
+        country: 'TH',
+        isAccessibleForFree: true,
+      }),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

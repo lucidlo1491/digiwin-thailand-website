@@ -65,7 +65,7 @@ const DATA = {
       description: 'Most Thai SMEs lack a dedicated IT manager. You end up subsidizing their operations with your margins \u2014 absorbing unbillable work you feel forced to do just to keep the relationship alive.',
     },
   ],
-  cta: { text: 'See the Way Out', href: '/partner-program.html' },
+  cta: { text: 'See the Way Out', href: '/partner-program/' },
 };
 
 module.exports = {

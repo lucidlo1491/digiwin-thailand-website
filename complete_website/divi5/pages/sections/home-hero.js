@@ -146,8 +146,8 @@ const DATA = {
       title: 'Your True Costs Are <span class="hl-blue">Invisible.</span>',
       subtitle: '"Shadow Excel" files have replaced your standard operating procedures. Ghost inventory means system says 100, shelf says 50. We fix this\u2014because we\u2019ve spent <span data-dw-years>44</span> years doing nothing but manufacturing software.',
       buttons: [
-        { text: 'Let\u2019s Talk', href: '/demo.html', style: 'primary' },
-        { text: 'See Our Solutions', href: '/products.html', style: 'ghost' },
+        { text: 'Let\u2019s Talk', href: '/demo/', style: 'primary' },
+        { text: 'See Our Solutions', href: '/products/', style: 'ghost' },
       ],
       stats: [
         { value: '44', label: 'Years Manufacturing Focus', dynamic: true },
@@ -168,7 +168,7 @@ const DATA = {
       title: 'Trapped in the <span class="hl-gold">Man-Day</span> Model?',
       subtitle: 'Your revenue is capped by headcount. Customization wars burn out your best consultants. We offer a way out\u2014product-based margins that compound instead of compress.',
       buttons: [
-        { text: 'Escape the Trap', href: '/partner-program.html', style: 'primary' },
+        { text: 'Escape the Trap', href: '/partner-program/', style: 'primary' },
       ],
       stats: [
         { value: '30\u201340%', label: 'License Margins', white: true },

@@ -12,6 +12,7 @@
  */
 
 const mysql = require('./mysql');
+const { tbl } = require('./mysql-config');
 const { codeModule } = require('./modules');
 const { templates, list } = require('./templates/index');
 const { checkValidity } = require('./lint-css');
@@ -204,8 +205,8 @@ const EXAMPLE_DATA = {
  */
 function getTermTaxonomyId(taxonomy, slug, name) {
   // Check if term exists
-  const checkSql = `SELECT tt.term_taxonomy_id FROM wp_terms t
-    JOIN wp_term_taxonomy tt ON t.term_id = tt.term_id
+  const checkSql = `SELECT tt.term_taxonomy_id FROM ${tbl('terms')} t
+    JOIN ${tbl('term_taxonomy')} tt ON t.term_id = tt.term_id
     WHERE tt.taxonomy = '${mysql.escape(taxonomy)}' AND t.slug = '${mysql.escape(slug)}'
     LIMIT 1;`;
 
@@ -217,12 +218,12 @@ function getTermTaxonomyId(taxonomy, slug, name) {
 
   // Create term if it doesn't exist (combine INSERT + SELECT in single query)
   console.log(`  Creating taxonomy term: ${taxonomy}/${slug}`);
-  const createSql = `INSERT INTO wp_terms (name, slug, term_group) VALUES ('${mysql.escape(name)}', '${mysql.escape(slug)}', 0);
+  const createSql = `INSERT INTO ${tbl('terms')} (name, slug, term_group) VALUES ('${mysql.escape(name)}', '${mysql.escape(slug)}', 0);
 SELECT LAST_INSERT_ID() AS id;`;
   const termResult = mysql.query(createSql).trim();
   const termId = parseInt(termResult.split('\n').pop().trim(), 10);
 
-  const createTTSql = `INSERT INTO wp_term_taxonomy (term_id, taxonomy, description, parent, count) VALUES (${termId}, '${mysql.escape(taxonomy)}', '', 0, 0);
+  const createTTSql = `INSERT INTO ${tbl('term_taxonomy')} (term_id, taxonomy, description, parent, count) VALUES (${termId}, '${mysql.escape(taxonomy)}', '', 0, 0);
 SELECT LAST_INSERT_ID() AS id;`;
   const ttResult = mysql.query(createTTSql).trim();
   const ttId = parseInt(ttResult.split('\n').pop().trim(), 10);
@@ -270,7 +271,7 @@ function pushTemplate(name, tmpl, dryRun = false) {
   const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
   // Check if layout already exists
-  const checkSql = `SELECT ID FROM wp_posts WHERE post_type='et_pb_layout' AND post_title='${escapedTitle}' LIMIT 1;`;
+  const checkSql = `SELECT ID FROM ${tbl('posts')} WHERE post_type='et_pb_layout' AND post_title='${escapedTitle}' LIMIT 1;`;
 
   if (dryRun) {
     console.log(`  [DRY RUN] Would push: ${title}`);
@@ -285,7 +286,7 @@ function pushTemplate(name, tmpl, dryRun = false) {
     // Update existing
     postId = parseInt(existing.split('\n')[1], 10);
     console.log(`  Updating existing layout #${postId}: ${title}`);
-    const updateSql = `UPDATE wp_posts SET
+    const updateSql = `UPDATE ${tbl('posts')} SET
       post_content = '${escapedContent}',
       post_modified = '${now}',
       post_modified_gmt = '${now}'
@@ -294,7 +295,7 @@ function pushTemplate(name, tmpl, dryRun = false) {
   } else {
     // Insert new
     console.log(`  Creating new layout: ${title}`);
-    const insertSql = `INSERT INTO wp_posts SET
+    const insertSql = `INSERT INTO ${tbl('posts')} SET
       post_author = 1,
       post_date = '${now}',
       post_date_gmt = '${now}',
@@ -326,12 +327,12 @@ SELECT LAST_INSERT_ID() AS id;`;
 
   for (const [key, value] of metaKeys) {
     // Upsert meta
-    const checkMeta = `SELECT meta_id FROM wp_postmeta WHERE post_id=${postId} AND meta_key='${key}' LIMIT 1;`;
+    const checkMeta = `SELECT meta_id FROM ${tbl('postmeta')} WHERE post_id=${postId} AND meta_key='${key}' LIMIT 1;`;
     const metaResult = mysql.query(checkMeta).trim();
     if (metaResult && metaResult.split('\n').length > 1) {
-      mysql.query(`UPDATE wp_postmeta SET meta_value='${value}' WHERE post_id=${postId} AND meta_key='${key}';`);
+      mysql.query(`UPDATE ${tbl('postmeta')} SET meta_value='${value}' WHERE post_id=${postId} AND meta_key='${key}';`);
     } else {
-      mysql.query(`INSERT INTO wp_postmeta (post_id, meta_key, meta_value) VALUES (${postId}, '${key}', '${value}');`);
+      mysql.query(`INSERT INTO ${tbl('postmeta')} (post_id, meta_key, meta_value) VALUES (${postId}, '${key}', '${value}');`);
     }
   }
 
@@ -345,11 +346,11 @@ SELECT LAST_INSERT_ID() AS id;`;
   const moduleWidthTermId = getTermTaxonomyId('module_width', 'regular', 'Regular');
 
   for (const ttId of [sectionTermId, notGlobalTermId, categoryTermId, moduleWidthTermId]) {
-    const checkRel = `SELECT object_id FROM wp_term_relationships WHERE object_id=${postId} AND term_taxonomy_id=${ttId} LIMIT 1;`;
+    const checkRel = `SELECT object_id FROM ${tbl('term_relationships')} WHERE object_id=${postId} AND term_taxonomy_id=${ttId} LIMIT 1;`;
     const relResult = mysql.query(checkRel).trim();
     if (!relResult || relResult.split('\n').length <= 1) {
-      mysql.query(`INSERT INTO wp_term_relationships (object_id, term_taxonomy_id, term_order) VALUES (${postId}, ${ttId}, 0);`);
-      mysql.query(`UPDATE wp_term_taxonomy SET count = count + 1 WHERE term_taxonomy_id = ${ttId};`);
+      mysql.query(`INSERT INTO ${tbl('term_relationships')} (object_id, term_taxonomy_id, term_order) VALUES (${postId}, ${ttId}, 0);`);
+      mysql.query(`UPDATE ${tbl('term_taxonomy')} SET count = count + 1 WHERE term_taxonomy_id = ${ttId};`);
     }
   }
 

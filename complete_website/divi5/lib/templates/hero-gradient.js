@@ -242,7 +242,7 @@ ${highlights}
 .${p}-btn--primary{background:#006dac;color:#fff;box-shadow:0 4px 14px rgba(0,175,240,0.35);gap:8px}
 .${p}-btn--primary:hover{background:#003CC8;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,175,240,0.45)}
 .${p}-btn--ghost{background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.9);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);gap:8px}
-.${p}-btn--ghost:hover{background:#fff;color:#0369a1;border-color:#fff}
+.${p}-btn--ghost:hover{background:#fff;color:#0C4A6E;border-color:#fff}
 .${p}-btn-row{display:flex;align-items:center;gap:12px;max-width:520px;font-size:16px;flex-wrap:wrap}
 ${ghostMargin}
 
@@ -250,7 +250,7 @@ ${ghostMargin}
 .${p}-stats{display:flex;gap:40px;margin-top:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.1);max-width:520px}
 .${p}-stat-number{font-family:'Noto Sans',sans-serif;font-size:32px;font-weight:800;color:#00AFF0;line-height:1;margin-bottom:8px;letter-spacing:-0.02em}
 ${whiteStats ? `.${p}-stat-number--white{color:#fff}` : ''}
-.${p}-stat-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:400;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.1em;line-height:1.6}
+.${p}-stat-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:400;color:rgba(255,255,255,0.85);text-transform:uppercase;letter-spacing:0.1em;line-height:1.6}
 
 /* === GRAIN TEXTURE OVERLAY === */
 .${p}-grain{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:1}

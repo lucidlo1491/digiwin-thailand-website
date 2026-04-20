@@ -208,7 +208,7 @@ function css() {
 .${P}-bar--y2{height:63%}
 .${P}-bar--y3{height:100%}
 .${P}-bar-value{font-family:'Noto Sans',sans-serif;font-size:18px;font-weight:700;color:#fff}
-.${P}-bar-label{position:absolute;bottom:-32px;font-family:'Noto Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.75);white-space:nowrap}
+.${P}-bar-label{position:absolute;bottom:-32px;font-family:'Noto Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.85);white-space:nowrap}
 
 /* Responsive */
 @media(max-width:${base.BREAKPOINTS.tablet}px){

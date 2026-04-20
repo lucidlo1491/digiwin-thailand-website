@@ -174,7 +174,7 @@ const OPERATIONAL_CONFIG = {
   ],
   cta: {
     text: 'Read the Full Diagnosis \u2192',
-    href: '/partner-program/business-model.html',
+    href: '/partner-program/business-model/',
   },
 };
 

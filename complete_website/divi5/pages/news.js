@@ -16,6 +16,7 @@ const upcomingBuilder = require('./sections/news-upcoming');
 const seriesBuilder = require('./sections/news-series');
 const pastBuilder = require('./sections/news-past');
 const ctaBuilder = require('./sections/news-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100571,
@@ -33,6 +34,22 @@ module.exports = {
     { name: 'past', builder: pastBuilder },
     { name: 'cta', builder: ctaBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'News & Events', url: '/news/' },
+      ]),
+      schema.webPage({
+        type: 'CollectionPage',
+        name: 'DigiWin Thailand News & Events',
+        description: 'Manufacturing workshops, seminars, factory tours, and trade shows for Thai manufacturers.',
+        url: '/news/',
+      }),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

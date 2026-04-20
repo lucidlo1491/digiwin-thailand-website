@@ -32,14 +32,16 @@ module.exports = {
   // ── S2: Featured Event ─────────────────────────────────────────
   featured: {
     label: 'กิจกรรมแนะนำ',
-    eventType: 'Workshop',
-    title: 'เวิร์กช็อป BOI Compliance: การกระทบยอดระดับใบสั่งผลิตที่ผ่านทุกการตรวจสอบ',
-    date: 'March 15, 2026 | 09:00 – 16:00',
-    time: '09:00 – 16:00',
-    location: 'Bangkok, Thailand',
-    urgency: 'จำกัดเพียง 30 ท่าน',
-    description: 'เรียนรู้วิธีการติดตามวัตถุดิบระดับใบสั่งผลิตที่ช่วยลดภาษี BOI เพิ่มเติม อ้างอิงกรณีศึกษา Jin Hai: จากภาษีเพิ่มเติม 10 ล้านบาท/ปี เหลือศูนย์',
-    ctaText: 'ลงทะเบียนเลย',
+    eventType: 'Trade Show',
+    eventTypeClass: 'trade-show',
+    title: 'Intelligent Asia Thailand 2026: DigiWin Smart Electronics Manufacturing',
+    date: '11–13 มีนาคม 2026 | 10:00 – 18:00',
+    time: '10:00 – 18:00 (3 วัน)',
+    location: 'ไบเทค บางนา, EH 98 Hall',
+    urgency: 'บูธ I132, เข้าชมฟรี',
+    description: 'DigiWin Thailand ร่วมกับ Digihua Smart นำเสนอระบบ e-Tax Compliance, AI Smart Manufacturing Integration และโซลูชันเชิงลึกสำหรับอุตสาหกรรมอิเล็กทรอนิกส์ พบเราที่บูธ I132',
+    ctaText: 'นัดหมายพบปะ',
+    ctaHref: '/th/intelligent-asia-2026/',
   },
 
   // ── S3: Upcoming Events ────────────────────────────────────────
@@ -47,6 +49,15 @@ module.exports = {
     label: 'กิจกรรมที่กำลังจะมาถึง',
     title: 'กิจกรรมถัดไป',
     cards: [
+      {
+        type: 'workshop',
+        typeLabel: 'Workshop',
+        title: 'เวิร์กช็อป BOI Compliance: การกระทบยอดระดับใบสั่งผลิตที่ผ่านทุกการตรวจสอบ',
+        date: 'March 15, 2026 | 09:00 – 16:00',
+        location: 'Bangkok, Thailand',
+        desc: 'เรียนรู้วิธีการติดตามวัตถุดิบระดับใบสั่งผลิตที่ช่วยลดภาษี BOI เพิ่มเติม อ้างอิงกรณีศึกษา Jin Hai: จากภาษีเพิ่มเติม 10 ล้านบาท/ปี เหลือศูนย์',
+        linkText: 'ลงทะเบียนเลย',
+      },
       {
         type: 'seminar',
         typeLabel: 'Seminar',

@@ -252,7 +252,7 @@ module.exports = {
     title: 'พร้อมทำงานกับทีมที่เข้าใจการผลิตจริงๆ หรือยัง?',
     subtitle: 'ดูว่าประสบการณ์ <span class="dw-years">44</span> ปีด้านการผลิต\u2014ได้รับการสนับสนุนจาก Foxconn FII\u2014สามารถช่วยให้คุณแข่งขันบนเวทีระดับโลกได้อย่างไร',
     buttons: [
-      { text: 'พูดคุยกับเรา', href: '/demo.html', style: 'primary' },
+      { text: 'พูดคุยกับเรา', href: '/th/demo/', style: 'primary' },
       { text: 'เป็นพันธมิตร', href: '/partner-program.html', style: 'ghost' },
     ],
     address: 'เลขที่ 2/117-118 อาคาร Bangna Complex Office Tower, ชั้น 22, ถ.เทพารักษ์, บางนา, กรุงเทพฯ 10260',

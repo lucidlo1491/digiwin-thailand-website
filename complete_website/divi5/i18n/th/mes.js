@@ -281,7 +281,7 @@ const cta = {
   title: 'พร้อมมองเห็นสายการผลิตชัดเจนหรือยัง?',
   subtitle: 'กรอกแบบฟอร์ม ทีมงานจะติดต่อกลับเพื่อพูดคุยเรื่องความท้าทายด้านการมองเห็นการผลิตของคุณ',
   buttons: [
-    { text: shared.cta.getInTouch, href: '/demo.html', style: 'primary' },
+    { text: shared.cta.getInTouch, href: '/th/demo/', style: 'primary' },
     { text: 'ดูตามอุตสาหกรรม', href: '/industries.html', style: 'ghost' },
   ],
 };

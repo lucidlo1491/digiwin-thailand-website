@@ -13,6 +13,17 @@ const superD = require('../../lib/super-d');
 
 const P = 'asip'; // CSS prefix — customize if needed
 
+// Flag SVGs — replace emoji flags that render as ?? on servers without emoji fonts
+const FLAGS = {
+  CN: '<svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" rx="2" fill="#DE2910"/><path d="M4 3l1.2 3.6L2 4.4h4L2.8 6.6z" fill="#FFDE00"/><path d="M9 1.5l.4 1.2-.9-.7h1.2l-1 .7z" fill="#FFDE00"/><path d="M11 3l.4 1.2-.9-.7h1.2l-1 .7z" fill="#FFDE00"/><path d="M11 5.5l.4 1.2-.9-.7h1.2l-1 .7z" fill="#FFDE00"/><path d="M9 7l.4 1.2-.9-.7h1.2l-1 .7z" fill="#FFDE00"/></svg>',
+  TW: '<svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" rx="2" fill="#FE0000"/><rect width="12" height="9" rx="1" fill="#000095"/><circle cx="6" cy="4.5" r="2.5" fill="#fff"/><circle cx="6" cy="4.5" r="2" fill="#000095"/><path d="M6 1l.4 1.2-.9-.7h1l-.9.7z" fill="#fff"/></svg>',
+  TH: '<svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" rx="2" fill="#fff"/><rect y="0" width="24" height="3" fill="#A51931"/><rect y="3" width="24" height="3" fill="#fff"/><rect y="6" width="24" height="6" fill="#2D2A4A"/><rect y="12" width="24" height="3" fill="#fff"/><rect y="15" width="24" height="3" fill="#A51931"/></svg>',
+  VN: '<svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" rx="2" fill="#DA251D"/><path d="M12 3l1.8 5.4L8.4 5.4h7.2l-5.4 3L12 3z" fill="#FFFF00"/></svg>',
+  MY: '<svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" rx="2" fill="#fff"/><rect width="24" height="1.3" fill="#CC0001"/><rect y="2.6" width="24" height="1.3" fill="#CC0001"/><rect y="5.2" width="24" height="1.3" fill="#CC0001"/><rect y="7.8" width="24" height="1.3" fill="#CC0001"/><rect y="10.4" width="24" height="1.3" fill="#CC0001"/><rect y="13" width="24" height="1.3" fill="#CC0001"/><rect y="15.6" width="24" height="2.4" fill="#CC0001"/><rect width="14" height="10.4" fill="#010066"/><circle cx="5.5" cy="5.2" r="3" fill="#FC0"/><circle cx="6.5" cy="5.2" r="2.5" fill="#010066"/><path d="M9 3.5l.5 1.5-.9-.8h1.3l-1.2.8z" fill="#FC0"/></svg>',
+  ID: '<svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" rx="2" fill="#fff"/><rect width="24" height="9" rx="2" fill="#CE1126"/></svg>',
+  GLOBE: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#00AFF0" stroke-width="1.5" fill="none"/><ellipse cx="12" cy="12" rx="4" ry="10" stroke="#00AFF0" stroke-width="1.2" fill="none"/><path d="M2 12h20M4 6.5h16M4 17.5h16" stroke="#00AFF0" stroke-width="1" opacity="0.6"/></svg>',
+};
+
 // ════════════════════════════════════════════════════════════════
 // BLOCKS
 // ════════════════════════════════════════════════════════════════
@@ -246,7 +257,7 @@ function blocks() {
                 <div class="asia-map-mobile">
                     <div class="mobile-map-corridor">
                         <div class="corridor-step hq">
-                            <span class="corridor-flag">🇹🇼</span>
+                            <span class="corridor-flag">${FLAGS.TW}</span>
                             <div class="corridor-info">
                                 <strong>Taiwan</strong>
                                 <span>Global HQ</span>
@@ -254,7 +265,7 @@ function blocks() {
                         </div>
                         <div class="corridor-arrow">→</div>
                         <div class="corridor-step">
-                            <span class="corridor-flag">🇨🇳</span>
+                            <span class="corridor-flag">${FLAGS.CN}</span>
                             <div class="corridor-info">
                                 <strong>China</strong>
                                 <span>33 branches</span>
@@ -262,7 +273,7 @@ function blocks() {
                         </div>
                         <div class="corridor-arrow">→</div>
                         <div class="corridor-step featured">
-                            <span class="corridor-flag">🇹🇭</span>
+                            <span class="corridor-flag">${FLAGS.TH}</span>
                             <div class="corridor-info">
                                 <strong>Thailand</strong>
                                 <span>You Are Here</span>
@@ -270,7 +281,7 @@ function blocks() {
                         </div>
                         <div class="corridor-arrow">→</div>
                         <div class="corridor-step">
-                            <span class="corridor-flag">🇻🇳</span>
+                            <span class="corridor-flag">${FLAGS.VN}</span>
                             <div class="corridor-info">
                                 <strong>Vietnam</strong>
                                 <span>Ho Chi Minh</span>
@@ -278,7 +289,7 @@ function blocks() {
                         </div>
                         <div class="corridor-arrow">→</div>
                         <div class="corridor-step">
-                            <span class="corridor-flag">🇲🇾</span>
+                            <span class="corridor-flag">${FLAGS.MY}</span>
                             <div class="corridor-info">
                                 <strong>Malaysia</strong>
                                 <span>Kuala Lumpur</span>
@@ -295,7 +306,7 @@ function blocks() {
                             
                             <div class="region-block china-block">
                                 <div class="region-header">
-                                    <span class="region-flag">🇨🇳</span>
+                                    <span class="region-flag">${FLAGS.CN}</span>
                                     <span class="region-title">China</span>
                                     <span class="region-badge">HQ + 33 branches</span>
                                 </div>
@@ -331,15 +342,15 @@ function blocks() {
                                     <span class="region-cities-hidden">溫州 Wenzhou</span>
                                     <span class="region-cities-hidden">嘉興 Jiaxing</span>
                                     <span class="region-cities-hidden">紹興 Shaoxing</span>
-                                    <span class="more" id="china-toggle" onclick="toggleChinaCities()">+18 more cities</span>
-                                    <span class="less" id="china-collapse" onclick="toggleChinaCities()">− Show less</span>
+                                    <span class="more" id="china-toggle">+18 more cities</span>
+                                    <span class="less" id="china-collapse">− Show less</span>
                                 </div>
                             </div>
     
                             
                             <div class="region-block taiwan-block">
                                 <div class="region-header">
-                                    <span class="region-flag">🇹🇼</span>
+                                    <span class="region-flag">${FLAGS.TW}</span>
                                     <span class="region-title">Taiwan</span>
                                     <span class="region-badge">HQ + 5 branches</span>
                                 </div>
@@ -359,7 +370,7 @@ function blocks() {
                             
                             <div class="region-block thailand-block featured">
                                 <div class="region-header">
-                                    <span class="region-flag">🇹🇭</span>
+                                    <span class="region-flag">${FLAGS.TH}</span>
                                     <span class="region-title">Thailand</span>
                                     <span class="region-badge you-are-here">You Are Here</span>
                                 </div>
@@ -379,23 +390,23 @@ function blocks() {
                             
                             <div class="region-block asean-block">
                                 <div class="region-header">
-                                    <span class="region-flag">🌏</span>
+                                    <span class="region-flag">${FLAGS.GLOBE}</span>
                                     <span class="region-title">ASEAN</span>
                                     <span class="region-badge">3 more countries</span>
                                 </div>
                                 <div class="asean-countries">
                                     <div class="asean-country">
-                                        <span class="country-flag">🇻🇳</span>
+                                        <span class="country-flag">${FLAGS.VN}</span>
                                         <span class="country-name">胡志明市 Ho Chi Minh City</span>
                                         <span class="country-year">Since 2008</span>
                                     </div>
                                     <div class="asean-country">
-                                        <span class="country-flag">🇲🇾</span>
+                                        <span class="country-flag">${FLAGS.MY}</span>
                                         <span class="country-name">吉隆坡 Kuala Lumpur</span>
                                         <span class="country-year">Since 2013</span>
                                     </div>
                                     <div class="asean-country">
-                                        <span class="country-flag">🇮🇩</span>
+                                        <span class="country-flag">${FLAGS.ID}</span>
                                         <span class="country-name">雅加達 Jakarta</span>
                                         <span class="country-year">Since 2024</span>
                                     </div>
@@ -411,22 +422,22 @@ function blocks() {
                     <div class="asean-timeline-compact">
                         <div class="asean-stop">
                             <span class="asean-stop-year">2008</span>
-                            <span class="asean-stop-country">Vietnam 🇻🇳</span>
+                            <span class="asean-stop-country">Vietnam ${FLAGS.VN}</span>
                         </div>
                         <span class="asean-arrow">→</span>
                         <div class="asean-stop">
                             <span class="asean-stop-year">2013</span>
-                            <span class="asean-stop-country">Malaysia 🇲🇾</span>
+                            <span class="asean-stop-country">Malaysia ${FLAGS.MY}</span>
                         </div>
                         <span class="asean-arrow">→</span>
                         <div class="asean-stop current">
                             <span class="asean-stop-year">2019</span>
-                            <span class="asean-stop-country">Thailand 🇹🇭</span>
+                            <span class="asean-stop-country">Thailand ${FLAGS.TH}</span>
                         </div>
                         <span class="asean-arrow">→</span>
                         <div class="asean-stop">
                             <span class="asean-stop-year">2024</span>
-                            <span class="asean-stop-country">Indonesia 🇮🇩</span>
+                            <span class="asean-stop-country">Indonesia ${FLAGS.ID}</span>
                         </div>
                     </div>
                     <div class="presence-stats">
@@ -450,6 +461,19 @@ function blocks() {
                 </div>
             </div>
     </div>
+    <script>
+    (function(){
+      var toggle = document.getElementById('china-toggle');
+      var collapse = document.getElementById('china-collapse');
+      var cities = document.getElementById('china-cities');
+      if(toggle && cities){
+        toggle.addEventListener('click', function(){ cities.classList.add('expanded'); });
+      }
+      if(collapse && cities){
+        collapse.addEventListener('click', function(){ cities.classList.remove('expanded'); });
+      }
+    })();
+    </script>
     `;
 
   return base.wrapInDiviSection('Asia Presence', html, 'Asia Presence: Content');
@@ -525,7 +549,15 @@ function css() {
             background: linear-gradient(135deg, #FFD700, #B45309);
         }
 .region-flag {
-            font-size: 24px;
+            display: inline-flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+.region-flag svg {
+            width: 28px;
+            height: 21px;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 .region-title {
             font-family: 'Noto Sans', sans-serif;
@@ -704,7 +736,15 @@ function css() {
             border-bottom: none;
         }
 .asean-country .country-flag {
-            font-size: 20px;
+            display: inline-flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+.asean-country .country-flag svg {
+            width: 24px;
+            height: 18px;
+            border-radius: 2px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.15);
         }
 .asean-country .country-name {
             font-size: 14px;
@@ -821,8 +861,15 @@ function css() {
             background: rgba(245,158,11,0.1);
         }
 .corridor-flag {
-            font-size: 28px;
+            display: inline-flex;
+            align-items: center;
             flex-shrink: 0;
+        }
+.corridor-flag svg {
+            width: 32px;
+            height: 24px;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 .corridor-info {
             display: flex;
@@ -890,7 +937,7 @@ function css() {
 .et_pb_section .asean-expansion h3{font-weight:600 !important;line-height:32px !important}
 .asia-presence .section-label{color:rgb(21,128,61);line-height:19.2px}
 .asia-presence .legend-item{line-height:19.2px}
-.asia-presence .region-flag{line-height:38.4px}
+.asia-presence .region-flag{line-height:1;display:inline-flex !important}
 .asia-presence .region-title{line-height:28.8px}
 .asia-presence .region-badge{line-height:17.6px}
 .asia-presence .hq-name{line-height:25.6px}
@@ -899,9 +946,10 @@ function css() {
 .asia-presence .region-cities span{line-height:19.2px}
 .asia-presence .country-name{line-height:22.4px}
 .asia-presence .country-year{line-height:17.6px}
-.asia-presence .country-flag{line-height:32px}
+.asia-presence .country-flag{line-height:1;display:inline-flex !important}
 .asia-presence .asean-stop-year{line-height:38.4px}
-.asia-presence .asean-stop-country{line-height:20.8px}
+.asia-presence .asean-stop-country{line-height:20.8px;display:inline-flex;align-items:center;gap:6px}
+.asia-presence .asean-stop-country svg{width:20px;height:15px;border-radius:2px;flex-shrink:0}
 .asia-presence .asean-arrow{line-height:38.4px}
 .asia-presence .presence-stat-value{line-height:51.2px}
 .asia-presence .presence-stat-label{line-height:20.8px}

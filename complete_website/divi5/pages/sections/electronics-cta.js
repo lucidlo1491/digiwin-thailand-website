@@ -15,8 +15,8 @@ const DATA = {
   title: 'Master Electronics Complexity',
   subtitle: 'See how DigiWin handles high-mix manufacturing',
   buttons: [
-    { text: 'Get in Touch', href: '/demo.html', style: 'primary' },
-    { text: 'View Other Industries', href: '/industries.html', style: 'ghost' },
+    { text: 'Get in Touch', href: '/demo/', style: 'primary' },
+    { text: 'View Other Industries', href: '/industries/', style: 'ghost' },
   ],
   superD: { variant: 'gradient', position: 'center', opacity: 0.10 },
   waveFlow: { height: '170px', opacity: 0.08 },

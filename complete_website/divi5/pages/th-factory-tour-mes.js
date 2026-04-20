@@ -20,6 +20,7 @@ const thProofBuilder = require('./sections/th-ftm-proof');
 const thLogisticsBuilder = require('./sections/th-ftm-logistics');
 const thRegisterBuilder = require('./sections/th-ftm-register');
 const thRelatedBuilder = require('./sections/th-ftm-related');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100791,
@@ -42,6 +43,27 @@ module.exports = {
 
   // Thai typography: Noto Sans Thai font + label letter-spacing fix
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E02\u0E48\u0E32\u0E27\u0E2A\u0E32\u0E23\u0E41\u0E25\u0E30\u0E01\u0E34\u0E08\u0E01\u0E23\u0E23\u0E21', url: '/th/news/' },
+        { name: 'Factory Tour: MES', url: '/th/factory-tour-mes/' },
+      ])),
+      schema.thaiVariant(schema.event({
+        name: 'Live Factory Tour: See DigiWin MES in Action',
+        description: 'Walk the shop floor of a real factory running DigiWin MES. See production data flow from machines to dashboards in real time.',
+        startDate: '2026-05-08T10:00:00+07:00',
+        endDate: '2026-05-08T15:00:00+07:00',
+        locationName: 'EEC Industrial Zone, Thailand',
+        city: 'Eastern Economic Corridor',
+        country: 'TH',
+        isAccessibleForFree: true,
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

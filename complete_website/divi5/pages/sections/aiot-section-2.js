@@ -1,7 +1,7 @@
 /**
  * aiot-section-2.js — FAQ Section (S9)
  *
- * Source: aiot.html line 1586
+ * Source: /products/aiot/ line 1586
  */
 
 const template = require('../../lib/templates/faq-accordion');

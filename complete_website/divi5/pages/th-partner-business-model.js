@@ -17,6 +17,7 @@ const thFutures = require('./sections/th-bm-futures');
 const thSolution = require('./sections/th-bm-solution');
 const thCompare = require('./sections/th-bm-compare');
 const thCta = require('./sections/th-bm-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100773,
@@ -37,6 +38,17 @@ module.exports = {
   ],
 
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E42\u0E1B\u0E23\u0E41\u0E01\u0E23\u0E21\u0E1E\u0E32\u0E23\u0E4C\u0E17\u0E40\u0E19\u0E2D\u0E23\u0E4C', url: '/th/partner-program/' },
+        { name: '\u0E42\u0E21\u0E40\u0E14\u0E25\u0E18\u0E38\u0E23\u0E01\u0E34\u0E08', url: '/th/partner-program/business-model/' },
+      ])),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

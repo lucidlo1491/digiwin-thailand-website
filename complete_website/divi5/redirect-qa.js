@@ -15,7 +15,8 @@
 const { execSync } = require('child_process');
 
 const VERBOSE = process.argv.includes('--verbose');
-const BASE = 'http://digiwin-thailand.local';
+const urlArg = process.argv.find((a, i) => process.argv[i - 1] === '--url');
+const BASE = urlArg || 'http://digiwin-thailand.local';
 
 const c = { g: '\x1b[32m', r: '\x1b[31m', y: '\x1b[33m', b: '\x1b[1m', d: '\x1b[2m', x: '\x1b[0m' };
 

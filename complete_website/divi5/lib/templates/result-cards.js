@@ -76,7 +76,8 @@ ${base.sectionHeaderCSS(p, { dark: false, headerMaxWidth: '700px', headerMarginB
 .${p}-cta{text-align:center;margin-top:40px}
 .${p}-link{font-family:'Noto Sans',sans-serif;font-weight:600;font-size:14px;color:${base.COLORS.blue};text-decoration:none;transition:color 0.3s ease;line-height:1.6}
 .${p}-link:hover{color:${base.COLORS.royal}}
-@media(max-width:767px){.${p}-grid{grid-template-columns:1fr;gap:24px}.${p}-card{padding:28px 24px}.${p}-metric{font-size:18px}}
+@media(max-width:767px){.${p}-section{padding:60px 24px}.${p}-grid{grid-template-columns:1fr;gap:24px}.${p}-card{padding:28px 24px}.${p}-metric{font-size:18px}}
+@media(max-width:480px){.${p}-section{padding:40px 16px}}
 ${base.reducedMotion(`.${p}-card{transition:none !important}`)}`.trim();
 }
 

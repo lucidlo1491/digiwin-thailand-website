@@ -113,12 +113,12 @@ function css() {
 .${P}-phase p{font-family:'Noto Sans',sans-serif;font-size:15px;color:#5b6b80;line-height:1.6;margin:0 0 20px;padding:0}
 .${P}-phase p strong{color:#000864}
 .${P}-exp{background:#000864;border-radius:12px;padding:16px}
-.${P}-exp-label{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:8px}
+.${P}-exp-label{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;color:rgba(255,255,255,0.85);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:8px}
 .${P}-exp-quote{font-size:14px;font-style:italic;color:#fff;line-height:1.5}
 .${P}-comparison{background:linear-gradient(135deg,#000864 0%,#000432 100%);border-radius:20px;padding:40px}
 .${P}-comparison h4{font-family:'Noto Sans',sans-serif;font-size:20px;font-weight:600;color:#fff;text-align:center;margin:0 0 24px;padding:0;line-height:1.6}
 .${P}-table{max-width:700px;margin:0 auto;width:100%;border-collapse:collapse}
-.${P}-table th{font-size:12px;font-weight:600;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.5px;padding:0 0 20px;border-bottom:2px solid rgba(255,255,255,0.2);text-align:left}
+.${P}-table th{font-size:12px;font-weight:600;color:rgba(255,255,255,0.85);text-transform:uppercase;letter-spacing:0.5px;padding:0 0 20px;border-bottom:2px solid rgba(255,255,255,0.2);text-align:left}
 .${P}-table td{padding:16px 8px 16px 0;font-size:15px;color:rgba(255,255,255,0.9);border-bottom:1px solid rgba(255,255,255,0.1)}
 .${P}-table tbody tr:last-child td{border-bottom:none}
 .${P}-table td:first-child{font-weight:600;color:#fff}
@@ -130,7 +130,7 @@ function css() {
   .${P}-table thead{display:none}
   .${P}-table tr{display:block;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.15)}
   .${P}-table td{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:none;padding:8px 0}
-  .${P}-table td::before{content:attr(data-label);font-weight:600;color:rgba(255,255,255,0.75);font-size:12px;text-transform:uppercase;letter-spacing:0.5px;flex-shrink:0}
+  .${P}-table td::before{content:attr(data-label);font-weight:600;color:rgba(255,255,255,0.85);font-size:12px;text-transform:uppercase;letter-spacing:0.5px;flex-shrink:0}
   .${P}-table td:first-child{font-size:16px}
   .${P}-table td:first-child::before{display:none}
 }

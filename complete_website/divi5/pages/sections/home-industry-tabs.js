@@ -48,7 +48,7 @@ const DATA = {
         'Lot-level traceability for recalls',
         'Kanban and just-in-time scheduling',
       ],
-      cta: { text: 'Explore Automotive Solutions', href: '/industries/automotive.html' },
+      cta: { text: 'Explore Automotive Solutions', href: '/industries/automotive/' },
     },
     {
       id: 'electronics',
@@ -61,7 +61,7 @@ const DATA = {
         'MSD (Moisture Sensitivity Device) management',
         'AOI (Automated Optical Inspection) integration and defect tracking',
       ],
-      cta: { text: 'Explore Electronics Solutions', href: '/industries/electronics.html' },
+      cta: { text: 'Explore Electronics Solutions', href: '/industries/electronics/' },
     },
     {
       id: 'metal-plastics',
@@ -74,7 +74,7 @@ const DATA = {
         'Scrap analysis and reduction',
         'Cycle time optimization',
       ],
-      cta: { text: 'Explore Metal & Plastics Solutions', href: '/industries/metal-plastics.html' },
+      cta: { text: 'Explore Metal & Plastics Solutions', href: '/industries/metal-plastics/' },
     },
   ],
   // Map tab IDs to HTML prototype IDs (metal-plastics → metal)

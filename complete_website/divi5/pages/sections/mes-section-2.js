@@ -1,7 +1,7 @@
 /**
  * mes-section-2.js — FAQ Section (S9)
  *
- * Source: mes.html line 1819
+ * Source: /products/mes/ line 1819
  */
 
 const template = require('../../lib/templates/faq-accordion');

@@ -114,7 +114,7 @@ function blocks() {
         </div>
 
         <div class="${P}-cta-wrap">
-          <a href="/contact/" class="${P}-cta-btn">Let\u2019s Talk Partnership</a>
+          <a href="/demo/" class="${P}-cta-btn">Let\u2019s Talk Partnership</a>
           <p class="${P}-cta-note">30-minute conversation. We\u2019ll walk through your current portfolio and show you where DigiWin fits.</p>
         </div>
       </div>

@@ -58,17 +58,17 @@ function css() {
   return `
 .${P}-hero{background:linear-gradient(165deg,#0f1419 0%,#1a2632 40%,#000864 100%);padding:140px 24px 100px;position:relative;min-height:60vh}
 .${P}-inner{max-width:1200px;margin:0 auto}
-.${P}-back{color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;display:inline-flex;align-items:center;gap:8px;margin-bottom:32px;transition:color 0.2s;font-family:'Noto Sans Thai','Noto Sans',sans-serif}
+.${P}-back{color:rgba(255,255,255,0.85);text-decoration:none;font-size:14px;display:inline-flex;align-items:center;gap:8px;margin-bottom:32px;transition:color 0.2s;font-family:'Noto Sans Thai','Noto Sans',sans-serif}
 .${P}-back:hover{color:#00AFF0}
 .${P}-title{font-family:'Noto Sans Thai','Noto Sans',sans-serif;font-size:48px;font-weight:700;color:#fff;margin:0 0 16px;line-height:1.2}
-.${P}-subtitle{font-family:'Noto Sans Thai','Noto Sans',sans-serif;font-size:18px;color:rgba(255,255,255,0.7);margin:0 0 48px;max-width:600px;line-height:1.6}
+.${P}-subtitle{font-family:'Noto Sans Thai','Noto Sans',sans-serif;font-size:18px;color:rgba(255,255,255,0.85);margin:0 0 48px;max-width:600px;line-height:1.6}
 .${P}-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
 .${P}-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:32px;text-decoration:none;display:flex;flex-direction:column;gap:12px;transition:all 0.3s ease}
 .${P}-card:hover{background:rgba(255,255,255,0.1);border-color:rgba(0,175,240,0.3);transform:translateY(-2px)}
 .${P}-badge{font-family:'Noto Sans Thai','JetBrains Mono',monospace;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;padding:4px 12px;border-radius:6px;display:inline-block;width:fit-content}
 .${P}-card-title{font-family:'Noto Sans Thai','Noto Sans',sans-serif;font-size:20px;font-weight:600;color:#fff;margin:0;line-height:1.3}
 .${P}-card-meta{display:flex;flex-direction:column;gap:4px;margin-top:4px}
-.${P}-date,.${P}-loc{font-family:'Noto Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.5)}
+.${P}-date,.${P}-loc{font-family:'Noto Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.85)}
 .${P}-arrow{font-family:'Noto Sans Thai','Noto Sans',sans-serif;font-size:14px;font-weight:500;color:#00AFF0;margin-top:auto;padding-top:8px}
 @media(max-width:640px){
   .${P}-hero{padding:120px 20px 60px}

@@ -13,7 +13,18 @@ const P = 'fea'; // Same CSS prefix as English
 const D = th.featured;
 
 function blocks() {
+  // Inline <style> bypasses Divi CSS compiler cache for CTA buttons
+  const inlineCSS = `<style>
+.featured-cta-row{display:flex!important;gap:16px!important;align-items:center!important;flex-wrap:wrap!important;margin-top:auto!important}
+.event-cta{display:inline-flex!important;align-items:center!important;gap:8px!important;background:linear-gradient(135deg,#00AFF0,#003CC8)!important;color:#fff!important;padding:16px 32px!important;border-radius:12px!important;font-weight:600!important;font-size:15px!important;text-decoration:none!important;width:fit-content!important;font-family:'Noto Sans',sans-serif!important;transition:all 0.3s ease!important}
+.event-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,175,240,0.3)}
+.event-cta-secondary{display:inline-flex!important;align-items:center!important;gap:8px!important;background:transparent!important;color:#00AFF0!important;padding:16px 24px!important;border-radius:12px!important;border:1px solid rgba(0,175,240,0.3)!important;font-weight:600!important;font-size:15px!important;text-decoration:none!important;width:fit-content!important;font-family:'Noto Sans',sans-serif!important;transition:all 0.3s ease!important}
+.event-cta-secondary:hover{background:rgba(0,175,240,0.08)!important;border-color:#00AFF0!important}
+.event-cta svg,.event-cta-secondary svg{flex-shrink:0}
+</style>`;
+
   const html = `
+    ${inlineCSS}
     <div class="particle-ocean-host" data-particles style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden;"></div>
             <div class="featured-inner" style="position: relative; z-index: 2;">
                 <span class="featured-label">${D.label}</span>
@@ -21,7 +32,7 @@ function blocks() {
                     <div class="featured-image">
                         <div class="${P}">
                             <div class="${P}-month">Mar</div>
-                            <div class="${P}-day">15</div>
+                            <div class="${P}-day">11</div>
                             <div class="${P}-year">2026</div>
                             <div class="${P}-divider"></div>
                         </div>
@@ -35,13 +46,13 @@ function blocks() {
                                 ${D.location}
                             </div>
                         </div>
-                        <span class="urgency-badge">
-                            <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v-2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                        <span class="urgency-badge" style="background:rgba(8,145,178,0.15);border-color:rgba(8,145,178,0.3);color:#0891b2;">
+                            <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                             ${D.urgency}
                         </span>
                     </div>
                     <div class="featured-content">
-                        <span class="event-type-badge workshop">${D.eventType}</span>
+                        <span class="event-type-badge ${D.eventTypeClass || 'trade-show'}">${D.eventType}</span>
                         <h2>${D.title}</h2>
                         <div class="event-meta">
                             <div class="event-meta-item">
@@ -54,9 +65,14 @@ function blocks() {
                             </div>
                         </div>
                         <p>${D.description}</p>
-                        <a href="/news/events/boi-compliance-workshop/" class="event-cta">${D.ctaText}
-                            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                        </a>
+                        <div class="featured-cta-row">
+                            <a href="${D.ctaHref || '/th/intelligent-asia-2026/'}" class="event-cta">${D.ctaText}
+                                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </a>
+                            <a href="/intelligent-asia-thailand-20260311-th/" class="event-cta-secondary">${D.coverageCtaText || 'อ่านรายงานวันที่ 1'}
+                                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

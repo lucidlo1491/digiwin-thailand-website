@@ -13,7 +13,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { codeModule, sectionOpen, sectionClose, rowOpen, rowClose, columnOpen, columnClose } = require('../modules');
+const base = require('./_base');
 
 const schema = {
   name: 'logo-marquee',
@@ -82,26 +82,14 @@ function blocks(data) {
 
   const html = `<div class="${p}-section"><p class="${p}-label">${data.label}</p>${marqueeHTML}${statsHTML}</div>`;
 
-  return [
-    sectionOpen({
-      adminLabel: data.adminLabel,
-      css: 'selector{background:transparent !important;padding:0 !important;}',
-    }),
-    rowOpen({
-      adminLabel: `${data.adminLabel}: Row`,
-      columns: 'equal-columns_1',
-      css: 'selector{max-width:100% !important;margin:0 !important;padding:0 !important;}',
-    }),
-    columnOpen({
-      adminLabel: `${data.adminLabel}: Column`,
-      layout: { display: 'flex', flexDirection: 'column', alignItems: 'center' },
-      css: 'selector{display:flex !important;flex-direction:column !important;align-items:center !important;gap:0 !important;}',
-    }),
-    codeModule(html, `${data.adminLabel}: Label + Marquee + Stats`),
-    columnClose(),
-    rowClose(),
-    sectionClose(),
-  ];
+  // Use wrapInDiviSection (wp:html) instead of codeModule (wp:divi/code) —
+  // Divi 5 beta does NOT render wp:divi/code server-side on the frontend,
+  // causing the marquee to appear as a frozen grid on production.
+  return base.wrapInDiviSection(
+    data.adminLabel,
+    html,
+    `${data.adminLabel}: Label + Marquee + Stats`
+  );
 }
 
 // ────────────────────────────────────────────────────────────────

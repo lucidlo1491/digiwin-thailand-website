@@ -145,7 +145,7 @@ module.exports = {
     title: 'พูดคุยเรื่องโรงงานของคุณ',
     subtitle: 'ทุกโรงงานมีความแตกต่าง ให้เราเข้าใจโรงงานของคุณ',
     buttons: [
-      { text: 'ติดต่อเรา', href: '/contact/', style: 'primary' },
+      { text: 'ติดต่อเรา', href: '/th/demo/', style: 'primary' },
       { text: 'ดูผลิตภัณฑ์', href: '/products/', style: 'ghost' },
     ],
   },

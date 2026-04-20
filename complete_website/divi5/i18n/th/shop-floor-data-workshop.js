@@ -187,8 +187,8 @@ const logistics = {
 const register = {
   title: 'ลงทะเบียนเลย',
   meta: 'วันพฤหัสบดีที่ 24 เมษายน 2026 &middot; กรุงเทพฯ &middot; จำกัด 25 ที่นั่ง',
-  cta: { text: 'ลงทะเบียน', href: '/th/contact/' },
-  secondary: { text: 'ไม่สะดวกวันนี้?', linkText: 'ลงทะเบียนแจ้งความสนใจ', href: '/th/contact/' },
+  cta: { text: 'ลงทะเบียน', href: '/th/demo/' },
+  secondary: { text: 'ไม่สะดวกวันนี้?', linkText: 'ลงทะเบียนแจ้งความสนใจ', href: '/th/demo/' },
 };
 
 // ── S9: Related Events ────────────────────────────────────────────

@@ -1,11 +1,13 @@
 /**
- * blog-single.js — DigiWin Blog Post Body Layout (Theme Builder)
+ * blog-single.js — DigiWin Blog/News Post Body Layout (Theme Builder)
  *
- * Replaces the generic Divi 5 body layout (post 100440) with a
- * DigiWin-branded blog post template.
+ * Single body layout (post 100440) serving BOTH blog articles and news posts.
+ * News posts are visually differentiated via WordPress's body.category-industry-news
+ * class — conditional CSS provides green badge, wider content, dark related section,
+ * and featured-image hero background (injected by digiwin-news-hero.php mu-plugin).
  *
  * Structure:
- *   Section 1: Hero — navy gradient bg, back link, dynamic post title + meta
+ *   Section 1: Hero — navy gradient bg, conditional back links, dynamic post title + meta
  *   Section 2: Content — post content (dynamic, from WP editor) + styling
  *   Section 3: Related — "Related Articles" heading + 3-post blog grid
  *   Section 4: CTA — gradient call-to-action
@@ -25,19 +27,33 @@ const {
 } = require('../lib/modules');
 
 // ── CSS ──────────────────────────────────────────────────────────
+// NOTE: Divi 5 renders each module independently — you CANNOT open a
+// <div> in one codeModule and close it in another to wrap a native module.
+// All styling must target sections/modules by their own CSS classes,
+// using the cssClass property on sectionOpen or direct Divi class selectors.
 
 function css() {
   return `
 /* ═══ DigiWin Blog Single Body Layout ═══ */
+/* Key insight: each section gets a cssClass (dw-hero-sec, dw-content-sec,
+   dw-related-sec, dw-cta-sec) so we can target modules WITHIN each section
+   without relying on wrapper-div nesting (which doesn't work in Divi 5). */
 
-/* --- Hero Section --- */
-.dw-blog-hero-wrap {
+/* --- Divi global overrides for body layout --- */
+.et-l--body .et_pb_section[class] { padding: 0 !important; }
+.et-l--body .et_pb_row { max-width: 100% !important; width: 100% !important; padding: 0 !important; }
+.et-l--body .et_pb_column { padding: 0 !important; }
+
+/* ═══ HERO SECTION ═══ */
+/* Divi framework resets body layout section backgrounds with specificity 0-4-0:
+   .et-l--body .et_pb_section[class*="tb_body"].et_section_regular { background: none !important }
+   We need 0-5-0 to beat it (adding .et_section_regular to our selector). */
+.et-l--body .et_pb_section.et_pb_section_0_tb_body.et_section_regular[class] {
+  background: linear-gradient(135deg, #000432 0%, #000864 40%, #001080 100%) !important;
   position: relative;
-  padding: 120px 0 60px;
-  background: linear-gradient(135deg, #000432 0%, #000864 40%, #001080 100%);
   overflow: hidden;
 }
-.dw-blog-hero-wrap::before {
+.et_pb_section_0_tb_body::before {
   content: '';
   position: absolute;
   top: -50%;
@@ -46,7 +62,9 @@ function css() {
   height: 200%;
   background: radial-gradient(ellipse, rgba(0,175,240,0.08) 0%, transparent 60%);
   pointer-events: none;
+  z-index: 0;
 }
+/* Back links */
 .dw-blog-back-link {
   display: inline-flex;
   align-items: center;
@@ -55,15 +73,45 @@ function css() {
   text-decoration: none;
   font-size: 14px;
   font-family: 'Noto Sans', sans-serif;
-  margin-bottom: 24px;
   transition: color 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
 .dw-blog-back-link:hover { color: #00AFF0; }
 .dw-blog-back-link svg { width: 16px; height: 16px; }
-.dw-blog-category-badge {
+.dw-blog-nav { padding: 120px 24px 0; max-width: 840px; margin: 0 auto; }
+
+/* Post title inside hero — override Divi defaults */
+.et_pb_section_0_tb_body .et_pb_post_title {
+  background: none !important;
+  padding: 16px 24px 60px !important;
+  max-width: 840px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.et_pb_section_0_tb_body .et_pb_post_title .entry-title {
+  color: #fff !important;
+  font-family: 'Noto Sans', sans-serif !important;
+  font-size: 42px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  margin-bottom: 16px !important;
+}
+.et_pb_section_0_tb_body .et_pb_post_title .post-meta {
+  color: rgba(255,255,255,0.7) !important;
+  font-size: 14px !important;
+  font-family: 'Noto Sans', sans-serif !important;
+}
+.et_pb_section_0_tb_body .et_pb_post_title .post-meta a {
+  color: rgba(255,255,255,0.8) !important;
+}
+
+/* Category badge (rendered by postTitleModule categories) */
+.et_pb_section_0_tb_body .et_pb_post_title .entry-categories a {
   display: inline-block;
   background: rgba(0,175,240,0.15);
-  color: #00AFF0;
+  color: #00AFF0 !important;
   font-size: 12px;
   font-weight: 600;
   font-family: 'JetBrains Mono', 'Noto Sans', monospace;
@@ -71,52 +119,47 @@ function css() {
   letter-spacing: 0.1em;
   padding: 4px 12px;
   border-radius: 4px;
-  margin-bottom: 16px;
+  text-decoration: none;
 }
 
-/* Override Divi post-title module defaults */
-.dw-blog-hero-wrap .et_pb_post_title { background: none !important; padding: 0 !important; }
-.dw-blog-hero-wrap .et_pb_post_title .entry-title { margin-bottom: 16px !important; }
-.dw-blog-hero-wrap .et_pb_post_title .post-meta { color: rgba(255,255,255,0.7) !important; font-size: 14px !important; }
-.dw-blog-hero-wrap .et_pb_post_title .post-meta a { color: rgba(255,255,255,0.8) !important; }
-
-/* --- Content Section --- */
-.dw-blog-content-wrap {
+/* ═══ CONTENT SECTION ═══ */
+.et-l--body .et_pb_section.et_pb_section_1_tb_body.et_section_regular[class] {
+  background: #fff !important;
+}
+.et_pb_section_1_tb_body .et_pb_post_content {
   max-width: 760px;
   margin: 0 auto;
   padding: 60px 24px 80px;
 }
-
-/* Style the dynamic post content */
-.dw-blog-content-wrap .et_pb_post_content h2 {
+.et_pb_section_1_tb_body .et_pb_post_content h2 {
   color: #000864 !important;
   font-size: 28px !important;
   font-weight: 600 !important;
   margin: 48px 0 16px !important;
   line-height: 1.3 !important;
 }
-.dw-blog-content-wrap .et_pb_post_content h3 {
+.et_pb_section_1_tb_body .et_pb_post_content h3 {
   color: #000864 !important;
   font-size: 22px !important;
   font-weight: 600 !important;
   margin: 36px 0 12px !important;
   line-height: 1.35 !important;
 }
-.dw-blog-content-wrap .et_pb_post_content p {
+.et_pb_section_1_tb_body .et_pb_post_content p {
   font-size: 16px !important;
   line-height: 1.8 !important;
   color: #333 !important;
   margin-bottom: 20px !important;
   padding-bottom: 0 !important;
 }
-.dw-blog-content-wrap .et_pb_post_content ul,
-.dw-blog-content-wrap .et_pb_post_content ol {
+.et_pb_section_1_tb_body .et_pb_post_content ul,
+.et_pb_section_1_tb_body .et_pb_post_content ol {
   margin: 16px 0 24px 24px;
   font-size: 16px;
   line-height: 1.8;
   color: #333;
 }
-.dw-blog-content-wrap .et_pb_post_content blockquote {
+.et_pb_section_1_tb_body .et_pb_post_content blockquote {
   border-left: 4px solid #00AFF0;
   margin: 32px 0;
   padding: 16px 24px;
@@ -125,22 +168,22 @@ function css() {
   font-style: italic;
   color: #555;
 }
-.dw-blog-content-wrap .et_pb_post_content a {
+.et_pb_section_1_tb_body .et_pb_post_content a {
   color: #00AFF0 !important;
   text-decoration: underline !important;
   text-underline-offset: 2px;
 }
-.dw-blog-content-wrap .et_pb_post_content img {
+.et_pb_section_1_tb_body .et_pb_post_content img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
   margin: 24px 0;
 }
 
-/* --- Related Section --- */
-.dw-blog-related-wrap {
-  background: #F5F7FA;
-  padding: 80px 0;
+/* ═══ RELATED SECTION ═══ */
+.et-l--body .et_pb_section.et_pb_section_2_tb_body.et_section_regular[class] {
+  background: #F5F7FA !important;
+  padding: 80px 24px !important;
 }
 .dw-blog-related-heading {
   font-family: 'Noto Sans', sans-serif;
@@ -150,19 +193,19 @@ function css() {
   text-align: center;
   margin-bottom: 48px;
 }
-.dw-blog-related-wrap .et_pb_blog_grid .et_pb_post {
+.et_pb_section_2_tb_body .et_pb_blog_grid .et_pb_post {
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.dw-blog-related-wrap .et_pb_blog_grid .et_pb_post:hover {
+.et_pb_section_2_tb_body .et_pb_blog_grid .et_pb_post:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
-/* --- CTA Section --- */
+/* ═══ CTA SECTION (dw-cta-sec) ═══ */
 .dw-blog-cta {
   background: linear-gradient(135deg, #000864 0%, #003CC8 50%, #00AFF0 100%);
   padding: 80px 24px;
@@ -213,51 +256,93 @@ function css() {
   box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
 
-/* --- Divi global overrides for body layout --- */
-.et_pb_section { padding: 0 !important; }
-.et_pb_section .et_pb_row { max-width: 1200px !important; width: 100% !important; }
+/* === NEWS POST OVERRIDES (Industry News category) === */
+/* Conditional back links — blog vs news */
+.dw-back-news { display: none; }
+body.category-industry-news .dw-back-blog { display: none; }
+body.category-industry-news .dw-back-news { display: inline-flex; }
+
+/* News hero: taller, background-image set by mu-plugin */
+body.category-industry-news .et-l--body .et_pb_section.et_pb_section_0_tb_body.et_section_regular[class] {
+  background-size: cover !important;
+  background-position: center !important;
+}
+body.category-industry-news .dw-blog-nav { padding-top: 140px; }
+body.category-industry-news .et_pb_section_0_tb_body .et_pb_post_title { padding-bottom: 80px !important; }
+
+/* News category badge: green instead of blue */
+body.category-industry-news .et_pb_section_0_tb_body .et_pb_post_title .entry-categories a {
+  background: rgba(2,210,140,0.15);
+  color: #02D28C !important;
+}
+
+/* News content: wider reading area */
+body.category-industry-news .et_pb_section_1_tb_body .et_pb_post_content {
+  max-width: 840px;
+}
+
+/* News related section: dark navy background */
+body.category-industry-news .et-l--body .et_pb_section.et_pb_section_2_tb_body.et_section_regular[class] {
+  background: linear-gradient(135deg, #000432, #000864) !important;
+}
+body.category-industry-news .dw-blog-related-heading { color: #fff; }
+body.category-industry-news .et_pb_section_2_tb_body .et_pb_blog_grid .et_pb_post {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+body.category-industry-news .et_pb_section_2_tb_body .et_pb_blog_grid .et_pb_post:hover {
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+body.category-industry-news .et_pb_section_2_tb_body .et_pb_blog_grid .entry-title a,
+body.category-industry-news .et_pb_section_2_tb_body .et_pb_blog_grid .post-meta {
+  color: rgba(255,255,255,0.8) !important;
+}
+body.category-industry-news .et_pb_section_2_tb_body .et_pb_blog_grid .entry-title a:hover {
+  color: #00AFF0 !important;
+}
 
 /* --- Responsive: 1024px tablet --- */
 @media (max-width: 1024px) {
-  .dw-blog-hero-wrap { padding: 100px 0 50px; }
-  .dw-blog-hero-wrap .et_pb_post_title .entry-title { font-size: 36px !important; }
-  .dw-blog-content-wrap { max-width: 640px; }
-  .dw-blog-content-wrap .et_pb_post_content h2 { font-size: 24px !important; }
-  .dw-blog-content-wrap .et_pb_post_content h3 { font-size: 20px !important; }
-  .dw-blog-related-wrap .et_pb_blog_grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .dw-blog-nav { padding-top: 100px; }
+  body.category-industry-news .dw-blog-nav { padding-top: 120px; }
+  .et_pb_section_0_tb_body .et_pb_post_title .entry-title { font-size: 36px !important; }
+  .et_pb_section_1_tb_body .et_pb_post_content { max-width: 640px; }
+  body.category-industry-news .et_pb_section_1_tb_body .et_pb_post_content { max-width: 700px; }
+  .et_pb_section_1_tb_body .et_pb_post_content h2 { font-size: 24px !important; }
+  .et_pb_section_1_tb_body .et_pb_post_content h3 { font-size: 20px !important; }
+  .et_pb_section_2_tb_body .et_pb_blog_grid { grid-template-columns: repeat(2, 1fr) !important; }
   .dw-blog-cta h2 { font-size: 32px; }
 }
 
 /* --- Responsive: 768px mobile --- */
 @media (max-width: 768px) {
-  .dw-blog-hero-wrap { padding: 80px 0 40px; }
-  .dw-blog-hero-wrap .et_pb_post_title .entry-title { font-size: 28px !important; line-height: 1.3 !important; }
-  .dw-blog-content-wrap { max-width: 100%; padding: 40px 16px 60px; }
-  .dw-blog-related-wrap { padding: 60px 0; }
+  .dw-blog-nav { padding-top: 80px; }
+  .et_pb_section_0_tb_body .et_pb_post_title .entry-title { font-size: 28px !important; line-height: 1.3 !important; }
+  .et_pb_section_0_tb_body .et_pb_post_title { padding-bottom: 40px !important; }
+  .et_pb_section_1_tb_body .et_pb_post_content { max-width: 100%; padding: 40px 16px 60px; }
+  .et_pb_section_2_tb_body { padding: 60px 16px !important; }
   .dw-blog-related-heading { font-size: 24px; margin-bottom: 32px; }
-  .dw-blog-related-wrap .et_pb_blog_grid { grid-template-columns: 1fr !important; }
+  .et_pb_section_2_tb_body .et_pb_blog_grid { grid-template-columns: 1fr !important; }
   .dw-blog-cta { padding: 60px 16px; }
   .dw-blog-cta h2 { font-size: 28px; }
   .dw-blog-back-link { min-height: 44px; padding: 8px 0; }
   .dw-blog-cta-btn { min-height: 48px; padding: 16px 40px; }
-  /* Touch targets: post meta links (category, comments) */
-  .et_pb_title_meta_container a { display: inline-flex !important; align-items: center !important; min-height: 44px !important; min-width: 44px !important; justify-content: center !important; padding: 0 8px !important; }
-  /* Touch targets: inline content links */
-  .et_pb_post_content a { display: inline-flex !important; align-items: center !important; min-height: 44px !important; }
-  /* Touch targets: related posts (category badges, Read More, pagination) */
-  .et_pb_posts .entry-categories a,
-  .et_pb_posts .more-link,
-  .pagination a { display: inline-flex !important; align-items: center !important; min-height: 44px !important; min-width: 44px !important; justify-content: center !important; padding: 0 8px !important; }
+  /* Touch targets */
+  .et_pb_section_0_tb_body .et_pb_title_meta_container a { display: inline-flex !important; align-items: center !important; min-height: 44px !important; min-width: 44px !important; padding: 0 8px !important; }
+  .et_pb_section_1_tb_body .et_pb_post_content a { display: inline-flex !important; align-items: center !important; min-height: 44px !important; }
+  .et_pb_section_2_tb_body .entry-categories a,
+  .et_pb_section_2_tb_body .more-link,
+  .et_pb_section_2_tb_body .pagination a { display: inline-flex !important; align-items: center !important; min-height: 44px !important; min-width: 44px !important; padding: 0 8px !important; }
 }
 
 /* --- Responsive: 480px small --- */
 @media (max-width: 480px) {
-  .dw-blog-hero-wrap { padding: 72px 0 32px; }
-  .dw-blog-hero-wrap .et_pb_post_title .entry-title { font-size: 24px !important; }
-  .dw-blog-content-wrap .et_pb_post_content p { font-size: 15px !important; line-height: 1.75 !important; }
-  .dw-blog-content-wrap .et_pb_post_content blockquote { padding: 12px 16px; }
+  .dw-blog-nav { padding-top: 72px; }
+  .et_pb_section_0_tb_body .et_pb_post_title .entry-title { font-size: 24px !important; }
+  .et_pb_section_1_tb_body .et_pb_post_content p { font-size: 15px !important; line-height: 1.75 !important; }
+  .et_pb_section_1_tb_body .et_pb_post_content blockquote { padding: 12px 16px; }
   .dw-blog-cta-btn { display: block; width: 100%; text-align: center; }
-  .et_pb_section .et_pb_row { padding-left: 16px !important; padding-right: 16px !important; }
 }
 `.trim();
 }
@@ -265,47 +350,70 @@ function css() {
 // ── Blocks ───────────────────────────────────────────────────────
 
 function blocks() {
-  const heroHTML = `
-<div class="dw-blog-hero-wrap">
-  <div style="max-width:760px; margin:0 auto; padding:0 24px; position:relative;">
-    <a href="/blog/" class="dw-blog-back-link">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Back to Blog
-    </a>
-  </div>
+  // Back links — separate blog vs news, toggled by CSS conditional
+  // Critical section background overrides — MUST be inline <style> because
+  // Divi's CSS compiler strips .et_section_regular from selectors in code module CSS,
+  // making it impossible to beat Divi's 0-4-0 framework reset via the CSS field.
+  // Inline <style> in HTML bypasses Divi's compiler entirely.
+  const inlineOverrides = `
+<style>
+/* Beat Divi framework reset: .et-l--body .et_pb_section[class*="tb_body"].et_section_regular { background: none !important } */
+.et-l--body .et_pb_section.et_pb_section_0_tb_body.et_section_regular[class] {
+  background: linear-gradient(135deg, #000432 0%, #000864 40%, #001080 100%) !important;
+}
+.et-l--body .et_pb_section.et_pb_section_1_tb_body.et_section_regular[class] {
+  background: #fff !important;
+}
+.et-l--body .et_pb_section.et_pb_section_2_tb_body.et_section_regular[class] {
+  background: #F5F7FA !important;
+}
+.et-l--body .et_pb_section.et_pb_section_3_tb_body.et_section_regular[class] {
+  background: linear-gradient(135deg, #000432 0%, #000864 50%, #003CC8 100%) !important;
+}
+/* News post overrides (green badge hero, dark related) */
+body.category-industry-news .et-l--body .et_pb_section.et_pb_section_0_tb_body.et_section_regular[class] {
+  background-size: cover !important;
+  background-position: center !important;
+}
+body.category-industry-news .et-l--body .et_pb_section.et_pb_section_2_tb_body.et_section_regular[class] {
+  background: linear-gradient(135deg, #000432 0%, #000864 100%) !important;
+}
+</style>`;
+
+  const heroNavHTML = `
+${inlineOverrides}
+<div class="dw-blog-nav">
+  <a href="/blog/" class="dw-blog-back-link dw-back-blog">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to Blog
+  </a>
+  <a href="/news/" class="dw-blog-back-link dw-back-news">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to News &amp; Events
+  </a>
 </div>`.trim();
 
   const ctaHTML = `
 <div class="dw-blog-cta">
   <h2>Ready to Transform Your Factory?</h2>
   <p>Talk to our manufacturing ERP specialists about your specific challenges. No demos, no pressure — just expert advice.</p>
-  <a href="/contact/" class="dw-blog-cta-btn">Let's Talk</a>
+  <a href="/demo/" class="dw-blog-cta-btn">Let's Talk</a>
 </div>`.trim();
 
   const relatedHeading = `<h2 class="dw-blog-related-heading">Related Articles</h2>`;
 
   return [
-    // Section 1: Hero (navy gradient + dynamic title)
+    // Section 1: Hero — cssClass on section so CSS can target modules within
     sectionOpen({
       adminLabel: 'Blog Hero',
-      background: {
-        color: '#000432',
-      },
+
       padding: { top: '0px', bottom: '0px', left: '0px', right: '0px', syncVertical: 'off', syncHorizontal: 'off' },
     }),
     rowOpen({ adminLabel: 'Hero Row' }),
     columnOpen({ adminLabel: 'Hero Content' }),
-    codeModule(heroHTML, 'Hero Branding'),
+    codeModule(heroNavHTML, 'Hero Nav Links'),
     postTitleModule({
       adminLabel: 'Dynamic Post Title',
-      family: 'Noto Sans',
-      weight: '700',
-      size: '42px',
-      lineHeight: '1.2em',
-      color: '#FFFFFF',
-      tabletSize: '32px',
-      phoneSize: '24px',
-      metaColor: 'rgba(255,255,255,0.7)',
       showDate: 'on',
       showCategories: 'on',
       showAuthor: 'off',
@@ -315,24 +423,17 @@ function blocks() {
     rowClose(),
     sectionClose(),
 
-    // Section 2: Content (dynamic post content)
+    // Section 2: Content — no wrapper divs, CSS targets .et_pb_section_1_tb_body .et_pb_post_content
     sectionOpen({
       adminLabel: 'Blog Content',
+
       padding: { top: '0px', bottom: '0px', left: '0px', right: '0px', syncVertical: 'off', syncHorizontal: 'off' },
     }),
     rowOpen({ adminLabel: 'Content Row' }),
-    columnOpen({
-      adminLabel: 'Content Column',
-    }),
-    codeModule('<div class="dw-blog-content-wrap">', 'Content Wrapper Open'),
+    columnOpen({ adminLabel: 'Content Column' }),
     postContentModule({
       adminLabel: 'Dynamic Post Content',
-      family: 'Noto Sans',
-      size: '16px',
-      lineHeight: '1.8em',
-      color: '#333333',
     }),
-    codeModule('</div>', 'Content Wrapper Close'),
     columnClose(),
     rowClose(),
     sectionClose(),
@@ -340,17 +441,16 @@ function blocks() {
     // Section 3: Related Articles
     sectionOpen({
       adminLabel: 'Related Articles',
-      background: { color: '#F5F7FA' },
+
       padding: { top: '0px', bottom: '0px', left: '0px', right: '0px', syncVertical: 'off', syncHorizontal: 'off' },
     }),
     rowOpen({ adminLabel: 'Related Row' }),
     columnOpen({ adminLabel: 'Related Column' }),
-    codeModule(`<div class="dw-blog-related-wrap">${relatedHeading}`, 'Related Header'),
+    codeModule(relatedHeading, 'Related Heading'),
     blogModule({
       adminLabel: 'Related Posts Grid',
       count: 3,
     }),
-    codeModule('</div>', 'Related Footer'),
     columnClose(),
     rowClose(),
     sectionClose(),
@@ -358,6 +458,7 @@ function blocks() {
     // Section 4: CTA
     sectionOpen({
       adminLabel: 'Blog CTA',
+
       padding: { top: '0px', bottom: '0px', left: '0px', right: '0px', syncVertical: 'off', syncHorizontal: 'off' },
     }),
     rowOpen({ adminLabel: 'CTA Row' }),

@@ -17,6 +17,7 @@ const thSection = require('./sections/th-ind-section');
 const thChallenges = require('./sections/th-ind-challenges');
 const thApproach = require('./sections/th-ind-approach');
 const thCta = require('./sections/th-ind-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100781,
@@ -35,6 +36,22 @@ module.exports = {
   ],
 
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E2D\u0E38\u0E15\u0E2A\u0E32\u0E2B\u0E01\u0E23\u0E23\u0E21', url: '/th/industries/' },
+      ])),
+      schema.thaiVariant(schema.webPage({
+        type: 'CollectionPage',
+        name: 'Industry Solutions - DigiWin Thailand',
+        description: 'Industry-specific ERP, MES, and WMS solutions for automotive parts, electronics assembly, and metal & plastics manufacturing in Thailand.',
+        url: '/th/industries/',
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

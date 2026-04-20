@@ -105,7 +105,7 @@ function blocks() {
         </div>
 
         <div class="${P}-cta-wrapper">
-          <a href="/contact/" class="${P}-cta">${D.cta}</a>
+          <a href="/demo/" class="${P}-cta">${D.cta}</a>
         </div>
       </div>
     </div>`;

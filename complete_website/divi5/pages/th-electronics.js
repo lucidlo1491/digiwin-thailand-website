@@ -22,6 +22,7 @@ const thProducts = require('./sections/th-elec-products');
 const thSection = require('./sections/th-elec-section');
 const thCta = require('./sections/th-elec-cta');
 const thRelated = require('./sections/th-elec-related-solutions');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100783,
@@ -44,6 +45,22 @@ module.exports = {
   ],
 
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E2D\u0E38\u0E15\u0E2A\u0E32\u0E2B\u0E01\u0E23\u0E23\u0E21', url: '/th/industries/' },
+        { name: '\u0E2D\u0E34\u0E40\u0E25\u0E47\u0E01\u0E17\u0E23\u0E2D\u0E19\u0E34\u0E01\u0E2A\u0E4C', url: '/th/industries/electronics/' },
+      ])),
+      schema.thaiVariant(schema.webPage({
+        name: 'Electronics Assembly Manufacturing Solutions',
+        description: 'MES and ERP for electronics assembly factories in Thailand. SMT integration, MSD tracking, component-level traceability.',
+        url: '/th/industries/electronics/',
+      })),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

@@ -62,7 +62,7 @@ ${weaponCardsHTML}
                         <p style="font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #00AFF0; margin-bottom: 12px;">${pr.label}</p>
                         <h3 style="font-family: 'Noto Sans Thai', 'Noto Sans', sans-serif; font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 16px;">${pr.title}</h3>
                         <p style="font-family: 'Noto Sans Thai', 'Noto Sans', sans-serif; font-size: 17px; color: rgba(255,255,255,0.85); line-height: 1.8;">${pr.body}</p>
-                        <a href="../blog/boi-compliance-jin-hai.html" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; font-family: 'Noto Sans Thai', 'Noto Sans', sans-serif; font-size: 15px; font-weight: 500; color: #00AFF0; text-decoration: none;">${pr.cta} <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <a href="../boi-compliance-jin-hai/" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; font-family: 'Noto Sans Thai', 'Noto Sans', sans-serif; font-size: 15px; font-weight: 500; color: #00AFF0; text-decoration: none;">${pr.cta} <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                     </div>
                     <div style="text-align: center;">
                         <div style="display: inline-block; background: rgba(0,175,240,0.15); border-radius: 20px; padding: 40px;">
@@ -89,7 +89,7 @@ ${weaponCardsHTML}
                     <p class="boi-enforcement-body">${t.boiAlert.body}</p>
                     <ol class="boi-enforcement-list">${boiItemsHTML}
                     </ol>
-                    <a href="../blog/boi-compliance-jin-hai.html" class="boi-enforcement-cta">${t.boiAlert.cta} <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="../boi-compliance-jin-hai/" class="boi-enforcement-cta">${t.boiAlert.cta} <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                     <p class="boi-enforcement-source">${t.boiAlert.source}</p>
                 </div>
             </div></div>`;

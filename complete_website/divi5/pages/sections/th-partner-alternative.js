@@ -81,7 +81,7 @@ function blocks() {
         </div>
 
         <div class="${P}-cta-wrap">
-          <a href="/contact/" class="${P}-cta-btn">${th.alternative.ctaButton}</a>
+          <a href="/demo/" class="${P}-cta-btn">${th.alternative.ctaButton}</a>
           <p class="${P}-cta-note">${th.alternative.ctaNote}</p>
         </div>
       </div>

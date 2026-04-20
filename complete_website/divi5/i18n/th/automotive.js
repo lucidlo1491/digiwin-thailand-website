@@ -224,7 +224,7 @@ const cta = {
   title: 'ส่งมอบตามข้อกำหนด OEM อย่างมั่นใจ',
   subtitle: 'ดูว่า DigiWin ช่วยผู้ผลิตชิ้นส่วนยานยนต์ชั้นนำของไทยอย่างไร',
   buttons: [
-    { text: shared.cta.getInTouch, href: '/demo.html', style: 'primary' },
+    { text: shared.cta.getInTouch, href: '/th/demo/', style: 'primary' },
     { text: 'ดูอุตสาหกรรมอื่น', href: '/industries.html', style: 'ghost' },
   ],
 };

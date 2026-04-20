@@ -21,6 +21,7 @@ const proofBuilder = require('./sections/sfd-proof');
 const logisticsBuilder = require('./sections/sfd-logistics');
 const registerBuilder = require('./sections/sfd-register');
 const relatedBuilder = require('./sections/sfd-related');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100754,
@@ -40,6 +41,27 @@ module.exports = {
     { name: 'sfd-register', builder: registerBuilder },
     { name: 'sfd-related', builder: relatedBuilder },
   ],
+
+
+  schema() {
+    return [
+      schema.breadcrumbList([
+        { name: 'Home', url: '/' },
+        { name: 'News & Events', url: '/news/' },
+        { name: 'Shop Floor Data Workshop', url: '/shop-floor-data-workshop/' },
+      ]),
+      schema.event({
+        name: 'Hands-On: Setting Up Shop Floor Data Collection with MES',
+        description: 'Full-day hands-on workshop configuring real MES modules, connecting shop floor devices, and seeing live OEE data flow from machine to dashboard.',
+        startDate: '2026-04-24T09:00:00+07:00',
+        endDate: '2026-04-24T16:00:00+07:00',
+        locationName: 'Bangkok, Thailand',
+        city: 'Bangkok',
+        country: 'TH',
+        isAccessibleForFree: true,
+      }),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],

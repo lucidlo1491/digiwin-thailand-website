@@ -57,7 +57,7 @@ ${superD.css('demo-super-d', { variant: 'outline', position: 'left', opacity: 0.
 .demo-trust{display:flex;justify-content:center;gap:32px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.1)}
 .demo-trust-item{text-align:center}
 .demo-trust-value{font-family:'Noto Sans',sans-serif;font-size:24px;font-weight:700;color:#00AFF0;display:block}
-.demo-trust-label{font-size:12px;color:rgba(255,255,255,0.75)}
+.demo-trust-label{font-size:12px;color:rgba(255,255,255,0.85)}
 @media(max-width:1024px){.demo-trust{flex-wrap:wrap;gap:24px}}
 @media(max-width:640px){.demo-hero{padding:120px 20px 60px}}
 ${base.reducedMotion(`.demo-super-d,.demo-hero::before{animation:none !important;transition:none !important}`)}

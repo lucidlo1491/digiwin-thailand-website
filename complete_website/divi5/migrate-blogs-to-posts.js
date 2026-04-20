@@ -20,6 +20,7 @@
 const fs = require('fs');
 const path = require('path');
 const mysql = require('./lib/mysql');
+const { tbl } = require('./lib/mysql-config');
 
 const DRY_RUN = process.argv.includes('--dry-run');
 const SINGLE = process.argv.find((a, i) => process.argv[i - 1] === '--page');
@@ -77,7 +78,7 @@ function extractArticleBody(htmlFile) {
   body = body
     .replace(/href="\.\.\/(blog\/[^"]+)\.html"/g, (_, p) => `href="/${p}/"`)
     .replace(/href="\.\.\/blog\.html"/g, 'href="/blog/"')
-    .replace(/href="\.\.\/demo\.html"/g, 'href="/contact/"')
+    .replace(/href="\.\.\/demo\.html"/g, 'href="/demo/"')
     .replace(/href="\.\.\/products\/([^"]+)\.html"/g, (_, p) => `href="/products/${p}/"`)
     .replace(/href="\.\.\/([^"]+)\.html"/g, (_, p) => `href="/${p}/"`);
 
@@ -98,7 +99,7 @@ function ensureCategory(name) {
 
   // Check if category exists
   const check = mysql.query(
-    `SELECT term_id FROM wp_terms WHERE slug = '${mysql.escape(slug)}';`
+    `SELECT term_id FROM ${tbl('terms')} WHERE slug = '${mysql.escape(slug)}';`
   );
   const lines = check.trim().split('\n');
   if (lines.length > 1 && lines[1].trim()) {
@@ -107,19 +108,19 @@ function ensureCategory(name) {
 
   // Create category
   mysql.query(`
-    INSERT INTO wp_terms (name, slug, term_group) VALUES ('${mysql.escape(name)}', '${mysql.escape(slug)}', 0);
+    INSERT INTO ${tbl('terms')} (name, slug, term_group) VALUES ('${mysql.escape(name)}', '${mysql.escape(slug)}', 0);
     SET @tid = LAST_INSERT_ID();
-    INSERT INTO wp_term_taxonomy (term_id, taxonomy, description, parent, count) VALUES (@tid, 'category', '', 0, 0);
+    INSERT INTO ${tbl('term_taxonomy')} (term_id, taxonomy, description, parent, count) VALUES (@tid, 'category', '', 0, 0);
   `);
 
-  const result = mysql.query(`SELECT term_id FROM wp_terms WHERE slug = '${mysql.escape(slug)}';`);
+  const result = mysql.query(`SELECT term_id FROM ${tbl('terms')} WHERE slug = '${mysql.escape(slug)}';`);
   return parseInt(result.trim().split('\n')[1].trim(), 10);
 }
 
 function assignCategory(postId, termId) {
   // Get term_taxonomy_id
   const ttResult = mysql.query(
-    `SELECT term_taxonomy_id FROM wp_term_taxonomy WHERE term_id = ${termId} AND taxonomy = 'category';`
+    `SELECT term_taxonomy_id FROM ${tbl('term_taxonomy')} WHERE term_id = ${termId} AND taxonomy = 'category';`
   );
   const ttLines = ttResult.trim().split('\n');
   if (ttLines.length < 2) return;
@@ -127,9 +128,9 @@ function assignCategory(postId, termId) {
 
   // Assign
   mysql.query(`
-    DELETE FROM wp_term_relationships WHERE object_id = ${postId} AND term_taxonomy_id = ${ttId};
-    INSERT INTO wp_term_relationships (object_id, term_taxonomy_id, term_order) VALUES (${postId}, ${ttId}, 0);
-    UPDATE wp_term_taxonomy SET count = count + 1 WHERE term_taxonomy_id = ${ttId};
+    DELETE FROM ${tbl('term_relationships')} WHERE object_id = ${postId} AND term_taxonomy_id = ${ttId};
+    INSERT INTO ${tbl('term_relationships')} (object_id, term_taxonomy_id, term_order) VALUES (${postId}, ${ttId}, 0);
+    UPDATE ${tbl('term_taxonomy')} SET count = count + 1 WHERE term_taxonomy_id = ${ttId};
   `);
 }
 
@@ -157,7 +158,7 @@ function migratePost(post) {
   }
 
   // Create post
-  const sql = `INSERT INTO wp_posts (
+  const sql = `INSERT INTO ${tbl('posts')} (
     post_author, post_date, post_date_gmt, post_content, post_title,
     post_excerpt, post_status, comment_status, ping_status, post_password,
     post_name, to_ping, pinged, post_modified, post_modified_gmt,
@@ -183,14 +184,14 @@ function migratePost(post) {
   }
 
   // Set GUID
-  mysql.query(`UPDATE wp_posts SET guid = 'https://digiwin-thailand.local/?p=${newId}' WHERE ID = ${newId};`);
+  mysql.query(`UPDATE ${tbl('posts')} SET guid = 'https://digiwin-thailand.local/?p=${newId}' WHERE ID = ${newId};`);
 
   // Assign category
   const catId = ensureCategory(post.category);
   assignCategory(newId, catId);
 
   // Draft the old page
-  mysql.query(`UPDATE wp_posts SET post_status = 'draft' WHERE ID = ${post.pageId};`);
+  mysql.query(`UPDATE ${tbl('posts')} SET post_status = 'draft' WHERE ID = ${post.pageId};`);
 
   console.log(`  ${c.g}✓${c.x} ${post.slug}: post ID ${newId} (page ${post.pageId} → draft)`);
   return { slug: post.slug, newId, oldPageId: post.pageId };

@@ -15,6 +15,7 @@ const thLifecycle = require('./sections/th-ps-lifecycle');
 const thReverseCut = require('./sections/th-ps-reverse-cut');
 const thCompetitive = require('./sections/th-ps-competitive');
 const thCta = require('./sections/th-ps-cta');
+const schema = require('../lib/schema');
 
 module.exports = {
   pageId: 100774,
@@ -33,6 +34,17 @@ module.exports = {
   ],
 
   extraCSS: () => thaiTypographyCSS(),
+
+
+  schema() {
+    return [
+      schema.thaiVariant(schema.breadcrumbList([
+        { name: '\u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01', url: '/th/' },
+        { name: '\u0E42\u0E1B\u0E23\u0E41\u0E01\u0E23\u0E21\u0E1E\u0E32\u0E23\u0E4C\u0E17\u0E40\u0E19\u0E2D\u0E23\u0E4C', url: '/th/partner-program/' },
+        { name: '\u0E42\u0E0B\u0E25\u0E39\u0E0A\u0E31\u0E48\u0E19', url: '/th/partner-program/solutions/' },
+      ])),
+    ];
+  },
 
   editabilityRules: {
     bannedBlocks: ['wp:divi/button', 'wp:divi/group'],
